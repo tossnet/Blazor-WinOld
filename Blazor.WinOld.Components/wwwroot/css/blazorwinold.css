@@ -1,0 +1,16 @@
+﻿/*! XP.css v0.2.6 - https://botoxparty.github.io/XP.css/ */
+@font-face {
+    font-family: "Pixelated MS Sans Serif";
+    src: url(../fonts/ms_sans_serif.woff) format("woff");
+    src: url(../fonts/ms_sans_serif.woff2) format("woff2");
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "Pixelated MS Sans Serif";
+    src: url(/fonts/ms_sans_serif_bold.woff) format("woff");
+    src: url(/fonts/ms_sans_serif_bold.woff2) format("woff2");
+    font-weight: 700;
+    font-style: normal
+}
