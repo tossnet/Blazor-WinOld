@@ -26,5 +26,5 @@ public partial class WinOldCheckBox : WinOldComponentBase
     [Parameter]
     public string Label { get; set; } = string.Empty;
 
-    private Guid _elementId { get; set; } = Guid.NewGuid();
+    private Guid ElementId { get; set; } = Guid.NewGuid();
 }

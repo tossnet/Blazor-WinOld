@@ -5,9 +5,15 @@
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+Welcome to your new madness.
 
-<br />
+I'm using Windows styles made in css by :
+<ul>
+	<li>https://github.com/botoxparty/XP.css</li>
+	<li>https://github.com/khang-nd/7.css</li>
+</ul>		
+
+<h2 class="py-3">Buttons</h2>
 
 <WinOldButton OnClick="ClickMe"
 			  Appearance="Appearance.WinXP">Click me</WinOldButton>
@@ -32,11 +38,19 @@ Welcome to your new app.
 			  Disabled>Click me</WinOldButton>
 
 
-<br />
+
+<h2 class="py-3">Checkbox</h2>
 
 <WinOldCheckBox Checked="true"
 				Appearance="Appearance.WinXP"
-				Label="check box"/>
+				Label="check box" />
+
+<WinOldCheckBox Appearance="Appearance.WinXP"
+				Label="check box" />
+
+<WinOldCheckBox Appearance="Appearance.WinXP"
+				Label="check box"
+				Disabled/>
 
 @code {
 	private void ClickMe()
