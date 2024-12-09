@@ -1,39 +1,183 @@
-﻿.winxp {
-    font-family: 'Pixelated MS Sans Serif', sans-serif;
+﻿.btn-win {
+    font-family: var(--font-family);
     -webkit-font-smoothing: antialiased;
     cursor: pointer;
     font-size: 11px;
     box-sizing: border-box;
-    border: 1px solid #003c74;
-    background: linear-gradient( 180deg, rgba(255, 255, 255, 1) 0%, rgba(236, 235, 229, 1) 86%, rgba(216, 208, 196, 1) 100% );
-    box-shadow: none;
-    border-radius: 3px;
     min-width: 75px;
     min-height: 23px;
-    padding: 2px 0 0 2px;
-    width: fit-content;
-    text-align: center;
     -webkit-user-select: none;
     user-select: none;
 }
 
+.btn-win.focused, .btn-win:focus {
+    outline: 1px dotted #000;
+    outline-offset: -4px;
+}
 
-    .winxp:not(:disabled):active,
-    .winxp:not(:disabled).active {
-        box-shadow: none;
-        background: linear-gradient( 180deg, rgba(205, 202, 195, 1) 0%, rgba(227, 227, 219, 1) 8%, rgba(229, 229, 222, 1) 94%, rgba(242, 242, 241, 1) 100% );
+.btn-win-xp::-moz-focus-inner {
+    border: 0;
+}
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.btn-win-xp {
+    border: 1px solid #003c74;
+    background: linear-gradient( 180deg, rgba(255, 255, 255, 1) 0%, rgba(236, 235, 229, 1) 86%, rgba(216, 208, 196, 1) 100% );
+    box-shadow: none;
+    border-radius: var(--border-radius);
+    padding: 2px 0 0 2px;
+    width: fit-content;
+    text-align: center;
+}
+
+.btn-win-xp:not(:disabled):active,
+.btn-win-xp:not(:disabled).active {
+    box-shadow: none;
+    background: linear-gradient( 180deg, rgba(205, 202, 195, 1) 0%, rgba(227, 227, 219, 1) 8%, rgba(229, 229, 222, 1) 94%, rgba(242, 242, 241, 1) 100% );
+}
+
+.btn-win-xp:not(:disabled):hover {
+    box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889, inset -2px 2px #fbc761, inset 2px -2px #e5a01a;
+}
+
+.btn-win-xp:focus,
+.btn-win-xp.focused {
+    box-shadow: inset -1px 1px #cee7ff, inset 1px 2px #98b8ea, inset -2px 2px #bcd4f6, inset 1px -1px #89ade4, inset 2px -2px #89ade4;
+}
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.btn-win-98 {
+    border: none;
+    background: silver;
+    box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
+    border-radius: 0;
+    padding: 0 12px
+}
+
+    .btn-win-98:not(:disabled).active, .btn-win-98:not(:disabled):active {
+        box-shadow: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey
     }
 
-    .winxp:not(:disabled):hover {
-        box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889, inset -2px 2px #fbc761, inset 2px -2px #e5a01a;
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+.btn-win-7,
+.btn-win-7[role="button"] {
+    font: var(--font);
+    box-sizing: border-box;
+    border: var(--btn-win7-border);
+    border-color: var(--btn-win7-border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--btn-win7-shadow);
+    color: #222;
+    min-width: 75px;
+    min-height: 23px;
+    padding: 0 12px;
+    text-align: center;
+    background: var(--btn-win7-gradient);
+    position: relative;
+    z-index: 0;
+}
+
+    .btn-win-7::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        top: 0;
+        left: 0;
+        border-radius: var(--border-radius);
+        box-shadow: var(--btn-win7-shadow);
+        background: var(--btn-win7-gradient-hovered);
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: -1;
     }
 
-    .winxp:focus,
-    .winxp.focused {
-        box-shadow: inset -1px 1px #cee7ff, inset 1px 2px #98b8ea, inset -2px 2px #bcd4f6, inset 1px -1px #89ade4, inset 2px -2px #89ade4;
+    .btn-win-7::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        top: 0;
+        left: 0;
+        box-shadow: var(--btn-win7-shadow-active);
+        border-radius: 2px;
+        background: var(--btn-win7-gradient-active);
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: -1;
     }
 
-    .winxp::-moz-focus-inner {
-        border: 0;
+    .btn-win-7:disabled {
+        background: var(--btn-win7-face-disabled);
+        border-color: var(--btn-win7-border-color-disabled);
+        color: var(--btn-win7-text-color-disabled);
     }
 
+    .btn-win-7:not(:disabled):hover {
+        border-color: var(--btn-win7-border-color-hovered);
+        transition: border-color 0.3s;
+    }
+
+        .btn-win-7:not(:disabled):hover::before {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+    .btn-win-7:not(:disabled):not(:hover) {
+        border-color: var(--btn-win7-border-color);
+        transition: border-color 1s linear;
+    }
+
+        .btn-win-7:not(:disabled):not(:hover)::before {
+            opacity: 0;
+            transition: opacity 1s linear;
+        }
+
+    .btn-win-7:not(:disabled):active,
+    .btn-win-7:not(:disabled).active {
+        border-color: var(--btn-win7-border-color-active);
+        transition: border-color 0.3s;
+    }
+
+        .btn-win-7:not(:disabled):active::after,
+        .btn-win-7:not(:disabled).active::after {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+    .btn-win-7:focus-visible,
+    .btn-win-7.focused {
+        box-shadow: inset 0 0 0 2px var(--btn-win7-shade-light-active);
+        outline: 1px dotted #000;
+        outline-offset: -4px;
+    }
+
+    .btn-win-7.default,
+    .btn-win-7:focus,
+    .btn-win-7.focused {
+        outline: none;
+        outline-offset: unset;
+        border-color: var(--btn-win7-border-color-default);
+        background-image: var(--btn-win7-gradient-hovered);
+        animation: 1s ease infinite alternate pulse-anim;
+    }
+
+@keyframes pulse-anim {
+    from {
+        box-shadow: inset 0 0 3px 1px #34deffdd;
+    }
+
+    to {
+        box-shadow: inset 0 0 1px 1px #34deffdd;
+    }
+}

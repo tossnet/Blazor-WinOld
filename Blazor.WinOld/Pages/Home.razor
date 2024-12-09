@@ -7,7 +7,29 @@
 
 Welcome to your new app.
 
-<WinOldButton OnClick="ClickMe" >Click me</WinOldButton>
+<br />
+
+<WinOldButton OnClick="ClickMe"
+			  Appearance="Appearance.WinXP">Click me</WinOldButton>
+
+<WinOldButton OnClick="ClickMe"
+			  Appearance="Appearance.WinXP"
+			  Disabled>Click me</WinOldButton>
+
+<WinOldButton OnClick="ClickMe"
+			  Appearance="Appearance.Win98"
+			  >Click me</WinOldButton>
+
+<WinOldButton OnClick="ClickMe" 
+			  Appearance="Appearance.Win98"
+			  Disabled>Click me</WinOldButton>
+
+<WinOldButton OnClick="ClickMe"
+			  Appearance="Appearance.Win7">Click me</WinOldButton>
+
+<WinOldButton OnClick="ClickMe"
+			  Appearance="Appearance.Win7"
+			  Disabled>Click me</WinOldButton>
 
 @code {
 	private void ClickMe()

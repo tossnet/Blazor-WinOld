@@ -8,9 +8,42 @@
 }
 
 @font-face {
-    font-family: "Pixelated MS Sans Serif";
+    font-family: "Pixelated MS Sans Serif Bold";
     src: url(/fonts/ms_sans_serif_bold.woff) format("woff");
     src: url(/fonts/ms_sans_serif_bold.woff2) format("woff2");
     font-weight: 700;
     font-style: normal
+}
+
+/*! 7.css v0.17.0 - https://khang-nd.github.io/7.css */
+:root {
+    --font-family: "Pixelated MS Sans Serif", sans-serif;
+    --font: 9pt "Segoe UI","SegoeUI","Noto Sans",sans-serif;
+    --surface: #f0f0f0;
+    --btn-win7-highlight: #fff;
+    --btn-win7-face: #f2f2f2;
+    --btn-win7-face-hover: #eaf6fd;
+    --btn-win7-face-active: #c4e5f6;
+    --btn-win7-face-disabled: #f4f4f4;
+    --btn-win7-shade-light: #ebebeb;
+    --btn-win7-shade-light-default: #c3dcea;
+    --btn-win7-shade-light-hovered: #bee6fd;
+    --btn-win7-shade-light-active: #98d1ef;
+    --btn-win7-shade-dark: #cfcfcf;
+    --btn-win7-shadow: inset 0 0 0 1px #fffc;
+    --btn-win7-shadow-active: inset 1px 1px 0 #0003,inset -1px 1px 0 #0001;
+    --btn-win7-border: 1px solid;
+    --btn-win7-border-color: #8e8f8f;
+    --btn-win7-border-color-default: #5586a3;
+    --btn-win7-border-color-hovered: #3c7fb1;
+    --btn-win7-border-color-active: #6d91ab;
+    --btn-win7-border-color-disabled: #aeb2b5;
+    --btn-win7-text-color-disabled: #838383;
+    --btn-win7-gradient: linear-gradient(to bottom,var(--btn-win7-face) 45%,var(--btn-win7-shade-light) 45%,var(--btn-win7-shade-dark));
+    --btn-win7-gradient-hovered: linear-gradient(to bottom,var(--btn-win7-face-hover) 45%,var(--btn-win7-shade-light-hovered) 45%,#a7d9f5);
+    --btn-win7-gradient-active: linear-gradient(to bottom,#e5f4fc,var(--btn-win7-face-active) 30% 50%,var(--btn-win7-shade-light-active) 50%,#68b3db);
+    --element-spacing: 8px;
+    --grouped-element-spacing: 6px;
+    --border-radius: 3px;
+    --border-width: 1px;
 }

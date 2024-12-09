@@ -2,7 +2,8 @@
 
 @inherits WinOldComponentBase
 
-<div @onclick="@OnClickHandlerAsync"
-	 class="winxp">
+<button @onclick="@OnClickHandlerAsync"
+	    class="btn-win @GetButtonClass()"
+		disabled="@Disabled">
 	@ChildContent
-</div>
+</button>
