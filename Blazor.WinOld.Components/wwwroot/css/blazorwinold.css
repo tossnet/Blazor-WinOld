@@ -1,4 +1,6 @@
 ﻿/*! XP.css v0.2.6 - https://botoxparty.github.io/XP.css/ */
+/*! 7.css v0.17.0 - https://khang-nd.github.io/7.css */
+
 @font-face {
     font-family: "Pixelated MS Sans Serif";
     src: url(../fonts/ms_sans_serif.woff) format("woff");
@@ -15,7 +17,6 @@
     font-style: normal
 }
 
-/*! 7.css v0.17.0 - https://khang-nd.github.io/7.css */
 :root {
     --font-family: "Pixelated MS Sans Serif", sans-serif;
     --font: 9pt "Segoe UI","SegoeUI","Noto Sans",sans-serif;
@@ -46,4 +47,11 @@
     --grouped-element-spacing: 6px;
     --border-radius: 3px;
     --border-width: 1px;
+
+    --chk-win7-width: 14px;
+    --chk-win7-label-spacing: 6px;
+    --chk-win7-total-width-precalc: 0;
+    --chk-win7-total-width: calc(var(--checkbox-total-width-precalc));
+    --checkmark-top: 0;
+    --checkmark-left: 2px;
 }

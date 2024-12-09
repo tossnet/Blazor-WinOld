@@ -28,19 +28,17 @@ public partial class WinOldButton : WinOldComponentBase
     [Parameter]
     public EventCallback<MouseEventArgs> OnClick { get; set; }
 
+    /// </summary>
     protected async Task OnClickHandlerAsync(MouseEventArgs e)
     {
         if (!Disabled && OnClick.HasDelegate)
         {
             await OnClick.InvokeAsync(e);
         }
-
-        await Task.CompletedTask;
     }
 
-
-
-    private string GetButtonClass()
+    /// </summary>
+    private string GetComponentClass()
     {
         return Appearance switch
         {

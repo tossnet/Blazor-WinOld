@@ -3,7 +3,7 @@
 @inherits WinOldComponentBase
 
 <button @onclick="@OnClickHandlerAsync"
-	    class="btn-win @GetButtonClass()"
+		class="btn-win @GetComponentClass()"
 		disabled="@Disabled">
 	@ChildContent
 </button>

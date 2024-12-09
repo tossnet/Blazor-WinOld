@@ -4,8 +4,9 @@
 
 <input type="checkbox" 
 	   id="@ElementId"
-	   class="chk-win-xp"
+	   class="chk-win @GetComponentClass()"
 	   checked="@Checked"
-	   disabled="@Disabled">
+	   disabled="@Disabled"
+	   @oninput="CheckboxChanged">
 <label for="@ElementId"
 	   class="chk-label-win-xp">@Label</label>

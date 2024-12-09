@@ -22,6 +22,8 @@ I'm using Windows styles made in css by :
 			  Appearance="Appearance.WinXP"
 			  Disabled>Click me</WinOldButton>
 
+<br />
+
 <WinOldButton OnClick="ClickMe"
 			  Appearance="Appearance.Win98"
 			  >Click me</WinOldButton>
@@ -30,6 +32,7 @@ I'm using Windows styles made in css by :
 			  Appearance="Appearance.Win98"
 			  Disabled>Click me</WinOldButton>
 
+<br />
 <WinOldButton OnClick="ClickMe"
 			  Appearance="Appearance.Win7">Click me</WinOldButton>
 
@@ -50,11 +53,47 @@ I'm using Windows styles made in css by :
 
 <WinOldCheckBox Appearance="Appearance.WinXP"
 				Label="check box"
-				Disabled/>
+				Disabled />
+
+<br />
+
+<WinOldCheckBox Checked="checkbox1"
+				Appearance="Appearance.Win98"
+				Label="check box"
+				CheckedChanged="@CheckedChanged" />
+
+<WinOldCheckBox Appearance="Appearance.Win98"
+				Label="check box" />
+
+<WinOldCheckBox Appearance="Appearance.Win98"
+				Label="check box"
+				Disabled />
+
+
+<br />
+
+<WinOldCheckBox Checked="checkbox1"
+				Appearance="Appearance.Win7"
+				Label="check box"
+				CheckedChanged="@CheckedChanged" />
+
+<WinOldCheckBox Appearance="Appearance.Win7"
+				Label="check box" />
+
+<WinOldCheckBox Appearance="Appearance.Win7"
+				Label="check box"
+				Disabled />
 
 @code {
 	private void ClickMe()
 	{
 		Console.WriteLine("Clicked!");
+	}
+
+	bool checkbox1 = true;
+
+	private void CheckedChanged(bool value)
+	{
+		Console.WriteLine($"Checkbox changed {value}");
 	}
 }
