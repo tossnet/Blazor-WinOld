@@ -3,10 +3,11 @@
 @inherits WinOldComponentBase
 
 <input type="checkbox" 
-	   id="@ElementId"
-	   class="chk-win @GetComponentClass()"
-	   checked="@Checked"
-	   disabled="@Disabled"
-	   @oninput="CheckboxChanged">
+       id="@ElementId"
+       class="chk-win @GetComponentClass() @Class"
+       checked="@Checked"
+       disabled="@Disabled"
+       @oninput="CheckboxChanged"
+       style="@Style">
 <label for="@ElementId"
-	   class="chk-label-win-xp">@Label</label>
+       class="chk-label-win-xp">@Label</label>
