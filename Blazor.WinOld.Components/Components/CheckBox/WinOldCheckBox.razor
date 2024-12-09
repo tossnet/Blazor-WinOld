@@ -1,5 +1,7 @@
-﻿<h3>WinOldCheckBox</h3>
+﻿@namespace Blazor.WinOld.Components
 
-@code {
+@inherits WinOldComponentBase
 
-}
+<input type="checkbox" id="@_elementId"
+	   checked="@Checked">
+<label for="@_elementId">@Label</label>
