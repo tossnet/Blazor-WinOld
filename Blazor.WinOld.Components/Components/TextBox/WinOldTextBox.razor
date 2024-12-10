@@ -1,0 +1,12 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+
+<label for="@ElementId"
+       class="label-txt-win">@Label</label>
+<input type="text"
+       id="@ElementId" 
+       class="txt-win @GetComponentClass() @Class"
+       disabled="@Disabled"
+       style="@Style" />

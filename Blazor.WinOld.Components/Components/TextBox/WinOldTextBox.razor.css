@@ -1,0 +1,72 @@
+﻿.txt-win {
+    all: unset;
+    font-family: var(--font-family);
+    font-size: 11px;
+    background-color: var(--btn-win7-highlight);
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 21px;
+    line-height: 2;
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+.txt-win:focus {
+    outline: none;
+}
+
+label.label-txt-win {
+    display: inline-flex;
+    align-items: center;
+}
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.txt-win-xp {
+    border: solid #7f9db9 1px;
+    box-sizing: border-box;
+    border-radius: 0;
+    padding: 3px 4px;
+}
+
+label + .txt-win-xp {
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.txt-win-98 {
+    border: 0px;
+    border-radius: 0;
+    padding: 3px 4px;
+    background-color: var(--btn-win7-highlight);
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+}
+
+label + .txt-win-98 {
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+.txt-win-7 {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    border-top: 1px solid var(--btn-win7-border-color);
+    font: var(--font);
+    padding: 3px 4px 5px;
+}
+
+    .txt-win-7:focus {
+        border-color: var(--btn-win7-shade-light-hovered);
+        border-top-color: var(--btn-win7-shade-light-active);
+        outline: none;
+    }
