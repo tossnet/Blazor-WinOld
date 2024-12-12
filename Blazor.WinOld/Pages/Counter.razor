@@ -6,7 +6,8 @@
 
 <p role="status">Current count: @currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<WinOldButton OnClick="IncrementCount"
+              Appearance="Appearance.Win98">Click me</WinOldButton>
 
 @code {
     private int currentCount = 0;
