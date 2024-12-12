@@ -4,6 +4,9 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	  
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+	  
     <PackageId>BlazorWinOld</PackageId>
 	  <Description>Blazor components in Windows 98, Windows XP and Windows 7 styles. For use with .NET 9.0 or higher Blazor applications</Description>
 	  <Copyright>Copyright 2024</Copyright>
