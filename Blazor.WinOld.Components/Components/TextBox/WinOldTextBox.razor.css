@@ -20,6 +20,8 @@
 label.label-txt-win {
     display: inline-flex;
     align-items: center;
+    font-family: var(--font-family);
+    font-size: 11px;
 }
 
 /*-------------------------------------------*\
@@ -70,3 +72,8 @@ label + .txt-win-98 {
         border-top-color: var(--btn-win7-shade-light-active);
         outline: none;
     }
+
+label + .txt-win-7 {
+    font-family: unset !important;
+    font: var(--font) !important;
+}

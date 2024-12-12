@@ -1,9 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>BlazorWinOld</PackageId>
+	  <Description>Blazor components in Windows 98, Windows XP and Windows 7 styles. For use with .NET 9.0 or higher Blazor applications</Description>
+	  <Copyright>Copyright 2024</Copyright>
+	  <PackageProjectUrl>https://github.com/tossnet/Blazor-WinOld</PackageProjectUrl>
+	  <PackageIcon>icon.png</PackageIcon>
+	  <RepositoryUrl>https://github.com/tossnet/Blazor-WinOld</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageTags>blazor, components, win98, winxp, win7</PackageTags>
+	  <PackageReleaseNotes>https://github.com/tossnet/Blazor-WinOld#release-notes</PackageReleaseNotes>
+	  <Version>0.0.1</Version>
+	  <Authors>Christophe Peugnet</Authors>
+	  <DebugType>embedded</DebugType>
   </PropertyGroup>
 
 
@@ -13,6 +26,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
