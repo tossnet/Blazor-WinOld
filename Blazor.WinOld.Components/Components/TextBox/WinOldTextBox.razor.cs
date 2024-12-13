@@ -5,13 +5,6 @@ namespace Blazor.WinOld.Components;
 
 public partial class WinOldTextBox : WinOldComponentBase
 {
-
-    /// <summary>
-    /// Disables the form control, ensuring it doesn't participate in form submission.
-    /// </summary>
-    [Parameter]
-    public bool Disabled { get; set; }
-
     /// </summary>
     [Parameter]
     [Category(CategoryTypes.Button.Appearance)]

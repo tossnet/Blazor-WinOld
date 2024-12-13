@@ -1,40 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-	  
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-	  
     <PackageId>BlazorWinOld</PackageId>
-	  <Description>Blazor components in Windows 98, Windows XP and Windows 7 styles. For use with .NET 9.0 or higher Blazor applications</Description>
+	  <Description>Blazor components in Windows 98, Windows XP and Windows 7 styles. For use with .NET 8.0 or higher Blazor applications</Description>
 	  <Copyright>Copyright 2024</Copyright>
 	  <PackageProjectUrl>https://github.com/tossnet/Blazor-WinOld</PackageProjectUrl>
 	  <PackageIcon>icon.png</PackageIcon>
 	  <RepositoryUrl>https://github.com/tossnet/Blazor-WinOld</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
-	  <PackageTags>blazor, components, win98, winxp, win7</PackageTags>
+	  <PackageTags>blazor, components, win98, winXP, win7</PackageTags>
 	  <PackageReleaseNotes>https://github.com/tossnet/Blazor-WinOld#release-notes</PackageReleaseNotes>
-	  <Version>0.0.1</Version>
+	  <Version>0.0.2</Version>
 	  <Authors>Christophe Peugnet</Authors>
 	  <DebugType>embedded</DebugType>
   </PropertyGroup>
 
+	<ItemGroup>
+		<None Include="icon.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+  	<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.11" />
   </ItemGroup>
-
-  <ItemGroup>
-    <None Update="icon.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+  	<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
   </ItemGroup>
-
+	
 </Project>

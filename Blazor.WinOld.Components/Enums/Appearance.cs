@@ -4,7 +4,6 @@ namespace Blazor.WinOld.Components;
 
 public enum Appearance
 {
-
     /// <summary />
     [Description("win7")]
     Win7,

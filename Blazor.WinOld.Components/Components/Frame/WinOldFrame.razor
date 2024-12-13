@@ -1,0 +1,13 @@
+﻿@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+<fieldset class="frame-win @GetComponentClass() @Class"
+          style="@Style">
+    <legend>@Label</legend>
+                        
+    <CascadingValue Name="Disabled" Value="@Disabled">
+        @ChildContent
+    </CascadingValue>
+
+</fieldset>

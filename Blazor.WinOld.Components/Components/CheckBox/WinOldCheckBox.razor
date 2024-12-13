@@ -6,7 +6,7 @@
        id="@ElementId"
        class="chk-win @GetComponentClass() @Class"
        checked="@Checked"
-       disabled="@Disabled"
+       disabled="@(ParentDisabled | Disabled)"
        @oninput="CheckboxChanged"
        style="@Style">
 <label for="@ElementId">@Label</label>

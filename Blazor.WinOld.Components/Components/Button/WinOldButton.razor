@@ -4,7 +4,7 @@
 
 <button @onclick="@OnClickHandlerAsync"
         class="btn-win @GetComponentClass() @Class"
-        disabled="@Disabled"
+        disabled="@(ParentDisabled | Disabled)"
         style="@Style">
 	@ChildContent
 </button>

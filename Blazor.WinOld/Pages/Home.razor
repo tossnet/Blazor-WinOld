@@ -100,59 +100,64 @@ I'm using Windows styles made in css by :
 
 
 
-<h2 class="py-3">Groupbox</h2>
+<h2 class="py-3">Frame</h2>
 
-<WinOldGroupBox Appearance="Appearance.WinXP"
-			    Label="GrouBox">
+<WinOldFrame Appearance="Appearance.WinXP"
+			 Label="Frame" 
+			 Disabled >
+
+	<WinOldCheckBox Appearance="Appearance.WinXP"
+					Label="check box disable from parent" />
 	<div class="field-row">
-		<input id="radio17" type="radio" name="fieldset-example2">
+		<input id="radio17" type="radio" name="frame-example2">
 		<label for="radio17">Adrien</label>
 	</div>
 	<div class="field-row">
-		<input id="radio18" type="radio" name="fieldset-example2">
+		<input id="radio18" type="radio" name="frame-example2">
 		<label for="radio18">Christophe</label>
 	</div>
 	<div class="field-row">
-		<input id="radio19" type="radio" name="fieldset-example2">
+		<input id="radio19" type="radio" name="frame-example2">
 		<label for="radio19">Denis</label>
 	</div>
-</WinOldGroupBox>
+</WinOldFrame>
 
 <br />
 
-<WinOldGroupBox Appearance="Appearance.Win98"
-				Label="GrouBox">
+<WinOldFrame Appearance="Appearance.Win98"
+			 Label="Frame"
+             Border="Border.Default">
 	<div class="field-row">
-		<input id="radio17" type="radio" name="fieldset-example2">
+		<input id="radio17" type="radio" name="frame-example2">
 		<label for="radio17">Adrien</label>
 	</div>
 	<div class="field-row">
-		<input id="radio18" type="radio" name="fieldset-example2">
+		<input id="radio18" type="radio" name="frame-example2">
 		<label for="radio18">Christophe</label>
 	</div>
 	<div class="field-row">
-		<input id="radio19" type="radio" name="fieldset-example2">
+		<input id="radio19" type="radio" name="frame-example2">
 		<label for="radio19">Denis</label>
 	</div>
-</WinOldGroupBox>
+</WinOldFrame>
 
 <br />
 
-<WinOldGroupBox Appearance="Appearance.Win7"
-				Label="GrouBox">
+<WinOldFrame Appearance="Appearance.Win7"
+			 Label="Frame">
 	<div class="field-row">
-		<input id="radio17" type="radio" name="fieldset-example2">
+		<input id="radio17" type="radio" name="frame-example2">
 		<label for="radio17">Adrien</label>
 	</div>
 	<div class="field-row">
-		<input id="radio18" type="radio" name="fieldset-example2">
+		<input id="radio18" type="radio" name="frame-example2">
 		<label for="radio18">Christophe</label>
 	</div>
 	<div class="field-row">
-		<input id="radio19" type="radio" name="fieldset-example2">
+		<input id="radio19" type="radio" name="frame-example2">
 		<label for="radio19">Denis</label>
 	</div>
-</WinOldGroupBox>
+</WinOldFrame>
 @code {
 	private void ClickMe()
 	{

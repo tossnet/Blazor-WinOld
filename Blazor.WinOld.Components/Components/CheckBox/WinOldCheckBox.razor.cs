@@ -4,12 +4,6 @@ namespace Blazor.WinOld.Components;
 
 public partial class WinOldCheckBox : WinOldComponentBase
 {
-    /// <summary>
-    /// Disables the form control, ensuring it doesn't participate in form submission.
-    /// </summary>
-    [Parameter]
-    public bool Disabled { get; set; }
-
     /// </summary>
     [Parameter]
     [Category(CategoryTypes.Button.Appearance)]
@@ -33,6 +27,11 @@ public partial class WinOldCheckBox : WinOldComponentBase
     /// </summary>
     private async Task CheckboxChanged(ChangeEventArgs e)
     {
+        if (e.Value == null)
+        {
+            return;
+        }
+
         // get the checkbox state
         Checked = (bool)e.Value;
 

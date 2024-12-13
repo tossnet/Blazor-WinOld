@@ -7,5 +7,5 @@
 <input type="text"
        id="@ElementId" 
        class="txt-win @GetComponentClass() @Class"
-       disabled="@Disabled"
+       disabled="@(ParentDisabled | Disabled)"
        style="@Style" />
