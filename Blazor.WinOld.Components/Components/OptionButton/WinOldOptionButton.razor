@@ -1,0 +1,12 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+<div>
+	<input type="radio" 
+		   id="@ElementId"
+		   role="radio" 
+		   name="@RadioGroup"
+		   disabled="@(ParentDisabled | Disabled)"
+		   class="opt-win @GetComponentClass()">
+	<label for="@ElementId">@Label</label>
+</div>

@@ -1,0 +1,11 @@
+﻿@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+<CascadingValue Name="RadioGroup" Value="@Name">
+	<CascadingValue Name="Appearance" Value="@Appearance">
+		<div role="radiogroup">
+			@ChildContent
+		</div>
+	</CascadingValue>
+</CascadingValue>

@@ -14,3 +14,19 @@ Welcome to your new madness. I'm using Windows styles made in css by :
 
 https://github.com/user-attachments/assets/ee0fe748-b1fd-44c3-b2e5-51a98fab4589
 
+
+
+## Installation
+
+```
+Install-Package BlazorWinOld
+```
+or
+```
+dotnet add package BlazorWinOld
+```
+For client-side and server-side Blazor - add script section (head section)
+
+```html
+ <link href="_content/BlazorWinOld/css/blazorwinold.css" rel="stylesheet" />
+```

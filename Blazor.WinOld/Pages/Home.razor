@@ -104,22 +104,17 @@ I'm using Windows styles made in css by :
 
 <WinOldFrame Appearance="Appearance.WinXP"
 			 Label="Frame" 
-			 Disabled >
+			 Disabled="false" >
 
 	<WinOldCheckBox Appearance="Appearance.WinXP"
 					Label="check box disable from parent" />
-	<div class="field-row">
-		<input id="radio17" type="radio" name="frame-example2">
-		<label for="radio17">Adrien</label>
-	</div>
-	<div class="field-row">
-		<input id="radio18" type="radio" name="frame-example2">
-		<label for="radio18">Christophe</label>
-	</div>
-	<div class="field-row">
-		<input id="radio19" type="radio" name="frame-example2">
-		<label for="radio19">Denis</label>
-	</div>
+
+	<WinOldOptionButtonGroup Name="groupName"
+							 Appearance="Appearance.WinXP">
+		<WinOldOptionButton Label="Adrien" />
+		<WinOldOptionButton Label="Christophe" />
+		<WinOldOptionButton Label="Denis" />
+	</WinOldOptionButtonGroup>
 </WinOldFrame>
 
 <br />
