@@ -16,101 +16,101 @@ I'm using Windows styles made in css by :
 <h2 class="py-3">Buttons</h2>
 
 <WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.WinXP">Click me</WinOldButton>
+Appearance="Appearance.WinXP">Click me</WinOldButton>
 
 <WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.WinXP"
-			  Disabled>Click me</WinOldButton>
+Appearance="Appearance.WinXP"
+Disabled>Click me</WinOldButton>
 
 <br />
 
 <WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.Win98"
-			  >Click me</WinOldButton>
+Appearance="Appearance.Win98"
+>Click me</WinOldButton>
 
 <WinOldButton OnClick="ClickMe" 
-			  Appearance="Appearance.Win98"
-			  Disabled>Click me</WinOldButton>
+Appearance="Appearance.Win98"
+Disabled>Click me</WinOldButton>
 
 <br />
 <WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.Win7">Click me</WinOldButton>
+Appearance="Appearance.Win7">Click me</WinOldButton>
 
 <WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.Win7"
-			  Disabled>Click me</WinOldButton>
+Appearance="Appearance.Win7"
+Disabled>Click me</WinOldButton>
 
 
 
 <h2 class="py-3">Checkbox</h2>
 
 <WinOldCheckBox Checked="true"
-				Appearance="Appearance.WinXP"
-				Label="check box" />
+Appearance="Appearance.WinXP"
+Label="check box" />
 
 <WinOldCheckBox Appearance="Appearance.WinXP"
-				Label="check box" />
+Label="check box" />
 
 <WinOldCheckBox Appearance="Appearance.WinXP"
-				Label="check box"
-				Disabled />
+Label="check box"
+Disabled />
 
 <br />
 
 <WinOldCheckBox Checked="checkbox1"
-				Appearance="Appearance.Win98"
-				Label="check box"
+Appearance="Appearance.Win98"
+Label="check box"
 				CheckedChanged="@CheckedChanged" />
 
 <WinOldCheckBox Appearance="Appearance.Win98"
-				Label="check box" />
+Label="check box" />
 
 <WinOldCheckBox Appearance="Appearance.Win98"
-				Label="check box"
-				Disabled />
+Label="check box"
+Disabled />
 
 
 <br />
 
 <WinOldCheckBox Checked="checkbox1"
-				Appearance="Appearance.Win7"
-				Label="check box"
-				CheckedChanged="@CheckedChanged" />
+Appearance="Appearance.Win7"
+Label="check box" />
 
 <WinOldCheckBox Appearance="Appearance.Win7"
-				Label="check box" />
+Label="check box" />
 
 <WinOldCheckBox Appearance="Appearance.Win7"
-				Label="check box"
-				Disabled />
+Label="check box"
+Disabled />
 
 
 <h2 class="py-3">Textbox</h2>
 
 <WinOldTextBox Appearance="Appearance.WinXP"
-			   Label="Textbox :" />
+Label="Textbox :" />
 
 <br />
 <WinOldTextBox Appearance="Appearance.Win98"
-			   Label="Textbox :" />
+Label="Textbox :" />
 
 <br />
 <WinOldTextBox Appearance="Appearance.Win7"
-			   Label="Textbox :" />
+Label="Textbox :" />
 
 
 
 <h2 class="py-3">Frame</h2>
 
-<WinOldFrame Appearance="Appearance.WinXP"
-			 Label="Frame" 
-			 Disabled="false" >
+<WinOldCheckBox Appearance="Appearance.WinXP"
+                Label="Disable XP Frame"
+				CheckedChanged="@disabledXPFrame" />
 
-	<WinOldCheckBox Appearance="Appearance.WinXP"
-					Label="check box disable from parent" />
+<WinOldFrame Appearance="Appearance.WinXP"
+Label="Frame XP"
+			 Disabled="disabledXP"  >
 
 	<WinOldOptionButtonGroup Name="groupName"
-							 Appearance="Appearance.WinXP">
+	Appearance="Appearance.WinXP">
 		<WinOldOptionButton Label="Adrien" />
 		<WinOldOptionButton Label="Christophe" />
 		<WinOldOptionButton Label="Denis" />
@@ -119,50 +119,61 @@ I'm using Windows styles made in css by :
 
 <br />
 
+
+<WinOldCheckBox Appearance="Appearance.Win98"
+				Label="Disable win 98 Frame"
+				CheckedChanged="@disabled98Frame" />
+
 <WinOldFrame Appearance="Appearance.Win98"
-			 Label="Frame"
-             Border="Border.Default">
-	<div class="field-row">
-		<input id="radio17" type="radio" name="frame-example2">
-		<label for="radio17">Adrien</label>
-	</div>
-	<div class="field-row">
-		<input id="radio18" type="radio" name="frame-example2">
-		<label for="radio18">Christophe</label>
-	</div>
-	<div class="field-row">
-		<input id="radio19" type="radio" name="frame-example2">
-		<label for="radio19">Denis</label>
-	</div>
+Label="Frame 98"
+Border="Border.Default"
+			 Disabled="disabled98">
+
+	<WinOldOptionButtonGroup Name="groupName2"
+	Appearance="Appearance.Win98">
+		<WinOldOptionButton Label="Adrien" />
+		<WinOldOptionButton Label="Christophe" />
+		<WinOldOptionButton Label="Denis" />
+	</WinOldOptionButtonGroup>
 </WinOldFrame>
 
 <br />
 
+
+<WinOldCheckBox Appearance="Appearance.Win7"
+				Label="Disable win 7 Frame"
+				CheckedChanged="@disabled7Frame" />
+
 <WinOldFrame Appearance="Appearance.Win7"
-			 Label="Frame">
-	<div class="field-row">
-		<input id="radio17" type="radio" name="frame-example2">
-		<label for="radio17">Adrien</label>
-	</div>
-	<div class="field-row">
-		<input id="radio18" type="radio" name="frame-example2">
-		<label for="radio18">Christophe</label>
-	</div>
-	<div class="field-row">
-		<input id="radio19" type="radio" name="frame-example2">
-		<label for="radio19">Denis</label>
-	</div>
+			 Label="Frame 7"
+			 Disabled="disabled7">
+	<WinOldOptionButtonGroup Name="groupName7"
+							 Appearance="Appearance.Win7">
+		<WinOldOptionButton Label="Adrien" />
+		<WinOldOptionButton Label="Christophe" />
+		<WinOldOptionButton Label="Denis" />
+	</WinOldOptionButtonGroup>
 </WinOldFrame>
+
 @code {
-	private void ClickMe()
+	bool disabledXP;
+	bool disabled98;
+	bool disabled7;
+	bool checkbox1 = true;
+
+	void ClickMe()
 	{
 		Console.WriteLine("Clicked!");
 	}
 
-	bool checkbox1 = true;
-
-	private void CheckedChanged(bool value)
+	void CheckedChanged(bool value)
 	{
 		Console.WriteLine($"Checkbox changed {value}");
 	}
+
+	void disabledXPFrame(bool value) => disabledXP = !disabledXP;
+
+	void disabled98Frame(bool value) => disabled98 = !disabled98;
+
+	void disabled7Frame(bool value) => disabled7 = !disabled7;
 }

@@ -21,6 +21,8 @@ public partial class WinOldOptionButton : WinOldComponentBase
     /// </summary>
     private Guid ElementId { get; set; } = Guid.NewGuid();
 
+    /// </summary>
+    internal bool Checked { get; private set; } = true;
 
     /// </summary>
     private string GetComponentClass()
