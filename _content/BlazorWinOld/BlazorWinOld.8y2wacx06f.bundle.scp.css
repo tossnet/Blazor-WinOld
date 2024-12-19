@@ -1,0 +1,734 @@
+/* _content/BlazorWinOld/Components/Button/WinOldButton.razor.rz.scp.css */
+.btn-win[b-z3yma8gbxo] {
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    font-size: 11px;
+    box-sizing: border-box;
+    min-width: 75px;
+    min-height: 23px;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.btn-win.focused[b-z3yma8gbxo], .btn-win:focus[b-z3yma8gbxo] {
+    outline: 1px dotted #000;
+    outline-offset: -4px;
+}
+
+.btn-win-xp[b-z3yma8gbxo]::-moz-focus-inner {
+    border: 0;
+}
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.btn-win-xp[b-z3yma8gbxo] {
+    border: 1px solid #003c74;
+    background: linear-gradient( 180deg, rgba(255, 255, 255, 1) 0%, rgba(236, 235, 229, 1) 86%, rgba(216, 208, 196, 1) 100% );
+    box-shadow: none;
+    border-radius: var(--border-radius);
+    padding: 2px 0 0 2px;
+    width: fit-content;
+    text-align: center;
+}
+
+.btn-win-xp:not(:disabled):active[b-z3yma8gbxo],
+.btn-win-xp:not(:disabled).active[b-z3yma8gbxo] {
+    box-shadow: none;
+    background: linear-gradient( 180deg, rgba(205, 202, 195, 1) 0%, rgba(227, 227, 219, 1) 8%, rgba(229, 229, 222, 1) 94%, rgba(242, 242, 241, 1) 100% );
+}
+
+.btn-win-xp:not(:disabled):hover[b-z3yma8gbxo] {
+    box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889, inset -2px 2px #fbc761, inset 2px -2px #e5a01a;
+}
+
+.btn-win-xp:focus[b-z3yma8gbxo],
+.btn-win-xp.focused[b-z3yma8gbxo] {
+    box-shadow: inset -1px 1px #cee7ff, inset 1px 2px #98b8ea, inset -2px 2px #bcd4f6, inset 1px -1px #89ade4, inset 2px -2px #89ade4;
+}
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.btn-win-98[b-z3yma8gbxo] {
+    border: none;
+    background: silver;
+    box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
+    border-radius: 0;
+    padding: 0 12px
+}
+
+    .btn-win-98:not(:disabled).active[b-z3yma8gbxo], .btn-win-98:not(:disabled):active[b-z3yma8gbxo] {
+        box-shadow: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey
+    }
+
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+.btn-win-7[b-z3yma8gbxo],
+.btn-win-7[role="button"][b-z3yma8gbxo] {
+    font: var(--font);
+    box-sizing: border-box;
+    border: var(--btn-win7-border);
+    border-color: var(--btn-win7-border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--btn-win7-shadow);
+    color: #222;
+    min-width: 75px;
+    min-height: 23px;
+    padding: 0 12px;
+    text-align: center;
+    background: var(--btn-win7-gradient);
+    position: relative;
+    z-index: 0;
+}
+
+    .btn-win-7[b-z3yma8gbxo]::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        top: 0;
+        left: 0;
+        border-radius: var(--border-radius);
+        box-shadow: var(--btn-win7-shadow);
+        background: var(--btn-win7-gradient-hovered);
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: -1;
+    }
+
+    .btn-win-7[b-z3yma8gbxo]::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        top: 0;
+        left: 0;
+        box-shadow: var(--btn-win7-shadow-active);
+        border-radius: 2px;
+        background: var(--btn-win7-gradient-active);
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: -1;
+    }
+
+    .btn-win-7:disabled[b-z3yma8gbxo] {
+        background: var(--btn-win7-face-disabled);
+        border-color: var(--btn-win7-border-color-disabled);
+        color: var(--btn-win7-text-color-disabled);
+    }
+
+    .btn-win-7:not(:disabled):hover[b-z3yma8gbxo] {
+        border-color: var(--btn-win7-border-color-hovered);
+        transition: border-color 0.3s;
+    }
+
+        .btn-win-7:not(:disabled):hover[b-z3yma8gbxo]::before {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+    .btn-win-7:not(:disabled):not(:hover)[b-z3yma8gbxo] {
+        border-color: var(--btn-win7-border-color);
+        transition: border-color 1s linear;
+    }
+
+        .btn-win-7:not(:disabled):not(:hover)[b-z3yma8gbxo]::before {
+            opacity: 0;
+            transition: opacity 1s linear;
+        }
+
+    .btn-win-7:not(:disabled):active[b-z3yma8gbxo],
+    .btn-win-7:not(:disabled).active[b-z3yma8gbxo] {
+        border-color: var(--btn-win7-border-color-active);
+        transition: border-color 0.3s;
+    }
+
+        .btn-win-7:not(:disabled):active[b-z3yma8gbxo]::after,
+        .btn-win-7:not(:disabled).active[b-z3yma8gbxo]::after {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+    .btn-win-7:focus-visible[b-z3yma8gbxo],
+    .btn-win-7.focused[b-z3yma8gbxo] {
+        box-shadow: inset 0 0 0 2px var(--btn-win7-shade-light-active);
+        outline: 1px dotted #000;
+        outline-offset: -4px;
+    }
+
+    .btn-win-7.default[b-z3yma8gbxo],
+    .btn-win-7:focus[b-z3yma8gbxo],
+    .btn-win-7.focused[b-z3yma8gbxo] {
+        outline: none;
+        outline-offset: unset;
+        border-color: var(--btn-win7-border-color-default);
+        background-image: var(--btn-win7-gradient-hovered);
+        animation: 1s ease infinite alternate pulse-anim-b-z3yma8gbxo;
+    }
+
+@keyframes pulse-anim-b-z3yma8gbxo {
+    from {
+        box-shadow: inset 0 0 3px 1px #34deffdd;
+    }
+
+    to {
+        box-shadow: inset 0 0 1px 1px #34deffdd;
+    }
+}
+/* _content/BlazorWinOld/Components/CheckBox/WinOldCheckBox.razor.rz.scp.css */
+.chk-win[b-n46dltw7b8] {
+    all: unset;
+    position: fixed;
+    opacity: 0;
+    margin: 0;
+}
+
+    .chk-win + label[b-n46dltw7b8] {
+        font-family: var(--font-family);
+        font-size: 11px;
+        line-height: 13px;
+        position: relative;
+        margin-left: 19px;
+        -webkit-user-select: none;
+        -moz-appearance: none;
+        user-select: none;
+    }
+
+.chk-win:focus + label[b-n46dltw7b8] {
+    outline: 1px dotted #000;
+}
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.chk-win-xp[b-n46dltw7b8] {
+    background: none;
+    border: none;
+    appearance: none;
+}
+
+        .chk-win-xp + label[b-n46dltw7b8]:before {
+            content: "";
+            position: absolute;
+            left: -19px;
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            background: #fff;
+            box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+            margin-right: 6px;
+        }
+
+    .chk-win-xp:active + label[b-n46dltw7b8]:before {
+        background: #ece9d8;
+    }
+
+    .chk-win-xp:checked + label[b-n46dltw7b8]:after {
+        content: "";
+        display: block;
+        width: 11px;
+        height: 11px;
+        position: absolute;
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='7' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='%23000'/%3E%3C/svg%3E");
+        top: 1px;
+        margin-left:-1px;
+    }
+
+    .chk-win-xp[disabled] + label[b-n46dltw7b8]:before {
+        background: #ece9d8;
+    }
+
+    .chk-win-xp[disabled]:checked + label[b-n46dltw7b8]:after {
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='7' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='gray'/%3E%3C/svg%3E");
+    }
+
+    .chk-win-xp + label[b-n46dltw7b8]:before {
+        box-shadow: none;
+        border: 1px solid #1d5281;
+        background: linear-gradient(135deg, #dcdcd7, #fff);
+    }
+
+    .chk-win-xp:checked + label[b-n46dltw7b8]:after {
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 11 11' shape-rendering='crispEdges'%3E%3Cpath stroke='%2322a122' d='M8 2h1M7 3h2M2 4h1m3 0h3M2 5h2m1 0h3M2 6h5M3 7h3M4 8h1'/%3E%3C/svg%3E");
+        left: -17px;
+    }
+
+    .chk-win-xp:not([disabled]):not(:active) + label:hover[b-n46dltw7b8]:before {
+        box-shadow: inset -2px -2px #f8b636, inset 2px 2px #fedf9c;
+    }
+
+    .chk-win-xp:active + label[b-n46dltw7b8]:before {
+        background: linear-gradient(135deg, #b0b0a7, #e3e1d2);
+    }
+
+    .chk-win-xp[disabled] + label[b-n46dltw7b8]:before {
+        background: #fff;
+        border: 1px solid #cac8bb;
+    }
+
+    .chk-win-xp[disabled]:checked + label[b-n46dltw7b8]:after {
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 11 11' shape-rendering='crispEdges'%3E%3Cpath stroke='%23cac8bb' d='M8 2h1M7 3h2M2 4h1m3 0h3M2 5h2m1 0h3M2 6h5M3 7h3M4 8h1'/%3E%3C/svg%3E");
+    }
+
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.chk-win-98 + label[b-n46dltw7b8] {
+    display: inline-flex;
+    align-items: center;
+}
+
+.chk-win-98[b-n46dltw7b8] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: 0;
+    border: none;
+}
+
+    .chk-win-98 + label[b-n46dltw7b8]:before {
+        content: "";
+        position: absolute;
+        left: -19px;
+        display: inline-block;
+        width: 13px;
+        height: 13px;
+        margin-right: 6px;
+    }
+
+    .chk-win-98:active + label[b-n46dltw7b8]:before {
+        background: silver;
+    }
+
+    .chk-win-98:checked + label[b-n46dltw7b8]:after {
+        content: "";
+        display: block;
+        width: 7px;
+        height: 7px;
+        position: absolute;
+        top: 1px;
+    }
+
+    .chk-win-98[disabled] + label[b-n46dltw7b8]:before {
+        background: silver;
+    }
+
+    .chk-win-98[disabled]:checked + label[b-n46dltw7b8]:after {
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='7' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='gray'/%3E%3C/svg%3E");
+    }
+
+    .chk-win-98 + label[b-n46dltw7b8]:before {
+        box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+        background: #fff;
+    }
+
+    .chk-win-98:checked + label[b-n46dltw7b8]:after {
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='7' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='%23000'/%3E%3C/svg%3E");
+        top: 3px;
+        left: -16px;
+    }
+
+
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+.chk-win-7[b-n46dltw7b8] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    border: none;
+    font: var(--font);
+    margin: 0;
+    opacity: 0;
+}
+
+    .chk-win-7 + label[b-n46dltw7b8] {
+        align-items: center;
+        display: inline-flex;
+        font: var(--font);
+        margin-left: var(--chk-win7-total-width);
+        position: relative;
+    }
+
+        .chk-win-7 + label[b-n46dltw7b8]:before {
+            background: #f6f6f6;
+            border: 1px solid;
+            border-color: var(--btn-win7-border-color);
+            box-shadow: inset 0 0 0 1px #f4f4f4, inset 1px 1px 0 1px #aeaeae, inset -1px -1px 0 1px #ddd, inset 3px 3px 6px #ccc;
+            box-sizing: border-box;
+            content: "";
+            display: inline-block;
+            height: var(--chk-win7-width);
+            margin-right: var(--chk-win7-label-spacing);
+            transition: .4s;
+            width: var(--chk-win7-width);
+        }
+
+        .chk-win-7 + label:hover[b-n46dltw7b8]:before {
+            outline: none;
+            outline-offset: unset;
+            background: #e9f7fe;
+            border-color: var(--btn-win7-border-color-hovered);
+            box-shadow: inset 0 0 0 1px #def9fa, inset 1px 1px 0 1px #79c6f9, inset -1px -1px 0 1px #c6e9fc, inset 3px 3px 6px #b1dffd;
+        }
+
+ /*   .chk-win-7:focus-visible,
+    .chk-win-7:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border: none !important;
+    }*/
+        .chk-win-7:focus-visible + label[b-n46dltw7b8] {
+            outline: 1px dotted #000;
+        }
+
+    .chk-win-7:checked + label[b-n46dltw7b8]:after {
+        color: #4a5f97;
+        content: "\2714";
+        display: block;
+        font-weight: 700;
+        left: var(--checkmark-left);
+        position: absolute;
+        top: var(--checkmark-top);
+    }
+
+    .chk-win-7:disabled + label[b-n46dltw7b8] {
+        opacity: .6;
+    }
+
+   
+/* _content/BlazorWinOld/Components/Frame/WinOldFrame.razor.rz.scp.css */
+.frame-win[b-9dz5jwbcb4] {
+    all: unset;
+    display: block;
+    margin: 0;
+}
+
+    .frame-win legend[b-9dz5jwbcb4] {
+        all: unset;
+        font-family: Arial,var(--font-family);
+        font-size: 12px;
+        display: block;
+        unicode-bidi: isolate;
+        padding-inline: 2px;
+    }
+
+    /*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.frame-win-xp[b-9dz5jwbcb4] {
+    padding: 10px;
+    padding-block-start: 8px;
+    box-shadow: none;
+    background: #fff;
+    border: 1px solid #d0d0bf;
+    border-radius: 4px;
+    padding-top: 10px;
+}
+
+    .frame-win-xp legend[b-9dz5jwbcb4] {
+        background: transparent;
+        color: #0046d5;
+    }
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.frame-win-98[b-9dz5jwbcb4] {
+    border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='5' height='5' fill='gray' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 0h5v5H0V2h2v1h1V2H0' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 0h4v4H0V1h1v2h2V1H0'/%3E%3C/svg%3E") 2 !important;
+    padding: 10px;
+    min-inline-size: min-content;
+    margin-inline: 2px;
+    border: 2px groove threedface;
+    padding-block: 0.35em 0.625em;
+    padding-inline: 0.75em;
+    background: silver;
+}
+
+    .frame-win-98 legend[b-9dz5jwbcb4] {
+        background: silver;
+        color: #222;
+    }
+
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+.frame-win-7[b-9dz5jwbcb4] {
+    border: 1px solid #cdd7db;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px #fff;
+    margin: 0;
+    padding: 10px;
+    -webkit-padding-before: 8px;
+    padding-block-start: 8px;
+}
+}
+
+    .frame-win-7 legend[b-9dz5jwbcb4] {
+
+    }
+/* _content/BlazorWinOld/Components/OptionButton/WinOldOptionButton.razor.rz.scp.css */
+.opt-win[b-g3iveixxv9] {
+    all: unset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    position: fixed;
+    opacity: 0;
+    border: none;
+}
+
+    .opt-win + label[b-g3iveixxv9] {
+        font-family: var(--font-family);
+        font-size: 11px;
+        line-height: 13px;
+        position: relative;
+    }
+
+        .opt-win + label[b-g3iveixxv9]:before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+
+    .opt-win:checked + label[b-g3iveixxv9]:after {
+        content: "";
+        display: block;
+        position: absolute;
+    }
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+    .opt-win-xp[b-g3iveixxv9] {
+    -webkit-font-smoothing: antialiased;
+}
+
+    .opt-win-xp + label[b-g3iveixxv9] {
+        margin-left: 19px;
+    }
+
+        .opt-win-xp + label[b-g3iveixxv9]:before {
+            left: -19px;
+            width: 13px;
+            height: 13px;
+            margin-right: 6px;
+            background: linear-gradient(135deg, #dcdcd7, #fff);
+            border-radius: 50%;
+            border: 1px solid #1d5281;
+        }
+
+    .opt-win-xp:active + label[b-g3iveixxv9]:before {
+        background: linear-gradient(135deg,#b0b0a7,#e3e1d2);
+    }
+
+        .opt-win-xp:checked + label[b-g3iveixxv9]:after {
+            width: 5px;
+            height: 5px;
+            top: 4px;
+            left: -15px;
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 5 5' shape-rendering='crispEdges'%3E%3Cpath stroke='%23a9dca6' d='M1 0h1M0 1h1'/%3E%3Cpath stroke='%234dbf4a' d='M2 0h1M0 2h1'/%3E%3Cpath stroke='%23a0d29e' d='M3 0h1M0 3h1'/%3E%3Cpath stroke='%2355d551' d='M1 1h1'/%3E%3Cpath stroke='%2343c33f' d='M2 1h1'/%3E%3Cpath stroke='%2329a826' d='M3 1h1'/%3E%3Cpath stroke='%239acc98' d='M4 1h1M1 4h1'/%3E%3Cpath stroke='%2342c33f' d='M1 2h1'/%3E%3Cpath stroke='%2338b935' d='M2 2h1'/%3E%3Cpath stroke='%2321a121' d='M3 2h1'/%3E%3Cpath stroke='%23269623' d='M4 2h1'/%3E%3Cpath stroke='%232aa827' d='M1 3h1'/%3E%3Cpath stroke='%2322a220' d='M2 3h1'/%3E%3Cpath stroke='%23139210' d='M3 3h1'/%3E%3Cpath stroke='%2398c897' d='M4 3h1'/%3E%3Cpath stroke='%23249624' d='M2 4h1'/%3E%3Cpath stroke='%2398c997' d='M3 4h1'/%3E%3C/svg%3E");
+        }
+
+    .opt-win-xp:focus + label[b-g3iveixxv9] {
+        outline: 1px dotted #000;
+    }
+
+    .opt-win-xp:not([disabled]):not(:active) + label:hover[b-g3iveixxv9]:before {
+        box-shadow: inset -2px -2px #f8b636,inset 2px 2px #fedf9c;
+    }
+
+    .opt-win-xp[disabled] + label[b-g3iveixxv9]:before {
+        border: 1px solid #cac8bb;
+        background: #fff;
+    }
+
+    .opt-win-xp[disabled]:checked + label[b-g3iveixxv9]:after {
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 5 5' shape-rendering='crispEdges'%3E%3Cpath stroke='%23e8e6da' d='M1 0h1M0 1h1'/%3E%3Cpath stroke='%23d2ceb5' d='M2 0h1M0 2h1'/%3E%3Cpath stroke='%23e5e3d4' d='M3 0h1M0 3h1'/%3E%3Cpath stroke='%23d7d3bd' d='M1 1h1'/%3E%3Cpath stroke='%23d0ccb2' d='M2 1h1M1 2h1'/%3E%3Cpath stroke='%23c7c2a2' d='M3 1h1M1 3h1'/%3E%3Cpath stroke='%23e2dfd0' d='M4 1h1M1 4h1'/%3E%3Cpath stroke='%23cdc8ac' d='M2 2h1'/%3E%3Cpath stroke='%23c5bf9f' d='M3 2h1M2 3h1'/%3E%3Cpath stroke='%23c3bd9c' d='M4 2h1'/%3E%3Cpath stroke='%23bfb995' d='M3 3h1'/%3E%3Cpath stroke='%23e2dfcf' d='M4 3h1M3 4h1'/%3E%3Cpath stroke='%23c4be9d' d='M2 4h1'/%3E%3C/svg%3E");
+    }
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.opt-win-98[b-g3iveixxv9] {
+    -webkit-font-smoothing: none;
+}
+
+    .opt-win-98 + label[b-g3iveixxv9] {
+        margin-left: 18px;
+    }
+
+        .opt-win-98 + label[b-g3iveixxv9]:before {
+            left: -18px;
+            width: 12px;
+            height: 12px;
+            margin-right: 6px;
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 0H4v1H2v1H1v2H0v4h1v2h1V8H1V4h1V2h2V1h4v1h2V1H8V0z' fill='gray'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 1H4v1H2v2H1v4h1v1h1V8H2V4h1V3h1V2h4v1h2V2H8V1z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 3h1v1H9V3zm1 5V4h1v4h-1zm-2 2V9h1V8h1v2H8zm-4 0v1h4v-1H4zm0 0V9H2v1h2z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 2h-1v2h1v4h-1v2H8v1H4v-1H2v1h2v1h4v-1h2v-1h1V8h1V4h-1V2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4 2h4v1h1v1h1v4H9v1H8v1H4V9H3V8H2V4h1V3h1V2z' fill='%23fff'/%3E%3C/svg%3E");
+        }
+
+
+    .opt-win-98:active + label[b-g3iveixxv9]:before {
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 0H4v1H2v1H1v2H0v4h1v2h1V8H1V4h1V2h2V1h4v1h2V1H8V0z' fill='gray'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 1H4v1H2v2H1v4h1v1h1V8H2V4h1V3h1V2h4v1h2V2H8V1z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 3h1v1H9V3zm1 5V4h1v4h-1zm-2 2V9h1V8h1v2H8zm-4 0v1h4v-1H4zm0 0V9H2v1h2z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 2h-1v2h1v4h-1v2H8v1H4v-1H2v1h2v1h4v-1h2v-1h1V8h1V4h-1V2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4 2h4v1h1v1h1v4H9v1H8v1H4V9H3V8H2V4h1V3h1V2z' fill='silver'/%3E%3C/svg%3E");
+    }
+
+    .opt-win-98:checked + label[b-g3iveixxv9]:after {
+        width: 4px;
+        height: 4px;
+        top: 4px;
+        left: -14px;
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='4' height='4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3 0H1v1H0v2h1v1h2V3h1V1H3V0z' fill='%23000'/%3E%3C/svg%3E");
+    }
+
+    .opt-win-98:focus + label[b-g3iveixxv9] {
+        outline: 1px dotted #000;
+    }
+
+    .opt-win-98:not([disabled]):not(:active) + label:hover[b-g3iveixxv9]:before {
+        /*box-shadow: inset -2px -2px #f8b636,inset 2px 2px #fedf9c;*/
+    }
+
+    .opt-win-98[disabled] + label[b-g3iveixxv9]:before {
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 0H4v1H2v1H1v2H0v4h1v2h1V8H1V4h1V2h2V1h4v1h2V1H8V0z' fill='gray'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 1H4v1H2v2H1v4h1v1h1V8H2V4h1V3h1V2h4v1h2V2H8V1z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 3h1v1H9V3zm1 5V4h1v4h-1zm-2 2V9h1V8h1v2H8zm-4 0v1h4v-1H4zm0 0V9H2v1h2z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 2h-1v2h1v4h-1v2H8v1H4v-1H2v1h2v1h4v-1h2v-1h1V8h1V4h-1V2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4 2h4v1h1v1h1v4H9v1H8v1H4V9H3V8H2V4h1V3h1V2z' fill='silver'/%3E%3C/svg%3E");
+    }
+
+    .opt-win-98[disabled]:checked + label[b-g3iveixxv9]:after {
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='4' height='4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3 0H1v1H0v2h1v1h2V3h1V1H3V0z' fill='gray'/%3E%3C/svg%3E");
+    }
+
+
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+    .opt-win-7 + label[b-g3iveixxv9] {
+        align-items: center;
+        display: inline-flex;
+        font: var(--font);
+        margin-left: 20px;
+        position: relative;
+    }
+
+        .opt-win-7 + label[b-g3iveixxv9]:before {
+            background: #f6f6f6;
+            border: 1px solid;
+            border-color: var(--btn-win7-border-color);
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 1.5px #f4f4f4, inset 1px 1px 0 1.5px #aeaeae, inset -1px 0 0 1.5px #ddd, inset 3px 3px 6px #ccc;
+            box-sizing: border-box;
+            height: 14px;
+            left: -20px;
+            margin-right: 6px;
+            transition: .4s;
+            width: 14px;
+        }
+
+        .opt-win-7:checked + label[b-g3iveixxv9]:after {
+            background: #7cd3eb;
+            border: 1.5px solid #27506d;
+            border-radius: 50%;
+            box-shadow: inset -1px -1px 0 .5px #16638f, inset -1px -1px 0 1px #1985c0;
+            box-sizing: border-box;
+            height: 8px;
+            left: -17px;
+            top: 3px;
+            width: 8px;
+        }
+
+    .opt-win-7 + label:hover[b-g3iveixxv9]:before {
+        border-color: var(--btn-win7-border-color-hovered);
+        box-shadow: inset 0 0 0 1.5px #def9fa,inset 1px 1px 0 1.5px #79c6f9,inset -1px -1px 0 1.5px #c6e9fc,inset 3px 3px 6px #b1dffd
+    }
+
+    .opt-win-7:disabled + label[b-g3iveixxv9] {
+        opacity: .6;
+    }
+/* _content/BlazorWinOld/Components/TextBox/WinOldTextBox.razor.rz.scp.css */
+.txt-win[b-j36wy8jdx8] {
+    all: unset;
+    font-family: var(--font-family);
+    font-size: 11px;
+    background-color: var(--btn-win7-highlight);
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 21px;
+    line-height: 2;
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+.txt-win:focus[b-j36wy8jdx8] {
+    outline: none;
+}
+
+label.label-txt-win[b-j36wy8jdx8] {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.txt-win-xp[b-j36wy8jdx8] {
+    border: solid #7f9db9 1px;
+    box-sizing: border-box;
+    border-radius: 0;
+    padding: 3px 4px;
+}
+
+label + .txt-win-xp[b-j36wy8jdx8] {
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.txt-win-98[b-j36wy8jdx8] {
+    border: 0px;
+    border-radius: 0;
+    padding: 3px 4px;
+    background-color: var(--btn-win7-highlight);
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+}
+
+label + .txt-win-98[b-j36wy8jdx8] {
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+.txt-win-7[b-j36wy8jdx8] {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    border-top: 1px solid var(--btn-win7-border-color);
+    font: var(--font);
+    padding: 3px 4px 5px;
+}
+
+    .txt-win-7:focus[b-j36wy8jdx8] {
+        border-color: var(--btn-win7-shade-light-hovered);
+        border-top-color: var(--btn-win7-shade-light-active);
+        outline: none;
+    }
+
+label + .txt-win-7[b-j36wy8jdx8] {
+    font-family: unset !important;
+    font: var(--font) !important;
+}
