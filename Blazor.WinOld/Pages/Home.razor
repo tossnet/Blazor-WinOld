@@ -60,7 +60,7 @@ Disabled />
 <WinOldCheckBox Checked="checkbox1"
 Appearance="Appearance.Win98"
 Label="check box"
-				CheckedChanged="@CheckedChanged" />
+CheckedChanged="@CheckedChanged" />
 
 <WinOldCheckBox Appearance="Appearance.Win98"
 Label="check box" />
@@ -102,18 +102,19 @@ Label="Textbox :" />
 <h2 class="py-3">Frame</h2>
 
 <WinOldCheckBox Appearance="Appearance.WinXP"
-                Label="Disable XP Frame"
-				CheckedChanged="@disabledXPFrame" />
+Label="Disable XP Frame"
+CheckedChanged="@disabledXPFrame" />
 
 <WinOldFrame Appearance="Appearance.WinXP"
 Label="Frame XP"
-			 Disabled="disabledXP"  >
-
-	<WinOldOptionButtonGroup Name="groupName"
-	Appearance="Appearance.WinXP">
-		<WinOldOptionButton Label="Adrien" />
-		<WinOldOptionButton Label="Christophe" />
-		<WinOldOptionButton Label="Denis" />
+Disabled="disabledXP"  >
+	<p>@SelectedOption.ToString()</p>
+	<WinOldOptionButtonGroup T="int" 
+	@bind-Value="SelectedOption"
+	Appearance="Appearance.WinXP">	 
+		<WinOldOptionButton Label="Adrien" Value="1"  />
+		<WinOldOptionButton Label="Christophe" Value="2" />
+		<WinOldOptionButton Label="Denis" Value="3" />
 	</WinOldOptionButtonGroup>
 </WinOldFrame>
 
@@ -121,19 +122,20 @@ Label="Frame XP"
 
 
 <WinOldCheckBox Appearance="Appearance.Win98"
-				Label="Disable win 98 Frame"
-				CheckedChanged="@disabled98Frame" />
+Label="Disable win 98 Frame"
+CheckedChanged="@disabled98Frame" />
 
 <WinOldFrame Appearance="Appearance.Win98"
 Label="Frame 98"
 Border="Border.Default"
-			 Disabled="disabled98">
-
-	<WinOldOptionButtonGroup Name="groupName2"
-	Appearance="Appearance.Win98">
-		<WinOldOptionButton Label="Adrien" />
-		<WinOldOptionButton Label="Christophe" />
-		<WinOldOptionButton Label="Denis" />
+Disabled="disabled98">
+	<p>@SelectOptionString</p>
+	<WinOldOptionButtonGroup Appearance="Appearance.Win98"
+	                         @bind-Value="SelectOptionString"
+	                         T="string">
+		<WinOldOptionButton Label="Adrien" Value="@("Adrien")" />
+		<WinOldOptionButton Label="Christophe" Value="@("Christophe")" />
+		<WinOldOptionButton Label="Denis" Value="@("Denis")" />
 	</WinOldOptionButtonGroup>
 </WinOldFrame>
 
@@ -141,17 +143,18 @@ Border="Border.Default"
 
 
 <WinOldCheckBox Appearance="Appearance.Win7"
-				Label="Disable win 7 Frame"
-				CheckedChanged="@disabled7Frame" />
+Label="Disable win 7 Frame"
+CheckedChanged="@disabled7Frame" />
 
 <WinOldFrame Appearance="Appearance.Win7"
-			 Label="Frame 7"
-			 Disabled="disabled7">
-	<WinOldOptionButtonGroup Name="groupName7"
-							 Appearance="Appearance.Win7">
-		<WinOldOptionButton Label="Adrien" />
-		<WinOldOptionButton Label="Christophe" />
-		<WinOldOptionButton Label="Denis" />
+Label="Frame 7"
+Disabled="disabled7">
+	<WinOldOptionButtonGroup Appearance="Appearance.Win7"
+							 @bind-Value="SelectOptionString"
+							 T="string">
+		<WinOldOptionButton Label="Adrien" Value="@("Adrien")" />
+		<WinOldOptionButton Label="Christophe" Value="@("Christophe")" />
+		<WinOldOptionButton Label="Denis" Value="@("Denis")" />
 	</WinOldOptionButtonGroup>
 </WinOldFrame>
 
@@ -160,6 +163,9 @@ Border="Border.Default"
 	bool disabled98;
 	bool disabled7;
 	bool checkbox1 = true;
+
+	int SelectedOption { get; set; } = 2;
+	string SelectOptionString { get; set; } = "Christophe";
 
 	void ClickMe()
 	{

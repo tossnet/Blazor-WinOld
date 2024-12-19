@@ -2,12 +2,11 @@
 
 namespace Blazor.WinOld.Components;
 
-public partial class WinOldOptionButton : WinOldComponentBase
+public partial class WinOldOptionButton<T> : WinOldComponentBase
 {
     /// </summary>
-    [CascadingParameter(Name = "RadioGroup")]
-    public virtual string RadioGroup { get; set; }
-
+    [CascadingParameter]
+    public WinOldOptionButtonGroup<T?> Group { get; set; }
 
     /// </summary>
     [CascadingParameter(Name = "Appearance")]
@@ -17,12 +16,21 @@ public partial class WinOldOptionButton : WinOldComponentBase
     [Parameter]
     public string Label { get; set; } = string.Empty;
 
+    /// </summary>
+    [Parameter]
+    public T Value { get; set; }
 
     /// </summary>
     private Guid ElementId { get; set; } = Guid.NewGuid();
 
     /// </summary>
-    internal bool Checked { get; private set; } = true;
+    private bool IsChecked => Group != null && EqualityComparer<T>.Default.Equals(Group.Value, Value);
+
+    /// </summary>
+    private void OnChange(ChangeEventArgs e)
+    {
+        Group?.SelectOption(Value);
+    }
 
     /// </summary>
     private string GetComponentClass()

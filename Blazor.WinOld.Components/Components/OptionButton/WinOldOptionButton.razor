@@ -1,12 +1,16 @@
 @namespace Blazor.WinOld.Components
 
 @inherits WinOldComponentBase
+
+@typeparam T
+
 <div>
 	<input type="radio" 
 		   id="@ElementId"
 		   role="radio" 
-		   name="@RadioGroup"
-		   checked="@Checked"
+		   name="@Group.GroupId"
+		   checked="@IsChecked"
+		   @onchange="OnChange"
 		   disabled="@(ParentDisabled | Disabled)"
 		   class="opt-win @GetComponentClass()">
 	<label for="@ElementId">@Label</label>
