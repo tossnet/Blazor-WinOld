@@ -12,7 +12,11 @@ Welcome to your new madness. I'm using Windows styles made in css by :
 - https://github.com/botoxparty/XP.css
 - https://github.com/khang-nd/7.css
 
-https://github.com/user-attachments/assets/ee0fe748-b1fd-44c3-b2e5-51a98fab4589
+
+
+
+https://github.com/user-attachments/assets/17b837a3-770e-4765-a02e-23d0499500f7
+
 
 
 
