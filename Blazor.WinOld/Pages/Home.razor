@@ -99,6 +99,37 @@ Label="Textbox :" />
 
 
 
+<h2 class="py-3">DropDown</h2>
+
+<p>@SelectedOption.ToString()</p>
+
+<WinOldSelect Appearance="Appearance.WinXP"
+			  T="int" 
+			  @bind-Value="SelectedOption">
+	<WinOldOption Value="1">Adrien</WinOldOption>
+	<WinOldOption Value="2">Christophe</WinOldOption>
+	<WinOldOption Value="3">Denis</WinOldOption>
+</WinOldSelect>
+
+<br />
+<p>@SelectOptionString</p>
+<WinOldSelect Appearance="Appearance.Win98"
+			  T="string"
+			  @bind-Value="SelectOptionString">
+	<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+	<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+	<WinOldOption Value="@("Denis")">Denis</WinOldOption>
+</WinOldSelect>
+
+<br />
+
+<WinOldSelect Appearance="Appearance.Win7"
+			  T="string">
+	<WinOldOption Value="1">Adrien</WinOldOption>
+	<WinOldOption Value="2">Christophe</WinOldOption>
+	<WinOldOption Value="3">Denis</WinOldOption>
+</WinOldSelect>
+
 <h2 class="py-3">Frame</h2>
 
 <WinOldCheckBox Appearance="Appearance.WinXP"
@@ -108,9 +139,9 @@ CheckedChanged="@disabledXPFrame" />
 <WinOldFrame Appearance="Appearance.WinXP"
 Label="Frame XP"
 Disabled="disabledXP"  >
-	<p>@SelectedOption.ToString()</p>
+	<p>@SelectedRadio.ToString()</p>
 	<WinOldOptionButtonGroup T="int" 
-	@bind-Value="SelectedOption"
+	@bind-Value="SelectedRadio"
 	Appearance="Appearance.WinXP">	 
 		<WinOldOptionButton Label="Adrien" Value="1"  />
 		<WinOldOptionButton Label="Christophe" Value="2" />
@@ -129,9 +160,9 @@ CheckedChanged="@disabled98Frame" />
 Label="Frame 98"
 Border="Border.Default"
 Disabled="disabled98">
-	<p>@SelectOptionString</p>
+	<p>@SelectRadioString</p>
 	<WinOldOptionButtonGroup Appearance="Appearance.Win98"
-	                         @bind-Value="SelectOptionString"
+	                         @bind-Value="SelectRadioString"
 	                         T="string">
 		<WinOldOptionButton Label="Adrien" Value="@("Adrien")" />
 		<WinOldOptionButton Label="Christophe" Value="@("Christophe")" />
@@ -149,8 +180,7 @@ CheckedChanged="@disabled7Frame" />
 <WinOldFrame Appearance="Appearance.Win7"
 Label="Frame 7"
 Disabled="disabled7">
-	<WinOldOptionButtonGroup Appearance="Appearance.Win7"
-							 @bind-Value="SelectOptionString"
+	<WinOldOptionButtonGroup Appearance="Appearance.Win7"		  
 							 T="string">
 		<WinOldOptionButton Label="Adrien" Value="@("Adrien")" />
 		<WinOldOptionButton Label="Christophe" Value="@("Christophe")" />
@@ -164,8 +194,10 @@ Disabled="disabled7">
 	bool disabled7;
 	bool checkbox1 = true;
 
+	int SelectedRadio { get; set; } = 2;
+	string SelectRadioString { get; set; } = "Christophe";
 	int SelectedOption { get; set; } = 2;
-	string SelectOptionString { get; set; } = "Christophe";
+	string SelectOptionString { get; set; } = "Denis";
 
 	void ClickMe()
 	{

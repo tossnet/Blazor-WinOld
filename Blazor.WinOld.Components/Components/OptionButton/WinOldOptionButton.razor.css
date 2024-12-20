@@ -55,11 +55,15 @@
     }
 
         .opt-win-xp:checked + label:after {
-            width: 5px;
-            height: 5px;
-            top: 4px;
-            left: -15px;
-            background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 5 5' shape-rendering='crispEdges'%3E%3Cpath stroke='%23a9dca6' d='M1 0h1M0 1h1'/%3E%3Cpath stroke='%234dbf4a' d='M2 0h1M0 2h1'/%3E%3Cpath stroke='%23a0d29e' d='M3 0h1M0 3h1'/%3E%3Cpath stroke='%2355d551' d='M1 1h1'/%3E%3Cpath stroke='%2343c33f' d='M2 1h1'/%3E%3Cpath stroke='%2329a826' d='M3 1h1'/%3E%3Cpath stroke='%239acc98' d='M4 1h1M1 4h1'/%3E%3Cpath stroke='%2342c33f' d='M1 2h1'/%3E%3Cpath stroke='%2338b935' d='M2 2h1'/%3E%3Cpath stroke='%2321a121' d='M3 2h1'/%3E%3Cpath stroke='%23269623' d='M4 2h1'/%3E%3Cpath stroke='%232aa827' d='M1 3h1'/%3E%3Cpath stroke='%2322a220' d='M2 3h1'/%3E%3Cpath stroke='%23139210' d='M3 3h1'/%3E%3Cpath stroke='%2398c897' d='M4 3h1'/%3E%3Cpath stroke='%23249624' d='M2 4h1'/%3E%3Cpath stroke='%2398c997' d='M3 4h1'/%3E%3C/svg%3E");
+            background: #43c33f;
+            border: 1.1px solid #a0d29e;
+            border-radius: 50%;
+            box-shadow: inset -1px -1px 0 .5px #21a121, inset -1px -1px 0 1px #38b935;
+            box-sizing: border-box;
+            height: 6px;
+            width: 6px;
+            left: -1.4em;
+            top: 0.32em;
         }
 
     .opt-win-xp:focus + label {
@@ -75,9 +79,14 @@
         background: #fff;
     }
 
-    .opt-win-xp[disabled]:checked + label:after {
-        background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 5 5' shape-rendering='crispEdges'%3E%3Cpath stroke='%23e8e6da' d='M1 0h1M0 1h1'/%3E%3Cpath stroke='%23d2ceb5' d='M2 0h1M0 2h1'/%3E%3Cpath stroke='%23e5e3d4' d='M3 0h1M0 3h1'/%3E%3Cpath stroke='%23d7d3bd' d='M1 1h1'/%3E%3Cpath stroke='%23d0ccb2' d='M2 1h1M1 2h1'/%3E%3Cpath stroke='%23c7c2a2' d='M3 1h1M1 3h1'/%3E%3Cpath stroke='%23e2dfd0' d='M4 1h1M1 4h1'/%3E%3Cpath stroke='%23cdc8ac' d='M2 2h1'/%3E%3Cpath stroke='%23c5bf9f' d='M3 2h1M2 3h1'/%3E%3Cpath stroke='%23c3bd9c' d='M4 2h1'/%3E%3Cpath stroke='%23bfb995' d='M3 3h1'/%3E%3Cpath stroke='%23e2dfcf' d='M4 3h1M3 4h1'/%3E%3Cpath stroke='%23c4be9d' d='M2 4h1'/%3E%3C/svg%3E");
-    }
+        .opt-win-xp[disabled]:checked + label:after {
+            background: #d0ccb2;
+            border: 1.1px solid #e8e6da;
+            border-radius: 50%;
+            box-shadow: inset -1px -1px 0 .5px #c5bf9f, inset -1px -1px 0 1px #cdc8ac;
+            left: -1.41em;
+            top: 0.29em;
+        }
 
 /*-------------------------------------------*\
     Win 98

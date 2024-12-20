@@ -1,0 +1,11 @@
+﻿@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@typeparam T
+
+<option class="option-win"
+        value="@Value" 
+		selected="@IsSelected">
+	@ChildContent
+</option>
