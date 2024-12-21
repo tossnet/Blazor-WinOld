@@ -8,11 +8,7 @@ For Blazor Server or Blazor WebAssembly
 DEMO : https://tossnet.github.io/Blazor-WinOld/
 
 ## Hello, world!
-Welcome to your new madness. I'm using Windows styles made in css by :
-- https://github.com/botoxparty/XP.css
-- https://github.com/khang-nd/7.css
-
-
+Welcome to my new delirium
 
 
 https://github.com/user-attachments/assets/17b837a3-770e-4765-a02e-23d0499500f7
@@ -34,3 +30,9 @@ For client-side and server-side Blazor - add script section (head section)
 ```html
  <link href="_content/BlazorWinOld/css/blazorwinold.css" rel="stylesheet" />
 ```
+
+## Thanks
+
+I got the css styles from these two repo:
+- https://github.com/botoxparty/XP.css
+- https://github.com/khang-nd/7.css

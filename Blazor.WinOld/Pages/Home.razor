@@ -5,13 +5,42 @@
 
 <h1>Hello, world!</h1>
 
-Welcome to your new madness.
 
-I'm using Windows styles made in css by :
-<ul>
-	<li>https://github.com/botoxparty/XP.css</li>
-	<li>https://github.com/khang-nd/7.css</li>
-</ul>		
+<WinOldSelect Appearance="appearance"
+			  T="Appearance"
+			  @bind-Value="appearance">
+	<WinOldOption Value="Appearance.WinXP">Win XP</WinOldOption>
+	<WinOldOption Value="Appearance.Win98">Win 98</WinOldOption>
+	<WinOldOption Value="Appearance.Win7">Win 7</WinOldOption>
+</WinOldSelect>
+
+<WinOldButton OnClick="ClickMe"
+			  Appearance="appearance">Click me</WinOldButton>
+
+<WinOldCheckBox Appearance="appearance"
+				Label="Disable XP Frame"
+				CheckedChanged="@disabledXPFrame" />
+
+<WinOldFrame Appearance="appearance"
+			 Label="Frame"
+			 Disabled="disabledXP">
+	<WinOldTextBox Appearance="appearance"
+				   Label="Textbox :"
+				   @bind-Value="SelectRadioString" />
+
+	<WinOldLabel Appearance="appearance">
+		Label : @SelectedRadio.ToString()
+	</WinOldLabel>
+
+	<WinOldOptionButtonGroup T="int"
+							 @bind-Value="SelectedRadio"
+							 Appearance="appearance">
+		<WinOldOptionButton Label="Adrien" Value="1" />
+		<WinOldOptionButton Label="Christophe" Value="2" />
+		<WinOldOptionButton Label="Denis" Value="3" />
+	</WinOldOptionButtonGroup>
+</WinOldFrame>
+
 
 <h2 class="py-3">Buttons</h2>
 
@@ -101,18 +130,6 @@ Label="Textbox :" />
 
 <h2 class="py-3">DropDown</h2>
 
-<p>@SelectedOption.ToString()</p>
-
-<WinOldSelect Appearance="Appearance.WinXP"
-			  T="int" 
-			  @bind-Value="SelectedOption">
-	<WinOldOption Value="1">Adrien</WinOldOption>
-	<WinOldOption Value="2">Christophe</WinOldOption>
-	<WinOldOption Value="3">Denis</WinOldOption>
-</WinOldSelect>
-
-<br />
-<p>@SelectOptionString</p>
 <WinOldSelect Appearance="Appearance.Win98"
 			  T="string"
 			  @bind-Value="SelectOptionString">
@@ -120,6 +137,8 @@ Label="Textbox :" />
 	<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
 	<WinOldOption Value="@("Denis")">Denis</WinOldOption>
 </WinOldSelect>
+
+@SelectOptionString
 
 <br />
 
@@ -132,34 +151,14 @@ Label="Textbox :" />
 
 <h2 class="py-3">Frame</h2>
 
-<WinOldCheckBox Appearance="Appearance.WinXP"
-Label="Disable XP Frame"
-CheckedChanged="@disabledXPFrame" />
-
-<WinOldFrame Appearance="Appearance.WinXP"
-Label="Frame XP"
-Disabled="disabledXP"  >
-	<p>@SelectedRadio.ToString()</p>
-	<WinOldOptionButtonGroup T="int" 
-	@bind-Value="SelectedRadio"
-	Appearance="Appearance.WinXP">	 
-		<WinOldOptionButton Label="Adrien" Value="1"  />
-		<WinOldOptionButton Label="Christophe" Value="2" />
-		<WinOldOptionButton Label="Denis" Value="3" />
-	</WinOldOptionButtonGroup>
-</WinOldFrame>
-
-<br />
-
-
 <WinOldCheckBox Appearance="Appearance.Win98"
-Label="Disable win 98 Frame"
-CheckedChanged="@disabled98Frame" />
+                Label="Disable win 98 Frame"
+                CheckedChanged="@disabled98Frame" />
 
 <WinOldFrame Appearance="Appearance.Win98"
-Label="Frame 98"
-Border="Border.Default"
-Disabled="disabled98">
+             Label="Frame 98"
+             Border="Border.Default"
+             Disabled="disabled98">
 	<p>@SelectRadioString</p>
 	<WinOldOptionButtonGroup Appearance="Appearance.Win98"
 	                         @bind-Value="SelectRadioString"
@@ -174,12 +173,12 @@ Disabled="disabled98">
 
 
 <WinOldCheckBox Appearance="Appearance.Win7"
-Label="Disable win 7 Frame"
-CheckedChanged="@disabled7Frame" />
+                Label="Disable win 7 Frame"
+                CheckedChanged="@disabled7Frame" />
 
 <WinOldFrame Appearance="Appearance.Win7"
-Label="Frame 7"
-Disabled="disabled7">
+             Label="Frame 7"
+             Disabled="disabled7">
 	<WinOldOptionButtonGroup Appearance="Appearance.Win7"		  
 							 T="string">
 		<WinOldOptionButton Label="Adrien" Value="@("Adrien")" />
@@ -187,6 +186,14 @@ Disabled="disabled7">
 		<WinOldOptionButton Label="Denis" Value="@("Denis")" />
 	</WinOldOptionButtonGroup>
 </WinOldFrame>
+
+
+<h2 class="py-3">Label</h2>
+
+<WinOldLabel Appearance="Appearance.WinXP">
+	Hello World
+</WinOldLabel>
+
 
 @code {
 	bool disabledXP;
@@ -198,6 +205,8 @@ Disabled="disabled7">
 	string SelectRadioString { get; set; } = "Christophe";
 	int SelectedOption { get; set; } = 2;
 	string SelectOptionString { get; set; } = "Denis";
+
+	Appearance appearance { get; set; } = Appearance.WinXP;
 
 	void ClickMe()
 	{

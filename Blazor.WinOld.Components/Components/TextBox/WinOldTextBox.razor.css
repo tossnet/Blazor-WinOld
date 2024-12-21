@@ -17,12 +17,20 @@
     outline: none;
 }
 
+    .txt-win[disabled] {
+        color: var(--btn-win7-text-color-disabled);
+    }
+
 label.label-txt-win {
     display: inline-flex;
     align-items: center;
     font-family: var(--font-family);
     font-size: 11px;
 }
+
+    label.label-txt-win[disabled] {
+        color: var(--btn-win7-text-color-disabled);
+    }
 
 /*-------------------------------------------*\
     Win XP
@@ -34,7 +42,7 @@ label.label-txt-win {
     padding: 3px 4px;
 }
 
-label + .txt-win-xp {
+.lbtxt-win-xp {
     font-family: var(--font-family);
     font-size: 11px;
 }
@@ -50,7 +58,7 @@ label + .txt-win-xp {
     box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
 }
 
-label + .txt-win-98 {
+.lbtxt-win-98 {
     font-family: var(--font-family);
     font-size: 11px;
 }
@@ -73,7 +81,7 @@ label + .txt-win-98 {
         outline: none;
     }
 
-label + .txt-win-7 {
+.lbtxt-win-7 {
     font-family: unset !important;
-    font: var(--font) !important;
+    font: var(--font);
 }

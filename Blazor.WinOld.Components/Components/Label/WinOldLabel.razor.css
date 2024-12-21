@@ -1,0 +1,31 @@
+﻿.lbl-win {
+    all: unset;
+    display: block;
+}
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.lbl-win-xp {
+    font-family: var(--font-family);
+    font-size: 11px;
+    color: #000;
+}
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.lbl-win-98 {
+    font-family: var(--font-family);
+    font-size: 11px;
+    color: #000;
+}
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+.lbl-win-7 {
+    font-family: var(--font);
+    font-size: 9pt;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+}

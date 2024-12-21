@@ -3,9 +3,13 @@
 @inherits WinOldComponentBase
 
 <label for="@ElementId"
-       class="label-txt-win">@Label</label>
+       class="label-txt-win @GetComponentLabelClass()"
+       disabled="@(ParentDisabled | Disabled)" >
+       @Label</label>
 <input type="text"
        id="@ElementId" 
        class="txt-win @GetComponentClass() @Class"
        disabled="@(ParentDisabled | Disabled)"
-       style="@Style" />
+       style="@Style"
+       @bind="Value"
+       @oninput="OnValueChanged" />

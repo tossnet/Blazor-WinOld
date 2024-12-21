@@ -1,0 +1,9 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+<p class="lbl-win @GetComponentClass() @Class"
+	  style="@Style"
+	  disabled="@(ParentDisabled | Disabled)">
+	@ChildContent
+</p>
