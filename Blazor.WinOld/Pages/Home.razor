@@ -14,11 +14,10 @@
 	<WinOldOption Value="Appearance.Win7">Win 7</WinOldOption>
 </WinOldSelect>
 
-<WinOldButton OnClick="ClickMe"
-			  Appearance="appearance">Click me</WinOldButton>
+
 
 <WinOldCheckBox Appearance="appearance"
-				Label="Disable XP Frame"
+				Label="Disable this frame :"
 				CheckedChanged="@disabledXPFrame" />
 
 <WinOldFrame Appearance="appearance"
@@ -32,6 +31,9 @@
 		Label : @SelectedRadio.ToString()
 	</WinOldLabel>
 
+	<WinOldButton OnClick="ClickMe"
+				  Appearance="appearance">Click me</WinOldButton>
+
 	<WinOldOptionButtonGroup T="int"
 							 @bind-Value="SelectedRadio"
 							 Appearance="appearance">
@@ -41,6 +43,19 @@
 	</WinOldOptionButtonGroup>
 </WinOldFrame>
 
+
+<WinOldTabs Appearance="appearance"
+			Style="max-width: 500px">
+	<WinOldTabPanel Label="Tab A">
+		<p>Contents of first tab</p>
+	</WinOldTabPanel>
+	<WinOldTabPanel Label="Tab B" IsDefault="true">
+		<p>Contents of second tab</p>
+	</WinOldTabPanel>
+	<WinOldTabPanel Label="Tab C">
+		<p>Third tab contents</p>
+	</WinOldTabPanel>
+</WinOldTabs>
 
 <h2 class="py-3">Buttons</h2>
 
@@ -206,7 +221,7 @@ Label="Textbox :" />
 	int SelectedOption { get; set; } = 2;
 	string SelectOptionString { get; set; } = "Denis";
 
-	Appearance appearance { get; set; } = Appearance.WinXP;
+	Appearance appearance { get; set; } = Appearance.Win7;
 
 	void ClickMe()
 	{

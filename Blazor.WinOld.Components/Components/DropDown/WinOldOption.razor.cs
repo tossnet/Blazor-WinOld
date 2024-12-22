@@ -13,10 +13,6 @@ public partial class WinOldOption<T> : WinOldComponentBase
     public RenderFragment? ChildContent { get; set; }
 
     /// </summary>
-    [CascadingParameter(Name = "Appearance")]
-    public virtual Appearance Appearance { get; set; }
-
-    /// </summary>
     [Parameter]
     public T Value { get; set; }
 
@@ -26,6 +22,5 @@ public partial class WinOldOption<T> : WinOldComponentBase
     {
         Select?.AddOption(this);
     }
-
 }
 

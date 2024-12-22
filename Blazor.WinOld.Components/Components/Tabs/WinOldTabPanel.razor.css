@@ -1,0 +1,45 @@
+﻿.panel-win {
+    all: unset;
+    display: block;
+}
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.panel-win-xp {
+    padding: 14px;
+    clear: both;
+    background: linear-gradient(180deg, #fcfcfe, #f4f3ee);
+    border: 1px solid #919b9c;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 9px;
+    box-shadow: inset 1px 1px #fcfcfe, inset -1px -1px #fcfcfe, 1px 2px 2px 0 rgba(208, 206, 191, .75);
+}
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.panel-win-98 {
+    box-shadow: inset 1px 1px #fff, inset 2px 2px #dfdfdf, inset -1px -1px #0a0a0a, inset -2px -2px grey;
+    padding: 14px;
+    clear: both;
+    background: silver;
+    border: none;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 9px;
+}
+
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+.panel-win-7 {
+    background: var(--tab-bg);
+    border: var(--tab-border);
+    clear: both;
+    margin-bottom: 9px;
+    padding: 14px;
+    position: relative;
+    z-index: 2;
+}

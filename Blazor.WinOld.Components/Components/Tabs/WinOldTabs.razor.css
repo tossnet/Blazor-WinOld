@@ -1,0 +1,227 @@
+﻿.tabs-list {
+    all: unset;
+    position: relative;
+    margin: 5px 0 -2px;
+    text-indent: 0;
+    list-style-type: none;
+    display: flex;
+    padding-left: 3px;
+}
+
+.tabs-win {
+    all: unset;
+    display: block;
+    z-index: 1;
+    text-decoration: none;
+    color: #222;
+    min-width: unset;
+    border-radius: 0;
+}
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.tabs-win-xp {
+    font-family: var(--font-family);
+    font-size: 11px;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    background: linear-gradient(180deg, #fff, #fafaf9 26%, #f0f0ea 95%, #ecebe5);
+    margin-left: -1px;
+    margin-right: 2px;
+    padding: 0 12px 3px;
+    box-shadow: none;
+    border: 1px solid #003c74;
+    border-color: #91a7b4;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+    .tabs-win-xp:hover {
+        border-top: 1px solid #e68b2c;
+        box-shadow: inset 0 2px #ffc73c;
+    }
+    .tabs-win-xp:focus {
+        outline: 1px dotted #222;
+        outline-offset: -4px;
+    }
+
+    .tabs-win-xp:not(:disabled):active {
+        box-shadow: none;
+        background: linear-gradient(180deg, #cdcac3, #e3e3db 8%, #e5e5de 94%, #f2f2f1);
+    }
+
+.active-tab-win-xp {
+    background: #fcfcfe;
+    border-color: #919b9c;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid #e68b2c;
+    box-shadow: inset 0 2px #ffc73c;
+    padding-bottom: 2px;
+    position: relative;
+    z-index: 8;
+    margin-top: -2px;
+    margin-right: -1px;
+    margin-bottom: 1px;
+    margin-left: -3px;
+}
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.tabs-win-98 {
+    font-family: var(--font-family);
+    font-size: 11px;
+    -webkit-font-smoothing: none;
+    padding: 3px 12px;
+    background: silver;
+    box-shadow: inset 1px 1px #fff, inset 2px 2px #dfdfdf, inset -1px 0 #000, inset -2px 0 #7f7f7f;
+    border: none;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
+    min-height: 23px;
+}
+
+    .tabs-win-98:not(:disabled).active, 
+    .tabs-win-98:not(:disabled):active {
+        box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+    }
+
+    .tabs-win-98:focus {
+        outline: 1px dotted #222;
+        outline-offset: -4px;
+    }
+
+.active-tab-win-98 {
+    top: 2px;
+    margin-right: -1px;
+    margin-top: -4px;
+    margin-left: -3px;
+    margin-bottom: 1px;
+    padding-bottom: 2px;
+    background-color: silver;
+    position: relative;
+    z-index: 8;
+    display: block;
+    color: #222;
+    text-decoration: none;
+    min-width: unset;
+}
+
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+.tabs-win-7 {
+    padding: 2px 6px;
+    position: relative;
+    text-align: center;
+    font: var(--font);
+    min-height: 23px;
+    box-shadow: var(--btn-win7-shadow);
+    box-sizing: border-box;
+    background: var(--btn-win7-gradient);
+    border: var(--btn-win7-border);
+}
+    .tabs-win-7:not(:disabled):not(:hover) {
+        transition: border-color 1s linear;
+    }
+
+    .tabs-win-7:not(:disabled):not(:hover) {
+        border-color: var(--btn-win7-border-color);
+        transition: border-color 1s linear;
+    }
+
+    .tabs-win-7:not(:disabled):active {
+        border-color: var(--btn-win7-border-color-active);
+        transition: border-color .3s;
+    }
+
+    .tabs-win-7:not(:disabled):hover,
+    .tabs-win-7:not(:disabled):hover {
+        border-color: var(--btn-win7-border-color-hovered);
+        transition: border-color .3s;
+    }
+
+  
+    .tabs-win-7:not(:disabled):hover:before, 
+    .tabs-win-7:not(:disabled):hover:before {
+        opacity: 1;
+        transition: opacity .3s;
+    }
+
+    .tabs-win-7 button:before {
+        border-radius: 0;
+    }
+
+    .tabs-win-7:after, .tabs-win-7:before, .tabs-win-7:after, .tabs-win-7:before {
+        content: "";
+        height: 100%;
+        left: 0;
+        margin: 0;
+        opacity: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        transition: opacity .3s;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .tabs-win-7:before, 
+    .tabs-win-7:before {
+        background: var(--btn-win7-gradient-hovered);
+        border-radius: var(--border-radius);
+        box-shadow: var(--btn-win7-shadow);
+    }
+
+    .tabs-win-7 .tabs-win-7:after {
+        content: none;
+    }
+
+    .tabs-win-7:after, 
+    .tabs-win-7:after {
+        background: var(--btn-win7-gradient-active);
+        border-radius: 2px;
+        box-shadow: var(--btn-win7-shadow-active);
+    }
+
+    .tabs-win-7:after, 
+    .tabs-win-7:before, 
+    .tabs-win-7:after, 
+    .tabs-win-7:before {
+        content: "";
+        height: 100%;
+        left: 0;
+        margin: 0;
+        opacity: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        transition: opacity .3s;
+        width: 100%;
+        z-index: -1;
+    }
+
+.active-tab-win-7 {
+    background: var(--tab-bg);
+    border-bottom: 0;
+    box-shadow: none;
+    margin: -2px 0 1px -3px;
+    padding-bottom: 4px;
+    position: relative;
+    z-index: 8;
+}
+
+    .active-tab-win-7:not(:disabled):hover, 
+    .active-tab-win-7:not(:disabled):hover {
+        border-color: var(--tab-border-color);
+    }
+
+    .active-tab-win-7:before, 
+    .active-tab-win-7:before {
+        background: none;
+        border-radius: var(--border-radius);
+        box-shadow: var(--btn-win7-shadow);
+    }

@@ -9,10 +9,6 @@ public partial class WinOldOptionButton<T> : WinOldComponentBase
     public WinOldOptionButtonGroup<T?> Group { get; set; }
 
     /// </summary>
-    [CascadingParameter(Name = "Appearance")]
-    public virtual Appearance Appearance { get; set; }
-
-    /// </summary>
     [Parameter]
     public string Label { get; set; } = string.Empty;
 
@@ -35,7 +31,7 @@ public partial class WinOldOptionButton<T> : WinOldComponentBase
     /// </summary>
     private string GetComponentClass()
     {
-        return Appearance switch
+        return Group.Appearance switch
         {
             Appearance.Win7 => "opt-win-7",
             Appearance.WinXP => "opt-win-xp",

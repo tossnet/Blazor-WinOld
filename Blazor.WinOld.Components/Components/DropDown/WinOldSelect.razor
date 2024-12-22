@@ -5,10 +5,8 @@
 @typeparam T
 
 <CascadingValue Value="this" IsFixed="true">
-    <CascadingValue Name="Appearance" Value="@Appearance">
-        <select class="select-win @GetComponentClass()" 
-                @onchange="OnChange">
-            @ChildContent
-        </select>
-    </CascadingValue>
+    <select class="select-win @GetComponentClass()" 
+            @onchange="OnChange">
+        @ChildContent
+    </select>
 </CascadingValue>

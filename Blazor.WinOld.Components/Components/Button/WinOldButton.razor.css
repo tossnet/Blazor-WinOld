@@ -47,20 +47,30 @@
     box-shadow: inset -1px 1px #cee7ff, inset 1px 2px #98b8ea, inset -2px 2px #bcd4f6, inset 1px -1px #89ade4, inset 2px -2px #89ade4;
 }
 
+    .btn-win-xp:disabled {
+        background:none;
+        border: 1px solid rgba(216, 208, 196, 1);
+        cursor:default;
+    }
+
 /*-------------------------------------------*\
     Win 98
 \*-------------------------------------------*/
-.btn-win-98 {
-    border: none;
-    background: silver;
-    box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
-    border-radius: 0;
-    padding: 0 12px
-}
+    .btn-win-98 {
+        border: none;
+        background: var(--win98-background);
+        box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
+        border-radius: 0;
+        padding: 0 12px
+    }
 
     .btn-win-98:not(:disabled).active, .btn-win-98:not(:disabled):active {
         box-shadow: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey;
     }
+
+.btn-win-98:disabled {
+    cursor: default;
+}
 
 /*-------------------------------------------*\
     Win 7
@@ -121,6 +131,7 @@
         background: var(--btn-win7-face-disabled);
         border-color: var(--btn-win7-border-color-disabled);
         color: var(--btn-win7-text-color-disabled);
+        cursor: default;
     }
 
     .btn-win-7:not(:disabled):hover {

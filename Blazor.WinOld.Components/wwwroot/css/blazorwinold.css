@@ -20,6 +20,7 @@
 :root {
     --font-family: "Pixelated MS Sans Serif", sans-serif;
     --font: 9pt "Segoe UI","SegoeUI","Noto Sans",sans-serif;
+    --win98-background: silver;
     --surface: #f0f0f0;
     --btn-win7-highlight: #fff;
     --btn-win7-face: #f2f2f2;
@@ -54,4 +55,8 @@
     --chk-win7-total-width: calc(var(--checkbox-total-width-precalc));
     --checkmark-top: 0;
     --checkmark-left: 2px;
+
+    --tab-border: 1px solid #888;
+    --tab-border-color: #888;
+    --tab-bg: #fff;
 }

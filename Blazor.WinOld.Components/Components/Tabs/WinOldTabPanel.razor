@@ -1,0 +1,11 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@if (ParentTabs is not null && ParentTabs.SelectedTabPanel == this)
+{
+    <article role="tabpanel"
+             class="panel-win @GetComponentClass()">
+        @ChildContent
+    </article>
+}

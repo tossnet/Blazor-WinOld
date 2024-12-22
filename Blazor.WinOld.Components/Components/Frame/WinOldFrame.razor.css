@@ -42,11 +42,11 @@
     border: 2px groove threedface;
     padding-block: 0.35em 0.625em;
     padding-inline: 0.75em;
-    background: silver;
+    background: var(--win98-background);
 }
 
     .frame-win-98 legend {
-        background: silver;
+        background: var(--win98-background);
         color: #222;
     }
 

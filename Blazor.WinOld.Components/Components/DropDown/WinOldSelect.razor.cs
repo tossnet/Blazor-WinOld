@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace Blazor.WinOld.Components;
 
@@ -22,8 +21,10 @@ public partial class WinOldSelect<T> : WinOldComponentBase
     [Parameter]
     public EventCallback<T> ValueChanged { get; set; }
 
+    /// </summary>
     internal HashSet<WinOldOption<T>> Options { get; } = new();
 
+    /// </summary>
     internal void AddOption(WinOldOption<T> option)
     {
         if (!Options.Contains(option))
@@ -31,6 +32,8 @@ public partial class WinOldSelect<T> : WinOldComponentBase
             Options.Add(option);
         }
     }
+
+    /// </summary>
     private async Task OnChange(ChangeEventArgs e)
     {
         if (e.Value is not null && Options.FirstOrDefault(opt => opt.Value?.ToString() == e.Value.ToString()) is WinOldOption<T> selectedOption)

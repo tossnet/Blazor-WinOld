@@ -120,7 +120,7 @@
     }
 
     .chk-win-98:active + label:before {
-        background: silver;
+        background: var(--win98-background);
     }
 
     .chk-win-98:checked + label:after {
@@ -133,7 +133,7 @@
     }
 
     .chk-win-98[disabled] + label:before {
-        background: silver;
+        background: var(--win98-background);
     }
 
     .chk-win-98[disabled]:checked + label:after {
