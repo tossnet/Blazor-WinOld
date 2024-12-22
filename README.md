@@ -10,13 +10,7 @@ DEMO : https://tossnet.github.io/Blazor-WinOld/
 ## Hello, world!
 Welcome to my new delirium
 
-
-
-https://github.com/user-attachments/assets/be5be67f-475b-49d1-914a-698a42f6e757
-
-
-
-
+https://github.com/user-attachments/assets/a86c4945-9446-4d66-9cd8-ff24847d3436
 
 ## Installation
 
