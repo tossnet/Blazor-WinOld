@@ -59,4 +59,7 @@
     --tab-border: 1px solid #888;
     --tab-border-color: #888;
     --tab-bg: #fff;
+
+    --scrollbar-y: linear-gradient(to right,#e5e5e5,var(--surface) 20%);
+    --scrollbar-x: linear-gradient(to bottom,#e5e5e5,var(--surface) 20%);
 }

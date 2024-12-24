@@ -1,0 +1,10 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+<CascadingValue Value="this" IsFixed="true">
+    <ul class="list-win @GetComponentClass() @Class"
+        style="@Style">
+        @ChildContent
+    </ul>
+</CascadingValue>

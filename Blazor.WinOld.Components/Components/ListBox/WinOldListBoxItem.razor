@@ -1,0 +1,11 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@if (Parent is not null )
+{
+    <li class="list-item @GetComponentClass() @GetActiveItemClass(this)"
+        @onclick="() => SelectItem(this)">
+        @Text
+    </li>
+}

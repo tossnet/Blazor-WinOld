@@ -16,6 +16,7 @@ public partial class WinOldTabs : WinOldComponentBase
     /// </summary>
     internal HashSet<WinOldTabPanel> TabPanels { get; } = new();
 
+    /// </summary>
     public WinOldTabPanel? SelectedTabPanel { get; private set; }
 
     /// </summary>

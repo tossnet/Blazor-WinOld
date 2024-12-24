@@ -57,6 +57,22 @@
 	</WinOldTabPanel>
 </WinOldTabs>
 
+<WinOldListBox Appearance="appearance"
+			   @bind-SelectedValue="SelectedValue"
+			   Style="max-width: 200px;max-height:100px;overflow-y: scroll;">
+	<WinOldListBoxItem Text="The dog" Value="doc" />
+	<WinOldListBoxItem Text="The cat" Value="cat" />
+	<WinOldListBoxItem Text="The Bird" Value="bird" />
+	<WinOldListBoxItem Text="The pork" Value="pork" />
+	<WinOldListBoxItem Text="The rabbit" Value="rabbit" />
+	<WinOldListBoxItem Text="The beautiful lion" Value="lion" />
+	<WinOldListBoxItem Text="The whale" Value="whale" />
+</WinOldListBox>
+
+<WinOldLabel Appearance="appearance">
+	Selected Value: @SelectedValue
+</WinOldLabel>
+
 <h2 class="py-3">Buttons</h2>
 
 <WinOldButton OnClick="ClickMe"
@@ -203,12 +219,6 @@ Label="Textbox :" />
 </WinOldFrame>
 
 
-<h2 class="py-3">Label</h2>
-
-<WinOldLabel Appearance="Appearance.WinXP">
-	Hello World
-</WinOldLabel>
-
 
 @code {
 	bool disabledXP;
@@ -238,4 +248,6 @@ Label="Textbox :" />
 	void disabled98Frame(bool value) => disabled98 = !disabled98;
 
 	void disabled7Frame(bool value) => disabled7 = !disabled7;
+
+	string? SelectedValue = "dog";
 }

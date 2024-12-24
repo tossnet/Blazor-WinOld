@@ -1,0 +1,56 @@
+﻿.list-item {
+    /*all: unset;*/
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    list-style: none;
+    cursor: default;
+    margin-top: 3px;
+}
+
+.list-item:focus {
+    outline: 1px dotted #222;
+    color: #fff;
+}
+
+.list-item:active {
+    color: #fff;
+}
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.list-item-win-xp:active {
+    background-color: #2267cb;
+}
+
+.active-list-item-win-xp {
+    background-color: #2267cb;
+    color: #fff;
+}
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.list-item-win-98:active {
+    background-color: #000080;
+}
+
+.active-list-item-win-98 {
+    background-color: #000080;
+    color: #fff;
+}
+
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+.list-item-win-7:active {
+    background-color: #3399ff;
+    outline: 1px dotted #222;
+}
+
+.active-list-item-win-7 {
+    background-color: #3399ff;
+    color: #fff;
+}
