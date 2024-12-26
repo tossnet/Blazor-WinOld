@@ -16,7 +16,7 @@
 }
 
     .list-win-xp::-webkit-scrollbar {
-        width: 17px
+        width: 17px;
     }
 
     .list-win-xp::-webkit-scrollbar-corner {

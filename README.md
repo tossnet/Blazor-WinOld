@@ -27,8 +27,19 @@ For client-side and server-side Blazor - add script section (head section)
  <link href="_content/BlazorWinOld/css/blazorwinold.css" rel="stylesheet" />
 ```
 
+In Program.cs add this line to use messagebox
+```csharp
+builder.Services.AddSingleton<IDialogService, DialogService>();
+```
+and in the bottom of your MainLayout.razor add this line to use taskbar
+```html
+<WinOldMessageBoxHost />
+```
+
 ## Thanks
 
-I got the css styles from these two repo:
+I used these repo for most of the css and icons:
 - https://github.com/botoxparty/XP.css
 - https://github.com/khang-nd/7.css
+- https://win98icons.alexmeub.com/
+- https://github.com/softwarehistorysociety/XPIcons/tree/main

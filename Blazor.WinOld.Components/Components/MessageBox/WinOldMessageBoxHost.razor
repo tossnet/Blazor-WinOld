@@ -1,0 +1,34 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@if (IsVisible)
+{
+    <div class="msg-win-backdrop">
+        <div class="@GetMessageBoxClass()">
+            <div class="@GetTitleBarClass() active">
+                <div class="@GetTitleBarTextClass()">@Options.Title</div>
+                <div class="@GetTitleBarControlsClass()">
+                    <button aria-label="Close" @onclick="HandleCancel"></button>
+                </div>
+            </div>
+            <div class="message-body @GetMessageBodyClass()">
+				@if (Options.Icon != Icon.None)
+				{
+                    <div class="@GetIConClass()"></div>
+				}
+                <div class="@GetMessageContentClass()">@Options.Message</div>
+            </div>
+            <div class="actions">
+                <WinOldButton OnClick="HandleOk"
+                              Appearance="Options.Appearance">@Options.OkButtonText</WinOldButton>
+                @if (!string.IsNullOrEmpty(Options.CancelButtonText))
+                {
+                    <WinOldButton OnClick="HandleCancel"
+                                  Appearance="Options.Appearance"
+                                  Style="margin-left: 8px;">@Options.CancelButtonText</WinOldButton>
+                }
+            </div>
+        </div>
+    </div>
+}

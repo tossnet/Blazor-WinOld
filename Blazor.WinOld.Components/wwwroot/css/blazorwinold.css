@@ -1,7 +1,4 @@
-﻿/*! XP.css v0.2.6 - https://botoxparty.github.io/XP.css/ */
-/*! 7.css v0.17.0 - https://khang-nd.github.io/7.css */
-
-@font-face {
+﻿@font-face {
     font-family: "Pixelated MS Sans Serif";
     src: url(../fonts/ms_sans_serif.woff) format("woff");
     src: url(../fonts/ms_sans_serif.woff2) format("woff2");
@@ -10,9 +7,9 @@
 }
 
 @font-face {
-    font-family: "Pixelated MS Sans Serif Bold";
-    src: url(/fonts/ms_sans_serif_bold.woff) format("woff");
-    src: url(/fonts/ms_sans_serif_bold.woff2) format("woff2");
+    font-family: "Pixelated MS Sans Serif";
+    src: url(../fonts/ms_sans_serif_bold.woff) format("woff");
+    src: url(../fonts/ms_sans_serif_bold.woff2) format("woff2");
     font-weight: 700;
     font-style: normal
 }
@@ -62,4 +59,22 @@
 
     --scrollbar-y: linear-gradient(to right,#e5e5e5,var(--surface) 20%);
     --scrollbar-x: linear-gradient(to bottom,#e5e5e5,var(--surface) 20%);
+
+    --win7-background-color: #4580c4;
+    --win7-background-glass-stripes: linear-gradient(135deg, #fff5 70px, transparent 100px), linear-gradient(225deg, #fff5 70px, transparent 100px), linear-gradient(54deg, #0002 0 4%, #6661 6% 6%, #0002 8% 10%, #0002 15% 16%, #aaa1 17% 18%, #0002 23% 24%, #bbb2 25% 26%, #0002 31% 33%, #0002 34% 34.5%, #bbb2 36% 40%, #0002 41% 41.5%, #bbb2 44% 45%, #bbb2 46% 47%, #0002 48% 49%, #0002 50% 50.5%, #0002 56% 56.5%, #bbb2 57% 63%, #0002 67% 69%, #bbb2 69.5% 70%, #0002 73.5% 74%, #bbb2 74.5% 79%, #0002 80% 84%, #aaa2 85% 86%, #0002 87%, #bbb1 90%) left center / 100vw 100vh no-repeat fixed;
+    --win7-background: linear-gradient(to right, #ffffff66, #0000001a, #ffffff33), var(--win7-background-color);
+
+    --control-border-color: rgba(0, 0, 0, .3);
+    --control-border-radius: 5px;
+    --control-inset-shadow: inset 0 0 0 1px #fffa;
+    --control-background: linear-gradient(hsla(0, 0%, 100%, .5), hsla(0, 0%, 100%, .3) 45%, rgba(0, 0, 0, .1) 50%, rgba(0, 0, 0, .1) 75%, hsla(0, 0%, 100%, .5));
+    --control-background-hovered: radial-gradient(circle at bottom, #2aceda, transparent 65%), linear-gradient(#b6d9ee 50%, #1a6ca1 0);
+    --control-background-active: radial-gradient(circle at bottom, #0bfdfa, transparent 65%), linear-gradient(#86a7bc 50%, #092747 0);
+    --control-background-close: radial-gradient(circle at -60% 50%, #0007 5% 10%, #0000 50%), radial-gradient(circle at 160% 50%, #0007 5% 10%, #0000 50%), linear-gradient(#e0a197e5, #cf796a 25% 50%, #d54f36 50%);
+    --control-background-close-hovered: radial-gradient(circle at 50% 170%, #f4e676 10% 20%, #0000 60%), radial-gradient(circle at -60% 50%, #000a 5% 10%, #0000 50%), radial-gradient(circle at 160% 50%, #000a 5% 10%, #0000 50%), linear-gradient(#fb9d8b, #ee6d56 25% 50%, #d42809 50%);
+    --control-background-close-active: radial-gradient(circle at 50% 170%, #dcc03f 10% 20%, #0000 60%), radial-gradient(circle at -60% 50%, #000 5% 10%, #0000 50%), radial-gradient(circle at 160% 50%, #000 5% 10%, #0000 50%), linear-gradient(#d1a894, #b67562 25% 50%, #7d0d01 50%);
+}
+
+body {
+    line-height:1.1em;
 }

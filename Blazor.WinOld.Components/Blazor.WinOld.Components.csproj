@@ -13,7 +13,7 @@
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>blazor, components, win98, winXP, win7</PackageTags>
 	  <PackageReleaseNotes>https://github.com/tossnet/Blazor-WinOld#release-notes</PackageReleaseNotes>
-	  <Version>1.1.0</Version>
+	  <Version>1.2.0</Version>
 	  <Authors>Christophe Peugnet</Authors>
 	  <DebugType>embedded</DebugType>
   </PropertyGroup>

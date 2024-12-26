@@ -1,5 +1,6 @@
 ﻿@page "/"
 
+@inject IDialogService DialogService
 
 <PageTitle>Home</PageTitle>
 
@@ -49,11 +50,25 @@
 	<WinOldTabPanel Label="Tab A">
 		<p>Contents of first tab</p>
 	</WinOldTabPanel>
+
 	<WinOldTabPanel Label="Tab B" IsDefault="true">
 		<p>Contents of second tab</p>
 	</WinOldTabPanel>
-	<WinOldTabPanel Label="Tab C">
-		<p>Third tab contents</p>
+
+	<WinOldTabPanel Label="MessageBox">
+		<WinOldFrame Appearance="appearance"
+			 Label="Icon"
+			 Disabled="disabledXP">
+			<WinOldOptionButtonGroup T="Icon"
+									 @bind-Value="iconMessage"
+									 Appearance="appearance">
+				<WinOldOptionButton Label="None" Value="Icon.None" />
+				<WinOldOptionButton Label="Alert" Value="Icon.Alert" />
+				<WinOldOptionButton Label="Critical" Value="Icon.Critical" />
+				<WinOldOptionButton Label="Information" Value="Icon.Information" />
+				<WinOldOptionButton Label="Question" Value="Icon.Question" />
+			</WinOldOptionButtonGroup>
+		</WinOldFrame>
 	</WinOldTabPanel>
 </WinOldTabs>
 
@@ -73,7 +88,7 @@
 	Selected Value: @SelectedValue
 </WinOldLabel>
 
-<h2 class="py-3">Buttons</h2>
+<h2 class="py-3">MessageBox</h2>
 
 <WinOldButton OnClick="ClickMe"
 Appearance="Appearance.WinXP">Click me</WinOldButton>
@@ -232,10 +247,22 @@ Label="Textbox :" />
 	string SelectOptionString { get; set; } = "Denis";
 
 	Appearance appearance { get; set; } = Appearance.Win7;
+	Icon iconMessage { get; set; } = Icon.Information;
 
-	void ClickMe()
+	async Task ClickMe()
 	{
 		Console.WriteLine("Clicked!");
+
+		var options = new DialogOptions
+			{
+				Appearance = appearance,
+				Title = "Warning",
+				Message = "Blazor is awesome!",
+				Icon = iconMessage,
+				OkButtonText = "OK",
+				CancelButtonText = ""
+			};
+		var DialogResult = await DialogService.ShowMessageBox(options);
 	}
 
 	void CheckedChanged(bool value)

@@ -1,0 +1,28 @@
+﻿@page "/msgbox"
+
+@inject IDialogService DialogService
+
+<PageTitle>Home</PageTitle>
+
+<h1>MsgboxPage</h1>
+
+<WinOldButton OnClick="ClickMe"
+			  Appearance="Appearance.WinXP">Show MessageBox</WinOldButton>
+
+@code {
+	Appearance appearance { get; set; } = Appearance.Win7;
+
+	async Task ClickMe()
+	{
+		var options = new DialogOptions
+			{
+				Appearance = Appearance.WinXP,
+				Title = "Warning",
+				Message = "Blazor is awesome!",
+				Icon = Icon.Information,
+				OkButtonText = "OK",
+				CancelButtonText = ""
+			};
+		var DialogResult = await DialogService.ShowMessageBox(options);
+	}
+}
