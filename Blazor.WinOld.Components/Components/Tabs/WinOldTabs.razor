@@ -9,7 +9,8 @@
 			<button role="tab"
 					style="@Style"
 				    class="tabs-win @GetComponentClass() @GetActiveTabClass(tabPanel) @Class"
-					@onclick="() => SelectTab(tabPanel)">
+					@onclick="() => SelectTab(tabPanel)"
+					@attributes="Attributes">
 			@tabPanel.Label
 		</button>
 		}

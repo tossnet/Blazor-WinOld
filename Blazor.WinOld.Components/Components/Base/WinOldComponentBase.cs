@@ -26,4 +26,8 @@ public abstract class WinOldComponentBase : ComponentBase
     /// </summary>
     [Parameter]
     public virtual string? Style { get; set; } = null;
+
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? Attributes { get; set; }
 }

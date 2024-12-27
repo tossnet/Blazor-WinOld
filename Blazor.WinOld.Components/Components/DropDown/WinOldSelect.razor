@@ -5,8 +5,10 @@
 @typeparam T
 
 <CascadingValue Value="this" IsFixed="true">
-    <select class="select-win @GetComponentClass()" 
-            @onchange="OnChange">
+    <select class="select-win @GetComponentClass() @Class"
+            style="@Style"
+            @onchange="OnChange"
+            @attributes="Attributes">
         @ChildContent
     </select>
 </CascadingValue>

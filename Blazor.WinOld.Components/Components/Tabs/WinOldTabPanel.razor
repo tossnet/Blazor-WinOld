@@ -5,7 +5,9 @@
 @if (ParentTabs is not null && ParentTabs.SelectedTabPanel == this)
 {
     <article role="tabpanel"
-             class="panel-win @GetComponentClass()">
+             class="panel-win @GetComponentClass() @Class"
+             style="@Style"
+             @attributes="Attributes">
         @ChildContent
     </article>
 }

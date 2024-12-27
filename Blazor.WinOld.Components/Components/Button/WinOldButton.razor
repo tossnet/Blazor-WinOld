@@ -5,6 +5,7 @@
 <button @onclick="@OnClickHandlerAsync"
         class="btn-win @GetComponentClass() @Class"
         disabled="@(ParentDisabled | Disabled)"
-        style="@Style">
+        style="@Style"
+        @attributes="Attributes">
 	@ChildContent
 </button>

@@ -4,7 +4,9 @@
 
 @if (Parent is not null )
 {
-    <li class="list-item @GetComponentClass() @GetActiveItemClass(this)"
+    <li class="list-item @GetComponentClass() @GetActiveItemClass(this) @Class"
+		style="@Style"
+		@attributes="Attributes"
         @onclick="() => SelectItem(this)">
         @Text
     </li>

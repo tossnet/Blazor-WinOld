@@ -4,8 +4,10 @@
 
 @typeparam T
 
-<option class="option-win"
+<option class="option-win @Class"
         value="@Value" 
-		selected="@IsSelected">
+		style="@Style"
+		selected="@IsSelected"
+		@attributes="Attributes">
 	@ChildContent
 </option>

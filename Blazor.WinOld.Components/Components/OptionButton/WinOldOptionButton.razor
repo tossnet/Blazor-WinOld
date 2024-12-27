@@ -12,6 +12,8 @@
 		   checked="@IsChecked"
 		   @onchange="OnChange"
 		   disabled="@(ParentDisabled | Disabled)"
-		   class="opt-win @GetComponentClass()">
+		   class="opt-win @GetComponentClass() @Class"
+		   style="@Style"
+		   @attributes="Attributes">
 	<label for="@ElementId">@Label</label>
 </div>

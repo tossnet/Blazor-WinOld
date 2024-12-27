@@ -3,7 +3,8 @@
 @inherits WinOldComponentBase
 
 <p class="lbl-win @GetComponentClass() @Class"
-	  style="@Style"
-	  disabled="@(ParentDisabled | Disabled)">
+   style="@Style"
+   disabled="@(ParentDisabled | Disabled)"
+   @attributes="Attributes">
 	@ChildContent
 </p>
