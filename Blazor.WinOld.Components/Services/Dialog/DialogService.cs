@@ -15,7 +15,7 @@ public class DialogService : IDialogService
     private event Func<DialogOptions, Task<bool?>>? OnShowMessageBox;
 
     /// </summary>
-    public void Register(Func<DialogOptions, Task<bool?>> handler)
+    internal void Register(Func<DialogOptions, Task<bool?>> handler)
     {
         OnShowMessageBox += handler;
     }

@@ -8,6 +8,7 @@
     min-height: 23px;
     -webkit-user-select: none;
     user-select: none;
+    margin: 2px 0 2px 0;
 }
 
 .btn-win.focused, .btn-win:focus {
@@ -27,7 +28,7 @@
     background: linear-gradient( 180deg, rgba(255, 255, 255, 1) 0%, rgba(236, 235, 229, 1) 86%, rgba(216, 208, 196, 1) 100% );
     box-shadow: none;
     border-radius: var(--border-radius);
-    padding: 2px 0 0 2px;
+    padding: 2px 6px 0 8px;
     width: fit-content;
     text-align: center;
 }
@@ -61,7 +62,7 @@
         background: var(--win98-background);
         box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
         border-radius: 0;
-        padding: 0 12px
+        padding: 0 12px;
     }
 
     .btn-win-98:not(:disabled).active, .btn-win-98:not(:disabled):active {

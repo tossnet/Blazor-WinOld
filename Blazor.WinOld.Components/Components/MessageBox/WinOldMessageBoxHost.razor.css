@@ -225,7 +225,7 @@
 .title-bar-win-98 {
     font-size: 11px;
     background: linear-gradient(90deg, navy, #1084d0);
-    padding: 3px 2px 3px 3px;
+    padding: 1px 2px 1px 3px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -280,6 +280,11 @@
     background-repeat: no-repeat;
     background-position: top 3px left 4px;
 }
+
+    .title-bar-controls-win-98 button:not(:disabled).active,
+    .title-bar-controls-win-98 button:not(:disabled):active {
+        box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+    }
 
 .icon-info-win-98 {
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAYNJREFUWEftllsSgyAMRXVlsjOzNFwZnUTDBEoCQdv+1Jn+VOSePAh3XRwPACRrOQCsju1oafcDKRpCWLZta2ocx7HEGPO7URgVgIUtUS1aCdMDaQKg+IxwDcQgFsQbAIrv+66WEjcNoSxDjIdaGqrzSjLNYIs/e+LnZm22ZLanDpG3GxG/A6BlggA8NZ8pAefs/DYU5cgAVt29Z9taj/0AAPg7G8MT/RMgnAWGIIDR6LUGRLBeE0p4mQUXAG/SApkByCUYzcAf4GMZ8M79Oz0gT0EeCJ6ToE3D0SbkE5Cz6Z2EdwDq6IuROJIFaw5wRFYm6uhxGtZ3W0qjuXSOxVr8ynwzpschNHHVJOBkRX+n+b/R4Fs158iLJlQ2JIsxAyKuXbr55FPbM9MVY2PKDSwYKXpF+RZXyxu6bLkF06qzFflICerUFa4PYeSJ0QCmbHmvybg0GkBPtPAGPbHO+3xkZQa+CXCaoZTI+3OPfBuAIGTn/wKArD2X6ycAfKvWk67XYy9SCgmpMkDvBgAAAABJRU5ErkJggg==");
