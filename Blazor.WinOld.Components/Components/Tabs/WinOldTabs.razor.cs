@@ -26,14 +26,23 @@ public partial class WinOldTabs : WinOldComponentBase
         {
             TabPanels.Add(tabPanel);
 
-            if (tabPanel.IsDefault && SelectedTabPanel == null)
+            if (tabPanel.IsDefault)
             {
+                foreach (var panel in TabPanels)
+                {
+                    if (panel != tabPanel)
+                    {
+                        panel.IsDefault = false;
+                    }
+                }
+
                 SelectedTabPanel = tabPanel;
             }
             else if (SelectedTabPanel == null)
             {
                 SelectedTabPanel = tabPanel;
             }
+
             StateHasChanged();
         }
     }
