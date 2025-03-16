@@ -6,7 +6,6 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
 {
     [Inject] private IDialogService? DialogService { get; set; } = default!;
 
-
     /// </summary>
     private DialogOptions Options { get; set; } = new DialogOptions();
     /// </summary>

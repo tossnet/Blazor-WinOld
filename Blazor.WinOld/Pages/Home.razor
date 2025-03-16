@@ -10,9 +10,9 @@
 <WinOldSelect Appearance="appearance"
 T="Appearance"
 @bind-Value="appearance">
-	<WinOldOption Value="Appearance.WinXP">Win XP</WinOldOption>
-	<WinOldOption Value="Appearance.Win98">Win 98</WinOldOption>
-	<WinOldOption Value="Appearance.Win7">Win 7</WinOldOption>
+	<WinOldOption Value="Appearance.WinXP">Win XP style</WinOldOption>
+	<WinOldOption Value="Appearance.Win98">Win 98 style</WinOldOption>
+	<WinOldOption Value="Appearance.Win7">Win 7 style</WinOldOption>
 </WinOldSelect>
 
 
@@ -93,9 +93,10 @@ Style="max-width: 500px">
 			</WinOldFrame>
 		</div>
 
-		<WinOldButton OnClick="ClickMe"
-					  Appearance="appearance">Show MessageBox</WinOldButton>
-
+		<div style="margin-top:6px;display: flex;justify-content: center;">
+			<WinOldButton OnClick="ClickMe"
+					      Appearance="appearance">Show MessageBox</WinOldButton>
+		</div>
 	</WinOldTabPanel>
 
 </WinOldTabs>

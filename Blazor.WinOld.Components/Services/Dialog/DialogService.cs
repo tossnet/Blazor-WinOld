@@ -1,6 +1,6 @@
-﻿namespace Blazor.WinOld;
+﻿using Blazor.WinOld.Components;
 
-using Blazor.WinOld.Components;
+namespace Blazor.WinOld;
 
 public class DialogService : IDialogService
 {
