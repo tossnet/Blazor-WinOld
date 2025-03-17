@@ -34,7 +34,7 @@ For client-side and server-side Blazor - add script section (head section)
 
 In Program.cs add this line to use messagebox
 ```csharp
-builder.Services.builder.Services.AddWinOldComponents();
+builder.Services.AddWinOldComponents();
 ```
 and in the bottom of your MainLayout.razor add this line to use taskbar
 ```html
@@ -45,6 +45,7 @@ and in the bottom of your MainLayout.razor add this line to use taskbar
 ## <a name="ReleaseNotes"></a>Release Notes
 
 <details open="open"><summary>Version 1.2.2</summary>
+
 >- Added .AddWinOldComponents() to simplify declaration
 </details>
 
