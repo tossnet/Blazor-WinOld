@@ -16,7 +16,7 @@
     <meta property="og:description" content="Blazor components in Windows 98, Windows XP and Windows 7 styles. For use with .NET 9.0 or higher Blazor applications" />
     <meta property="og:image" content="https://tossnet.github.io/Blazor-WinOld/thumbnail.jpg" />
 
-
+    <link href="css/loader.css" rel="stylesheet" />
     <link href="Blazor.WinOld.styles.css" rel="stylesheet" />
     <link href="_content/BlazorWinOld/css/blazorwinold.css" rel="stylesheet" />
 
@@ -27,11 +27,25 @@
 
 <body>
     <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text"></div>
+        <!--  <svg class="loading-progress">
+        <circle r="40%" cx="50%" cy="50%" />
+        <circle r="40%" cx="50%" cy="50%" />
+    </svg>
+    <div class="loading-progress-text"></div> -->
+        <div class="overlay">
+            <div class="window">
+                <div class="logo">
+                    <p class="top">Components</p>
+                    <p class="mid">Win<span>OLD</span></p>
+                    <p class="bottom">for Blazor</p>
+                </div>
+                <div class="container">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="blazor-error-ui">
