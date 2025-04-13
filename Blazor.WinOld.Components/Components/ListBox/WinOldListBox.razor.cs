@@ -19,7 +19,6 @@ public partial class WinOldListBox : WinOldComponentBase
 
     /// </summary>
     [Parameter]
-
     public EventCallback<string?> SelectedValueChanged { get; set; }
 
     /// </summary>

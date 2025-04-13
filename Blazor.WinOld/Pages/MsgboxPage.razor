@@ -1,7 +1,7 @@
 ﻿@page "/msgboxpage"
 
 @inject IDialogService DialogService
-
+@using Brism
 <PageTitle>Home</PageTitle>
 
 <h1>MsgboxPage</h1>
@@ -9,8 +9,38 @@
 <p>one day I'll have to make a page for each component...</p>
 
 <WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.WinXP">Show MessageBox bizearre</WinOldButton>
+			  Appearance="Appearance.WinXP">Show MessageBox</WinOldButton>
 
+
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+		   	 <WinOldButton OnClick=""ClickMe""
+			  Appearance=""Appearance.WinXP"">Show MessageBox</WinOldButton>
+		   	 ") />
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="true"  
+		   Code=@(@"
+   
+	Appearance appearance { get; set; } = Appearance.Win7;
+
+	async Task ClickMe()
+	{
+		var options = new DialogOptions
+		{
+			Appearance = Appearance.WinXP,
+			Title = ""Warning"",
+			Message = ""Blazor is awesome!"",
+			Icon = Icon.Information,
+			OkButtonText = ""OK"",
+			CancelButtonText = """"
+		};
+		var DialogResult = await DialogService.ShowMessageBox(options);
+	}
+")
+    />
 
 
 @code {
@@ -19,14 +49,14 @@
 	async Task ClickMe()
 	{
 		var options = new DialogOptions
-			{
-				Appearance = Appearance.WinXP,
-				Title = "Warning",
-				Message = "Blazor is awesome!",
-				Icon = Icon.Information,
-				OkButtonText = "OK",
-				CancelButtonText = ""
-			};
+		{
+			Appearance = Appearance.WinXP,
+			Title = "Warning",
+			Message = "Blazor is awesome!",
+			Icon = Icon.Information,
+			OkButtonText = "OK",
+			CancelButtonText = ""
+		};
 		var DialogResult = await DialogService.ShowMessageBox(options);
 	}
 }
