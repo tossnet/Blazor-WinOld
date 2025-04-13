@@ -6,7 +6,7 @@
 
 For Blazor Server or Blazor WebAssembly
 
-DEMO : https://tossnet.github.io/Blazor-WinOld/
+DEMO and DOCS : https://tossnet.github.io/Blazor-WinOld/
 
 ## Hello, world!
 Welcome to my new delirium
@@ -36,7 +36,7 @@ In Program.cs add this line to use messagebox
 ```csharp
 builder.Services.AddWinOldComponents();
 ```
-and in the bottom of your MainLayout.razor add this line to use taskbar
+and in the bottom of your MainLayout.razor add this line to use dialog
 ```html
 <WinOldMessageBoxHost />
 ```

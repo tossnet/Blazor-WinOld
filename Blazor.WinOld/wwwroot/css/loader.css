@@ -12,7 +12,7 @@
 
 .window {
     position: absolute;
-    top: 50%;
+    top: 44%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
@@ -20,7 +20,7 @@
 
 .container {
     width: 150px;
-    height: 10px;
+    height: 20px;
     border: 2px solid #b2b2b2;
     border-radius: 7px;
     margin: 0 auto;
@@ -35,13 +35,13 @@
     background: linear-gradient(to bottom, #2838c7 0%,#5979ef 17%,#869ef3 32%,#869ef3 45%,#5979ef 59%,#2838c7 100%);
     display: inline-block;
     margin-right: 2px;
-    animation: loader 0.5s infinite;
+    animation: loader 0.8s infinite;
     animation-timing-function: linear;
 }
 
 .logo {
     width: 220px;
-    margin: 50px auto;
+    margin: 20px auto;
 }
 
     .logo p {

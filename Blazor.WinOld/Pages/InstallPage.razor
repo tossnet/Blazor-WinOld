@@ -1,0 +1,31 @@
+﻿@page "/install"
+
+<PageTitle>Installation</PageTitle>
+
+<h1>Installation</h1>
+
+<CodeBlock Language="CodeLanguage.Bash"  
+		   Code=@(@"
+    dotnet add package BlazorWinOld
+		   	 ") />
+
+<p>For client-side (<b>index.html</b>) and server-side Blazor (<b>App.razor</b>) - add script section (head section)</p>
+
+<CodeBlock Language="CodeLanguage.Html" 
+           Code=@(@"
+     <link href=""_content/BlazorWinOld/css/blazorwinold.css"" rel=""stylesheet"" />
+            ") />
+
+<p>In <b>Program.cs</b> add this line to use messagebox</p>
+
+<CodeBlock Language="CodeLanguage.CSharp"  
+		   Code=@(@"
+    builder.Services.AddWinOldComponents();
+		   	 ") />
+
+<p>And in the bottom of your <b>MainLayout.razor</b> add this line to use dialog</p>
+
+<CodeBlock Language="CodeLanguage.Razor" 
+		   Code=@(@"
+    <WinOldMessageBoxHost />
+		   	 ") />

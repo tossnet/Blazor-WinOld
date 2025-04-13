@@ -2,7 +2,7 @@
 
 @inject IDialogService DialogService
 
-<PageTitle>Home</PageTitle>
+<PageTitle>MessageBox</PageTitle>
 
 <h1>MessageBox</h1>
 
@@ -15,19 +15,17 @@
 <CodeBlock Language="CodeLanguage.Razor"
 		   EnableLineNumbers="true"
 		   Code=@(@"
-<WinOldButton OnClick=""ClickMe""
-              Appearance=""Appearance.WinXP"">
-  Show MessageBox
-</WinOldButton>
+	<WinOldButton OnClick=""ClickMe""
+	              Appearance=""Appearance.WinXP"">
+	  Show MessageBox
+	</WinOldButton>
 		   	 ") />
 
 <CodeBlock Language="CodeLanguage.CSharp"
 		   EnableLineNumbers="true"  
 		   Code=@(@"
    
-	Appearance appearance { get; set; } = Appearance.Win7;
-
-	async Task ClickMe()
+	private async Task ClickMe()
 	{
 		var options = new DialogOptions
 		{

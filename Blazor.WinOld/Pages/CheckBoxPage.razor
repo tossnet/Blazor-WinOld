@@ -1,0 +1,75 @@
+﻿@page "/checkboxpage"
+
+<PageTitle>CheckBox</PageTitle>
+
+<h1>CheckBox</h1>
+
+
+<WinOldCheckBox Checked="true"
+				Appearance="Appearance.WinXP"
+				Label="check box" />
+
+<WinOldCheckBox Appearance="Appearance.WinXP"
+				Label="check box" />
+
+<WinOldCheckBox Appearance="Appearance.WinXP"
+				Label="check box"
+				Disabled />
+
+<br />
+
+<WinOldCheckBox Checked="checkbox1"
+				Appearance="Appearance.Win98"
+				Label="check box"
+				CheckedChanged="@CheckedChanged" />
+
+<WinOldCheckBox Appearance="Appearance.Win98"
+				Label="check box" />
+
+<WinOldCheckBox Appearance="Appearance.Win98"
+				Label="check box"
+				Disabled />
+
+
+<br />
+
+<WinOldCheckBox Checked="checkbox1"
+				Appearance="Appearance.Win7"
+				Label="check box" />
+
+<WinOldCheckBox Appearance="Appearance.Win7"
+				Label="check box" />
+
+<WinOldCheckBox Appearance="Appearance.Win7"
+				Label="check box"
+				Disabled />
+
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldCheckBox Checked=""checkbox1""
+                Appearance=""Appearance.Win98""
+                Label=""check box""
+                CheckedChanged=""@CheckedChanged"" />
+		   	 ") />
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+	private bool checkbox1 = true;
+
+	private void CheckedChanged(bool value)
+	{
+		Console.WriteLine($""Checkbox changed {value}"");
+	}
+		   	 ") />
+
+@code {
+	private bool checkbox1 = true;
+
+	private void CheckedChanged(bool value)
+	{
+		Console.WriteLine($"Checkbox changed {value}");
+	}
+}

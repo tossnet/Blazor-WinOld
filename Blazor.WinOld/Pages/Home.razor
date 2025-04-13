@@ -6,38 +6,40 @@
 
 <h1>Hello, world!</h1>
 
+<div class="desktop" style="background-color: @GetDesktopColor();">
+	<WinOldSelect Appearance="appearance"
+				  T="Appearance"
+				  @bind-Value="appearance">
+		<WinOldOption Value="Appearance.WinXP">Win XP style</WinOldOption>
+		<WinOldOption Value="Appearance.Win98">Win 98 style</WinOldOption>
+		<WinOldOption Value="Appearance.Win7">Win 7 style</WinOldOption>
+	</WinOldSelect>
 
-<WinOldSelect Appearance="appearance"
-T="Appearance"
-@bind-Value="appearance">
-	<WinOldOption Value="Appearance.WinXP">Win XP style</WinOldOption>
-	<WinOldOption Value="Appearance.Win98">Win 98 style</WinOldOption>
-	<WinOldOption Value="Appearance.Win7">Win 7 style</WinOldOption>
-</WinOldSelect>
+	<WinOldCheckBox Appearance="appearance"
+					Label="Disable this frame :"
+					CheckedChanged="@disabledXPFrame" />
+</div>
 
 
 
-<WinOldCheckBox Appearance="appearance"
-Label="Disable this frame :"
-CheckedChanged="@disabledXPFrame" />
 
 <WinOldFrame Appearance="appearance"
-Label="Frame"
-Disabled="disabledXP">
+			 Label="Frame"
+			 Disabled="disabledXP">
 	<WinOldTextBox Appearance="appearance"
-	Label="Textbox :"
-	@bind-Value="SelectRadioString" />
+				   Label="Textbox :"
+				   @bind-Value="SelectRadioString" />
 
 	<WinOldLabel Appearance="appearance">
 		Label : @SelectedRadio.ToString()
 	</WinOldLabel>
 
 	<WinOldButton OnClick="ClickMe"
-	Appearance="appearance">Click me</WinOldButton>
+				  Appearance="appearance">Click me</WinOldButton>
 
 	<WinOldOptionButtonGroup T="int"
-	@bind-Value="SelectedRadio"
-	Appearance="appearance">
+							 @bind-Value="SelectedRadio"
+							 Appearance="appearance">
 		<WinOldOptionButton Label="Adrien" Value="1" />
 		<WinOldOptionButton Label="Christophe" Value="2" />
 		<WinOldOptionButton Label="Denis" Value="3" />
@@ -46,7 +48,7 @@ Disabled="disabledXP">
 
 
 <WinOldTabs Appearance="appearance"
-Style="max-width: 500px">
+			Style="max-width: 500px">
 	<WinOldTabPanel Label="Tab A">
 		<p>Contents of first tab</p>
 	</WinOldTabPanel>
@@ -58,13 +60,13 @@ Style="max-width: 500px">
 	<WinOldTabPanel Label="MessageBox" IsDefault="true">
 		<div style="display:flex;gap: 10px;">
 			<WinOldFrame Appearance="appearance"
-			Label="Icon"
-			Disabled="disabledXP"
-			Style="flex: 1;">
+						 Label="Icon"
+						 Disabled="disabledXP"
+						 Style="flex: 1;">
 
 				<WinOldOptionButtonGroup T="Icon"
-				@bind-Value="iconMessage"
-				Appearance="appearance">
+										 @bind-Value="iconMessage"
+										 Appearance="appearance">
 					<WinOldOptionButton Label="None" Value="Icon.None" />
 					<WinOldOptionButton Label="Alert" Value="Icon.Alert" />
 					<WinOldOptionButton Label="Critical" Value="Icon.Critical" />
@@ -75,35 +77,35 @@ Style="max-width: 500px">
 			</WinOldFrame>
 
 			<WinOldFrame Appearance="appearance"
-			Label="Buttons"
-			Disabled="disabledXP"
-			Style="flex: 1;">
+						 Label="Buttons"
+						 Disabled="disabledXP"
+						 Style="flex: 1;">
 
 				<WinOldTextBox Appearance="appearance"
-					           Label="Message title :"
-	                           @bind-Value="MessageTitle" />
+							   Label="Message title :"
+							   @bind-Value="MessageTitle" />
 				<br />
 				<WinOldTextBox Appearance="appearance"
-				               Label="Name of OK Button :"
-				               @bind-Value="ButtonNameOK" />
+							   Label="Name of OK Button :"
+							   @bind-Value="ButtonNameOK" />
 				<br />
 				<WinOldTextBox Appearance="appearance"
 							   Label="Name of Cancel Button :"
-				               @bind-Value="ButtonNameCancel" />
+							   @bind-Value="ButtonNameCancel" />
 			</WinOldFrame>
 		</div>
 
 		<div style="margin-top:6px;display: flex;justify-content: center;">
 			<WinOldButton OnClick="ClickMe"
-					      Appearance="appearance">Show MessageBox</WinOldButton>
+						  Appearance="appearance">Show MessageBox</WinOldButton>
 		</div>
 	</WinOldTabPanel>
 
 </WinOldTabs>
 
 <WinOldListBox Appearance="appearance"
-@bind-SelectedValue="SelectedValue"
-Style="max-width: 200px;max-height:100px;overflow-y: scroll;">
+			   @bind-SelectedValue="SelectedValue"
+			   Style="max-width: 200px;max-height:100px;overflow-y: scroll;">
 	<WinOldListBoxItem Text="The dog" Value="doc" />
 	<WinOldListBoxItem Text="The cat" Value="cat" />
 	<WinOldListBoxItem Text="The Bird" Value="bird" />
@@ -120,94 +122,52 @@ Style="max-width: 200px;max-height:100px;overflow-y: scroll;">
 <h2 class="py-3">MessageBox</h2>
 
 <WinOldButton OnClick="ClickMe"
-Appearance="Appearance.WinXP">Click me</WinOldButton>
+			  Appearance="Appearance.WinXP">Click me</WinOldButton>
 
 <WinOldButton OnClick="ClickMe"
-Appearance="Appearance.WinXP"
-Disabled>Click me</WinOldButton>
+			  Appearance="Appearance.WinXP"
+			  Disabled>Click me</WinOldButton>
 
 <br />
 
 <WinOldButton OnClick="ClickMe"
-Appearance="Appearance.Win98"
->Click me</WinOldButton>
+			  Appearance="Appearance.Win98">Click me</WinOldButton>
 
 <WinOldButton OnClick="ClickMe" arial-role="button"
-Appearance="Appearance.Win98"
-Disabled>Click me</WinOldButton>
+			  Appearance="Appearance.Win98"
+			  Disabled>Click me</WinOldButton>
 
 <br />
 <WinOldButton OnClick="ClickMe"
-Appearance="Appearance.Win7">Click me</WinOldButton>
+			  Appearance="Appearance.Win7">Click me</WinOldButton>
 
 <WinOldButton OnClick="ClickMe"
-Appearance="Appearance.Win7"
-Disabled>Click me</WinOldButton>
+			  Appearance="Appearance.Win7"
+			  Disabled>Click me</WinOldButton>
 
 
-
-<h2 class="py-3">Checkbox</h2>
-
-<WinOldCheckBox Checked="true"
-Appearance="Appearance.WinXP"
-Label="check box" />
-
-<WinOldCheckBox Appearance="Appearance.WinXP"
-Label="check box" />
-
-<WinOldCheckBox Appearance="Appearance.WinXP"
-Label="check box"
-Disabled />
-
-<br />
-
-<WinOldCheckBox Checked="checkbox1"
-Appearance="Appearance.Win98"
-Label="check box"
-CheckedChanged="@CheckedChanged" />
-
-<WinOldCheckBox Appearance="Appearance.Win98"
-Label="check box" />
-
-<WinOldCheckBox Appearance="Appearance.Win98"
-Label="check box"
-Disabled />
-
-
-<br />
-
-<WinOldCheckBox Checked="checkbox1"
-Appearance="Appearance.Win7"
-Label="check box" />
-
-<WinOldCheckBox Appearance="Appearance.Win7"
-Label="check box" />
-
-<WinOldCheckBox Appearance="Appearance.Win7"
-Label="check box"
-Disabled />
 
 
 <h2 class="py-3">Textbox</h2>
 
 <WinOldTextBox Appearance="Appearance.WinXP"
-Label="Textbox :" />
+			   Label="Textbox :" />
 
 <br />
 <WinOldTextBox Appearance="Appearance.Win98"
-Label="Textbox :" />
+			   Label="Textbox :" />
 
 <br />
 <WinOldTextBox Appearance="Appearance.Win7"
-Label="Textbox :" />
+			   Label="Textbox :" />
 
 
 
 <h2 class="py-3">DropDown</h2>
 
 <WinOldSelect Appearance="Appearance.Win98"
-T="string"
-@bind-Value="SelectOptionString">
+			  T="string"
+			  @bind-Value="SelectOptionString">
 	<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
 	<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
 	<WinOldOption Value="@("Denis")">Denis</WinOldOption>
@@ -218,7 +178,7 @@ T="string"
 <br />
 
 <WinOldSelect Appearance="Appearance.Win7"
-T="string">
+			  T="string">
 	<WinOldOption Value="1">Adrien</WinOldOption>
 	<WinOldOption Value="2">Christophe</WinOldOption>
 	<WinOldOption Value="3">Denis</WinOldOption>
@@ -227,17 +187,17 @@ T="string">
 <h2 class="py-3">Frame</h2>
 
 <WinOldCheckBox Appearance="Appearance.Win98"
-Label="Disable win 98 Frame"
-CheckedChanged="@disabled98Frame" />
+				Label="Disable win 98 Frame"
+				CheckedChanged="@disabled98Frame" />
 
 <WinOldFrame Appearance="Appearance.Win98"
-Label="Frame 98"
-Border="Border.Default"
-Disabled="disabled98">
+			 Label="Frame 98"
+			 Border="Border.Default"
+			 Disabled="disabled98">
 	<p>@SelectRadioString</p>
 	<WinOldOptionButtonGroup Appearance="Appearance.Win98"
-	@bind-Value="SelectRadioString"
-	T="string">
+							 @bind-Value="SelectRadioString"
+							 T="string">
 		<WinOldOptionButton Label="Adrien" Value="@("Adrien")" />
 		<WinOldOptionButton Label="Christophe" Value="@("Christophe")" />
 		<WinOldOptionButton Label="Denis" Value="@("Denis")" />
@@ -248,14 +208,14 @@ Disabled="disabled98">
 
 
 <WinOldCheckBox Appearance="Appearance.Win7"
-Label="Disable win 7 Frame"
-CheckedChanged="@disabled7Frame" />
+				Label="Disable win 7 Frame"
+				CheckedChanged="@disabled7Frame" />
 
 <WinOldFrame Appearance="Appearance.Win7"
-Label="Frame 7"
-Disabled="disabled7">
-	<WinOldOptionButtonGroup Appearance="Appearance.Win7"		  
-	T="string">
+			 Label="Frame 7"
+			 Disabled="disabled7">
+	<WinOldOptionButtonGroup Appearance="Appearance.Win7"
+							 T="string">
 		<WinOldOptionButton Label="Adrien" Value="@("Adrien")" />
 		<WinOldOptionButton Label="Christophe" Value="@("Christophe")" />
 		<WinOldOptionButton Label="Denis" Value="@("Denis")" />
@@ -268,7 +228,6 @@ Disabled="disabled7">
 	bool disabledXP;
 	bool disabled98;
 	bool disabled7;
-	bool checkbox1 = true;
 
 	int SelectedRadio { get; set; } = 2;
 	string SelectRadioString { get; set; } = "Christophe";
@@ -286,21 +245,18 @@ Disabled="disabled7">
 		Console.WriteLine("Clicked!");
 
 		var options = new DialogOptions
-			{
-				Appearance = appearance,
-				Title = MessageTitle,
-				Message = "Blazor is awesome!",
-				Icon = iconMessage,
-				OkButtonText = ButtonNameOK,
-				CancelButtonText = ButtonNameCancel
-			};
+		{
+			Appearance = appearance,
+			Title = MessageTitle,
+			Message = "Blazor is awesome!",
+			Icon = iconMessage,
+			OkButtonText = ButtonNameOK,
+			CancelButtonText = ButtonNameCancel
+		};
 		var DialogResult = await DialogService.ShowMessageBox(options);
 	}
 
-	void CheckedChanged(bool value)
-	{
-		Console.WriteLine($"Checkbox changed {value}");
-	}
+
 
 	void disabledXPFrame(bool value) => disabledXP = !disabledXP;
 
@@ -309,4 +265,12 @@ Disabled="disabled7">
 	void disabled7Frame(bool value) => disabled7 = !disabled7;
 
 	string? SelectedValue = "dog";
+
+
+	private string GetDesktopColor()
+	{
+		SystemColors.Appearance = appearance;
+		var color = SystemColors.Desktop;
+		return $"rgb({color.R}, {color.G}, {color.B})";
+	}
 }

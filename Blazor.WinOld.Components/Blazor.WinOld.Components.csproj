@@ -5,15 +5,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageId>BlazorWinOld</PackageId>
-	  <Description>Blazor components in Windows 98, Windows XP and Windows 7 styles. For use with .NET 8.0 or higher Blazor applications</Description>
-	  <Copyright>Copyright 2024</Copyright>
+	  <Description>Blazor components in Windows 98, Windows XP and Windows 7 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
+	  <Copyright>Copyright 2025</Copyright>
 	  <PackageProjectUrl>https://github.com/tossnet/Blazor-WinOld</PackageProjectUrl>
 	  <PackageIcon>icon.png</PackageIcon>
 	  <RepositoryUrl>https://github.com/tossnet/Blazor-WinOld</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>blazor, components, win98, winXP, win7</PackageTags>
 	  <PackageReleaseNotes>https://github.com/tossnet/Blazor-WinOld#release-notes</PackageReleaseNotes>
-	  <Version>1.2.2</Version>
+	  <Version>1.2.3</Version>
 	  <Authors>Christophe Peugnet</Authors>
 	  <DebugType>embedded</DebugType>
   </PropertyGroup>
