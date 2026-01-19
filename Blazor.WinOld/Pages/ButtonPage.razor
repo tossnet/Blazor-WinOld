@@ -1,0 +1,41 @@
+﻿@page "/button-page"
+
+<PageTitle>Button</PageTitle>
+
+<h1>Button</h1>
+
+
+<WinOldButton Appearance="Appearance.WinXP">Click me</WinOldButton>
+
+<WinOldButton Appearance="Appearance.WinXP"
+			  Disabled>Click me</WinOldButton>
+
+<br />
+
+<WinOldButton Appearance="Appearance.Win98">Click me</WinOldButton>
+
+<WinOldButton Appearance="Appearance.Win98"
+			  Disabled>Click me</WinOldButton>
+
+<br />
+<WinOldButton Appearance="Appearance.Win7">Click me</WinOldButton>
+
+<WinOldButton Appearance="Appearance.Win7"
+			  Disabled>Click me</WinOldButton>
+
+
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldButton Appearance=""Appearance.WinXP"">Click me</WinOldButton> />
+
+<WinOldButton Appearance=""Appearance.Win98""
+		  	  Disabled>Click me</WinOldButton>
+		   	 	 ") />
+
+<h2>Event</h2>
+<p>OnClick</p>
+
+<h2>Behavior</h2>
+<p>Disabled</p>
