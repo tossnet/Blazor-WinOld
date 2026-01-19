@@ -25,7 +25,7 @@
 
 <WinOldFrame Appearance="appearance"
 			 Label="Frame"
-			 Disabled="disabledXP">
+			 Disabled="_disabledXP">
 	<WinOldTextBox Appearance="appearance"
 				   Label="Textbox :"
 				   @bind-Value="SelectRadioString" />
@@ -61,7 +61,7 @@
 		<div style="display:flex;gap: 10px;">
 			<WinOldFrame Appearance="appearance"
 						 Label="Icon"
-						 Disabled="disabledXP"
+						 Disabled="_disabledXP"
 						 Style="flex: 1;">
 
 				<WinOldOptionButtonGroup T="Icon"
@@ -78,7 +78,7 @@
 
 			<WinOldFrame Appearance="appearance"
 						 Label="Buttons"
-						 Disabled="disabledXP"
+						 Disabled="_disabledXP"
 						 Style="flex: 1;">
 
 				<WinOldTextBox Appearance="appearance"
@@ -104,7 +104,7 @@
 </WinOldTabs>
 
 <WinOldListBox Appearance="appearance"
-			   @bind-SelectedValue="SelectedValue"
+			   @bind-SelectedValue="_selectedValue"
 			   Style="max-width: 200px;max-height:100px;overflow-y: scroll;">
 	<WinOldListBoxItem Text="The Dog" Value="dog" />
 	<WinOldListBoxItem Text="The Cat" Value="cat" />
@@ -116,7 +116,7 @@
 </WinOldListBox>
 
 <WinOldLabel Appearance="appearance">
-	Selected Value: @SelectedValue
+	Selected Value: @_selectedValue
 </WinOldLabel>
 
 <h2 class="py-3">MessageBox</h2>
@@ -188,12 +188,12 @@
 
 <WinOldCheckBox Appearance="Appearance.Win98"
 				Label="Disable win 98 Frame"
-				CheckedChanged="@disabled98Frame" />
+				@bind-Value="_disabled98" />
 
 <WinOldFrame Appearance="Appearance.Win98"
 			 Label="Frame 98"
 			 Border="Border.Default"
-			 Disabled="disabled98">
+			 Disabled="_disabled98">
 	<p>@SelectRadioString</p>
 	<WinOldOptionButtonGroup Appearance="Appearance.Win98"
 							 @bind-Value="SelectRadioString"
@@ -213,7 +213,7 @@
 
 <WinOldFrame Appearance="Appearance.Win7"
 			 Label="Frame 7"
-			 Disabled="disabled7">
+			 Disabled="_disabled7">
 	<WinOldOptionButtonGroup Appearance="Appearance.Win7"
 							 T="string">
 		<WinOldOptionButton Label="Adrien" Value="@("Adrien")" />
@@ -225,21 +225,24 @@
 
 
 @code {
-	bool disabledXP;
-	bool disabled98;
-	bool disabled7;
+	private bool _disabledXP;
+	private bool _disabled98;
+	private bool _disabled7;
 
-	int SelectedRadio { get; set; } = 2;
-	string SelectRadioString { get; set; } = "Christophe";
-	int SelectedOption { get; set; } = 2;
-	string SelectOptionString { get; set; } = "Denis";
+	private string? _selectedValue = "dog";
 
-	Appearance appearance { get; set; } = Appearance.Win7;
-	Icon iconMessage { get; set; } = Icon.Information;
+	private int SelectedRadio { get; set; } = 2;
+	private string SelectRadioString { get; set; } = "Christophe";
+	private int SelectedOption { get; set; } = 2;
+	private string SelectOptionString { get; set; } = "Denis";
 
-	string MessageTitle { get; set; } = "Title";
-	string ButtonNameOK { get; set; } = "OK";
-	string ButtonNameCancel { get; set; } = "";
+	private Appearance appearance { get; set; } = Appearance.Win7;
+	private Icon iconMessage { get; set; } = Icon.Information;
+	 
+	private string MessageTitle { get; set; } = "Title";
+	private string ButtonNameOK { get; set; } = "OK";
+	private string ButtonNameCancel { get; set; } = "";
+
 	async Task ClickMe()
 	{
 		Console.WriteLine("Clicked!");
@@ -256,15 +259,9 @@
 		var DialogResult = await DialogService.ShowMessageBox(options);
 	}
 
+	private void disabledXPFrame(bool value) => _disabledXP = !_disabledXP;
 
-
-	void disabledXPFrame(bool value) => disabledXP = !disabledXP;
-
-	void disabled98Frame(bool value) => disabled98 = !disabled98;
-
-	void disabled7Frame(bool value) => disabled7 = !disabled7;
-
-	string? SelectedValue = "dog";
+	private void disabled7Frame(bool value) => _disabled7 = !_disabled7;
 
 
 	private string GetDesktopColor()

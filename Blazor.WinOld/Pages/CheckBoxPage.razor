@@ -48,10 +48,15 @@
 <CodeBlock Language="CodeLanguage.Razor"
 		   EnableLineNumbers="true"
 		   Code=@(@"
+<WinOldCheckBox Appearance=""Appearance.Win98""
+		        Label=""check box""
+		   	    @bind-Value=""checkbox1"" />
+
 <WinOldCheckBox Checked=""checkbox1""
                 Appearance=""Appearance.Win98""
                 Label=""check box""
                 CheckedChanged=""@CheckedChanged"" />
+
 		   	 ") />
 
 <CodeBlock Language="CodeLanguage.CSharp"

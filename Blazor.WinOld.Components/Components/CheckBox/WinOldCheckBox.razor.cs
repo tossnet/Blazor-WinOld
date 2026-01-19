@@ -21,6 +21,22 @@ public partial class WinOldCheckBox : WinOldComponentBase
     [Parameter]
     public EventCallback<bool> CheckedChanged { get; set; }
 
+    /// <summary>
+    /// Gets or sets the value of the checkbox (alias for Checked, supports @bind-Value).
+    /// </summary>
+    [Parameter]
+    public bool Value
+    {
+        get => Checked;
+        set => Checked = value;
+    }
+
+    /// <summary>
+    /// Callback for two-way binding with @bind-Value.
+    /// </summary>
+    [Parameter]
+    public EventCallback<bool> ValueChanged { get; set; }
+
     /// </summary>
     private Guid ElementId { get; set; } = Guid.NewGuid();
 
@@ -38,6 +54,11 @@ public partial class WinOldCheckBox : WinOldComponentBase
         if (CheckedChanged.HasDelegate)
         {
             await CheckedChanged.InvokeAsync(Checked);
+        }
+
+        if (ValueChanged.HasDelegate)
+        {
+            await ValueChanged.InvokeAsync(Checked);
         }
     }
 

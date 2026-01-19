@@ -8,7 +8,7 @@
 
     <!-- Package metadata -->
     <PackageId>BlazorWinOld</PackageId>
-    <Version>1.2.4</Version>
+    <Version>1.2.5</Version>
     <Authors>Christophe Peugnet</Authors>
     <Copyright>Copyright 2025-2026</Copyright>
     <Description>Blazor components in Windows 98, Windows XP and Windows 7 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
