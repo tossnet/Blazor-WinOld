@@ -7,25 +7,25 @@
 <h1>Hello, world!</h1>
 
 <div class="desktop" style="background-color: @GetDesktopColor();">
+	<WinOldCheckBox Appearance="appearance"
+					Label="Disable this frame :"
+					CheckedChanged="@disabledComponents" />
+
 	<WinOldSelect Appearance="appearance"
+				  @bind-Value="appearance"
 				  T="Appearance"
-				  @bind-Value="appearance">
+				  Disabled="_disabledComponents">
 		<WinOldOption Value="Appearance.WinXP">Win XP style</WinOldOption>
 		<WinOldOption Value="Appearance.Win98">Win 98 style</WinOldOption>
 		<WinOldOption Value="Appearance.Win7">Win 7 style</WinOldOption>
 	</WinOldSelect>
 
-	<WinOldCheckBox Appearance="appearance"
-					Label="Disable this frame :"
-					CheckedChanged="@disabledXPFrame" />
 </div>
-
-
 
 
 <WinOldFrame Appearance="appearance"
 			 Label="Frame"
-			 Disabled="_disabledXP">
+			 Disabled="_disabledComponents">
 	<WinOldTextBox Appearance="appearance"
 				   Label="Textbox :"
 				   @bind-Value="SelectRadioString" />
@@ -61,7 +61,7 @@
 		<div style="display:flex;gap: 10px;">
 			<WinOldFrame Appearance="appearance"
 						 Label="Icon"
-						 Disabled="_disabledXP"
+						 Disabled="_disabledComponents"
 						 Style="flex: 1;">
 
 				<WinOldOptionButtonGroup T="Icon"
@@ -78,7 +78,7 @@
 
 			<WinOldFrame Appearance="appearance"
 						 Label="Buttons"
-						 Disabled="_disabledXP"
+						 Disabled="_disabledComponents"
 						 Style="flex: 1;">
 
 				<WinOldTextBox Appearance="appearance"
@@ -119,32 +119,6 @@
 	Selected Value: @_selectedValue
 </WinOldLabel>
 
-<h2 class="py-3">MessageBox</h2>
-
-<WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.WinXP">Click me</WinOldButton>
-
-<WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.WinXP"
-			  Disabled>Click me</WinOldButton>
-
-<br />
-
-<WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.Win98">Click me</WinOldButton>
-
-<WinOldButton OnClick="ClickMe" arial-role="button"
-			  Appearance="Appearance.Win98"
-			  Disabled>Click me</WinOldButton>
-
-<br />
-<WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.Win7">Click me</WinOldButton>
-
-<WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.Win7"
-			  Disabled>Click me</WinOldButton>
-
 
 
 
@@ -161,19 +135,6 @@
 <WinOldTextBox Appearance="Appearance.Win7"
 			   Label="Textbox :" />
 
-
-
-<h2 class="py-3">DropDown</h2>
-
-<WinOldSelect Appearance="Appearance.Win98"
-			  T="string"
-			  @bind-Value="SelectOptionString">
-	<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
-	<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
-	<WinOldOption Value="@("Denis")">Denis</WinOldOption>
-</WinOldSelect>
-
-@SelectOptionString
 
 <br />
 
@@ -225,7 +186,7 @@
 
 
 @code {
-	private bool _disabledXP;
+	private bool _disabledComponents;
 	private bool _disabled98;
 	private bool _disabled7;
 
@@ -234,9 +195,8 @@
 	private int SelectedRadio { get; set; } = 2;
 	private string SelectRadioString { get; set; } = "Christophe";
 	private int SelectedOption { get; set; } = 2;
-	private string SelectOptionString { get; set; } = "Denis";
 
-	private Appearance appearance { get; set; } = Appearance.Win7;
+	private Appearance appearance { get; set; } = Appearance.WinXP;
 	private Icon iconMessage { get; set; } = Icon.Information;
 	 
 	private string MessageTitle { get; set; } = "Title";
@@ -259,10 +219,9 @@
 		var DialogResult = await DialogService.ShowMessageBox(options);
 	}
 
-	private void disabledXPFrame(bool value) => _disabledXP = !_disabledXP;
+	private void disabledComponents(bool value) => _disabledComponents = !_disabledComponents;
 
 	private void disabled7Frame(bool value) => _disabled7 = !_disabled7;
-
 
 	private string GetDesktopColor()
 	{

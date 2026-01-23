@@ -9,6 +9,7 @@
     -webkit-user-select: none;
     user-select: none;
     margin: 2px 0 2px 0;
+    width: fit-content;
 }
 
 .btn-win.focused, .btn-win:focus {
@@ -29,7 +30,6 @@
     box-shadow: none;
     border-radius: var(--border-radius);
     padding: 2px 6px 0 8px;
-    width: fit-content;
     text-align: center;
 }
 

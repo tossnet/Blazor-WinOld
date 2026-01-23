@@ -7,8 +7,16 @@
 <h1>MessageBox</h1>
 
 
-<WinOldButton OnClick="ClickMe"
-			  Appearance="Appearance.WinXP">Show MessageBox</WinOldButton>
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldButton OnClick="() => ClickMe(Appearance.Win98)"
+				  Appearance="Appearance.Win98">Show MessageBox 98</WinOldButton>
+
+	<WinOldButton OnClick="() => ClickMe(Appearance.WinXP)"
+				  Appearance="Appearance.WinXP">Show MessageBox XP</WinOldButton>
+
+	<WinOldButton OnClick="() => ClickMe(Appearance.Win7)"
+				  Appearance="Appearance.Win7">Show MessageBox 7</WinOldButton>
+</div>
 
 
 
@@ -45,11 +53,11 @@
 @code {
 	Appearance appearance { get; set; } = Appearance.Win7;
 
-	async Task ClickMe()
+	async Task ClickMe(Appearance appearance)
 	{
 		var options = new DialogOptions
 		{
-			Appearance = Appearance.WinXP,
+			Appearance = appearance,
 			Title = "Warning",
 			Message = "Blazor is awesome!",
 			Icon = Icon.Information,

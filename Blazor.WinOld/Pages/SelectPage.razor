@@ -1,0 +1,82 @@
+﻿@page "/select-page"
+
+<PageTitle>Button</PageTitle>
+
+<h1>Select</h1>
+
+
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldSelect Appearance="Appearance.WinXP"
+				  T="string"
+				  @bind-Value="SelectOptionString">
+		<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+		<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+		<WinOldOption Value="@("Denis")">Denis</WinOldOption>
+	</WinOldSelect>
+
+	<WinOldSelect Appearance="Appearance.Win98"
+				  T="string"
+				  @bind-Value="SelectOptionString">
+		<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+		<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+		<WinOldOption Value="@("Denis")">Denis</WinOldOption>
+	</WinOldSelect>
+
+	<WinOldSelect Appearance="Appearance.Win7"
+				  T="string"
+				  @bind-Value="SelectOptionString">
+		<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+		<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+		<WinOldOption Value="@("Denis")">Denis</WinOldOption>
+	</WinOldSelect>
+</div>
+
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldSelect Appearance="Appearance.WinXP"
+				  T="string"
+				  @bind-Value="SelectOptionString" Disabled>
+		<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+		<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+		<WinOldOption Value="@("Denis")">Denis</WinOldOption>
+	</WinOldSelect>
+
+	<WinOldSelect Appearance="Appearance.Win98"
+				  T="string"
+				  @bind-Value="SelectOptionString" Disabled>
+		<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+		<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+		<WinOldOption Value="@("Denis")">Denis</WinOldOption>
+	</WinOldSelect>
+
+	<WinOldSelect Appearance="Appearance.Win7"
+				  T="string"
+				  @bind-Value="SelectOptionString" Disabled>
+		<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+		<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+		<WinOldOption Value="@("Denis")">Denis</WinOldOption>
+	</WinOldSelect>
+</div>
+
+@SelectOptionString
+
+
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldSelect Appearance=""Appearance.WinXP""
+				  T=""string""
+				  @bind-Value=""SelectOptionString"">
+		<WinOldOption Value=""@(""Adrien"")"">Adrien</WinOldOption>
+		<WinOldOption Value=""@(""Christophe"")"">Christophe</WinOldOption>
+		<WinOldOption Value=""@(""Denis"")"">Denis</WinOldOption>
+</WinOldSelect>
+		   	 	 	 ") />
+
+
+<h2>Behavior</h2>
+<p>Disabled</p>
+
+@code{
+	string? SelectOptionString { get; set; } = "Adrien";
+}
