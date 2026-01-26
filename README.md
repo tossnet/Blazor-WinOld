@@ -44,7 +44,13 @@ and in the bottom of your MainLayout.razor add this line to use dialog
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 1.2.6</summary>
+<details open="open"><summary>Version 1.2.7</summary>
+
+>- Improved checkbox component rendering
+>- Fixed button and selectbox label colors on Safari
+</details>
+
+<details><summary>Version 1.2.6</summary>
 
 >- Added `disabled` attribute support on `WinOldSelect` component
 >- Added Select page in the demo site

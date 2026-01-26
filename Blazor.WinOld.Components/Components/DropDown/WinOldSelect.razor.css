@@ -13,6 +13,7 @@
 .select-win-xp {
     background-color: #fff;
     box-sizing: border-box;
+    color: #000;
     height: 23px;
     padding: 3px 32px 3px 4px;
     background-position: top 2px right 2px;
@@ -58,6 +59,7 @@
 .select-win-98 {
     border: none;
     background-color: #fff;
+    color: #000;
     box-sizing: border-box;
     height: 21px;
     padding: 3px 32px 3px 4px;
