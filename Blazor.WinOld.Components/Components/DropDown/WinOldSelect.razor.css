@@ -113,6 +113,7 @@
     box-sizing: border-box;
     color: #222;
     font: var(--font);
+    font-size: 9pt;
     padding: 2px 30px 2px 3px;
 }
 

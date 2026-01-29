@@ -84,6 +84,7 @@
 .btn-win-7,
 .btn-win-7[role="button"] {
     font: var(--font);
+    font-size: 9pt;
     box-sizing: border-box;
     border: var(--btn-win7-border);
     border-color: var(--btn-win7-border-color);
@@ -97,6 +98,7 @@
     background: var(--btn-win7-gradient);
     position: relative;
     z-index: 0;
+    line-height: 1;
 }
 
     .btn-win-7::before {

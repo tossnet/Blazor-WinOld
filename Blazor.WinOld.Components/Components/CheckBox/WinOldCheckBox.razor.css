@@ -171,6 +171,7 @@
         align-items: center;
         display: inline-flex;
         font: var(--font);
+        font-size: 9pt;
         margin-left: var(--chk-win7-total-width);
         position: relative;
     }

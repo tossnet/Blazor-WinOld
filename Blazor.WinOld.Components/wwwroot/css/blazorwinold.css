@@ -16,7 +16,7 @@
 
 :root {
     --font-family: "Pixelated MS Sans Serif", sans-serif;
-    --font: 9pt "Segoe UI","SegoeUI","Noto Sans",sans-serif;
+    --font: "Segoe UI","SegoeUI","Noto Sans",sans-serif;
     --win98-background: silver;
     --surface: #f0f0f0;
     --btn-win7-highlight: #fff;

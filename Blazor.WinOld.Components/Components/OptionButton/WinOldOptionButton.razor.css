@@ -140,13 +140,14 @@
 /*-------------------------------------------*\
     Win 7
 \*-------------------------------------------*/
-    .opt-win-7 + label {
-        align-items: center;
-        display: inline-flex;
-        font: var(--font);
-        margin-left: 20px;
-        position: relative;
-    }
+.opt-win-7 + label {
+    align-items: center;
+    display: inline-flex;
+    font: var(--font);
+    font-size: 9pt;
+    margin-left: 20px;
+    position: relative;
+}
 
         .opt-win-7 + label:before {
             background: #f6f6f6;

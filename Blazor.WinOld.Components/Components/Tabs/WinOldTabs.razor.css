@@ -118,6 +118,7 @@
     position: relative;
     text-align: center;
     font: var(--font);
+    font-size: 9pt;
     min-height: 23px;
     box-shadow: var(--btn-win7-shadow);
     box-sizing: border-box;

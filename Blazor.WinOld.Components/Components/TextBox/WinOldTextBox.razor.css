@@ -72,6 +72,7 @@ label.label-txt-win {
     border-radius: 2px;
     border-top: 1px solid var(--btn-win7-border-color);
     font: var(--font);
+    font-size: 11px;
     padding: 3px 4px 5px;
 }
 
@@ -84,4 +85,5 @@ label.label-txt-win {
 .lbtxt-win-7 {
     font-family: unset !important;
     font: var(--font);
+    font-size: 9pt;
 }
