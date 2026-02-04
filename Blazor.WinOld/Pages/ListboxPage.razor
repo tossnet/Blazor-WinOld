@@ -4,6 +4,82 @@
 
 <h1>ListBox</h1>
 
-@code {
 
+
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldListBox Appearance="Appearance.Win98"
+				   @bind-SelectedValue="_selectedValue"
+				   Style="max-width: 200px;max-height:100px;overflow-y: scroll;" >
+		@foreach (var item in _items)
+		{
+			<WinOldListBoxItem Text="@item.Text" Value="@item.Value" />
+		}
+	</WinOldListBox>
+
+	<WinOldListBox Appearance="Appearance.WinXP"
+				   @bind-SelectedValue="_selectedValue"
+				   Style="max-width: 200px;max-height:100px;overflow-y: scroll;">
+		@foreach (var item in _items)
+		{
+			<WinOldListBoxItem Text="@item.Text" Value="@item.Value" />
+		}
+	</WinOldListBox>
+
+	<WinOldListBox Appearance="Appearance.Win7"
+				   @bind-SelectedValue="_selectedValue"
+				   Style="max-width: 200px;max-height:100px;overflow-y: scroll;" >
+		@foreach (var item in _items)
+		{
+			<WinOldListBoxItem Text="@item.Text" Value="@item.Value" />
+		}
+	</WinOldListBox>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldListBox Appearance=""Appearance.WinXP""
+				   @bind-SelectedValue=""_selectedValue""
+				   Style=""max-width: 200px; max-height:100px; overflow-y: scroll;"" >
+		@foreach (var item in _items)
+		{
+			<WinOldListBoxItem Text=""@item.Text"" Value=""@item.Value"" />
+		}
+	</WinOldListBox>
+		   	 	 	 	 ") />
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+private string? _selectedValue = ""dog"";
+
+private List<ListBoxItemData> _items = new()
+{
+	new(""The Dog"", ""dog""),
+	new(""The Cat"", ""cat""),
+	new(""The Bird"", ""bird""),
+	new(""The Pig"", ""pig""),
+	new(""The Rabbit"", ""rabbit""),
+	new(""The Beautiful Lion"", ""lion""),
+	new(""The Whale"", ""whale"")
+};
+
+private record ListBoxItemData(string Text, string Value);
+		   	 ") />
+
+@code {
+	private string? _selectedValue = "dog";
+
+	private List<ListBoxItemData> _items = new()
+	{
+		new("The Dog", "dog"),
+		new("The Cat", "cat"),
+		new("The Bird", "bird"),
+		new("The Pig", "pig"),
+		new("The Rabbit", "rabbit"),
+		new("The Beautiful Lion", "lion"),
+		new("The Whale", "whale")
+	};
+
+	private record ListBoxItemData(string Text, string Value);
 }

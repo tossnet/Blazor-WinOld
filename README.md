@@ -44,7 +44,13 @@ and in the bottom of your MainLayout.razor add this line to use dialog
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 1.2.8</summary>
+<details open="open"><summary>Version 1.2.9</summary>
+
+>- Fix height of Tabs
+ - Fix disabled style of WinOldButton
+</details>
+
+<details9><summary>Version 1.2.8</summary>
 
 >- win7 : separation of font size from font family
 </details>
