@@ -23,6 +23,10 @@
         background: #dfdfdf;
     }
 
+    .list-win-xp::-webkit-scrollbar-track {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 17 1' shape-rendering='crispEdges'%3E%3Cpath stroke='%23eeede5' d='M0 0h1m15 0h1'/%3E%3Cpath stroke='%23f3f1ec' d='M1 0h1'/%3E%3Cpath stroke='%23f4f1ec' d='M2 0h1'/%3E%3Cpath stroke='%23f4f3ee' d='M3 0h1'/%3E%3Cpath stroke='%23f5f4ef' d='M4 0h1'/%3E%3Cpath stroke='%23f6f5f0' d='M5 0h1'/%3E%3Cpath stroke='%23f7f7f3' d='M6 0h1'/%3E%3Cpath stroke='%23f9f8f4' d='M7 0h1'/%3E%3Cpath stroke='%23f9f9f7' d='M8 0h1'/%3E%3Cpath stroke='%23fbfbf8' d='M9 0h1'/%3E%3Cpath stroke='%23fbfbf9' d='M10 0h2'/%3E%3Cpath stroke='%23fdfdfa' d='M12 0h1'/%3E%3Cpath stroke='%23fefefb' d='M13 0h3'/%3E%3C/svg%3E");
+    }
+
     .list-win-xp::-webkit-scrollbar-track:vertical {
         background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 17 1' shape-rendering='crispEdges'%3E%3Cpath stroke='%23eeede5' d='M0 0h1m15 0h1'/%3E%3Cpath stroke='%23f3f1ec' d='M1 0h1'/%3E%3Cpath stroke='%23f4f1ec' d='M2 0h1'/%3E%3Cpath stroke='%23f4f3ee' d='M3 0h1'/%3E%3Cpath stroke='%23f5f4ef' d='M4 0h1'/%3E%3Cpath stroke='%23f6f5f0' d='M5 0h1'/%3E%3Cpath stroke='%23f7f7f3' d='M6 0h1'/%3E%3Cpath stroke='%23f9f8f4' d='M7 0h1'/%3E%3Cpath stroke='%23f9f9f7' d='M8 0h1'/%3E%3Cpath stroke='%23fbfbf8' d='M9 0h1'/%3E%3Cpath stroke='%23fbfbf9' d='M10 0h2'/%3E%3Cpath stroke='%23fdfdfa' d='M12 0h1'/%3E%3Cpath stroke='%23fefefb' d='M13 0h3'/%3E%3C/svg%3E");
     }
@@ -149,6 +153,10 @@
 
 .list-win-7::-webkit-scrollbar-corner {
     background: var(--btn-win7-face);
+}
+
+.list-win-7::-webkit-scrollbar-track {
+    background: var(--scrollbar-y);
 }
 
 .list-win-7::-webkit-scrollbar-track:vertical {
