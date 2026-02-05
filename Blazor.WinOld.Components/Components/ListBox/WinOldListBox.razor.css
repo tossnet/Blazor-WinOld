@@ -4,14 +4,31 @@
     display: block;
     background: #fff;
     overflow: auto;
-    /* Force scrollbar visibility on mobile */
-    -webkit-overflow-scrolling: touch;
+    scrollbar-width: auto; /* For Firefox */
+    scrollbar-color: auto; /* For Firefox */
 }
 
-    /* Force webkit scrollbars to be visible on mobile */
+/* Desktop: Use custom webkit scrollbars */
+@media (hover: hover) and (pointer: fine) {
     .list-win::-webkit-scrollbar {
         -webkit-appearance: none;
     }
+}
+
+/* Mobile: Ensure scrolling works but accept native scrollbars */
+@media (hover: none) and (pointer: coarse) {
+    .list-win {
+        -webkit-overflow-scrolling: touch;
+        /* Let the OS handle scrollbars on mobile */
+        overflow: auto;
+    }
+
+    /* On mobile, the track won't be visible but we need fallback colors */
+    .list-win-xp,
+    .list-win-7 {
+        scrollbar-color: #c8d6fb #f0f0f0; /* thumb track for Firefox mobile */
+    }
+}
 
 /*-------------------------------------------*\
     Win XP
@@ -25,25 +42,16 @@
 
     .list-win-xp::-webkit-scrollbar {
         width: 17px;
+        height: 17px; /* Also set height for horizontal */
     }
 
     .list-win-xp::-webkit-scrollbar-corner {
         background: #dfdfdf;
     }
 
+    /* Main track rule without :vertical/:horizontal for mobile compatibility */
     .list-win-xp::-webkit-scrollbar-track {
-        background: #f0f0f0;
-        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 17 1' shape-rendering='crispEdges'%3E%3Cpath stroke='%23eeede5' d='M0 0h1m15 0h1'/%3E%3Cpath stroke='%23f3f1ec' d='M1 0h1'/%3E%3Cpath stroke='%23f4f1ec' d='M2 0h1'/%3E%3Cpath stroke='%23f4f3ee' d='M3 0h1'/%3E%3Cpath stroke='%23f5f4ef' d='M4 0h1'/%3E%3Cpath stroke='%23f6f5f0' d='M5 0h1'/%3E%3Cpath stroke='%23f7f7f3' d='M6 0h1'/%3E%3Cpath stroke='%23f9f8f4' d='M7 0h1'/%3E%3Cpath stroke='%23f9f9f7' d='M8 0h1'/%3E%3Cpath stroke='%23fbfbf8' d='M9 0h1'/%3E%3Cpath stroke='%23fbfbf9' d='M10 0h2'/%3E%3Cpath stroke='%23fdfdfa' d='M12 0h1'/%3E%3Cpath stroke='%23fefefb' d='M13 0h3'/%3E%3C/svg%3E");
-    }
-
-    .list-win-xp::-webkit-scrollbar-track:vertical {
-        background: #f0f0f0;
-        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 17 1' shape-rendering='crispEdges'%3E%3Cpath stroke='%23eeede5' d='M0 0h1m15 0h1'/%3E%3Cpath stroke='%23f3f1ec' d='M1 0h1'/%3E%3Cpath stroke='%23f4f1ec' d='M2 0h1'/%3E%3Cpath stroke='%23f4f3ee' d='M3 0h1'/%3E%3Cpath stroke='%23f5f4ef' d='M4 0h1'/%3E%3Cpath stroke='%23f6f5f0' d='M5 0h1'/%3E%3Cpath stroke='%23f7f7f3' d='M6 0h1'/%3E%3Cpath stroke='%23f9f8f4' d='M7 0h1'/%3E%3Cpath stroke='%23f9f9f7' d='M8 0h1'/%3E%3Cpath stroke='%23fbfbf8' d='M9 0h1'/%3E%3Cpath stroke='%23fbfbf9' d='M10 0h2'/%3E%3Cpath stroke='%23fdfdfa' d='M12 0h1'/%3E%3Cpath stroke='%23fefefb' d='M13 0h3'/%3E%3C/svg%3E");
-    }
-
-    .list-win-xp::-webkit-scrollbar-track:horizontal {
-        background: #f0f0f0;
-        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 1 17' shape-rendering='crispEdges'%3E%3Cpath stroke='%23eeede5' d='M0 0h1M0 16h1'/%3E%3Cpath stroke='%23f3f1ec' d='M0 1h1'/%3E%3Cpath stroke='%23f4f1ec' d='M0 2h1'/%3E%3Cpath stroke='%23f4f3ee' d='M0 3h1'/%3E%3Cpath stroke='%23f5f4ef' d='M0 4h1'/%3E%3Cpath stroke='%23f6f5f0' d='M0 5h1'/%3E%3Cpath stroke='%23f7f7f3' d='M0 6h1'/%3E%3Cpath stroke='%23f9f8f4' d='M0 7h1'/%3E%3Cpath stroke='%23f9f9f7' d='M0 8h1'/%3E%3Cpath stroke='%23fbfbf8' d='M0 9h1'/%3E%3Cpath stroke='%23fbfbf9' d='M0 10h1m-1 1h1'/%3E%3Cpath stroke='%23fdfdfa' d='M0 12h1'/%3E%3Cpath stroke='%23fefefb' d='M0 13h1m-1 1h1m-1 1h1'/%3E%3C/svg%3E");
+        background: #f0f0f0 url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 17 1' shape-rendering='crispEdges'%3E%3Cpath stroke='%23eeede5' d='M0 0h1m15 0h1'/%3E%3Cpath stroke='%23f3f1ec' d='M1 0h1'/%3E%3Cpath stroke='%23f4f1ec' d='M2 0h1'/%3E%3Cpath stroke='%23f4f3ee' d='M3 0h1'/%3E%3Cpath stroke='%23f5f4ef' d='M4 0h1'/%3E%3Cpath stroke='%23f6f5f0' d='M5 0h1'/%3E%3Cpath stroke='%23f7f7f3' d='M6 0h1'/%3E%3Cpath stroke='%23f9f8f4' d='M7 0h1'/%3E%3Cpath stroke='%23f9f9f7' d='M8 0h1'/%3E%3Cpath stroke='%23fbfbf8' d='M9 0h1'/%3E%3Cpath stroke='%23fbfbf9' d='M10 0h2'/%3E%3Cpath stroke='%23fdfdfa' d='M12 0h1'/%3E%3Cpath stroke='%23fefefb' d='M13 0h3'/%3E%3C/svg%3E");
     }
 
     .list-win-xp::-webkit-scrollbar-thumb {
@@ -156,29 +164,16 @@
 
 .list-win-7::-webkit-scrollbar {
     width: 16px;
+    height: 17px; /* Also set height for horizontal */
 }
-
-    .list-win-7::-webkit-scrollbar:horizontal {
-        height: 17px;
-    }
 
 .list-win-7::-webkit-scrollbar-corner {
     background: var(--btn-win7-face);
 }
 
+/* Main track rule without :vertical/:horizontal for mobile compatibility */
 .list-win-7::-webkit-scrollbar-track {
-    background: #e0e0e0;
-    background-image: var(--scrollbar-y);
-}
-
-.list-win-7::-webkit-scrollbar-track:vertical {
-    background: #e0e0e0;
-    background-image: var(--scrollbar-y);
-}
-
-.list-win-7::-webkit-scrollbar-track:horizontal {
-    background: #e0e0e0;
-    background-image: var(--scrollbar-x);
+    background: #e0e0e0 var(--scrollbar-y);
 }
 
 .list-win-7::-webkit-scrollbar-thumb {
