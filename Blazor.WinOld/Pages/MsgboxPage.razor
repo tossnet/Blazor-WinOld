@@ -23,6 +23,8 @@
 <CodeBlock Language="CodeLanguage.Razor"
 		   EnableLineNumbers="true"
 		   Code=@(@"
+@inject IDialogService DialogService
+
 	<WinOldButton OnClick=""ClickMe""
 	              Appearance=""Appearance.WinXP"">
 	  Show MessageBox
@@ -35,7 +37,7 @@
    
 	private async Task ClickMe()
 	{
-		var options = new DialogOptions
+		var options = new MessageBoxOptions
 		{
 			Appearance = Appearance.WinXP,
 			Title = ""Warning"",

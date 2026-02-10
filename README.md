@@ -32,13 +32,14 @@ For client-side and server-side Blazor - add script section (head section)
  <link href="_content/BlazorWinOld/css/blazorwinold.css" rel="stylesheet" />
 ```
 
-In Program.cs add this line to use messagebox
+In Program.cs add this line
 ```csharp
 builder.Services.AddWinOldComponents();
 ```
-and in the bottom of your MainLayout.razor add this line to use dialog
+and in the bottom of your MainLayout.razor add these lines (optional, only if you use MessageBox or InputBox)
 ```html
-<WinOldMessageBoxHost />
+<WinOldMessageBoxHost />  <!-- Only if you use WinOldMessageBox -->
+<WinOldInputBoxHost />    <!-- Only if you use WinOldInputBox -->
 ```
 
 
