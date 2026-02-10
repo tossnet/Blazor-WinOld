@@ -1,0 +1,11 @@
+﻿@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+<dialog open>
+    <p>HELLO WORLD ! WIP</p>
+    <form method="dialog">
+        <WinOldButton OnClick="HandleOk"
+                      Appearance="Options.Appearance">@Options.OkButtonText</WinOldButton>
+    </form>
+</dialog>

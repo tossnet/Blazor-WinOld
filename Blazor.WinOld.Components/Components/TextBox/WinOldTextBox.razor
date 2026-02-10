@@ -6,7 +6,8 @@
        class="label-txt-win @GetComponentLabelClass()"
        disabled="@(ParentDisabled | Disabled)" >
        @Label</label>
-<input type="text"
+<input @ref="InputElement"
+       type="text"
        id="@ElementId" 
        class="txt-win @GetComponentClass() @Class"
        disabled="@(ParentDisabled | Disabled)"

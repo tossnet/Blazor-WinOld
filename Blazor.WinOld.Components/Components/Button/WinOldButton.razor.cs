@@ -16,6 +16,13 @@ public partial class WinOldButton : WinOldComponentBase
     [Category(CategoryTypes.Button.Appearance)]
     public Appearance Appearance { get; set; }
 
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [Parameter]
+    public bool Default { get; set; } = false;
+
     /// <summary>
     /// Command executed when the user clicks on the button.
     /// </summary>
@@ -34,12 +41,14 @@ public partial class WinOldButton : WinOldComponentBase
     /// </summary>
     private string GetComponentClass()
     {
-        return Appearance switch
+        var baseClass = Appearance switch
         {
             Appearance.Win7 => "btn-win-7",
             Appearance.WinXP => "btn-win-xp",
             Appearance.Win98 => "btn-win-98",
             _ => "btn-win-98"
         };
+
+        return Default ? $"{baseClass} {baseClass}-default" : baseClass;
     }
 }

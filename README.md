@@ -44,13 +44,22 @@ and in the bottom of your MainLayout.razor add this line to use dialog
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 1.2.9</summary>
+<details open="open"><summary>Version 1.3.0</summary>
+
+>- ⚠️ BREAKING CHANGE:
+- DialogOptions has been renamed to MessageBoxOptions for WinOldMessageBox
+- Migration: Replace 'new DialogOptions' with 'new MessageBoxOptions' (simple Find/Replace)
+- New WinOldInputBox component
+- Button : Add "Default" Property style for win98 button
+</details>
+
+<details><summary>Version 1.2.9</summary>
 
 >- Fix height of Tabs
  - Fix disabled style of WinOldButton
 </details>
 
-<details9><summary>Version 1.2.8</summary>
+<details><summary>Version 1.2.8</summary>
 
 >- win7 : separation of font size from font family
 </details>

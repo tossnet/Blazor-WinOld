@@ -1,5 +1,4 @@
-﻿
-.msg-win-backdrop {
+﻿.msg-win-backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -19,6 +18,7 @@
     margin: 8px;
     display: flex;
 }
+
 
 
 /*-------------------------------------------*\
@@ -704,8 +704,7 @@
     border-bottom: unset;
     border-left: 1px solid rgba(0, 0, 0, .7);
     box-shadow: 0 0 0 1px #fff9;
-    margin: 6px 6px 0 6px;
-    margin-top: 0;
+    margin: 0 6px 0 6px;
 }
 
 .msg-content-win-7 {

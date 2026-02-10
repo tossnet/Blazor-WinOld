@@ -1,0 +1,43 @@
+﻿@page "/inputbox-page"
+
+
+@inject IDialogService DialogService
+
+<PageTitle>InputBox</PageTitle>
+
+<h1>InputBox</h1>
+
+
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldButton OnClick="() => ClickMe(Appearance.Win98)"
+				  Appearance="Appearance.Win98">Show InputBox 98</WinOldButton>
+
+	<WinOldButton OnClick="() => ClickMe(Appearance.WinXP)"
+				  Appearance="Appearance.WinXP">Show InputBox XP</WinOldButton>
+
+	<WinOldButton OnClick="() => ClickMe(Appearance.Win7)"
+				  Appearance="Appearance.Win7">Show InputBox 7</WinOldButton>
+</div>
+
+<WinOldLabel Appearance="appearance">
+	Value: @_myValue
+</WinOldLabel>
+
+@code {
+	private Appearance appearance { get; set; } = Appearance.Win7;
+	private string? _myValue = "my default value";
+
+	async Task ClickMe(Appearance appearance)
+	{
+		var options = new InputBoxOptions
+		{
+			Appearance = appearance,
+			Title = "My input box",
+			Message = "Blazor is awesome!",
+			Value = _myValue,
+			OkButtonText = "OK",
+			CancelButtonText = "Cancel"
+		};
+		_myValue = await DialogService.ShowInputBox(options);
+	}
+}

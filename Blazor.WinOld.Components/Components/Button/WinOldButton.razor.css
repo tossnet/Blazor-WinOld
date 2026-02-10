@@ -67,6 +67,7 @@
     box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
     border-radius: 0;
     padding: 0 12px;
+    padding-top : 2px;
     color: #000;
 }
 
@@ -79,6 +80,20 @@
         color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
     }
 
+.btn-win-98-default {
+    border: 1px solid #000000;
+    box-shadow: inset 1px 1px 0 0 #ffffff, inset -1px -1px 0 0 #595555, inset -2px -2px 0 0 #808080, inset 2px 2px 0 0 #dfdfdf;
+}
+
+/*.btn-win98-default::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 1px;
+    height: 1px;
+    background: #dfdfdf;
+}*/
 /*-------------------------------------------*\
     Win 7
 \*-------------------------------------------*/

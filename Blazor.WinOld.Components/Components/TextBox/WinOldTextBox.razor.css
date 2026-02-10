@@ -32,6 +32,10 @@ label.label-txt-win {
         color: var(--btn-win7-text-color-disabled);
     }
 
+.label-txt-hide {
+    display: none !important;
+}
+
 /*-------------------------------------------*\
     Win XP
 \*-------------------------------------------*/

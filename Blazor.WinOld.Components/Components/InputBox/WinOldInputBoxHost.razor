@@ -1,0 +1,41 @@
+﻿@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@if (IsVisible)
+{
+	<div class="inp-win-backdrop">
+		<div class="inp-win @GetInputBoxClass()">
+			<div class="@GetTitleBarClass() active">
+				<div class="@GetTitleBarTextClass()">@Options.Title</div>
+				<div class="@GetTitleBarControlsClass()">
+					<button aria-label="Close" @onclick="HandleCancel"></button>
+				</div>
+			</div>
+			<div class="inp-win-container @GetInputBoxBodyClass()">
+
+				<div class="inputbox-row">
+					<div class="@GetInputBoxContentClass()">@Options.Message</div>
+
+					<div class="actions">
+						<WinOldButton OnClick="HandleOk"
+									  Appearance="Options.Appearance"
+						              Default="true">@Options.OkButtonText</WinOldButton>
+						@if (!string.IsNullOrEmpty(Options.CancelButtonText))
+						{
+						<WinOldButton OnClick="HandleCancel"
+									  Appearance="Options.Appearance">@Options.CancelButtonText</WinOldButton>
+						}
+					</div>
+				</div>
+
+				<div class="input-text">
+					<WinOldTextBox @ref="TextBoxRef"
+								   Appearance="Options.Appearance"
+								   Style="width: 100%"
+								   Value="@Options.Value" />
+				</div>
+			</div>
+		</div>
+	</div>
+}

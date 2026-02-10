@@ -1,15 +1,21 @@
-﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components;
 
 namespace Blazor.WinOld.Components;
 
-public partial class WinOldMessageBoxHost : WinOldComponentBase
+public partial class WinOldInputBoxHost : WinOldComponentBase
 {
-    [Inject] private IDialogService? DialogService { get; set; } = default!;
+    [Inject] 
+    private IDialogService? DialogService { get; set; } = default!;
+
+    /// <summary>
+    /// Reference to the TextBox component
+    /// </summary>
+    private WinOldTextBox? TextBoxRef { get; set; }
 
     /// </summary>
-    private MessageBoxOptions Options { get; set; } = new MessageBoxOptions();
-    /// </summary>
-    private TaskCompletionSource<bool?>? Tcs { get; set; }
+    private InputBoxOptions Options { get; set; } = new InputBoxOptions();
+
+    private TaskCompletionSource<string?>? Tcs { get; set; }
     /// </summary>
     private bool IsVisible { get; set; }
 
@@ -17,32 +23,39 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
     {
         if (DialogService is DialogService service)
         {
-            service.Register(ShowMessageBox);
+            service.RegisterInputBox(ShowInputBox);
         }
     }
 
     /// </summary>
-    private Task<bool?> ShowMessageBox(MessageBoxOptions options)
+    private async Task<string?> ShowInputBox(InputBoxOptions options)
     {
         Options = options;
-        Tcs = new TaskCompletionSource<bool?>();
+        Tcs = new TaskCompletionSource<string?>();
         IsVisible = true;
         StateHasChanged();
 
-        return Tcs.Task;
+        // Wait for the component to render and then set focus
+        await Task.Delay(100);
+        if (TextBoxRef != null)
+        {
+            await TextBoxRef.FocusAsync();
+        }
+
+        return await Tcs.Task;
     }
 
     /// </summary>
     private void HandleOk()
     {
-        Tcs?.SetResult(true);
+        Tcs?.SetResult(TextBoxRef?.Value);
         Close();
     }
 
     /// </summary>
     private void HandleCancel()
     {
-        Tcs?.SetResult(false);
+        Tcs?.SetResult(null);
         Close();
     }
 
@@ -53,15 +66,16 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
         StateHasChanged();
     }
 
+
     /// </summary>
-    private string GetMessageBoxClass()
+    private string GetInputBoxClass()
     {
         return Options.Appearance switch
         {
-            Appearance.Win7 => "msg-win-7",
-            Appearance.WinXP => "msg-win-xp",
-            Appearance.Win98 => "msg-win-98",
-            _ => "msg-win-98"
+            Appearance.Win7 => "inp-win-7",
+            Appearance.WinXP => "inp-win-xp",
+            Appearance.Win98 => "inp-win-98",
+            _ => "inp-win-98"
         };
     }
 
@@ -102,46 +116,25 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
         };
     }
 
-    /// </summary>
-    private string GetIConClass()
-    {
-        string appareance  = Options.Appearance switch
-        {
-            Appearance.Win7 => "7",
-            Appearance.WinXP => "xp",
-            Appearance.Win98 => "98",
-            _ => "98"
-        };
-
-        return Options.Icon switch
-        {
-            Icon.Alert => $"icon-alert-win-{appareance}",
-            Icon.Critical => $"icon-critical-win-{appareance}",
-            Icon.Information => $"icon-info-win-{appareance}",
-            Icon.Question => $"icon-question-win-{appareance}",
-            _ => string.Empty
-        };
-    }
-
-    private string GetMessageBodyClass()
+    private string GetInputBoxBodyClass()
     {
         return Options.Appearance switch
         {
-            Appearance.Win7 => "message-body-win-7",
-            Appearance.WinXP => "message-body-win-xp",
-            Appearance.Win98 => "message-body-win-98",
-            _ => "message-body-win-98"
+            Appearance.Win7 => "input-body-win-7",
+            Appearance.WinXP => "input-body-win-xp",
+            Appearance.Win98 => "input-body-win-98",
+            _ => "input-body-win-98"
         };
     }
     /// </summary>
-    private string GetMessageContentClass()
+    private string GetInputBoxContentClass()
     {
         return Options.Appearance switch
         {
-            Appearance.Win7 => "msg-content-win-7",
-            Appearance.WinXP => "msg-content-win-xp",
-            Appearance.Win98 => "msg-content-win-98",
-            _ => "msg-content-win-98"
+            Appearance.Win7 => "inp-content-win-7",
+            Appearance.WinXP => "inp-content-win-xp",
+            Appearance.Win98 => "inp-content-win-98",
+            _ => "inp-content-win-98"
         };
     }
 }

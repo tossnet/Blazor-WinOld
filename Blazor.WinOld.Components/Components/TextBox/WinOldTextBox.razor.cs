@@ -1,9 +1,15 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace Blazor.WinOld.Components;
 
 public partial class WinOldTextBox : WinOldComponentBase
 {
+    /// <summary>
+    /// Reference to the input element
+    /// </summary>
+    private ElementReference InputElement { get; set; }
+
     /// </summary>
     [Parameter]
     [Category(CategoryTypes.Button.Appearance)]
@@ -23,6 +29,14 @@ public partial class WinOldTextBox : WinOldComponentBase
 
     /// </summary>
     private Guid ElementId { get; set; } = Guid.NewGuid();
+
+    /// <summary>
+    /// Sets focus on the input element
+    /// </summary>
+    public async Task FocusAsync()
+    {
+        await InputElement.FocusAsync();
+    }
 
     private async Task OnValueChanged(ChangeEventArgs e)
     {
@@ -47,6 +61,9 @@ public partial class WinOldTextBox : WinOldComponentBase
     /// </summary>
     private string GetComponentLabelClass()
     {
+        if (string.IsNullOrEmpty(Label))
+            return "label-txt-hide";
+
         return Appearance switch
         {
             Appearance.Win7 => "lbtxt-win-7",
