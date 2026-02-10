@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Blazor.WinOld.Components\Blazor.WinOld.Components.csproj" />
+		<!-- Force l'utilisation de la version net9.0 de la library -->
+		<ProjectReference Include="..\Blazor.WinOld.Components\Blazor.WinOld.Components.csproj"
+                      SetTargetFramework="TargetFramework=net9.0" />
   </ItemGroup>
 
 </Project>

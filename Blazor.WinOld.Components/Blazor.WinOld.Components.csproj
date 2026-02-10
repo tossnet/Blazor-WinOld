@@ -1,8 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
-    <RootNamespace>BlazorWinOld</RootNamespace>
+    <!--<TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>-->
+		<!-- Détection du SDK disponible -->
+		<TargetFrameworks Condition="'$(NETCoreSdkVersion)' &lt; '10.0'">net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks Condition="'$(NETCoreSdkVersion)' &gt;= '10.0'">net8.0;net9.0;net10.0</TargetFrameworks>
+
+		<RootNamespace>BlazorWinOld</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
