@@ -23,6 +23,39 @@
 	Value: @_myValue
 </WinOldLabel>
 
+
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+@inject IDialogService DialogService
+
+<WinOldButton OnClick=""ClickMe""
+		   	  Appearance=""Appearance.WinXP"">
+		   	 Show InputBox
+</WinOldButton>
+		   	 	 ") />
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+private string? _myValue = ""my default value"";
+		   	
+private async Task ClickMe(Appearance appearance)
+{
+    var options = new InputBoxOptions
+	{
+		Appearance = appearance,
+		Title = ""My input box"",
+		Message = ""Blazor is awesome!"",
+		Value = _myValue,
+		OkButtonText = ""OK"",
+		CancelButtonText = ""Cancel""
+    };
+    _myValue = await DialogService.ShowInputBox(options);
+}
+		   	 ") />
+
 @code {
 	private Appearance appearance { get; set; } = Appearance.Win7;
 	private string? _myValue = "my default value";
