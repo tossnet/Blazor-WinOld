@@ -11,26 +11,16 @@
         display: block;
         unicode-bidi: isolate;
         padding-inline: 2px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: default;
     }
 
-    /*-------------------------------------------*\
-    Win XP
-\*-------------------------------------------*/
-.frame-win-xp {
-    padding: 10px;
-    padding-block-start: 8px;
-    box-shadow: none;
-    background: #fff;
-    border: 1px solid #d0d0bf;
-    border-radius: 4px;
-    padding-top: 10px;
+.frame-win[disabled] > legend {
+    color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
 }
-
-    .frame-win-xp legend {
-        background: transparent;
-        color: #0046d5;
-    }
-
 /*-------------------------------------------*\
     Win 98
 \*-------------------------------------------*/
@@ -48,6 +38,25 @@
     .frame-win-98 legend {
         background: var(--win98-background);
         color: #222;
+    }
+
+
+/*-------------------------------------------*\
+Win XP
+\*-------------------------------------------*/
+.frame-win-xp {
+    padding: 10px;
+    padding-block-start: 8px;
+    box-shadow: none;
+    background: #fff;
+    border: 1px solid #d0d0bf;
+    border-radius: 4px;
+    padding-top: 10px;
+}
+
+    .frame-win-xp legend {
+        background: transparent;
+        color: #0046d5;
     }
 
 /*-------------------------------------------*\

@@ -17,6 +17,13 @@
     color: #222;
     min-width: unset;
     border-radius: 0;
+    white-space: nowrap;
+}
+
+
+.tabs-winp:disabled {
+    cursor: default;
+    opacity: .6;
 }
 
 /*-------------------------------------------*\
@@ -36,6 +43,7 @@
     border-color: #91a7b4;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
+    line-height: 20px;
 }
 
     .tabs-win-xp:hover {
@@ -50,6 +58,12 @@
     .tabs-win-xp:not(:disabled):active {
         box-shadow: none;
         background: linear-gradient(180deg, #cdcac3, #e3e3db 8%, #e5e5de 94%, #f2f2f1);
+    }
+
+    .tabs-win-xp:disabled {
+        background: none;
+        border: 1px solid rgba(216, 208, 196, 1);
+        color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
     }
 
 .active-tab-win-xp {
@@ -111,6 +125,10 @@
     min-width: unset;
 }
 
+.tabs-win-98:disabled {
+    color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+}
+
 /*-------------------------------------------*\
     Win 7
 \*-------------------------------------------*/
@@ -126,6 +144,14 @@
     background: var(--btn-win7-gradient);
     border: var(--btn-win7-border);
 }
+
+
+    .tabs-win-7:disabled {
+        background: var(--btn-win7-face-disabled);
+        border-color: var(--btn-win7-border-color-disabled);
+        color: var(--btn-win7-text-color-disabled);
+    }
+
     .tabs-win-7:not(:disabled):not(:hover) {
         transition: border-color 1s linear;
     }

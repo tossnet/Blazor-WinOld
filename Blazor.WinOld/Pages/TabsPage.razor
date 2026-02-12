@@ -7,16 +7,14 @@
 
 <div style="display:flex; flex-direction: row; gap: 10px;">
 	<WinOldTabs Appearance="Appearance.Win98"
-				Style="max-width: 500px">
+				Style="min-width: 210px;">
 		<WinOldTabPanel Label="Tab A">
 			<p>Contents of first tab</p>
 		</WinOldTabPanel>
 
-		<WinOldTabPanel Label="Tab B" Disabled="true">
-			<p>Contents of second tab</p>
-		</WinOldTabPanel>
+		<WinOldTabPanel Label="Tab B (disabled)" Disabled="true" />
 
-		<WinOldTabPanel Label="Tab C" IsDefault="true">
+		<WinOldTabPanel Label="Tab C" >
 			<p>Contents of third tab</p>
 		</WinOldTabPanel>
 
@@ -24,14 +22,12 @@
 
 	
 	<WinOldTabs Appearance="Appearance.WinXP"
-				Style="max-width: 500px">
+				Style="min-width: 210px;">
 		<WinOldTabPanel Label="Tab A">
 			<p>Contents of first tab</p>
 		</WinOldTabPanel>
 
-		<WinOldTabPanel Label="Tab B" Disabled="true">
-			<p>Contents of second tab</p>
-		</WinOldTabPanel>
+		<WinOldTabPanel Label="Tab B (disabled)" Disabled="true" />
 
 		<WinOldTabPanel Label="Tab C" IsDefault="true">
 			<p>Contents of third tab</p>
@@ -41,18 +37,34 @@
 
 	
 	<WinOldTabs Appearance="Appearance.Win7"
-				Style="max-width: 500px">
+				Style="min-width: 210px;">
 		<WinOldTabPanel Label="Tab A">
 			<p>Contents of first tab</p>
 		</WinOldTabPanel>
 
-		<WinOldTabPanel Label="Tab B" Disabled="true">
-			<p>Contents of second tab</p>
-		</WinOldTabPanel>
+		<WinOldTabPanel Label="Tab B (disabled)" Disabled="true" />
 
-		<WinOldTabPanel Label="Tab C" IsDefault="true">
+		<WinOldTabPanel Label="Tab C">
 			<p>Contents of third tab</p>
 		</WinOldTabPanel>
 
 	</WinOldTabs>
 </div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldTabs Appearance=""Appearance.WinXP""
+			Style=""min-width: 210px;"">
+	<WinOldTabPanel Label=""Tab A"">
+		<p>Contents of first tab</p>
+	</WinOldTabPanel>
+
+	<WinOldTabPanel Label=""Tab B (disabled)"" Disabled=""true"" />
+
+	<WinOldTabPanel Label=""Tab C"" IsDefault=""true"">
+		<p>Contents of third tab</p>
+	</WinOldTabPanel>
+
+</WinOldTabs>
+		   	 	 	 	 ") />

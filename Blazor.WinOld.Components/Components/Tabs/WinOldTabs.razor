@@ -3,12 +3,14 @@
 @inherits WinOldComponentBase
 
 <section>
-	<menu role="tablist" class="tabs-list">
+	<menu role="tablist" 
+		  style="@Style"
+		  class="tabs-list @Class">
 		@foreach (var tabPanel in TabPanels)
 		{
-			<button role="tab"
-					style="@Style"
-				    class="tabs-win @GetComponentClass() @GetActiveTabClass(tabPanel) @Class"
+			<button role="tab"	
+				    class="tabs-win @GetComponentClass() @GetActiveTabClass(tabPanel) "
+					disabled="@tabPanel.Disabled"
 					@onclick="() => SelectTab(tabPanel)"
 					@attributes="Attributes">
 			@tabPanel.Label

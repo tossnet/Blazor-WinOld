@@ -12,7 +12,7 @@
 
     <!-- Package metadata -->
     <PackageId>BlazorWinOld</PackageId>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
     <Authors>Christophe Peugnet</Authors>
     <Copyright>Copyright 2025-2026</Copyright>
     <Description>Blazor components in Windows 98, Windows XP and Windows 7 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
@@ -24,17 +24,9 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReleaseNotes>
-      v1.3.0 - New InputBox Component &amp; Breaking Change
-
-      ⚠️ BREAKING CHANGE:
-      - DialogOptions has been renamed to MessageBoxOptions for WinOldMessageBox
-      - Migration: Replace 'new DialogOptions' with 'new MessageBoxOptions' (simple Find/Replace)
-
-      ✨ NEW FEATURES:
-      - New WinOldInputBox component
-
-      📖 Full changelog: https://github.com/tossnet/Blazor-WinOld#release-notes
-    </PackageReleaseNotes>
+			v1.3.1 - Improve disabled style for some components (Frame, Options, Tab)
+			- WinOldTabs : a Tab can be disabled.
+		</PackageReleaseNotes>
 
     <!-- Build and symbols -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -55,11 +47,11 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.23" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.24" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.13" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">

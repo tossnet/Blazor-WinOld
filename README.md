@@ -47,19 +47,25 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
+<details open="open"><summary>Version 1.3.1</summary>
+
+>- Improve disabled style for some components (Frame, Options, Tab)
+>- WinOldTabs : a Tab can be disabled.
+</details>
+
 <details open="open"><summary>Version 1.3.0</summary>
 
 >- ⚠️ BREAKING CHANGE:
-- DialogOptions has been renamed to MessageBoxOptions for WinOldMessageBox
-- Migration: Replace 'new DialogOptions' with 'new MessageBoxOptions' (simple Find/Replace)
-- New WinOldInputBox component
-- Button : Add "Default" Property style for win98 button
+>- DialogOptions has been renamed to MessageBoxOptions for WinOldMessageBox
+>- Migration: Replace 'new DialogOptions' with 'new MessageBoxOptions' (simple Find/Replace)
+>- New WinOldInputBox component
+>- Button : Add "Default" Property style for win98 button
 </details>
 
 <details><summary>Version 1.2.9</summary>
 
 >- Fix height of Tabs
- - Fix disabled style of WinOldButton
+>- Fix disabled style of WinOldButton
 </details>
 
 <details><summary>Version 1.2.8</summary>

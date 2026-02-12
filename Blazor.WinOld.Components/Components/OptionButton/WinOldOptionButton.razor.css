@@ -32,7 +32,7 @@
 /*-------------------------------------------*\
     Win XP
 \*-------------------------------------------*/
-    .opt-win-xp {
+.opt-win-xp {
     -webkit-font-smoothing: antialiased;
 }
 
@@ -54,17 +54,17 @@
         background: linear-gradient(135deg,#b0b0a7,#e3e1d2);
     }
 
-        .opt-win-xp:checked + label:after {
-            background: #43c33f;
-            border: 1.1px solid #a0d29e;
-            border-radius: 50%;
-            box-shadow: inset -1px -1px 0 .5px #21a121, inset -1px -1px 0 1px #38b935;
-            box-sizing: border-box;
-            height: 6px;
-            width: 6px;
-            left: -1.4em;
-            top: 0.32em;
-        }
+    .opt-win-xp:checked + label:after {
+        background: #43c33f;
+        border: 1.1px solid #a0d29e;
+        border-radius: 50%;
+        box-shadow: inset -1px -1px 0 .5px #21a121, inset -1px -1px 0 1px #38b935;
+        box-sizing: border-box;
+        height: 6px;
+        width: 6px;
+        left: -1.4em;
+        top: 0.32em;
+    }
 
     .opt-win-xp:focus + label {
         outline: 1px dotted #000;
@@ -79,14 +79,18 @@
         background: #fff;
     }
 
-        .opt-win-xp[disabled]:checked + label:after {
-            background: #d0ccb2;
-            border: 1.1px solid #e8e6da;
-            border-radius: 50%;
-            box-shadow: inset -1px -1px 0 .5px #c5bf9f, inset -1px -1px 0 1px #cdc8ac;
-            left: -1.41em;
-            top: 0.29em;
-        }
+.opt-win-xp[disabled] + label {
+    opacity: .6;
+}
+
+    .opt-win-xp[disabled]:checked + label:after {
+        background: #d0ccb2;
+        border: 1.1px solid #e8e6da;
+        border-radius: 50%;
+        box-shadow: inset -1px -1px 0 .5px #c5bf9f, inset -1px -1px 0 1px #cdc8ac;
+        left: -1.41em;
+        top: 0.29em;
+    }
 
 /*-------------------------------------------*\
     Win 98
@@ -136,6 +140,9 @@
         background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='4' height='4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3 0H1v1H0v2h1v1h2V3h1V1H3V0z' fill='gray'/%3E%3C/svg%3E");
     }
 
+    .opt-win-98[disabled] + label {
+        opacity: .6;
+    }
 
 /*-------------------------------------------*\
     Win 7
@@ -149,37 +156,37 @@
     position: relative;
 }
 
-        .opt-win-7 + label:before {
-            background: #f6f6f6;
-            border: 1px solid;
-            border-color: var(--btn-win7-border-color);
-            border-radius: 50%;
-            box-shadow: inset 0 0 0 1.5px #f4f4f4, inset 1px 1px 0 1.5px #aeaeae, inset -1px 0 0 1.5px #ddd, inset 3px 3px 6px #ccc;
-            box-sizing: border-box;
-            height: 14px;
-            left: -20px;
-            margin-right: 6px;
-            transition: .4s;
-            width: 14px;
-        }
-
-        .opt-win-7:checked + label:after {
-            background: #7cd3eb;
-            border: 1.5px solid #27506d;
-            border-radius: 50%;
-            box-shadow: inset -1px -1px 0 .5px #16638f, inset -1px -1px 0 1px #1985c0;
-            box-sizing: border-box;
-            height: 8px;
-            left: -17px;
-            top: 3px;
-            width: 8px;
-        }
-
-    .opt-win-7 + label:hover:before {
-        border-color: var(--btn-win7-border-color-hovered);
-        box-shadow: inset 0 0 0 1.5px #def9fa,inset 1px 1px 0 1.5px #79c6f9,inset -1px -1px 0 1.5px #c6e9fc,inset 3px 3px 6px #b1dffd
+    .opt-win-7 + label:before {
+        background: #f6f6f6;
+        border: 1px solid;
+        border-color: var(--btn-win7-border-color);
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 1.5px #f4f4f4, inset 1px 1px 0 1.5px #aeaeae, inset -1px 0 0 1.5px #ddd, inset 3px 3px 6px #ccc;
+        box-sizing: border-box;
+        height: 14px;
+        left: -20px;
+        margin-right: 6px;
+        transition: .4s;
+        width: 14px;
     }
 
-    .opt-win-7:disabled + label {
-        opacity: .6;
-    }
+.opt-win-7:checked + label:after {
+    background: #7cd3eb;
+    border: 1.5px solid #27506d;
+    border-radius: 50%;
+    box-shadow: inset -1px -1px 0 .5px #16638f, inset -1px -1px 0 1px #1985c0;
+    box-sizing: border-box;
+    height: 8px;
+    left: -17px;
+    top: 3px;
+    width: 8px;
+}
+
+.opt-win-7 + label:hover:before {
+    border-color: var(--btn-win7-border-color-hovered);
+    box-shadow: inset 0 0 0 1.5px #def9fa,inset 1px 1px 0 1.5px #79c6f9,inset -1px -1px 0 1.5px #c6e9fc,inset 3px 3px 6px #b1dffd
+}
+
+.opt-win-7:disabled + label {
+    opacity: .6;
+}

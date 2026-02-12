@@ -111,65 +111,8 @@
 
 
 
-
-<h2 class="py-3">Textbox</h2>
-
-<WinOldTextBox Appearance="Appearance.WinXP"
-			   Label="Textbox :" />
-
-<br />
-<WinOldTextBox Appearance="Appearance.Win98"
-			   Label="Textbox :" />
-
-<br />
-<WinOldTextBox Appearance="Appearance.Win7"
-			   Label="Textbox :" />
-
-
-<h2 class="py-3">Frame</h2>
-
-<WinOldCheckBox Appearance="Appearance.Win98"
-				Label="Disable win 98 Frame"
-				@bind-Value="_disabled98" />
-
-<WinOldFrame Appearance="Appearance.Win98"
-			 Label="Frame 98"
-			 Border="Border.Default"
-			 Disabled="_disabled98">
-	<p>@SelectRadioString</p>
-	<WinOldOptionButtonGroup Appearance="Appearance.Win98"
-							 @bind-Value="SelectRadioString"
-							 T="string">
-		<WinOldOptionButton Label="Adrien" Value="@("Adrien")" />
-		<WinOldOptionButton Label="Christophe" Value="@("Christophe")" />
-		<WinOldOptionButton Label="Denis" Value="@("Denis")" />
-	</WinOldOptionButtonGroup>
-</WinOldFrame>
-
-<br />
-
-
-<WinOldCheckBox Appearance="Appearance.Win7"
-				Label="Disable win 7 Frame"
-				CheckedChanged="@disabled7Frame" />
-
-<WinOldFrame Appearance="Appearance.Win7"
-			 Label="Frame 7"
-			 Disabled="_disabled7">
-	<WinOldOptionButtonGroup Appearance="Appearance.Win7"
-							 T="string">
-		<WinOldOptionButton Label="Adrien" Value="@("Adrien")" />
-		<WinOldOptionButton Label="Christophe" Value="@("Christophe")" />
-		<WinOldOptionButton Label="Denis" Value="@("Denis")" />
-	</WinOldOptionButtonGroup>
-</WinOldFrame>
-
-
-
 @code {
 	private bool _disabledComponents;
-	private bool _disabled98;
-	private bool _disabled7;
 
 	private string? _selectedValue = "dog";
 
@@ -201,8 +144,6 @@
 	}
 
 	private void disabledComponents(bool value) => _disabledComponents = !_disabledComponents;
-
-	private void disabled7Frame(bool value) => _disabled7 = !_disabled7;
 
 	private string GetDesktopColor()
 	{
