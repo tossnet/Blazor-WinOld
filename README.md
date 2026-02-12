@@ -14,9 +14,8 @@ DEMO and DOCS : https://tossnet.github.io/Blazor-WinOld/
 BlazorWinOld provides a collection of Blazor components styled to match the iconic Windows interfaces from the late 90s and 2000s. Whether you're building a nostalgia-driven project or need that classic Windows aesthetic, this library delivers pixel-perfect components including buttons, message boxes, windows, tabs, and more.
 
 
-https://github.com/user-attachments/assets/157fbd5f-dcab-4e76-b7b2-d240c697082a
 
-
+https://github.com/user-attachments/assets/fcaafeec-2dc4-46dc-b767-d43d17d57336
 
 
 ## Installation
