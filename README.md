@@ -3,13 +3,15 @@
 [![NuGet](https://img.shields.io/nuget/v/BlazorWinOld.svg)](https://www.nuget.org/packages/BlazorWinOld/)  ![BlazorWinOld Nuget Package](https://img.shields.io/nuget/dt/BlazorWinOld)
 [![GitHub](https://img.shields.io/github/license/tossnet/Blazor-WinOld?color=594ae2&logo=github&style=flat-square)](https://github.com/tossnet/Blazor-WinOld/blob/master/LICENSE.txt)
 
+A Blazor UI component library that brings back the nostalgic look and feel of classic Windows operating systems (Windows 98, XP, and 7). Create retro-styled web applications with authentic Windows UI components.
 
-For Blazor Server or Blazor WebAssembly
+**Compatible with Blazor Server and Blazor WebAssembly**
 
 DEMO and DOCS : https://tossnet.github.io/Blazor-WinOld/
 
-## Hello, world!
-Welcome to my new delirium
+## Overview
+
+BlazorWinOld provides a collection of Blazor components styled to match the iconic Windows interfaces from the late 90s and 2000s. Whether you're building a nostalgia-driven project or need that classic Windows aesthetic, this library delivers pixel-perfect components including buttons, message boxes, windows, tabs, and more.
 
 
 https://github.com/user-attachments/assets/157fbd5f-dcab-4e76-b7b2-d240c697082a

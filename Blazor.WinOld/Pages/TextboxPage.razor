@@ -4,3 +4,36 @@
 <PageTitle>Textbox</PageTitle>
 
 <h1>Textbox</h1>
+					  
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldTextBox Appearance="Appearance.Win98"
+				   Label="Textbox :" />
+
+	<WinOldTextBox Appearance="Appearance.WinXP"
+				   Label="Textbox :" />
+
+	<WinOldTextBox Appearance="Appearance.Win7"
+				   Label="Textbox :" />
+</div>
+
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldTextBox Appearance="Appearance.Win98"
+				   Label="Textbox :"
+				   Disabled="true" />
+
+	<WinOldTextBox Appearance="Appearance.WinXP"
+				   Label="Textbox :"
+				   Disabled="true" />
+
+	<WinOldTextBox Appearance="Appearance.Win7"
+				   Label="Textbox :"
+				   Disabled="true" />
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldTextBox Appearance=""Appearance.WinXP""
+			Label=""Textbox :""
+			Disabled=""false"" />
+		   	 	 	 	 ") />

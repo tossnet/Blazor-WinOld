@@ -4,3 +4,59 @@
 <PageTitle>Frame</PageTitle>
 
 <h1>Frame</h1>
+
+<p>A Frame is a simple UI container that groups related elements and provides a visual boundary to structure the layout.</p>
+
+
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldFrame Appearance="Appearance.Win98"
+			 Label="Frame 98"
+			 Border="Border.Default"
+			 Style="width: 88px;">
+	</WinOldFrame>
+
+	<WinOldFrame Appearance="Appearance.WinXP"
+				 Label="Frame XP"
+				 Border="Border.Default"
+		Style="width: 88px;">
+	</WinOldFrame>
+
+	<WinOldFrame Appearance="Appearance.Win7"
+				 Label="Frame 7"
+				 Border="Border.Default"
+				 Style="width: 88px;">
+	</WinOldFrame>
+</div>
+
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldFrame Appearance="Appearance.Win98"
+				 Label="Frame 98"
+				 Border="Border.Default"
+				 Disabled="true"
+				 Style="width: 88px;">
+	</WinOldFrame>
+
+	<WinOldFrame Appearance="Appearance.WinXP"
+				 Label="Frame XP"
+				 Border="Border.Default"
+				 Disabled="true"
+				 Style="width: 88px;">
+	</WinOldFrame>
+
+	<WinOldFrame Appearance="Appearance.Win7"
+				 Label="Frame 7"
+				 Border="Border.Default"
+				 Disabled="true"
+				 Style="width: 88px;">
+	</WinOldFrame>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldFrame Appearance=""Appearance.WinXP""
+			 Label=""Frame XP""
+			 Border=""Border.Default""
+			 Disabled=""false"">
+</WinOldFrame>
+		   	 	 	 	 	 ") />

@@ -1,6 +1,29 @@
 ﻿@page "/label-page"
 
-
 <PageTitle>Label</PageTitle>
 
 <h1>Label</h1>
+
+
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldLabel Appearance="Appearance.Win98">
+		Hello World!
+	</WinOldLabel>
+
+	<WinOldLabel Appearance="Appearance.WinXP">
+		Hello World!
+	</WinOldLabel>
+
+	<WinOldLabel Appearance="Appearance.Win7">
+		Hello World!
+	</WinOldLabel>
+
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldLabel Appearance=""Appearance.Win98"">
+	Hello World!
+</WinOldLabel>
+		   	 	 	 	 	 ") />
