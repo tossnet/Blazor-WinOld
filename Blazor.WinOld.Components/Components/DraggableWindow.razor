@@ -1,0 +1,40 @@
+﻿@using Microsoft.JSInterop
+@inject IJSRuntime JS
+@implements IAsyncDisposable
+@namespace Blazor.WinOld.Components
+
+@ChildContent
+
+@code {
+    [Parameter, EditorRequired] public RenderFragment ChildContent { get; set; } = default!;
+
+    private ElementReference _windowRef;
+    private ElementReference _titleBarRef;
+    private IJSObjectReference? _module;
+    private IJSObjectReference? _instance;
+
+    public async Task InitAsync(ElementReference windowRef, ElementReference titleBarRef)
+    {
+        _windowRef = windowRef;
+        _titleBarRef = titleBarRef;
+        _module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorWinOld/js/draggable.js");
+        _instance ??= await _module.InvokeAsync<IJSObjectReference>("initDraggable", _windowRef, _titleBarRef);
+    }
+
+    public async Task ResetAsync()
+    {
+        if (_instance is not null)
+        {
+            await _instance.InvokeVoidAsync("dispose");
+            await _instance.DisposeAsync();
+            _instance = null;
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await ResetAsync();
+        if (_module is not null)
+            await _module.DisposeAsync();
+    }
+}

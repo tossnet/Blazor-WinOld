@@ -46,7 +46,12 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 1.3.1</summary>
+<details open="open"><summary>Version 1.4.0</summary>
+
+>- Added drag-and-drop support for MessageBox and InputBox, allowing users to move the window freely across the screen.
+</details>
+
+<details><summary>Version 1.3.1</summary>
 
 >- Improve disabled style for some components (Frame, Options, Tab)
 >- WinOldTabs : a Tab can be disabled.

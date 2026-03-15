@@ -7,6 +7,10 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
     [Inject] 
     private IDialogService? DialogService { get; set; } = default!;
 
+    private ElementReference _windowRef;
+    private ElementReference _titleBarRef;
+    private DraggableWindow _draggable = default!;
+
     /// <summary>
     /// Reference to the TextBox component
     /// </summary>
@@ -25,6 +29,12 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
         {
             service.RegisterInputBox(ShowInputBox);
         }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (IsVisible)
+            await _draggable.InitAsync(_windowRef, _titleBarRef);
     }
 
     /// </summary>
@@ -63,6 +73,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
     private void Close()
     {
         IsVisible = false;
+        _ = _draggable.ResetAsync(); // fire-and-forget
         StateHasChanged();
     }
 

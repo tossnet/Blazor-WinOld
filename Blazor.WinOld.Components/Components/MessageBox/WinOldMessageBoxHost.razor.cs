@@ -6,6 +6,10 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
 {
     [Inject] private IDialogService? DialogService { get; set; } = default!;
 
+    private ElementReference _windowRef;
+    private ElementReference _titleBarRef;
+    private DraggableWindow _draggable = default!;
+
     /// </summary>
     private MessageBoxOptions Options { get; set; } = new MessageBoxOptions();
     /// </summary>
@@ -19,6 +23,12 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
         {
             service.Register(ShowMessageBox);
         }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (IsVisible)
+            await _draggable.InitAsync(_windowRef, _titleBarRef);
     }
 
     /// </summary>
@@ -50,6 +60,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
     private void Close()
     {
         IsVisible = false;
+        _ = _draggable.ResetAsync(); // fire-and-forget
         StateHasChanged();
     }
 
