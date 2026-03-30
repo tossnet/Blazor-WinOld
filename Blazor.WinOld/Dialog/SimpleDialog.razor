@@ -1,0 +1,20 @@
+﻿<WinOldTabs Appearance="Appearance"
+			Style="min-width: 210px; height: 100%">
+	<WinOldTabPanel Label="General" IsDefault="true" Style="height:267px">
+		<p>Contents of first tab</p>
+	</WinOldTabPanel>
+
+	<WinOldTabPanel Label="View" Style="height:267px">
+
+	</WinOldTabPanel>
+
+	<WinOldTabPanel Label="Settings" Style="height:267px">
+		<p>Contents of third tab</p>
+	</WinOldTabPanel>
+
+</WinOldTabs>
+
+@code {
+	[Parameter]
+	public Appearance Appearance { get; set; }
+}

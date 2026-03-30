@@ -22,7 +22,7 @@ public interface IDialogService
     /// <remarks>
     /// ⚠️ This API is experimental and subject to change in future releases.
     /// </remarks>
-    [Experimental("BWOLD001")]
+    //[Experimental("BWOLD001")]
     Task<bool?> ShowDialog(DialogOptions options);
 }
 

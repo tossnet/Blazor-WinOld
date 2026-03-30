@@ -1,0 +1,79 @@
+﻿@page "/dialogbox-page"
+
+@inject IDialogService DialogService
+
+<PageTitle>DialogBox</PageTitle>
+
+<h1>DialogBox</h1>
+
+<div class="info-block" style="margin-bottom:20px">
+	<p>
+		⚠️ To enable dialog boxes, you need to add the <code>&lt;WinOldDialogHost /&gt;</code> component
+		at the bottom of your <strong>MainLayout.razor</strong>:
+	</p>
+	<CodeBlock Language="CodeLanguage.Razor"
+			   EnableLineNumbers="false"
+			   Code=@(@"<WinOldDialogHost />") />
+</div>
+
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldButton OnClick="() => OpenDialog(Appearance.Win98)"
+				  Appearance="Appearance.Win98">Show MessageBox 98</WinOldButton>
+
+	<WinOldButton OnClick="() => OpenDialog(Appearance.WinXP)"
+				  Appearance="Appearance.WinXP">Show MessageBox XP</WinOldButton>
+
+	<WinOldButton OnClick="() => OpenDialog(Appearance.Win7)"
+				  Appearance="Appearance.Win7">Show DialogBox 7</WinOldButton>
+</div>
+
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+@inject IDialogService DialogService
+
+<WinOldButton OnClick=""ClickMe""
+              Appearance=""Appearance.WinXP"">
+ 	 Show DialogBox
+</WinOldButton>
+		   	 	 ") />
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+   
+bool? result = await DialogService.ShowDialog(new DialogOptions
+{
+    Title = ""Settings"",
+	Width = ""300px"",
+	Height = ""400px"",
+	Appearance = appearance,
+    OkButtonText = ""OK"",
+    CancelButtonText = ""Cancel"",
+	ChildContent = @<SimpleDialog Appearance=""@appearance"" />
+});
+
+if (result == true) { /* OK clicked */ }
+	 ") />
+
+
+@code {
+	Appearance appearance { get; set; } = Appearance.Win7;
+
+	private async Task OpenDialog(Appearance appearance)
+    {
+        bool? result = await DialogService.ShowDialog(new DialogOptions
+        {
+            Title = "Settings",
+			Width = "300px",
+			Height = "400px",
+			Appearance = appearance,
+            OkButtonText = "OK",
+            CancelButtonText = "Cancel",
+			ChildContent = @<SimpleDialog Appearance="@appearance" />
+        });
+
+        if (result == true) { /* OK clicked */ }
+    }
+}

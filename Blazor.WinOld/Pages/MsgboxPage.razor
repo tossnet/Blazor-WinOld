@@ -6,6 +6,15 @@
 
 <h1>MessageBox</h1>
 
+<div class="info-block" style="margin-bottom:20px">
+	<p>
+		⚠️ To enable this component, you need to add the <code>&lt;WinOldMessageBoxHost /&gt;</code> component
+		at the bottom of your <strong>MainLayout.razor</strong>:
+	</p>
+	<CodeBlock Language="CodeLanguage.Razor"
+			   EnableLineNumbers="false"
+			   Code=@(@"<WinOldMessageBoxHost />") />
+</div>
 
 <div style="display:flex; flex-direction: row; gap: 10px;">
 	<WinOldButton OnClick="() => ClickMe(Appearance.Win98)"

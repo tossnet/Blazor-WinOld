@@ -9,14 +9,13 @@
 
   <ItemGroup>
     <PackageReference Include="Brism" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.13" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.13" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.14" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
 		<!-- Force l'utilisation de la version net9.0 de la library -->
-		<ProjectReference Include="..\Blazor.WinOld.Components\Blazor.WinOld.Components.csproj"
-                      SetTargetFramework="TargetFramework=net9.0" />
+		<ProjectReference Include="..\Blazor.WinOld.Components\Blazor.WinOld.Components.csproj" SetTargetFramework="TargetFramework=net9.0" />
   </ItemGroup>
 
 </Project>

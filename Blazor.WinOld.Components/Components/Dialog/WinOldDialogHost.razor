@@ -1,0 +1,35 @@
+﻿@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@if (IsVisible)
+{
+    <div class="dlg-win-backdrop">
+        <div @ref="_windowRef" class="dlg-win @GetDialogClass()" style="@GetDialogSizeStyle()">
+            <div @ref="_titleBarRef" class="@GetTitleBarClass() active">
+                <div class="@GetTitleBarTextClass()">@Options.Title</div>
+                <div class="@GetTitleBarControlsClass()">
+                    <button aria-label="Close" @onclick="HandleCancel"></button>
+                </div>
+            </div>
+
+            <div class="dlg-win-body @GetDialogBodyClass()">
+                @Options.ChildContent
+            </div>
+
+            <div class="actions">
+                <WinOldButton OnClick="HandleOk"
+                              Appearance="Options.Appearance"
+                              Default="true">@Options.OkButtonText</WinOldButton>
+                @if (!string.IsNullOrEmpty(Options.CancelButtonText))
+                {
+                    <WinOldButton OnClick="HandleCancel"
+                                  Appearance="Options.Appearance"
+                                  Style="margin-left: 8px;">@Options.CancelButtonText</WinOldButton>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<DraggableWindow @ref="_draggable" />

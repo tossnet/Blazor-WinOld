@@ -46,7 +46,13 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
+
 <details open="open"><summary>Version 1.4.0</summary>
+
+>- Added WinOldDialog component: a fully draggable dialog window supporting custom child content
+</details>
+
+<details><summary>Version 1.4.0</summary>
 
 >- Added drag-and-drop support for MessageBox and InputBox, allowing users to move the window freely across the screen.
 </details>

@@ -1,7 +1,7 @@
 ﻿using Blazor.WinOld.Components;
 using System.Diagnostics.CodeAnalysis;
 
-#pragma warning disable BWOLD001 // Suppress experimental warning for internal implementation
+//#pragma warning disable BWOLD001 // Suppress experimental warning for internal implementation
 
 namespace Blazor.WinOld;
 
@@ -55,13 +55,11 @@ public class DialogService : IDialogService
     // Dialog events and methods
     private event Func<DialogOptions, Task<bool?>>? OnShowDialog;
 
-    [Experimental("BWOLD001")]
     internal void RegisterDialog(Func<DialogOptions, Task<bool?>> handler)
     {
         OnShowDialog += handler;
     }
 
-    [Experimental("BWOLD001")]
     public async Task<bool?> ShowDialog(DialogOptions options)
     {
         if (OnShowDialog is not null)
@@ -72,5 +70,3 @@ public class DialogService : IDialogService
         return null;
     }
 }
-
-#pragma warning restore BWOLD001

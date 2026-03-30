@@ -40,8 +40,8 @@
 		Label : @SelectedRadio.ToString()
 	</WinOldLabel>
 
-	<WinOldButton OnClick="ClickMe"
-				  Appearance="appearance">Click me</WinOldButton>
+	<WinOldButton OnClick="OpenDialog"
+				  Appearance="appearance">Open a dialogbox</WinOldButton>
 
 	<WinOldOptionButtonGroup T="int"
 							 @bind-Value="SelectedRadio"
@@ -54,7 +54,7 @@
 
 
 <WinOldTabs Appearance="appearance"
-			Style="max-width: 500px">
+			Style="margin-top:5px; max-width: 500px">
 	<WinOldTabPanel Label="Tab A">
 		<p>Contents of first tab</p>
 	</WinOldTabPanel>
@@ -62,7 +62,6 @@
 	<WinOldTabPanel Label="Tab B">
 		<p>Contents of second tab</p>
 	</WinOldTabPanel>
-
 	<WinOldTabPanel Label="MessageBox" IsDefault="true">
 		<div style="display:flex;gap: 10px;">
 			<WinOldFrame Appearance="appearance"
@@ -110,7 +109,6 @@
 </WinOldTabs>
 
 
-
 @code {
 	private bool _disabledComponents;
 
@@ -151,4 +149,20 @@
 		var color = SystemColors.Desktop;
 		return $"rgb({color.R}, {color.G}, {color.B})";
 	}
+
+	private async Task OpenDialog()
+    {
+        bool? result = await DialogService.ShowDialog(new DialogOptions
+        {
+            Title = "Settings",
+			Width = "300px",
+			Height = "400px",
+			Appearance = appearance,
+            OkButtonText = "OK",
+            CancelButtonText = "Cancel",
+			ChildContent = @<SimpleDialog Appearance="@appearance" />
+        });
+
+        if (result == true) { /* OK clicked */ }
+    }
 }
