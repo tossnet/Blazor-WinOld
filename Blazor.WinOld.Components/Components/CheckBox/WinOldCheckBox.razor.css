@@ -221,5 +221,91 @@
     .chk-win-7:disabled + label {
         opacity: .6;
     }
+/*-------------------------------------------*\
+    Win 10
+\*-------------------------------------------*/
+.chk-win-10 {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    border: none;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    outline: none;
+}
 
-   
+    .chk-win-10 + label {
+        align-items: center;
+        display: inline-flex;
+        font-family: var(--font);
+        font-size: 12px;
+        font-weight: 400;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+        left: -19px;
+        outline: none;
+    }
+
+    .chk-win-10:focus + label,
+    .chk-win-10:focus-visible + label {
+        outline: none;
+    }
+
+    .chk-win-10 + label:before {
+        content: "";
+        display: inline-block;
+        box-sizing: border-box;
+        width: 13px;
+        height: 13px;
+        min-width: 13px;
+        margin-right: 6px;
+        background: #ffffff;
+        border: 1px solid #767676;
+        border-radius: 3px;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+        .chk-win-10 + label:hover:before {
+            border-color: #0078d7;
+        }
+
+    .chk-win-10:checked + label:before {
+        background: #0078d7;
+        border-color: #0078d7;
+    }
+
+    .chk-win-10:checked + label:hover:before {
+        background: #006cc1;
+        border-color: #006cc1;
+    }
+
+    .chk-win-10:checked + label:after {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 2px;
+        width: 4px;
+        height: 7px;
+        border: 1px solid #ffffff;
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+    }
+
+    .chk-win-10:disabled + label {
+        cursor: default;
+        color: #a0a0a0;
+    }
+
+        .chk-win-10:disabled + label:before {
+            background: #f0f0f0;
+            border-color: #c0c0c0;
+        }
+
+    .chk-win-10:disabled:checked + label:before {
+        background: #c3c3c3;
+        border-color: #c0c0c0;
+    }

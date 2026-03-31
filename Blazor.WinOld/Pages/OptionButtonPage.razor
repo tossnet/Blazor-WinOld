@@ -7,6 +7,7 @@
 
 <div style="display:flex; flex-direction: row; gap: 80px;">
 	<WinOldOptionButtonGroup T="int"					
+		                     @bind-Value="SelectedRadio"
 							 Appearance="Appearance.Win98">
 		<WinOldOptionButton Label="Adrien (disabled)" Value="1" Disabled="true" />
 		<WinOldOptionButton Label="Christophe" Value="2" />
@@ -14,6 +15,7 @@
 	</WinOldOptionButtonGroup>
 	
 	<WinOldOptionButtonGroup T="int"
+							 @bind-Value="SelectedRadio"
 							 Appearance="Appearance.WinXP">
 		<WinOldOptionButton Label="Adrien" Value="1" />
 		<WinOldOptionButton Label="Christophe" Value="2" />
@@ -22,7 +24,17 @@
 
 	
 	<WinOldOptionButtonGroup T="int"
+							 @bind-Value="SelectedRadio"
 							 Appearance="Appearance.Win7">
+		<WinOldOptionButton Label="Adrien" Value="1" />
+		<WinOldOptionButton Label="Christophe (disabled)" Value="2" Disabled="true" />
+		<WinOldOptionButton Label="Denis" Value="3" />
+	</WinOldOptionButtonGroup>
+
+	
+	<WinOldOptionButtonGroup T="int"
+							 @bind-Value="SelectedRadio"
+							 Appearance="Appearance.Win10">
 		<WinOldOptionButton Label="Adrien" Value="1" />
 		<WinOldOptionButton Label="Christophe (disabled)" Value="2" Disabled="true" />
 		<WinOldOptionButton Label="Denis" Value="3" />
@@ -34,6 +46,7 @@
 		   EnableLineNumbers="true"
 		   Code=@(@"
 <WinOldOptionButtonGroup T=""int""
+		                 @bind-Value=""SelectedRadio""
 						 Appearance=""Appearance.WinXP"">
 	<WinOldOptionButton Label=""Adrien"" Value=""1"" />
 	<WinOldOptionButton Label=""Christophe"" Value=""2"" />
@@ -46,3 +59,7 @@
 		   Code=@(@"
 private int SelectedRadio { get; set; } = 2;
 	 ") />
+
+@code {
+	private int SelectedRadio { get; set; } = 2;
+}

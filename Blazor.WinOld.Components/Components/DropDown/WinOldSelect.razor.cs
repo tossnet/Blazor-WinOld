@@ -51,7 +51,7 @@ public partial class WinOldSelect<T> : WinOldComponentBase
             Appearance.Win7 => "select-win-7",
             Appearance.WinXP => "select-win-xp",
             Appearance.Win98 => "select-win-98",
-            _ => "select-win-98"
+            _ => "select-win-7"
         };
     }
 }

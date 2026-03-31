@@ -70,7 +70,8 @@ public partial class WinOldCheckBox : WinOldComponentBase
             Appearance.Win7 => "chk-win-7",
             Appearance.WinXP => "chk-win-xp",
             Appearance.Win98 => "chk-win-98",
-            _ => "chk-win-98"
+            Appearance.Win10 => "chk-win-10",
+            _ => "chk-win-10"
         };
     }
 }

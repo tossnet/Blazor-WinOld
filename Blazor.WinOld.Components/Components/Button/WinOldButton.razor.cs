@@ -46,7 +46,8 @@ public partial class WinOldButton : WinOldComponentBase
             Appearance.Win7 => "btn-win-7",
             Appearance.WinXP => "btn-win-xp",
             Appearance.Win98 => "btn-win-98",
-            _ => "btn-win-98"
+            Appearance.Win10 => "btn-win-10",
+            _ => "btn-win-10"
         };
 
         return Default ? $"{baseClass} {baseClass}-default" : baseClass;

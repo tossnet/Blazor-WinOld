@@ -15,4 +15,8 @@ public enum Appearance
     /// <summary />
     [Description("win98")]
     Win98,
+
+    /// <summary />
+    [Description("win10")]
+    Win10,
 }

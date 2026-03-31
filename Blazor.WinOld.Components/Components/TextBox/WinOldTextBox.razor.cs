@@ -54,7 +54,7 @@ public partial class WinOldTextBox : WinOldComponentBase
             Appearance.Win7 => "txt-win-7",
             Appearance.WinXP => "txt-win-xp",
             Appearance.Win98 => "txt-win-98",
-            _ => "txt-win-98"
+            _ => "txt-win-7"
         };
     }
 

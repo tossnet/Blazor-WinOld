@@ -36,7 +36,8 @@ public partial class WinOldOptionButton<T> : WinOldComponentBase
             Appearance.Win7 => "opt-win-7",
             Appearance.WinXP => "opt-win-xp",
             Appearance.Win98 => "opt-win-98",
-            _ => "opt-win-98"
+            Appearance.Win10 => "opt-win-10",
+            _ => "opt-win-10"
         };
     }
 }

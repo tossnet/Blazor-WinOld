@@ -190,3 +190,89 @@
 .opt-win-7:disabled + label {
     opacity: .6;
 }
+/*-------------------------------------------*\
+    Win 10
+\*-------------------------------------------*/
+.opt-win-10 + label {
+    align-items: center;
+    display: inline-flex;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
+    margin-left: 19px;
+    outline: none;
+}
+
+.opt-win-10:focus + label,
+.opt-win-10:focus-visible + label {
+    outline: none;
+}
+
+.opt-win-10 + label:before {
+    box-sizing: border-box;
+    width: 13px;
+    height: 13px;
+    min-width: 13px;
+    left: -19px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffffff;
+    border: 1px solid #767676;
+    border-radius: 50%;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.opt-win-10 + label:after {
+    left: -14.9px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+    transition: transform 0.15s ease;
+}
+
+.opt-win-10 + label:hover:before {
+    border-color: #0078d7;
+}
+
+.opt-win-10:checked + label:before {
+    background: #0078d7;
+    border-color: #0078d7;
+}
+
+.opt-win-10:checked + label:after {
+    transform: translateY(-50%) scale(1);
+}
+
+.opt-win-10:active + label:before {
+    border-color: #005499;
+    background: #005499;
+}
+
+.opt-win-10:active:checked + label:after {
+    transform: translateY(-50%) scale(0.7);
+}
+
+.opt-win-10:disabled + label {
+    cursor: default;
+    color: #a0a0a0;
+}
+
+    .opt-win-10:disabled + label:before {
+        background: #f0f0f0;
+        border-color: #c0c0c0;
+    }
+
+.opt-win-10:disabled:checked + label:before {
+    background: #c0c0c0;
+    border-color: #c0c0c0;
+}
+
+.opt-win-10:disabled:checked + label:after {
+    background: #ffffff;
+    transform: translateY(-50%) scale(1);
+}
