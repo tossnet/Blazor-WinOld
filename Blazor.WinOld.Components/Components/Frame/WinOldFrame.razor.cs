@@ -22,28 +22,15 @@ public partial class WinOldFrame : WinOldComponentBase
     public string Label { get; set; } = string.Empty;
 
     /// </summary>
-    private string GetComponentClass()
-    {
-        string style = string.Empty;
-
-        switch (Appearance)
-        {
-            case Appearance.WinXP:
-                style = "frame-win-xp";
-                break;
-            case Appearance.Win7:
-                style = "frame-win-7";
-                break;
-            case Appearance.Win98:
-                style = "frame-win-98";
-                break;
-        }
-
-        if (Border == Border.None)
-        {
-            style = string.Empty;
-        }
-
-        return style;
-    }
+    private string GetComponentClass() =>
+        Border == Border.None
+            ? string.Empty
+            : Appearance switch
+            {
+                Appearance.WinXP => "frame-win-xp",
+                Appearance.Win7 => "frame-win-7",
+                Appearance.Win98 => "frame-win-98",
+                Appearance.Win10 => "frame-win-10",
+                _ => "frame-win-10"
+            };
 }

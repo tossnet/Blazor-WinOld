@@ -71,8 +71,17 @@ Win XP
     -webkit-padding-before: 8px;
     padding-block-start: 8px;
 }
-}
 
     .frame-win-7 legend {
 
     }
+/*-------------------------------------------*\
+    Win 10
+\*-------------------------------------------*/
+.frame-win-10 {
+    border: 1px solid #DCDCDC;
+    margin: 0;
+    padding: 10px;
+    -webkit-padding-before: 8px;
+    padding-block-start: 8px;
+}

@@ -29,6 +29,14 @@
 		<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
 		<WinOldOption Value="@("Denis")">Denis</WinOldOption>
 	</WinOldSelect>
+
+	<WinOldSelect Appearance="Appearance.Win10"
+				  T="string"
+				  @bind-Value="SelectOptionString">
+		<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+		<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+		<WinOldOption Value="@("Denis")">Denis</WinOldOption>
+	</WinOldSelect>
 </div>
 
 <div style="display:flex; flex-direction: row; gap: 10px;">
@@ -49,6 +57,14 @@
 	</WinOldSelect>
 
 	<WinOldSelect Appearance="Appearance.Win7"
+				  T="string"
+				  @bind-Value="SelectOptionString" Disabled>
+		<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+		<WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+		<WinOldOption Value="@("Denis")">Denis</WinOldOption>
+	</WinOldSelect>
+
+	<WinOldSelect Appearance="Appearance.Win10"
 				  T="string"
 				  @bind-Value="SelectOptionString" Disabled>
 		<WinOldOption Value="@("Adrien")">Adrien</WinOldOption>

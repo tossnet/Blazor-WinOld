@@ -324,12 +324,6 @@
     position: relative;
     z-index: 8;
 }
-
- /*   .active-tab-win-10:not(:disabled):hover,
-    .active-tab-win-10:not(:disabled):hover {
-        border-color: var(--tab-border-color);
-    }*/
-
     .active-tab-win-10:before,
     .active-tab-win-10:before {
         background: none;

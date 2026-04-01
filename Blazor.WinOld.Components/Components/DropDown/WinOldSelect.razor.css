@@ -144,3 +144,46 @@
         border-color: #adb5bd;
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 1px rgba(0,0,0,0.1);
     }
+/*-------------------------------------------*\
+    Win 10
+\*-------------------------------------------*/
+.select-win-10:not([multiple]) {
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxbDUgNiA1LTYiIHN0cm9rZT0iIzYwNjA2MCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=");
+    background-position: calc(100% - 8px) center;
+    background-repeat: no-repeat;
+    background-size: 12px 8px;
+    border: 1px solid #adadad;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: #000000;
+    padding: 3px 28px 3px 6px;
+    outline: none;
+    font: var(--font);
+    font-size: 9pt;
+    cursor: default;
+    outline: none;
+    height: 24px;
+}
+
+    .select-win-10:not([multiple]):hover {
+        background-color: #cce4f7;
+        border-color: #0078d4;
+    }
+
+    .select-win-10:not([multiple]):active {
+        background-color: #99caf0;
+        border-color: #005a9e;
+    }
+
+    /*.select-win-10:not([multiple]):focus {
+        outline: none;
+    }*/
+
+    .select-win-10:not([multiple]):disabled {
+        cursor: not-allowed;
+        color: #a0a0a0;
+        background-color: #f3f3f3;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxbDUgNiA1LTYiIHN0cm9rZT0iI2IwYjBiMCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=");
+        border-color: #c0c0c0;
+    }
