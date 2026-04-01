@@ -6,7 +6,11 @@
     windowEl.style.top = rect.top + 'px';
     windowEl.style.margin = '0';
 
-    titleBarEl.style.cursor = 'grab';
+    // Bloque le scroll natif sur la barre de titre (pour tactile)
+    titleBarEl.style.touchAction = 'none';
+
+    const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+    if (hasFinePointer) titleBarEl.style.cursor = 'grab';
 
     let isDragging = false, offsetX = 0, offsetY = 0;
 
@@ -15,7 +19,7 @@
 
         isDragging = true;
         titleBarEl.setPointerCapture(e.pointerId);
-        titleBarEl.style.cursor = 'grabbing';
+        if (hasFinePointer) titleBarEl.style.cursor = 'grabbing';
         const r = windowEl.getBoundingClientRect();
         offsetX = e.clientX - r.left;
         offsetY = e.clientY - r.top;
@@ -32,7 +36,7 @@
 
     function onUp() {
         isDragging = false;
-        titleBarEl.style.cursor = 'grab';
+        if (hasFinePointer) titleBarEl.style.cursor = 'grab';
     }
 
     titleBarEl.addEventListener('pointerdown', onDown);

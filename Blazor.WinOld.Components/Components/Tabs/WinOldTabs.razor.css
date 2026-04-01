@@ -145,7 +145,6 @@
     border: var(--btn-win7-border);
 }
 
-
     .tabs-win-7:disabled {
         background: var(--btn-win7-face-disabled);
         border-color: var(--btn-win7-border-color-disabled);
@@ -249,6 +248,90 @@
 
     .active-tab-win-7:before, 
     .active-tab-win-7:before {
+        background: none;
+        border-radius: var(--border-radius);
+        box-shadow: var(--btn-win7-shadow);
+    }
+/*-------------------------------------------*\
+    Win 10
+\*-------------------------------------------*/
+.tabs-win-10 {
+    padding: 2px 6px;
+    position: relative;
+    text-align: center;
+    font: var(--font);
+    font-size: 9pt;
+    min-height: 21px;
+    box-sizing: border-box;
+    background: #F3F3F3;
+    border: 1px solid var(--tab-win10-border-color);
+}
+
+    .tabs-win-10:disabled {
+        color: var(--btn-win7-text-color-disabled);
+    }
+
+    .tabs-win-10 button:before {
+        border-radius: 0;
+    }
+
+    .tabs-win-10:after, .tabs-win-10:before, .tabs-win-10:after, .tabs-win-10:before {
+        content: "";
+        height: 100%;
+        left: 0;
+        margin: 0;
+        opacity: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        transition: opacity .3s;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .tabs-win-10:before,
+    .tabs-win-10:before {
+        background: #EDEDED;
+    }
+
+    .tabs-win-10 .tabs-win-10:after {
+        content: none;
+    }
+
+    .tabs-win-10:after,
+    .tabs-win-10:before,
+    .tabs-win-10:after,
+    .tabs-win-10:before {
+        content: "";
+        height: 100%;
+        left: 0;
+        margin: 0;
+        opacity: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        transition: opacity .3s;
+        width: 100%;
+        z-index: -1;
+    }
+
+.active-tab-win-10 {
+    background: var(--tab-bg);
+    border-bottom: 0;
+    box-shadow: none;
+    margin: -2px 0 1px -3px;
+    padding-bottom: 4px;
+    position: relative;
+    z-index: 8;
+}
+
+ /*   .active-tab-win-10:not(:disabled):hover,
+    .active-tab-win-10:not(:disabled):hover {
+        border-color: var(--tab-border-color);
+    }*/
+
+    .active-tab-win-10:before,
+    .active-tab-win-10:before {
         background: none;
         border-radius: var(--border-radius);
         box-shadow: var(--btn-win7-shadow);

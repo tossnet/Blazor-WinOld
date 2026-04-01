@@ -62,7 +62,8 @@ public partial class WinOldTabs : WinOldComponentBase
             Appearance.Win7 => "tabs-win-7",
             Appearance.WinXP => "tabs-win-xp",
             Appearance.Win98 => "tabs-win-98",
-            _ => "tabs-win-7"
+            Appearance.Win10 => "tabs-win-10",
+            _ => "tabs-win-10"
         };
     }
 
@@ -76,7 +77,8 @@ public partial class WinOldTabs : WinOldComponentBase
             Appearance.Win7 => "active-tab-win-7",
             Appearance.WinXP => "active-tab-win-xp",
             Appearance.Win98 => "active-tab-win-98",
-            _ => "active-tab-win-7"
+            Appearance.Win10 => "active-tab-win-10",
+            _ => "active-tab-win-10"
         };
 
         return isActive ? activeClass : string.Empty;

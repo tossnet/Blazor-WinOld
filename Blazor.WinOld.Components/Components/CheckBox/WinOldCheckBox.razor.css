@@ -254,13 +254,13 @@
         outline: none;
     }
 
-    .chk-win-10:active + label:before,
-    .chk-win-10:active + label:hover:before {
+    .chk-win-10:not(:disabled):active + label:before,
+    .chk-win-10:not(:disabled):active + label:hover:before {
         background: var(--win10-background-color-active);
         border-color: var(--win10-border-color-active);
     }
-    .chk-win-10:active:checked + label:before,
-    .chk-win-10:active:checked + label:hover:before {
+    .chk-win-10:not(:disabled):active:checked + label:before,
+    .chk-win-10:not(:disabled):active:checked + label:hover:before {
         background: var(--win10-background-color-checked-active);
         border-color: var(--win10-border-color-checked-active);
     }

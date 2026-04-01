@@ -43,3 +43,15 @@
     position: relative;
     z-index: 2;
 }
+/*-------------------------------------------*\
+    Win 10
+\*-------------------------------------------*/
+.panel-win-10 {
+    background: var(--tab-bg);
+    border: 1px solid var(--tab-win10-border-color);
+    clear: both;
+    margin-bottom: 9px;
+    padding: 14px;
+    position: relative;
+    z-index: 2;
+}
