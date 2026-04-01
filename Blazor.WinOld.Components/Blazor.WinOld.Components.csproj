@@ -15,8 +15,8 @@
 		<Version>1.5.0</Version>
 		<Authors>Christophe Peugnet</Authors>
 		<Copyright>Copyright 2025-2026</Copyright>
-		<Description>Blazor components in Windows 98, Windows XP and Windows 7 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
-		<PackageTags>blazor;components;win98;winXP;win7</PackageTags>
+		<Description>Blazor components in Windows 98, Windows XP, Windows 7 and Windows 10 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
+		<PackageTags>blazor;components;win98;winXP;win7;win10;windows-xp;windows-98;windows-7;windows-10</PackageTags>
 		<PackageProjectUrl>https://github.com/tossnet/Blazor-WinOld</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/tossnet/Blazor-WinOld.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>

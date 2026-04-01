@@ -222,18 +222,16 @@
     Win 10
 \*-------------------------------------------*/
 .btn-win-10 {
-    min-width: 75px;
-    padding: 4px 12px;
     font-family: var(--font);
-    font-size: 13px;
+    font-size: 12px;
     color: #1a1a1a;
     background-color: #f0f0f0;
     border: 1px solid #adadad;
     cursor: pointer;
     outline: none;
     border-radius: 4px;
-    line-height: 1.08;
     transition: background-color 0.1s ease, border-color 0.1s ease;
+    min-height: 21px;
 }
 
     .btn-win-10:focus {
@@ -241,8 +239,8 @@
     }
 
     .btn-win-10:hover {
-        background-color: #e5f1fb;
-        border-color: #0078d7;
+        background-color: #E0EEF9;
+        border-color: #006BBE;
     }
 
     .btn-win-10:active {
@@ -252,7 +250,6 @@
 
     .btn-win-10-default {
         border: 1px solid #0078d7;
-        padding: 3px 11px; 
     }
 
     .btn-win-10:disabled {

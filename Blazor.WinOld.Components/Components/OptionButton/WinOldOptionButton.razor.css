@@ -79,9 +79,9 @@
         background: #fff;
     }
 
-.opt-win-xp[disabled] + label {
-    opacity: .6;
-}
+    .opt-win-xp[disabled] + label {
+        opacity: .6;
+    }
 
     .opt-win-xp[disabled]:checked + label:after {
         background: #d0ccb2;
@@ -218,43 +218,66 @@
     left: -19px;
     top: 50%;
     transform: translateY(-50%);
-    background: #ffffff;
+    background: var(--win10-background-color);
     border: 1px solid #767676;
     border-radius: 50%;
     transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .opt-win-10 + label:after {
-    left: -14.9px;
+    left: -19px;
     top: 50%;
-    transform: translateY(-50%) scale(0);
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background: #ffffff;
+    transform: translate(3.5px, -50%) scale(0);
     transition: transform 0.15s ease;
 }
 
 .opt-win-10 + label:hover:before {
-    border-color: #0078d7;
+    background: var(--win10-background-color-hovered);
+    border-color: var(--win10-border-color-hovered);
 }
 
 .opt-win-10:checked + label:before {
-    background: #0078d7;
-    border-color: #0078d7;
+    background: var(--win10-background-color-checked);
+    border-color: var(--win10-border-color-checked);
+}
+
+.opt-win-10:checked + label:hover:before {
+    background: var(--win10-background-color-checked-hovered);
+    border-color: var(--win10-border-color-checked-hovered);
 }
 
 .opt-win-10:checked + label:after {
-    transform: translateY(-50%) scale(1);
+    transform: translate(3.5px, -50%) scale(1);
+}
+
+.opt-win-10:checked + label:hover:after {
+    transform: translate(3.5px, -50%) scale(1.1);
 }
 
 .opt-win-10:active + label:before {
-    border-color: #005499;
-    background: #005499;
+    background: var(--win10-background-color-active);
+    border-color: var(--win10-border-color-active);
+}
+
+.opt-win-10:active + label:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: #ffffff;
+    transform: translate(3.5px, -50%) scale(0.7);
+}
+
+.opt-win-10:active:checked + label:before {
+    background: var(--win10-background-color-checked-active);
+    border-color: var(--win10-border-color-checked-active);
 }
 
 .opt-win-10:active:checked + label:after {
-    transform: translateY(-50%) scale(0.7);
+    transform: translate(3.5px, -50%) scale(0.7);
 }
 
 .opt-win-10:disabled + label {
@@ -263,8 +286,8 @@
 }
 
     .opt-win-10:disabled + label:before {
-        background: #f0f0f0;
-        border-color: #c0c0c0;
+        background: var(--win10-background-color-disabled);
+        border-color: var(--win10-border-color-disabled);
     }
 
 .opt-win-10:disabled:checked + label:before {
@@ -273,6 +296,5 @@
 }
 
 .opt-win-10:disabled:checked + label:after {
-    background: #ffffff;
-    transform: translateY(-50%) scale(1);
+    transform: translate(3.5px, -50%) scale(1);
 }

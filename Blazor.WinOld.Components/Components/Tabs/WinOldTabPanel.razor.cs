@@ -34,7 +34,7 @@ public partial class WinOldTabPanel : WinOldComponentBase
             Appearance.Win7 => "panel-win-7",
             Appearance.WinXP => "panel-win-xp",
             Appearance.Win98 => "panel-win-98",
-            _ => "panel-win-98"
+            _ => "panel-win-7"
         };
     }
 }
