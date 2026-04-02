@@ -62,7 +62,8 @@ public partial class WinOldDialogHost : WinOldComponentBase
         Appearance.Win7 => "dlg-win-7",
         Appearance.WinXP => "dlg-win-xp",
         Appearance.Win98 => "dlg-win-98",
-        _ => "dlg-win-98"
+        Appearance.Win10 => "dlg-win-10",
+        _ => "dlg-win-10"
     };
 
     private string GetTitleBarClass() => Options.Appearance switch
@@ -70,7 +71,8 @@ public partial class WinOldDialogHost : WinOldComponentBase
         Appearance.Win7 => "title-bar-win-7",
         Appearance.WinXP => "title-bar-win-xp",
         Appearance.Win98 => "title-bar-win-98",
-        _ => "title-bar-win-98"
+        Appearance.Win10 => "title-bar-win-10",
+        _ => "title-bar-win-10"
     };
 
     private string GetTitleBarTextClass() => Options.Appearance switch
@@ -78,6 +80,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
         Appearance.Win7 => "title-bar-text-win-7",
         Appearance.WinXP => "title-bar-text-win-xp",
         Appearance.Win98 => "title-bar-text-win-98",
+        Appearance.Win10 => "title-bar-text-win-10",
         _ => "title-bar-text-win-98"
     };
 
@@ -86,7 +89,8 @@ public partial class WinOldDialogHost : WinOldComponentBase
         Appearance.Win7 => "title-bar-controls-win-7",
         Appearance.WinXP => "title-bar-controls-win-xp",
         Appearance.Win98 => "title-bar-controls-win-98",
-        _ => "title-bar-controls-win-98"
+        Appearance.Win10 => "title-bar-controls-win-10",
+        _ => "title-bar-controls-win-10"
     };
 
     private string GetDialogBodyClass() => Options.Appearance switch
@@ -94,7 +98,8 @@ public partial class WinOldDialogHost : WinOldComponentBase
         Appearance.Win7 => "dlg-body-win-7",
         Appearance.WinXP => "dlg-body-win-xp",
         Appearance.Win98 => "dlg-body-win-98",
-        _ => "dlg-body-win-98"
+        Appearance.Win10 => "dlg-body-win-10",
+        _ => "dlg-body-win-10"
     };
 
     private string GetDialogSizeStyle()
