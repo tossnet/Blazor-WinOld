@@ -15,7 +15,8 @@ BlazorWinOld provides a collection of Blazor components styled to match the icon
 
 
 
-https://github.com/user-attachments/assets/fcaafeec-2dc4-46dc-b767-d43d17d57336
+https://github.com/user-attachments/assets/f5a8b771-8f57-4c40-8e1e-6ae8b29a05d7
+
 
 
 ## Installation
