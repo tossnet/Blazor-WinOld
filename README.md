@@ -5,6 +5,8 @@
 
 A Blazor UI component library that brings back the nostalgic look and feel of classic Windows operating systems (Windows 98, XP, 7 and 10). Create retro-styled web applications with authentic Windows UI components.
 
+> 🪶 **Lightweight** — the NuGet package is only ~310 KB.
+
 **Compatible with Blazor Server and Blazor WebAssembly**
 
 DEMO and DOCS : https://tossnet.github.io/Blazor-WinOld/
