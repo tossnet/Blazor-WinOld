@@ -12,7 +12,7 @@
 
 		<!-- Package metadata -->
 		<PackageId>BlazorWinOld</PackageId>
-		<Version>1.5.0</Version>
+		<Version>2.0.0</Version>
 		<Authors>Christophe Peugnet</Authors>
 		<Copyright>Copyright 2025-2026</Copyright>
 		<Description>Blazor components in Windows 98, Windows XP, Windows 7 and Windows 10 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
@@ -24,7 +24,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReleaseNotes>
-			v1.5 - Added WinOldDialog component: a fully draggable dialog window supporting custom child content.
+			v2.0 - Added windows 10 style
 		</PackageReleaseNotes>
 
 		<!-- Build and symbols -->
@@ -33,7 +33,7 @@
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<DebugType>embedded</DebugType>
+		<DebugType>portable</DebugType>
 	</PropertyGroup>
 
 	<ItemGroup>

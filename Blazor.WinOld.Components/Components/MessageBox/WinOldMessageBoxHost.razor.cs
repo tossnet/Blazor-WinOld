@@ -72,7 +72,8 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
             Appearance.Win7 => "msg-win-7",
             Appearance.WinXP => "msg-win-xp",
             Appearance.Win98 => "msg-win-98",
-            _ => "msg-win-98"
+            Appearance.Win10 => "msg-win-10",
+            _ => "msg-win-10"
         };
     }
 
@@ -85,7 +86,8 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
             Appearance.Win7 => "title-bar-win-7",
             Appearance.WinXP => "title-bar-win-xp",
             Appearance.Win98 => "title-bar-win-98",
-            _ => "title-bar-win-98"
+            Appearance.Win10 => "title-bar-win-10",
+            _ => "title-bar-win-10"
         };
     }
 
@@ -97,7 +99,8 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
             Appearance.Win7 => "title-bar-text-win-7",
             Appearance.WinXP => "title-bar-text-win-xp",
             Appearance.Win98 => "title-bar-text-win-98",
-            _ => "title-bar-text-win-98"
+            Appearance.Win10 => "title-bar-text-win-10",
+            _ => "title-bar-text-win-10"
         };
     }
 
@@ -109,7 +112,8 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
             Appearance.Win7 => "title-bar-controls-win-7",
             Appearance.WinXP => "title-bar-controls-win-xp",
             Appearance.Win98 => "title-bar-controls-win-98",
-            _ => "title-bar-controls-win-98"
+            Appearance.Win10 => "title-bar-controls-win-10",
+            _ => "title-bar-controls-win-10"
         };
     }
 
@@ -121,7 +125,8 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
             Appearance.Win7 => "7",
             Appearance.WinXP => "xp",
             Appearance.Win98 => "98",
-            _ => "98"
+            Appearance.Win10 => "10",
+            _ => "10"
         };
 
         return Options.Icon switch
@@ -141,7 +146,8 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
             Appearance.Win7 => "message-body-win-7",
             Appearance.WinXP => "message-body-win-xp",
             Appearance.Win98 => "message-body-win-98",
-            _ => "message-body-win-98"
+            Appearance.Win10 => "message-body-win-10",
+            _ => "message-body-win-10"
         };
     }
     /// </summary>
@@ -152,7 +158,8 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
             Appearance.Win7 => "msg-content-win-7",
             Appearance.WinXP => "msg-content-win-xp",
             Appearance.Win98 => "msg-content-win-98",
-            _ => "msg-content-win-98"
+            Appearance.Win10 => "msg-content-win-10",
+            _ => "msg-content-win-10"
         };
     }
 }
