@@ -91,3 +91,42 @@ label.label-txt-win {
     font: var(--font);
     font-size: 9pt;
 }
+/*-------------------------------------------*\
+    Win 10
+\*-------------------------------------------*/
+.txt-win-10 {
+    height: 20px;
+    box-sizing: border-box;
+    padding: 0 4px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 11px;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #ECECEC;
+    border-bottom: 1px solid #838383;
+    border-radius: 2px 2px 1px 1px;
+    outline: none;
+    box-shadow: none;
+    transition: box-shadow 0.15s ease, border-bottom-color 0.15s ease;
+}
+
+    .txt-win-10:focus {
+        border: 1px solid #ECECEC;
+        border-bottom: 1px solid #0067C0;
+        box-shadow: inset 0 -1px 0 0 #0067C0;
+        background-color: #ffffff;
+    }
+
+    .txt-win-10:disabled {
+        background-color: #F9F9F9;
+        color: #808080;
+        border: 1px solid #ECECEC;
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+
+.lbtxt-win-10 {
+    font-family: unset !important;
+    font: var(--font);
+    font-size: 9pt;
+}

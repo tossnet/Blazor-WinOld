@@ -6,29 +6,46 @@
 <h1>Textbox</h1>
 					  
 <div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
-	<WinOldTextBox Appearance="Appearance.Win98"
-				   Label="Textbox :" />
+	<div>
+		<WinOldTextBox Appearance="Appearance.Win98"
+					   Label="Textbox :"
+					   Style="padding-bottom:4px" />
 
-	<WinOldTextBox Appearance="Appearance.WinXP"
-				   Label="Textbox :" />
+		<WinOldTextBox Appearance="Appearance.Win98"
+					   Label="Textbox :"
+					   Disabled="true" />
+	</div>
 
-	<WinOldTextBox Appearance="Appearance.Win7"
-				   Label="Textbox :" />
+	<div>
+		<WinOldTextBox Appearance="Appearance.WinXP"
+					   Label="Textbox :"
+					   Style="padding-bottom:4px" />
+
+		<WinOldTextBox Appearance="Appearance.WinXP"
+					   Label="Textbox :"
+					   Disabled="true" />
+	</div>
+
+	<div>
+		<WinOldTextBox Appearance="Appearance.Win7"
+					   Label="Textbox :"
+					   Style="padding-bottom:4px" />
+
+		<WinOldTextBox Appearance="Appearance.Win7"
+					   Label="Textbox :"
+					   Disabled="true" />
+	</div>
+
+	<div>
+		<WinOldTextBox Appearance="Appearance.Win10"
+					   Label="Textbox :"
+					   Style="padding-bottom:4px" />
+		<WinOldTextBox Appearance="Appearance.Win10"
+					   Label="Textbox :"
+					   Disabled="true" />
+	</div>
 </div>
 
-<div style="display:flex; flex-direction: row; gap: 10px;">
-	<WinOldTextBox Appearance="Appearance.Win98"
-				   Label="Textbox :"
-				   Disabled="true" />
-
-	<WinOldTextBox Appearance="Appearance.WinXP"
-				   Label="Textbox :"
-				   Disabled="true" />
-
-	<WinOldTextBox Appearance="Appearance.Win7"
-				   Label="Textbox :"
-				   Disabled="true" />
-</div>
 
 <CodeBlock Language="CodeLanguage.Razor"
 		   EnableLineNumbers="true"
@@ -37,3 +54,8 @@
 			Label=""Textbox :""
 			Disabled=""false"" />
 		   	 	 	 	 ") />
+
+
+<h2>Behavior</h2>
+<p>InputStyle : Optional in-line styles applied to the input element specifically. ex : text-align: right; </p>
+<p>Disabled</p>

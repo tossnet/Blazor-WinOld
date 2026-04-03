@@ -695,3 +695,99 @@
 .inp-win-7 .actions {
 
 }
+
+/*-------------------------------------------*\
+    Win 10
+\*-------------------------------------------*/
+.inp-win-10 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    background: var(--dlg-win10-background-color);
+    border: 1px solid var( --dlg-win10-title-bar-border-color-active);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.title-bar-win-10 {
+    font-size: 12px;
+    background: var(--dlg-win10-background-color);
+    padding: 8px 8px 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 31px;
+    box-sizing: border-box;
+}
+
+    .title-bar-win-10.active {
+        background: var(--dlg-win10-title-bar-background-color-active);
+    }
+
+.title-bar-text-win-10 {
+    font-weight: 400;
+    color: #333;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title-bar-win-10.active .title-bar-text-win-10 {
+    color: #fff;
+}
+
+.title-bar-controls-win-10 {
+    display: flex;
+    align-items: center;
+    height: 31px;
+    margin-right: -8px;
+}
+
+    .title-bar-controls-win-10 button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 31px;
+        height: 31px;
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        border-radius: 0;
+        box-sizing: border-box;
+    }
+
+        .title-bar-controls-win-10 button:focus {
+            outline: none;
+        }
+
+        /* Inactive close button : grey X */
+        .title-bar-controls-win-10 button[aria-label=Close] {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23666' d='M1 0L0 1l4 4-4 4 1 1 4-4 4 4 1-1-4-4 4-4-1-1-4 4z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+            .title-bar-controls-win-10 button[aria-label=Close]:hover {
+                background-color: var(--dlg-win10-title-bar-controls-background-color-hover);
+                background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23fff' d='M1 0L0 1l4 4-4 4 1 1 4-4 4 4 1-1-4-4 4-4-1-1-4 4z'/%3E%3C/svg%3E");
+            }
+
+/* Active close button : white X */
+.title-bar-win-10.active .title-bar-controls-win-10 button[aria-label=Close] {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23fff' d='M1 0L0 1l4 4-4 4 1 1 4-4 4 4 1-1-4-4 4-4-1-1-4 4z'/%3E%3C/svg%3E");
+}
+
+    .title-bar-win-10.active .title-bar-controls-win-10 button[aria-label=Close]:hover {
+        background-color: var(--dlg-win10-title-bar-controls-background-color-hover);
+    }
+
+.input-body-win-10 {
+    /*margin: 8px 12px 12px 12px;*/
+}
+
+.inp-win-10 .actions {
+    margin: 0px 1px 10px;
+    text-align: right;
+}

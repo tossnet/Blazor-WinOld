@@ -86,7 +86,8 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
             Appearance.Win7 => "inp-win-7",
             Appearance.WinXP => "inp-win-xp",
             Appearance.Win98 => "inp-win-98",
-            _ => "inp-win-98"
+            Appearance.Win10 => "inp-win-10",
+            _ => "inp-win-10"
         };
     }
 
@@ -99,7 +100,8 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
             Appearance.Win7 => "title-bar-win-7",
             Appearance.WinXP => "title-bar-win-xp",
             Appearance.Win98 => "title-bar-win-98",
-            _ => "title-bar-win-98"
+            Appearance.Win10 => "title-bar-win-10",
+            _ => "title-bar-win-10"
         };
     }
 
@@ -111,7 +113,8 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
             Appearance.Win7 => "title-bar-text-win-7",
             Appearance.WinXP => "title-bar-text-win-xp",
             Appearance.Win98 => "title-bar-text-win-98",
-            _ => "title-bar-text-win-98"
+            Appearance.Win10 => "title-bar-text-win-10",
+            _ => "title-bar-text-win-10"
         };
     }
 
@@ -123,7 +126,8 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
             Appearance.Win7 => "title-bar-controls-win-7",
             Appearance.WinXP => "title-bar-controls-win-xp",
             Appearance.Win98 => "title-bar-controls-win-98",
-            _ => "title-bar-controls-win-98"
+            Appearance.Win10 => "title-bar-controls-win-10",
+            _ => "title-bar-controls-win-10"
         };
     }
 
@@ -134,7 +138,8 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
             Appearance.Win7 => "input-body-win-7",
             Appearance.WinXP => "input-body-win-xp",
             Appearance.Win98 => "input-body-win-98",
-            _ => "input-body-win-98"
+            Appearance.Win10 => "input-body-win-10",
+            _ => "input-body-win-10"
         };
     }
     /// </summary>
@@ -145,7 +150,8 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
             Appearance.Win7 => "inp-content-win-7",
             Appearance.WinXP => "inp-content-win-xp",
             Appearance.Win98 => "inp-content-win-98",
-            _ => "inp-content-win-98"
+            Appearance.Win10 => "inp-content-win-10",
+            _ => "inp-content-win-10"
         };
     }
 }

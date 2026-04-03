@@ -2,16 +2,19 @@
 
 @inherits WinOldComponentBase
 
-<label for="@ElementId"
-       class="label-txt-win @GetComponentLabelClass()"
-       disabled="@(ParentDisabled | Disabled)" >
-       @Label</label>
-<input @ref="InputElement"
-       type="text"
-       id="@ElementId" 
-       class="txt-win @GetComponentClass() @Class"
-       disabled="@(ParentDisabled | Disabled)"
-       style="@Style"
-       @attributes="Attributes"
-       @bind="Value"
-       @oninput="OnValueChanged" />
+<div style="@Style">
+    <label for="@ElementId"
+           class="label-txt-win @GetComponentLabelClass()"
+           disabled="@(ParentDisabled | Disabled)">
+        @Label
+    </label>
+    <input @ref="InputElement"
+           type="text"
+           id="@ElementId"
+           class="txt-win @GetComponentClass() @Class"
+           disabled="@(ParentDisabled | Disabled)"
+           style="@InputStyle"
+           @attributes="Attributes"
+           @bind="Value"
+           @oninput="OnValueChanged" />
+</div>
