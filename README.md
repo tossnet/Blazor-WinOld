@@ -5,7 +5,7 @@
 
 A Blazor UI component library that brings back the nostalgic look and feel of classic Windows operating systems (Windows 98, XP, 7 and 10). Create retro-styled web applications with authentic Windows UI components.
 
-> 🪶 **Lightweight** — the NuGet package is only ~320 KB.
+> 🪶 **Lightweight** — the NuGet package is only ~250 KB.
 
 **Compatible with Blazor Server and Blazor WebAssembly**
 
@@ -50,8 +50,13 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
+<details open="open"><summary>Version 2.0.0</summary>
 
-<details open="open"><summary>Version 1.4.0</summary>
+>- Added new Windows 10 style theme
+>- Windows 10 is now the default style applied to all components
+</details>
+
+<details><summary>Version 1.5.0</summary>
 
 >- Added WinOldDialog component: a fully draggable dialog window supporting custom child content
 </details>
