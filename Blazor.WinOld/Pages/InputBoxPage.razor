@@ -7,9 +7,11 @@
 
 <h1>InputBox</h1>
 
+<p>The <code>WinOldInputBox</code> is a modal dialog component that prompts users for input with different vintage Windows styles. It supports text and numeric input types.</p>
+
 <div class="info-block" style="margin-bottom:20px">
 	<p>
-		⚠️ To enable this component, you need to add the <code>&lt;WinOldInputBoxHost /&gt;</code> component
+		⚠️ <strong>Setup Required:</strong> To enable this component, add the <code>&lt;WinOldInputBoxHost /&gt;</code> component
 		at the bottom of your <strong>MainLayout.razor</strong>:
 	</p>
 	<CodeBlock Language="CodeLanguage.Razor"
@@ -17,72 +19,352 @@
 			   Code=@(@"<WinOldInputBoxHost />") />
 </div>
 
-<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
-	<WinOldButton OnClick="() => ClickMe(Appearance.Win98)"
-				  Appearance="Appearance.Win98">Show InputBox 98</WinOldButton>
+<h2>Text Input Examples</h2>
 
-	<WinOldButton OnClick="() => ClickMe(Appearance.WinXP)"
-				  Appearance="Appearance.WinXP">Show InputBox XP</WinOldButton>
+<p>Click the buttons below to display InputBox dialogs with different Windows styles:</p>
 
-	<WinOldButton OnClick="() => ClickMe(Appearance.Win7)"
-				  Appearance="Appearance.Win7">Show InputBox 7</WinOldButton>
+<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+	<WinOldButton OnClick="() => ShowTextInput(Appearance.Win98)"
+				  Appearance="Appearance.Win98">
+		Windows 98
+	</WinOldButton>
 
-	<WinOldButton OnClick="() => ClickMe(Appearance.Win10)"
-				  Appearance="Appearance.Win10">Show InputBox 10</WinOldButton>
+	<WinOldButton OnClick="() => ShowTextInput(Appearance.WinXP)"
+				  Appearance="Appearance.WinXP">
+		Windows XP
+	</WinOldButton>
+
+	<WinOldButton OnClick="() => ShowTextInput(Appearance.Win7)"
+				  Appearance="Appearance.Win7">
+		Windows 7
+	</WinOldButton>
+
+	<WinOldButton OnClick="() => ShowTextInput(Appearance.Win10)"
+				  Appearance="Appearance.Win10">
+		Windows 10
+	</WinOldButton>
 </div>
 
-<WinOldLabel Appearance="appearance">
-	Value: @_myValue
-</WinOldLabel>
+<h2>Numeric Input Examples</h2>
 
+<p>InputBox also supports numeric input types with specialized methods:</p>
 
+<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+	<WinOldButton OnClick="ShowIntInput"
+				  Appearance="Appearance.Win10">
+		Integer Input
+	</WinOldButton>
+
+	<WinOldButton OnClick="ShowDecimalInput"
+				  Appearance="Appearance.Win10">
+		Decimal Input
+	</WinOldButton>
+
+	<WinOldButton OnClick="ShowDoubleInput"
+				  Appearance="Appearance.Win10">
+		Double Input
+	</WinOldButton>
+</div>
+
+<h2>Current Values</h2>
+
+<div style="padding: 10px; background-color: #f5f5f5; border: 1px solid #ccc; margin: 20px 0;">
+	<p><strong>Text Value:</strong> @(_textValue ?? "(null)")</p>
+	<p><strong>Integer Value:</strong> @(_intValue?.ToString() ?? "(null)")</p>
+	<p><strong>Decimal Value:</strong> @(_decimalValue?.ToString("N2") ?? "(null)")</p>
+	<p><strong>Double Value:</strong> @(_doubleValue?.ToString("F4") ?? "(null)")</p>
+</div>
+
+<h2>Text Input Code Example</h2>
 
 <CodeBlock Language="CodeLanguage.Razor"
 		   EnableLineNumbers="true"
 		   Code=@(@"
 @inject IDialogService DialogService
 
-<WinOldButton OnClick=""ClickMe""
-		   	  Appearance=""Appearance.WinXP"">
-		   	 Show InputBox
-</WinOldButton>
-		   	 	 ") />
+<WinOldButton OnClick=""ShowTextInput""
+			  Appearance=""Appearance.Win10"">
+			 Show InputBox
+</WinOldButton>") />
 
 <CodeBlock Language="CodeLanguage.CSharp"
 		   EnableLineNumbers="true"
 		   Code=@(@"
-private string? _myValue = ""my default value"";
-		   	
-private async Task ClickMe(Appearance appearance)
+private string? _textValue = ""my default value"";
+
+private async Task ShowTextInput(Appearance appearance)
 {
-    var options = new InputBoxOptions
+	var options = new InputBoxOptions
 	{
 		Appearance = appearance,
-		Title = ""My input box"",
-		Message = ""Blazor is awesome!"",
-		Value = _myValue,
+		Title = ""Enter Your Name"",
+		Message = ""Please enter your name:"",
+		Value = _textValue,
 		OkButtonText = ""OK"",
 		CancelButtonText = ""Cancel""
-    };
-    _myValue = await DialogService.ShowInputBox(options);
-}
-		   	 ") />
+	};
+	_textValue = await DialogService.ShowInputBox(options);
+}") />
+
+<h2>Numeric Input Code Examples</h2>
+
+<h3>Integer Input</h3>
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+private int? _intValue = 42;
+
+private async Task ShowIntInput()
+{
+	var options = new InputBoxOptions
+	{
+		Appearance = Appearance.Win10,
+		Title = ""Enter Age"",
+		Message = ""Please enter your age:"",
+		Value = _intValue?.ToString(),
+		Min = ""0"",
+		Max = ""120"",
+		Step = ""1"",
+		OkButtonText = ""OK"",
+		CancelButtonText = ""Cancel""
+	};
+	_intValue = await DialogService.ShowInputBox<int?>(options);
+}") />
+
+<h3>Decimal Input</h3>
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+private decimal? _decimalValue = 99.99m;
+
+private async Task ShowDecimalInput()
+{
+	var options = new InputBoxOptions
+	{
+		Appearance = Appearance.Win10,
+		Title = ""Enter Price"",
+		Message = ""Please enter the price:"",
+		Value = _decimalValue?.ToString(),
+		Min = ""0"",
+		Max = ""10000"",
+		Step = ""0.01"",
+		OkButtonText = ""OK"",
+		CancelButtonText = ""Cancel""
+	};
+	_decimalValue = await DialogService.ShowInputBox<decimal?>(options);
+}") />
+
+<h3>Double Input</h3>
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+private double? _doubleValue = 3.14159;
+
+private async Task ShowDoubleInput()
+{
+	var options = new InputBoxOptions
+	{
+		Appearance = Appearance.Win10,
+		Title = ""Enter Measurement"",
+		Message = ""Please enter a measurement:"",
+		Value = _doubleValue?.ToString(),
+		Min = ""0"",
+		Max = ""1000"",
+		Step = ""0.0001"",
+		OkButtonText = ""OK"",
+		CancelButtonText = ""Cancel""
+	};
+	_doubleValue = await DialogService.ShowInputBox<double?>(options);
+}") />
+
+<h2>InputBoxOptions Properties</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+	<thead>
+		<tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Visual style (Win98, WinXP, Win7, Win10)</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>Title</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Title bar text of the dialog</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>Message</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Message displayed to the user</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>Value</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Initial/default value in the input field</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>OkButtonText</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Text for the OK/confirmation button (default: "OK")</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>CancelButtonText</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Text for the Cancel button (default: "Cancel")</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>InputType</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">InputBoxType</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Type of input (Text, Integer, Decimal, Double)</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>Min</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Minimum value (for numeric inputs)</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>Max</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Maximum value (for numeric inputs)</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>Step</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Step increment (for numeric inputs)</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Available Methods</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+	<thead>
+		<tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Method</th>
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Return Type</th>
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>ShowInputBox&lt;T&gt;(options)</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Task&lt;T?&gt;</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Generic method that automatically detects InputType based on T (string, int?, decimal?, or double?)</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>ShowInputBox(options)</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Task&lt;string?&gt;</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Shortcut for text input (equivalent to ShowInputBox&lt;string&gt;)</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>API Usage</h2>
+
+<p>Use the generic <code>ShowInputBox&lt;T&gt;</code> method to handle different input types:</p>
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+// String input (you can also use ShowInputBox without type parameter)
+var text = await DialogService.ShowInputBox<string>(options);
+// or simply:
+var text = await DialogService.ShowInputBox(options);
+
+// Integer input
+var number = await DialogService.ShowInputBox<int?>(options);
+
+// Decimal input
+var price = await DialogService.ShowInputBox<decimal?>(options);
+
+// Double input
+var measurement = await DialogService.ShowInputBox<double?>(options);") />
+
+<h2>Return Values</h2>
+
+<ul>
+	<li>Returns the entered value when the user clicks <strong>OK</strong></li>
+	<li>Returns <code>null</code> when the user clicks <strong>Cancel</strong> or closes the dialog</li>
+	<li>For numeric methods, returns <code>null</code> if the input cannot be parsed</li>
+</ul>
 
 @code {
-	private Appearance appearance { get; set; } = Appearance.Win7;
-	private string? _myValue = "my default value";
+	private string? _textValue = "my default value";
+	private int? _intValue = 42;
+	private decimal? _decimalValue = 99.99m;
+	private double? _doubleValue = 3.14159;
 
-	async Task ClickMe(Appearance appearance)
+	private async Task ShowTextInput(Appearance appearance)
 	{
 		var options = new InputBoxOptions
 		{
 			Appearance = appearance,
-			Title = "My input box",
-			Message = "Blazor is awesome!",
-			Value = _myValue,
+			Title = "Enter Your Name",
+			Message = "Please enter your name:",
+			Value = _textValue,
 			OkButtonText = "OK",
 			CancelButtonText = "Cancel"
 		};
-		_myValue = await DialogService.ShowInputBox(options);
+		_textValue = await DialogService.ShowInputBox(options);
+	}
+
+	private async Task ShowIntInput()
+	{
+		var options = new InputBoxOptions
+		{
+			Appearance = Appearance.Win10,
+			Title = "Enter Age",
+			Message = "Please enter your age:",
+			Value = _intValue, 
+			Min = "0",
+			Max = "120",
+			Step = "1",
+			OkButtonText = "OK",
+			CancelButtonText = "Cancel"
+		};
+		_intValue = await DialogService.ShowInputBox<int?>(options);
+	}
+
+	private async Task ShowDecimalInput()
+	{
+		var options = new InputBoxOptions
+		{
+			Appearance = Appearance.Win10,
+			Title = "Enter Price",
+			Message = "Please enter the price:",
+			Value = _decimalValue,
+			Min = "0",
+			Max = "10000",
+			Step = "0.01",
+			OkButtonText = "OK",
+			CancelButtonText = "Cancel"
+		};
+		_decimalValue = await DialogService.ShowInputBox<decimal?>(options);
+	}
+
+	private async Task ShowDoubleInput()
+	{
+		var options = new InputBoxOptions
+		{
+			Appearance = Appearance.Win10,
+			Title = "Enter Measurement",
+			Message = "Please enter a measurement:",
+			Value = _doubleValue,
+			Min = "0",
+			Max = "1000",
+			Step = "0.0001",
+			OkButtonText = "OK",
+			CancelButtonText = "Cancel"
+		};
+		_doubleValue = await DialogService.ShowInputBox<double?>(options);
 	}
 }

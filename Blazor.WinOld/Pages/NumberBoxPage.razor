@@ -1,0 +1,200 @@
+﻿@page "/numberbox-page"
+
+
+<PageTitle>NumberBox</PageTitle>
+
+<h1>NumberBox</h1>
+
+<p>The <code>WinOldNumberBox</code> component allows users to input numeric values with different vintage Windows styles.</p>
+
+<h2>Examples by Style</h2>
+
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows 98</h7>
+        <WinOldNumberBox Appearance="Appearance.Win98"
+                         TValue="int"
+                         @bind-Value="myIntValue"
+                         Label="Age:"
+                         Min="0"
+                         Max="100"
+                         Step="1"
+                         Style="padding-bottom:4px" />
+
+        <WinOldNumberBox Appearance="Appearance.Win98"
+                         TValue="int"
+                         @bind-Value="myIntValue"
+                         Label="Age:"
+                         Min="0"
+                         Max="100"
+                         Step="1"
+                         Disabled="true" />
+    </div>
+
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows XP</h7>
+        <WinOldNumberBox Appearance="Appearance.WinXP"
+                         TValue="double"
+                         @bind-Value="myDoubleValue"
+                         Label="Price:"
+                         Min="0"
+                         Max="999.99"
+                         Step="0.01"
+                         InputStyle="text-align: right;"
+                         Style="padding-bottom:4px" />
+
+        <WinOldNumberBox Appearance="Appearance.WinXP"
+                         TValue="double"
+                         @bind-Value="myDoubleValue"
+                         Label="Price:"
+                         Min="0"
+                         Max="999.99"
+                         Step="0.01"
+                         InputStyle="text-align: right;"
+                         Disabled="true" />
+    </div>
+
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows 7</h7>
+        <WinOldNumberBox Appearance="Appearance.Win7"
+                         TValue="int"
+                         @bind-Value="myQuantity"
+                         Label="Quantity:"
+                         Min="1"
+                         Max="1000"
+                         Step="10"
+                         Style="padding-bottom:4px" />
+
+        <WinOldNumberBox Appearance="Appearance.Win7"
+                         TValue="int"
+                         @bind-Value="myQuantity"
+                         Label="Quantity"
+                         Min="1"
+                         Max="1000"
+                         Step="10"
+                         Disabled="true" />
+    </div>
+
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows 10</h7>
+        <WinOldNumberBox Appearance="Appearance.Win10"
+                         TValue="decimal"
+                         @bind-Value="myDecimalValue"
+                         Label="Amount:"
+                         Min="0"
+                         Max="10000"
+                         Step="0.5"
+                         InputStyle="text-align: right;"
+                         Style="padding-bottom:4px" />
+
+        <WinOldNumberBox Appearance="Appearance.Win10"
+                         TValue="decimal"
+                         @bind-Value="myDecimalValue"
+                         Label="Amount:"
+                         Min="0"
+                         Max="10000"
+                         Step="0.5"
+                         InputStyle="text-align: right;"
+                         Disabled="true" />
+    </div>
+</div>
+
+<h2>Code Example</h2>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+                <WinOldNumberBox Appearance=""Appearance.Win10""
+				                 TValue=""int""
+				                 @bind-Value=""myIntValue""
+				                 Label=""Age:""
+				                 Min=""0""
+				                 Max=""100""
+				                 Step=""1""
+				                 InputStyle=""text-align: right;""
+				                 Disabled=""false"" />
+
+                @code {
+	                private int myIntValue = 25;
+                }") />
+
+<h2>Current Values</h2>
+<div style="padding: 10px; background-color: #f5f5f5; border: 1px solid #ccc; margin: 10px 0;">
+    <p><strong>Int Value (Min 0, Max 100, step 1):</strong> @myIntValue</p>
+    <p><strong>Double Value (Min 0, Max 999.99, Step 0.01):</strong> @myDoubleValue</p>
+    <p><strong>Quantity (min 1, max 100, step 10):</strong> @myQuantity</p>
+    <p><strong>Decimal Value (max 1000, Step 0.5):</strong> @myDecimalValue</p>
+</div>
+
+<h2>Properties</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+    <thead>
+        <tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Visual style (Win98, WinXP, Win7, Win10)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>TValue</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Generic Type</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Numeric value type (int, double, decimal, etc.)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Value</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">TValue</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Component value (use @@bind-Value for two-way binding)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Label</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Label displayed above the field</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Min</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Minimum allowed value</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Max</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Maximum allowed value</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Step</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Increment/decrement step when using arrows</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>InputStyle</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">CSS styles applied directly to the input element (e.g., "text-align: right;")</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Style</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">CSS styles applied to the component container</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Disabled</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">bool</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Disables the component</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+@code {
+    private int myIntValue = 25;
+    private double myDoubleValue = 99.99;
+    private int myQuantity = 50;
+    private decimal myDecimalValue = 1234.50m;
+}

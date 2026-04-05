@@ -1,0 +1,23 @@
+﻿@namespace Blazor.WinOld.Components
+@typeparam TValue
+@inherits WinOldComponentBase
+
+<div style="@Style">
+    <label for="@ElementId"
+           class="label-txt-win @GetComponentLabelClass()"
+           disabled="@(ParentDisabled | Disabled)">
+        @Label
+    </label>
+    <input @ref="InputElement"
+           type="number"
+           id="@ElementId"
+           class="txt-win num-win @GetComponentClass() @Class"
+           disabled="@(ParentDisabled | Disabled)"
+           style="@InputStyle"
+           min="@Min"
+           max="@Max"
+           step="@Step"
+           @attributes="Attributes"
+           @bind="CurrentValue"
+           @bind:event="oninput" />
+</div>

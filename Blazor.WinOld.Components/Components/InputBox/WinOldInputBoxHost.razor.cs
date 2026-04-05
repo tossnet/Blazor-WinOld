@@ -16,12 +16,23 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
     /// </summary>
     private WinOldTextBox? TextBoxRef { get; set; }
 
+    private WinOldNumberBox<int>? NumberBoxIntRef { get; set; }
+    private WinOldNumberBox<decimal>? NumberBoxDecimalRef { get; set; }
+    private WinOldNumberBox<double>? NumberBoxDoubleRef { get; set; }
+
     /// </summary>
     private InputBoxOptions Options { get; set; } = new InputBoxOptions();
 
-    private TaskCompletionSource<string?>? Tcs { get; set; }
+    private TaskCompletionSource<object?>? Tcs { get; set; }
     /// </summary>
     private bool IsVisible { get; set; }
+
+    private object? CurrentValue { get; set; }
+
+    // Typed values for binding (non-nullable for proper binding)
+    private int IntValue { get; set; }
+    private decimal DecimalValue { get; set; }
+    private double DoubleValue { get; set; }
 
     protected override void OnInitialized()
     {
@@ -38,27 +49,98 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
     }
 
     /// </summary>
-    private async Task<string?> ShowInputBox(InputBoxOptions options)
+    private async Task<object?> ShowInputBox(InputBoxOptions options)
     {
         Options = options;
-        Tcs = new TaskCompletionSource<string?>();
+        CurrentValue = options.Value;
+
+        // Initialize typed values
+        IntValue = GetIntValue() ?? 0;
+        DecimalValue = GetDecimalValue() ?? 0m;
+        DoubleValue = GetDoubleValue() ?? 0.0;
+
+        Tcs = new TaskCompletionSource<object?>();
         IsVisible = true;
         StateHasChanged();
 
         // Wait for the component to render and then set focus
         await Task.Delay(100);
-        if (TextBoxRef != null)
+
+        // Focus sur le bon input
+        try
         {
-            await TextBoxRef.FocusAsync();
+            switch (Options.InputType)
+            {
+                case InputBoxType.Text when TextBoxRef != null:
+                    await TextBoxRef.FocusAsync();
+                    break;
+                case InputBoxType.Integer when NumberBoxIntRef != null:
+                    await NumberBoxIntRef.FocusAsync();
+                    break;
+                case InputBoxType.Decimal when NumberBoxDecimalRef != null:
+                    await NumberBoxDecimalRef.FocusAsync();
+                    break;
+                case InputBoxType.Double when NumberBoxDoubleRef != null:
+                    await NumberBoxDoubleRef.FocusAsync();
+                    break;
+            }
         }
+        catch { /* Ignore focus errors */ }
 
         return await Tcs.Task;
     }
 
+    private void OnTextChanged(string value) => CurrentValue = value;
+
+    // Helper methods to parse Value from object (can be int, string, etc.)
+    private int? GetIntValue()
+    {
+        return Options.Value switch
+        {
+            int i => i,
+            string s when int.TryParse(s, out var result) => result,
+            _ => null
+        };
+    }
+
+    private decimal? GetDecimalValue()
+    {
+        return Options.Value switch
+        {
+            decimal d => d,
+            int i => i,
+            string s when decimal.TryParse(s, out var result) => result,
+            _ => null
+        };
+    }
+
+    private double? GetDoubleValue()
+    {
+        return Options.Value switch
+        {
+            double d => d,
+            int i => i,
+            decimal dc => (double)dc,
+            string s when double.TryParse(s, out var result) => result,
+            _ => null
+        };
+    }
+
+
     /// </summary>
     private void HandleOk()
     {
-        Tcs?.SetResult(TextBoxRef?.Value);
+        // Return the appropriate typed value
+        var result = Options.InputType switch
+        {
+            InputBoxType.Integer => IntValue,
+            InputBoxType.Decimal => DecimalValue,
+            InputBoxType.Double => DoubleValue,
+            InputBoxType.Text => CurrentValue,
+            _ => CurrentValue
+        };
+
+        Tcs?.SetResult(result);
         Close();
     }
 
@@ -73,10 +155,13 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
     private void Close()
     {
         IsVisible = false;
+        CurrentValue = null;
+        IntValue = 0;
+        DecimalValue = 0m;
+        DoubleValue = 0.0;
         _ = _draggable.ResetAsync(); // fire-and-forget
         StateHasChanged();
     }
-
 
     /// </summary>
     private string GetInputBoxClass()

@@ -50,7 +50,14 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 2.0.0</summary>
+<details open="open"><summary>Version 2.1.0</summary>
+
+>- Added new `WinOldNumberBox` component for numeric input with support for generic types
+>- Enhanced `WinOldInputBox` with support for numeric types: `int`, `decimal`, and `double`
+>- New extension methods: `ShowInputBox<int?>()`, `ShowInputBox<decimal?>()`, and `ShowInputBox<double?>()`
+</details>
+
+<details><summary>Version 2.0.0</summary>
 
 >- Added new Windows 10 style theme
 >- Windows 10 is now the default style applied to all components

@@ -30,10 +30,49 @@
 				</div>
 
 				<div class="input-text">
-					<WinOldTextBox @ref="TextBoxRef"
-								   Appearance="Options.Appearance"
-								   InputStyle="width: 100%"
-								   Value="@Options.Value" />
+                    @switch (Options.InputType)
+                    {
+                        case InputBoxType.Text:
+                            <WinOldTextBox @ref="TextBoxRef"
+                                           Appearance="Options.Appearance"
+                                           InputStyle="width: 100%"
+                                           Value="@(Options.Value?.ToString() ?? string.Empty)"
+                                           ValueChanged="OnTextChanged" />
+                            break;
+                        
+                        case InputBoxType.Integer:
+                            <WinOldNumberBox @ref="NumberBoxIntRef"
+                                             TValue="int"
+                                             Appearance="Options.Appearance"
+                                             InputStyle="width: 100%"
+                                             @bind-Value="IntValue"
+                                             Min="@Options.Min"
+                                             Max="@Options.Max"
+                                             Step="@(Options.Step ?? "1")" />
+                            break;
+                        
+                        case InputBoxType.Decimal:
+                            <WinOldNumberBox @ref="NumberBoxDecimalRef"
+                                             TValue="decimal"
+                                             Appearance="Options.Appearance"
+                                             InputStyle="width: 100%"
+                                             @bind-Value="DecimalValue"
+                                             Min="@Options.Min"
+                                             Max="@Options.Max"
+                                             Step="@(Options.Step ?? "0.01")" />
+                            break;
+                        
+                        case InputBoxType.Double:
+                            <WinOldNumberBox @ref="NumberBoxDoubleRef"
+                                             TValue="double"
+                                             Appearance="Options.Appearance"
+                                             InputStyle="width: 100%"
+                                             @bind-Value="DoubleValue"
+                                             Min="@Options.Min"
+                                             Max="@Options.Max"
+                                             Step="@(Options.Step ?? "0.01")" />
+                            break;
+                    }
 				</div>
 			</div>
 		</div>

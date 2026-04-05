@@ -1,0 +1,8 @@
+/* Shared CSS in blazorwinold.css for WinOldTextBox and WinOldNumberBox */
+/* Only specific adjustments here, if necessary */
+
+.num-win::-webkit-inner-spin-button,
+.num-win::-webkit-outer-spin-button {
+    height: 17px;
+    margin-top: 3px;
+}

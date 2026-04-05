@@ -1,7 +1,4 @@
 ﻿using Blazor.WinOld.Components;
-using System.Diagnostics.CodeAnalysis;
-
-//#pragma warning disable BWOLD001 // Suppress experimental warning for internal implementation
 
 namespace Blazor.WinOld;
 
@@ -34,14 +31,14 @@ public class DialogService : IDialogService
 
 
     // InputBox events and methods
-    private event Func<InputBoxOptions, Task<string?>>? OnShowInputBox;
+    private event Func<InputBoxOptions, Task<object?>>? OnShowInputBox;
 
-    internal void RegisterInputBox(Func<InputBoxOptions, Task<string?>> handler)
+    internal void RegisterInputBox(Func<InputBoxOptions, Task<object?>> handler)
     {
         OnShowInputBox += handler;
     }
 
-    public async Task<string?> ShowInputBox(InputBoxOptions options)
+    public async Task<object?> ShowInputBoxCore(InputBoxOptions options)
     {
         if (OnShowInputBox is not null)
         {
