@@ -1,0 +1,49 @@
+﻿@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@implements IDisposable
+
+@if (IsSeparator)
+{
+    <li class="menu-separator-win @GetSeparatorClass()"></li>
+}
+else if (_isRootLevel)
+{
+    <div class="menu-win-root-item @(_isOpen ? "open" : "")"
+         @onclick:stopPropagation
+         @onmouseenter="OnMouseEnter">
+
+        <span class="menu-label-win @GetLabelClass()"
+              @onclick="OnLabelClick">@Label</span>
+
+        @if (ChildContent is not null)
+        {
+            <WinOldMenu IsOpen="_isOpen">@ChildContent</WinOldMenu>
+        }
+    </div>
+}
+else
+{
+    <li class="menu-sub-win-item @(_isOpen ? "open" : "") @(Disabled ? "disabled" : "")"
+        @onmouseenter="OnMouseEnter">
+
+        <span class="menu-label-win @GetLabelClass()"
+              @onclick="OnLabelClick">
+            @Label
+            @if (!string.IsNullOrEmpty(Shortcut))
+            {
+                <span class="menu-shortcut-win">@Shortcut</span>
+            }
+            @if (ChildContent is not null)
+            {
+                <span class="menu-arrow-win">▶</span>
+            }
+        </span>
+
+        @if (ChildContent is not null)
+        {
+            <WinOldMenu IsOpen="_isOpen">@ChildContent</WinOldMenu>
+        }
+    </li>
+}

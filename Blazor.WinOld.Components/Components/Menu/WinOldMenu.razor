@@ -1,0 +1,26 @@
+﻿@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@implements IDisposable
+
+@if (IsRoot)
+{
+    @if (IsAnyOpen)
+    {
+        <div class="menu-backdrop" @onclick="CloseAll" @onclick:stopPropagation></div>
+    }
+    <CascadingValue Value="this" IsFixed="false">
+        <div class="menu-win @GetComponentClass() @Class">
+            @ChildContent
+        </div>
+    </CascadingValue>
+}
+else
+{
+    <ul class="menu-win @GetComponentClass() @CssClass @(IsOpen ? "open" : "")">
+        <CascadingValue Value="this" IsFixed="false">
+            @ChildContent
+        </CascadingValue>
+    </ul>
+}
