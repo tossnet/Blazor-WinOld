@@ -99,4 +99,18 @@ public partial class WinOldMenuItem : WinOldComponentBase
             _ => "menu-label-win-98"
         };
     }
+
+    /// </summary>
+    private string GetArrowClass()
+    {
+        return RootMenu?.ActualRoot.Appearance switch
+        {
+            Appearance.Win7 => "menu-arrow-win-7",
+            Appearance.WinXP => "menu-arrow-win-xp",
+            Appearance.Win98 => "menu-arrow-win-98",
+            Appearance.Win10 => "menu-arrow-win-10",
+            _ => "menu-arrow-win-98"
+        };
+    }
+    
 }

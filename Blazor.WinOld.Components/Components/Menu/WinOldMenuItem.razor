@@ -15,6 +15,7 @@ else if (_isRootLevel)
          @onmouseenter="OnMouseEnter">
 
         <span class="menu-label-win @GetLabelClass()"
+              disabled="@(ParentDisabled | Disabled)"
               @onclick="OnLabelClick">@Label</span>
 
         @if (ChildContent is not null)
@@ -29,6 +30,7 @@ else
         @onmouseenter="OnMouseEnter">
 
         <span class="menu-label-win @GetLabelClass()"
+              disabled="@(ParentDisabled | Disabled)"
               @onclick="OnLabelClick">
             @Label
             @if (!string.IsNullOrEmpty(Shortcut))
@@ -37,7 +39,7 @@ else
             }
             @if (ChildContent is not null)
             {
-                <span class="menu-arrow-win">▶</span>
+                <span class="menu-arrow-win @GetArrowClass()"></span>
             }
         </span>
 

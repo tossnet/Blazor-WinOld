@@ -10,13 +10,12 @@
         <WinOldMenuItem Label="Fichier">
             <WinOldMenuItem Label="Nouveau"        OnClick="@(() => DoAction("Nouveau"))" />
             <WinOldMenuItem Label="Ouvrir..."      OnClick="@(() => DoAction("Ouvrir"))" />
-            <WinOldMenuItem Label="Enregistrer"    OnClick="@(() => DoAction("Enregistrer"))" />
+            <WinOldMenuItem Label="Enregistrer" Disabled="true" />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Exporter"       Disabled />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Quitter"        OnClick="@(() => DoAction("Quitter"))" />
         </WinOldMenuItem>
-
         <WinOldMenuItem Label="Affichage">
             <WinOldMenuItem Label="Zoom avant"     OnClick="@(() => DoAction("Zoom avant"))" />
             <WinOldMenuItem Label="Zoom arrière"   OnClick="@(() => DoAction("Zoom arrière"))" />
@@ -29,7 +28,9 @@
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Plein écran"    OnClick="@(() => DoAction("Plein écran"))" />
         </WinOldMenuItem>
-
+        
+        <WinOldMenuItem Label="Win 98" Disabled="true">
+        </WinOldMenuItem>
         <WinOldMenuItem Label="Aide">
             <WinOldMenuItem Label="Documentation"  OnClick="@(() => DoAction("Documentation"))"/>
             <WinOldMenuItem Label="À propos..."    OnClick="@(() => DoAction("À propos"))" />
@@ -49,24 +50,31 @@
         <WinOldMenuItem Label="Fichier">
             <WinOldMenuItem Label="Nouveau" OnClick="@(() => DoAction("Nouveau"))" />
             <WinOldMenuItem Label="Ouvrir..." OnClick="@(() => DoAction("Ouvrir"))" />
-            <WinOldMenuItem Label="Enregistrer" OnClick="@(() => DoAction("Enregistrer"))" />
+            <WinOldMenuItem Label="Enregistrer" Disabled="true" />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Exporter" Disabled />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Quitter" OnClick="@(() => DoAction("Quitter"))" />
         </WinOldMenuItem>
-
+        
         <WinOldMenuItem Label="Affichage">
             <WinOldMenuItem Label="Zoom avant" OnClick="@(() => DoAction("Zoom avant"))" />
             <WinOldMenuItem Label="Zoom arrière" OnClick="@(() => DoAction("Zoom arrière"))" />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Disposition">
                 <WinOldMenuItem Label="Classique" OnClick="@(() => DoAction("Classique"))" />
-                <WinOldMenuItem Label="Compacte" OnClick="@(() => DoAction("Compacte"))" />
+                <WinOldMenuItem Label="Compacte">
+                    <WinOldMenuItem Label="Small" OnClick="@(() => DoAction("Small"))" />
+                    <WinOldMenuItem Label="Large" OnClick="@(() => DoAction("Large"))" />
+                    <WinOldMenuItem Label="Extra" OnClick="@(() => DoAction("Extra"))" />
+                </WinOldMenuItem>
                 <WinOldMenuItem Label="Étendue" OnClick="@(() => DoAction("Étendue"))" />
             </WinOldMenuItem>
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Plein écran" OnClick="@(() => DoAction("Plein écran"))" />
+        </WinOldMenuItem>
+        
+        <WinOldMenuItem Label="Win XP" Disabled="true">
         </WinOldMenuItem>
 
         <WinOldMenuItem Label="Aide">
@@ -89,13 +97,13 @@
         <WinOldMenuItem Label="Fichier">
             <WinOldMenuItem Label="Nouveau" OnClick="@(() => DoAction("Nouveau"))" />
             <WinOldMenuItem Label="Ouvrir..." OnClick="@(() => DoAction("Ouvrir"))" />
-            <WinOldMenuItem Label="Enregistrer" OnClick="@(() => DoAction("Enregistrer"))" />
+            <WinOldMenuItem Label="Enregistrer" Disabled="true" />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Exporter" Disabled />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Quitter" OnClick="@(() => DoAction("Quitter"))" />
         </WinOldMenuItem>
-
+        
         <WinOldMenuItem Label="Affichage">
             <WinOldMenuItem Label="Zoom avant" OnClick="@(() => DoAction("Zoom avant"))" />
             <WinOldMenuItem Label="Zoom arrière" OnClick="@(() => DoAction("Zoom arrière"))" />
@@ -107,6 +115,9 @@
             </WinOldMenuItem>
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Plein écran" OnClick="@(() => DoAction("Plein écran"))" />
+        </WinOldMenuItem>
+
+        <WinOldMenuItem Label="Win 7" Disabled="true">
         </WinOldMenuItem>
 
         <WinOldMenuItem Label="Aide">
@@ -129,13 +140,13 @@
         <WinOldMenuItem Label="Fichier">
             <WinOldMenuItem Label="Nouveau" OnClick="@(() => DoAction("Nouveau"))" />
             <WinOldMenuItem Label="Ouvrir..." OnClick="@(() => DoAction("Ouvrir"))" />
-            <WinOldMenuItem Label="Enregistrer" OnClick="@(() => DoAction("Enregistrer"))" />
+            <WinOldMenuItem Label="Enregistrer" Disabled="true" />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Exporter" Disabled />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Quitter" OnClick="@(() => DoAction("Quitter"))" />
         </WinOldMenuItem>
-
+        
         <WinOldMenuItem Label="Affichage">
             <WinOldMenuItem Label="Zoom avant" OnClick="@(() => DoAction("Zoom avant"))" />
             <WinOldMenuItem Label="Zoom arrière" OnClick="@(() => DoAction("Zoom arrière"))" />
@@ -147,6 +158,9 @@
             </WinOldMenuItem>
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Plein écran" OnClick="@(() => DoAction("Plein écran"))" />
+        </WinOldMenuItem>
+        
+        <WinOldMenuItem Label="Win 10" Disabled="true">
         </WinOldMenuItem>
 
         <WinOldMenuItem Label="Aide">

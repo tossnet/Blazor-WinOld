@@ -9,7 +9,6 @@
 .menu-win {
     display: flex;
     background: #d4d0c8;
-    border-bottom: 1px solid #808080;
     font-family: 'Segoe UI', Tahoma, sans-serif;
     font-size: 13px;
     user-select: none;
@@ -22,7 +21,6 @@
     background: #d4d0c8;
     border: 1px solid #808080;
     border-top: 1px solid #fff;
-    /*box-shadow: 2px 2px 0 #404040;*/
     min-width: 180px;
     list-style: none;
     padding: 2px 0;
@@ -55,6 +53,7 @@
 }
 
 .submenu-win-98, .subsub-win-98 {
+    font-family: var(--font-family);
     border: none;
     background: var(--win98-background);
     box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
@@ -64,10 +63,25 @@
 }
 
 /*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.submenu-win-xp, .subsub-win-xp {
+    font-size: 9pt;
+    box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 3px -2px;
+    color: initial;
+    min-width: 150px;
+    background: #fff;
+    border: 1px solid #ACA899;
+    border-image: initial;
+    padding: 2px;
+}
+
+/*-------------------------------------------*\
     Win 7
 \*-------------------------------------------*/
 .menu-win-7 {
-    background: linear-gradient(rgb(255, 255, 255) 20%, rgb(241, 244, 250) 25%, rgb(241, 244, 250) 43%, rgb(212, 219, 238) 48%, rgb(230, 234, 246))
+    background: linear-gradient(rgb(255, 255, 255) 20%, rgb(241, 244, 250) 25%, rgb(241, 244, 250) 43%, rgb(212, 219, 238) 48%, rgb(230, 234, 246));
+    border-bottom: 1px solid #808080;
 }
 
 .submenu-win-7, .subsub-win-7 {
@@ -87,18 +101,30 @@
 /*-------------------------------------------*\
 Win 10
 \*-------------------------------------------*/
-    .menu-win-10 {
-        border: #DCDCDC 1px solid;
-        background: #FCFCFC;
-        border-radius: 5px;
-        padding: 2px 5px 4px 5px;
-        color: #000;
+.menu-win-10 {
+    background: #FCFCFC;
+    padding: 2px 5px 4px 5px;
+    color: #000;
+}
+
+.submenu-win-10, .subsub-win-10 {
+    border: #DCDCDC 1px solid;
+    background: #FCFCFC;
+    border-radius: 5px;
+    padding: 2px 5px 4px 5px;
+    margin-top: 4px;
+    color: #000;
+    animation: menu-appear-win-10 0.15s ease-out forwards;
+}
+
+@keyframes menu-appear-win-10 {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
     }
 
-    .submenu-win-10 {
-        border: #DCDCDC 1px solid;
-        background: #FCFCFC;
-        border-radius: 2px;
-        padding: 2px 5px 4px 5px;
-        color: #000;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}

@@ -58,31 +58,114 @@
     border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='5' height='5' fill='gray' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 0h5v5H0V2h2v1h1V2H0' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 0h4v4H0V1h1v2h2V1H0'/%3E%3C/svg%3E") 2 !important;
 }
 
+.menu-arrow-win-98::after {
+    content: '▶';
+    margin-left: auto;
+    padding-left: 8px;
+    font-size: 11px;
+    line-height: 1;
+}
+
+.menu-win-root-item > .menu-label-win-98 {
+    padding: 3px 8px;
+}
+
+.menu-win-root-item > .menu-label-win-98[disabled] {
+    cursor: default;
+    color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+}
+
+    .menu-win-root-item > .menu-label-win-98:not([disabled]):hover {
+        box-shadow: inset -1px -1px #808080, inset 1px 1px #fff;
+        margin-top: 1px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .menu-win-root-item > .menu-label-win-98:not([disabled]):active {
+        box-shadow: inset -1px -1px #fff, inset 1px 1px #808080;
+    }
+
 .menu-sub-win-item > .menu-label-win-98 {
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    font-size: 11px;
+    padding: 3px 8px;
+}
+
+    .menu-sub-win-item > .menu-label-win-98:hover,
+    .menu-sub-win-item.open > .menu-label-win-98 {
+        background: #000080;
+        color: #fff;
+    }
+
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.menu-separator-win-xp {
+    margin: 3px 0;
+    background: unset;
+    border-bottom: 1px #ACA899 solid;
+}
+
+.menu-arrow-win-xp::after {
+    content: '▶';
+    margin-left: auto;
+    padding-left: 8px;
+    font-size: 11px;
+    line-height: 1;
+}
+
+.menu-win-root-item > .menu-label-win-xp[disabled] {
+    cursor: default;
+    color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+}
+
+.menu-win-root-item > .menu-label-win-xp:not([disabled]):hover {
+    background: #316ac5;
+    color: #fff;
+}
+
+.menu-sub-win-item > .menu-label-win-xp {
     font-family: var(--font);
     font-size: 12px;
 }
 
-.menu-sub-win-item > .menu-label-win-98:hover,
-.menu-sub-win-item.open > .menu-label-win-98 {
-    background: #000080;
+.menu-sub-win-item > .menu-label-win-xp:hover,
+.menu-sub-win-item.open > .menu-label-win-xp {
+    background: #316ac5;
     color: #fff;
 }
 
 /*-------------------------------------------*\
     Win 7
 \*-------------------------------------------*/
+
+.menu-arrow-win-7::after {
+    content: '▶';
+    margin-left: auto;
+    padding-left: 8px;
+    font-size: 11px;
+    line-height: 1;
+}
+
 .menu-sub-win-item > .menu-label-win-7 {
     font-family: var(--font);
     font-size: 11px;
 }
 
-    .menu-sub-win-item > .menu-label-win-7:hover,
-    .menu-sub-win-item.open > .menu-label-win-7 {
-        background: linear-gradient(#fff9, #e6ecf5cc 90%, #fffc);
-        border: 1px #aaddfa solid;
-        border-radius: 2px,
-    }
+.menu-win-root-item > .menu-label-win-7[disabled] {
+    cursor: default;
+    color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+}
+
+.menu-sub-win-item > .menu-label-win-7:not([disabled]):hover,
+.menu-sub-win-item.open > .menu-label-win-7 {
+    background: linear-gradient(#fff9, #e6ecf5cc 90%, #fffc);
+    border: 1px #aaddfa solid;
+    border-radius: 2px,
+}
 
 /*-------------------------------------------*\
     Win 10
@@ -93,14 +176,42 @@
     border-bottom: 1px #EDEDED solid;
 }
 
+.menu-arrow-win-10::after {
+    content: '›';
+    margin-left: auto;
+    padding-left: 8px;
+    font-size: 22px;
+    line-height: 0;
+}
+
+.menu-label-win-10 {
+    /*padding: 4px 8px !important;*/
+}
+
+.menu-win-root-item > .menu-label-win-10[disabled] {
+    cursor: default;
+    color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+}
+
+.menu-win-root-item > .menu-label-win-10 {
+    padding: 6px 8px;
+}
+
+    .menu-win-root-item > .menu-label-win-10:not([disabled]):hover {
+        background: #e8e8e8aa;
+        border-radius: 5px;
+        color: #000;
+    }
+
 .menu-sub-win-item > .menu-label-win-10 {
     font-family: var(--font);
     font-size: 12px;
+    padding: 6px 10px;
 }
 
-.menu-sub-win-item > .menu-label-win-10:hover,
-.menu-sub-win-item.open > .menu-label-win-10 {
-    background: #F3F3F3;
-    border-radius: 4px;
-    color: #000;
-}
+    .menu-sub-win-item > .menu-label-win-10:not([disabled]):hover,
+    .menu-sub-win-item.open > .menu-label-win-10 {
+        background: #F3F3F3;
+        border-radius: 5px;
+        color: #000;
+    }
