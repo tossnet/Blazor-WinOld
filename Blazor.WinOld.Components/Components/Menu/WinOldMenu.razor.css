@@ -8,7 +8,6 @@
 
 .menu-win {
     display: flex;
-    background: #d4d0c8;
     font-family: 'Segoe UI', Tahoma, sans-serif;
     font-size: 13px;
     user-select: none;
@@ -18,7 +17,6 @@
 .submenu-win, .subsub-win {
     display: none;
     position: absolute;
-    background: #d4d0c8;
     border: 1px solid #808080;
     border-top: 1px solid #fff;
     min-width: 180px;
@@ -65,6 +63,10 @@
 /*-------------------------------------------*\
     Win XP
 \*-------------------------------------------*/
+.menu-win-xp {
+    background: var(--winxp-background);
+}
+
 .submenu-win-xp, .subsub-win-xp {
     font-size: 9pt;
     box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 3px -2px;
@@ -81,7 +83,6 @@
 \*-------------------------------------------*/
 .menu-win-7 {
     background: linear-gradient(rgb(255, 255, 255) 20%, rgb(241, 244, 250) 25%, rgb(241, 244, 250) 43%, rgb(212, 219, 238) 48%, rgb(230, 234, 246));
-    border-bottom: 1px solid #808080;
 }
 
 .submenu-win-7, .subsub-win-7 {

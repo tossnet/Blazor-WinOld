@@ -59,6 +59,11 @@
         color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
     }
 
+.btn-win-xp-default {
+    border: 1px solid #000000;
+    box-shadow: inset -1px 1px #cee7ff, inset 1px 2px #98b8ea, inset -2px 2px #bcd4f6, inset 1px -1px #89ade4, inset 2px -2px #89ade4;
+}
+
 /*-------------------------------------------*\
     Win 98
 \*-------------------------------------------*/
@@ -207,6 +212,11 @@
         background-image: var(--btn-win7-gradient-hovered);
         animation: 1s ease infinite alternate pulse-anim;
     }
+
+
+.btn-win-7-default {
+    background-image: linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5);
+}
 
 @keyframes pulse-anim {
     from {

@@ -67,6 +67,9 @@
 }
 
 .menu-win-root-item > .menu-label-win-98 {
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    font-size: 11px;
     padding: 3px 8px;
 }
 
@@ -158,6 +161,12 @@
 .menu-win-root-item > .menu-label-win-7[disabled] {
     cursor: default;
     color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+}
+
+.menu-win-root-item > .menu-label-win-7:not([disabled]):hover {
+    background: #39f;
+    color: #fff;
+    outline: none;
 }
 
 .menu-sub-win-item > .menu-label-win-7:not([disabled]):hover,

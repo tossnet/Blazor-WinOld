@@ -66,7 +66,7 @@
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     padding: 0 0 3px;
-    background: #ece9d8;
+    background: var(--winxp-background);
     text-align: left;
     max-width: 410px;
     width: auto;

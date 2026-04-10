@@ -42,7 +42,7 @@
     }
 
     .chk-win-xp:active + label:before {
-        background: #ece9d8;
+        background: var(--winxp-background);
     }
 
     .chk-win-xp:checked + label:after {
@@ -57,7 +57,7 @@
     }
 
     .chk-win-xp[disabled] + label:before {
-        background: #ece9d8;
+        background: var(--winxp-background);
     }
 
     .chk-win-xp[disabled]:checked + label:after {

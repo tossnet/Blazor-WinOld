@@ -36,7 +36,7 @@
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     padding: 0 0 3px;
-    background: #ece9d8;
+    background: var(--winxp-background);
     text-align: left;
     max-width: 410px;
     width: auto;
@@ -179,7 +179,7 @@
 }
 
 .dlg-body-win-xp {
-    margin: 1px 7px 5px 7px;
+    margin: 1px 4px 5px 4px;
 }
 
 .dlg-win-xp .actions {
@@ -228,7 +228,7 @@
 .title-bar-win-98 {
     font-size: 11px;
     background: linear-gradient(90deg, navy, #1084d0);
-    padding: 1px 2px 1px 3px;
+    padding: 1px 0px 1px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -240,6 +240,7 @@
     color: #fff;
     letter-spacing: 0;
     margin-right: 24px;
+    margin-left: 5px;
 }
 
 .title-bar-controls-win-98 button {
@@ -699,7 +700,7 @@
             }
 
 .dlg-body-win-7 {
-    padding: 6px;
+    padding: 0px 0px 6px 0px;
     background: var(--surface);
     border-top: 1px solid rgba(0, 0, 0, .7);
     border-right: 1px solid rgba(0, 0, 0, .7);
@@ -716,7 +717,7 @@
 }
 
 .dlg-win-7 .actions {
-    padding: 6px;
+    padding: 0px 6px 3px 0px;
     background: var(--surface);
     border-top: unset;
     border-right: 1px solid rgba(0, 0, 0, .7);
@@ -842,7 +843,7 @@
     }
 
 .dlg-body-win-10 {
-    margin: 8px 12px 12px 12px;
+    margin: 1px 1px 12px 1px;
 }
 
 .dlg-win-10 .actions {

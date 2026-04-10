@@ -1,20 +1,47 @@
-﻿<WinOldTabs Appearance="Appearance"
-			Style="min-width: 210px; height: 100%">
-	<WinOldTabPanel Label="General" IsDefault="true" Style="height:267px">
+﻿<WinOldMenu Appearance="Appearance">
+
+    <WinOldMenuItem Label="Fichier">
+        <WinOldMenuItem Label="Nouveau" OnClick="@(() => DoAction("New"))" />
+        <WinOldMenuItem Label="Ouvrir..."  />
+        <WinOldMenuItem Label="Enregistrer" Disabled="true" />
+        <WinOldMenuItem IsSeparator />
+        <WinOldMenuItem Label="Exporter" Disabled />
+        <WinOldMenuItem IsSeparator />
+        <WinOldMenuItem Label="Quitter"  />
+    </WinOldMenuItem>
+        
+
+    <WinOldMenuItem Label="Aide">
+        <WinOldMenuItem Label="Documentation"  />
+        <WinOldMenuItem Label="À propos..."  />
+    </WinOldMenuItem>
+
+</WinOldMenu>
+
+<WinOldTabs Appearance="Appearance"
+			Style="min-width: 210px; height: 100%; margin-left:3px; margin-right: 3px">
+	<WinOldTabPanel Label="General" IsDefault="true" Style="height:245px">
 		<p>Contents of first tab</p>
 	</WinOldTabPanel>
 
-	<WinOldTabPanel Label="View" Style="height:267px">
+	<WinOldTabPanel Label="View" Style="height:245px">
 
 	</WinOldTabPanel>
 
-	<WinOldTabPanel Label="Settings" Style="height:267px">
+	<WinOldTabPanel Label="Settings" Style="height:245px">
 		<p>Contents of third tab</p>
 	</WinOldTabPanel>
 
 </WinOldTabs>
 
 @code {
-	[Parameter]
-	public Appearance Appearance { get; set; }
+    [Parameter]
+    public Appearance Appearance { get; set; }
+
+    private string _lastAction = "(nothing)";
+
+    private void DoAction(string action)
+    {
+        _lastAction = action;
+    }
 }

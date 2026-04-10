@@ -7,33 +7,33 @@
 <div>
     <WinOldMenu Appearance="Appearance.Win98">
 
-        <WinOldMenuItem Label="Fichier">
-            <WinOldMenuItem Label="Nouveau"        OnClick="@(() => DoAction("Nouveau"))" />
-            <WinOldMenuItem Label="Ouvrir..."      OnClick="@(() => DoAction("Ouvrir"))" />
-            <WinOldMenuItem Label="Enregistrer" Disabled="true" />
+        <WinOldMenuItem Label="File">
+            <WinOldMenuItem Label="New"        OnClick="@(() => DoAction("New"))" />
+            <WinOldMenuItem Label="Open..."      OnClick="@(() => DoAction("Open"))" />
+            <WinOldMenuItem Label="Save" Disabled="true" />
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Exporter"       Disabled />
+            <WinOldMenuItem Label="Export"       Disabled />
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Quitter"        OnClick="@(() => DoAction("Quitter"))" />
+            <WinOldMenuItem Label="Exit"        OnClick="@(() => DoAction("Exit"))" />
         </WinOldMenuItem>
-        <WinOldMenuItem Label="Affichage">
-            <WinOldMenuItem Label="Zoom avant"     OnClick="@(() => DoAction("Zoom avant"))" />
-            <WinOldMenuItem Label="Zoom arrière"   OnClick="@(() => DoAction("Zoom arrière"))" />
+        <WinOldMenuItem Label="View">
+            <WinOldMenuItem Label="Zoom +"     OnClick="@(() => DoAction("Zoom +"))" />
+            <WinOldMenuItem Label="Zoom -"   OnClick="@(() => DoAction("Zoom -"))" />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Disposition">
-                <WinOldMenuItem Label="Classique"  OnClick="@(() => DoAction("Classique"))" />
-                <WinOldMenuItem Label="Compacte"   OnClick="@(() => DoAction("Compacte"))" />
+                <WinOldMenuItem Label="Classic"  OnClick="@(() => DoAction("Classic"))" />
+                <WinOldMenuItem Label="Compact"   OnClick="@(() => DoAction("Compact"))" />
                 <WinOldMenuItem Label="Étendue"    OnClick="@(() => DoAction("Étendue"))" />
             </WinOldMenuItem>
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Plein écran"    OnClick="@(() => DoAction("Plein écran"))" />
+            <WinOldMenuItem Label="Full screen"    OnClick="@(() => DoAction("Full screen"))" />
         </WinOldMenuItem>
         
         <WinOldMenuItem Label="Win 98" Disabled="true">
         </WinOldMenuItem>
-        <WinOldMenuItem Label="Aide">
+        <WinOldMenuItem Label="Help">
             <WinOldMenuItem Label="Documentation"  OnClick="@(() => DoAction("Documentation"))"/>
-            <WinOldMenuItem Label="À propos..."    OnClick="@(() => DoAction("À propos"))" />
+            <WinOldMenuItem Label="About..."    OnClick="@(() => DoAction("About"))" />
         </WinOldMenuItem>
 
     </WinOldMenu>
@@ -47,23 +47,23 @@
 <div>
     <WinOldMenu Appearance="Appearance.WinXP">
 
-        <WinOldMenuItem Label="Fichier">
-            <WinOldMenuItem Label="Nouveau" OnClick="@(() => DoAction("Nouveau"))" />
-            <WinOldMenuItem Label="Ouvrir..." OnClick="@(() => DoAction("Ouvrir"))" />
-            <WinOldMenuItem Label="Enregistrer" Disabled="true" />
+        <WinOldMenuItem Label="File">
+            <WinOldMenuItem Label="New" OnClick="@(() => DoAction("New"))" />
+            <WinOldMenuItem Label="Open..." OnClick="@(() => DoAction("Open"))" />
+            <WinOldMenuItem Label="Save" Disabled="true" />
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Exporter" Disabled />
+            <WinOldMenuItem Label="Export" Disabled />
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Quitter" OnClick="@(() => DoAction("Quitter"))" />
+            <WinOldMenuItem Label="Exit" OnClick="@(() => DoAction("Exit"))" />
         </WinOldMenuItem>
         
-        <WinOldMenuItem Label="Affichage">
-            <WinOldMenuItem Label="Zoom avant" OnClick="@(() => DoAction("Zoom avant"))" />
-            <WinOldMenuItem Label="Zoom arrière" OnClick="@(() => DoAction("Zoom arrière"))" />
+        <WinOldMenuItem Label="View">
+            <WinOldMenuItem Label="Zoom +" OnClick="@(() => DoAction("Zoom +"))" />
+            <WinOldMenuItem Label="Zoom -" OnClick="@(() => DoAction("Zoom -"))" />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Disposition">
-                <WinOldMenuItem Label="Classique" OnClick="@(() => DoAction("Classique"))" />
-                <WinOldMenuItem Label="Compacte">
+                <WinOldMenuItem Label="Classic" OnClick="@(() => DoAction("Classic"))" />
+                <WinOldMenuItem Label="Compact">
                     <WinOldMenuItem Label="Small" OnClick="@(() => DoAction("Small"))" />
                     <WinOldMenuItem Label="Large" OnClick="@(() => DoAction("Large"))" />
                     <WinOldMenuItem Label="Extra" OnClick="@(() => DoAction("Extra"))" />
@@ -71,15 +71,15 @@
                 <WinOldMenuItem Label="Étendue" OnClick="@(() => DoAction("Étendue"))" />
             </WinOldMenuItem>
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Plein écran" OnClick="@(() => DoAction("Plein écran"))" />
+            <WinOldMenuItem Label="Full screen" OnClick="@(() => DoAction("Full screen"))" />
         </WinOldMenuItem>
         
         <WinOldMenuItem Label="Win XP" Disabled="true">
         </WinOldMenuItem>
 
-        <WinOldMenuItem Label="Aide">
+        <WinOldMenuItem Label="Help">
             <WinOldMenuItem Label="Documentation" OnClick="@(() => DoAction("Documentation"))" />
-            <WinOldMenuItem Label="À propos..." OnClick="@(() => DoAction("À propos"))" />
+            <WinOldMenuItem Label="About..." OnClick="@(() => DoAction("About"))" />
         </WinOldMenuItem>
 
     </WinOldMenu>
@@ -94,35 +94,35 @@
 
     <WinOldMenu Appearance="Appearance.Win7">
 
-        <WinOldMenuItem Label="Fichier">
-            <WinOldMenuItem Label="Nouveau" OnClick="@(() => DoAction("Nouveau"))" />
-            <WinOldMenuItem Label="Ouvrir..." OnClick="@(() => DoAction("Ouvrir"))" />
-            <WinOldMenuItem Label="Enregistrer" Disabled="true" />
+        <WinOldMenuItem Label="File">
+            <WinOldMenuItem Label="New" OnClick="@(() => DoAction("New"))" />
+            <WinOldMenuItem Label="Open..." OnClick="@(() => DoAction("Open"))" />
+            <WinOldMenuItem Label="Save" Disabled="true" />
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Exporter" Disabled />
+            <WinOldMenuItem Label="Export" Disabled />
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Quitter" OnClick="@(() => DoAction("Quitter"))" />
+            <WinOldMenuItem Label="Exit" OnClick="@(() => DoAction("Exit"))" />
         </WinOldMenuItem>
         
-        <WinOldMenuItem Label="Affichage">
-            <WinOldMenuItem Label="Zoom avant" OnClick="@(() => DoAction("Zoom avant"))" />
-            <WinOldMenuItem Label="Zoom arrière" OnClick="@(() => DoAction("Zoom arrière"))" />
+        <WinOldMenuItem Label="View">
+            <WinOldMenuItem Label="Zoom +" OnClick="@(() => DoAction("Zoom +"))" />
+            <WinOldMenuItem Label="Zoom -" OnClick="@(() => DoAction("Zoom -"))" />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Disposition">
-                <WinOldMenuItem Label="Classique" OnClick="@(() => DoAction("Classique"))" />
-                <WinOldMenuItem Label="Compacte" OnClick="@(() => DoAction("Compacte"))" />
+                <WinOldMenuItem Label="Classic" OnClick="@(() => DoAction("Classic"))" />
+                <WinOldMenuItem Label="Compact" OnClick="@(() => DoAction("Compact"))" />
                 <WinOldMenuItem Label="Étendue" OnClick="@(() => DoAction("Étendue"))" />
             </WinOldMenuItem>
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Plein écran" OnClick="@(() => DoAction("Plein écran"))" />
+            <WinOldMenuItem Label="Full screen" OnClick="@(() => DoAction("Full screen"))" />
         </WinOldMenuItem>
 
         <WinOldMenuItem Label="Win 7" Disabled="true">
         </WinOldMenuItem>
 
-        <WinOldMenuItem Label="Aide">
+        <WinOldMenuItem Label="Help">
             <WinOldMenuItem Label="Documentation" OnClick="@(() => DoAction("Documentation"))" />
-            <WinOldMenuItem Label="À propos..." OnClick="@(() => DoAction("À propos"))" />
+            <WinOldMenuItem Label="About..." OnClick="@(() => DoAction("About"))" />
         </WinOldMenuItem>
 
     </WinOldMenu>
@@ -137,46 +137,46 @@
 
     <WinOldMenu Appearance="Appearance.Win10">
 
-        <WinOldMenuItem Label="Fichier">
-            <WinOldMenuItem Label="Nouveau" OnClick="@(() => DoAction("Nouveau"))" />
-            <WinOldMenuItem Label="Ouvrir..." OnClick="@(() => DoAction("Ouvrir"))" />
-            <WinOldMenuItem Label="Enregistrer" Disabled="true" />
+        <WinOldMenuItem Label="File">
+            <WinOldMenuItem Label="New" OnClick="@(() => DoAction("New"))" />
+            <WinOldMenuItem Label="Open..." OnClick="@(() => DoAction("Open"))" />
+            <WinOldMenuItem Label="Save" Disabled="true" />
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Exporter" Disabled />
+            <WinOldMenuItem Label="Export" Disabled />
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Quitter" OnClick="@(() => DoAction("Quitter"))" />
+            <WinOldMenuItem Label="Exit"  />
         </WinOldMenuItem>
         
-        <WinOldMenuItem Label="Affichage">
-            <WinOldMenuItem Label="Zoom avant" OnClick="@(() => DoAction("Zoom avant"))" />
-            <WinOldMenuItem Label="Zoom arrière" OnClick="@(() => DoAction("Zoom arrière"))" />
+        <WinOldMenuItem Label="View">
+            <WinOldMenuItem Label="Zoom +" OnClick="@(() => DoAction("Zoom +"))" />
+            <WinOldMenuItem Label="Zoom -" OnClick="@(() => DoAction("Zoom -"))" />
             <WinOldMenuItem IsSeparator />
             <WinOldMenuItem Label="Disposition">
-                <WinOldMenuItem Label="Classique" OnClick="@(() => DoAction("Classique"))" />
-                <WinOldMenuItem Label="Compacte" OnClick="@(() => DoAction("Compacte"))" />
+                <WinOldMenuItem Label="Classic" OnClick="@(() => DoAction("Classic"))" />
+                <WinOldMenuItem Label="Compact" OnClick="@(() => DoAction("Compact"))" />
                 <WinOldMenuItem Label="Étendue" OnClick="@(() => DoAction("Étendue"))" />
             </WinOldMenuItem>
             <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Plein écran" OnClick="@(() => DoAction("Plein écran"))" />
+            <WinOldMenuItem Label="Full screen" OnClick="@(() => DoAction("Full screen"))" />
         </WinOldMenuItem>
         
         <WinOldMenuItem Label="Win 10" Disabled="true">
         </WinOldMenuItem>
 
-        <WinOldMenuItem Label="Aide">
+        <WinOldMenuItem Label="Help">
             <WinOldMenuItem Label="Documentation" OnClick="@(() => DoAction("Documentation"))" />
-            <WinOldMenuItem Label="À propos..." OnClick="@(() => DoAction("À propos"))" />
+            <WinOldMenuItem Label="About..." OnClick="@(() => DoAction("About"))" />
         </WinOldMenuItem>
 
     </WinOldMenu>
 
     <div style="padding: 16px;">
-        <p>Dernière action : <strong>@_lastAction</strong></p>
+        <p>Last action : <strong>@_lastAction</strong></p>
     </div>
 
 </div>
 @code {
-    private string _lastAction = "(aucune)";
+    private string _lastAction = "(nothing)";
 
     private void DoAction(string action)
     {
