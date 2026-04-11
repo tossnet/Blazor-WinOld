@@ -50,7 +50,13 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 2.1.0</summary>
+<details open="open"><summary>Version 2.2.0</summary>
+
+>- Added new `WinOldMenu` 
+>- Button : winXP and win7 , add default style
+</details>
+
+<details><summary>Version 2.1.0</summary>
 
 >- Added new `WinOldNumberBox` component for numeric input with support for generic types
 >- Enhanced `WinOldInputBox` with support for numeric types: `int`, `decimal`, and `double`

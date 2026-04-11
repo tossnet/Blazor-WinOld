@@ -2,179 +2,293 @@
 
 <PageTitle>Menu</PageTitle>
 
-<h3>Menu (WIP)</h3>
+<h1>Menu</h1>
 
-<div>
-    <WinOldMenu Appearance="Appearance.Win98">
+<p>
+    The <code>WinOldMenu</code> and <code>WinOldMenuItem</code> components provide a classic Windows-style
+    menu bar with support for submenus, separators, disabled items, and keyboard shortcuts, available
+    across all supported visual styles.
+</p>
 
-        <WinOldMenuItem Label="File">
-            <WinOldMenuItem Label="New"        OnClick="@(() => DoAction("New"))" />
-            <WinOldMenuItem Label="Open..."      OnClick="@(() => DoAction("Open"))" />
-            <WinOldMenuItem Label="Save" Disabled="true" />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Export"       Disabled />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Exit"        OnClick="@(() => DoAction("Exit"))" />
-        </WinOldMenuItem>
-        <WinOldMenuItem Label="View">
-            <WinOldMenuItem Label="Zoom +"     OnClick="@(() => DoAction("Zoom +"))" />
-            <WinOldMenuItem Label="Zoom -"   OnClick="@(() => DoAction("Zoom -"))" />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Disposition">
-                <WinOldMenuItem Label="Classic"  OnClick="@(() => DoAction("Classic"))" />
-                <WinOldMenuItem Label="Compact"   OnClick="@(() => DoAction("Compact"))" />
-                <WinOldMenuItem Label="Étendue"    OnClick="@(() => DoAction("Étendue"))" />
+<h2>Examples by Style</h2>
+
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap; align-items: flex-start;">
+
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows 98</h7>
+        <WinOldMenu Appearance="Appearance.Win98">
+            <WinOldMenuItem Label="File">
+                <WinOldMenuItem Label="New"       OnClick="@(() => DoAction("New"))" />
+                <WinOldMenuItem Label="Open..."   OnClick="@(() => DoAction("Open"))" />
+                <WinOldMenuItem Label="Save"      Disabled="true" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Export"    Disabled />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Exit"      OnClick="@(() => DoAction("Exit"))" />
             </WinOldMenuItem>
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Full screen"    OnClick="@(() => DoAction("Full screen"))" />
-        </WinOldMenuItem>
-        
-        <WinOldMenuItem Label="Win 98" Disabled="true">
-        </WinOldMenuItem>
-        <WinOldMenuItem Label="Help">
-            <WinOldMenuItem Label="Documentation"  OnClick="@(() => DoAction("Documentation"))"/>
-            <WinOldMenuItem Label="About..."    OnClick="@(() => DoAction("About"))" />
-        </WinOldMenuItem>
-
-    </WinOldMenu>
-
-    <div style="padding: 16px;">
-        <p>Dernière action : <strong>@_lastAction</strong></p>
-    </div>
-
-</div>
-
-<div>
-    <WinOldMenu Appearance="Appearance.WinXP">
-
-        <WinOldMenuItem Label="File">
-            <WinOldMenuItem Label="New" OnClick="@(() => DoAction("New"))" />
-            <WinOldMenuItem Label="Open..." OnClick="@(() => DoAction("Open"))" />
-            <WinOldMenuItem Label="Save" Disabled="true" />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Export" Disabled />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Exit" OnClick="@(() => DoAction("Exit"))" />
-        </WinOldMenuItem>
-        
-        <WinOldMenuItem Label="View">
-            <WinOldMenuItem Label="Zoom +" OnClick="@(() => DoAction("Zoom +"))" />
-            <WinOldMenuItem Label="Zoom -" OnClick="@(() => DoAction("Zoom -"))" />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Disposition">
-                <WinOldMenuItem Label="Classic" OnClick="@(() => DoAction("Classic"))" />
-                <WinOldMenuItem Label="Compact">
-                    <WinOldMenuItem Label="Small" OnClick="@(() => DoAction("Small"))" />
-                    <WinOldMenuItem Label="Large" OnClick="@(() => DoAction("Large"))" />
-                    <WinOldMenuItem Label="Extra" OnClick="@(() => DoAction("Extra"))" />
+            <WinOldMenuItem Label="View">
+                <WinOldMenuItem Label="Zoom +"    OnClick="@(() => DoAction("Zoom +"))" />
+                <WinOldMenuItem Label="Zoom -"    OnClick="@(() => DoAction("Zoom -"))" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Disposition">
+                    <WinOldMenuItem Label="Classic"  OnClick="@(() => DoAction("Classic"))" />
+                    <WinOldMenuItem Label="Compact"  OnClick="@(() => DoAction("Compact"))" />
+                    <WinOldMenuItem Label="Étendue"  OnClick="@(() => DoAction("Étendue"))" />
                 </WinOldMenuItem>
-                <WinOldMenuItem Label="Étendue" OnClick="@(() => DoAction("Étendue"))" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Full screen" OnClick="@(() => DoAction("Full screen"))" />
             </WinOldMenuItem>
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Full screen" OnClick="@(() => DoAction("Full screen"))" />
-        </WinOldMenuItem>
-        
-        <WinOldMenuItem Label="Win XP" Disabled="true">
-        </WinOldMenuItem>
+            <WinOldMenuItem Label="Win 98" Disabled="true" />
+            <WinOldMenuItem Label="Help">
+                <WinOldMenuItem Label="Documentation" OnClick="@(() => DoAction("Documentation"))" />
+                <WinOldMenuItem Label="About..."      OnClick="@(() => DoAction("About"))" />
+            </WinOldMenuItem>
+        </WinOldMenu>
+    </div>
 
-        <WinOldMenuItem Label="Help">
-            <WinOldMenuItem Label="Documentation" OnClick="@(() => DoAction("Documentation"))" />
-            <WinOldMenuItem Label="About..." OnClick="@(() => DoAction("About"))" />
-        </WinOldMenuItem>
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows XP</h7>
+        <WinOldMenu Appearance="Appearance.WinXP">
+            <WinOldMenuItem Label="File">
+                <WinOldMenuItem Label="New"       OnClick="@(() => DoAction("New"))" />
+                <WinOldMenuItem Label="Open..."   OnClick="@(() => DoAction("Open"))" />
+                <WinOldMenuItem Label="Save"      Disabled="true" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Export"    Disabled />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Exit"      OnClick="@(() => DoAction("Exit"))" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="View">
+                <WinOldMenuItem Label="Zoom +"    OnClick="@(() => DoAction("Zoom +"))" />
+                <WinOldMenuItem Label="Zoom -"    OnClick="@(() => DoAction("Zoom -"))" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Disposition">
+                    <WinOldMenuItem Label="Classic"  OnClick="@(() => DoAction("Classic"))" />
+                    <WinOldMenuItem Label="Compact">
+                        <WinOldMenuItem Label="Small" OnClick="@(() => DoAction("Small"))" />
+                        <WinOldMenuItem Label="Large" OnClick="@(() => DoAction("Large"))" />
+                        <WinOldMenuItem Label="Extra" OnClick="@(() => DoAction("Extra"))" />
+                    </WinOldMenuItem>
+                    <WinOldMenuItem Label="Étendue"  OnClick="@(() => DoAction("Étendue"))" />
+                </WinOldMenuItem>
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Full screen" OnClick="@(() => DoAction("Full screen"))" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="Win XP" Disabled="true" />
+            <WinOldMenuItem Label="Help">
+                <WinOldMenuItem Label="Documentation" OnClick="@(() => DoAction("Documentation"))" />
+                <WinOldMenuItem Label="About..."      OnClick="@(() => DoAction("About"))" />
+            </WinOldMenuItem>
+        </WinOldMenu>
+    </div>
 
-    </WinOldMenu>
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows 7</h7>
+        <WinOldMenu Appearance="Appearance.Win7">
+            <WinOldMenuItem Label="File">
+                <WinOldMenuItem Label="New"       OnClick="@(() => DoAction("New"))" />
+                <WinOldMenuItem Label="Open..."   OnClick="@(() => DoAction("Open"))" />
+                <WinOldMenuItem Label="Save"      Disabled="true" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Export"    Disabled />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Exit"      OnClick="@(() => DoAction("Exit"))" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="View">
+                <WinOldMenuItem Label="Zoom +"    OnClick="@(() => DoAction("Zoom +"))" />
+                <WinOldMenuItem Label="Zoom -"    OnClick="@(() => DoAction("Zoom -"))" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Disposition">
+                    <WinOldMenuItem Label="Classic"  OnClick="@(() => DoAction("Classic"))" />
+                    <WinOldMenuItem Label="Compact"  OnClick="@(() => DoAction("Compact"))" />
+                    <WinOldMenuItem Label="Étendue"  OnClick="@(() => DoAction("Étendue"))" />
+                </WinOldMenuItem>
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Full screen" OnClick="@(() => DoAction("Full screen"))" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="Win 7" Disabled="true" />
+            <WinOldMenuItem Label="Help">
+                <WinOldMenuItem Label="Documentation" OnClick="@(() => DoAction("Documentation"))" />
+                <WinOldMenuItem Label="About..."      OnClick="@(() => DoAction("About"))" />
+            </WinOldMenuItem>
+        </WinOldMenu>
+    </div>
 
-    <div style="padding: 16px;">
-        <p>Dernière action : <strong>@_lastAction</strong></p>
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows 10</h7>
+        <WinOldMenu Appearance="Appearance.Win10">
+            <WinOldMenuItem Label="File">
+                <WinOldMenuItem Label="New"       OnClick="@(() => DoAction("New"))" />
+                <WinOldMenuItem Label="Open..."   OnClick="@(() => DoAction("Open"))" />
+                <WinOldMenuItem Label="Save"      Disabled="true" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Export"    Disabled />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Exit"      OnClick="@(() => DoAction("Exit"))" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="View">
+                <WinOldMenuItem Label="Zoom +"    OnClick="@(() => DoAction("Zoom +"))" />
+                <WinOldMenuItem Label="Zoom -"    OnClick="@(() => DoAction("Zoom -"))" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Disposition">
+                    <WinOldMenuItem Label="Classic"  OnClick="@(() => DoAction("Classic"))" />
+                    <WinOldMenuItem Label="Compact"  OnClick="@(() => DoAction("Compact"))" />
+                    <WinOldMenuItem Label="Étendue"  OnClick="@(() => DoAction("Étendue"))" />
+                </WinOldMenuItem>
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Full screen" OnClick="@(() => DoAction("Full screen"))" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="Win 10" Disabled="true" />
+            <WinOldMenuItem Label="Help">
+                <WinOldMenuItem Label="Documentation" OnClick="@(() => DoAction("Documentation"))" />
+                <WinOldMenuItem Label="About..."      OnClick="@(() => DoAction("About"))" />
+            </WinOldMenuItem>
+        </WinOldMenu>
     </div>
 
 </div>
 
-<div>
-
-    <WinOldMenu Appearance="Appearance.Win7">
-
-        <WinOldMenuItem Label="File">
-            <WinOldMenuItem Label="New" OnClick="@(() => DoAction("New"))" />
-            <WinOldMenuItem Label="Open..." OnClick="@(() => DoAction("Open"))" />
-            <WinOldMenuItem Label="Save" Disabled="true" />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Export" Disabled />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Exit" OnClick="@(() => DoAction("Exit"))" />
-        </WinOldMenuItem>
-        
-        <WinOldMenuItem Label="View">
-            <WinOldMenuItem Label="Zoom +" OnClick="@(() => DoAction("Zoom +"))" />
-            <WinOldMenuItem Label="Zoom -" OnClick="@(() => DoAction("Zoom -"))" />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Disposition">
-                <WinOldMenuItem Label="Classic" OnClick="@(() => DoAction("Classic"))" />
-                <WinOldMenuItem Label="Compact" OnClick="@(() => DoAction("Compact"))" />
-                <WinOldMenuItem Label="Étendue" OnClick="@(() => DoAction("Étendue"))" />
-            </WinOldMenuItem>
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Full screen" OnClick="@(() => DoAction("Full screen"))" />
-        </WinOldMenuItem>
-
-        <WinOldMenuItem Label="Win 7" Disabled="true">
-        </WinOldMenuItem>
-
-        <WinOldMenuItem Label="Help">
-            <WinOldMenuItem Label="Documentation" OnClick="@(() => DoAction("Documentation"))" />
-            <WinOldMenuItem Label="About..." OnClick="@(() => DoAction("About"))" />
-        </WinOldMenuItem>
-
-    </WinOldMenu>
-
-    <div style="padding: 16px;">
-        <p>Dernière action : <strong>@_lastAction</strong></p>
-    </div>
-
+<h2>Last Action</h2>
+<div style="padding: 10px; background-color: #f5f5f5; border: 1px solid #ccc; margin: 10px 0;">
+    <p><strong>Last action:</strong> @_lastAction</p>
 </div>
 
-<div>
+<h2>Code Example</h2>
 
-    <WinOldMenu Appearance="Appearance.Win10">
+<CodeBlock
+           EnableLineNumbers="true"
+           Code=@(@"<WinOldMenu Appearance=""Appearance.Win10"">
 
-        <WinOldMenuItem Label="File">
-            <WinOldMenuItem Label="New" OnClick="@(() => DoAction("New"))" />
-            <WinOldMenuItem Label="Open..." OnClick="@(() => DoAction("Open"))" />
-            <WinOldMenuItem Label="Save" Disabled="true" />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Export" Disabled />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Exit"  />
+    <WinOldMenuItem Label=""File"">
+        <WinOldMenuItem Label=""New""     OnClick=""@(() => DoAction(""New""))"" />
+        <WinOldMenuItem Label=""Open..."" OnClick=""@(() => DoAction(""Open""))"" />
+        <WinOldMenuItem Label=""Save""    Disabled=""true"" />
+        <WinOldMenuItem IsSeparator />
+        <WinOldMenuItem Label=""Export""  Disabled />
+        <WinOldMenuItem IsSeparator />
+        <WinOldMenuItem Label=""Exit""    OnClick=""@(() => DoAction(""Exit""))"" />
+    </WinOldMenuItem>
+
+    <WinOldMenuItem Label=""View"">
+        <WinOldMenuItem Label=""Zoom +""  OnClick=""@(() => DoAction(""Zoom +""))"" />
+        <WinOldMenuItem Label=""Zoom -""  OnClick=""@(() => DoAction(""Zoom -""))"" />
+        <WinOldMenuItem IsSeparator />
+        <WinOldMenuItem Label=""Disposition"">
+            <WinOldMenuItem Label=""Classic"" OnClick=""@(() => DoAction(""Classic""))"" />
+            <WinOldMenuItem Label=""Compact"" OnClick=""@(() => DoAction(""Compact""))"" />
         </WinOldMenuItem>
-        
-        <WinOldMenuItem Label="View">
-            <WinOldMenuItem Label="Zoom +" OnClick="@(() => DoAction("Zoom +"))" />
-            <WinOldMenuItem Label="Zoom -" OnClick="@(() => DoAction("Zoom -"))" />
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Disposition">
-                <WinOldMenuItem Label="Classic" OnClick="@(() => DoAction("Classic"))" />
-                <WinOldMenuItem Label="Compact" OnClick="@(() => DoAction("Compact"))" />
-                <WinOldMenuItem Label="Étendue" OnClick="@(() => DoAction("Étendue"))" />
-            </WinOldMenuItem>
-            <WinOldMenuItem IsSeparator />
-            <WinOldMenuItem Label="Full screen" OnClick="@(() => DoAction("Full screen"))" />
-        </WinOldMenuItem>
-        
-        <WinOldMenuItem Label="Win 10" Disabled="true">
-        </WinOldMenuItem>
+    </WinOldMenuItem>
 
-        <WinOldMenuItem Label="Help">
-            <WinOldMenuItem Label="Documentation" OnClick="@(() => DoAction("Documentation"))" />
-            <WinOldMenuItem Label="About..." OnClick="@(() => DoAction("About"))" />
-        </WinOldMenuItem>
+    <WinOldMenuItem Label=""Help"">
+        <WinOldMenuItem Label=""About..."" Shortcut=""F1"" OnClick=""@(() => DoAction(""About""))"" />
+    </WinOldMenuItem>
 
-    </WinOldMenu>
+</WinOldMenu>
 
-    <div style="padding: 16px;">
-        <p>Last action : <strong>@_lastAction</strong></p>
+@code {
+    private void DoAction(string action) { ... }
+}") />
+
+<h2>WinOldMenu Properties</h2>
+
+<div style="margin: 20px 0; border: 1px solid #ccc;">
+    <div style="display: flex; flex-wrap: wrap; background-color: #f0f0f0; font-weight: bold; border-bottom: 2px solid #ccc;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;">Property</div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Type</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Default</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Description</div>
     </div>
-
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Appearance</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Appearance</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Win98</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Visual style: Win98, WinXP, Win7, Win10</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>ChildContent</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">RenderFragment?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">—</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Menu items (<code>WinOldMenuItem</code> components)</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Disabled</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">false</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Disables all items in the menu</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Class</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Additional CSS class applied to the menu container</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Style</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Inline CSS style applied to the menu container</div>
+    </div>
 </div>
+
+<h2>WinOldMenuItem Properties</h2>
+
+<div style="margin: 20px 0; border: 1px solid #ccc;">
+    <div style="display: flex; flex-wrap: wrap; background-color: #f0f0f0; font-weight: bold; border-bottom: 2px solid #ccc;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;">Property</div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Type</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Default</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Description</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Label</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">""</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Text displayed for the menu item</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Shortcut</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Keyboard shortcut hint displayed on the right side of the item (e.g., "Ctrl+S")</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>IsSeparator</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">false</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Renders a horizontal separator line instead of a clickable item</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Disabled</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">false</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Grays out the item and prevents interaction</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>OnClick</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">EventCallback</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">—</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Callback invoked when the item is clicked (leaf items only)</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>ChildContent</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">RenderFragment?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">—</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Nested <code>WinOldMenuItem</code> components — turns this item into a submenu parent</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Class</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Additional CSS class applied to the item</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Style</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Inline CSS style applied to the item</div>
+    </div>
+</div>
+
 @code {
     private string _lastAction = "(nothing)";
 
