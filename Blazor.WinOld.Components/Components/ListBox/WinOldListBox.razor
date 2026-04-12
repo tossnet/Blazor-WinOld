@@ -3,7 +3,8 @@
 @inherits WinOldComponentBase
 
 <CascadingValue Value="this" IsFixed="true">
-    <ul class="list-win @GetComponentClass() @Class"
+    <ul role="listbox"
+        class="list-win @GetComponentClass() @Class"
         style="@Style"
         @attributes="Attributes">
         @ChildContent

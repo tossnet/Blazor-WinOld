@@ -4,10 +4,12 @@
 
 @if (Parent is not null )
 {
-    <li class="list-item @GetComponentClass() @GetActiveItemClass(this) @Class"
+	<li role="option"
+		aria-selected="@(Parent.SelectedItem == this)"
+		class="list-item @GetComponentClass() @GetActiveItemClass(this) @Class"
 		style="@Style"
 		@attributes="Attributes"
-        @onclick="() => SelectItem(this)">
-        @Text
-    </li>
+		@onclick="() => SelectItem(this)">
+		@Text
+	</li>
 }

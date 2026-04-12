@@ -6,15 +6,20 @@
 
 @if (IsSeparator)
 {
-    <li class="menu-separator-win @GetSeparatorClass()"></li>
+    <li role="separator" class="menu-separator-win @GetSeparatorClass()"></li>
 }
-else if (_isRootLevel)
+else if (_isRootLevel && !(RootMenu?.IsContextMenu ?? false))
 {
-    <div class="menu-win-root-item @(_isOpen ? "open" : "")"
+    <div role="none"
+         class="menu-win-root-item @(_isOpen ? "open" : "")"
          @onclick:stopPropagation
          @onmouseenter="OnMouseEnter">
 
-        <span class="menu-label-win @GetLabelClass()"
+        <span role="menuitem"
+              class="menu-label-win @GetLabelClass()"
+              aria-haspopup="@(ChildContent is not null ? "menu" : null)"
+              aria-expanded="@(ChildContent is not null ? _isOpen : null)"
+              aria-disabled="@(ParentDisabled | Disabled)"
               disabled="@(ParentDisabled | Disabled)"
               @onclick="OnLabelClick">@Label</span>
 
@@ -26,10 +31,15 @@ else if (_isRootLevel)
 }
 else
 {
-    <li class="menu-sub-win-item @(_isOpen ? "open" : "") @(Disabled ? "disabled" : "")"
+    <li role="none"
+        class="menu-sub-win-item @(_isOpen ? "open" : "") @(Disabled ? "disabled" : "")"
         @onmouseenter="OnMouseEnter">
 
-        <span class="menu-label-win @GetLabelClass()"
+        <span role="menuitem"
+              class="menu-label-win @GetLabelClass()"
+              aria-haspopup="@(ChildContent is not null ? "menu" : null)"
+              aria-expanded="@(ChildContent is not null ? _isOpen : null)"
+              aria-disabled="@(ParentDisabled | Disabled)"
               disabled="@(ParentDisabled | Disabled)"
               @onclick="OnLabelClick">
             @Label

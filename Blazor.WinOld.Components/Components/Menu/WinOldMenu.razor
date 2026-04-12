@@ -4,21 +4,37 @@
 
 @implements IDisposable
 
-@if (IsRoot)
+@if (IsRoot && IsContextMenu)
+{
+    @if (_isContextMenuVisible)
+    {
+        <div class="menu-backdrop"
+             @onclick="CloseAll" @onclick:stopPropagation
+             @oncontextmenu="ShowContextMenu" @oncontextmenu:stopPropagation @oncontextmenu:preventDefault></div>
+    }
+    <CascadingValue Value="this" IsFixed="false">
+        <ul role="menu"
+            class="contextmenu-win @ContextMenuAppearanceClass @(_isContextMenuVisible ? "open" : "") @Class"
+            style="left:@((int)_contextX)px; top:@((int)_contextY)px;">
+            @ChildContent
+        </ul>
+    </CascadingValue>
+}
+else if (IsRoot)
 {
     @if (IsAnyOpen)
     {
         <div class="menu-backdrop" @onclick="CloseAll" @onclick:stopPropagation></div>
     }
     <CascadingValue Value="this" IsFixed="false">
-        <div class="menu-win @GetComponentClass() @Class">
+        <div role="menubar" class="menu-win @GetComponentClass() @Class">
             @ChildContent
         </div>
     </CascadingValue>
 }
 else
 {
-    <ul class="menu-win @GetComponentClass() @CssClass @(IsOpen ? "open" : "")">
+    <ul role="menu" class="menu-win @GetComponentClass() @CssClass @(IsOpen ? "open" : "")">
         <CascadingValue Value="this" IsFixed="false">
             @ChildContent
         </CascadingValue>

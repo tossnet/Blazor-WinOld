@@ -8,8 +8,11 @@
 		  class="tabs-list @Class">
 		@foreach (var tabPanel in TabPanels)
 		{
-			<button role="tab"	
-				    class="tabs-win @GetComponentClass() @GetActiveTabClass(tabPanel) "
+			<button role="tab"
+					id="tab-@tabPanel.PanelId"
+					aria-selected="@(SelectedTabPanel == tabPanel)"
+					aria-controls="panel-@tabPanel.PanelId"
+					class="tabs-win @GetComponentClass() @GetActiveTabClass(tabPanel) "
 					disabled="@tabPanel.Disabled"
 					@onclick="() => SelectTab(tabPanel)"
 					@attributes="Attributes">

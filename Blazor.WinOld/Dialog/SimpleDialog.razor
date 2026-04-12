@@ -1,19 +1,19 @@
 ﻿<WinOldMenu Appearance="Appearance">
 
-    <WinOldMenuItem Label="Fichier">
-        <WinOldMenuItem Label="Nouveau" OnClick="@(() => DoAction("New"))" />
-        <WinOldMenuItem Label="Ouvrir..."  />
-        <WinOldMenuItem Label="Enregistrer" Disabled="true" />
+    <WinOldMenuItem Label="File">
+        <WinOldMenuItem Label="New" OnClick="@(() => DoAction("New"))" />
+        <WinOldMenuItem Label="Open..."  />
+        <WinOldMenuItem Label="Save" Disabled="true" />
         <WinOldMenuItem IsSeparator />
-        <WinOldMenuItem Label="Exporter" Disabled />
+        <WinOldMenuItem Label="Export" Disabled />
         <WinOldMenuItem IsSeparator />
-        <WinOldMenuItem Label="Quitter"  />
+        <WinOldMenuItem Label="Exit"  />
     </WinOldMenuItem>
         
 
-    <WinOldMenuItem Label="Aide">
+    <WinOldMenuItem Label="Help">
         <WinOldMenuItem Label="Documentation"  />
-        <WinOldMenuItem Label="À propos..."  />
+        <WinOldMenuItem Label="About..."  />
     </WinOldMenuItem>
 
 </WinOldMenu>
@@ -22,6 +22,26 @@
 			Style="min-width: 210px; height: 100%; margin-left:3px; margin-right: 3px">
 	<WinOldTabPanel Label="General" IsDefault="true" Style="height:245px">
 		<p>Contents of first tab</p>
+        <div @oncontextmenu="e => _ctxMenu!.ShowContextMenu(e)"
+             @oncontextmenu:preventDefault
+             @ontouchstart="e => _ctxMenu!.StartLongPress(e)"
+             @ontouchend="() => _ctxMenu!.CancelLongPress()"
+             @ontouchmove="() => _ctxMenu!.CancelLongPress()"
+             style="width:100%; height:150px; display:flex; flex-direction:column; align-items:center; justify-content:center; border: 1px dashed gray; gap:8px; user-select:none;">
+            <span>Right-click / Long press anywhere in this area</span>
+            <strong>Last action: @_lastAction</strong>
+        </div>
+
+        <WinOldMenu IsContextMenu="true" @ref="_ctxMenu" Appearance="Appearance">
+            <WinOldMenuItem Label="Cut" OnClick="@(() => DoAction("Cut"))" />
+            <WinOldMenuItem Label="Copy" OnClick="@(() => DoAction("Copy"))" />
+            <WinOldMenuItem Label="Paste" OnClick="@(() => DoAction("Paste"))" />
+            <WinOldMenuItem IsSeparator />
+            <WinOldMenuItem Label="Send to">
+                <WinOldMenuItem Label="Desktop" OnClick="@(() => DoAction("Desktop"))" />
+                <WinOldMenuItem Label="Documents" OnClick="@(() => DoAction("Documents"))" />
+            </WinOldMenuItem>
+        </WinOldMenu>
 	</WinOldTabPanel>
 
 	<WinOldTabPanel Label="View" Style="height:245px">
@@ -38,6 +58,7 @@
     [Parameter]
     public Appearance Appearance { get; set; }
 
+    private WinOldMenu? _ctxMenu;
     private string _lastAction = "(nothing)";
 
     private void DoAction(string action)

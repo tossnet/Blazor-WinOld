@@ -50,7 +50,17 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 2.2.0</summary>
+<details open="open"><summary>Version 2.3.0</summary>
+
+>- The `WinOldMenu` component can be used as a Context Menu by setting the `IsContextMenu` property to `true` 
+</details>
+
+<details><summary>Version 2.2.1</summary>
+
+>- Accessibility: added ARIA attributes (`role`, `aria-expanded`, `aria-selected`, `aria-modal`, `aria-labelledby`…) to all components
+</details>
+
+<details><summary>Version 2.2.0</summary>
 
 >- Added new `WinOldMenu` 
 >- Button : winXP and win7 , add default style
@@ -85,9 +95,8 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 >- WinOldTabs : a Tab can be disabled.
 </details>
 
-<details open="open"><summary>Version 1.3.0</summary>
+<details><summary>Version 1.3.0 ⚠️ BREAKING CHANGE</summary>
 
->- ⚠️ BREAKING CHANGE:
 >- DialogOptions has been renamed to MessageBoxOptions for WinOldMessageBox
 >- Migration: Replace 'new DialogOptions' with 'new MessageBoxOptions' (simple Find/Replace)
 >- New WinOldInputBox component

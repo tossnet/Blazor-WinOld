@@ -53,9 +53,20 @@ public partial class WinOldMenuItem : WinOldComponentBase
 
         if (_isRootLevel)
         {
-            // Glissement horizontal : ouvrir ce menu seulement si un autre est déjà ouvert
-            if (ChildContent is not null && RootMenu.IsAnyOpen)
-                RootMenu.Open(_id, isSub: false);
+            if (RootMenu.IsContextMenu)
+            {
+                // Menu contextuel : ouvrir le sous-menu au survol sans condition
+                if (ChildContent is not null)
+                    RootMenu.Open(_id, isSub: false);
+                else
+                    RootMenu.CloseSubMenusOnly();
+            }
+            else
+            {
+                // Barre de menu classique : glissement horizontal uniquement si un autre est ouvert
+                if (ChildContent is not null && RootMenu.IsAnyOpen)
+                    RootMenu.Open(_id, isSub: false);
+            }
         }
         else
         {
@@ -79,11 +90,11 @@ public partial class WinOldMenuItem : WinOldComponentBase
     {
         return RootMenu?.ActualRoot.Appearance switch
         {
-            Appearance.Win7 => "menu-separator-win-7",
+            Appearance.Win7  => "menu-separator-win-7",
             Appearance.WinXP => "menu-separator-win-xp",
             Appearance.Win98 => "menu-separator-win-98",
             Appearance.Win10 => "menu-separator-win-10",
-            _ => "menu-separator-win-98"
+            _ => "menu-separator-win-10"
         };
     }
 
@@ -92,11 +103,11 @@ public partial class WinOldMenuItem : WinOldComponentBase
     {
         return RootMenu?.ActualRoot.Appearance switch
         {
-            Appearance.Win7 => "menu-label-win-7",
+            Appearance.Win7  => "menu-label-win-7",
             Appearance.WinXP => "menu-label-win-xp",
             Appearance.Win98 => "menu-label-win-98",
             Appearance.Win10 => "menu-label-win-10",
-            _ => "menu-label-win-98"
+            _ => "menu-label-win-10"
         };
     }
 
@@ -105,12 +116,11 @@ public partial class WinOldMenuItem : WinOldComponentBase
     {
         return RootMenu?.ActualRoot.Appearance switch
         {
-            Appearance.Win7 => "menu-arrow-win-7",
+            Appearance.Win7  => "menu-arrow-win-7",
             Appearance.WinXP => "menu-arrow-win-xp",
             Appearance.Win98 => "menu-arrow-win-98",
             Appearance.Win10 => "menu-arrow-win-10",
-            _ => "menu-arrow-win-98"
+            _ => "menu-arrow-win-10"
         };
     }
-    
 }

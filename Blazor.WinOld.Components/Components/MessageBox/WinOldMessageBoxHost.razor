@@ -5,9 +5,13 @@
 @if (IsVisible)
 {
     <div class="msg-win-backdrop">
-        <div @ref="_windowRef" class="@GetMessageBoxClass()">
+        <div @ref="_windowRef"
+             role="alertdialog"
+             aria-modal="true"
+             aria-labelledby="@_titleId"
+             class="@GetMessageBoxClass()">
             <div @ref="_titleBarRef" class="@GetTitleBarClass() active">
-                <div class="@GetTitleBarTextClass()">@Options.Title</div>
+                <div id="@_titleId" class="@GetTitleBarTextClass()">@Options.Title</div>
                 <div class="@GetTitleBarControlsClass()">
                     <button aria-label="Close" @onclick="HandleCancel"></button>
                 </div>

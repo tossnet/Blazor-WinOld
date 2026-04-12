@@ -5,9 +5,13 @@
 @if (IsVisible)
 {
     <div class="dlg-win-backdrop">
-        <div @ref="_windowRef" class="dlg-win @GetDialogClass()" style="@GetDialogSizeStyle()">
+        <div @ref="_windowRef"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="@_titleId"
+             class="dlg-win @GetDialogClass()" style="@GetDialogSizeStyle()">
             <div @ref="_titleBarRef" class="@GetTitleBarClass() active">
-                <div class="@GetTitleBarTextClass()">@Options.Title</div>
+                <div id="@_titleId" class="@GetTitleBarTextClass()">@Options.Title</div>
                 <div class="@GetTitleBarControlsClass()">
                     <button aria-label="Close" @onclick="HandleCancel"></button>
                 </div>

@@ -4,6 +4,8 @@ namespace Blazor.WinOld.Components;
 
 public partial class WinOldTabPanel : WinOldComponentBase
 {
+    internal string PanelId { get; } = Guid.NewGuid().ToString("N");
+
     /// </summary>
     [CascadingParameter]
     public WinOldTabs ParentTabs { get; set; }

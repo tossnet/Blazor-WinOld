@@ -10,6 +10,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
     private ElementReference _windowRef;
     private ElementReference _titleBarRef;
     private DraggableWindow _draggable = default!;
+    private readonly string _titleId = $"inp-title-{Guid.NewGuid():N}";
 
     /// <summary>
     /// Reference to the TextBox component

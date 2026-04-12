@@ -9,6 +9,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
     private ElementReference _windowRef;
     private ElementReference _titleBarRef;
     private DraggableWindow _draggable = default!;
+    private readonly string _titleId = $"dlg-title-{Guid.NewGuid():N}";
 
     private DialogOptions Options { get; set; } = new DialogOptions();
     private TaskCompletionSource<bool?>? Tcs { get; set; }

@@ -9,6 +9,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
     private ElementReference _windowRef;
     private ElementReference _titleBarRef;
     private DraggableWindow _draggable = default!;
+    private readonly string _titleId = $"msg-title-{Guid.NewGuid():N}";
 
     /// </summary>
     private MessageBoxOptions Options { get; set; } = new MessageBoxOptions();
