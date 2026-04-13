@@ -35,7 +35,8 @@
             <span class="hero-feature-pill">🎨 4 Windows themes</span>
         </div>
     </div>
-    <WinOldWindow Appearance="appearance" Title="Live Preview" class="hero-preview">
+    <WinOldWindow Appearance="appearance" 
+                  Title="Live Preview" class="hero-preview">
         <div style="padding:6px;">
             <div class="hero-theme-selector light">
                 @foreach (var theme in _themes)
@@ -77,7 +78,8 @@
     </WinOldLabel>
 
     <WinOldButton OnClick="OpenDialog"
-                  Appearance="appearance">Open a dialogbox</WinOldButton>
+                  Appearance="appearance"
+                  Default="true" >Open a dialogbox</WinOldButton>
 
     <WinOldOptionButtonGroup T="int"
                              @bind-Value="SelectedRadio"

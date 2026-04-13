@@ -18,4 +18,5 @@
 		<ProjectReference Include="..\Blazor.WinOld.Components\Blazor.WinOld.Components.csproj" SetTargetFramework="TargetFramework=net9.0" />
   </ItemGroup>
 
-</Project>
+
+  </Project>

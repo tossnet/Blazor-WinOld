@@ -26,7 +26,7 @@
     background-color: var(--winxp-background);
     text-align: left;
     width: auto;
-    animation: win-window-fadeIn 0.2s ease;
+    /*animation: win-window-fadeIn 0.2s ease;*/
 }
 
 .win-title-bar-xp {
