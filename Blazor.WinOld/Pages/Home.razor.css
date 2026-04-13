@@ -1,6 +1,222 @@
-.desktop {
-    height: 100px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
+/* ── Hero Section ─────────────────────────────────────── */
+.hero {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    padding: 2.5rem 1.5rem;
+    margin: -1.1rem -1.5rem 1.5rem -1.5rem;
+    transition: background-color 0.45s ease;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /*background: linear-gradient(135deg, transparent 40%, rgba(0, 0, 0, 0.32) 100%);*/
+    pointer-events: none;
+    z-index: 0;
+}
+
+@media (min-width: 641px) {
+    .hero {
+        padding: 2.5rem 2rem;
+        margin-left: -2rem;
+        margin-right: -1.5rem;
+    }
+}
+
+/*  Hero – left text column */
+.hero-text {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 320px;
+    min-width: 260px;
+    max-width: 520px;
+    color: white;
+}
+
+.hero-badge-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    text-shadow: 1px 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.hero-title::after {
+    content: '_';
+    animation: cursor-blink 1.1s step-end infinite;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+.hero-title-accent {
+    color: #ffe066;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.5rem;
+    line-height: 1.65;
+}
+
+.hero-install {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    padding: 8px 12px;
+    margin-bottom: 1rem;
+    max-width: 390px;
+}
+
+.hero-install-code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.82rem;
+    color: #a8d8ff;
+    flex: 1;
+    user-select: all;
+}
+
+.hero-copy-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 2px 8px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 1rem;
+    line-height: 1.4;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+    .hero-copy-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+.hero-features {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.hero-feature-pill {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* Hero – right preview box */
+.hero-preview {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    min-width: 260px;
+    max-width: 360px;
+    border-radius: 3px;
+    padding: 10px 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.45s ease;
+    animation: preview-fadein 0.55s ease-out;
+}
+
+@keyframes preview-fadein {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-theme-selector {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 2px
+}
+
+.hero-theme-btn {
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 2px;
+    font-family: 'Tahoma', Arial, sans-serif;
+    transition: background 0.15s, color 0.15s;
+}
+
+    .hero-theme-btn:hover {
+        background: rgba(255, 255, 255, 0.25);
+        color: white;
+    }
+
+    .hero-theme-btn.active {
+        background: rgba(255, 255, 255, 0.92);
+        color: #1a1a2e;
+        font-weight: bold;
+        border-color: white;
+    }
+
+/* Theme selector on a light (Win7/Win10) desktop background */
+.hero-theme-selector.light .hero-theme-btn {
+    border-color: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.06);
+    color: rgba(0, 0, 0, 0.7);
+}
+
+    .hero-theme-selector.light .hero-theme-btn:hover {
+        background: rgba(0, 0, 0, 0.12);
+        color: rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-theme-selector.light .hero-theme-btn.active {
+        background: rgba(0, 0, 0, 0.78);
+        color: white;
+        border-color: rgba(0, 0, 0, 0.78);
+    }
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-preview {
+        max-width: 100%;
+        min-width: unset;
+        width: 100%;
+    }
 }

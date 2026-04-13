@@ -1,0 +1,84 @@
+@page "/systemcolors-page"
+@using System.Drawing
+
+<PageTitle>System Colors</PageTitle>
+
+<h1>System Colors</h1>
+
+<p>
+    The <code>SystemColors</code> static class provides theme-aware color values that adapt to the active <code>Appearance</code>.
+    Set <code>SystemColors.Appearance</code> once (e.g. at startup) and read any property to get the matching Windows-era color.
+</p>
+
+<h2>Colors by Appearance</h2>
+
+<div style="display:flex; flex-direction:row; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+    @foreach (var (appearance, label) in _appearances)
+    {
+        <div style="flex: 1 1 180px; min-width: 160px;">
+            <h4>@label</h4>
+            <table style="border-collapse:collapse; width:100%;">
+                <tbody>
+                    @foreach (var propName in _propertyNames)
+                    {
+                        var color = GetColor(appearance, propName);
+                        <tr>
+                            <td style="padding:6px 8px;"><code>@propName</code></td>
+                            <td style="padding:6px 8px;">
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <div style="width:28px; height:28px; background-color:@ToCss(color); border:1px solid #888; border-radius:2px; flex-shrink:0;"></div>
+                                    <span style="font-size:0.8em; font-family:monospace;">@ToHex(color)</span>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+<h2>Code Example</h2>
+
+<CodeBlock Language="CodeLanguage.CSharp"
+           EnableLineNumbers="true"
+           Code=@(@"// Set the appearance once (e.g. in App.razor or at startup)
+SystemColors.Appearance = Appearance.Win98;
+
+// Then read any color property
+Color desktop  = SystemColors.Desktop;   // #0E7174
+Color titleBar = SystemColors.TitleBar;  // #000080
+Color form     = SystemColors.Form;      // #C0C0C0") />
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<div style=""background-color: rgb(@SystemColors.Form.R, @SystemColors.Form.G, @SystemColors.Form.B)"">
+    Content here
+</div>") />
+
+@code {
+    private static readonly (Appearance Appearance, string Label)[] _appearances =
+    [
+        (Appearance.Win98, "Windows 98"),
+        (Appearance.WinXP, "Windows XP"),
+        (Appearance.Win7,  "Windows 7"),
+        (Appearance.Win10, "Windows 10"),
+    ];
+
+    private static readonly string[] _propertyNames = ["Desktop", "TitleBar", "Form"];
+
+    private static Color GetColor(Appearance appearance, string property)
+    {
+        Blazor.WinOld.Components.SystemColors.Appearance = appearance;
+        return property switch
+        {
+            "Desktop"  => Blazor.WinOld.Components.SystemColors.Desktop,
+            "TitleBar" => Blazor.WinOld.Components.SystemColors.TitleBar,
+            "Form"     => Blazor.WinOld.Components.SystemColors.Form,
+            _          => Color.Empty
+        };
+    }
+
+    private static string ToCss(Color c) => $"rgb({c.R},{c.G},{c.B})";
+    private static string ToHex(Color c) => $"#{c.R:X2}{c.G:X2}{c.B:X2}";
+}

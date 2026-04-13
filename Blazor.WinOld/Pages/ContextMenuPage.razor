@@ -1,0 +1,77 @@
+﻿@page "/contextmenu-page"
+
+<PageTitle>Context Menu</PageTitle>
+
+<h1>Context Menu</h1>
+
+<div class="alert alert-info" role="alert">
+    <strong>Note:</strong> The context menu is not a separate component — it is simply a particular use of the <code>WinOldMenu</code> component via the <code>IsContextMenu="true"</code> property.
+</div>
+
+<h2 id="context-menu">Context Menu</h2>
+
+<p>
+    Setting <code>IsContextMenu="true"</code> on <code>WinOldMenu</code> switches it to context menu mode.
+    Use <code>@@ref</code> to get a reference, then call <code>ShowContextMenu(MouseEventArgs)</code>
+    from any mouse event handler — <code>@@oncontextmenu</code> (right-click, also handles OS-swapped
+    left-handed buttons), <code>@@onclick</code> (left-click), or both simultaneously.
+    On touch devices, use <code>StartLongPress</code> / <code>CancelLongPress</code>.
+</p>
+
+<div @oncontextmenu="e => _ctxMenu!.ShowContextMenu(e)"
+     @oncontextmenu:preventDefault
+     @ontouchstart="e => _ctxMenu!.StartLongPress(e)"
+     @ontouchend="() => _ctxMenu!.CancelLongPress()"
+     @ontouchmove="() => _ctxMenu!.CancelLongPress()"
+     style="width:100%; height:150px; display:flex; flex-direction:column; align-items:center; justify-content:center; border: 1px dashed gray; gap:8px; user-select:none;">
+    <span>Right-click / Long press anywhere in this area</span>
+    <strong>Last action: @_lastAction</strong>
+</div>
+<WinOldMenu IsContextMenu="true" @ref="_ctxMenu" Appearance="Appearance.Win10">
+    <WinOldMenuItem Label="Cut" OnClick="@(() => DoAction("Cut"))" />
+    <WinOldMenuItem Label="Copy" OnClick="@(() => DoAction("Copy"))" />
+    <WinOldMenuItem Label="Paste" OnClick="@(() => DoAction("Paste"))" />
+    <WinOldMenuItem IsSeparator />
+    <WinOldMenuItem Label="Send to">
+        <WinOldMenuItem Label="Desktop" OnClick="@(() => DoAction("Desktop"))" />
+        <WinOldMenuItem Label="Documents" OnClick="@(() => DoAction("Documents"))" />
+    </WinOldMenuItem>
+</WinOldMenu>
+
+<h3>Code Example</h3>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<div @oncontextmenu=""e => _ctxMenu!.ShowContextMenu(e)""
+         @oncontextmenu:preventDefault
+         @ontouchstart=""e => _ctxMenu!.StartLongPress(e)""
+         @ontouchend=""() => _ctxMenu!.CancelLongPress()""
+         @ontouchmove=""() => _ctxMenu!.CancelLongPress()""
+         style=""..."">
+        Right-click here
+    </div>
+
+    <WinOldMenu IsContextMenu=""true"" @ref=""_ctxMenu"" Appearance=""Appearance.Win98"">
+        <WinOldMenuItem Label=""Cut""   OnClick=""@(() => DoAction(""Cut""))"" />
+        <WinOldMenuItem Label=""Copy""  OnClick=""@(() => DoAction(""Copy""))"" />
+        <WinOldMenuItem Label=""Paste"" OnClick=""@(() => DoAction(""Paste""))"" />
+        <WinOldMenuItem IsSeparator />
+        <WinOldMenuItem Label=""Send to"">
+            <WinOldMenuItem Label=""Desktop""   OnClick=""@(() => DoAction(""Desktop""))"" />
+            <WinOldMenuItem Label=""Documents"" OnClick=""@(() => DoAction(""Documents""))"" />
+        </WinOldMenuItem>
+    </WinOldMenu>
+
+    @code {
+        private WinOldMenu? _ctxMenu;
+    }") />
+
+@code {
+    private WinOldMenu? _ctxMenu;
+    private string _lastAction = "(nothing)";
+
+    private void DoAction(string action)
+    {
+        _lastAction = action;
+    }
+}

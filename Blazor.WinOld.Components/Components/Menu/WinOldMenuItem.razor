@@ -33,7 +33,8 @@ else
 {
     <li role="none"
         class="menu-sub-win-item @(_isOpen ? "open" : "") @(Disabled ? "disabled" : "")"
-        @onmouseenter="OnMouseEnter">
+        @onmouseenter="OnMouseEnter"
+        @ontouchend="OnTouchEnd">
 
         <span role="menuitem"
               class="menu-label-win @GetLabelClass()"

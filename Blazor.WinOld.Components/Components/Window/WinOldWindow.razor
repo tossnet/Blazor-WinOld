@@ -1,0 +1,20 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+<div class="win-window @GetWindowClass() @Class" style="@Style" @attributes="Attributes">
+    <div class="win-title-bar @GetTitleBarClass() active">
+        <div class="@GetTitleTextClass()">@Title</div>
+        @if (ShowCloseButton)
+        {
+            <div class="@GetTitleControlsClass()">
+                <button aria-label="Close" @onclick="async () => await OnClose.InvokeAsync()"></button>
+            </div>
+        }
+    </div>
+    <div class="win-body @GetBodyClass()">
+        <CascadingValue Name="Disabled" Value="@Disabled">
+            @ChildContent
+        </CascadingValue>
+    </div>
+</div>

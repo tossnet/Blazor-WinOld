@@ -6,7 +6,10 @@
           style="@Style"
           disabled="@Disabled"
           @attributes="Attributes">
-    <legend >@Label</legend>
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <legend>@Label</legend>
+    }
                         
     <CascadingValue Name="Disabled" Value="@Disabled">
         @ChildContent

@@ -28,15 +28,22 @@ public partial class WinOldMenuItem : WinOldComponentBase
         ? RootMenu?.OpenItemId == _id
         : RootMenu?.OpenSubId == _id;
 
+    // ── Touch support ─────────────────────────────────────────────────────
+    private long _lastTouchEndTick;
+    private bool IsRecentTouch => Environment.TickCount64 - _lastTouchEndTick < 600;
+
+    private void OnTouchEnd() => _lastTouchEndTick = Environment.TickCount64;
+
     private async Task OnLabelClick()
     {
         if (Disabled) return;
 
         if (ChildContent is not null)
         {
-            if (_isOpen)
+            // Sur tactile : le mouseenter a peut-être déjà ouvert l'item → ne pas refermer
+            if (_isOpen && !IsRecentTouch)
                 RootMenu?.CloseAll();
-            else
+            else if (!_isOpen)
                 RootMenu?.Open(_id, isSub: !_isRootLevel);
         }
         else
@@ -50,12 +57,13 @@ public partial class WinOldMenuItem : WinOldComponentBase
     private void OnMouseEnter()
     {
         if (RootMenu is null || Disabled) return;
+        // Ignore le mouseenter synthétisé par le navigateur après un touchend
+        if (IsRecentTouch) return;
 
         if (_isRootLevel)
         {
             if (RootMenu.IsContextMenu)
             {
-                // Menu contextuel : ouvrir le sous-menu au survol sans condition
                 if (ChildContent is not null)
                     RootMenu.Open(_id, isSub: false);
                 else
@@ -63,7 +71,6 @@ public partial class WinOldMenuItem : WinOldComponentBase
             }
             else
             {
-                // Barre de menu classique : glissement horizontal uniquement si un autre est ouvert
                 if (ChildContent is not null && RootMenu.IsAnyOpen)
                     RootMenu.Open(_id, isSub: false);
             }
@@ -71,10 +78,8 @@ public partial class WinOldMenuItem : WinOldComponentBase
         else
         {
             if (ChildContent is not null)
-                // Item avec sous-sous-menu : l'ouvrir
                 RootMenu.Open(_id, isSub: true);
             else
-                // Item feuille : juste fermer l'éventuel sous-sous-menu sans toucher au parent
                 RootMenu.CloseSubOnly();
         }
     }
