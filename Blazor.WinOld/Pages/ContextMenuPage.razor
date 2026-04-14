@@ -18,6 +18,11 @@
     On touch devices, use <code>StartLongPress</code> / <code>CancelLongPress</code>.
 </p>
 
+<div class="alert alert-secondary" role="alert">
+    <strong>Icons :</strong> <code>WinOldMenuItem</code> supports <code>IconCssClass</code> and <code>IconTemplate</code> in context menus exactly as in regular menus.
+    See the <NavLink href="menu-page">Menu page</NavLink> for details and live examples.
+</div>
+
 <div @oncontextmenu="e => _ctxMenu!.ShowContextMenu(e)"
      @oncontextmenu:preventDefault
      @ontouchstart="e => _ctxMenu!.StartLongPress(e)"
@@ -30,7 +35,7 @@
 <WinOldMenu IsContextMenu="true" @ref="_ctxMenu" Appearance="Appearance.Win10">
     <WinOldMenuItem Label="Cut" OnClick="@(() => DoAction("Cut"))" />
     <WinOldMenuItem Label="Copy" OnClick="@(() => DoAction("Copy"))" />
-    <WinOldMenuItem Label="Paste" OnClick="@(() => DoAction("Paste"))" />
+    <WinOldMenuItem Label="Paste" IconCssClass="bi bi-clipboard" OnClick="@(() => DoAction("Paste"))" />
     <WinOldMenuItem IsSeparator />
     <WinOldMenuItem Label="Send to">
         <WinOldMenuItem Label="Desktop" OnClick="@(() => DoAction("Desktop"))" />

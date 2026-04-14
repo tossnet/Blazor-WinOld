@@ -12,6 +12,18 @@ public partial class WinOldMenuItem : WinOldComponentBase
     [Parameter] public EventCallback OnClick { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
+    /// <summary>
+    /// CSS class(es) for an icon from any icon library (e.g. "bi bi-folder", "fa-solid fa-folder").
+    /// Ignored when <see cref="IconTemplate"/> is set.
+    /// </summary>
+    [Parameter] public string? IconCssClass { get; set; }
+
+    /// <summary>
+    /// Custom icon content (SVG, img, Blazor component…).
+    /// Takes priority over <see cref="IconCssClass"/>.
+    /// </summary>
+    [Parameter] public RenderFragment? IconTemplate { get; set; }
+
     private readonly string _id = Guid.NewGuid().ToString();
 
     protected override void OnInitialized()
@@ -95,9 +107,9 @@ public partial class WinOldMenuItem : WinOldComponentBase
     {
         return RootMenu?.ActualRoot.Appearance switch
         {
-            Appearance.Win7  => "menu-separator-win-7",
-            Appearance.WinXP => "menu-separator-win-xp",
             Appearance.Win98 => "menu-separator-win-98",
+            Appearance.WinXP => "menu-separator-win-xp",
+            Appearance.Win7  => "menu-separator-win-7",
             Appearance.Win10 => "menu-separator-win-10",
             _ => "menu-separator-win-10"
         };
@@ -108,9 +120,9 @@ public partial class WinOldMenuItem : WinOldComponentBase
     {
         return RootMenu?.ActualRoot.Appearance switch
         {
-            Appearance.Win7  => "menu-label-win-7",
-            Appearance.WinXP => "menu-label-win-xp",
             Appearance.Win98 => "menu-label-win-98",
+            Appearance.WinXP => "menu-label-win-xp",
+            Appearance.Win7  => "menu-label-win-7",
             Appearance.Win10 => "menu-label-win-10",
             _ => "menu-label-win-10"
         };
@@ -121,9 +133,9 @@ public partial class WinOldMenuItem : WinOldComponentBase
     {
         return RootMenu?.ActualRoot.Appearance switch
         {
-            Appearance.Win7  => "menu-arrow-win-7",
-            Appearance.WinXP => "menu-arrow-win-xp",
             Appearance.Win98 => "menu-arrow-win-98",
+            Appearance.WinXP => "menu-arrow-win-xp",
+            Appearance.Win7  => "menu-arrow-win-7",
             Appearance.Win10 => "menu-arrow-win-10",
             _ => "menu-arrow-win-10"
         };

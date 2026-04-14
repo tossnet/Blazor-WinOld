@@ -48,6 +48,25 @@
     font-size: 9px;
 }
 
+.menu-sub-win-item > .menu-label-win {
+    position: relative;
+}
+
+.menu-icon-win {
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1;
+    pointer-events: none;
+}
+
 /*-------------------------------------------*\
     Win 98
 \*-------------------------------------------*/
@@ -93,7 +112,7 @@
     font-family: var(--font-family);
     -webkit-font-smoothing: antialiased;
     font-size: 11px;
-    padding: 3px 8px;
+    /*padding: 3px 8px;*/
 }
 
     .menu-sub-win-item > .menu-label-win-98:hover,
@@ -215,7 +234,8 @@
 .menu-sub-win-item > .menu-label-win-10 {
     font-family: var(--font);
     font-size: 12px;
-    padding: 6px 10px;
+    /*padding: 6px 10px;*/
+    padding: 6px 10px 6px 24px;
 }
 
     .menu-sub-win-item > .menu-label-win-10:not([disabled]):hover,

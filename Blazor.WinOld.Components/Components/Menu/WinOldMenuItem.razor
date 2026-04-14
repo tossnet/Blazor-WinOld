@@ -43,6 +43,17 @@ else
               aria-disabled="@(ParentDisabled | Disabled)"
               disabled="@(ParentDisabled | Disabled)"
               @onclick="OnLabelClick">
+
+            @* Icon slot — absolute in the 24px left gutter *@
+            @if (IconTemplate is not null)
+            {
+                <span class="menu-icon-win" aria-hidden="true">@IconTemplate</span>
+            }
+            else if (!string.IsNullOrEmpty(IconCssClass))
+            {
+                <span class="menu-icon-win" aria-hidden="true"><i class="@IconCssClass"></i></span>
+            }
+
             @Label
             @if (!string.IsNullOrEmpty(Shortcut))
             {

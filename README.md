@@ -50,7 +50,12 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 2.3.0</summary>
+<details open="open"><summary>Version 2.4.0</summary>
+
+>- `WinOldMenuItem`: new `IconCssClass` and `IconTemplate` parameters — display icons from any external library (Bootstrap Icons, Font Awesome, custom SVG…) without bundling any icon dependency in the package
+</details>
+
+<details><summary>Version 2.3.0</summary>
 
 >- The `WinOldMenu` component can be used as a Context Menu by setting the `IsContextMenu` property to `true` 
 </details>
