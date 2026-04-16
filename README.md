@@ -5,7 +5,7 @@
 
 A Blazor UI component library that brings back the nostalgic look and feel of classic Windows operating systems (Windows 98, XP, 7 and 10). Create retro-styled web applications with authentic Windows UI components.
 
-> 🪶 **Lightweight** — the NuGet package is only ~250 KB.
+> 🪶 **Lightweight** the NuGet package is only ~260 KB.
 
 **Compatible with Blazor Server and Blazor WebAssembly**
 
@@ -17,6 +17,8 @@ DEMO and DOCS : https://tossnet.github.io/Blazor-WinOld/
 ## Overview
 
 BlazorWinOld provides a collection of Blazor components styled to match the iconic Windows interfaces from the late 90s and 2000s. Whether you're building a nostalgia-driven project or need that classic Windows aesthetic, this library delivers pixel-perfect components including buttons, message boxes, windows, tabs, and more.
+
+> 💡 **Already using a UI framework?** No problem! BlazorWinOld is fully compatible alongside other UI libraries (MudBlazor, Radzen, Fluent UI…). You can adopt just the components you need, such as `WinOldContextMenu` or `WinOldMessageBox`, without any conflict.
 
 
 
@@ -53,9 +55,14 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 2.4.0</summary>
+<details open="open"><summary>🚧 Upcoming (not yet released)</summary>
 
->- `WinOldMenuItem`: new `IconCssClass` and `IconTemplate` parameters — display icons from any external library (Bootstrap Icons, Font Awesome, custom SVG…) without bundling any icon dependency in the package
+>- `WinOldButton`: preview of a new **DOS** appearance style — retro terminal-inspired button with IBM VGA font and classic shadow effect
+</details>
+
+<details><summary>Version 2.4.0</summary>
+
+>- `WinOldMenuItem`: new `IconCssClass` and `IconTemplate` parameters. Display icons from any external library (Bootstrap Icons, Font Awesome, custom SVG…) without bundling any icon dependency in the package
 </details>
 
 <details><summary>Version 2.3.0</summary>
@@ -139,6 +146,15 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 >- Added .AddWinOldComponents() to simplify declaration
 </details>
 
+## Fonts
+
+This project uses the **Ultimate Oldschool PC Font Pack** by VileR (int10h.org).  
+Font used: *WebPlus IBM VGA 8x14*
+
+- Source: https://int10h.org/oldschool-pc-fonts/
+- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- © 2015–2020 VileR
+- 
 ## Thanks
 
 I used these repo for most of the css and icons:
@@ -146,6 +162,7 @@ I used these repo for most of the css and icons:
 - https://github.com/khang-nd/7.css
 - https://win98icons.alexmeub.com/
 - https://github.com/softwarehistorysociety/XPIcons/tree/main
+- https://kristopolous.github.io/BOOTSTRA.386/v2.3.1/components.html
 
 OS emulator :
 - https://oses.ioblako.com/new.html

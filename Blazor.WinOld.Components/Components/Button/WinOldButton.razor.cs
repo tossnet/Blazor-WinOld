@@ -43,9 +43,10 @@ public partial class WinOldButton : WinOldComponentBase
     {
         var baseClass = Appearance switch
         {
-            Appearance.Win7 => "btn-win-7",
-            Appearance.WinXP => "btn-win-xp",
+            Appearance.DOS => "btn-dos",
             Appearance.Win98 => "btn-win-98",
+            Appearance.WinXP => "btn-win-xp",
+            Appearance.Win7 => "btn-win-7",
             Appearance.Win10 => "btn-win-10",
             _ => "btn-win-10"
         };

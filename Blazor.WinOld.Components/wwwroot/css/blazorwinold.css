@@ -14,6 +14,13 @@
     font-style: normal
 }
 
+@font-face {
+    font-family: 'IBMVGADos';
+    src: url('../fonts/WebPlus_IBM_VGA_8x14.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --font-family: "Pixelated MS Sans Serif", sans-serif;
     --font: "Segoe UI","SegoeUI","Noto Sans",sans-serif;

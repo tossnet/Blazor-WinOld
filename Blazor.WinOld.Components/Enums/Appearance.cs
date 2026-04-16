@@ -19,4 +19,8 @@ public enum Appearance
     /// <summary />
     [Description("win10")]
     Win10,
+
+    /// <summary />
+    [Description("dos")]
+    DOS,
 }

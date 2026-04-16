@@ -25,6 +25,57 @@
 }
 
 /*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+.btn-dos {
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 1;
+    padding: 6px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #b0b0b0;
+    color: #1a1a1a;
+    box-shadow: 4px 4px 0px #000000;
+}
+
+    .btn-dos:focus {
+        outline: none;
+    }
+
+    .btn-dos:active,
+    .btn-dos:hover:active {
+        background-color: #6a6a6a;
+        color: #e0e0e0;
+        box-shadow: none;
+        transform: translate(4px, 4px);
+    }
+
+    .btn-dos:hover:not(:active) {
+        background-color: #3a3a3a;
+        color: #ffffff;
+        box-shadow: 4px 4px 0px #000000;
+    }
+
+    .btn-dos:disabled {
+        background-color: #b0b0b0;
+        color: #686868;
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+
+        .btn-dos:disabled:hover {
+            background-color: #b0b0b0; 
+            color: #686868;
+            box-shadow: none;
+            transform: none;
+        }
+
+.btn-dos-default {
+    box-shadow: 4px 4px 0px #000000, 0 0 0 2px #000000;
+}
+
+/*-------------------------------------------*\
     Win XP
 \*-------------------------------------------*/
 .btn-win-xp {
@@ -73,7 +124,7 @@
     box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
     border-radius: 0;
     padding: 0 12px;
-    padding-top : 2px;
+    padding-top: 2px;
     color: #000;
 }
 
@@ -258,13 +309,13 @@
         border-color: #005499;
     }
 
-    .btn-win-10-default {
-        border: 1px solid #0078d7;
-    }
+.btn-win-10-default {
+    border: 1px solid #0078d7;
+}
 
-    .btn-win-10:disabled {
-        background-color: #f0f0f0;
-        border-color: #c0c0c0;
-        color: #a0a0a0;
-        cursor: default;
-    }
+.btn-win-10:disabled {
+    background-color: #f0f0f0;
+    border-color: #c0c0c0;
+    color: #a0a0a0;
+    cursor: default;
+}
