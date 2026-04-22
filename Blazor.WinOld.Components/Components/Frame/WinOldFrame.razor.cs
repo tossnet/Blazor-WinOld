@@ -27,9 +27,10 @@ public partial class WinOldFrame : WinOldComponentBase
             ? string.Empty
             : Appearance switch
             {
+                Appearance.DOS => "frame-dos",
+                Appearance.Win98 => "frame-win-98",
                 Appearance.WinXP => "frame-win-xp",
                 Appearance.Win7 => "frame-win-7",
-                Appearance.Win98 => "frame-win-98",
                 Appearance.Win10 => "frame-win-10",
                 _ => "frame-win-10"
             };

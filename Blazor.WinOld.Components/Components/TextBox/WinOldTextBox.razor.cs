@@ -56,9 +56,9 @@ public partial class WinOldTextBox : WinOldComponentBase
     {
         return Appearance switch
         {
-            Appearance.Win7 => "txt-win-7",
-            Appearance.WinXP => "txt-win-xp",
             Appearance.Win98 => "txt-win-98",
+            Appearance.WinXP => "txt-win-xp",
+            Appearance.Win7 => "txt-win-7",
             Appearance.Win10 => "txt-win-10",
             _ => "txt-win-10"
         };
@@ -72,9 +72,9 @@ public partial class WinOldTextBox : WinOldComponentBase
 
         return Appearance switch
         {
-            Appearance.Win7 => "lbtxt-win-7",
-            Appearance.WinXP => "lbtxt-win-xp",
             Appearance.Win98 => "lbtxt-win-98",
+            Appearance.WinXP => "lbtxt-win-xp",
+            Appearance.Win7 => "lbtxt-win-7",
             Appearance.Win10 => "lbtxt-win-10",
             _ => "lbtxt-win-10"
         };

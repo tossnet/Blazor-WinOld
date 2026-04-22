@@ -58,6 +58,7 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 <details open="open"><summary>🚧 Upcoming (not yet released)</summary>
 
 >- `WinOldButton`: preview of a new **DOS** appearance style — retro terminal-inspired button with IBM VGA font and classic shadow effect
+>- `WinOldSlider` : WIP
 </details>
 
 <details><summary>Version 2.4.0</summary>

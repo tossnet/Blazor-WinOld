@@ -34,7 +34,7 @@
     padding: 6px 10px;
     border: none;
     cursor: pointer;
-    background-color: #b0b0b0;
+    background-color: var(--dos-background);
     color: #1a1a1a;
     box-shadow: 4px 4px 0px #000000;
 }
@@ -58,14 +58,14 @@
     }
 
     .btn-dos:disabled {
-        background-color: #b0b0b0;
+        background-color: var(--dos-background);
         color: #686868;
         box-shadow: none;
         cursor: not-allowed;
     }
 
         .btn-dos:disabled:hover {
-            background-color: #b0b0b0; 
+            background-color: var(--dos-background);
             color: #686868;
             box-shadow: none;
             transform: none;

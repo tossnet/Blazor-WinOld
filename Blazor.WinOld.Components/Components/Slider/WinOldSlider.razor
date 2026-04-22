@@ -1,0 +1,19 @@
+﻿@namespace Blazor.WinOld.Components
+@typeparam TValue
+
+@inherits WinOldComponentBase
+
+<div style="max-width: 300px; display: flex; align-items: center; gap: 0.5rem">
+    <label>@LowLabel</label>
+    <input type="range"
+           class="sld-win @GetComponentClass() @Class"
+           min="@Min"
+           max="@Max"
+           step="@Step"
+           disabled="@(ParentDisabled | Disabled)"
+           style="@RangeStyle"
+           @attributes="Attributes"
+           @bind="Value"
+           @oninput="OnValueChanged">
+    <label>@HighLabel</label>
+</div>

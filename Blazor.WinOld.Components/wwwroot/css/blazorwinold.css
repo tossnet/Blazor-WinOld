@@ -24,6 +24,7 @@
 :root {
     --font-family: "Pixelated MS Sans Serif", sans-serif;
     --font: "Segoe UI","SegoeUI","Noto Sans",sans-serif;
+    --dos-background: #b0b0b0;
     --win98-background: silver;
     --winxp-background: #ece9d8;
     --surface: #f0f0f0;

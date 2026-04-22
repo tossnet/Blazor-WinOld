@@ -22,6 +22,33 @@
     color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
 }
 /*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+.frame-dos {
+    position: relative;
+    background: var(--dos-background);
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 0 2px var(--dos-background), /* gap between lines */
+                0 0 0 3px #ffffff, /* outer border */
+                0 -3px 0 6px var(--dos-background), /* top background overflow */
+                0 6px 0 6px var(--dos-background); /* bottom background overflow */
+    margin: 8px;
+}
+
+    .frame-dos legend {
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--dos-background);
+        padding: 0 4px;
+        font-family: 'IBMVGADos', monospace;
+        font-size: 14px;
+        color: #ffffff;
+        white-space: nowrap;
+    }
+
+/*-------------------------------------------*\
     Win 98
 \*-------------------------------------------*/
 .frame-win-98 {

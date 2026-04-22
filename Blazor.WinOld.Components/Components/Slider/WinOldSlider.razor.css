@@ -1,0 +1,217 @@
+.sld-win {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    background: transparent;
+    padding: 10px 1px;
+}
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.sld-win-98 {
+}
+
+.sld-win-98:focus {
+        outline: none;
+    }
+
+    .sld-win-98::-webkit-slider-thumb { /*cursor*/
+        -webkit-appearance: none;
+        height: 21px;
+        width: 11px;
+        background: url("./icon/98-indicator-horizontal.svg") no-repeat center;
+        background-size: contain;
+        transform: translateY(-8px);
+    }
+
+    .sld-win-98::-moz-range-thumb { /*cursor FF*/
+        height: 21px;
+        width: 11px;
+        border: 0;
+        border-radius: 0;
+        background: url("./icon/98-indicator-horizontal.svg") no-repeat center;
+        background-size: contain;
+        transform: translateY(2px);
+    }
+
+    .sld-win-98::-webkit-slider-runnable-track { /*bar*/
+        width: 100%;
+        height: 2px;
+        box-sizing: border-box;
+        background: black;
+        border-right: 1px solid grey;
+        border-bottom: 1px solid grey;
+        box-shadow: 1px 0 0 white, 1px 1px 0 white, 0 1px 0 white, -1px 0 0 darkgrey, -1px -1px 0 darkgrey, 0 -1px 0 darkgrey, -1px 1px 0 white, 1px -1px darkgrey;
+    }
+
+    .sld-win-98::-moz-range-track { /*bar FF*/
+        width: 100%;
+        height: 2px;
+        box-sizing: border-box;
+        background: black;
+        border-right: 1px solid grey;
+        border-bottom: 1px solid grey;
+        box-shadow: 1px 0 0 white, 1px 1px 0 white, 0 1px 0 white, -1px 0 0 darkgrey, -1px -1px 0 darkgrey, 0 -1px 0 darkgrey, -1px 1px 0 white, 1px -1px darkgrey;
+    }
+
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.sld-win-xp {
+
+}
+
+    .sld-win-xp:focus {
+        outline: none;
+    }
+
+    .sld-win-xp::-webkit-slider-thumb { /*cursor*/
+        -webkit-appearance: none;
+        height: 21px;
+        width: 11px;
+        background: url("./icon/xp-indicator-horizontal.svg") no-repeat center;
+        background-size: contain;
+        transform: translateY(-8px);
+    }
+
+    .sld-win-xp::-moz-range-thumb { /*cursor FF*/
+        height: 21px;
+        width: 11px;
+        border: 0;
+        border-radius: 0;
+        background: url("./icon/xp-indicator-horizontal.svg") no-repeat center;
+        background-size: contain;
+        transform: translateY(2px);
+    }
+
+    .sld-win-xp::-webkit-slider-runnable-track { /*bar*/
+        width: 100%;
+        height: 2px;
+        box-sizing: border-box;
+        background: #ecebe4;
+        border-right: 1px solid #f3f2ea;
+        border-bottom: 1px solid #f3f2ea;
+        border-radius: 2px;
+        box-shadow: 1px 0 0 white, 1px 1px 0 white, 0 1px 0 white, -1px 0 0 #9d9c99, -1px -1px 0 #9d9c99, 0 -1px 0 #9d9c99, -1px 1px 0 white, 1px -1px #9d9c99;
+    }
+
+    .sld-win-xp::-moz-range-track { /*bar FF*/
+        width: 100%;
+        height: 2px;
+        box-sizing: border-box;
+        background: #ecebe4;
+        border-right: 1px solid #f3f2ea;
+        border-bottom: 1px solid #f3f2ea;
+        border-radius: 2px;
+        box-shadow: 1px 0 0 white, 1px 1px 0 white, 0 1px 0 white, -1px 0 0 #9d9c99, -1px -1px 0 #9d9c99, 0 -1px 0 #9d9c99, -1px 1px 0 white, 1px -1px #9d9c99;
+    }
+
+
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+.sld-win-7 {
+}
+
+    .sld-win-7:focus-visible {
+        outline: 1px dotted #000;
+    }
+
+    .sld-win-7::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 18px;
+        width: 10px;
+        background: url("./icon/7-slider-indicator.png") no-repeat center;
+        transform: translateY(-7px);
+        filter: drop-shadow(1px 1px 0 #0002);
+    }
+
+    .sld-win-7::-webkit-slider-thumb:hover {
+        background: url("./icon/7-slider-indicator-hover.png") no-repeat center;
+    }
+
+    .sld-win-7::-webkit-slider-thumb:active {
+        background: url("./icon/7-slider-indicator-active.png") no-repeat center;
+    }
+
+    .sld-win-7::-moz-range-thumb {
+        height: 18px;
+        width: 10px;
+        background: url("./icon/7-slider-indicator.png") no-repeat center;
+        border: 0;
+        border-radius: 0;
+        filter: drop-shadow(1px 1px 0 #0002);
+    }
+
+    .sld-win-7::-moz-range-thumb:hover {
+        background: url("./icon/7-slider-indicator-hover.png") no-repeat center;
+    }
+
+    .sld-win-7::-moz-range-thumb:active {
+        background: url("./icon/7-slider-indicator-active.png") no-repeat center;
+    }
+
+    .sld-win-7::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 3px;
+        background: var(--w7-surface);
+        box-sizing: border-box;
+        box-shadow: inset 1px 1px 1px #999, inset -1px 0 #999, 0 1px #fff;
+    }
+
+    .sld-win-7::-moz-range-track {
+        width: 100%;
+        height: 3px;
+        background: var(--w7-surface);
+        box-sizing: border-box;
+        box-shadow: inset 1px 1px 1px #999, inset -1px 0 #999, 0 1px #fff;
+    }
+
+/*-------------------------------------------*\
+    Win 10
+\*-------------------------------------------*/
+.sld-win-10 {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+}
+
+    .sld-win-10::-webkit-slider-runnable-track {
+        height: 2px;
+        background: #e2e8f0;
+        border-radius: 17px;
+        border: 0px solid #cbd5e1;
+        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .sld-win-10::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 22px;
+        width: 22px;
+        background: #0078d7;
+        border-radius: 30px;
+        border: 0px solid #ffffff;
+        box-shadow: 0px 4px 0px rgba(0, 0, 0, 0);
+        margin-top: -10px;
+    }
+
+    .sld-win-10::-moz-range-track {
+        height: 2px;
+        background: #e2e8f0;
+        border-radius: 17px;
+        border: 0px solid #cbd5e1;
+        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .sld-win-10::-moz-range-thumb {
+        height: 22px;
+        width: 22px;
+        background: #0078d7;
+        border-radius: 30px;
+        border: 0px solid #ffffff;
+        box-shadow: 0px 4px 0px rgba(0, 0, 0, 0);
+    }

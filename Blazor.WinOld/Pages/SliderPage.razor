@@ -1,0 +1,45 @@
+﻿@page "/slider-page"
+
+<PageTitle>Slider</PageTitle>
+
+<h1>Slider</h1>
+
+<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
+	<WinOldSlider Appearance="Appearance.Win98"
+				  TValue="int" 
+		          Min="0" 
+				  Max="100" 
+				  @bind-Value="myIntValue"
+				  LowLabel="Min"
+				  HighLabel="Max"/>
+
+	<WinOldSlider Appearance="Appearance.WinXP"
+				  TValue="int"
+				  Min="0"
+				  Max="100"
+				  @bind-Value="myIntValue" />
+
+	<WinOldSlider Appearance="Appearance.Win7"
+				  TValue="int"
+				  Min="0"
+				  Max="100"
+				  @bind-Value="myIntValue" />
+
+	<WinOldSlider Appearance="Appearance.Win10"
+				  TValue="int"
+				  Min="0"
+				  Max="100"
+				  @bind-Value="myIntValue" />
+</div>
+
+
+<WinOldSlider TValue="double" 
+	          Min="0.0" 
+			  Max="5.0" 
+			  Step="0.5"
+			  @bind-Value="myDoubleValue" />
+
+@code {
+	private int myIntValue;
+	private double myDoubleValue;
+}
