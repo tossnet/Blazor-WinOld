@@ -7,13 +7,41 @@
     padding: 10px 1px;
 }
 
+/* .sld-win[list]::-webkit-slider-container {
+        overflow: visible;
+    }*/
+/*    .sld-win[step] {
+        background: var(--win10-primary-color);
+        height: 4px;
+        border-radius: 18px;
+    }
+
+    .sld-win[step]::-webkit-slider-runnable-track {
+        background: var(--win10-primary-color);
+        height: 4px;
+        border-radius: 18px;
+    }*/
+
+/* ticks natifs Chrome/Edge */
+/*.sld-win::-webkit-slider-container {
+    overflow: visible;
+}
+*/
+/*    .sld-win[list]::-webkit-slider-runnable-track {
+        background: linear-gradient( to right, #000 1px, transparent 1px ) repeat-x;
+        background-size: calc(100% / 10) 100%;
+    }
+*/
+
+
+
 /*-------------------------------------------*\
     Win 98
 \*-------------------------------------------*/
 .sld-win-98 {
 }
 
-.sld-win-98:focus {
+    .sld-win-98:focus {
         outline: none;
     }
 
@@ -56,12 +84,22 @@
         box-shadow: 1px 0 0 white, 1px 1px 0 white, 0 1px 0 white, -1px 0 0 darkgrey, -1px -1px 0 darkgrey, 0 -1px 0 darkgrey, -1px 1px 0 white, 1px -1px darkgrey;
     }
 
+    /* Ticks */
+    .sld-win-98[list]::-webkit-slider-runnable-track {
+        background-image: repeating-linear-gradient( to right, transparent 0, transparent calc((100% / var(--tick-count)) - 1px), #c8c8c8 calc((100% / var(--tick-count)) - 1px), #c8c8c8 calc(100% / var(--tick-count)) );
+        background-color: grey;
+    }
+
+    .sld-win-98[list]::-moz-range-track {
+        background-image: repeating-linear-gradient( to right, transparent 0, transparent calc((100% / var(--tick-count)) - 1px), #c8c8c8 calc((100% / var(--tick-count)) - 1px), #c8c8c8 calc(100% / var(--tick-count)) );
+        background-color: grey;
+    }
+
 
 /*-------------------------------------------*\
     Win XP
 \*-------------------------------------------*/
 .sld-win-xp {
-
 }
 
     .sld-win-xp:focus {
@@ -109,6 +147,17 @@
         box-shadow: 1px 0 0 white, 1px 1px 0 white, 0 1px 0 white, -1px 0 0 #9d9c99, -1px -1px 0 #9d9c99, 0 -1px 0 #9d9c99, -1px 1px 0 white, 1px -1px #9d9c99;
     }
 
+    /* Ticks */
+    .sld-win-xp[list]::-webkit-slider-runnable-track {
+        background-image: repeating-linear-gradient( to right, transparent 0, transparent calc((100% / var(--tick-count)) - 1px), #888 calc((100% / var(--tick-count)) - 1px), #888 calc(100% / var(--tick-count)) );
+        background-color: var(--w7-surface);
+    }
+
+    .sld-win-xp[list]::-moz-range-track {
+        background-image: repeating-linear-gradient( to right, transparent 0, transparent calc((100% / var(--tick-count)) - 1px), #888 calc((100% / var(--tick-count)) - 1px), #888 calc(100% / var(--tick-count)) );
+        background-color: var(--w7-surface);
+    }
+
 
 /*-------------------------------------------*\
     Win 7
@@ -129,15 +178,15 @@
         filter: drop-shadow(1px 1px 0 #0002);
     }
 
-    .sld-win-7::-webkit-slider-thumb:hover {
-        background: url("./icon/7-slider-indicator-hover.png") no-repeat center;
-    }
+        .sld-win-7::-webkit-slider-thumb:hover {
+            background: url("./icon/7-slider-indicator-hover.png") no-repeat center;
+        }
 
-    .sld-win-7::-webkit-slider-thumb:active {
-        background: url("./icon/7-slider-indicator-active.png") no-repeat center;
-    }
+        .sld-win-7::-webkit-slider-thumb:active {
+            background: url("./icon/7-slider-indicator-active.png") no-repeat center;
+        }
 
-    .sld-win-7::-moz-range-thumb {
+    .sld-win-7::-moz-range-thumb { /*cursor FF*/
         height: 18px;
         width: 10px;
         background: url("./icon/7-slider-indicator.png") no-repeat center;
@@ -146,15 +195,15 @@
         filter: drop-shadow(1px 1px 0 #0002);
     }
 
-    .sld-win-7::-moz-range-thumb:hover {
-        background: url("./icon/7-slider-indicator-hover.png") no-repeat center;
-    }
+        .sld-win-7::-moz-range-thumb:hover {
+            background: url("./icon/7-slider-indicator-hover.png") no-repeat center;
+        }
 
-    .sld-win-7::-moz-range-thumb:active {
-        background: url("./icon/7-slider-indicator-active.png") no-repeat center;
-    }
+        .sld-win-7::-moz-range-thumb:active {
+            background: url("./icon/7-slider-indicator-active.png") no-repeat center;
+        }
 
-    .sld-win-7::-webkit-slider-runnable-track {
+    .sld-win-7::-webkit-slider-runnable-track { /*bar*/
         width: 100%;
         height: 3px;
         background: var(--w7-surface);
@@ -162,12 +211,23 @@
         box-shadow: inset 1px 1px 1px #999, inset -1px 0 #999, 0 1px #fff;
     }
 
-    .sld-win-7::-moz-range-track {
+    .sld-win-7::-moz-range-track { /*bar FF*/
         width: 100%;
         height: 3px;
         background: var(--w7-surface);
         box-sizing: border-box;
         box-shadow: inset 1px 1px 1px #999, inset -1px 0 #999, 0 1px #fff;
+    }
+
+    /* Ticks */
+    .sld-win-7[list]::-webkit-slider-runnable-track {
+        background-image: repeating-linear-gradient( to right, transparent 0, transparent calc((100% / var(--tick-count)) - 1px), #888 calc((100% / var(--tick-count)) - 1px), #888 calc(100% / var(--tick-count)) );
+        background-color: var(--w7-surface);
+    }
+
+    .sld-win-7[list]::-moz-range-track {
+        background-image: repeating-linear-gradient( to right, transparent 0, transparent calc((100% / var(--tick-count)) - 1px), #888 calc((100% / var(--tick-count)) - 1px), #888 calc(100% / var(--tick-count)) );
+        background-color: var(--w7-surface);
     }
 
 /*-------------------------------------------*\
@@ -176,42 +236,82 @@
 .sld-win-10 {
     -webkit-appearance: none;
     width: 100%;
+    height: 20px;
+    outline: none;
+    appearance: none;
+    position: relative;
+    padding: 0;
+    border-radius: 18px;
+    margin: 0;
     background: transparent;
-    cursor: pointer;
 }
 
-    .sld-win-10::-webkit-slider-runnable-track {
-        height: 2px;
-        background: #e2e8f0;
-        border-radius: 17px;
-        border: 0px solid #cbd5e1;
-        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
-    }
-
-    .sld-win-10::-webkit-slider-thumb {
+    .sld-win-10::-webkit-slider-thumb { /*cursor*/
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        user-select: none;
+        appearance: none;
+        border-radius: 100px;
         -webkit-appearance: none;
-        height: 22px;
-        width: 22px;
-        background: #0078d7;
-        border-radius: 30px;
-        border: 0px solid #ffffff;
-        box-shadow: 0px 4px 0px rgba(0, 0, 0, 0);
-        margin-top: -10px;
+        transition: all 0.14s ease-in-out;
+        box-shadow: 0 0.5px 2px rgba(70,70,70,0.85);
+        border: 4px solid #FFF;
+        background: var(--win10-primary-color);
+        margin-top: -8px;
     }
 
-    .sld-win-10::-moz-range-track {
-        height: 2px;
-        background: #e2e8f0;
-        border-radius: 17px;
-        border: 0px solid #cbd5e1;
-        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+        .sld-win-10::-webkit-slider-thumb:hover {
+            transform: scale(1.1, 1.1);
+            border: 3px solid #FFF;
+        }
+
+        .sld-win-10::-webkit-slider-thumb:active {
+            transform: scale(1, 1);
+            border: 5px solid #FFF;
+        }
+
+    .sld-win-10::-webkit-slider-runnable-track { /*bar*/
+        width: 100%;
+        height: 4px;
+        outline: none;
+        appearance: none;
+        position: relative;
+        padding: 0;
+        border-radius: 18px;
+        background: #999999;
+        margin-top: 4px;
     }
 
-    .sld-win-10::-moz-range-thumb {
-        height: 22px;
-        width: 22px;
-        background: #0078d7;
-        border-radius: 30px;
-        border: 0px solid #ffffff;
-        box-shadow: 0px 4px 0px rgba(0, 0, 0, 0);
+    .sld-win-10::-moz-range-thumb { /*cursor FF*/
+        width: 12px;
+        height: 12px;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 100px;
+        transition: all 0.14s ease-in-out;
+        box-shadow: 0 0 2px rgba(150,150,150,0.8);
+        border: 4px solid #fff;
+        background: var(--win10-primary-color);
+    }
+
+        .sld-win-10::-moz-range-thumb:hover {
+            transform: scale(1.1, 1.1);
+            border: 3px solid #fff;
+        }
+
+        .sld-win-10::-moz-range-thumb:active {
+            transform: scale(1, 0.9);
+            border: 5px solid #fff;
+        }
+
+    /* Ticks */
+    .sld-win-10[list]::-webkit-slider-runnable-track {
+        background-image: repeating-linear-gradient( to right, transparent 0, transparent calc((100% / var(--tick-count)) - 1px), #888 calc((100% / var(--tick-count)) - 1px), #888 calc(100% / var(--tick-count)) );
+        background-color: #999999;
+    }
+
+    .sld-win-10[list]::-moz-range-track {
+        background-image: repeating-linear-gradient( to right, transparent 0, transparent calc((100% / var(--tick-count)) - 1px), #888 calc((100% / var(--tick-count)) - 1px), #888 calc(100% / var(--tick-count)) );
+        background-color: #999999;
     }

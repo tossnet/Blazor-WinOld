@@ -5,7 +5,7 @@
 
 A Blazor UI component library that brings back the nostalgic look and feel of classic Windows operating systems (Windows 98, XP, 7 and 10). Create retro-styled web applications with authentic Windows UI components.
 
-> 🪶 **Lightweight** the NuGet package is only ~260 KB.
+> 🪶 **Lightweight** the NuGet package is only ~300 KB.
 
 **Compatible with Blazor Server and Blazor WebAssembly**
 
@@ -58,7 +58,11 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 <details open="open"><summary>🚧 Upcoming (not yet released)</summary>
 
 >- `WinOldButton`: preview of a new **DOS** appearance style — retro terminal-inspired button with IBM VGA font and classic shadow effect
->- `WinOldSlider` : WIP
+</details>
+
+<details open="open"><summary>Version 2.5.0</summary>
+
+>- New component `WinOldSlider`
 </details>
 
 <details><summary>Version 2.4.0</summary>

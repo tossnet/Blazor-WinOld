@@ -1,0 +1,9 @@
+.style-col {
+    flex: 0 0 calc(25% - 20px);
+}
+
+@media (max-width: 600px) {
+    .style-col {
+        flex: 0 0 calc(50% - 20px);
+    }
+}

@@ -3,17 +3,34 @@
 
 @inherits WinOldComponentBase
 
-<div style="max-width: 300px; display: flex; align-items: center; gap: 0.5rem">
-    <label>@LowLabel</label>
+<div style="display: flex; align-items: center; gap: 0.5rem">
+    <label class="label-txt-win @GetComponentLabelClass()"
+           disabled="@(ParentDisabled | Disabled)">
+           @LowLabel
+    </label>
     <input type="range"
            class="sld-win @GetComponentClass() @Class"
-           min="@Min"
-           max="@Max"
-           step="@Step"
+           min="@FormatInvariant(Min)"
+           max="@FormatInvariant(Max)"
+           step="@FormatInvariant(Step)"
+           list="@(ShowTicks && Step is not null ? _listId : null)"
            disabled="@(ParentDisabled | Disabled)"
-           style="@RangeStyle"
+           style="@(ShowTicks && Step is not null ? $"--tick-count:{GetTickCount()}; " : "") @RangeStyle"
            @attributes="Attributes"
            @bind="Value"
            @oninput="OnValueChanged">
-    <label>@HighLabel</label>
+    <label class="label-txt-win @GetComponentLabelClass()"
+           disabled="@(ParentDisabled | Disabled)">
+        @HighLabel
+    </label>
+
+    @if (ShowTicks && Step is not null)
+    {
+        <datalist id="@_listId">
+            @foreach (var tick in GetTicks())
+            {
+                <option value="@tick"></option>
+            }
+        </datalist>
+    }
 </div>

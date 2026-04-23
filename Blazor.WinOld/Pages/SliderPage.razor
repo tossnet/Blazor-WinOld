@@ -4,42 +4,194 @@
 
 <h1>Slider</h1>
 
-<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
-	<WinOldSlider Appearance="Appearance.Win98"
-				  TValue="int" 
-		          Min="0" 
-				  Max="100" 
-				  @bind-Value="myIntValue"
-				  LowLabel="Min"
-				  HighLabel="Max"/>
+<p>The <code>WinOldSlider</code> component allows users to select a numeric value by dragging a thumb along a track, with different vintage Windows styles.</p>
 
-	<WinOldSlider Appearance="Appearance.WinXP"
-				  TValue="int"
-				  Min="0"
-				  Max="100"
-				  @bind-Value="myIntValue" />
+<h2>Examples by Style</h2>
 
-	<WinOldSlider Appearance="Appearance.Win7"
-				  TValue="int"
-				  Min="0"
-				  Max="100"
-				  @bind-Value="myIntValue" />
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+    <div class="style-col">
+        <h7>Windows 98</h7>
+        <WinOldSlider Appearance="Appearance.Win98"
+                      TValue="int"
+                      Min="0"
+                      Max="50"
+                      @bind-Value="myIntValue"
+                      LowLabel="Min"
+                      HighLabel="Max" />
+    </div>
 
-	<WinOldSlider Appearance="Appearance.Win10"
-				  TValue="int"
-				  Min="0"
-				  Max="100"
-				  @bind-Value="myIntValue" />
+    <div class="style-col">
+        <h7>Windows XP</h7>
+        <WinOldSlider Appearance="Appearance.WinXP"
+                      TValue="int"
+                      Min="0"
+                      Max="50"
+                      @bind-Value="myIntValue"
+                      LowLabel="Min"
+                      HighLabel="Max" />
+    </div>
+
+    <div class="style-col">
+        <h7>Windows 7</h7>
+        <WinOldSlider Appearance="Appearance.Win7"
+                      TValue="int"
+                      Min="0"
+                      Max="50"
+                      @bind-Value="myIntValue"
+                      LowLabel="Min"
+                      HighLabel="Max" />
+    </div>
+
+    <div class="style-col">
+        <h7>Windows 10</h7>
+        <WinOldSlider Appearance="Appearance.Win10"
+                      TValue="int"
+                      Min="0"
+                      Max="50"
+                      @bind-Value="myIntValue"
+                      LowLabel="Min"
+                      HighLabel="Max" />
+    </div>
 </div>
 
+<h2 style="margin-top:20px">Examples with Ticks</h2>
 
-<WinOldSlider TValue="double" 
-	          Min="0.0" 
-			  Max="5.0" 
-			  Step="0.5"
-			  @bind-Value="myDoubleValue" />
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+    <div class="style-col">
+        <h7>Windows 98</h7>
+        <WinOldSlider Appearance="Appearance.Win98"
+                      TValue="double"
+                      Min="0.0"
+                      Max="5.0"
+                      Step="0.5"
+                      ShowTicks="true"
+                      @bind-Value="myDoubleValue" />
+    </div>
+
+    <div class="style-col">
+        <h7>Windows XP</h7>
+        <WinOldSlider Appearance="Appearance.WinXP"
+                      TValue="double"
+                      Min="0.0"
+                      Max="5.0"
+                      Step="0.5"
+                      ShowTicks="true"
+                      @bind-Value="myDoubleValue" />
+    </div>
+
+    <div class="style-col">
+        <h7>Windows 7</h7>
+        <WinOldSlider Appearance="Appearance.Win7"
+                      TValue="double"
+                      Min="0.0"
+                      Max="5.0"
+                      Step="0.5"
+                      ShowTicks="true"
+                      @bind-Value="myDoubleValue" />
+    </div>
+
+    <div class="style-col">
+        <h7>Windows 10</h7>
+        <WinOldSlider Appearance="Appearance.Win10"
+                      TValue="double"
+                      Min="0.0"
+                      Max="5.0"
+                      Step="0.5"
+                      ShowTicks="true"
+                      @bind-Value="myDoubleValue" />
+    </div>
+</div>
+
+<h2>Code Example</h2>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+                <WinOldSlider Appearance=""Appearance.Win10""
+                              TValue=""double""
+                              Min=""0.0""
+                              Max=""5.0""
+                              Step=""0.5""
+                              ShowTicks=""true""
+                              LowLabel=""Min""
+                              HighLabel=""Max""
+                              @bind-Value=""myDoubleValue"" />
+
+                @code {
+                    private double myDoubleValue = 2.5;
+                }") />
+
+<h2>Current Values</h2>
+<div style="padding: 10px; background-color: #f5f5f5; border: 1px solid #ccc; margin: 10px 0;">
+    <p><strong>Int Value (Min 0, Max 50):</strong> @myIntValue</p>
+    <p><strong>Double Value (Min 0.0, Max 5.0, Step 0.5):</strong> @myDoubleValue</p>
+</div>
+
+<h2>Properties</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+    <thead>
+        <tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Visual style (Win98, WinXP, Win7, Win10)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>TValue</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Generic Type</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Numeric value type (int, double, decimal, etc.)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Value</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">TValue</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Current value of the slider (use @@bind-Value for two-way binding)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Min</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">TValue</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Minimum allowed value</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Max</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">TValue</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Maximum allowed value</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Step</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">TValue</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Increment step when dragging the slider</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>LowLabel</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Label displayed at the low end of the slider</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>HighLabel</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Label displayed at the high end of the slider</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>ShowTicks</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">bool</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">When true, displays tick marks along the slider track (requires <code>Step</code> to be set)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>RangeStyle</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Optional inline CSS styles applied directly to the range input element</td>
+        </tr>
+    </tbody>
+</table>
 
 @code {
-	private int myIntValue;
-	private double myDoubleValue;
+    private int myIntValue = 25;
+    private double myDoubleValue = 2.5;
 }
