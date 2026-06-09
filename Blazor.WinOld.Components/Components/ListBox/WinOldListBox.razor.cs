@@ -6,6 +6,10 @@ public partial class WinOldListBox : WinOldComponentBase
 {
     /// </summary>
     [Parameter]
+    public string? Label { get; set; }
+
+    /// </summary>
+    [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
     /// </summary>

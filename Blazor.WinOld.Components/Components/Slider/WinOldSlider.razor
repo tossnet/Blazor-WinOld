@@ -9,6 +9,8 @@
            @LowLabel
     </label>
     <input type="range"
+           id="@_inputId"
+           aria-label="@(string.IsNullOrEmpty(LowLabel) ? null : LowLabel)"
            class="sld-win @GetComponentClass() @Class"
            min="@FormatInvariant(Min)"
            max="@FormatInvariant(Max)"

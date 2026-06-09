@@ -4,6 +4,12 @@ namespace Blazor.WinOld.Components;
 
 public partial class WinOldSelect<T> : WinOldComponentBase
 {
+    private readonly string _selectId = $"select-win-{Guid.NewGuid():N}";
+
+    /// </summary>
+    [Parameter]
+    public string? Label { get; set; }
+
     /// </summary>
     [Parameter]
     public RenderFragment? ChildContent { get; set; }

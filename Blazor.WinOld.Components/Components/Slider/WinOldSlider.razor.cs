@@ -53,6 +53,7 @@ public partial class WinOldSlider<TValue> : WinOldComponentBase
     public EventCallback<TValue?> ValueChanged { get; set; }
 
     private readonly string _listId = $"sld-win-ticks-{Guid.NewGuid():N}";
+    private readonly string _inputId = $"sld-win-{Guid.NewGuid():N}";
 
     private async Task OnValueChanged(ChangeEventArgs e)
     {

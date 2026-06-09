@@ -5,7 +5,12 @@
 @typeparam T
 
 <CascadingValue Value="this" IsFixed="true">
-    <select class="select-win @GetComponentClass() @Class"
+    @if (!string.IsNullOrEmpty(Label))
+    {
+        <label for="@_selectId" class="label-txt-win">@Label</label>
+    }
+    <select id="@_selectId"
+            class="select-win @GetComponentClass() @Class"
             style="@Style"
             disabled="@(ParentDisabled | Disabled)"
             @onchange="OnChange"

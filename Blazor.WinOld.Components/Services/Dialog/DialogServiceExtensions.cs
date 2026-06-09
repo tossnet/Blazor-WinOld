@@ -1,9 +1,34 @@
 ﻿using Blazor.WinOld;
+using Microsoft.AspNetCore.Components;
 
 namespace Blazor.WinOld.Components;
 
 public static class DialogServiceExtensions
 {
+    /// <summary>
+    /// Shows a dialog with a component of type <typeparamref name="TComponent"/> as its content.
+    /// </summary>
+    public static Task<bool?> ShowDialog<TComponent>(
+        this IDialogService service,
+        DialogOptions options,
+        Dictionary<string, object>? parameters = null)
+        where TComponent : IComponent
+    {
+        RenderFragment childContent = builder =>
+        {
+            builder.OpenComponent<TComponent>(0);
+            if (parameters is not null)
+            {
+                foreach (var (key, value) in parameters)
+                    builder.AddAttribute(1, key, value);
+            }
+            builder.CloseComponent();
+        };
+
+        return service.ShowDialog(options with { ChildContent = childContent });
+    }
+
+
     /// <summary>
     /// Shows an input box and returns the entered value of the specified type
     /// </summary>

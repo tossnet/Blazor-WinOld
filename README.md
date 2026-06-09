@@ -55,12 +55,18 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
+<details open="open"><summary>Version 2.5.1</summary>
+
+>- v2.5.1 : Added generic ShowDialog<TComponent>(options, parameters) extension method to render any Blazor component as dialog content without requiring a RenderFragment.'
+</details>
+
+
 <details open="open"><summary>🚧 Upcoming (not yet released)</summary>
 
 >- `WinOldButton`: preview of a new **DOS** appearance style — retro terminal-inspired button with IBM VGA font and classic shadow effect
 </details>
 
-<details open="open"><summary>Version 2.5.0</summary>
+<details><summary>Version 2.5.0</summary>
 
 >- New component `WinOldSlider`
 </details>

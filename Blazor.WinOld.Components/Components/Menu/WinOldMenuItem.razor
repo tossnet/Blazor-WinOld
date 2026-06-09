@@ -20,7 +20,6 @@ else if (_isRootLevel && !(RootMenu?.IsContextMenu ?? false))
               aria-haspopup="@(ChildContent is not null ? "menu" : null)"
               aria-expanded="@(ChildContent is not null ? _isOpen : null)"
               aria-disabled="@(ParentDisabled | Disabled)"
-              disabled="@(ParentDisabled | Disabled)"
               @onclick="OnLabelClick">@Label</span>
 
         @if (ChildContent is not null)
@@ -41,7 +40,6 @@ else
               aria-haspopup="@(ChildContent is not null ? "menu" : null)"
               aria-expanded="@(ChildContent is not null ? _isOpen : null)"
               aria-disabled="@(ParentDisabled | Disabled)"
-              disabled="@(ParentDisabled | Disabled)"
               @onclick="OnLabelClick">
 
             @* Icon slot — absolute in the 24px left gutter *@
