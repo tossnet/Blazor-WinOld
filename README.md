@@ -45,6 +45,13 @@ In Program.cs add this line
 ```csharp
 builder.Services.AddWinOldComponents();
 ```
+
+in _Imports.razor :
+```csharp
+@using Blazor.WinOld
+@using Blazor.WinOld.Components
+```
+
 and in the bottom of your MainLayout.razor add these lines (optional, only if you use MessageBox or InputBox)
 ```html
 <WinOldMessageBoxHost />  <!-- Only if you use MessageBox -->

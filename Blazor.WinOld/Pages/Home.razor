@@ -228,15 +228,22 @@
 
     private async Task OpenDialog()
     {
-        bool? result = await DialogService.ShowDialog(new DialogOptions
-        {
-            Title = "Settings",
-            Width = "300px",
-            Height = "400px",
-            Appearance = appearance,
-            OkButtonText = "OK",
-            CancelButtonText = "Cancel",
-            ChildContent = @<SimpleDialog Appearance="@appearance" />
+        // bool? result = await DialogService.ShowDialog(new DialogOptions
+        // {
+        //     Title = "Settings",
+        //     Width = "300px",
+        //     Height = "400px",
+        //     Appearance = appearance,
+        //     OkButtonText = "OK",
+        //     CancelButtonText = "Cancel",
+        //     ChildContent = @<SimpleDialog Appearance="@appearance" />
+        //     });
+
+        bool? result = await DialogService.ShowDialog<SimpleDialog>(
+            new DialogOptions { Title = "Event", Appearance = appearance },
+            new Dictionary<string, object>
+            {
+                    { "Appearance", appearance }
             });
 
         if (result == true) { /* OK clicked */ }

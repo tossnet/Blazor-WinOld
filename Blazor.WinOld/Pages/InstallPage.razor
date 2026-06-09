@@ -23,6 +23,14 @@
     builder.Services.AddWinOldComponents();
 		   	 ") />
 
+<p>In <b>_Imports.razor</b> add this using</p>
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   Code=@(@"
+@using Blazor.WinOld
+@using Blazor.WinOld.Components
+						   ") />
+
 <p>And in the bottom of your <b>MainLayout.razor</b> add this line to use dialog</p>
 
 <CodeBlock Language="CodeLanguage.Razor" 

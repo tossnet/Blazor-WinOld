@@ -61,6 +61,23 @@ if (result == true) { /* OK clicked */ }
 	 ") />
 
 
+Or
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+   
+bool? result = await DialogService.ShowDialog<Dialog.EventDialog>(
+    new DialogOptions { Title = ""Event"", Appearance = appearance },
+    new Dictionary<string, object>
+    {
+        { ""EventName"", ""My Event"" },
+        { ""Date"", DateTime.Now }
+    });
+
+if (result == true) { /* OK clicked */ }
+		   ") />
+
 @code {
 	Appearance appearance { get; set; } = Appearance.Win7;
 
