@@ -4,6 +4,15 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
@@ -34,13 +43,20 @@ jobs:
       - name: Add .nojekyll file
         run: touch $PUBLISH_FOLDER/.nojekyll
         
-      - name: Deploy GitHub Pages action
+      - name: Upload GitHub Pages artifact
         if: ${{ github.ref == 'refs/heads/master' }}
-        uses: peaceiris/actions-gh-pages@v3.6.1
+        uses: actions/upload-pages-artifact@v3
         with:
-            github_token: ${{ secrets.PUBLISH_TOKEN }}
-            publish_branch: gh-pages
-            publish_dir: ${{ env.PUBLISH_FOLDER }}
-            allow_empty_commit: false
-            keep_files: false
-            force_orphan: true
+          path: ${{ env.PUBLISH_FOLDER }}
+
+  deploy:
+    if: ${{ github.ref == 'refs/heads/master' }}
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
