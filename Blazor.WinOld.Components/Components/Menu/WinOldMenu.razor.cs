@@ -5,6 +5,7 @@ namespace Blazor.WinOld.Components;
 
 public partial class WinOldMenu : WinOldComponentBase
 {
+    [Inject] private IContextMenuService? ContextMenuService { get; set; }
     [CascadingParameter] 
     public WinOldMenu? RootMenu { get; set; }
     [Parameter] 
@@ -184,6 +185,8 @@ public partial class WinOldMenu : WinOldComponentBase
 
     private void ShowContextMenuAt(double x, double y)
     {
+        if (IsRoot && IsContextMenu)
+            ContextMenuService?.NotifyOpened(this);
         _contextX = x;
         _contextY = y;
         _isContextMenuVisible = true;
@@ -199,6 +202,8 @@ public partial class WinOldMenu : WinOldComponentBase
     public void ShowContextMenu(double clientX, double clientY) => ShowContextMenuAt(clientX, clientY);
     public void Dispose()
     {
+        if (IsRoot && IsContextMenu)
+            ContextMenuService?.Unregister(this);
         OnStateChanged = null;
         CancelLongPress();
     }

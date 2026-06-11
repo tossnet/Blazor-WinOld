@@ -72,6 +72,41 @@
     }") />
 
 
+<h2 id="multiple-context-menus">Multiple context menus</h2>
+
+<p>
+    When several <code>WinOldMenu IsContextMenu="true"</code> coexist on the same page,
+    opening one automatically closes any previously open menu.
+    This behaviour is built-in — no extra setup required beyond <code>AddWinOldComponents()</code>.
+</p>
+
+<div style="display:flex; gap:16px;">
+    <div @oncontextmenu="e => _ctxMenu2!.ShowContextMenu(e)"
+         @oncontextmenu:preventDefault
+         @ontouchstart="e => _ctxMenu2!.StartLongPress(e)"
+         @ontouchend="() => _ctxMenu2!.CancelLongPress()"
+         @ontouchmove="() => _ctxMenu2!.CancelLongPress()"
+         style="flex:1; height:120px; display:flex; align-items:center; justify-content:center; border:1px dashed gray; user-select:none;">
+        Zone A — right-click
+    </div>
+    <div @oncontextmenu="e => _ctxMenu3!.ShowContextMenu(e)"
+         @oncontextmenu:preventDefault
+         @ontouchstart="e => _ctxMenu3!.StartLongPress(e)"
+         @ontouchend="() => _ctxMenu3!.CancelLongPress()"
+         @ontouchmove="() => _ctxMenu3!.CancelLongPress()"
+         style="flex:1; height:120px; display:flex; align-items:center; justify-content:center; border:1px dashed gray; user-select:none;">
+        Zone B — right-click
+    </div>
+</div>
+<WinOldMenu IsContextMenu="true" @ref="_ctxMenu2" Appearance="Appearance.Win10">
+    <WinOldMenuItem Label="Action A1" OnClick="@(() => DoAction("A1"))" />
+    <WinOldMenuItem Label="Action A2" OnClick="@(() => DoAction("A2"))" />
+</WinOldMenu>
+<WinOldMenu IsContextMenu="true" @ref="_ctxMenu3" Appearance="Appearance.Win10">
+    <WinOldMenuItem Label="Action B1" OnClick="@(() => DoAction("B1"))" />
+    <WinOldMenuItem Label="Action B2" OnClick="@(() => DoAction("B2"))" />
+</WinOldMenu>
+
 <h3>Call from code-behind</h3>
 
 <p>
@@ -91,6 +126,8 @@ void OpenMenu()
 
 @code {
     private WinOldMenu? _ctxMenu;
+    private WinOldMenu? _ctxMenu2;
+    private WinOldMenu? _ctxMenu3;
     private string _lastAction = "(nothing)";
 
     private void DoAction(string action)

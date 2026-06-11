@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Blazor.WinOld.Components;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Blazor.WinOld;
@@ -13,6 +14,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddWinOldComponents(this IServiceCollection services, ServiceLifetime serviceLifetime)
     {
         services.TryAdd(new ServiceDescriptor(typeof(IDialogService), typeof(DialogService), serviceLifetime));
+        services.TryAdd(new ServiceDescriptor(typeof(IContextMenuService), typeof(ContextMenuService), serviceLifetime));
         return services;
     }
 }
