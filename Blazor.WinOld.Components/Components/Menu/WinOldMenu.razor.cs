@@ -194,6 +194,9 @@ public partial class WinOldMenu : WinOldComponentBase
 
     /// <summary>Affiche le menu contextuel à la position du pointeur souris.</summary>
     public void ShowContextMenu(MouseEventArgs e) => ShowContextMenuAt(e.ClientX, e.ClientY);
+
+    /// <summary>Affiche le menu contextuel à des coordonnées explicites (utile depuis un code-behind sans MouseEventArgs).</summary>
+    public void ShowContextMenu(double clientX, double clientY) => ShowContextMenuAt(clientX, clientY);
     public void Dispose()
     {
         OnStateChanged = null;

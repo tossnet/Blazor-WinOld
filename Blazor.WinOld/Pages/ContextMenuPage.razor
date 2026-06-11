@@ -71,6 +71,24 @@
         private WinOldMenu? _ctxMenu;
     }") />
 
+
+<h3>Call from code-behind</h3>
+
+<p>
+    You can also call <code>ShowContextMenu</code> from any C# code, not just mouse event handlers.
+    For example, you could show the context menu in response to a keyboard shortcut or some other UI action.</p>
+
+<CodeBlock Language="CodeLanguage.CSharp"
+           EnableLineNumbers="true"
+           Code=@(@"private WinOldMenu? _ctxMenu;
+
+// Appel depuis un code-behind sans MouseEventArgs :
+void OpenMenu()
+{
+    _ctxMenu!.ShowContextMenu(clientX: 100, clientY: 200);
+}") />;
+
+
 @code {
     private WinOldMenu? _ctxMenu;
     private string _lastAction = "(nothing)";

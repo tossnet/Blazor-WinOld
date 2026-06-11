@@ -61,8 +61,12 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes
+<details open="open"><summary>Version 2.5.2</summary>
 
-<details open="open"><summary>Version 2.5.1</summary>
+>- v2.5.2 : Dialog: Fixed dialog overflow on small screens. The dialog width is now capped at the viewport width.
+</details>
+
+<details><summary>Version 2.5.1</summary>
 
 >- v2.5.1 : Added generic ShowDialog<TComponent>(options, parameters) extension method to render any Blazor component as dialog content without requiring a RenderFragment.'
 </details>
