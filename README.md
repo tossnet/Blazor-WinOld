@@ -61,7 +61,19 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes
-<details open="open"><summary>Version 2.5.2</summary>
+
+
+<details open="open"><summary>Version 2.5.4</summary>
+
+>- v2.5.4 Multiple context menus on the same page now automatically close each other when a new one is opened.
+</details>
+
+<details><summary>Version 2.5.3</summary>
+
+>- v2.5.3 Added ShowContextMenu(double clientX, double clientY) overload to WinOldMenu, allowing the context menu to be opened programmatically from code-behind without a MouseEventArgs.
+</details>
+
+<details><summary>Version 2.5.2</summary>
 
 >- v2.5.2 : Dialog: Fixed dialog overflow on small screens. The dialog width is now capped at the viewport width.
 </details>
