@@ -13,7 +13,8 @@
              @oncontextmenu="ShowContextMenu" @oncontextmenu:stopPropagation @oncontextmenu:preventDefault></div>
     }
     <CascadingValue Value="this" IsFixed="false">
-        <ul role="menu"
+        <ul @ref="_contextMenuRef"
+            role="menu"
             class="contextmenu-win @ContextMenuAppearanceClass @(_isContextMenuVisible ? "open" : "") @Class"
             style="left:@((int)_contextX)px; top:@((int)_contextY)px;">
             @ChildContent

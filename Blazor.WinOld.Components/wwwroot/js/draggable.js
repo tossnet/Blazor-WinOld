@@ -1,4 +1,17 @@
-﻿export function initDraggable(windowEl, titleBarEl) {
+﻿export function clampContextMenu(el) {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const w = el.offsetWidth;
+    const h = el.offsetHeight;
+    let left = parseFloat(el.style.left) || 0;
+    let top = parseFloat(el.style.top) || 0;
+    if (left + w > vw) left = Math.max(0, vw - w);
+    if (top + h > vh) top = Math.max(0, vh - h);
+    el.style.left = left + 'px';
+    el.style.top = top + 'px';
+}
+
+export function initDraggable(windowEl, titleBarEl) {
     const rect = windowEl.getBoundingClientRect();
     windowEl.style.position = 'fixed';
     windowEl.style.zIndex = '999999';

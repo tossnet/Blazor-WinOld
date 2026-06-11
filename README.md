@@ -61,9 +61,12 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes
+<details open="open"><summary>Version 2.5.6</summary>
 
+>- v2.5.6  Context menu now automatically repositions itself to stay within the browser viewport when it would overflow the right or bottom edge
+</details>
 
-<details open="open"><summary>Version 2.5.5</summary>
+<details><summary>Version 2.5.5</summary>
 
 >- v2.5.5 add css shadow to the win10 submenu
 </details>

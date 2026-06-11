@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.JSInterop;
 
 namespace Blazor.WinOld.Components;
 
 public partial class WinOldMenu : WinOldComponentBase
 {
     [Inject] private IContextMenuService? ContextMenuService { get; set; }
+    [Inject] private IJSRuntime JS { get; set; } = default!;
     [CascadingParameter] 
     public WinOldMenu? RootMenu { get; set; }
     [Parameter] 
@@ -29,6 +31,9 @@ public partial class WinOldMenu : WinOldComponentBase
     private double _contextX;
     private double _contextY;
     private bool _isContextMenuVisible;
+    private bool _shouldClamp;
+    private ElementReference _contextMenuRef;
+    private IJSObjectReference? _jsModule;
 
     private string CssClass
     {
@@ -190,9 +195,20 @@ public partial class WinOldMenu : WinOldComponentBase
         _contextX = x;
         _contextY = y;
         _isContextMenuVisible = true;
+        _shouldClamp = true;
         OpenItemId = null;
         OpenSubId = null;
         StateHasChanged();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_shouldClamp && _isContextMenuVisible && IsRoot && IsContextMenu)
+        {
+            _shouldClamp = false;
+            _jsModule ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorWinOld/js/draggable.js");
+            await _jsModule.InvokeVoidAsync("clampContextMenu", _contextMenuRef);
+        }
     }
 
     /// <summary>Affiche le menu contextuel à la position du pointeur souris.</summary>
@@ -206,5 +222,6 @@ public partial class WinOldMenu : WinOldComponentBase
             ContextMenuService?.Unregister(this);
         OnStateChanged = null;
         CancelLongPress();
+        _jsModule?.DisposeAsync();
     }
 }
