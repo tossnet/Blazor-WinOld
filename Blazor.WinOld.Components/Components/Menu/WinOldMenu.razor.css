@@ -136,6 +136,7 @@ Win 10
     margin-top: 4px;
     color: #000;
     animation: menu-appear-win-10 0.15s ease-out forwards;
+    box-shadow: 0px 10px 13px -1px rgba(0, 0, 0, 0.09);
 }
 
 @keyframes menu-appear-win-10 {

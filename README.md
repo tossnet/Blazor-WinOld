@@ -63,7 +63,12 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 ## <a name="ReleaseNotes"></a>Release Notes
 
 
-<details open="open"><summary>Version 2.5.4</summary>
+<details open="open"><summary>Version 2.5.5</summary>
+
+>- v2.5.5 add css shadow to the win10 submenu
+</details>
+
+<details><summary>Version 2.5.4</summary>
 
 >- v2.5.4 Multiple context menus on the same page now automatically close each other when a new one is opened.
 </details>
