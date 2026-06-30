@@ -7,23 +7,46 @@
 
 <div style="display:flex; flex-direction: row; gap: 10px;">
 	<WinOldLabel Appearance="Appearance.Win98">
-		Hello World!
+		Hello Win98!
 	</WinOldLabel>
 
 	<WinOldLabel Appearance="Appearance.WinXP">
-		Hello World!
+		Hello WinXP!
 	</WinOldLabel>
 
 	<WinOldLabel Appearance="Appearance.Win7">
-		Hello World!
+		Hello Win7!
 	</WinOldLabel>
 
+	<WinOldLabel Appearance="Appearance.Win10">
+		Hello Win10!
+	</WinOldLabel>
+</div>
+
+<h2>Touch Mode</h2>
+
+<div style="display:flex; flex-direction: row; gap: 10px;">
+	<WinOldLabel Appearance="Appearance.Win98" TouchMode="true">
+		Hello Win98!
+	</WinOldLabel>
+
+	<WinOldLabel Appearance="Appearance.WinXP" TouchMode="true">
+		Hello WinXP!
+	</WinOldLabel>
+
+	<WinOldLabel Appearance="Appearance.Win7" TouchMode="true">
+		Hello Win7!
+	</WinOldLabel>
+
+	<WinOldLabel Appearance="Appearance.Win10" TouchMode="true">
+		Hello Win10!
+	</WinOldLabel>
 </div>
 
 <CodeBlock Language="CodeLanguage.Razor"
 		   EnableLineNumbers="true"
 		   Code=@(@"
 <WinOldLabel Appearance=""Appearance.Win98"">
-	Hello World!
+	Hello Win98!
 </WinOldLabel>
 		   	 	 	 	 	 ") />

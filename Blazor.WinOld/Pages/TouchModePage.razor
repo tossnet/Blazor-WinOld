@@ -65,19 +65,15 @@
     <div style="display:flex; flex-direction:row; gap:40px; flex-wrap:wrap; align-items:flex-start;">
         <div>
             <WinOldCheckBox Appearance="Appearance.Win98" Label="Win 98" Checked="true" />
-            <WinOldCheckBox Appearance="Appearance.Win98" Label="unchecked" />
         </div>
         <div>
             <WinOldCheckBox Appearance="Appearance.WinXP" Label="Win XP" Checked="true" />
-            <WinOldCheckBox Appearance="Appearance.WinXP" Label="unchecked" />
         </div>
         <div>
             <WinOldCheckBox Appearance="Appearance.Win7" Label="Win 7" Checked="true" />
-            <WinOldCheckBox Appearance="Appearance.Win7" Label="unchecked" />
         </div>
         <div>
             <WinOldCheckBox Appearance="Appearance.Win10" Label="Win 10" Checked="true" />
-            <WinOldCheckBox Appearance="Appearance.Win10" Label="unchecked" />
         </div>
     </div>
 
@@ -134,8 +130,8 @@
            ") />
 
 @code {
-    private bool _touchMode;
-    private string? _selectedName = "Adrien";
+    private bool _touchMode = true;
+    private string? _selectedName = "Christophe";
     private int _selectedRadio = 1;
 
     private void ToggleTouchMode() => _touchMode = !_touchMode;

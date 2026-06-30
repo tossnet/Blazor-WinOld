@@ -20,6 +20,7 @@
     font-size: 11px;
     color: #000;
 }
+
 /*-------------------------------------------*\
     Win 7
 \*-------------------------------------------*/
@@ -28,4 +29,30 @@
     font-size: 9pt;
     color: #000;
     -webkit-font-smoothing: antialiased;
+}
+
+
+/*-------------------------------------------*\
+    Win 10
+\*-------------------------------------------*/
+.lbl-win-10 {
+    font-family: var(--font);
+    font-size: 10pt;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*-------------------------------------------*\
+    Touch Mode
+\*-------------------------------------------*/
+.lbl-win-7.win-touch,
+.lbl-win-10.win-touch {
+    font-size: 13px;
+}
+
+/* Pixel font — revert font-size, disable antialiasing */
+.lbl-win-98.win-touch,
+.lbl-win-xp.win-touch {
+    font-size: 11px;
+    -webkit-font-smoothing: none;
 }

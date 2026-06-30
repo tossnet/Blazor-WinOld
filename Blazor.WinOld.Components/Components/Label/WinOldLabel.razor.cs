@@ -16,13 +16,16 @@ public partial class WinOldLabel : WinOldComponentBase
     /// </summary>
     private string GetComponentClass()
     {
-        return Appearance switch
+        var cls = Appearance switch
         {
             Appearance.Win7 => "lbl-win-7",
             Appearance.WinXP => "lbl-win-xp",
             Appearance.Win98 => "lbl-win-98",
-            _ => "lbl-win-98"
+            Appearance.Win10 => "lbl-win-10",
+            _ => "lbl-win-10"
         };
+        if (IsTouch) cls += " win-touch";
+        return cls;
     }
 }
 

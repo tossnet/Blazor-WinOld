@@ -62,7 +62,11 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 2.6.1</summary>
+<details open="open"><summary>Version 2.6.2</summary>
+
+>- v2.6.2 - Add Win10 label style, improve touch and checkbox UI
+</details>
+<details><summary>Version 2.6.1</summary>
 
 >- Touch mode font sizes are now scaled up to 13px for Win7/Win10 themes; Win98/WinXP themes retain their native 11px pixel-font size with antialiasing disabled to preserve crisp rendering.
 >- On the button demo page: Add a custom style example.

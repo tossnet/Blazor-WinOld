@@ -4,13 +4,10 @@ html, body {
 
 }
 
-/*pre {
-    all: unset;
+h2 {
+    font-size: 24px;
+    padding: 12px 0 3px;
 }
-
-code {
-    all: unset;
-}*/
 
 h1:focus {
     outline: none;
