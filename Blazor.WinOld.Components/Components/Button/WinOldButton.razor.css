@@ -18,6 +18,14 @@
 .btn-win.win-touch {
     min-height: 32px;
     min-width: 90px;
+    font-size: 13px;
+}
+
+/* Pixel font — revert font-size, disable antialiasing */
+.btn-win-98.win-touch,
+.btn-win-xp.win-touch {
+    font-size: 11px;
+    -webkit-font-smoothing: none;
 }
 
     .btn-win.focused, .btn-win:focus {

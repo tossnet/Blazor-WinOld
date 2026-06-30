@@ -321,6 +321,17 @@
     Touch mode
 \*-------------------------------------------*/
 
+.chk-win.win-touch + label {
+    font-size: 13px;
+}
+
+/* Pixel font — revert font-size, disable antialiasing */
+.chk-win-98.win-touch + label,
+.chk-win-xp.win-touch + label {
+    font-size: 11px;
+    -webkit-font-smoothing: none;
+}
+
 /* Win XP */
 .chk-win-xp.win-touch + label {
     margin-left: 25px;

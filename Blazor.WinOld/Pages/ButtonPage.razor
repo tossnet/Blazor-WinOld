@@ -4,59 +4,61 @@
 
 <h1>Button</h1>
 
+
 <div style="display:grid; grid-template-columns:repeat(3, auto); gap:5px; width:fit-content;">
 
     <WinOldButton Appearance="Appearance.DOS">Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.DOS"
-			  Disabled>Click me</WinOldButton>
-			  
+                  Disabled>Click me</WinOldButton>
+
     <WinOldButton Appearance="Appearance.DOS"
-			  Default="true">Click me</WinOldButton>
+                  Default="true">Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.Win98">Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.Win98"
-			  Disabled>Click me</WinOldButton>
+                  Disabled>Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.Win98"
-			  Default="true">Click me</WinOldButton>
+                  Default="true">Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.WinXP">Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.WinXP"
-			  Disabled>Click me</WinOldButton>
+                  Disabled>Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.WinXP"
-			  Default="true">Click me</WinOldButton>
+                  Default="true">Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.Win7">Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.Win7"
-			  Disabled>Click me</WinOldButton>
+                  Disabled>Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.Win7"
-			  Default="true">Click me</WinOldButton>
+                  Default="true">Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.Win10">Click me</WinOldButton>
 
     <WinOldButton Appearance="Appearance.Win10"
-			  Disabled>Click me</WinOldButton>
+                  Disabled>Click me</WinOldButton>
 
 
     <WinOldButton Appearance="Appearance.Win10"
-			  Default="true">Click me</WinOldButton>
+                  Default="true"
+                  Class="custom">Click me</WinOldButton>
 
 </div>
 
 <CodeBlock Language="CodeLanguage.Razor"
-		   EnableLineNumbers="true"
-		   Code=@(@"
-<WinOldButton Appearance=""Appearance.WinXP"">Click me</WinOldButton> />
+           EnableLineNumbers="true"
+           Code=@(@"
+           <WinOldButton Appearance=""Appearance.WinXP"">Click me</WinOldButton> />
 
-<WinOldButton Appearance=""Appearance.Win98""
-		  	  Disabled>Click me</WinOldButton>
-		   	 	 ") />
+           <WinOldButton Appearance=""Appearance.Win98""
+                           Disabled>Click me</WinOldButton>
+                                ") />
 
 <h2>Event</h2>
 <p>OnClick</p>
@@ -64,3 +66,49 @@
 <h2>Behavior</h2>
 <p>Default</p>
 <p>Disabled</p>
+
+
+<h2>Custom style</h2>
+
+<WinOldButton Appearance="Appearance.Win10"
+              Default="true"
+              TouchMode="true"
+              Class="custom-btn">
+    <span class="bi bi-file-earmark"></span>
+    Click me
+</WinOldButton>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+<style>
+    .custom-btn {
+        background-color: #594ae2 !important;
+        color: white !important;
+    }
+
+        .custom-btn:hover {
+            background-color: #3e2cdd !important;
+        }
+</style>
+
+<WinOldButton Appearance=""Appearance.Win10""
+              Default=""true""
+              TouchMode=""true""
+              Class=""custom-btn"">
+    <span class=""bi bi-file-earmark""></span>
+    Click me
+</WinOldButton>
+                                           ") />
+
+<style>
+    .custom-btn {
+        background-color: #594ae2 !important;
+        color: white !important;
+    }
+
+        .custom-btn:hover {
+            background-color: #3e2cdd !important;
+        }
+</style>
+

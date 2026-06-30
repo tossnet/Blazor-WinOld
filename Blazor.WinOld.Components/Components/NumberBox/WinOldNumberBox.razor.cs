@@ -70,7 +70,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
         if (string.IsNullOrEmpty(Label))
             return "label-txt-hide";
 
-        return Appearance switch
+        var cls = Appearance switch
         {
             Appearance.Win7 => "lbtxt-win-7",
             Appearance.WinXP => "lbtxt-win-xp",
@@ -78,5 +78,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
             Appearance.Win10 => "lbtxt-win-10",
             _ => "lbtxt-win-10"
         };
+        if (IsTouch) cls += " win-touch";
+        return cls;
     }
 }

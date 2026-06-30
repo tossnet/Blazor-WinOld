@@ -192,6 +192,17 @@
 /*-------------------------------------------*\
     Touch mode
 \*-------------------------------------------*/
+.select-win.win-touch {
+    font-size: 13px;
+}
+
+/* Pixel font — revert font-size, disable antialiasing */
+.select-win-98.win-touch,
+.select-win-xp.win-touch {
+    font-size: 11px;
+    -webkit-font-smoothing: none;
+}
+
 .select-win-xp.win-touch {
     height: 32px;
     padding-top: 7px;

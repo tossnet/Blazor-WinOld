@@ -61,7 +61,14 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes
-<details open="open"><summary>Version 2.6.0</summary>
+
+<details open="open"><summary>Version 2.6.1</summary>
+
+>- Touch mode font sizes are now scaled up to 13px for Win7/Win10 themes; Win98/WinXP themes retain their native 11px pixel-font size with antialiasing disabled to preserve crisp rendering.
+>- On the button demo page: Add a custom style example.
+</details>
+
+<details><summary>Version 2.6.0</summary>
 
 >- Added `TouchMode` boolean property to `WinOldButton`, `WinOldCheckBox`, `WinOldOptionButton`, `WinOldTextBox`, `WinOldNumberBox` and `WinOldSelect` — enlarges controls for easier finger interaction on touch screens. Supports per-component usage or cascade via `<CascadingValue Name="TouchMode" Value="true">`.
 </details>

@@ -304,8 +304,16 @@
 \*-------------------------------------------*/
 
 .opt-win.win-touch + label {
+    font-size: 13px;
     line-height: 26px;
     margin-bottom: 4px;
+}
+
+/* Pixel font — revert font-size, disable antialiasing */
+.opt-win-98.win-touch + label,
+.opt-win-xp.win-touch + label {
+    font-size: 11px;
+    -webkit-font-smoothing: none;
 }
 
 /* Win XP */

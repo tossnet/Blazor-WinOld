@@ -140,7 +140,12 @@ body {
 
     .txt-win.win-touch {
         height: 28px;
+        font-size: 13px;
     }
+
+label.label-txt-win.win-touch {
+    font-size: 13px;
+}
 
 label.label-txt-win {
     display: inline-flex;
