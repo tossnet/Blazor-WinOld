@@ -6,3 +6,9 @@
     height: 17px;
     margin-top: 3px;
 }
+
+.num-win.win-touch::-webkit-inner-spin-button,
+.num-win.win-touch::-webkit-outer-spin-button {
+    height: 24px;
+    margin-top: 2px;
+}

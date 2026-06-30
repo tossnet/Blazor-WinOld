@@ -16,6 +16,20 @@ public abstract class WinOldComponentBase : ComponentBase
     public bool Disabled { get; set; }
 
     /// <summary>
+    /// Enlarges the component for easier interaction on touch screens.
+    /// Can also be propagated to all children via &lt;CascadingValue Name="TouchMode" Value="true"&gt;.
+    /// </summary>
+    [Parameter]
+    public bool TouchMode { get; set; }
+
+    /// </summary>
+    [CascadingParameter(Name = "TouchMode")]
+    public virtual bool? ParentTouchMode { get; set; }
+
+    /// </summary>
+    public bool IsTouch => TouchMode || ParentTouchMode == true;
+
+    /// <summary>
     /// Optional CSS class names. If given, these will be included in the class attribute of the component.
     /// </summary>
     [Parameter]

@@ -51,6 +51,8 @@ public partial class WinOldButton : WinOldComponentBase
             _ => "btn-win-10"
         };
 
-        return Default ? $"{baseClass} {baseClass}-default" : baseClass;
+        var cls = Default ? $"{baseClass} {baseClass}-default" : baseClass;
+        if (IsTouch) cls += " win-touch";
+        return cls;
     }
 }

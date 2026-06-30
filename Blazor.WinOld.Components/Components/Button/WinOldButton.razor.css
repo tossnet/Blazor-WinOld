@@ -15,6 +15,11 @@
     text-overflow: ellipsis;
 }
 
+.btn-win.win-touch {
+    min-height: 32px;
+    min-width: 90px;
+}
+
     .btn-win.focused, .btn-win:focus {
         outline: 1px dotted #000;
         outline-offset: -4px;

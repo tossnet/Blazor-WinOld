@@ -54,7 +54,7 @@ public partial class WinOldTextBox : WinOldComponentBase
     /// </summary>
     private string GetComponentClass()
     {
-        return Appearance switch
+        var cls = Appearance switch
         {
             Appearance.Win98 => "txt-win-98",
             Appearance.WinXP => "txt-win-xp",
@@ -62,6 +62,8 @@ public partial class WinOldTextBox : WinOldComponentBase
             Appearance.Win10 => "txt-win-10",
             _ => "txt-win-10"
         };
+        if (IsTouch) cls += " win-touch";
+        return cls;
     }
 
     /// </summary>

@@ -31,7 +31,7 @@ public partial class WinOldOptionButton<T> : WinOldComponentBase
     /// </summary>
     private string GetComponentClass()
     {
-        return Group.Appearance switch
+        var cls = Group.Appearance switch
         {
             Appearance.Win7 => "opt-win-7",
             Appearance.WinXP => "opt-win-xp",
@@ -39,6 +39,8 @@ public partial class WinOldOptionButton<T> : WinOldComponentBase
             Appearance.Win10 => "opt-win-10",
             _ => "opt-win-10"
         };
+        if (IsTouch || Group?.IsTouch == true) cls += " win-touch";
+        return cls;
     }
 }
 

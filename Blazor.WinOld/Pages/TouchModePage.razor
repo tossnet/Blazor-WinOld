@@ -1,0 +1,142 @@
+@page "/touchmode-page"
+
+<PageTitle>TouchMode</PageTitle>
+
+<h1>TouchMode</h1>
+
+<p>
+    The <code>TouchMode</code> property enlarges form controls for easier interaction on touch screens.
+    It can be applied per component or cascaded to a whole form with <code>CascadingValue</code>.
+    Toggle the button below to switch all components simultaneously.
+</p>
+
+<WinOldButton Appearance="Appearance.Win10" @onclick="ToggleTouchMode">
+    TouchMode : @(_touchMode ? "ON" : "OFF")
+</WinOldButton>
+
+<hr style="margin: 16px 0;" />
+
+<CascadingValue Name="TouchMode" Value="@_touchMode">
+
+    <h2>Button</h2>
+    <div style="display:flex; flex-direction:row; gap:10px; flex-wrap:wrap; align-items:center;">
+        <WinOldButton Appearance="Appearance.Win98">Win 98</WinOldButton>
+        <WinOldButton Appearance="Appearance.WinXP">Win XP</WinOldButton>
+        <WinOldButton Appearance="Appearance.Win7">Win 7</WinOldButton>
+        <WinOldButton Appearance="Appearance.Win10">Win 10</WinOldButton>
+    </div>
+
+    <h2>TextBox</h2>
+    <div style="display:flex; flex-direction:row; gap:20px; flex-wrap:wrap; align-items:flex-end;">
+        <WinOldTextBox Appearance="Appearance.Win98" Label="Win 98" />
+        <WinOldTextBox Appearance="Appearance.WinXP" Label="Win XP" />
+        <WinOldTextBox Appearance="Appearance.Win7" Label="Win 7" />
+        <WinOldTextBox Appearance="Appearance.Win10" Label="Win 10" />
+    </div>
+
+    <h2>NumberBox</h2>
+    <div style="display:flex; flex-direction:row; gap:20px; flex-wrap:wrap; align-items:flex-end;">
+        <WinOldNumberBox TValue="int" Appearance="Appearance.Win98" Label="Win 98" />
+        <WinOldNumberBox TValue="int" Appearance="Appearance.WinXP" Label="Win XP" />
+        <WinOldNumberBox TValue="int" Appearance="Appearance.Win7" Label="Win 7" />
+        <WinOldNumberBox TValue="int" Appearance="Appearance.Win10" Label="Win 10" />
+    </div>
+
+    <h2>Select</h2>
+    <p><small>⚠ Win 98 and Win XP appearances use a pixel-art SVG dropdown arrow that cannot be scaled — TouchMode is not supported for those two themes.</small></p>
+    <div style="display:flex; flex-direction:row; gap:20px; flex-wrap:wrap; align-items:flex-end;">
+        <div>
+            <WinOldSelect Appearance="Appearance.Win7" T="string" @bind-Value="_selectedName" Label="Win 7">
+                <WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+                <WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+                <WinOldOption Value="@("Denis")">Denis</WinOldOption>
+            </WinOldSelect>
+        </div>
+        <div>
+            <WinOldSelect Appearance="Appearance.Win10" T="string" @bind-Value="_selectedName" Label="Win 10">
+                <WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+                <WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+                <WinOldOption Value="@("Denis")">Denis</WinOldOption>
+            </WinOldSelect>
+        </div>
+    </div>
+
+    <h2>CheckBox</h2>
+    <div style="display:flex; flex-direction:row; gap:40px; flex-wrap:wrap; align-items:flex-start;">
+        <div>
+            <WinOldCheckBox Appearance="Appearance.Win98" Label="Win 98" Checked="true" />
+            <WinOldCheckBox Appearance="Appearance.Win98" Label="unchecked" />
+        </div>
+        <div>
+            <WinOldCheckBox Appearance="Appearance.WinXP" Label="Win XP" Checked="true" />
+            <WinOldCheckBox Appearance="Appearance.WinXP" Label="unchecked" />
+        </div>
+        <div>
+            <WinOldCheckBox Appearance="Appearance.Win7" Label="Win 7" Checked="true" />
+            <WinOldCheckBox Appearance="Appearance.Win7" Label="unchecked" />
+        </div>
+        <div>
+            <WinOldCheckBox Appearance="Appearance.Win10" Label="Win 10" Checked="true" />
+            <WinOldCheckBox Appearance="Appearance.Win10" Label="unchecked" />
+        </div>
+    </div>
+
+    <h2>OptionButton</h2>
+    <div style="display:flex; flex-direction:row; gap:60px; flex-wrap:wrap; align-items:flex-start;">
+        <WinOldOptionButtonGroup T="int" @bind-Value="_selectedRadio" Appearance="Appearance.Win98">
+            <WinOldOptionButton Label="Win 98" Value="1" />
+            <WinOldOptionButton Label="Option 2" Value="2" />
+        </WinOldOptionButtonGroup>
+
+        <WinOldOptionButtonGroup T="int" @bind-Value="_selectedRadio" Appearance="Appearance.WinXP">
+            <WinOldOptionButton Label="Win XP" Value="1" />
+            <WinOldOptionButton Label="Option 2" Value="2" />
+        </WinOldOptionButtonGroup>
+
+        <WinOldOptionButtonGroup T="int" @bind-Value="_selectedRadio" Appearance="Appearance.Win7">
+            <WinOldOptionButton Label="Win 7" Value="1" />
+            <WinOldOptionButton Label="Option 2" Value="2" />
+        </WinOldOptionButtonGroup>
+
+        <WinOldOptionButtonGroup T="int" @bind-Value="_selectedRadio" Appearance="Appearance.Win10">
+            <WinOldOptionButton Label="Win 10" Value="1" />
+            <WinOldOptionButton Label="Option 2" Value="2" />
+        </WinOldOptionButtonGroup>
+    </div>
+
+</CascadingValue>
+
+<hr style="margin: 16px 0;" />
+
+<h2>Usage</h2>
+
+<h3>Per component</h3>
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+<WinOldButton Appearance=""Appearance.Win10"" TouchMode=""true"">OK</WinOldButton>
+<WinOldTextBox Appearance=""Appearance.Win10"" Label=""Name"" TouchMode=""true"" />
+<WinOldCheckBox Appearance=""Appearance.Win10"" Label=""Accept"" TouchMode=""true"" />
+           ") />
+
+<h3>Via CascadingValue (recommended for a whole form)</h3>
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+<CascadingValue Name=""TouchMode"" Value=""true"">
+    <WinOldTextBox Appearance=""Appearance.Win10"" Label=""Name"" />
+    <WinOldCheckBox Appearance=""Appearance.Win10"" Label=""Accept"" />
+    <WinOldSelect Appearance=""Appearance.Win10"" T=""string"" @bind-Value=""_value"">
+        <WinOldOption Value=""@(""Option 1"")"">Option 1</WinOldOption>
+    </WinOldSelect>
+    <WinOldButton Appearance=""Appearance.Win10"">Submit</WinOldButton>
+</CascadingValue>
+           ") />
+
+@code {
+    private bool _touchMode;
+    private string? _selectedName = "Adrien";
+    private int _selectedRadio = 1;
+
+    private void ToggleTouchMode() => _touchMode = !_touchMode;
+}

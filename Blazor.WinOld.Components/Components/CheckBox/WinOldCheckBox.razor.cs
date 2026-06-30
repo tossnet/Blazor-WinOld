@@ -65,7 +65,7 @@ public partial class WinOldCheckBox : WinOldComponentBase
     /// </summary>
     private string GetComponentClass()
     {
-        return Appearance switch
+        var cls = Appearance switch
         {
             Appearance.Win7 => "chk-win-7",
             Appearance.WinXP => "chk-win-xp",
@@ -73,5 +73,7 @@ public partial class WinOldCheckBox : WinOldComponentBase
             Appearance.Win10 => "chk-win-10",
             _ => "chk-win-10"
         };
+        if (IsTouch) cls += " win-touch";
+        return cls;
     }
 }

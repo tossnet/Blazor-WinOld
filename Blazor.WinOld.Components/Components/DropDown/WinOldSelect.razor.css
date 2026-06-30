@@ -188,3 +188,29 @@
         background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxbDUgNiA1LTYiIHN0cm9rZT0iI2IwYjBiMCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=");
         border-color: #c0c0c0;
     }
+
+/*-------------------------------------------*\
+    Touch mode
+\*-------------------------------------------*/
+.select-win-xp.win-touch {
+    height: 32px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.select-win-98.win-touch {
+    height: 32px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.select-win-7.win-touch:not([multiple]) {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.select-win-10.win-touch:not([multiple]) {
+    height: 32px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}

@@ -61,7 +61,12 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes
-<details open="open"><summary>Version 2.5.6</summary>
+<details open="open"><summary>Version 2.6.0</summary>
+
+>- Added `TouchMode` boolean property to `WinOldButton`, `WinOldCheckBox`, `WinOldOptionButton`, `WinOldTextBox`, `WinOldNumberBox` and `WinOldSelect` — enlarges controls for easier finger interaction on touch screens. Supports per-component usage or cascade via `<CascadingValue Name="TouchMode" Value="true">`.
+</details>
+
+<details><summary>Version 2.5.6</summary>
 
 >- v2.5.6  Context menu now automatically repositions itself to stay within the browser viewport when it would overflow the right or bottom edge
 </details>

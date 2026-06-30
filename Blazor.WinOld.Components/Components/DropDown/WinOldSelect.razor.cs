@@ -52,7 +52,7 @@ public partial class WinOldSelect<T> : WinOldComponentBase
     /// </summary>
     private string GetComponentClass()
     {
-        return Appearance switch
+        var cls = Appearance switch
         {
             Appearance.Win7 => "select-win-7",
             Appearance.WinXP => "select-win-xp",
@@ -60,5 +60,7 @@ public partial class WinOldSelect<T> : WinOldComponentBase
             Appearance.Win10 => "select-win-10",
             _ => "select-win-10"
         };
+        if (IsTouch) cls += " win-touch";
+        return cls;
     }
 }

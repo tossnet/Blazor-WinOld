@@ -298,3 +298,107 @@
 .opt-win-10:disabled:checked + label:after {
     transform: translate(3.5px, -50%) scale(1);
 }
+
+/*-------------------------------------------*\
+    Touch mode
+\*-------------------------------------------*/
+
+.opt-win.win-touch + label {
+    line-height: 26px;
+    margin-bottom: 4px;
+}
+
+/* Win XP */
+.opt-win-xp.win-touch + label {
+    margin-left: 25px;
+}
+
+    .opt-win-xp.win-touch + label:before {
+        left: -25px;
+        width: 19px;
+        height: 19px;
+    }
+
+    .opt-win-xp.win-touch:checked + label:after {
+        height: 8px;
+        width: 8px;
+        left: -20px;
+        top: 0.5em;
+    }
+
+    .opt-win-xp.win-touch[disabled]:checked + label:after {
+        left: -20px;
+        top: 0.5em;
+    }
+
+/* Win 98 */
+.opt-win-98.win-touch + label {
+    margin-left: 25px;
+}
+
+    .opt-win-98.win-touch + label:before {
+        left: -25px;
+        width: 18px;
+        height: 18px;
+        background-size: 18px 18px;
+    }
+
+    .opt-win-98.win-touch:checked + label:after {
+        width: 6px;
+        height: 6px;
+        top: 6px;
+        left: -19px;
+        background-size: 6px 6px;
+    }
+
+/* Win 7 */
+.opt-win-7.win-touch + label {
+    margin-left: 26px;
+}
+
+    .opt-win-7.win-touch + label:before {
+        height: 20px;
+        width: 20px;
+        left: -26px;
+    }
+
+    .opt-win-7.win-touch:checked + label:after {
+        left: -20px;
+        top: 6px;
+    }
+
+/* Win 10 */
+.opt-win-10.win-touch + label {
+    margin-left: 25px;
+}
+
+    .opt-win-10.win-touch + label:before {
+        width: 19px;
+        height: 19px;
+        min-width: 19px;
+        left: -25px;
+    }
+
+    .opt-win-10.win-touch + label:after {
+        left: -25px;
+        width: 8px;
+        height: 8px;
+        transform: translate(5.5px, -50%) scale(0);
+    }
+
+    .opt-win-10.win-touch:checked + label:after {
+        transform: translate(5.5px, -50%) scale(1);
+    }
+
+    .opt-win-10.win-touch:checked + label:hover:after {
+        transform: translate(5.5px, -50%) scale(1.1);
+    }
+
+    .opt-win-10.win-touch:active + label:after,
+    .opt-win-10.win-touch:active:checked + label:after {
+        transform: translate(5.5px, -50%) scale(0.7);
+    }
+
+    .opt-win-10.win-touch:disabled:checked + label:after {
+        transform: translate(5.5px, -50%) scale(1);
+    }

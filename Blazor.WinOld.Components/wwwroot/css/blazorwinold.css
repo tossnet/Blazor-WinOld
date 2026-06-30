@@ -138,6 +138,10 @@ body {
         color: var(--btn-win7-text-color-disabled);
     }
 
+    .txt-win.win-touch {
+        height: 28px;
+    }
+
 label.label-txt-win {
     display: inline-flex;
     align-items: center;

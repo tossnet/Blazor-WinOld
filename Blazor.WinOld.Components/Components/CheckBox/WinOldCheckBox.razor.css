@@ -316,3 +316,68 @@
         background: #c3c3c3;
         border-color: #c0c0c0;
     }
+
+/*-------------------------------------------*\
+    Touch mode
+\*-------------------------------------------*/
+
+/* Win XP */
+.chk-win-xp.win-touch + label {
+    margin-left: 25px;
+}
+
+    .chk-win-xp.win-touch + label:before {
+        left: -25px;
+        width: 19px;
+        height: 19px;
+    }
+
+    .chk-win-xp.win-touch:checked + label:after {
+        left: -21px;
+        top: 4px;
+        margin-left: 0;
+    }
+
+/* Win 98 */
+.chk-win-98.win-touch + label {
+    margin-left: 25px;
+}
+
+    .chk-win-98.win-touch + label:before {
+        left: -25px;
+        width: 19px;
+        height: 19px;
+    }
+
+    .chk-win-98.win-touch:checked + label:after {
+        left: -19px;
+    }
+
+/* Win 7 */
+    .chk-win-7.win-touch + label:before {
+        height: 20px;
+        min-width: 20px;
+    }
+
+    .chk-win-7.win-touch:checked + label:after {
+        left: 3px;
+        font-size: 14px;
+    }
+
+/* Win 10 */
+.chk-win-10.win-touch + label {
+    left: -25px;
+}
+
+    .chk-win-10.win-touch + label:before {
+        width: 19px;
+        height: 19px;
+        min-width: 19px;
+    }
+
+    .chk-win-10.win-touch:checked + label:after {
+        left: 7px;
+        top: 3px;
+        width: 6px;
+        height: 10px;
+    }
