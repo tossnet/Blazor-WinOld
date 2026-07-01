@@ -43,8 +43,22 @@
     </div>
 
     <h2>Select</h2>
-    <p><small>⚠ Win 98 and Win XP appearances use a pixel-art SVG dropdown arrow that cannot be scaled — TouchMode is not supported for those two themes.</small></p>
     <div style="display:flex; flex-direction:row; gap:20px; flex-wrap:wrap; align-items:flex-end;">
+        <div>
+            <WinOldSelect Appearance="Appearance.Win98" T="string" @bind-Value="_selectedName" Label="Win 98">
+                <WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+                <WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+                <WinOldOption Value="@("Denis")">Denis</WinOldOption>
+            </WinOldSelect>
+        </div>
+        <div>
+            <WinOldSelect Appearance="Appearance.WinXP" T="string" @bind-Value="_selectedName" Label="Win XP">
+                <WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+                <WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+                <WinOldOption Value="@("Denis")">Denis</WinOldOption>
+            </WinOldSelect>
+        </div>
+
         <div>
             <WinOldSelect Appearance="Appearance.Win7" T="string" @bind-Value="_selectedName" Label="Win 7">
                 <WinOldOption Value="@("Adrien")">Adrien</WinOldOption>

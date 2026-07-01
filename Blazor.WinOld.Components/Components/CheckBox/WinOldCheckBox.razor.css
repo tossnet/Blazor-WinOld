@@ -337,11 +337,14 @@
         height: 19px;
     }
 
-    .chk-win-xp.win-touch:checked + label:after {
-        left: 4px;
-        top: 4px;
-        margin-left: 0;
-    }
+.chk-win-xp.win-touch:checked + label:after {
+    left: 0px;
+    top: -1px;
+    margin-left: 0;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+}
 
 /* Win 98 */
     .chk-win-98.win-touch + label:before {

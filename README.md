@@ -61,11 +61,17 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes
+ 
+ <details open="open"><summary>Version 2.6.3</summary>
 
-<details open="open"><summary>Version 2.6.2</summary>
-
->- v2.6.2 - Add Win10 label style, improve touch and checkbox UI
+>- improve touch for WinOldSelect (winXP and win98) and checkbox UI
 </details>
+
+<details><summary>Version 2.6.2</summary>
+
+>- Add Win10 label style, improve touch and checkbox UI
+</details>
+
 <details><summary>Version 2.6.1</summary>
 
 >- Touch mode font sizes are now scaled up to 13px for Win7/Win10 themes; Win98/WinXP themes retain their native 11px pixel-font size with antialiasing disabled to preserve crisp rendering.
@@ -79,32 +85,32 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 <details><summary>Version 2.5.6</summary>
 
->- v2.5.6  Context menu now automatically repositions itself to stay within the browser viewport when it would overflow the right or bottom edge
+>- Context menu now automatically repositions itself to stay within the browser viewport when it would overflow the right or bottom edge
 </details>
 
 <details><summary>Version 2.5.5</summary>
 
->- v2.5.5 add css shadow to the win10 submenu
+>- add css shadow to the win10 submenu
 </details>
 
 <details><summary>Version 2.5.4</summary>
 
->- v2.5.4 Multiple context menus on the same page now automatically close each other when a new one is opened.
+>- Multiple context menus on the same page now automatically close each other when a new one is opened.
 </details>
 
 <details><summary>Version 2.5.3</summary>
 
->- v2.5.3 Added ShowContextMenu(double clientX, double clientY) overload to WinOldMenu, allowing the context menu to be opened programmatically from code-behind without a MouseEventArgs.
+>- Added ShowContextMenu(double clientX, double clientY) overload to WinOldMenu, allowing the context menu to be opened programmatically from code-behind without a MouseEventArgs.
 </details>
 
 <details><summary>Version 2.5.2</summary>
 
->- v2.5.2 : Dialog: Fixed dialog overflow on small screens. The dialog width is now capped at the viewport width.
+>- Dialog: Fixed dialog overflow on small screens. The dialog width is now capped at the viewport width.
 </details>
 
 <details><summary>Version 2.5.1</summary>
 
->- v2.5.1 : Added generic ShowDialog<TComponent>(options, parameters) extension method to render any Blazor component as dialog content without requiring a RenderFragment.'
+>- Added generic ShowDialog<TComponent>(options, parameters) extension method to render any Blazor component as dialog content without requiring a RenderFragment.'
 </details>
 
 
