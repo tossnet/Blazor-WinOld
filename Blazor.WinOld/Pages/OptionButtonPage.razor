@@ -41,6 +41,33 @@
 	</WinOldOptionButtonGroup>
 </div>
 
+<h2>Custom content (ChildContent)</h2>
+
+<div style="display:flex; flex-direction: row; gap: 80px; flex-wrap: wrap;">
+	<WinOldOptionButtonGroup T="int"
+							 @bind-Value="SelectedPlan"
+							 Appearance="Appearance.Win10">
+		<WinOldOptionButton Value="1">
+			<div style="display:flex; flex-direction:column;">
+				<span style="font-weight:bold;">Basic</span>
+				<span style="color:gray; font-size:11px;">$4.99 / month</span>
+			</div>
+		</WinOldOptionButton>
+		<WinOldOptionButton Value="2">
+			<div style="display:flex; flex-direction:column;">
+				<span style="font-weight:bold;">Pro</span>
+				<span style="color:gray; font-size:11px;">$9.99 / month</span>
+			</div>
+		</WinOldOptionButton>
+		<WinOldOptionButton Value="3">
+			<div style="display:flex; flex-direction:column;">
+				<span style="font-weight:bold;">Enterprise</span>
+				<span style="color:gray; font-size:11px;">$19.99 / month</span>
+			</div>
+		</WinOldOptionButton>
+	</WinOldOptionButtonGroup>
+</div>
+
 
 <CodeBlock Language="CodeLanguage.Razor"
 		   EnableLineNumbers="true"
@@ -54,12 +81,35 @@
 </WinOldOptionButtonGroup>
 		   	 	 ") />
 
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldOptionButtonGroup T=""int""
+		                 @bind-Value=""SelectedPlan""
+						 Appearance=""Appearance.Win10"">
+	<WinOldOptionButton Value=""1"">
+		<div style=""display:flex; flex-direction:column;"">
+			<span style=""font-weight:bold;"">Basic</span>
+			<span style=""color:gray; font-size:11px;"">$4.99 / month</span>
+		</div>
+	</WinOldOptionButton>
+	<WinOldOptionButton Value=""2"">
+		<div style=""display:flex; flex-direction:column;"">
+			<span style=""font-weight:bold;"">Pro</span>
+			<span style=""color:gray; font-size:11px;"">$9.99 / month</span>
+		</div>
+	</WinOldOptionButton>
+</WinOldOptionButtonGroup>
+			   	 	 ") />
+
 <CodeBlock Language="CodeLanguage.CSharp"
 		   EnableLineNumbers="true"
 		   Code=@(@"
 private int SelectedRadio { get; set; } = 2;
+private int SelectedPlan { get; set; } = 2;
 	 ") />
 
 @code {
 	private int SelectedRadio { get; set; } = 2;
+	private int SelectedPlan { get; set; } = 2;
 }

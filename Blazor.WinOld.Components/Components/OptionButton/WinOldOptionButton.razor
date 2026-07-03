@@ -14,5 +14,14 @@
 		   class="opt-win @GetComponentClass() @Class"
 		   style="@Style"
 		   @attributes="Attributes">
-	<label for="@ElementId">@Label</label>
+	<label for="@ElementId">
+		@if (ChildContent is not null)
+		{
+			@ChildContent
+		}
+		else
+		{
+			@Label
+		}
+	</label>
 </div>

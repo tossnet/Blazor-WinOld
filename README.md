@@ -62,9 +62,14 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
  
- <details open="open"><summary>Version 2.6.3</summary>
+ <details open="open"><summary>Version 2.6.4</summary>
 
->- improve touch for WinOldSelect (winXP and win98) and checkbox UI
+>- Add ChildContent support to `WinOldOptionButton`, allowing custom markup (not just plain text) as the option's label.
+</details>
+
+ <details><summary>Version 2.6.3</summary>
+
+>- improve touch for `WinOldSelect` (winXP and win98) and checkbox UI
 </details>
 
 <details><summary>Version 2.6.2</summary>

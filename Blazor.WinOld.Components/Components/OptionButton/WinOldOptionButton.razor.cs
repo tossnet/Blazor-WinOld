@@ -14,6 +14,10 @@ public partial class WinOldOptionButton<T> : WinOldComponentBase
 
     /// </summary>
     [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    /// </summary>
+    [Parameter]
     public T Value { get; set; }
 
     /// </summary>
