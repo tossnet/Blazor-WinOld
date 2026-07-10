@@ -176,6 +176,7 @@
     margin: 10px 0;
     font-size: 1.1em;
     color: #555;
+    white-space: pre-line;
 }
 
 .msg-win-xp .actions {
@@ -317,6 +318,7 @@
     margin: 10px 0;
     font-size: 1.1em;
     color: #000;
+    white-space: pre-line;
 }
 
 .msg-win-98 .actions {
@@ -710,6 +712,7 @@
     margin: 10px 0;
     font-size: 12px;
     color: #000;
+    white-space: pre-line;
 }
 
 .msg-win-7 .actions {
@@ -843,6 +846,10 @@
     background-color: #fff;
     margin: unset;
     padding: 16px;
+}
+
+.msg-content-win-10 {
+    white-space: pre-line;
 }
 
 .msg-win-10 .actions {
