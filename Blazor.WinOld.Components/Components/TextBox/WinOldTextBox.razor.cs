@@ -1,13 +1,19 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Blazor.WinOld.Components;
 
-public partial class WinOldTextBox : WinOldComponentBase
+public partial class WinOldTextBox : WinOldComponentBase, IAsyncDisposable
 {
+    [Inject]
+    private IJSRuntime JS { get; set; } = default!;
+
     /// <summary>
     /// Reference to the input element
     /// </summary>
     private ElementReference InputElement { get; set; }
+
+    private IJSObjectReference? _module;
 
     /// </summary>
     [Parameter]
@@ -41,6 +47,21 @@ public partial class WinOldTextBox : WinOldComponentBase
     public async Task FocusAsync()
     {
         await InputElement.FocusAsync();
+    }
+
+    /// <summary>
+    /// Sets focus on the input and selects its entire content, so typing immediately replaces it.
+    /// </summary>
+    public async Task SelectAllAsync()
+    {
+        _module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorWinOld/js/textbox.js");
+        await _module.InvokeVoidAsync("selectAll", InputElement);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_module is not null)
+            await _module.DisposeAsync();
     }
 
     private async Task OnValueChanged(ChangeEventArgs e)

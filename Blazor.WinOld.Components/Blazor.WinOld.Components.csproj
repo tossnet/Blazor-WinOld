@@ -12,7 +12,7 @@
 
 		<!-- Package metadata -->
 		<PackageId>BlazorWinOld</PackageId>
-		<Version>2.6.5</Version>
+		<Version>2.6.6</Version>
 		<Authors>Christophe Peugnet</Authors>
 		<Copyright>Copyright 2025-2026</Copyright>
 		<Description>Blazor components in Windows 98, Windows XP, Windows 7 and Windows 10 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
@@ -24,7 +24,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReleaseNotes>
-      v2.6.5 - Fix message box text rendering: preserve \n line breaks in MessageBoxOptions.Message by adding white-space: pre-line to the message content styles.
+      v2.6.6 - Add WinOldTextBox.SelectAllAsync() to focus and select the entire content of a text box.
     </PackageReleaseNotes>
 
 		<!-- Build and symbols -->
@@ -59,6 +59,9 @@
 
 	<ItemGroup>
 	  <Content Update="wwwroot\js\draggable.js">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\js\textbox.js">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>

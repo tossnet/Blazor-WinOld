@@ -62,12 +62,17 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes
  
-  <details open="open"><summary>Version 2.6.5</summary>
+ <details open="open"><summary>Version 2.6.6</summary>
+
+>- Add WinOldTextBox.SelectAllAsync() to focus and select the entire content of a text box.
+</details>
+
+<details><summary>Version 2.6.5</summary>
 
 >- Fix message box text rendering: preserve \n line breaks in MessageBoxOptions.Message by adding white-space: pre-line to the message content styles.
 </details>
 
- <details><summary>Version 2.6.4</summary>
+<details><summary>Version 2.6.4</summary>
 
 >- Add ChildContent support to `WinOldOptionButton`, allowing custom markup (not just plain text) as the option's label.
 </details>

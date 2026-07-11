@@ -1,10 +1,11 @@
 ﻿@page "/textbox-page"
 
-
 <PageTitle>Textbox</PageTitle>
 
 <h1>Textbox</h1>
-					  
+
+<p><strong>v2.6.6</strong> - Add <code>WinOldTextBox.SelectAllAsync()</code> to focus and select the entire content of a text box.</p>
+
 <div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
 	<div>
 		<WinOldTextBox Appearance="Appearance.Win98"
@@ -46,16 +47,65 @@
 	</div>
 </div>
 
+<h2>Select all</h2>
+<p>Click the button to focus the textbox and select all its content.</p>
+
+<div style="display:flex; align-items:end; gap:8px; flex-wrap:wrap;">
+	<WinOldTextBox @ref="_dynamicTextBox"
+				   Appearance="Appearance.Win10"
+				   Label="Test SelectAllAsync :"
+				   Value="@_dynamicValue"
+				   ValueChanged="OnDynamicValueChanged"
+				   Style="min-width:280px;" />
+
+	<WinOldButton Appearance="Appearance.Win10"
+				  OnClick="@(async _ => await RunSelectAllTestAsync())">
+		Select ALL
+	</WinOldButton>
+</div>
+
+<p><em>@_testStatus</em></p>
 
 <CodeBlock Language="CodeLanguage.Razor"
 		   EnableLineNumbers="true"
 		   Code=@(@"
-<WinOldTextBox Appearance=""Appearance.WinXP""
-			Label=""Textbox :""
-			Disabled=""false"" />
-		   	 	 	 	 ") />
+		   <WinOldTextBox @ref=""textbox""
+						  Appearance=""Appearance.Win10""
+						  Label=""Test SelectAllAsync :""
+						  Value=""@value""
+						  ValueChanged=""OnValueChanged"" />
 
+		   <WinOldButton Appearance=""Appearance.Win10""
+						 OnClick=""@(async _ => await textbox!.SelectAllAsync())"">
+			   Run dynamic test
+		   </WinOldButton>
+		   ") />
 
 <h2>Behavior</h2>
 <p>InputStyle : Optional in-line styles applied to the input element specifically. ex : text-align: right; </p>
 <p>Disabled</p>
+<p>SelectAllAsync() : Focuses the textbox and selects all content.</p>
+
+@code {
+	private WinOldTextBox? _dynamicTextBox;
+	private string _dynamicValue = "This framework is awesome!";
+	private string _testStatus = "Ready";
+
+	private Task OnDynamicValueChanged(string value)
+	{
+		_dynamicValue = value;
+		return Task.CompletedTask;
+	}
+
+	private async Task RunSelectAllTestAsync()
+	{
+		if (_dynamicTextBox is null)
+		{
+			_testStatus = "Textbox reference not ready yet.";
+			return;
+		}
+
+		await _dynamicTextBox.SelectAllAsync();
+		_testStatus = $"SelectAllAsync executed at {DateTime.Now:HH:mm:ss}";
+	}
+}
