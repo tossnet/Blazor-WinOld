@@ -12,7 +12,7 @@
 
 		<!-- Package metadata -->
 		<PackageId>BlazorWinOld</PackageId>
-		<Version>2.6.7</Version>
+		<Version>2.7.0</Version>
 		<Authors>Christophe Peugnet</Authors>
 		<Copyright>Copyright 2025-2026</Copyright>
 		<Description>Blazor components in Windows 98, Windows XP, Windows 7 and Windows 10 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
@@ -24,7 +24,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReleaseNotes>
-      v2.6.7 - Add TouchMode support to WinOldTabs, increasing tab height for easier touch interaction. Fix pixelated "MS Sans Serif" font rendering in WinXP/Win98 touch mode for WinOldTextBox by using the system font instead.
+      v2.7 - Add WinOldTextArea component, a multiline text input with the same look and feel as WinOldTextBox and a configurable Rows parameter.
     </PackageReleaseNotes>
 
 		<!-- Build and symbols -->

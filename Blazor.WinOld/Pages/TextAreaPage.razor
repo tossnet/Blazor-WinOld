@@ -1,0 +1,122 @@
+@page "/textarea-page"
+
+<PageTitle>TextArea</PageTitle>
+
+<h1>TextArea</h1>
+
+
+<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
+	<div>
+		<WinOldTextArea Appearance="Appearance.Win98"
+						Label="TextArea :"
+						Style="padding-bottom:4px" />
+
+		<WinOldTextArea Appearance="Appearance.Win98"
+						Label="TextArea :"
+						Disabled="true" />
+	</div>
+
+	<div>
+		<WinOldTextArea Appearance="Appearance.WinXP"
+						Label="TextArea :"
+						Style="padding-bottom:4px" />
+
+		<WinOldTextArea Appearance="Appearance.WinXP"
+						Label="TextArea :"
+						Disabled="true" />
+	</div>
+
+	<div>
+		<WinOldTextArea Appearance="Appearance.Win7"
+						Label="TextArea :"
+						Style="padding-bottom:4px" />
+
+		<WinOldTextArea Appearance="Appearance.Win7"
+						Label="TextArea :"
+						Disabled="true" />
+	</div>
+
+	<div>
+		<WinOldTextArea Appearance="Appearance.Win10"
+						Label="TextArea :"
+						Style="padding-bottom:4px" />
+		<WinOldTextArea Appearance="Appearance.Win10"
+						Label="TextArea :"
+						Disabled="true" />
+	</div>
+</div>
+
+<h2>Rows</h2>
+<p>Use the <code>Rows</code> parameter to control how many text lines are visible.</p>
+
+<div style="display:flex; align-items:start; gap:10px; flex-wrap:wrap;">
+	<WinOldTextArea Appearance="Appearance.Win10" Label="Rows=2 :" Rows="2" />
+	<WinOldTextArea Appearance="Appearance.Win10" Label="Rows=4 :" Rows="4" />
+	<WinOldTextArea Appearance="Appearance.Win10" Label="Rows=8 :" Rows="8" />
+</div>
+
+<h2>Select all</h2>
+<p>Click the button to focus the text area and select all its content.</p>
+
+<div style="display:flex; align-items:end; gap:8px; flex-wrap:wrap;">
+	<WinOldTextArea @ref="_dynamicTextArea"
+					Appearance="Appearance.Win10"
+					Label="Test SelectAllAsync :"
+					Value="@_dynamicValue"
+					ValueChanged="OnDynamicValueChanged"
+					Rows="4"
+					Style="min-width:280px;" />
+
+	<WinOldButton Appearance="Appearance.Win10"
+				  OnClick="@(async _ => await RunSelectAllTestAsync())">
+		Select ALL
+	</WinOldButton>
+</div>
+
+<p><em>@_testStatus</em></p>
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+		   <WinOldTextArea @ref=""textarea""
+						   Appearance=""Appearance.Win10""
+						   Label=""Test SelectAllAsync :""
+						   Value=""@value""
+						   ValueChanged=""OnValueChanged""
+						   Rows=""4"" />
+
+		   <WinOldButton Appearance=""Appearance.Win10""
+						 OnClick=""@(async _ => await textarea!.SelectAllAsync())"">
+			   Run dynamic test
+		   </WinOldButton>
+		   ") />
+
+<h2>Behavior</h2>
+<p>Rows : Number of visible text lines (default 3).</p>
+<p>InputStyle : Optional in-line styles applied to the textarea element specifically. ex : text-align: right; </p>
+<p>Disabled</p>
+<p>SelectAllAsync() : Focuses the text area and selects all content.</p>
+
+@code {
+	private WinOldTextArea? _dynamicTextArea;
+	private string _dynamicValue = "This framework is awesome!\nIt supports multiple lines.";
+	private string _testStatus = "Ready";
+
+	private Task OnDynamicValueChanged(string value)
+	{
+		_dynamicValue = value;
+		return Task.CompletedTask;
+	}
+
+	private async Task RunSelectAllTestAsync()
+	{
+		if (_dynamicTextArea is null)
+		{
+			_testStatus = "TextArea reference not ready yet.";
+			return;
+		}
+
+		await _dynamicTextArea.SelectAllAsync();
+		_testStatus = $"SelectAllAsync executed at {DateTime.Now:HH:mm:ss}";
+	}
+}

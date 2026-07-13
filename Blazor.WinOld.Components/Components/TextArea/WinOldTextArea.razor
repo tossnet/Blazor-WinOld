@@ -1,0 +1,20 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+<div style="@Style">
+    <label for="@ElementId"
+           class="label-txt-win @GetComponentLabelClass()"
+           disabled="@(ParentDisabled | Disabled)">
+        @Label
+    </label>
+    <textarea @ref="InputElement"
+              id="@ElementId"
+              rows="@Rows"
+              class="txtarea-win @GetComponentClass() @Class"
+              disabled="@(ParentDisabled | Disabled)"
+              style="@InputStyle"
+              @attributes="Attributes"
+              @bind="Value"
+              @oninput="OnValueChanged" />
+</div>

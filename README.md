@@ -61,7 +61,17 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes
-<details open="open"><summary>Version 2.6.7</summary>
+<details open="open"><summary>Version 2.7.0</summary>
+
+>- Add `WinOldTextArea` component, a multiline text input with the same look and feel as `WinOldTextBox` and a configurable `Rows` parameter.
+</details>
+
+<details><summary>Version 2.6.8</summary>
+
+>- Add `WinOldTextArea` component, a multiline text input with the same look and feel as `WinOldTextBox` and a configurable `Rows` parameter.
+</details>
+
+<details><summary>Version 2.6.7</summary>
 
 >- Add TouchMode support to WinOldTabs, increasing tab height for easier touch interaction.
 >- Fix pixelated "MS Sans Serif" font rendering in WinXP/Win98 touch mode for WinOldTextBox by using the system font instead.

@@ -161,16 +161,48 @@ label.label-txt-win {
 }
 
 /*-------------------------------------------*\
+    TEXTAREA SHARED STYLES
+\*-------------------------------------------*/
+.txtarea-win {
+    all: unset;
+    display: inline-block;
+    font-family: var(--font-family);
+    font-size: 11px;
+    background-color: var(--btn-win7-highlight);
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    line-height: 1.4;
+    resize: vertical;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+    .txtarea-win:focus {
+        outline: none;
+    }
+
+    .txtarea-win[disabled] {
+        color: var(--btn-win7-text-color-disabled);
+    }
+
+    .txtarea-win.win-touch {
+        font-size: 13px;
+    }
+
+/*-------------------------------------------*\
     Win XP
 \*-------------------------------------------*/
-.txt-win-xp {
+.txt-win-xp, .txtarea-win-xp {
     border: solid #7f9db9 1px;
     box-sizing: border-box;
     border-radius: 0;
     padding: 3px 4px;
 }
 
-.txt-win-xp.win-touch {
+.txt-win-xp.win-touch, .txtarea-win-xp.win-touch {
     font-family: var(--font);
 }
 
@@ -182,7 +214,7 @@ label.label-txt-win {
 /*-------------------------------------------*\
     Win 98
 \*-------------------------------------------*/
-.txt-win-98 {
+.txt-win-98, .txtarea-win-98 {
     border: 0px;
     border-radius: 0;
     padding: 3px 4px;
@@ -190,7 +222,7 @@ label.label-txt-win {
     box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
 }
 
-.txt-win-98.win-touch {
+.txt-win-98.win-touch, .txtarea-win-98.win-touch {
     font-family: var(--font);
 }
 
@@ -203,7 +235,7 @@ label.label-txt-win {
 /*-------------------------------------------*\
     Win 7
 \*-------------------------------------------*/
-.txt-win-7 {
+.txt-win-7, .txtarea-win-7 {
     border: 1px solid #ccc;
     border-radius: 2px;
     border-top: 1px solid var(--btn-win7-border-color);
@@ -212,7 +244,7 @@ label.label-txt-win {
     padding: 3px 4px 5px;
 }
 
-    .txt-win-7:focus {
+    .txt-win-7:focus, .txtarea-win-7:focus {
         border-color: var(--btn-win7-shade-light-hovered);
         border-top-color: var(--btn-win7-shade-light-active);
         outline: none;
@@ -228,6 +260,9 @@ label.label-txt-win {
 \*-------------------------------------------*/
 .txt-win-10 {
     height: 20px;
+}
+
+.txt-win-10, .txtarea-win-10 {
     box-sizing: border-box;
     padding: 0 4px;
     font-family: 'Segoe UI', sans-serif;
@@ -242,14 +277,14 @@ label.label-txt-win {
     transition: box-shadow 0.15s ease, border-bottom-color 0.15s ease;
 }
 
-    .txt-win-10:focus {
+    .txt-win-10:focus, .txtarea-win-10:focus {
         border: 1px solid #ECECEC;
         border-bottom: 1px solid #0067C0;
         box-shadow: inset 0 -1px 0 0 #0067C0;
         background-color: #ffffff;
     }
 
-    .txt-win-10:disabled {
+    .txt-win-10:disabled, .txtarea-win-10:disabled {
         background-color: #F9F9F9;
         color: #808080;
         border: 1px solid #ECECEC;
