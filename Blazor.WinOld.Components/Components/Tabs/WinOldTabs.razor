@@ -3,9 +3,9 @@
 @inherits WinOldComponentBase
 
 <section>
-	<menu role="tablist" 
+	<menu role="tablist"
 		  style="@Style"
-		  class="tabs-list @Class">
+		  class="tabs-list @GetTabsListClass() @Class">
 		@foreach (var tabPanel in TabPanels)
 		{
 			<button role="tab"

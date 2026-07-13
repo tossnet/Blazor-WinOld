@@ -126,8 +126,6 @@ body {
     appearance: none;
     height: 21px;
     line-height: 2;
-    font-family: var(--font-family);
-    font-size: 11px;
 }
 
     .txt-win:focus {
@@ -172,6 +170,10 @@ label.label-txt-win {
     padding: 3px 4px;
 }
 
+.txt-win-xp.win-touch {
+    font-family: var(--font);
+}
+
 .lbtxt-win-xp {
     font-family: var(--font-family);
     font-size: 11px;
@@ -186,6 +188,10 @@ label.label-txt-win {
     padding: 3px 4px;
     background-color: var(--btn-win7-highlight);
     box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+}
+
+.txt-win-98.win-touch {
+    font-family: var(--font);
 }
 
 .lbtxt-win-98 {

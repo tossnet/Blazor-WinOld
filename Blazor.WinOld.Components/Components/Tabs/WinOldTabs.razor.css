@@ -330,3 +330,23 @@
         border-radius: var(--border-radius);
         box-shadow: var(--btn-win7-shadow);
     }
+
+/*-------------------------------------------*\
+    Touch mode
+\*-------------------------------------------*/
+.tabs-list.win-touch {
+    max-height: 36px;
+}
+
+.tabs-win-xp.win-touch {
+    line-height: 30px;
+}
+
+.tabs-win-98.win-touch,
+.tabs-win-7.win-touch {
+    min-height: 32px;
+}
+
+.tabs-win-10.win-touch {
+    min-height: 32px;
+}

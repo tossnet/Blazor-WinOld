@@ -57,7 +57,7 @@ public partial class WinOldTabs : WinOldComponentBase
     /// </summary>
     private string GetComponentClass()
     {
-        return Appearance switch
+        var cls = Appearance switch
         {
             Appearance.Win7 => "tabs-win-7",
             Appearance.WinXP => "tabs-win-xp",
@@ -65,6 +65,14 @@ public partial class WinOldTabs : WinOldComponentBase
             Appearance.Win10 => "tabs-win-10",
             _ => "tabs-win-10"
         };
+        if (IsTouch) cls += " win-touch";
+        return cls;
+    }
+
+    /// </summary>
+    private string GetTabsListClass()
+    {
+        return IsTouch ? "win-touch" : string.Empty;
     }
 
     /// </summary>

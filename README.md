@@ -61,8 +61,12 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes
- 
- <details open="open"><summary>Version 2.6.6</summary>
+<details open="open"><summary>Version 2.6.7</summary>
+
+>- Add TouchMode support to WinOldTabs, increasing tab height for easier touch interaction.
+>- Fix pixelated "MS Sans Serif" font rendering in WinXP/Win98 touch mode for WinOldTextBox by using the system font instead.
+</details>
+ <details><summary>Version 2.6.6</summary>
 
 >- Add WinOldTextBox.SelectAllAsync() to focus and select the entire content of a text box.
 </details>
