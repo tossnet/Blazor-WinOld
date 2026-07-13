@@ -61,7 +61,12 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes
-<details open="open"><summary>Version 2.7.0</summary>
+<details open="open"><summary>Version 2.7.1</summary>
+
+>- For the `WinOldTextArea` component, fix the label above the field.
+</details>
+
+<details ><summary>Version 2.7.0</summary>
 
 >- Add `WinOldTextArea` component, a multiline text input with the same look and feel as `WinOldTextBox` and a configurable `Rows` parameter.
 </details>

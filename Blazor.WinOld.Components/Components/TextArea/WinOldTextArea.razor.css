@@ -1,2 +1,9 @@
 /* Shared CSS in blazorwinold.css for WinOldTextArea */
 /* Only specific adjustments here, if necessary */
+
+.textarea-win-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
