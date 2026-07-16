@@ -61,6 +61,11 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes
+<details open="open"><summary>Version 2.7.2</summary>
+
+>- For the `WinOldbutton` Add .btn-win-10:not(:disabled).active : Win10 buttons had no persistent "pressed" state class, only the transient :active pseudo-class.
+</details>
+
 <details open="open"><summary>Version 2.7.1</summary>
 
 >- For the `WinOldTextArea` component, fix the label above the field.

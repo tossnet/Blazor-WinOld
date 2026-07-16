@@ -12,7 +12,7 @@
 
 		<!-- Package metadata -->
 		<PackageId>BlazorWinOld</PackageId>
-		<Version>2.7.1</Version>
+		<Version>2.7.2</Version>
 		<Authors>Christophe Peugnet</Authors>
 		<Copyright>Copyright 2025-2026</Copyright>
 		<Description>Blazor components in Windows 98, Windows XP, Windows 7 and Windows 10 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
@@ -24,7 +24,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReleaseNotes>
-      v2.7.1 - for WinOldTextArea component, fix the label above the field.
+      v2.7.2 For the WinOldbutton Add .btn-win-XX:not(:disabled).active : DOS/Win10 buttons had no persistent "pressed" state class, only the transient :active pseudo-class.
     </PackageReleaseNotes>
 
 		<!-- Build and symbols -->

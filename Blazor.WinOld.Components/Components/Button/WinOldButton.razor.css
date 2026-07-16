@@ -64,6 +64,16 @@
         transform: translate(4px, 4px);
     }
 
+.btn-dos:not(:disabled).active {
+    background-color: #6a6a6a;
+    color: #e0e0e0;
+    box-shadow: none;
+    transform: translate(4px, 4px);
+}
+    .btn-dos:not(:disabled).active:hover {
+        box-shadow: none;
+    }
+
     .btn-dos:hover:not(:active) {
         background-color: #3a3a3a;
         color: #ffffff;
@@ -318,6 +328,11 @@
     }
 
     .btn-win-10:active {
+        background-color: #cce4f7;
+        border-color: #005499;
+    }
+
+    .btn-win-10:not(:disabled).active {
         background-color: #cce4f7;
         border-color: #005499;
     }
