@@ -35,6 +35,11 @@ public partial class WinOldMenu : WinOldComponentBase
     private ElementReference _contextMenuRef;
     private IJSObjectReference? _jsModule;
 
+    // Sous-menu (submenu-win / subsub-win)
+    private bool _wasOpen;
+    private bool _shouldReposition;
+    private ElementReference _submenuRef;
+
     private string CssClass
     {
         get
@@ -75,6 +80,16 @@ public partial class WinOldMenu : WinOldComponentBase
     {
         if (RootMenu is not null)
             RootMenu.OnStateChanged += PropagateStateChanged;
+    }
+
+    protected override void OnParametersSet()
+    {
+        // Détecte la transition fermé → ouvert pour ne repositionner qu'une seule fois
+        // par ouverture (et non à chaque re-render déclenché ailleurs dans l'arbre).
+        if (IsOpen && !_wasOpen && !IsRoot)
+            _shouldReposition = true;
+
+        _wasOpen = IsOpen;
     }
 
     private void PropagateStateChanged()
@@ -208,6 +223,13 @@ public partial class WinOldMenu : WinOldComponentBase
             _shouldClamp = false;
             _jsModule ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorWinOld/js/draggable.js");
             await _jsModule.InvokeVoidAsync("clampContextMenu", _contextMenuRef);
+        }
+
+        if (_shouldReposition && IsOpen && !IsRoot)
+        {
+            _shouldReposition = false;
+            _jsModule ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorWinOld/js/draggable.js");
+            await _jsModule.InvokeVoidAsync("positionSubmenu", _submenuRef);
         }
     }
 

@@ -35,7 +35,7 @@ else if (IsRoot)
 }
 else
 {
-    <ul role="menu" class="menu-win @GetComponentClass() @CssClass @(IsOpen ? "open" : "")">
+    <ul @ref="_submenuRef" role="menu" class="menu-win @GetComponentClass() @CssClass @(IsOpen ? "open" : "")">
         <CascadingValue Value="this" IsFixed="false">
             @ChildContent
         </CascadingValue>

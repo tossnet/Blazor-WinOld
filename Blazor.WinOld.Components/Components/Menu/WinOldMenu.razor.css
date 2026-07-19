@@ -37,6 +37,28 @@
     z-index: 300;
 }
 
+/* Repositionnement dynamique (JS) : appliqué quand le sous-menu déborderait du viewport.
+   Ajouté/retiré par positionSubmenu() dans draggable.js à chaque ouverture. */
+.submenu-win.flip-h {
+    left: auto;
+    right: 0;
+}
+
+.subsub-win.flip-h {
+    left: auto;
+    right: 100%;
+}
+
+.submenu-win.flip-v {
+    top: auto;
+    bottom: 100%;
+}
+
+.subsub-win.flip-v {
+    top: auto;
+    bottom: -3px;
+}
+
     .submenu-win.open, .subsub-win.open {
         display: block;
     }
@@ -143,6 +165,26 @@ Win 10
     from {
         opacity: 0;
         transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Quand le sous-menu s'ouvre vers le haut (flip-v), l'animation et la marge
+   doivent être inversées pour ne pas créer un chevauchement/décalage visuel. */
+.submenu-win-10.flip-v, .subsub-win-10.flip-v {
+    margin-top: 0;
+    margin-bottom: 4px;
+    animation-name: menu-appear-win-10-flip-v;
+}
+
+@keyframes menu-appear-win-10-flip-v {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
     }
 
     to {

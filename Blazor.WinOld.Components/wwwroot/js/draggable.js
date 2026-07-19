@@ -11,6 +11,22 @@
     el.style.top = top + 'px';
 }
 
+export function positionSubmenu(el) {
+    if (!el) return;
+
+    // Repart d'un état neutre à chaque appel pour re-mesurer la position "naturelle" :
+    // évite qu'une classe flip posée avant un redimensionnement de fenêtre ne reste
+    // "collée" lors d'une réouverture ultérieure.
+    el.classList.remove('flip-h', 'flip-v');
+
+    const rect = el.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    if (rect.right > vw) el.classList.add('flip-h');
+    if (rect.bottom > vh) el.classList.add('flip-v');
+}
+
 export function initDraggable(windowEl, titleBarEl) {
     const rect = windowEl.getBoundingClientRect();
     windowEl.style.position = 'fixed';
