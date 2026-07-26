@@ -88,30 +88,38 @@
            This has to be a literal, unscoped style block (not the isolated razor.css
            file): the button element these classes land on is rendered by WinOldButton.razor,
            so it never carries this component's own CSS-isolation scope attribute for the
-           deep combinator to attach to. */
-        .btn-dos.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused) {
+           deep combinator to attach to.
+           :not(.active) is also excluded (unlike :hover/:active/:focus/.focused, this one
+           is NOT a transient interaction state): callers toggle a persistent "on" state
+           (e.g. a "show line numbers" switch) via Class="active" on WinOldToolbarButton,
+           reusing WinOldButton.razor.css's own .active rule per theme. Without this
+           exclusion, this literal block's higher specificity (2 classes + N :not() clauses,
+           vs. .active's single theme class + scope attribute) always wins and permanently
+           hides the toggled-on chrome, no matter how long after the toggle the button
+           re-renders. */
+        .btn-dos.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused):not(.active) {
             background-color: transparent;
             box-shadow: none;
         }
 
-        .btn-win-xp.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused) {
+        .btn-win-xp.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused):not(.active) {
             border-color: transparent;
             background: transparent;
             box-shadow: none;
         }
 
-        .btn-win-98.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused) {
+        .btn-win-98.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused):not(.active) {
             background: transparent;
             box-shadow: none;
         }
 
-        .btn-win-7.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(:focus-visible):not(.focused) {
+        .btn-win-7.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(:focus-visible):not(.focused):not(.active) {
             background: transparent;
             border-color: transparent;
             box-shadow: none;
         }
 
-        .btn-win-10.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused) {
+        .btn-win-10.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused):not(.active) {
             background-color: transparent;
             border-color: transparent;
         }

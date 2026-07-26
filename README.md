@@ -61,8 +61,11 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes 
+<details open="open"><summary>Version 2.8.1</summary>
 
-<details open="open"><summary>Version 2.8.0</summary>
+>- WinOldToolbarButton: fixed flat-mode buttons never showing the "active" (toggled-on) style, since the flat-mode CSS override took precedence over .active.
+</details>
+<details><summary>Version 2.8.0</summary>
 
 >- New component `WinOldToolbar` added, allowing the creation of a toolbar with buttons and separators.
 </details>
