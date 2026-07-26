@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Blazor.WinOld.Components;
 
 public partial class WinOldToolbar : WinOldComponentBase
 {
+    [Inject] private IJSRuntime JS { get; set; } = default!;
+
     /// <summary>
     /// Toolbar buttons (typically <see cref="WinOldToolbarButton"/> instances).
     /// </summary>
@@ -17,19 +20,12 @@ public partial class WinOldToolbar : WinOldComponentBase
 
     /// <summary>
     /// <see cref="ToolbarOverflowMode.Wrap"/> (default) wraps to multiple lines and always shows labels.
-    /// <see cref="ToolbarOverflowMode.Collapse"/> stays on a single line and hides button labels
-    /// (icon + tooltip only) once the toolbar's own width drops below <see cref="CollapseWidth"/>.
+    /// <see cref="ToolbarOverflowMode.Collapse"/> stays on a single line: as available width shrinks,
+    /// trailing buttons drop their label (icon + tooltip only) one at a time, starting from the
+    /// rightmost, based on the toolbar's actual measured width — fully automatic, no threshold to tune.
     /// </summary>
     [Parameter]
     public ToolbarOverflowMode Mode { get; set; } = ToolbarOverflowMode.Wrap;
-
-    /// <summary>
-    /// Width in pixels, below which button labels are hidden. Only used when <see cref="Mode"/> is
-    /// <see cref="ToolbarOverflowMode.Collapse"/>. Not a universal value — depends on button count,
-    /// label length and the active <see cref="Appearance"/>'s padding.
-    /// </summary>
-    [Parameter]
-    public int CollapseWidth { get; set; } = 700;
 
     /// <summary>
     /// Default <c>Flat</c> value inherited by child <see cref="WinOldToolbarButton"/> instances
@@ -46,12 +42,6 @@ public partial class WinOldToolbar : WinOldComponentBase
     [Parameter]
     public bool IconOnly { get; set; } = false;
 
-    private readonly string _containerName = $"toolbar-{Guid.NewGuid():N}";
-
-    private string? RootStyle => Mode == ToolbarOverflowMode.Collapse
-        ? $"container-name:{_containerName};{Style}"
-        : Style;
-
     /// </summary>
     private string GetComponentClass()
     {
@@ -67,5 +57,44 @@ public partial class WinOldToolbar : WinOldComponentBase
 
         var modeClass = Mode == ToolbarOverflowMode.Collapse ? "toolbar-collapse-win" : "toolbar-wrap-win";
         return $"{baseClass} {modeClass}";
+    }
+
+    private ElementReference _rootRef;
+    private IJSObjectReference? _module;
+    private IJSObjectReference? _collapseHandle;
+    private bool _collapseActive;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (Mode == ToolbarOverflowMode.Collapse && !_collapseActive)
+        {
+            // Set before the await: guards against a second OnAfterRenderAsync firing
+            // (and starting a second observer) before the import/init below completes.
+            _collapseActive = true;
+            _module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorWinOld/js/toolbar.js");
+            _collapseHandle = await _module.InvokeAsync<IJSObjectReference>("initToolbarCollapse", _rootRef);
+        }
+        else if (Mode != ToolbarOverflowMode.Collapse && _collapseActive)
+        {
+            _collapseActive = false;
+            await DisposeCollapseHandleAsync();
+        }
+    }
+
+    private async Task DisposeCollapseHandleAsync()
+    {
+        if (_collapseHandle is not null)
+        {
+            await _collapseHandle.InvokeVoidAsync("dispose");
+            await _collapseHandle.DisposeAsync();
+            _collapseHandle = null;
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await DisposeCollapseHandleAsync();
+        if (_module is not null)
+            await _module.DisposeAsync();
     }
 }

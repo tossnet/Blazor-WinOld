@@ -56,9 +56,10 @@ public partial class WinOldToolbarButton : WinOldComponentBase
     public bool? Flat { get; set; }
 
     /// <summary>
-    /// Never shows a label (icon + tooltip only, regardless of the ancestor's <c>CollapseWidth</c>)
-    /// and drops the button's minimum width/height so it shrinks to fit the icon. When unset, falls
-    /// back to the ancestor <see cref="WinOldToolbar"/>'s <c>IconOnly</c> value.
+    /// Never shows a label (icon + tooltip only — already as compact as the ancestor's progressive
+    /// collapse could make it, so it's skipped as a collapse target) and drops the button's minimum
+    /// width/height so it shrinks to fit the icon. When unset, falls back to the ancestor
+    /// <see cref="WinOldToolbar"/>'s <c>IconOnly</c> value.
     /// </summary>
     [Parameter]
     public bool? IconOnly { get; set; }

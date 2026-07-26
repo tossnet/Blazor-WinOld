@@ -1,19 +1,19 @@
 @namespace Blazor.WinOld.Components
 @inherits WinOldComponentBase
+@implements IAsyncDisposable
 
 <div role="toolbar"
+     @ref="_rootRef"
      class="toolbar-win @GetComponentClass() @Class"
-     style="@RootStyle"
+     style="@Style"
      @attributes="Attributes">
 
     @if (Mode == ToolbarOverflowMode.Collapse)
     {
         <style>
-            @@container @_containerName (max-width: @(Math.Max(CollapseWidth, 100))px) {
-                .toolbar-btn-label-win { display: none; }
-                .toolbar-btn-win { min-width: 32px !important; min-height: 0 !important; }
-                .toolbar-btn-win.win-touch { min-width: 44px !important; min-height: 32px !important; }
-            }
+            .toolbar-btn-win.toolbar-btn-collapsed-win .toolbar-btn-label-win { display: none; }
+            .toolbar-btn-win.toolbar-btn-collapsed-win { min-width: 32px !important; min-height: 0 !important; }
+            .toolbar-btn-win.toolbar-btn-collapsed-win.win-touch { min-width: 44px !important; min-height: 32px !important; }
         </style>
     }
 

@@ -18,7 +18,6 @@
 :where(.toolbar-collapse-win) {
     flex-wrap: nowrap;
     overflow-x: auto;
-    container-type: inline-size;
 }
 
 /*-------------------------------------------*\

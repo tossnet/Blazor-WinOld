@@ -11,7 +11,7 @@
 
 <ul>
     <li><strong>Wrap</strong> (default): the classic Win32 rebar behavior: the bar spans multiple lines when it runs out of room, labels always stay visible.</li>
-    <li><strong>Collapse</strong> : the Excel Online / Office ribbon behavior: the bar stays on a single line and buttons drop their text label (icon + tooltip only) once the bar's own width drops below <code>CollapseWidth</code>.</li>
+    <li><strong>Collapse</strong> : the Excel Online / Office ribbon behavior: the bar stays on a single line and buttons drop their text label (icon + tooltip only) one at a time, starting from the rightmost, as the bar's own measured width shrinks — fully automatic.</li>
 </ul>
 
 <p>
@@ -273,20 +273,23 @@
 
 <h2>Collapse mode</h2>
 
-<p>Resize the box below via under <code>CollapseWidth</code> (set to 500px here), labels disappear and only the icon + native tooltip remain.</p>
+<p>As the box below is narrowed, buttons drop their text label one at a time — starting from the rightmost — until the row fits, keeping only the icon + native tooltip on each collapsed button. Widen it back and labels reappear in the same order. This example has enough buttons that a few are already collapsed at the default width.</p>
 
 <div class="alert alert-info" role="alert">
     <strong>Tip :</strong> drag the bottom-right corner of the dashed boxes below to resize them and see each mode react live.
 </div>
 
 <div style="resize:horizontal; overflow:auto; border:1px dashed #999; padding:8px; min-width:200px; max-width:100%; width:700px;">
-    <WinOldToolbar Appearance="Appearance.Win10" Mode="ToolbarOverflowMode.Collapse" CollapseWidth="500">
+    <WinOldToolbar Appearance="Appearance.Win10" Mode="ToolbarOverflowMode.Collapse">
         <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
         <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
         <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+        <WinOldToolbarButton Label="Undo"  IconCssClass="bi bi-arrow-counterclockwise" OnClick="@(() => DoAction("Undo"))" />
+        <WinOldToolbarButton Label="Redo"  IconCssClass="bi bi-arrow-clockwise" OnClick="@(() => DoAction("Redo"))" />
         <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
         <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
         <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+        <WinOldToolbarButton Label="Find"  IconCssClass="bi bi-search"        OnClick="@(() => DoAction("Find"))" />
         <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
     </WinOldToolbar>
 </div>
@@ -294,12 +297,14 @@
 <h2>Collapse mode + TouchMode</h2>
 
 <div style="resize:horizontal; overflow:auto; border:1px dashed #999; padding:8px; min-width:200px; max-width:100%; width:700px;">
-    <WinOldToolbar Appearance="Appearance.Win10" Mode="ToolbarOverflowMode.Collapse" CollapseWidth="500" TouchMode="true">
+    <WinOldToolbar Appearance="Appearance.Win10" Mode="ToolbarOverflowMode.Collapse" TouchMode="true">
         <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
         <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
         <WinOldToolbarButton Label="Save"    OnClick="@(() => DoAction("Save"))" >
             <IconTemplate><img src="img/toolbar/save-16x16.png" alt="" width="16" height="16" /></IconTemplate>
         </WinOldToolbarButton>
+        <WinOldToolbarButton Label="Undo"  IconCssClass="bi bi-arrow-counterclockwise" OnClick="@(() => DoAction("Undo"))" />
+        <WinOldToolbarButton Label="Redo"  IconCssClass="bi bi-arrow-clockwise" OnClick="@(() => DoAction("Redo"))" />
         <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
         <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
         <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
@@ -325,7 +330,7 @@
 
 <CodeBlock Language="CodeLanguage.Razor"
            EnableLineNumbers="true"
-           Code=@(@"<WinOldToolbar Appearance=""Appearance.Win10"" Mode=""ToolbarOverflowMode.Collapse"" CollapseWidth=""500"">
+           Code=@(@"<WinOldToolbar Appearance=""Appearance.Win10"" Mode=""ToolbarOverflowMode.Collapse"">
     <WinOldToolbarButton Label=""New""  IconCssClass=""bi bi-file-earmark""  OnClick=""@(() => DoAction(""New""))"" />
     <WinOldToolbarButton Label=""Open"" IconCssClass=""bi bi-folder2-open"" OnClick=""@(() => DoAction(""Open""))"" />
     <WinOldToolbarButton Label=""Save"" IconCssClass=""bi bi-floppy""       OnClick=""@(() => DoAction(""Save""))"" />
@@ -395,13 +400,7 @@
         <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Mode</code></div>
         <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">ToolbarOverflowMode</div>
         <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Wrap</div>
-        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;"><code>Wrap</code> = multi-line, labels always visible. <code>Collapse</code> = single line, labels hidden under <code>CollapseWidth</code>.</div>
-    </div>
-    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
-        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>CollapseWidth</code></div>
-        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">int</div>
-        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">700</div>
-        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Width in pixels below which labels are hidden. Only used in <code>Collapse</code> mode — not a universal value, tune per toolbar/theme.</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;"><code>Wrap</code> = multi-line, labels always visible. <code>Collapse</code> = single line; buttons collapse to icon-only one at a time (rightmost first) as available width shrinks — fully automatic.</div>
     </div>
     <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
         <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Appearance</code></div>
