@@ -1,0 +1,569 @@
+@page "/toolbar-page"
+
+<PageTitle>Toolbar</PageTitle>
+
+<h1>Toolbar</h1>
+
+<p>
+    The <code>WinOldToolbar</code> and <code>WinOldToolbarButton</code> components provide an adaptive
+    button bar, available across all supported visual styles, with two configurable overflow behaviors.
+</p>
+
+<ul>
+    <li><strong>Wrap</strong> (default): the classic Win32 rebar behavior: the bar spans multiple lines when it runs out of room, labels always stay visible.</li>
+    <li><strong>Collapse</strong> : the Excel Online / Office ribbon behavior: the bar stays on a single line and buttons drop their text label (icon + tooltip only) once the bar's own width drops below <code>CollapseWidth</code>.</li>
+</ul>
+
+<p>
+    <code>WinOldToolbarButton</code> also supports a <strong>Flat</strong> look (no background/border until hovered or
+    pressed, the classic IE4/Office97 toolbar style), and <code>WinOldToolbarSeparator</code> draws a thin vertical
+    divider to group buttons within a bar.
+</p>
+
+
+
+
+
+<h2>Examples by Style</h2>
+
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap; align-items: flex-start;">
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows 98</h7>
+        <WinOldToolbar Appearance="Appearance.Win98">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"         OnClick="@(() => DoAction("Save"))" >
+                <IconTemplate><img src="img/toolbar/save-16x16.png" alt="" width="16" height="16" /></IconTemplate>
+            </WinOldToolbarButton>
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows XP</h7>
+        <WinOldToolbar Appearance="Appearance.WinXP">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"          OnClick="@(() => DoAction("Save"))"  >
+                <IconTemplate><img src="img/toolbar/save-16x16.png" alt="" width="16" height="16" /></IconTemplate>
+            </WinOldToolbarButton>
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows 7</h7>
+        <WinOldToolbar Appearance="Appearance.Win7">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"        OnClick="@(() => DoAction("Save"))"  >
+                <IconTemplate><img src="img/toolbar/save-16x16.png" alt="" width="16" height="16" /></IconTemplate>
+            </WinOldToolbarButton>
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows 10</h7>
+        <WinOldToolbar Appearance="Appearance.Win10">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"        OnClick="@(() => DoAction("Save"))" >
+                <IconTemplate><img src="img/toolbar/save-16x16.png" alt="" width="16" height="16" /></IconTemplate>
+            </WinOldToolbarButton>
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+</div>
+
+<h2>Flat buttons &amp; separators</h2>
+
+<p>Same buttons as above, with <code>Flat="true"</code> set on the toolbar (cascades to every button) and <code>WinOldToolbarSeparator</code> grouping them into clusters.</p>
+
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap; align-items: flex-start;">
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows 98</h7>
+        <WinOldToolbar Appearance="Appearance.Win98" Flat="true">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows XP</h7>
+        <WinOldToolbar Appearance="Appearance.WinXP" Flat="true">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows 7</h7>
+        <WinOldToolbar Appearance="Appearance.Win7" Flat="true">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows 10</h7>
+        <WinOldToolbar Appearance="Appearance.Win10" Flat="true">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<WinOldToolbar Appearance=""Appearance.Win98"" Flat=""true"">
+    <WinOldToolbarButton Label=""New""  IconCssClass=""bi bi-file-earmark""  OnClick=""@(() => DoAction(""New""))"" />
+    <WinOldToolbarButton Label=""Open"" IconCssClass=""bi bi-folder2-open"" OnClick=""@(() => DoAction(""Open""))"" />
+    <WinOldToolbarSeparator />
+    <WinOldToolbarButton Label=""Cut""  IconCssClass=""bi bi-scissors""      OnClick=""@(() => DoAction(""Cut""))"" />
+    <WinOldToolbarButton Label=""Copy"" IconCssClass=""bi bi-copy""          OnClick=""@(() => DoAction(""Copy""))"" />
+</WinOldToolbar>
+
+@* Flat can also be set per-button, overriding the toolbar's default: *@
+<WinOldToolbarButton Label=""Save"" IconCssClass=""bi bi-floppy"" Flat=""false"" OnClick=""..."" />") />
+
+<h2>Icon-only buttons</h2>
+
+<p>
+    Set <code>IconOnly="true"</code> on the toolbar (cascades to every button, overridable per-button) for classic
+    tight icon-square buttons and no label, no minimum width/height, just the icon plus a small padding.
+</p>
+
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap; align-items: flex-start;">
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows 98, Flat + IconOnly</h7>
+        <WinOldToolbar Appearance="Appearance.Win98" Flat="true" IconOnly="true">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+        </WinOldToolbar>
+    </div>
+
+     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows XP, mixed (only Cut/Copy/Paste are icon-only)</h7>
+        <WinOldToolbar Appearance="Appearance.WinXP">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      IconOnly="true" OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          IconOnly="true" OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     IconOnly="true" OnClick="@(() => DoAction("Paste"))" />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows 7, mixed (only Cut/Copy/Paste are icon-only)</h7>
+        <WinOldToolbar Appearance="Appearance.Win7">
+            <WinOldToolbarButton Label="New" IconCssClass="bi bi-file-earmark" OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open" IconCssClass="bi bi-folder2-open" OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut" IconCssClass="bi bi-scissors" IconOnly="true" OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy" IconCssClass="bi bi-copy" IconOnly="true" OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard" IconOnly="true" OnClick="@(() => DoAction("Paste"))" />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Windows 10, mixed (only Cut/Copy/Paste are icon-only)</h7>
+        <WinOldToolbar Appearance="Appearance.Win10">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      IconOnly="true" OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          IconOnly="true" OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     IconOnly="true" OnClick="@(() => DoAction("Paste"))" />
+        </WinOldToolbar>
+    </div>
+
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<WinOldToolbar Appearance=""Appearance.Win98"" Flat=""true"" IconOnly=""true"">
+    <WinOldToolbarButton Label=""New""  IconCssClass=""bi bi-file-earmark""  OnClick=""@(() => DoAction(""New""))"" />
+    <WinOldToolbarButton Label=""Open"" IconCssClass=""bi bi-folder2-open"" OnClick=""@(() => DoAction(""Open""))"" />
+</WinOldToolbar>
+
+@* IconOnly can also be set per-button, overriding the toolbar's default: *@
+<WinOldToolbarButton Label=""Cut"" IconCssClass=""bi bi-scissors"" IconOnly=""true"" OnClick=""..."" />") />
+
+<h2>Colored icons</h2>
+
+<p>
+    Use <code>IconTemplate</code> with an <code>&lt;img&gt;</code> for full-color icons instead of a monochrome icon
+    font. Drop your own PNGs into <code>wwwroot/img/toolbar/</code> (see the README in that folder) . This example
+    references filenames that aren't included in the repo, so you'll see broken-image placeholders until you add them.
+</p>
+
+<WinOldToolbar Appearance="Appearance.WinXP" Flat="true">
+    <WinOldToolbarButton IconOnly="true" OnClick="@(() => DoAction("New"))">
+        <IconTemplate><img src="img/toolbar/new.png" alt="" width="16" height="16" /></IconTemplate>
+    </WinOldToolbarButton>
+    <WinOldToolbarButton IconOnly="true" OnClick="@(() => DoAction("Open"))">
+        <IconTemplate><img src="img/toolbar/open.png" alt="" width="16" height="16" /></IconTemplate>
+    </WinOldToolbarButton>
+    <WinOldToolbarButton Label="Save" OnClick="@(() => DoAction("Save"))">
+        <IconTemplate><img src="img/toolbar/save-16x16.png" alt="" width="16" height="16" /></IconTemplate>
+    </WinOldToolbarButton>
+    <WinOldToolbarSeparator />
+    <WinOldToolbarButton Label="Cut" OnClick="@(() => DoAction("Cut"))">
+        <IconTemplate><img src="img/toolbar/cut.png" alt="" width="16" height="16" /></IconTemplate>
+    </WinOldToolbarButton>
+    <WinOldToolbarButton Label="Copy" OnClick="@(() => DoAction("Copy"))">
+        <IconTemplate><img src="img/toolbar/copy.png" alt="" width="16" height="16" /></IconTemplate>
+    </WinOldToolbarButton>
+    <WinOldToolbarButton Label="Paste" OnClick="@(() => DoAction("Paste"))">
+        <IconTemplate><img src="img/toolbar/paste.png" alt="" width="16" height="16" /></IconTemplate>
+    </WinOldToolbarButton>
+</WinOldToolbar>
+
+<h2>Collapse mode</h2>
+
+<p>Resize the box below via under <code>CollapseWidth</code> (set to 500px here), labels disappear and only the icon + native tooltip remain.</p>
+
+<div class="alert alert-info" role="alert">
+    <strong>Tip :</strong> drag the bottom-right corner of the dashed boxes below to resize them and see each mode react live.
+</div>
+
+<div style="resize:horizontal; overflow:auto; border:1px dashed #999; padding:8px; min-width:200px; max-width:100%; width:700px;">
+    <WinOldToolbar Appearance="Appearance.Win10" Mode="ToolbarOverflowMode.Collapse" CollapseWidth="500">
+        <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+        <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+        <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+        <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+        <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+        <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+        <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+    </WinOldToolbar>
+</div>
+
+<h2>Collapse mode + TouchMode</h2>
+
+<div style="resize:horizontal; overflow:auto; border:1px dashed #999; padding:8px; min-width:200px; max-width:100%; width:700px;">
+    <WinOldToolbar Appearance="Appearance.Win10" Mode="ToolbarOverflowMode.Collapse" CollapseWidth="500" TouchMode="true">
+        <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+        <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+        <WinOldToolbarButton Label="Save"    OnClick="@(() => DoAction("Save"))" >
+            <IconTemplate><img src="img/toolbar/save-16x16.png" alt="" width="16" height="16" /></IconTemplate>
+        </WinOldToolbarButton>
+        <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+        <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+        <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+        <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+    </WinOldToolbar>
+</div>
+
+<h2>Wrap mode</h2>
+
+<p>Same buttons, <code>Mode="ToolbarOverflowMode.Wrap"</code> (the default) : Resizing the box wraps to a new line instead of hiding labels.</p>
+
+<div style="resize:horizontal; overflow:auto; border:1px dashed #999; padding:8px; min-width:200px; max-width:100%; width:700px;">
+    <WinOldToolbar Appearance="Appearance.Win10" Mode="ToolbarOverflowMode.Wrap">
+        <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+        <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+        <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+        <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+        <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+        <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+        <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+    </WinOldToolbar>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<WinOldToolbar Appearance=""Appearance.Win10"" Mode=""ToolbarOverflowMode.Collapse"" CollapseWidth=""500"">
+    <WinOldToolbarButton Label=""New""  IconCssClass=""bi bi-file-earmark""  OnClick=""@(() => DoAction(""New""))"" />
+    <WinOldToolbarButton Label=""Open"" IconCssClass=""bi bi-folder2-open"" OnClick=""@(() => DoAction(""Open""))"" />
+    <WinOldToolbarButton Label=""Save"" IconCssClass=""bi bi-floppy""       OnClick=""@(() => DoAction(""Save""))"" />
+    <WinOldToolbarButton Label=""Print"" IconCssClass=""bi bi-printer""     Disabled />
+</WinOldToolbar>
+
+@code {
+    private void DoAction(string action) { ... }
+}") />
+
+
+
+
+<h2>Custom container style</h2>
+
+<p>
+    <code>Class</code> and <code>Style</code> apply only to the toolbar's own container element. Never to the
+    buttons/separators inside it, and fully override the built-in appearance (background, border, padding, etc.),
+    so you can restyle the container however you like.
+</p>
+
+<WinOldToolbar Appearance="Appearance.Win10" Flat="true" Class="custom-toolbar-container">
+    <WinOldToolbarButton Label="New" IconCssClass="bi bi-file-earmark" OnClick="@(() => DoAction("New"))" />
+    <WinOldToolbarButton Label="Open" IconCssClass="bi bi-folder2-open" OnClick="@(() => DoAction("Open"))" />
+    <WinOldToolbarButton Label="Save" IconCssClass="bi bi-floppy" OnClick="@(() => DoAction("Save"))" />
+    <WinOldToolbarSeparator />
+    <WinOldToolbarButton Label="Cut" IconCssClass="bi bi-scissors" OnClick="@(() => DoAction("Cut"))" />
+    <WinOldToolbarButton Label="Copy" IconCssClass="bi bi-copy" OnClick="@(() => DoAction("Copy"))" />
+    <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard" OnClick="@(() => DoAction("Paste"))" />
+</WinOldToolbar>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<WinOldToolbar Appearance=""Appearance.Win10"" Flat=""true"" Class=""custom-toolbar-container"">
+           <WinOldToolbarButton Label=""New""  IconCssClass=""bi bi-file-earmark""  OnClick=""@(() => DoAction(""New""))"" />
+           <WinOldToolbarButton Label=""Open"" IconCssClass=""bi bi-folder2-open"" OnClick=""@(() => DoAction(""Open""))"" />
+           </WinOldToolbar>
+
+           @* wwwroot/css/app.css — only targets the toolbar's own container, never the buttons: *@
+           @*
+           .custom-toolbar-container {
+           padding-left: 8px;
+           background: white;
+           border-radius: 8px;
+           border-color: #8c8c8c;
+           box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.1);
+           margin-bottom: 4px;
+           margin-left: 4px;
+           margin-right: 8px;
+           min-height: 40px;
+           }
+           *@") />
+
+
+
+
+<h2>WinOldToolbar Properties</h2>
+
+<div style="margin: 20px 0; border: 1px solid #ccc;">
+    <div style="display: flex; flex-wrap: wrap; background-color: #f0f0f0; font-weight: bold; border-bottom: 2px solid #ccc;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;">Property</div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Type</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Default</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Description</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Mode</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">ToolbarOverflowMode</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Wrap</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;"><code>Wrap</code> = multi-line, labels always visible. <code>Collapse</code> = single line, labels hidden under <code>CollapseWidth</code>.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>CollapseWidth</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">int</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">700</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Width in pixels below which labels are hidden. Only used in <code>Collapse</code> mode — not a universal value, tune per toolbar/theme.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Appearance</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Appearance</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Win10</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Visual style: Win98, WinXP, Win7, Win10, DOS. Inherited by child buttons that don't set their own.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Flat</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">false</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Default <code>Flat</code> value inherited by child buttons that don't set their own</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>IconOnly</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">false</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Default <code>IconOnly</code> value inherited by child buttons that don't set their own</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>ChildContent</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">RenderFragment?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">—</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Toolbar buttons (typically <code>WinOldToolbarButton</code> components)</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Disabled</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">false</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Disables every button in the toolbar</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>TouchMode</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">false</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Enlarges every button in the toolbar for touch interaction</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Class</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Additional CSS class applied to the toolbar container only (never the buttons/separators inside it) — fully overrides the built-in background/border/padding</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Style</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Inline CSS style applied to the toolbar container</div>
+    </div>
+</div>
+
+<h2>WinOldToolbarButton Properties</h2>
+
+<div style="margin: 20px 0; border: 1px solid #ccc;">
+    <div style="display: flex; flex-wrap: wrap; background-color: #f0f0f0; font-weight: bold; border-bottom: 2px solid #ccc;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;">Property</div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Type</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Default</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Description</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Label</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">""</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Visible button text, and source of the auto-generated <code>title</code>/<code>aria-label</code></div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>IconCssClass</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">CSS class(es) for an icon from any icon library. Ignored when <code>IconTemplate</code> is set.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>IconTemplate</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">RenderFragment?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Custom icon content (SVG, <code>&lt;img&gt;</code>, Blazor component…). Takes priority over <code>IconCssClass</code>.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>OnClick</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">EventCallback&lt;MouseEventArgs&gt;</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">—</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Callback invoked when the button is clicked</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Appearance</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Appearance?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Overrides the ancestor <code>WinOldToolbar</code>'s Appearance for this one button</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Default</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">false</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Highlights this button as the default/primary action</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Flat</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">No background/border until hovered or pressed. When unset, falls back to the ancestor <code>WinOldToolbar</code>'s <code>Flat</code> value.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>IconOnly</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Never shows a label and drops the minimum width/height so the button shrinks to fit the icon. When unset, falls back to the ancestor <code>WinOldToolbar</code>'s <code>IconOnly</code> value.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Disabled</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">false</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Grays out the button and prevents interaction</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Class</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Additional CSS class applied to the button</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Style</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Inline CSS style applied to the button</div>
+    </div>
+</div>
+
+<h2>WinOldToolbarSeparator Properties</h2>
+
+<div style="margin: 20px 0; border: 1px solid #ccc;">
+    <div style="display: flex; flex-wrap: wrap; background-color: #f0f0f0; font-weight: bold; border-bottom: 2px solid #ccc;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;">Property</div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Type</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Default</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Description</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Appearance</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Appearance?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Overrides the ancestor <code>WinOldToolbar</code>'s Appearance for this one separator</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Class</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Additional CSS class applied to the separator</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Style</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Inline CSS style applied to the separator</div>
+    </div>
+</div>
+
+@code {
+    private string _lastAction = "(nothing)";
+
+    private void DoAction(string action)
+    {
+        _lastAction = action;
+    }
+}

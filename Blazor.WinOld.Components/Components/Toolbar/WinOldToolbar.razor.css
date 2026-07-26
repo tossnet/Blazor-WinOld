@@ -1,0 +1,62 @@
+/* Selectors are wrapped in :where() so their specificity stays at the level of a single
+   class, letting a consumer-supplied Class fully override any of these container rules. */
+
+:where(.toolbar-win) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 3px 4px;
+    font-family: var(--font-family);
+}
+
+:where(.toolbar-wrap-win) {
+    flex-wrap: wrap;
+}
+
+:where(.toolbar-collapse-win) {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    container-type: inline-size;
+}
+
+/*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+:where(.toolbar-dos) {
+    background: var(--dos-background);
+    border-bottom: 1px solid #ffffff;
+}
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+:where(.toolbar-win-98) {
+    background: var(--win98-background);
+    border-bottom: 1px solid #808080;
+}
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+:where(.toolbar-win-xp) {
+    background: var(--winxp-background);
+    border-bottom: 1px solid #ACA899;
+}
+
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
+:where(.toolbar-win-7) {
+    background: linear-gradient(rgb(255, 255, 255) 20%, rgb(241, 244, 250) 25%, rgb(241, 244, 250) 43%, rgb(212, 219, 238) 48%, rgb(230, 234, 246));
+    border-bottom: 1px solid #cdd7db;
+}
+
+/*-------------------------------------------*\
+    Win 10
+\*-------------------------------------------*/
+:where(.toolbar-win-10) {
+    background: #FCFCFC;
+    border-bottom: 1px solid #DCDCDC;
+}

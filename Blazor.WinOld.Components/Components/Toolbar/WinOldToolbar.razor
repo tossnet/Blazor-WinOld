@@ -1,0 +1,27 @@
+@namespace Blazor.WinOld.Components
+@inherits WinOldComponentBase
+
+<div role="toolbar"
+     class="toolbar-win @GetComponentClass() @Class"
+     style="@RootStyle"
+     @attributes="Attributes">
+
+    @if (Mode == ToolbarOverflowMode.Collapse)
+    {
+        <style>
+            @@container @_containerName (max-width: @(Math.Max(CollapseWidth, 100))px) {
+                .toolbar-btn-label-win { display: none; }
+                .toolbar-btn-win { min-width: 32px !important; min-height: 0 !important; }
+                .toolbar-btn-win.win-touch { min-width: 44px !important; min-height: 32px !important; }
+            }
+        </style>
+    }
+
+    <CascadingValue Name="Disabled" Value="@(ParentDisabled == true || Disabled)">
+        <CascadingValue Name="TouchMode" Value="@IsTouch">
+            <CascadingValue Value="this" IsFixed="false">
+                @ChildContent
+            </CascadingValue>
+        </CascadingValue>
+    </CascadingValue>
+</div>

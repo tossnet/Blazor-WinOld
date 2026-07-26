@@ -1,0 +1,4 @@
+:where(.toolbar-win-10) {
+    background: #FCFCFC;
+    border-bottom: 1px solid #DCDCDC;
+}

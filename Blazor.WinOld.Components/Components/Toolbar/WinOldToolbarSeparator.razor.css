@@ -1,0 +1,31 @@
+.toolbar-separator-win {
+    width: 1px;
+    align-self: stretch;
+    margin: 2px 4px;
+    flex: 0 0 auto;
+    background: #808080;
+}
+
+.toolbar-separator-dos {
+    background: #ffffff;
+}
+
+.toolbar-separator-win-98 {
+    width: 2px;
+    background: transparent;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #fff;
+    margin: 2px 3px;
+}
+
+.toolbar-separator-win-xp {
+    background: #ACA899;
+}
+
+.toolbar-separator-win-7 {
+    background: #cdd7db;
+}
+
+.toolbar-separator-win-10 {
+    background: #DCDCDC;
+}

@@ -1,0 +1,119 @@
+@namespace Blazor.WinOld.Components
+@inherits WinOldComponentBase
+
+<WinOldButton Appearance="@EffectiveAppearance"
+              Disabled="@Disabled"
+              TouchMode="@TouchMode"
+              Default="@Default"
+              Class="@GetButtonClass()"
+              Style="@Style"
+              OnClick="OnClick"
+              title="@Label"
+              aria-label="@Label"
+              @attributes="Attributes">
+    @if (IconTemplate is not null)
+    {
+        <span class="toolbar-btn-icon-win" aria-hidden="true">@IconTemplate</span>
+    }
+    else if (!string.IsNullOrEmpty(IconCssClass))
+    {
+        <span class="toolbar-btn-icon-win" aria-hidden="true"><i class="@IconCssClass"></i></span>
+    }
+    @if (!EffectiveIconOnly)
+    {
+        <span class="toolbar-btn-label-win">@Label</span>
+    }
+</WinOldButton>
+
+<style>
+    /* Makes the icon and label true flex siblings so they get pixel-perfect vertical
+       centering from the flex algorithm, instead of an approximation based on the label
+       text's own font/line-height metrics (what vertical-align on the icon wrapper alone
+       can only ever get close to, not exactly, when mixing text with a fixed-height image
+       icon). justify-content centers them horizontally too — a no-op for normal labeled
+       buttons (width already exactly fits the content via width:fit-content), but needed
+       once IconOnly's aspect-ratio makes the button wider than its icon+padding content
+       (e.g. touch mode's 32px square around a 16px icon), otherwise the icon would sit at
+       the flex start (left) instead of the middle. Literal, unscoped style block for the
+       same reason as the flat-mode block below: the button element is rendered by
+       WinOldButton.razor, out of reach of this component's own isolated stylesheet. */
+    .toolbar-btn-win {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+@if (EffectiveIconOnly)
+{
+    <style>
+        /* Drops the minimum width so the button is only as wide as its (square) height,
+           instead of WinOldButton's normal 75px/90px minimums (or the 32-44px floor
+           Collapse mode falls back to). Deterministically wins over both of those: same
+           specificity (two classes), but rendered later in the document since this
+           button's own markup comes after WinOldToolbar's own style block in the render
+           tree, and document order is the tie-breaker for equal-specificity CSS rules.
+           min-height is deliberately left untouched — WinOldButton.razor.css already
+           varies it correctly with TouchMode (23px/21px depending on theme, 32px in
+           touch mode via .win-touch) — aspect-ratio then derives the width from whatever
+           that resolved height turns out to be, so the button stays square in both modes
+           without this rule needing to know or duplicate those numbers itself. */
+        .toolbar-btn-win.toolbar-btn-icon-only-win {
+            min-width: unset !important;
+            aspect-ratio: 1;
+            padding: 2px !important;
+        }
+
+        .toolbar-btn-icon-only-win .toolbar-btn-icon-win {
+            margin-right: 0;
+        }
+    </style>
+}
+
+@if (EffectiveFlat)
+{
+    <style>
+        /* Hide background/border/shadow at rest AND when disabled. Every interactive/focus
+           state already has its own rule in WinOldButton.razor.css with a higher selector
+           specificity, so excluding those states here lets the normal theme chrome reappear
+           on its own on hover, press or focus, without duplicating any color or gradient
+           value. Disabled is deliberately NOT excluded (unlike the other states): a flat
+           button should never show a border/background, including when disabled — a
+           disabled button can't be hovered/pressed/focused into revealing one anyway, so
+           there's nothing to preserve access to. This still wins over each theme's own
+           :disabled rule (same two-class specificity, tie broken by document order: this
+           literal style block is rendered into the page body, after the isolated
+           WinOldButton.razor.css bundle loaded via the <link> in the document head), and
+           doesn't touch color/cursor, so the theme's grayed-out disabled text still shows.
+           This has to be a literal, unscoped style block (not the isolated razor.css
+           file): the button element these classes land on is rendered by WinOldButton.razor,
+           so it never carries this component's own CSS-isolation scope attribute for the
+           deep combinator to attach to. */
+        .btn-dos.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused) {
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        .btn-win-xp.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused) {
+            border-color: transparent;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .btn-win-98.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused) {
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .btn-win-7.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(:focus-visible):not(.focused) {
+            background: transparent;
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+        .btn-win-10.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused) {
+            background-color: transparent;
+            border-color: transparent;
+        }
+    </style>
+}

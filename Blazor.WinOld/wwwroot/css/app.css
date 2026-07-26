@@ -124,3 +124,18 @@ code {
 .language-css .token.string, .style .token.string, .token.entity, .token.operator, .token.url {
     background:unset !important;
 }
+
+/* Example: fully custom WinOldToolbar container style (see ToolbarPage.razor). */
+.custom-toolbar-container {
+    padding-left: 8px;
+    background: white;
+    border-radius: 8px;
+    border-color: #8c8c8c;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 8px;
+    min-height: 40px;
+}

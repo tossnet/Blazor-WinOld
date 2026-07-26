@@ -7,7 +7,6 @@
     <title>Blazor.WinOld</title>
     <base href="/" />
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
 
     <meta property="og:title" content="Blazor WinOld" />
@@ -23,6 +22,10 @@
 
     <link href="_content/Brism/prism.css" rel="stylesheet" />
     <link href="_content/Brism/prism-vsc-dark-plus.css" rel="stylesheet" />
+
+    <!-- Loaded last so app-level overrides (e.g. custom component container styles) win over
+         the library's scoped CSS for equal-specificity selectors. -->
+    <link rel="stylesheet" href="css/app.css" />
 </head>
 
 <body>
