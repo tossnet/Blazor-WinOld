@@ -61,15 +61,18 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes 
+<details open="open"><summary>Version 2.8.3</summary>
 
-<details open="open"><summary>Version 2.8.2</summary>
+>- `WinOldToolbar`: Fixed Collapse mode clipping button labels mid-word instead of collapsing to icon-only, by preventing native flexbox shrinking on toolbar buttons.
+</details>
+<details><summary>Version 2.8.2</summary>
 
->-WinOldToolbar: Collapse mode now shrinks buttons to icon-only one at a time from the right as space runs out, instead of all at once , CollapseWidth removed, fully automatic.
+>- `WinOldToolbar`: Collapse mode now shrinks buttons to icon-only one at a time from the right as space runs out, instead of all at once , CollapseWidth removed, fully automatic.
 </details>
 
 <details><summary>Version 2.8.1</summary>
 
->- WinOldToolbarButton: fixed flat-mode buttons never showing the "active" (toggled-on) style, since the flat-mode CSS override took precedence over .active.
+>- `WinOldToolbarButton`: fixed flat-mode buttons never showing the "active" (toggled-on) style, since the flat-mode CSS override took precedence over .active.
 </details>
 <details><summary>Version 2.8.0</summary>
 

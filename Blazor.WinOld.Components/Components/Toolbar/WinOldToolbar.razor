@@ -11,6 +11,7 @@
     @if (Mode == ToolbarOverflowMode.Collapse)
     {
         <style>
+            .toolbar-win.toolbar-collapse-win > .toolbar-btn-win { flex-shrink: 0; }
             .toolbar-btn-win.toolbar-btn-collapsed-win .toolbar-btn-label-win { display: none; }
             .toolbar-btn-win.toolbar-btn-collapsed-win { min-width: 32px !important; min-height: 0 !important; }
             .toolbar-btn-win.toolbar-btn-collapsed-win.win-touch { min-width: 44px !important; min-height: 32px !important; }
