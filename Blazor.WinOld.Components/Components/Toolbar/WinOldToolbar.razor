@@ -13,8 +13,18 @@
         <style>
             .toolbar-win.toolbar-collapse-win > .toolbar-btn-win { flex-shrink: 0; }
             .toolbar-btn-win.toolbar-btn-collapsed-win .toolbar-btn-label-win { display: none; }
-            .toolbar-btn-win.toolbar-btn-collapsed-win { min-width: 32px !important; min-height: 0 !important; }
-            .toolbar-btn-win.toolbar-btn-collapsed-win.win-touch { min-width: 44px !important; min-height: 32px !important; }
+            /* padding is forced to a uniform 2px here for the same reason
+               WinOldToolbarButton's own IconOnly rule does it: each theme's normal
+               padding (e.g. Win98/WinXP's 2px-top/0-bottom split, sized for a
+               labeled button) is otherwise left untouched once min-height is zeroed
+               below, so the button's rendered height collapses to icon + whatever
+               leftover vertical padding that theme happens to have — visibly too
+               short/lopsided for themes with little or no bottom padding and no
+               border to compensate (Win98 has neither). A uniform, symmetric 2px
+               keeps the collapsed button's height consistent across every theme. */
+            .toolbar-btn-win.toolbar-btn-collapsed-win { min-width: 32px !important; min-height: 0 !important; padding: 2px !important; }
+            .toolbar-btn-win.toolbar-btn-collapsed-win.win-touch { min-width: 44px !important; min-height: 32px !important; padding: 2px !important; }
+            .toolbar-btn-win.toolbar-btn-collapsed-win .toolbar-btn-icon-win { margin-right: 0; }
         </style>
     }
 

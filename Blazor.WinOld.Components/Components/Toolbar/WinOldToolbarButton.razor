@@ -57,9 +57,19 @@
            varies it correctly with TouchMode (23px/21px depending on theme, 32px in
            touch mode via .win-touch) — aspect-ratio then derives the width from whatever
            that resolved height turns out to be, so the button stays square in both modes
-           without this rule needing to know or duplicate those numbers itself. */
+           without this rule needing to know or duplicate those numbers itself.
+           width is also forced back to auto here: WinOldButton.razor.css's base .btn-win
+           sets width: fit-content, and aspect-ratio only auto-derives a missing dimension
+           when that dimension's used value is the plain 'auto' keyword — fit-content is a
+           different shrink-to-fit keyword, and engines disagree on how it interacts with
+           aspect-ratio. WebKit keeps sizing the button from its content (icon + padding)
+           and ignores the square derivation, rendering a wider-than-tall button, while
+           Chromium/Firefox happen to still resolve it into a square. Forcing width: auto
+           removes that inconsistency by using the one keyword every engine agrees
+           triggers aspect-ratio-driven sizing. */
         .toolbar-btn-win.toolbar-btn-icon-only-win {
             min-width: unset !important;
+            width: auto !important;
             aspect-ratio: 1;
             padding: 2px !important;
         }

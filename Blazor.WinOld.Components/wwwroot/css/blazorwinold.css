@@ -141,6 +141,33 @@ body {
         font-size: 13px;
     }
 
+/*-------------------------------------------*\
+    DATE / TIME INPUT (fix WebKit/iOS)
+\*-------------------------------------------*/
+/* iOS Safari empile verticalement les pseudo-éléments internes
+   (jour/mois/année + spinner) quand le champ a une hauteur fixe trop
+   contrainte. On utilise min-height + line-height normale au lieu d'une
+   hauteur fixe, uniquement pour les types date/heure. On ne touche pas à
+   -webkit-appearance (skin rétro préservé) ni à la font-size. */
+.txt-win[type="date"],
+.txt-win[type="time"],
+.txt-win[type="month"],
+.txt-win[type="week"],
+.txt-win[type="datetime-local"] {
+    height: auto;
+    min-height: 24px;
+    line-height: normal;
+}
+
+    .txt-win[type="date"].win-touch,
+    .txt-win[type="time"].win-touch,
+    .txt-win[type="month"].win-touch,
+    .txt-win[type="week"].win-touch,
+    .txt-win[type="datetime-local"].win-touch {
+        height: auto;
+        min-height: 28px;
+    }
+
 label.label-txt-win.win-touch {
     font-size: 13px;
 }
