@@ -145,11 +145,15 @@ body {
     DATE / TIME INPUT (fix WebKit/iOS)
 \*-------------------------------------------*/
 /* iOS Safari empile verticalement les pseudo-éléments internes
-   (jour/mois/année + spinner). Deux causes cumulées, corrigées sans toucher
+   (jour/mois/année + spinner). Trois causes cumulées, corrigées sans toucher
    à -webkit-appearance ni à la font-size :
    1) `all: unset` fait retomber `display` sur `inline` au lieu de
       `inline-block` (contrairement à .txtarea-win qui le redéclare) ;
-   2) une hauteur fixe trop contrainte pour le rendu interne du picker. */
+   2) une hauteur fixe trop contrainte pour le rendu interne du picker ;
+   3) WebKit calcule la largeur intrinsèque du champ vide selon son contenu
+      réel (contrairement à Chrome/Edge qui réservent toujours la place pour
+      "jj/mm/aaaa" + icône) : sans valeur, le champ se réduit à quelques
+      pixels. On fixe donc une largeur minimale explicite. */
 .txt-win[type="date"],
 .txt-win[type="time"],
 .txt-win[type="month"],
@@ -158,6 +162,7 @@ body {
     display: inline-block;
     height: auto;
     min-height: 24px;
+    min-width: 120px;
     line-height: normal;
 }
 
@@ -168,6 +173,7 @@ body {
     .txt-win[type="datetime-local"].win-touch {
         height: auto;
         min-height: 28px;
+        min-width: 140px;
     }
 
 label.label-txt-win.win-touch {

@@ -62,7 +62,7 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes 
 
-<details open="open"><summary>Version 2.8.5</summary>
+<details open="open"><summary>Version 2.8.6</summary>
 
 >- Fix: input[type="date"] (and related date/time types) on WinOldTextBox no longer stacks its internal fields vertically on iOS/WebKit Safari
 </details>
