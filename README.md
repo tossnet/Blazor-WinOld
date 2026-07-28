@@ -61,7 +61,17 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 
 ## <a name="ReleaseNotes"></a>Release Notes 
-<details open="open"><summary>Version 2.8.3</summary>
+
+<details open="open"><summary>Version 2.8.5</summary>
+
+>- Fix: input[type="date"] (and related date/time types) on WinOldTextBox no longer stacks its internal fields vertically on iOS/WebKit Safari
+</details>
+<details5><summary>Version 2.8.4</summary>
+
+>- Improvements and bug fixes (windoldtoolbarbutton, winoldtextbox with type="date" on webkit..)
+</details>
+
+<details><summary>Version 2.8.3</summary>
 
 >- `WinOldToolbar`: Fixed Collapse mode clipping button labels mid-word instead of collapsing to icon-only, by preventing native flexbox shrinking on toolbar buttons.
 </details>

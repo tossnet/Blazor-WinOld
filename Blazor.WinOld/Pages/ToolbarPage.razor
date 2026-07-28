@@ -36,13 +36,14 @@
             <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
             <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
             <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <input style="width:75px;" value="oh!" />
             <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
         </WinOldToolbar>
     </div>
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
         <h7>Windows XP</h7>
-        <WinOldToolbar Appearance="Appearance.WinXP">
+        <WinOldToolbar Appearance="Appearance.WinXP" Mode="ToolbarOverflowMode.Collapse">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
             <WinOldToolbarButton Label="Save"          OnClick="@(() => DoAction("Save"))"  >
@@ -57,7 +58,7 @@
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
         <h7>Windows 7</h7>
-        <WinOldToolbar Appearance="Appearance.Win7">
+        <WinOldToolbar Appearance="Appearance.Win7" Mode="ToolbarOverflowMode.Collapse">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
             <WinOldToolbarButton Label="Save"        OnClick="@(() => DoAction("Save"))"  >
@@ -72,7 +73,7 @@
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
         <h7>Windows 10</h7>
-        <WinOldToolbar Appearance="Appearance.Win10">
+        <WinOldToolbar Appearance="Appearance.Win10" Mode="ToolbarOverflowMode.Collapse">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
             <WinOldToolbarButton Label="Save"        OnClick="@(() => DoAction("Save"))" >

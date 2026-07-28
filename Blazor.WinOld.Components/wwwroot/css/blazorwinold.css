@@ -145,15 +145,17 @@ body {
     DATE / TIME INPUT (fix WebKit/iOS)
 \*-------------------------------------------*/
 /* iOS Safari empile verticalement les pseudo-éléments internes
-   (jour/mois/année + spinner) quand le champ a une hauteur fixe trop
-   contrainte. On utilise min-height + line-height normale au lieu d'une
-   hauteur fixe, uniquement pour les types date/heure. On ne touche pas à
-   -webkit-appearance (skin rétro préservé) ni à la font-size. */
+   (jour/mois/année + spinner). Deux causes cumulées, corrigées sans toucher
+   à -webkit-appearance ni à la font-size :
+   1) `all: unset` fait retomber `display` sur `inline` au lieu de
+      `inline-block` (contrairement à .txtarea-win qui le redéclare) ;
+   2) une hauteur fixe trop contrainte pour le rendu interne du picker. */
 .txt-win[type="date"],
 .txt-win[type="time"],
 .txt-win[type="month"],
 .txt-win[type="week"],
 .txt-win[type="datetime-local"] {
+    display: inline-block;
     height: auto;
     min-height: 24px;
     line-height: normal;
