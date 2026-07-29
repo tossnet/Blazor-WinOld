@@ -14,11 +14,14 @@ public partial class WinOldDialogHost : WinOldComponentBase
     private DialogOptions Options { get; set; } = new DialogOptions();
     private TaskCompletionSource<bool?>? Tcs { get; set; }
     private bool IsVisible { get; set; }
+    private DialogService? _service;
+    private int _zIndex = 99999;
 
     protected override void OnInitialized()
     {
         if (DialogService is DialogService service)
         {
+            _service = service;
             service.RegisterDialog(ShowDialog);
         }
     }
@@ -34,6 +37,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
         Options = options;
         Tcs = new TaskCompletionSource<bool?>();
         IsVisible = true;
+        _zIndex = _service?.NextZIndex() ?? _zIndex;
         StateHasChanged();
 
         return Tcs.Task;

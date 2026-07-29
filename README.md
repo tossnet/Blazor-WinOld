@@ -62,6 +62,11 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes 
 
+<details open="open"><summary>Version 2.8.7</summary>
+
+>- Fix: Fixed MessageBox/Dialog/InputBox z-index stacking so the most recently opened one always renders on top.
+>- Fixed WinOldDialog mis-centering by deferring the position-freeze in draggable.js until the user actually starts dragging, instead of capturing it on first render before scrollable content settles its final height.
+</details>
 <details open="open"><summary>Version 2.8.6</summary>
 
 >- Fix: input[type="date"] (and related date/time types) on WinOldTextBox no longer stacks its internal fields vertically on iOS/WebKit Safari

@@ -27,6 +27,8 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
     private TaskCompletionSource<object?>? Tcs { get; set; }
     /// </summary>
     private bool IsVisible { get; set; }
+    private DialogService? _service;
+    private int _zIndex = 99999;
 
     private object? CurrentValue { get; set; }
 
@@ -39,6 +41,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
     {
         if (DialogService is DialogService service)
         {
+            _service = service;
             service.RegisterInputBox(ShowInputBox);
         }
     }
@@ -62,6 +65,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
 
         Tcs = new TaskCompletionSource<object?>();
         IsVisible = true;
+        _zIndex = _service?.NextZIndex() ?? _zIndex;
         StateHasChanged();
 
         // Wait for the component to render and then set focus

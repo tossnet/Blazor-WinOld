@@ -1,4 +1,6 @@
-﻿<WinOldMenu Appearance="Appearance">
+﻿@inject IDialogService DialogService
+
+<WinOldMenu Appearance="Appearance">
 
     <WinOldMenuItem Label="File">
         <WinOldMenuItem Label="New" OnClick="@(() => DoAction("New"))" />
@@ -50,6 +52,11 @@
 
 	<WinOldTabPanel Label="Settings" Style="height:245px">
 		<p>Contents of third tab</p>
+
+        <WinOldButton OnClick="ClickMe"
+                      Appearance="Appearance.WinXP">
+            Show MessageBox
+        </WinOldButton>
 	</WinOldTabPanel>
 
 </WinOldTabs>
@@ -64,5 +71,19 @@
     private void DoAction(string action)
     {
         _lastAction = action;
+    }
+
+    private async Task ClickMe()
+    {
+        var options = new MessageBoxOptions
+        {
+            Appearance = Appearance.WinXP,
+            Title = "Warning",
+            Message = "Blazor is awesome!",
+            Icon = Icon.Information,
+            OkButtonText = "OK",
+            CancelButtonText = ""
+        };
+        var DialogResult = await DialogService.ShowMessageBox(options);
     }
 }

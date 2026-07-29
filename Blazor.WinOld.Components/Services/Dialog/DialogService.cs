@@ -11,6 +11,12 @@ public class DialogService : IDialogService
         _serviceProvider = serviceProvider;
     }
 
+    // Shared z-index counter so the most recently opened host (Dialog, MessageBox, InputBox)
+    // always renders above the others, regardless of their static DOM order.
+    private int _zIndexCounter = 99999;
+
+    internal int NextZIndex() => ++_zIndexCounter;
+
     // MessageBox events and methods
     private event Func<MessageBoxOptions, Task<bool?>>? OnShowMessageBox;
 

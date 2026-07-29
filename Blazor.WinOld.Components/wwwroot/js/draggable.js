@@ -28,13 +28,6 @@ export function positionSubmenu(el) {
 }
 
 export function initDraggable(windowEl, titleBarEl) {
-    const rect = windowEl.getBoundingClientRect();
-    windowEl.style.position = 'fixed';
-    windowEl.style.zIndex = '999999';
-    windowEl.style.left = rect.left + 'px';
-    windowEl.style.top = rect.top + 'px';
-    windowEl.style.margin = '0';
-
     // Bloque le scroll natif sur la barre de titre (pour tactile)
     titleBarEl.style.touchAction = 'none';
 
@@ -46,10 +39,20 @@ export function initDraggable(windowEl, titleBarEl) {
     function onDown(e) {
         if (e.target.closest('button, a, input, select')) return;
 
+        // Ne fige la position (sortie du flux flex de centrage) qu'au moment
+        // où l'utilisateur commence réellement à dragger, pour ne jamais figer
+        // une position calculée avant que le contenu (ex: liste scrollable) ait
+        // atteint sa hauteur finale.
+        const r = windowEl.getBoundingClientRect();
+        windowEl.style.position = 'fixed';
+        windowEl.style.zIndex = '999999';
+        windowEl.style.left = r.left + 'px';
+        windowEl.style.top = r.top + 'px';
+        windowEl.style.margin = '0';
+
         isDragging = true;
         titleBarEl.setPointerCapture(e.pointerId);
         if (hasFinePointer) titleBarEl.style.cursor = 'grabbing';
-        const r = windowEl.getBoundingClientRect();
         offsetX = e.clientX - r.left;
         offsetY = e.clientY - r.top;
         e.preventDefault();

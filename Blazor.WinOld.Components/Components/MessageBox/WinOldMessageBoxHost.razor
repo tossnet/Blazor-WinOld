@@ -4,7 +4,7 @@
 
 @if (IsVisible)
 {
-    <div class="msg-win-backdrop">
+    <div class="msg-win-backdrop" style="z-index: @_zIndex">
         <div @ref="_windowRef"
              role="alertdialog"
              aria-modal="true"

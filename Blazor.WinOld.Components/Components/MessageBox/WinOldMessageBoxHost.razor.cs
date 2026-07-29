@@ -17,11 +17,14 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
     private TaskCompletionSource<bool?>? Tcs { get; set; }
     /// </summary>
     private bool IsVisible { get; set; }
+    private DialogService? _service;
+    private int _zIndex = 99999;
 
     protected override void OnInitialized()
     {
         if (DialogService is DialogService service)
         {
+            _service = service;
             service.Register(ShowMessageBox);
         }
     }
@@ -38,6 +41,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
         Options = options;
         Tcs = new TaskCompletionSource<bool?>();
         IsVisible = true;
+        _zIndex = _service?.NextZIndex() ?? _zIndex;
         StateHasChanged();
 
         return Tcs.Task;

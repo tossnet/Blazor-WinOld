@@ -4,7 +4,7 @@
 
 @if (IsVisible)
 {
-	<div class="inp-win-backdrop">
+	<div class="inp-win-backdrop" style="z-index: @_zIndex">
 		<div @ref="_windowRef"
 			 role="dialog"
 			 aria-modal="true"
