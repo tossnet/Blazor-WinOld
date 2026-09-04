@@ -19,8 +19,8 @@
            disabled="@(ParentDisabled | Disabled)"
            style="@(ShowTicks && Step is not null ? $"--tick-count:{GetTickCount()}; " : "") @RangeStyle"
            @attributes="Attributes"
-           @bind="Value"
-           @oninput="OnValueChanged">
+           value="@FormatInvariant(CurrentValue)"
+           @oninput="OnInput">
     <label class="label-txt-win @GetComponentLabelClass()"
            disabled="@(ParentDisabled | Disabled)">
         @HighLabel

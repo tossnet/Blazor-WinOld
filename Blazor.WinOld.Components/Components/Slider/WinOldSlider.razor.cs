@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using System.Globalization;
-using System.Reflection.Emit;
 
 namespace Blazor.WinOld.Components;
 
@@ -55,16 +54,25 @@ public partial class WinOldSlider<TValue> : WinOldComponentBase
     private readonly string _listId = $"sld-win-ticks-{Guid.NewGuid():N}";
     private readonly string _inputId = $"sld-win-{Guid.NewGuid():N}";
 
-    private async Task OnValueChanged(ChangeEventArgs e)
+    protected TValue? CurrentValue
     {
-        if (!ValueChanged.HasDelegate) return;
+        get => Value;
+        set
+        {
+            if (!EqualityComparer<TValue?>.Default.Equals(value, Value))
+            {
+                Value = value;
+                _ = ValueChanged.InvokeAsync(value);
+            }
+        }
+    }
 
+    private void OnInput(ChangeEventArgs e)
+    {
         var raw = e.Value?.ToString();
-        TValue? converted = raw is null 
-            ? default 
+        CurrentValue = raw is null
+            ? default
             : (TValue?)Convert.ChangeType(raw, typeof(TValue), CultureInfo.InvariantCulture);
-        Value = converted;
-        await ValueChanged.InvokeAsync(Value);
     }
 
     private string? FormatInvariant(TValue? value)

@@ -12,7 +12,7 @@
 
 		<!-- Package metadata -->
 		<PackageId>BlazorWinOld</PackageId>
-		<Version>2.8.7</Version>
+		<Version>2.8.8</Version>
 		<Authors>Christophe Peugnet</Authors>
 		<Copyright>Copyright 2025-2026</Copyright>
 		<Description>Blazor components in Windows 98, Windows XP, Windows 7 and Windows 10 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
@@ -24,7 +24,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReleaseNotes>
-      v2.8.7 Fixed MessageBox/Dialog/InputBox z-index stacking so the most recently opened one always renders on top. + Fixed WinOldDialog mis-centering by deferring the position-freeze in draggable.js until the user actually starts dragging, instead of capturing it on first render before scrollable content settles its final height.
+      v2.8.8 Fixed WinOldSlider thumb snapping back to a stale position during fast drags, caused by redundant event handling forcing an unnecessary re-render on every pointer move.
     </PackageReleaseNotes>
 
 		<!-- Build and symbols -->
