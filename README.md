@@ -62,8 +62,12 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes 
 
+<details open="open"><summary>Version 2.9.0</summary>
 
-<details open="open"><summary>Version 2.8.8</summary>
+>- Replaced WinOldNumberBox's native spin arrows with custom theme-accurate up/down buttons (Win98/WinXP/Win7/Win10) + fixed Win98 spin buttons not scaling in TouchMode. WinXP and Win10 styles still need polishing.
+</details>
+
+<details><summary>Version 2.8.8</summary>
 
 >- Fixed WinOldSlider thumb snapping back to a stale position during fast drags, caused by redundant event handling forcing an unnecessary re-render on every pointer move.
 </details>

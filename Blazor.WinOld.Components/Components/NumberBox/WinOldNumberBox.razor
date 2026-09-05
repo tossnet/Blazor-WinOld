@@ -8,16 +8,51 @@
            disabled="@(ParentDisabled | Disabled)">
         @Label
     </label>
-    <input @ref="InputElement"
-           type="number"
-           id="@ElementId"
-           class="txt-win num-win @GetComponentClass() @Class"
-           disabled="@(ParentDisabled | Disabled)"
-           style="@InputStyle"
-           min="@Min"
-           max="@Max"
-           step="@Step"
-           @attributes="Attributes"
-           @bind="CurrentValue"
-           @bind:event="oninput" />
+    @if (Appearance == Appearance.DOS)
+    {
+        <input @ref="InputElement"
+               type="number"
+               id="@ElementId"
+               class="txt-win num-win @GetComponentClass() @Class"
+               disabled="@(ParentDisabled | Disabled)"
+               style="@InputStyle"
+               min="@Min"
+               max="@Max"
+               step="@Step"
+               @attributes="Attributes"
+               @bind="CurrentValue"
+               @bind:event="oninput" />
+    }
+    else
+    {
+        <div class="numbox-wrap @GetSpinWrapClass()">
+            <input @ref="InputElement"
+                   type="number"
+                   id="@ElementId"
+                   class="txt-win num-win numbox-input @GetComponentClass() @Class"
+                   disabled="@(ParentDisabled | Disabled)"
+                   style="@InputStyle"
+                   min="@Min"
+                   max="@Max"
+                   step="@Step"
+                   @attributes="Attributes"
+                   @bind="CurrentValue"
+                   @bind:event="oninput" />
+
+            <div class="numbox-spin @GetSpinClass()">
+                <button type="button"
+                        class="numbox-spin-btn @GetSpinBtnThemeClass() numbox-spin-up"
+                        tabindex="-1"
+                        aria-hidden="true"
+                        disabled="@(ParentDisabled | Disabled)"
+                        @onclick="Increment"></button>
+                <button type="button"
+                        class="numbox-spin-btn @GetSpinBtnThemeClass() numbox-spin-down"
+                        tabindex="-1"
+                        aria-hidden="true"
+                        disabled="@(ParentDisabled | Disabled)"
+                        @onclick="Decrement"></button>
+            </div>
+        </div>
+    }
 </div>

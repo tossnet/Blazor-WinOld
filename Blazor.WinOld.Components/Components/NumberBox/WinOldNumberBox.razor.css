@@ -12,3 +12,327 @@
     height: 24px;
     margin-top: 2px;
 }
+
+/*-------------------------------------------*\
+    Custom spin buttons (Win98 / WinXP / Win7 / Win10)
+    DOS keeps the native spinner above, untouched.
+
+    Win98 / WinXP: the up/down buttons are their own distinct
+    control sitting outside the text field (like a real OS spin
+    button glued to the input).
+    Win7 / Win10: the arrows are part of the same single box as
+    the input (like WinOldSelect's dropdown arrow) — the border
+    lives on the wrapper, not on the input or the buttons.
+\*-------------------------------------------*/
+
+.numbox-wrap {
+    display: inline-flex;
+    align-items: stretch;
+    vertical-align: top;
+    gap: 0;
+}
+
+.numbox-input {
+    flex: 1 1 auto;
+}
+
+/* Native spinner is replaced by the custom buttons below */
+.numbox-input {
+    -moz-appearance: textfield;
+}
+
+    .numbox-input::-webkit-inner-spin-button,
+    .numbox-input::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        display: none;
+    }
+
+.numbox-spin {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    width: 16px;
+}
+
+.numbox-spin.win-touch {
+    width: 22px;
+}
+
+.numbox-spin-btn {
+    flex: 1 1 50%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    line-height: 0;
+    cursor: pointer;
+    font: inherit;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+    .numbox-spin-btn:disabled {
+        cursor: default;
+    }
+
+/*-------------------------------------------*\
+    Win 98 (same bevel as WinOldButton's Win98 appearance)
+\*-------------------------------------------*/
+.numbox-spin-98 {
+    width: 17px;
+    height: 18px;
+    margin-top: 1px;
+}
+
+.numbox-spin-98.win-touch {
+    width: 22px;
+    height: 25px;
+    margin-top: 1px;
+}
+
+.numbox-spin-btn-98.numbox-spin-up::before {
+    content: "";
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 3px solid #000;
+}
+
+.numbox-spin-btn-98.numbox-spin-down::before {
+    content: "";
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 3px solid #000;
+}
+
+.numbox-spin-btn-98.win-touch.numbox-spin-up::before {
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 5px;
+}
+
+.numbox-spin-btn-98.win-touch.numbox-spin-down::before {
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 5px;
+}
+
+.numbox-spin-btn-98:disabled.numbox-spin-up::before {
+    border-bottom-color: #808080;
+}
+
+.numbox-spin-btn-98:disabled.numbox-spin-down::before {
+    border-top-color: #808080;
+}
+
+.numbox-spin-btn-98 {
+    border: none;
+    border-radius: 0;
+    background: var(--win98-background);
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+}
+
+    .numbox-spin-btn-98:not(:disabled):active {
+        box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+    }
+
+    .numbox-spin-btn-98:disabled {
+        color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+    }
+
+/*-------------------------------------------*\
+    Win XP (same little arrow-button icon as WinOldSelect's
+    Win XP dropdown, split into an up/down pair)
+\*-------------------------------------------*/
+.numbox-spin-xp {
+    width: 20px;
+    margin-left: -2px;
+}
+
+.numbox-spin.numbox-spin-xp.win-touch {
+    width: 26px;
+}
+
+.numbox-spin-btn-xp {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15px 17px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 17'%3E%3Crect x='0' y='0' width='15' height='17' fill='%23e6eefc'/%3E%3Cpath d='M15,1l0,15l-1,0l0,1l-13,0l0,-16l14,0Z' fill='%23b8c9f2'/%3E%3Cpath d='M14,0l0,16l-14,0l0,-15l1,0l0,-1l13,0Z' fill='url(%23_Linear1)'/%3E%3Crect x='1' y='1' width='13' height='15' fill='url(%23_Linear2)'/%3E%3Cpath d='M4,6l0,1l-1,0l0,1l1,0l0,1l1,0l0,1l1,0l0,1l1,0l0,1l1,0l0,-1l1,0l0,-1l1,0l0,-1l1,0l0,-1l1,0l0,-1l-1,0l0,-1l-1,0l0,1l-1,0l0,1l-1,0l0,1l-1,0l0,-1l-1,0l0,-1l-1,0l0,-1l-1,0Z' fill='%234d6185'/%3E%3Cdefs%3E%3ClinearGradient id='_Linear1' x1='0' y1='0' x2='1' y2='0' gradientUnits='userSpaceOnUse' gradientTransform='matrix(-14,-16,16,-14,14,16)'%3E%3Cstop offset='0' stop-color='%23afc5f4' stop-opacity='1'/%3E%3Cstop offset='0.83' stop-color='%23c2d4f9' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='%23d1e0fd' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='_Linear2' x1='0' y1='0' x2='1' y2='0' gradientUnits='userSpaceOnUse' gradientTransform='matrix(13,15,-17.3077,15,1,1)'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='%23aac8f7' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+}
+
+    .numbox-spin-btn-xp:not(:disabled):hover {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 17'%3E%3Crect x='0' y='0' width='15' height='17' fill='%23cfdbec'/%3E%3Cpath d='M15,1l0,15l-1,0l0,1l-13,0l0,-16l14,0Z' fill='%2398aee1'/%3E%3Cpath d='M14,0l0,16l-14,0l0,-15l1,0l0,-1l13,0Z' fill='url(%23_Linear1)'/%3E%3Crect x='1' y='1' width='13' height='15' fill='url(%23_Linear2)'/%3E%3Cpath d='M4,6l0,1l-1,0l0,1l1,0l0,1l1,0l0,1l1,0l0,1l1,0l0,1l1,0l0,-1l1,0l0,-1l1,0l0,-1l1,0l0,-1l1,0l0,-1l-1,0l0,-1l-1,0l0,1l-1,0l0,1l-1,0l0,1l-1,0l0,-1l-1,0l0,-1l-1,0l0,-1l-1,0Z' fill='%234d6185'/%3E%3Cdefs%3E%3ClinearGradient id='_Linear1' x1='0' y1='0' x2='1' y2='0' gradientUnits='userSpaceOnUse' gradientTransform='matrix(-14,-16,16,-14,14,16)'%3E%3Cstop offset='0' stop-color='%238aa6e3' stop-opacity='1'/%3E%3Cstop offset='0.62' stop-color='%2391abe4' stop-opacity='1'/%3E%3Cstop offset='0.83' stop-color='%23a2b8e7' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='%23b4c7eb' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='_Linear2' x1='0' y1='0' x2='1' y2='0' gradientUnits='userSpaceOnUse' gradientTransform='matrix(13,15,-17.3077,15,1,1)'%3E%3Cstop offset='0' stop-color='%23fdffff' stop-opacity='1'/%3E%3Cstop offset='0.36' stop-color='%23ddf0fe' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='%23b9dafb' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+    }
+
+    .numbox-spin-btn-xp:not(:disabled):active {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 17'%3E%3Crect x='0' y='0' width='15' height='17' fill='url(%23_Linear1)'/%3E%3Cpath d='M15,1l0,15l-1,0l0,1l-13,0l0,-16l14,0Z' fill='%23bcccf3'/%3E%3Cpath d='M14,0l0,16l-14,0l0,-15l1,0l0,-1l13,0Z' fill='url(%23_Linear2)'/%3E%3Crect x='1' y='1' width='13' height='15' fill='url(%23_Linear3)'/%3E%3Cpath d='M4,6l0,1l-1,0l0,1l1,0l0,1l1,0l0,1l1,0l0,1l1,0l0,1l1,0l0,-1l1,0l0,-1l1,0l0,-1l1,0l0,-1l1,0l0,-1l-1,0l0,-1l-1,0l0,1l-1,0l0,1l-1,0l0,1l-1,0l0,-1l-1,0l0,-1l-1,0l0,-1l-1,0Z' fill='%234d6185'/%3E%3Cdefs%3E%3ClinearGradient id='_Linear1' x1='0' y1='0' x2='1' y2='0' gradientUnits='userSpaceOnUse' gradientTransform='matrix(15,17,-19.2667,17,0,0)'%3E%3Cstop offset='0' stop-color='%23bbc2dc' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='%23d9e3f6' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='_Linear2' x1='0' y1='0' x2='1' y2='0' gradientUnits='userSpaceOnUse' gradientTransform='matrix(-14,-16,16,-14,14,16)'%3E%3Cstop offset='0' stop-color='%237786d9' stop-opacity='1'/%3E%3Cstop offset='0.62' stop-color='%237e8cd9' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='%23a2acdc' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='_Linear3' x1='0' y1='0' x2='1' y2='0' gradientUnits='userSpaceOnUse' gradientTransform='matrix(13,15,-17.3077,15,1,1)'%3E%3Cstop offset='0' stop-color='%236e8ef1' stop-opacity='1'/%3E%3Cstop offset='0.27' stop-color='%2398acf1' stop-opacity='1'/%3E%3Cstop offset='0.55' stop-color='%23a5b6f1' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='%23d2deeb' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+    }
+
+    .numbox-spin-btn-xp:disabled {
+        opacity: 0.5;
+        filter: grayscale(1);
+    }
+
+.numbox-spin-btn-xp.numbox-spin-up {
+    transform: scaleY(-1);
+}
+
+.numbox-spin-btn-xp.win-touch {
+    background-size: 20px 22px;
+}
+
+/*-------------------------------------------*\
+    Win 7 (arrows share one single-color square-cornered border
+    with the input, like WinOldSelect's dropdown arrow; button
+    fill reuses WinOldButton's Win7 gradient/hover colors)
+\*-------------------------------------------*/
+.numbox-spin-7 {
+    width: 17px;
+}
+
+.numbox-spin-btn-7 {
+    border: 1px var(--btn-win7-border-color) solid;
+    margin: 1px;
+}
+
+    .numbox-spin-btn-7.numbox-spin-up::before {
+        content: "";
+        border-left: 2px solid transparent;
+        border-right: 2px solid transparent;
+        border-bottom: 3px solid #5F6EA5;
+    }
+
+    .numbox-spin-btn-7.numbox-spin-down::before {
+        content: "";
+        border-left: 2px solid transparent;
+        border-right: 2px solid transparent;
+        border-top: 3px solid #5F6EA5;
+    }
+
+    .numbox-spin-btn-7.numbox-spin-up.win-touch::before {
+        content: "";
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-bottom: 5px solid #5F6EA5;
+    }
+
+    .numbox-spin-btn-7.numbox-spin-down.win-touch::before {
+        content: "";
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 5px solid #5F6EA5;
+    }
+
+.numbox-spin-btn-7:disabled.numbox-spin-up::before {
+    border-bottom-color: var(--btn-win7-text-color-disabled);
+}
+
+.numbox-spin-btn-7:disabled.numbox-spin-down::before {
+    border-top-color: var(--btn-win7-text-color-disabled);
+}
+
+.numbox-spin-btn-7 {
+    background: var(--btn-win7-gradient);
+}
+
+    .numbox-spin-btn-7:not(:disabled):hover {
+        background: var(--btn-win7-gradient-hovered);
+    }
+
+    .numbox-spin-btn-7:not(:disabled):active {
+        background: var(--btn-win7-gradient-active);
+    }
+
+    .numbox-spin-btn-7:disabled {
+        background: var(--btn-win7-face-disabled);
+    }
+
+.numbox-spin-btn-7.numbox-spin-down {
+    border-top: 1px solid var(--btn-win7-border-color);
+}
+
+.numbox-wrap-7 {
+    border: 1px solid var(--btn-win7-border-color);
+    border-radius: 0;
+    background: var(--btn-win7-highlight);
+    overflow: hidden;
+}
+
+    .numbox-wrap-7:hover {
+        border-color: var(--btn-win7-border-color-hovered);
+    }
+
+    .numbox-wrap-7:has(.numbox-spin-btn-7:active) {
+        border-color: var(--btn-win7-border-color-active);
+    }
+
+    .numbox-wrap-7 .numbox-input {
+        border: none;
+        background: transparent;
+        box-shadow: none;
+    }
+
+/*-------------------------------------------*\
+    Win 10 (arrow is part of the whole control, like WinOldSelect:
+    a single bordered box around input + arrows, same chevron
+    as WinOldSelect's Win10 dropdown arrow)
+\*-------------------------------------------*/
+.numbox-wrap-10 {
+    background-color: #ffffff;
+    border: 1px solid #ECECEC;
+    border-bottom: 1px solid #838383;
+    border-radius: 2px 2px 1px 1px;
+    overflow: hidden;
+    transition: box-shadow 0.15s ease, border-bottom-color 0.15s ease;
+}
+
+    .numbox-wrap-10:focus-within {
+        border: 1px solid #ECECEC;
+        border-bottom: 1px solid #0067C0;
+        box-shadow: inset 0 -1px 0 0 #0067C0;
+        background-color: #ffffff;
+    }
+
+    .numbox-wrap-10:has(.numbox-input:disabled) {
+        background-color: #F9F9F9;
+        border: 1px solid #ECECEC;
+    }
+
+    .numbox-wrap-10 .numbox-input {
+        border: none;
+        background: transparent;
+        box-shadow: none;
+        height: 18px;
+    }
+
+        .numbox-wrap-10 .numbox-input.win-touch {
+            height: 26px;
+        }
+
+.numbox-spin-btn-10 {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 6px 5px;
+    padding: 2px 0;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxbDUgNiA1LTYiIHN0cm9rZT0iIzYwNjA2MCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=");
+    transition: background-color 0.3s ease;
+}
+
+    .numbox-spin-btn-10:not(:disabled):hover {
+        background-color: #E0EEF9;
+    }
+
+    .numbox-spin-btn-10:not(:disabled):active {
+        background-color: #cce4f7;
+    }
+
+    .numbox-spin-btn-10:disabled {
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxbDUgNiA1LTYiIHN0cm9rZT0iI2IwYjBiMCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=");
+    }
+
+.numbox-spin-btn-10.numbox-spin-up {
+    transform: scaleY(-1);
+}

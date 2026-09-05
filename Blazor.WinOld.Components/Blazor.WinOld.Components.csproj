@@ -12,7 +12,7 @@
 
 		<!-- Package metadata -->
 		<PackageId>BlazorWinOld</PackageId>
-		<Version>2.8.8</Version>
+		<Version>2.9.0</Version>
 		<Authors>Christophe Peugnet</Authors>
 		<Copyright>Copyright 2025-2026</Copyright>
 		<Description>Blazor components in Windows 98, Windows XP, Windows 7 and Windows 10 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
@@ -24,7 +24,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReleaseNotes>
-      v2.8.8 Fixed WinOldSlider thumb snapping back to a stale position during fast drags, caused by redundant event handling forcing an unnecessary re-render on every pointer move.
+      v2.9.0 Replaced WinOldNumberBox's native spin arrows with custom theme-accurate up/down buttons (Win98/WinXP/Win7/Win10) + fixed Win98 spin buttons not scaling in TouchMode. WinXP and Win10 styles still need polishing.
     </PackageReleaseNotes>
 
 		<!-- Build and symbols -->
