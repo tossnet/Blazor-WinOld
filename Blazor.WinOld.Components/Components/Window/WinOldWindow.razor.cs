@@ -12,13 +12,24 @@ public partial class WinOldWindow : WinOldComponentBase
     [Parameter]
     public string Title { get; set; } = string.Empty;
 
-    /// <summary>When true, a close button is rendered in the title bar.</summary>
+    /// <summary>When true, a close button is rendered in the title bar</summary>
     [Parameter]
     public bool ShowCloseButton { get; set; } = false;
 
     /// <summary>Callback invoked when the close button is clicked.</summary>
     [Parameter]
     public EventCallback OnClose { get; set; }
+
+    /// <summary>When true, a maximize button is rendered in the title bar.</summary>
+    [Parameter]
+    public bool MaxButton { get; set; } = false;
+
+    private bool _isMaximized;
+
+    private void ToggleMaximize() => _isMaximized = !_isMaximized;
+
+    // Returns the modifier CSS class applied to the window container when maximized.
+    private string GetMaximizedClass() => _isMaximized ? "win-window-maximized" : string.Empty;
 
     /// <summary>Content rendered inside the window body.</summary>
     [Parameter]
@@ -70,6 +81,6 @@ public partial class WinOldWindow : WinOldComponentBase
         Appearance.WinXP => "win-body-xp",
         Appearance.Win7  => "win-body-7",
         Appearance.Win10 => "win-body-10",
-        _ => "win-body-10"
+        _                => "win-body-10"
     };
 }

@@ -1,4 +1,4 @@
-﻿@page "/dialogbox-page"
+@page "/dialogbox-page"
 
 @inject IDialogService DialogService
 
@@ -6,9 +6,16 @@
 
 <h1>DialogBox</h1>
 
+<p>
+	The <code>WinOldDialogHost</code> component turns any Blazor component into a modal, draggable dialog
+	styled like a vintage Windows window. Unlike <code>MessageBox</code> or <code>InputBox</code>, its body
+	can be <strong>any content you want</strong> &mdash; forms, tabs, menus, images, other components &mdash;
+	with an <strong>OK</strong> and an optional <strong>Cancel</strong> button underneath.
+</p>
+
 <div class="info-block" style="margin-bottom:20px">
 	<p>
-		⚠️ To enable dialog boxes, you need to add the <code>&lt;WinOldDialogHost /&gt;</code> component
+		⚠️ <strong>Setup Required:</strong> To enable dialog boxes, add the <code>&lt;WinOldDialogHost /&gt;</code> component
 		at the bottom of your <strong>MainLayout.razor</strong>:
 	</p>
 	<CodeBlock Language="CodeLanguage.Razor"
@@ -16,84 +23,215 @@
 			   Code=@(@"<WinOldDialogHost />") />
 </div>
 
-<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
+<h2>Live Examples</h2>
+
+<p>Click a button below to open the same dialog styled with a different Windows theme:</p>
+
+<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
 	<WinOldButton OnClick="() => OpenDialog(Appearance.Win98)"
-				  Appearance="Appearance.Win98">Show MessageBox 98</WinOldButton>
+				  Appearance="Appearance.Win98">Windows 98</WinOldButton>
 
 	<WinOldButton OnClick="() => OpenDialog(Appearance.WinXP)"
-				  Appearance="Appearance.WinXP">Show MessageBox XP</WinOldButton>
+				  Appearance="Appearance.WinXP">Windows XP</WinOldButton>
 
 	<WinOldButton OnClick="() => OpenDialog(Appearance.Win7)"
-				  Appearance="Appearance.Win7">Show DialogBox 7</WinOldButton>
+				  Appearance="Appearance.Win7">Windows 7</WinOldButton>
 
 	<WinOldButton OnClick="() => OpenDialog(Appearance.Win10)"
-				  Appearance="Appearance.Win10">Show DialogBox 10</WinOldButton>
+				  Appearance="Appearance.Win10">Windows 10</WinOldButton>
 </div>
 
+<div style="padding: 10px; background-color: #f5f5f5; border: 1px solid #ccc; margin: 0 0 20px;">
+	<p><strong>Last result:</strong> @(_lastResult is null ? "(none yet)" : _lastResult == true ? "OK" : "Cancel")</p>
+</div>
+
+<h2>Maximize Button</h2>
+
+<p>
+	Set <code>MaxButton = true</code> on <code>DialogOptions</code> to show a Maximize button in the dialog's
+	title bar, next to Close. Clicking it (or <strong>double-clicking the title bar</strong>) toggles the
+	dialog to fill the screen; clicking again (or double-clicking again) restores it to its previous size and
+	position.
+</p>
+
+<div style="display:flex; align-items:center; gap:10px; flex-wrap: wrap; margin-bottom: 20px;">
+	<WinOldCheckBox Appearance="Appearance.Win10" Label="MaxButton" @bind-Value="_maxButtonDemo" />
+
+	<WinOldButton OnClick="OpenMaximizableDialog"
+				  Appearance="Appearance.Win10">Open Resizable Dialog</WinOldButton>
+</div>
+
+<h2>Usage</h2>
+
+<p>Show a dialog with inline content using <code>ChildContent</code>:</p>
 
 <CodeBlock Language="CodeLanguage.Razor"
 		   EnableLineNumbers="true"
 		   Code=@(@"
 @inject IDialogService DialogService
 
-<WinOldButton OnClick=""ClickMe""
+<WinOldButton OnClick=""OpenDialog""
               Appearance=""Appearance.WinXP"">
- 	 Show DialogBox
-</WinOldButton>
-		   	 	 ") />
+    Show DialogBox
+</WinOldButton>") />
 
 <CodeBlock Language="CodeLanguage.CSharp"
 		   EnableLineNumbers="true"
 		   Code=@(@"
-   
-bool? result = await DialogService.ShowDialog(new DialogOptions
+private async Task OpenDialog()
 {
-    Title = ""Settings"",
-	Width = ""300px"",
-	Height = ""400px"",
-	Appearance = appearance,
-    OkButtonText = ""OK"",
-    CancelButtonText = ""Cancel"",
-	ChildContent = @<SimpleDialog Appearance=""@appearance"" />
-});
-
-if (result == true) { /* OK clicked */ }
-	 ") />
-
-
-Or
-
-<CodeBlock Language="CodeLanguage.CSharp"
-		   EnableLineNumbers="true"
-		   Code=@(@"
-   
-bool? result = await DialogService.ShowDialog<Dialog.EventDialog>(
-    new DialogOptions { Title = ""Event"", Appearance = appearance },
-    new Dictionary<string, object>
+    bool? result = await DialogService.ShowDialog(new DialogOptions
     {
-        { ""EventName"", ""My Event"" },
-        { ""Date"", DateTime.Now }
+        Title = ""Settings"",
+        Width = ""400px"",
+        Height = ""300px"",
+        Appearance = Appearance.WinXP,
+        MaxButton = true,
+        OkButtonText = ""OK"",
+        CancelButtonText = ""Cancel"",
+        ChildContent = @<SimpleDialog Appearance=""Appearance.WinXP"" />
     });
 
-if (result == true) { /* OK clicked */ }
-		   ") />
+    if (result == true) { /* OK clicked */ }
+}") />
+
+<p>Or render a component by type, passing it parameters through a dictionary:</p>
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+bool? result = await DialogService.ShowDialog<SimpleDialog>(
+    new DialogOptions { Title = ""Event"", Appearance = Appearance.Win10 },
+    new Dictionary<string, object>
+    {
+        { ""Appearance"", Appearance.Win10 }
+    });
+
+if (result == true) { /* OK clicked */ }") />
+
+<h2>DialogOptions Properties</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+	<thead>
+		<tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Visual style (Win98, WinXP, Win7, Win10)</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>Title</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Title bar text of the dialog</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>ChildContent</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">RenderFragment?</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Content rendered inside the dialog body &mdash; any markup or component</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>Width</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Optional fixed width (e.g. "400px", "50vw"). If null, sizes to content</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>Height</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Optional fixed height (e.g. "300px", "80vh"). If null, sizes to content</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>MaxButton</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">bool</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Shows a Maximize button in the title bar and enables double-click-to-maximize (default: false)</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>OkButtonText</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Text for the OK/confirmation button (default: "OK")</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>CancelButtonText</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Text for the Cancel button. Leave empty to hide the Cancel button entirely</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Available Methods</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+	<thead>
+		<tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Method</th>
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Return Type</th>
+			<th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>ShowDialog(options)</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Task&lt;bool?&gt;</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Shows a dialog using <code>options.ChildContent</code> as its body</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>ShowDialog&lt;TComponent&gt;(options, parameters)</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Task&lt;bool?&gt;</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Renders <code>TComponent</code> as the dialog body, passing <code>parameters</code> as its component parameters</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Return Values</h2>
+
+<ul>
+	<li>Returns <code>true</code> when the user clicks <strong>OK</strong></li>
+	<li>Returns <code>false</code> when the user clicks <strong>Cancel</strong></li>
+</ul>
 
 @code {
-	Appearance appearance { get; set; } = Appearance.Win7;
+	private bool? _lastResult;
+	private bool _maxButtonDemo = true;
 
 	private async Task OpenDialog(Appearance appearance)
-    {
-        bool? result = await DialogService.ShowDialog(new DialogOptions
-        {
-            Title = "Settings",
+	{
+		bool? result = await DialogService.ShowDialog(new DialogOptions
+		{
+			Title = "Settings",
 			Width = "600px",
 			Height = "400px",
 			Appearance = appearance,
-            OkButtonText = "OK",
-            CancelButtonText = "Cancel",
+			MaxButton = true,
+			OkButtonText = "OK",
+			CancelButtonText = "Cancel",
 			ChildContent = @<SimpleDialog Appearance="@appearance" />
-        });
+		});
 
-        if (result == true) { /* OK clicked */ }
-    }
+		_lastResult = result;
+	}
+
+	private async Task OpenMaximizableDialog()
+	{
+		bool? result = await DialogService.ShowDialog(new DialogOptions
+		{
+			Title = "Resizable dialog",
+			Width = "400px",
+			Height = "250px",
+			Appearance = Appearance.Win10,
+			MaxButton = _maxButtonDemo,
+			OkButtonText = "OK",
+			CancelButtonText = "Cancel",
+			ChildContent = @<p style="padding:10px">
+				Click the square button in the title bar, or double-click the title bar itself, to toggle full screen.
+				Click it again to restore the original size and position.
+			</p>
+		});
+
+		_lastResult = result;
+	}
 }

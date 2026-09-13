@@ -8,7 +8,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
     private IDialogService? DialogService { get; set; } = default!;
 
     private ElementReference _windowRef;
-    private ElementReference _titleBarRef;
+    private WinOldTitleBar _titleBar = default!;
     private DraggableWindow _draggable = default!;
     private readonly string _titleId = $"inp-title-{Guid.NewGuid():N}";
 
@@ -49,7 +49,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (IsVisible)
-            await _draggable.InitAsync(_windowRef, _titleBarRef);
+            await _draggable.InitAsync(_windowRef, _titleBar.Element);
     }
 
     /// </summary>

@@ -9,13 +9,16 @@
              role="dialog"
              aria-modal="true"
              aria-labelledby="@_titleId"
-             class="dlg-win @GetDialogClass()" style="@GetDialogSizeStyle()">
-            <div @ref="_titleBarRef" class="@GetTitleBarClass() active">
-                <div id="@_titleId" class="@GetTitleBarTextClass()">@Options.Title</div>
-                <div class="@GetTitleBarControlsClass()">
-                    <button aria-label="Close" @onclick="HandleCancel"></button>
-                </div>
-            </div>
+             class="dlg-win @GetDialogClass() @GetMaximizedClass()" style="@GetDialogSizeStyle()">
+            <WinOldTitleBar @ref="_titleBar"
+                            BarClass="@GetTitleBarClass()"
+                            TextClass="@GetTitleBarTextClass()"
+                            ControlsClass="@GetTitleBarControlsClass()"
+                            Title="@Options.Title"
+                            TitleId="@_titleId"
+                            OnClose="HandleCancel"
+                            ShowMaximizeButton="Options.MaxButton"
+                            OnToggleMaximize="ToggleMaximize" />
 
             <div class="dlg-win-body @GetDialogBodyClass()">
                 @Options.ChildContent

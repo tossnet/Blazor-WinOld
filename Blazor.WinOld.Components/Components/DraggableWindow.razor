@@ -31,6 +31,14 @@
         }
     }
 
+    // Clears the inline position/left/top/margin/z-index left behind by a drag,
+    // so CSS-driven layouts (like a maximized state) aren't overridden by them.
+    public async Task ResetPositionAsync()
+    {
+        if (_module is not null)
+            await _module.InvokeVoidAsync("resetPosition", _windowRef);
+    }
+
     public async ValueTask DisposeAsync()
     {
         await ResetAsync();

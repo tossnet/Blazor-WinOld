@@ -1,0 +1,18 @@
+@namespace Blazor.WinOld.Components
+
+<div @ref="Element" class="@BarClass active" @ondblclick="HandleDoubleClickAsync">
+    <div id="@TitleId" class="@TextClass">@Title</div>
+    @if (ShowMaximizeButton || ShowCloseButton)
+    {
+        <div class="@ControlsClass">
+            @if (ShowMaximizeButton)
+            {
+                <button aria-label="Maximize" @onclick="OnToggleMaximize"></button>
+            }
+            @if (ShowCloseButton)
+            {
+                <button aria-label="Close" @onclick="OnClose"></button>
+            }
+        </div>
+    }
+</div>

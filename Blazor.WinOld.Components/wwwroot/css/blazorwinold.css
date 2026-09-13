@@ -1,4 +1,6 @@
-﻿@font-face {
+@import url('titlebar.css');
+
+@font-face {
     font-family: "Pixelated MS Sans Serif";
     src: url(../fonts/ms_sans_serif.woff) format("woff");
     src: url(../fonts/ms_sans_serif.woff2) format("woff2");
@@ -95,6 +97,7 @@
     --dlg-win10-title-bar-background-color-active: #0078D4;
     --dlg-win10-title-bar-border-color-active: #0078D4;
     --dlg-win10-title-bar-controls-background-color-hover: #C42B1C;
+    --dlg-win10-title-bar-controls-background-color-hover-neutral: rgba(255, 255, 255, 0.15);
     /* */
     --control-border-color: rgba(0, 0, 0, .3);
     --control-border-radius: 5px;

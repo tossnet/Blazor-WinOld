@@ -27,6 +27,14 @@ export function positionSubmenu(el) {
     if (rect.bottom > vh) el.classList.add('flip-v');
 }
 
+export function resetPosition(el) {
+    el.style.position = '';
+    el.style.left = '';
+    el.style.top = '';
+    el.style.margin = '';
+    el.style.zIndex = '';
+}
+
 export function initDraggable(windowEl, titleBarEl) {
     // Bloque le scroll natif sur la barre de titre (pour tactile)
     titleBarEl.style.touchAction = 'none';

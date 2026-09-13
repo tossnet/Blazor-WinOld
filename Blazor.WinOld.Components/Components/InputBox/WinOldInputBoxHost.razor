@@ -10,12 +10,13 @@
 			 aria-modal="true"
 			 aria-labelledby="@_titleId"
 			 class="inp-win @GetInputBoxClass()">
-			<div @ref="_titleBarRef" class="@GetTitleBarClass() active">
-				<div id="@_titleId" class="@GetTitleBarTextClass()">@Options.Title</div>
-				<div class="@GetTitleBarControlsClass()">
-					<button aria-label="Close" @onclick="HandleCancel"></button>
-				</div>
-			</div>
+			<WinOldTitleBar @ref="_titleBar"
+			                BarClass="@GetTitleBarClass()"
+			                TextClass="@GetTitleBarTextClass()"
+			                ControlsClass="@GetTitleBarControlsClass()"
+			                Title="@Options.Title"
+			                TitleId="@_titleId"
+			                OnClose="HandleCancel" />
 			<div class="inp-win-container @GetInputBoxBodyClass()">
 
 				<div class="inputbox-row">

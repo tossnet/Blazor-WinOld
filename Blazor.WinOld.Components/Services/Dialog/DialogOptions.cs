@@ -12,6 +12,9 @@ public record DialogOptions
     public string OkButtonText { get; init; } = "OK";
     public string CancelButtonText { get; init; } = string.Empty;
 
+    /// <summary>When true, a maximize button is rendered in the dialog's title bar.</summary>
+    public bool MaxButton { get; init; } = false;
+
     /// <summary>
     /// Content to render inside the dialog body.
     /// </summary>

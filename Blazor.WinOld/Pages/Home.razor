@@ -30,12 +30,12 @@
             </button>
         </div>
         <div class="hero-features">
-            <span class="hero-feature-pill">🪶 ~320 KB</span>
+            <span class="hero-feature-pill">🪶 ~290 KB</span>
             <span class="hero-feature-pill">⚡ Server &amp; WASM</span>
             <span class="hero-feature-pill">🎨 4 Windows themes</span>
         </div>
     </div>
-    <WinOldWindow Appearance="appearance" 
+    <WinOldWindow Appearance="appearance"
                   Title="Live Preview" class="hero-preview">
         <div style="padding:6px;">
             <div class="hero-theme-selector light">
@@ -234,13 +234,14 @@
         //     Width = "300px",
         //     Height = "400px",
         //     Appearance = appearance,
+        //     MaxButton = true,
         //     OkButtonText = "OK",
         //     CancelButtonText = "Cancel",
         //     ChildContent = @<SimpleDialog Appearance="@appearance" />
         //     });
 
         bool? result = await DialogService.ShowDialog<SimpleDialog>(
-            new DialogOptions { Title = "Event", Appearance = appearance },
+            new DialogOptions { Title = "Event", Appearance = appearance, MaxButton = true },
             new Dictionary<string, object>
             {
                     { "Appearance", appearance }

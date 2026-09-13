@@ -2,16 +2,15 @@
 
 @inherits WinOldComponentBase
 
-<div class="win-window @GetWindowClass() @Class" style="@Style" @attributes="Attributes">
-    <div class="win-title-bar @GetTitleBarClass() active">
-        <div class="@GetTitleTextClass()">@Title</div>
-        @if (ShowCloseButton)
-        {
-            <div class="@GetTitleControlsClass()">
-                <button aria-label="Close" @onclick="async () => await OnClose.InvokeAsync()"></button>
-            </div>
-        }
-    </div>
+<div class="win-window @GetWindowClass() @GetMaximizedClass() @Class" style="@Style" @attributes="Attributes">
+    <WinOldTitleBar BarClass="@($"win-title-bar {GetTitleBarClass()}")"
+                    TextClass="@GetTitleTextClass()"
+                    ControlsClass="@GetTitleControlsClass()"
+                    Title="@Title"
+                    ShowCloseButton="ShowCloseButton"
+                    OnClose="OnClose"
+                    ShowMaximizeButton="MaxButton"
+                    OnToggleMaximize="ToggleMaximize" />
     <div class="win-body @GetBodyClass()">
         <CascadingValue Name="Disabled" Value="@Disabled">
             @ChildContent

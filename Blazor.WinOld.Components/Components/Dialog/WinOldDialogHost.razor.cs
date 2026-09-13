@@ -7,7 +7,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
     [Inject] private IDialogService? DialogService { get; set; } = default!;
 
     private ElementReference _windowRef;
-    private ElementReference _titleBarRef;
+    private WinOldTitleBar _titleBar = default!;
     private DraggableWindow _draggable = default!;
     private readonly string _titleId = $"dlg-title-{Guid.NewGuid():N}";
 
@@ -16,6 +16,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
     private bool IsVisible { get; set; }
     private DialogService? _service;
     private int _zIndex = 99999;
+    private bool _isMaximized;
 
     protected override void OnInitialized()
     {
@@ -29,7 +30,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (IsVisible)
-            await _draggable.InitAsync(_windowRef, _titleBarRef);
+            await _draggable.InitAsync(_windowRef, _titleBar.Element);
     }
 
     private Task<bool?> ShowDialog(DialogOptions options)
@@ -37,11 +38,25 @@ public partial class WinOldDialogHost : WinOldComponentBase
         Options = options;
         Tcs = new TaskCompletionSource<bool?>();
         IsVisible = true;
+        _isMaximized = false;
         _zIndex = _service?.NextZIndex() ?? _zIndex;
         StateHasChanged();
 
         return Tcs.Task;
     }
+
+    private async Task ToggleMaximize()
+    {
+        _isMaximized = !_isMaximized;
+
+        // Dragging the dialog freezes its position via inline styles (left/top/position),
+        // which would otherwise override the maximized CSS class.
+        if (_isMaximized)
+            await _draggable.ResetPositionAsync();
+    }
+
+    // Returns the modifier CSS class applied to the dialog window when maximized.
+    private string GetMaximizedClass() => _isMaximized ? "dlg-win-maximized" : string.Empty;
 
     private void HandleOk()
     {
@@ -109,6 +124,11 @@ public partial class WinOldDialogHost : WinOldComponentBase
 
     private string GetDialogSizeStyle()
     {
+        // An inline width/height would override the maximized CSS class (inline style always
+        // wins over a class), so skip it while maximized and let that class fill the screen.
+        if (_isMaximized)
+            return string.Empty;
+
         var parts = new List<string>();
 
         if (!string.IsNullOrEmpty(Options.Width))

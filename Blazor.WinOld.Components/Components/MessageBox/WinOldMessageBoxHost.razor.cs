@@ -7,7 +7,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
     [Inject] private IDialogService? DialogService { get; set; } = default!;
 
     private ElementReference _windowRef;
-    private ElementReference _titleBarRef;
+    private WinOldTitleBar _titleBar = default!;
     private DraggableWindow _draggable = default!;
     private readonly string _titleId = $"msg-title-{Guid.NewGuid():N}";
 
@@ -32,7 +32,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (IsVisible)
-            await _draggable.InitAsync(_windowRef, _titleBarRef);
+            await _draggable.InitAsync(_windowRef, _titleBar.Element);
     }
 
     /// </summary>

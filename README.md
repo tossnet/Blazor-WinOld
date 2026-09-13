@@ -5,7 +5,7 @@
 
 A Blazor UI component library that brings back the nostalgic look and feel of classic Windows operating systems (Windows 98, XP, 7 and 10). Create retro-styled web applications with authentic Windows UI components.
 
-> 🪶 **Lightweight** the NuGet package is only ~320 KB.
+> 🪶 **Lightweight** the NuGet package is only ~290 KB.
 
 **Compatible with Blazor Server and Blazor WebAssembly**
 
@@ -62,7 +62,14 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes 
 
-<details open="open"><summary>Version 2.9.0</summary>
+<details open="open"><summary>Version 2.10.0</summary>
+
+>- Added a Maximize button (with double-click-to-fullscreen) to WinOldWindow and WinOldDialogHost,  + extracted a shared WinOldTitleBar component to remove duplicated title-bar code across Window/Dialog/InputBox/MessageBox.
+>- Consolidated duplicated title-bar CSS into a single shared stylesheet, cutting ~60 KB from the package.
+>- Imprive documentation and examples for WinOldDialog.
+</details>
+
+<details><summary>Version 2.9.0</summary>
 
 >- Replaced WinOldNumberBox's native spin arrows with custom theme-accurate up/down buttons (Win98/WinXP/Win7/Win10) + fixed Win98 spin buttons not scaling in TouchMode. WinXP and Win10 styles still need polishing.
 </details>
