@@ -74,6 +74,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
     {
         return Options.Appearance switch
         {
+            Appearance.DOS => $"msg-dos msg-dos-{GetDosBoxColor().ToString().ToLowerInvariant()}",
             Appearance.Win7 => "msg-win-7",
             Appearance.WinXP => "msg-win-xp",
             Appearance.Win98 => "msg-win-98",
