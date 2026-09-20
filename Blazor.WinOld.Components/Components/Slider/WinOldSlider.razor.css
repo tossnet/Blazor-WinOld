@@ -34,6 +34,100 @@
 */
 
 
+/*-------------------------------------------*\
+    DOS (no found a realDOS slider : I've just imagined a style to mimic it)
+\*-------------------------------------------*/
+.sld-win-dos {
+    --dos-sld-thumb: #00aa00;
+    --dos-sld-thumb-active: #018101;;
+    --dos-sld-line: #000000;
+}
+
+    .sld-win-dos:focus {
+        outline: none;
+    }
+
+    .sld-win-dos::-webkit-slider-thumb { /*cursor*/
+        -webkit-appearance: none;
+        box-sizing: border-box;
+        height: 20px;
+        width: 12px;
+        margin-top: -9px;
+        border: 0;
+        border-radius: 0;
+        cursor: pointer;
+        background: var(--dos-sld-thumb);
+        box-shadow: 3px 3px 0 var(--dos-sld-line);
+    }
+
+    .sld-win-dos::-moz-range-thumb { /*cursor FF*/
+        box-sizing: border-box;
+        height: 20px;
+        width: 12px;
+        border: 0;
+        border-radius: 0;
+        cursor: pointer;
+        background: var(--dos-sld-thumb);
+        box-shadow: 3px 3px 0 var(--dos-sld-line);
+    }
+
+    .sld-win-dos:focus-visible::-webkit-slider-thumb,
+    .sld-win-dos:active::-webkit-slider-thumb {
+        background: var(--dos-sld-thumb-active);
+    }
+
+    .sld-win-dos:focus-visible::-moz-range-thumb,
+    .sld-win-dos:active::-moz-range-thumb {
+        background: var(--dos-sld-thumb-active);
+    }
+
+    .sld-win-dos::-webkit-slider-runnable-track { /*bar*/
+        width: 100%;
+        height: 2px;
+        box-sizing: border-box;
+        background: var(--dos-sld-line);
+    }
+
+    .sld-win-dos::-moz-range-track { /*bar FF*/
+        width: 100%;
+        height: 2px;
+        box-sizing: border-box;
+        background: var(--dos-sld-line);
+    }
+
+    .sld-win-dos[list]::-webkit-slider-runnable-track {
+        height: 8px;
+        background-image: repeating-linear-gradient( to right, transparent 0, transparent calc((100% / var(--tick-count)) - 1px), var(--dos-sld-line) calc((100% / var(--tick-count)) - 1px), var(--dos-sld-line) calc(100% / var(--tick-count)) ), linear-gradient(var(--dos-sld-line), var(--dos-sld-line));
+        background-size: 100% 100%, 100% 2px;
+        background-position: 0 0, 0 center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+    }
+
+    .sld-win-dos[list]::-moz-range-track {
+        height: 8px;
+        background-image: repeating-linear-gradient( to right, transparent 0, transparent calc((100% / var(--tick-count)) - 1px), var(--dos-sld-line) calc((100% / var(--tick-count)) - 1px), var(--dos-sld-line) calc(100% / var(--tick-count)) ), linear-gradient(var(--dos-sld-line), var(--dos-sld-line));
+        background-size: 100% 100%, 100% 2px;
+        background-position: 0 0, 0 center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+    }
+
+    .sld-win-dos[list]::-webkit-slider-thumb {
+        margin-top: -6px;
+    }
+
+    .sld-win-dos:disabled {
+        --dos-sld-thumb: #686868;
+        --dos-sld-thumb-active: #686868;
+        --dos-sld-line: #686868;
+    }
+
+    .sld-win-dos:disabled::-webkit-slider-thumb,
+    .sld-win-dos:disabled::-moz-range-thumb {
+        cursor: not-allowed;
+    }
+
 
 /*-------------------------------------------*\
     Win 98

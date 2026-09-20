@@ -38,6 +38,7 @@ public partial class WinOldWindow : WinOldComponentBase
     // Returns the CSS class for the window container based on the selected theme.
     private string GetWindowClass() => Appearance switch
     {
+        Appearance.DOS   => "win-window-dos",
         Appearance.Win98 => "win-window-98",
         Appearance.WinXP => "win-window-xp",
         Appearance.Win7  => "win-window-7",
@@ -48,6 +49,7 @@ public partial class WinOldWindow : WinOldComponentBase
     // Returns the CSS class for the title bar based on the selected theme.
     private string GetTitleBarClass() => Appearance switch
     {
+        Appearance.DOS   => "title-bar-dos",
         Appearance.Win98 => "win-title-bar-98",
         Appearance.WinXP => "win-title-bar-xp",
         Appearance.Win7  => "win-title-bar-7",
@@ -58,6 +60,7 @@ public partial class WinOldWindow : WinOldComponentBase
     // Returns the CSS class for the title bar text based on the selected theme.
     private string GetTitleTextClass() => Appearance switch
     {
+        Appearance.DOS   => "title-bar-text-dos",
         Appearance.Win98 => "win-title-text-98",
         Appearance.WinXP => "win-title-text-xp",
         Appearance.Win7  => "win-title-text-7",
@@ -67,6 +70,7 @@ public partial class WinOldWindow : WinOldComponentBase
     // Returns the CSS class for the title bar controls container based on the selected theme.
     private string GetTitleControlsClass() => Appearance switch
     {
+        Appearance.DOS   => "title-bar-controls-dos",
         Appearance.Win98 => "win-title-controls-98",
         Appearance.WinXP => "win-title-controls-xp",
         Appearance.Win7  => "win-title-controls-7",
@@ -77,6 +81,7 @@ public partial class WinOldWindow : WinOldComponentBase
     // Returns the CSS class for the window body based on the selected theme.
     private string GetBodyClass() => Appearance switch
     {
+        Appearance.DOS   => "win-body-dos",
         Appearance.Win98 => "win-body-98",
         Appearance.WinXP => "win-body-xp",
         Appearance.Win7  => "win-body-7",

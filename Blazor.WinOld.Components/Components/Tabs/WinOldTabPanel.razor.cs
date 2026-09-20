@@ -33,9 +33,10 @@ public partial class WinOldTabPanel : WinOldComponentBase
     {
         return ParentTabs.Appearance switch
         {
-            Appearance.Win7 => "panel-win-7",
-            Appearance.WinXP => "panel-win-xp",
+            Appearance.DOS => "panel-win-dos",
             Appearance.Win98 => "panel-win-98",
+            Appearance.WinXP => "panel-win-xp",
+            Appearance.Win7 => "panel-win-7",
             Appearance.Win10 => "panel-win-10",
             _ => "panel-win-10"
         };

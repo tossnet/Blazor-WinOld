@@ -28,6 +28,9 @@
 <p>Click a button below to open the same dialog styled with a different Windows theme:</p>
 
 <div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+	<WinOldButton OnClick="() => OpenDialog(Appearance.DOS)"
+				  Appearance="Appearance.DOS">DOS</WinOldButton>
+
 	<WinOldButton OnClick="() => OpenDialog(Appearance.Win98)"
 				  Appearance="Appearance.Win98">Windows 98</WinOldButton>
 

@@ -24,6 +24,13 @@ public partial class WinOldButton : WinOldComponentBase
     public bool Default { get; set; } = false;
 
     /// <summary>
+    /// Color of the button when is DOS. Ignored for other appearances.
+    /// </summary>
+    [Parameter]
+    [Category(CategoryTypes.Button.Appearance)]
+    public DosColor DosColor { get; set; } = DosColor.Default;
+
+    /// <summary>
     /// Command executed when the user clicks on the button.
     /// </summary>
     [Parameter]
@@ -52,6 +59,8 @@ public partial class WinOldButton : WinOldComponentBase
         };
 
         var cls = Default ? $"{baseClass} {baseClass}-default" : baseClass;
+        if (Appearance == Appearance.DOS && DosColor != DosColor.Default)
+            cls += $" btn-dos-{DosColor.ToString().ToLowerInvariant()}";
         if (IsTouch) cls += " win-touch";
         return cls;
     }

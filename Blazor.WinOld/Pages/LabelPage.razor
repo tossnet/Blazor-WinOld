@@ -4,6 +4,15 @@
 
 <h1>Label</h1>
 
+<div style="display:flex; flex-direction:column; width:fit-content; margin-bottom:10px; padding:8px; background:var(--dos-background);">
+	<WinOldLabel Appearance="Appearance.DOS">
+		Hello DOS!
+	</WinOldLabel>
+
+	<WinOldLabel Appearance="Appearance.DOS" Disabled>
+		Disabled DOS label
+	</WinOldLabel>
+</div>
 
 <div style="display:flex; flex-direction: row; gap: 10px;">
 	<WinOldLabel Appearance="Appearance.Win98">
@@ -24,6 +33,16 @@
 </div>
 
 <h2>Touch Mode</h2>
+
+<div style="display:flex; flex-direction:column; width:fit-content; margin-bottom:10px; padding:8px; background:var(--dos-background);">
+	<WinOldLabel Appearance="Appearance.DOS" TouchMode="true">
+		Hello DOS!
+	</WinOldLabel>
+
+	<WinOldLabel Appearance="Appearance.DOS" TouchMode="true" Disabled>
+		Disabled DOS label
+	</WinOldLabel>
+</div>
 
 <div style="display:flex; flex-direction: row; gap: 10px;">
 	<WinOldLabel Appearance="Appearance.Win98" TouchMode="true">
@@ -48,5 +67,13 @@
 		   Code=@(@"
 <WinOldLabel Appearance=""Appearance.Win98"">
 	Hello Win98!
+</WinOldLabel>
+
+<WinOldLabel Appearance=""Appearance.DOS"">
+	Hello DOS!
+</WinOldLabel>
+
+<WinOldLabel Appearance=""Appearance.DOS"" Disabled>
+	Disabled DOS label
 </WinOldLabel>
 		   	 	 	 	 	 ") />

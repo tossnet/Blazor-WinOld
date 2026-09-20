@@ -11,7 +11,8 @@
 else if (_isRootLevel && !(RootMenu?.IsContextMenu ?? false))
 {
     <div role="none"
-         class="menu-win-root-item @(_isOpen ? "open" : "")"
+         class="menu-win-root-item @(_isOpen ? "open" : "") @((ParentDisabled == true || Disabled) ? "disabled" : "")"
+         accesskey="@HotKey"
          @onclick:stopPropagation
          @onmouseenter="OnMouseEnter">
 
@@ -20,7 +21,7 @@ else if (_isRootLevel && !(RootMenu?.IsContextMenu ?? false))
               aria-haspopup="@(ChildContent is not null ? "menu" : null)"
               aria-expanded="@(ChildContent is not null ? _isOpen : null)"
               aria-disabled="@(ParentDisabled | Disabled)"
-              @onclick="OnLabelClick">@Label</span>
+              @onclick="OnLabelClick">@if (IsDos) { var parts = GetLabelParts(); <text>@parts.Before<span class="menu-dos-hotkey">@parts.Key</span>@parts.After</text> } else { @Label }</span>
 
         @if (ChildContent is not null)
         {
@@ -40,6 +41,7 @@ else
               aria-haspopup="@(ChildContent is not null ? "menu" : null)"
               aria-expanded="@(ChildContent is not null ? _isOpen : null)"
               aria-disabled="@(ParentDisabled | Disabled)"
+              accesskey="@HotKey"
               @onclick="OnLabelClick">
 
             @* Icon slot — absolute in the 24px left gutter *@
@@ -52,7 +54,7 @@ else
                 <span class="menu-icon-win" aria-hidden="true"><i class="@IconCssClass"></i></span>
             }
 
-            @Label
+            @if (IsDos) { var parts = GetLabelParts(); <text>@parts.Before<span class="menu-dos-hotkey">@parts.Key</span>@parts.After</text> } else { @Label }
             @if (!string.IsNullOrEmpty(Shortcut))
             {
                 <span class="menu-shortcut-win">@Shortcut</span>

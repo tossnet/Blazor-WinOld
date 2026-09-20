@@ -37,6 +37,152 @@
 
 
 /*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+/* Same look as the DOS message box. Colors are variables so the (unscoped) title bar,
+   a child component, inherits them.
+   --dos-box-bg: background   --dos-box-fg: text   --dos-box-line: double line + title
+   --dos-box-close: close box square (hover = line color, pressed = text color) */
+.dlg-dos {
+    --dos-box-bg: var(--dos-background);
+    --dos-box-fg: #1a1a1a;
+    --dos-box-line: #ffffff;
+    --dos-box-close: #55ff55;
+    position: relative;
+    min-width: 280px;
+    padding: 6px; /* band of background color outside the double line, like WinOldFrame DOS */
+    background: var(--dos-box-bg);
+    box-shadow: 16px 16px 0 #000000cc;
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--dos-box-fg);
+    -webkit-font-smoothing: none;
+}
+
+    .dlg-dos::before {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border: 3px double var(--dos-box-line);
+        pointer-events: none;
+    }
+
+    .dlg-dos.dlg-win-maximized {
+        box-shadow: none;
+    }
+
+/* Colored boxes: light text on a dark background, yellow close box */
+.dlg-dos-blue, .dlg-dos-green, .dlg-dos-cyan, .dlg-dos-red, .dlg-dos-magenta, .dlg-dos-brown {
+    --dos-box-fg: #ffffff;
+    --dos-box-close: #ffff55;
+}
+
+.dlg-dos-blue {
+    --dos-box-bg: #0000aa;
+}
+
+.dlg-dos-green {
+    --dos-box-bg: #00aa00;
+}
+
+.dlg-dos-cyan {
+    --dos-box-bg: #00aaaa;
+}
+
+.dlg-dos-red {
+    --dos-box-bg: #aa0000;
+}
+
+.dlg-dos-magenta {
+    --dos-box-bg: #aa00aa;
+}
+
+.dlg-dos-brown {
+    --dos-box-bg: #a85400;
+}
+
+/* Light boxes: dark text and lines */
+.dlg-dos-white, .dlg-dos-yellow {
+    --dos-box-fg: #000000;
+    --dos-box-line: #000000;
+    --dos-box-close: #00aa00;
+    --dos-box-max: #00aaaa;
+}
+
+.dlg-dos-white {
+    --dos-box-bg: #ffffff;
+}
+
+.dlg-dos-yellow {
+    --dos-box-bg: #ffff55;
+}
+
+.dlg-body-dos {
+    margin: 0;
+    padding: 28px 24px 14px;
+}
+
+.dlg-dos .actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 24px 24px;
+}
+
+
+/*-------------------------------------------*\
+    Win 98
+\*-------------------------------------------*/
+.dlg-win-98 {
+    font-family: var(--font-family);
+    font-size: 11px;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
+    background: silver;
+    padding: 3px;
+}
+
+
+
+
+.icon-info-win-98 {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAYNJREFUWEftllsSgyAMRXVlsjOzNFwZnUTDBEoCQdv+1Jn+VOSePAh3XRwPACRrOQCsju1oafcDKRpCWLZta2ocx7HEGPO7URgVgIUtUS1aCdMDaQKg+IxwDcQgFsQbAIrv+66WEjcNoSxDjIdaGqrzSjLNYIs/e+LnZm22ZLanDpG3GxG/A6BlggA8NZ8pAefs/DYU5cgAVt29Z9taj/0AAPg7G8MT/RMgnAWGIIDR6LUGRLBeE0p4mQUXAG/SApkByCUYzcAf4GMZ8M79Oz0gT0EeCJ6ToE3D0SbkE5Cz6Z2EdwDq6IuROJIFaw5wRFYm6uhxGtZ3W0qjuXSOxVr8ynwzpschNHHVJOBkRX+n+b/R4Fs158iLJlQ2JIsxAyKuXbr55FPbM9MVY2PKDSwYKXpF+RZXyxu6bLkF06qzFflICerUFa4PYeSJ0QCmbHmvybg0GkBPtPAGPbHO+3xkZQa+CXCaoZTI+3OPfBuAIGTn/wKArD2X6ycAfKvWk67XYy9SCgmpMkDvBgAAAABJRU5ErkJggg==");
+    width: 32px;
+    height: 32px;
+    margin: 5px 10px 5px 5px;
+}
+
+.icon-question-win-98 {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAZ9JREFUWEfFl1sSgyAMRXVlsjNZGq6MTqDBEANJGKf1swr33Lyg++Z4Yox59nmMcXdsVz5VF1DREMJ2HIeocV3XllJq76wwQwAUnomO3FIYDUQEAPEVYQ6EIDOIBwCIn+fpTeX0+30vMqLZ7kdNHByFINdAStewPor6AKIBWMWpUN3zflYgyhaWnKNYZo3IIfh7ClgjGLp0NAAt7yMhDwCmIsYIpmthWNzXhX24walUE7MIwA4YBYQoAJr7e2EtQMy11z1agIJ0A0g9TjtCc07XI0BLgSUCHIC694jTOngFQGs9aUK9GgGvezECb8x96+ymXdAGgrUTUIS2nzcFNPwdgCcKq+3H3Xcj0ROFVQDuHqYhPyJzNlTVSgq4+PcMegDA7yYIa9Hxqsd17SwYbJThfje6/1nFpZyj8zaWJ5uVg3cFhBy7ZebTh1/PprdiKEy6wQyGin5dPrxJd0PXtXwGIxXZzLklBTx03V0IYGjHjACWruVakWFqRgCaaHc0a2LK+9ayNAK/BGhz458ABYJW/q8jULJE/8T+BYBCeAA+ewEpqQfylZcAAAAASUVORK5CYII=");
+    width: 32px;
+    height: 32px;
+    margin: 5px 10px 5px 5px;
+}
+
+.icon-critical-win-98 {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAWhJREFUWEfVlwGvwiAMhOGXv/rL94TZpVTaO6bTaEyMrnBfj1KwloWXlLJl4VJKXZiuh8IBVvQPzH4zz1mYFKCJI9GIqcEwEFMAzfqsuEKpIxnIE8ArWZ9xYwC4Qty6MXPiowBF5P6WQfP4kma/baVUuGH2ZJPYXhMOos8KxdVHBNHEQazfHTmAnRBBkLHehTUHIghSvA1XgH01pFaq8jOBBfGhPzxqgQPQ4mIaPaoT4wLvgArPsrVQhLhfBt4BBEGK/zjAV5cAiaM+YWrFbkWuBi7aho3pq40IA6w0GTLW2o8BfANCW408jNqJeLRirQ14IiJx2yeCWJ9974S2kVHnAtOOJzFe/MmB/sMLt2DENcv+qIGrXYjEpwDqRPt817Vci+6oN3MvDC96IrK1gWchZmuu6z4coNnaKYTGIBj718xnPRMPl8BDdZB9hrzWguf+Kk47MBSnQqByd88zcdqB0JEABonaYf+3+7wZjRZp1AAAAABJRU5ErkJggg==");
+    width: 32px;
+    height: 32px;
+    margin: 5px 10px 5px 5px;
+}
+
+.icon-alert-win-98 {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAWNJREFUWEe1l1kWgzAIRePKdGfSnenKbIkHizEkPNR8dTjAZXrGIQUOUdrEjCgNAReHCWzMwed5t1/XJU3TxB9hP0IAGerg4kAgiCgREeQPJq8BZCe/sAzAB4VwE1vBdSsiEI8A3KmCC6CVfW0WkFY8BhCtQhfAk/2dKsAAavdz3GVZ0jhmLcgH3YgmQC17DlCe7dDFvzh5N+JxALQKJkBLdFoVQHXhFQCkClWA1uT3ZgDdCBjg82G9PzdBD6H+x7MRF4De3vfWUAPoJ6WljjCA9FcCWdl7deEE0MtenEobuBVyObmqw/5LrwohAHFaqqAF0ZqFA8CbvS5tr/yejQgDWNmiVcgAaPZ6E7xtsGYhBFCKkbcVtVkY0OzLNeTvXoBaFUIAkRZYuhACQAfQkudczUgLogBlCzJAZAsiALXgB4BAlE+5SKCWjVzTTi0pDYhI3fCeRjj749c44z7wPoS8Q34BacoVLJviOdcAAAAASUVORK5CYII=");
+    width: 32px;
+    height: 32px;
+    margin: 5px 10px 5px 5px;
+}
+
+.dlg-body-win-98 {
+    margin: 2px 5px 5px 5px;
+}
+
+.dlg-win-98 .actions {
+    margin: auto 10px 5px;
+    text-align: right;
+}
+
+/*-------------------------------------------*\
     Win XP
 \*-------------------------------------------*/
 .dlg-win-xp {
@@ -52,23 +198,6 @@
     width: auto;
     animation: fadeIn 0.2s ease;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -138,63 +267,6 @@
     }
 }
 
-/*-------------------------------------------*\
-    Win 98
-\*-------------------------------------------*/
-.dlg-win-98 {
-    font-family: var(--font-family);
-    font-size: 11px;
-    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
-    background: silver;
-    padding: 3px;
-}
-
-
-
-
-
-
-
-
-
-
-
-.icon-info-win-98 {
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAYNJREFUWEftllsSgyAMRXVlsjOzNFwZnUTDBEoCQdv+1Jn+VOSePAh3XRwPACRrOQCsju1oafcDKRpCWLZta2ocx7HEGPO7URgVgIUtUS1aCdMDaQKg+IxwDcQgFsQbAIrv+66WEjcNoSxDjIdaGqrzSjLNYIs/e+LnZm22ZLanDpG3GxG/A6BlggA8NZ8pAefs/DYU5cgAVt29Z9taj/0AAPg7G8MT/RMgnAWGIIDR6LUGRLBeE0p4mQUXAG/SApkByCUYzcAf4GMZ8M79Oz0gT0EeCJ6ToE3D0SbkE5Cz6Z2EdwDq6IuROJIFaw5wRFYm6uhxGtZ3W0qjuXSOxVr8ynwzpschNHHVJOBkRX+n+b/R4Fs158iLJlQ2JIsxAyKuXbr55FPbM9MVY2PKDSwYKXpF+RZXyxu6bLkF06qzFflICerUFa4PYeSJ0QCmbHmvybg0GkBPtPAGPbHO+3xkZQa+CXCaoZTI+3OPfBuAIGTn/wKArD2X6ycAfKvWk67XYy9SCgmpMkDvBgAAAABJRU5ErkJggg==");
-    width: 32px;
-    height: 32px;
-    margin: 5px 10px 5px 5px;
-}
-
-.icon-question-win-98 {
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAZ9JREFUWEfFl1sSgyAMRXVlsjNZGq6MTqDBEANJGKf1swr33Lyg++Z4Yox59nmMcXdsVz5VF1DREMJ2HIeocV3XllJq76wwQwAUnomO3FIYDUQEAPEVYQ6EIDOIBwCIn+fpTeX0+30vMqLZ7kdNHByFINdAStewPor6AKIBWMWpUN3zflYgyhaWnKNYZo3IIfh7ClgjGLp0NAAt7yMhDwCmIsYIpmthWNzXhX24walUE7MIwA4YBYQoAJr7e2EtQMy11z1agIJ0A0g9TjtCc07XI0BLgSUCHIC694jTOngFQGs9aUK9GgGvezECb8x96+ymXdAGgrUTUIS2nzcFNPwdgCcKq+3H3Xcj0ROFVQDuHqYhPyJzNlTVSgq4+PcMegDA7yYIa9Hxqsd17SwYbJThfje6/1nFpZyj8zaWJ5uVg3cFhBy7ZebTh1/PprdiKEy6wQyGin5dPrxJd0PXtXwGIxXZzLklBTx03V0IYGjHjACWruVakWFqRgCaaHc0a2LK+9ayNAK/BGhz458ABYJW/q8jULJE/8T+BYBCeAA+ewEpqQfylZcAAAAASUVORK5CYII=");
-    width: 32px;
-    height: 32px;
-    margin: 5px 10px 5px 5px;
-}
-
-.icon-critical-win-98 {
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAWhJREFUWEfVlwGvwiAMhOGXv/rL94TZpVTaO6bTaEyMrnBfj1KwloWXlLJl4VJKXZiuh8IBVvQPzH4zz1mYFKCJI9GIqcEwEFMAzfqsuEKpIxnIE8ArWZ9xYwC4Qty6MXPiowBF5P6WQfP4kma/baVUuGH2ZJPYXhMOos8KxdVHBNHEQazfHTmAnRBBkLHehTUHIghSvA1XgH01pFaq8jOBBfGhPzxqgQPQ4mIaPaoT4wLvgArPsrVQhLhfBt4BBEGK/zjAV5cAiaM+YWrFbkWuBi7aho3pq40IA6w0GTLW2o8BfANCW408jNqJeLRirQ14IiJx2yeCWJ9974S2kVHnAtOOJzFe/MmB/sMLt2DENcv+qIGrXYjEpwDqRPt817Vci+6oN3MvDC96IrK1gWchZmuu6z4coNnaKYTGIBj718xnPRMPl8BDdZB9hrzWguf+Kk47MBSnQqByd88zcdqB0JEABonaYf+3+7wZjRZp1AAAAABJRU5ErkJggg==");
-    width: 32px;
-    height: 32px;
-    margin: 5px 10px 5px 5px;
-}
-
-.icon-alert-win-98 {
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAWNJREFUWEe1l1kWgzAIRePKdGfSnenKbIkHizEkPNR8dTjAZXrGIQUOUdrEjCgNAReHCWzMwed5t1/XJU3TxB9hP0IAGerg4kAgiCgREeQPJq8BZCe/sAzAB4VwE1vBdSsiEI8A3KmCC6CVfW0WkFY8BhCtQhfAk/2dKsAAavdz3GVZ0jhmLcgH3YgmQC17DlCe7dDFvzh5N+JxALQKJkBLdFoVQHXhFQCkClWA1uT3ZgDdCBjg82G9PzdBD6H+x7MRF4De3vfWUAPoJ6WljjCA9FcCWdl7deEE0MtenEobuBVyObmqw/5LrwohAHFaqqAF0ZqFA8CbvS5tr/yejQgDWNmiVcgAaPZ6E7xtsGYhBFCKkbcVtVkY0OzLNeTvXoBaFUIAkRZYuhACQAfQkudczUgLogBlCzJAZAsiALXgB4BAlE+5SKCWjVzTTi0pDYhI3fCeRjj749c44z7wPoS8Q34BacoVLJviOdcAAAAASUVORK5CYII=");
-    width: 32px;
-    height: 32px;
-    margin: 5px 10px 5px 5px;
-}
-
-.dlg-body-win-98 {
-    margin: 2px 5px 5px 5px;
-}
-
-.dlg-win-98 .actions {
-    margin: auto 10px 5px;
-    text-align: right;
-}
 
 /*-------------------------------------------*\
     Win 7
@@ -228,39 +300,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             .dlg-win-7-win-7.active .title-bar .title-bar-controls-win-7 button.is-restore:before,
             .dlg-win-7-win-7.active .title-bar .title-bar-controls-win-7 button[aria-label=Restore]:before {
                 background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACVSURBVHgBlVDLCoMwENwU/7ClvRYK7b2lCIJHEQQ/QEHwqujfBXJIQMnihg34iHPJ7GNm2AhYcL2/JwhAxIuhq3aXb48PiFBna2YFERVHzoQLnAQmSCmxeL5+3rBtSsdpBwVKKTcY+1rY197G+8RRoLVejed94igwxrgB/zXeJ+4Jijz2Erjg+8/WE7ZAt6EgSUsIxQwaJEWv7G6SSgAAAABJRU5ErkJggg==") no-repeat 50%,var(--control-background-hovered);
@@ -269,12 +308,6 @@
                 opacity: 0;
                 transition: opacity .3s linear;
             }
-
-
-
-
-
-
 
 
 
@@ -346,9 +379,6 @@
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
 }
-
-
-
 
 
 

@@ -13,11 +13,17 @@
 		   disabled="@(ParentDisabled | Disabled)"
 		   class="opt-win @GetComponentClass() @Class"
 		   style="@Style"
+           accesskey="@HotKey"
 		   @attributes="Attributes">
 	<label for="@ElementId">
 		@if (ChildContent is not null)
 		{
 			@ChildContent
+		}
+		else if (Group.Appearance == Appearance.DOS)
+		{
+			var parts = GetLabelParts();
+			<span>@parts.Before<span class="opt-dos-hotkey">@parts.Key</span>@parts.After</span>
 		}
 		else
 		{

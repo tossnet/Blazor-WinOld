@@ -9,6 +9,12 @@ public partial class WinOldMenuItem : WinOldComponentBase
     [Parameter] public string Label { get; set; } = string.Empty;
     [Parameter] public string? Shortcut { get; set; }
     [Parameter] public bool IsSeparator { get; set; }
+
+    /// <summary>
+    /// DOS appearance only: letter of the label to highlight (access key).
+    /// All appareances : use as accesskey attributes
+    /// </summary>
+    [Parameter] public string? HotKey { get; set; }
     [Parameter] public EventCallback OnClick { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
@@ -107,6 +113,7 @@ public partial class WinOldMenuItem : WinOldComponentBase
     {
         return RootMenu?.ActualRoot.Appearance switch
         {
+            Appearance.DOS => "menu-separator-win-dos",
             Appearance.Win98 => "menu-separator-win-98",
             Appearance.WinXP => "menu-separator-win-xp",
             Appearance.Win7  => "menu-separator-win-7",
@@ -120,6 +127,7 @@ public partial class WinOldMenuItem : WinOldComponentBase
     {
         return RootMenu?.ActualRoot.Appearance switch
         {
+            Appearance.DOS => "menu-label-win-dos",
             Appearance.Win98 => "menu-label-win-98",
             Appearance.WinXP => "menu-label-win-xp",
             Appearance.Win7  => "menu-label-win-7",
@@ -133,11 +141,35 @@ public partial class WinOldMenuItem : WinOldComponentBase
     {
         return RootMenu?.ActualRoot.Appearance switch
         {
+            Appearance.DOS => "menu-arrow-win-dos",
             Appearance.Win98 => "menu-arrow-win-98",
             Appearance.WinXP => "menu-arrow-win-xp",
             Appearance.Win7  => "menu-arrow-win-7",
             Appearance.Win10 => "menu-arrow-win-10",
             _ => "menu-arrow-win-10"
         };
+    }
+
+    private bool IsDos => RootMenu?.ActualRoot.Appearance == Appearance.DOS;
+
+    /// <summary>
+    /// Splits the label around the first occurrence of the hot key.
+    /// </summary>
+    private (string Before, string Key, string After) GetLabelParts()
+    {
+        if (string.IsNullOrEmpty(HotKey))
+        {
+            return (Label, string.Empty, string.Empty);
+        }
+
+        var index = Label.IndexOf(HotKey[0]);
+        if (index < 0)
+        {
+            index = Label.IndexOf(HotKey[0].ToString(), StringComparison.OrdinalIgnoreCase);
+        }
+
+        return index < 0
+            ? (Label, string.Empty, string.Empty)
+            : (Label[..index], Label[index].ToString(), Label[(index + 1)..]);
     }
 }

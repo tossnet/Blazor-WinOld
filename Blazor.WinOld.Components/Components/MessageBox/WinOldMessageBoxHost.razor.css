@@ -388,3 +388,76 @@
     height: 32px;
     margin: 5px 10px 5px 5px;
 }
+
+/*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+/* Colors are variables so the (unscoped) title bar, a child component, inherits them.
+   --dos-box-bg: background   --dos-box-fg: message text   --dos-box-line: double line + title
+   --dos-box-close: close box square (hover = line color, pressed = text color) */
+.msg-dos {
+    --dos-box-bg: var(--dos-background);
+    --dos-box-fg: #1a1a1a;
+    --dos-box-line: #ffffff;
+    --dos-box-close: #55ff55;
+    position: relative;
+    min-width: 280px;
+    max-width: 640px;
+    padding: 6px; /* band of background color outside the double line, like WinOldFrame DOS */
+    background: var(--dos-box-bg);
+    box-shadow: 16px 16px 0 #000000cc;
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--dos-box-fg);
+    -webkit-font-smoothing: none;
+}
+
+    .msg-dos::before {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border: 3px double var(--dos-box-line);
+        pointer-events: none;
+    }
+
+/* Colored boxes: light text on a dark background, yellow close box */
+.msg-dos-blue, .msg-dos-green, .msg-dos-cyan, .msg-dos-red, .msg-dos-magenta, .msg-dos-brown {
+    --dos-box-fg: #ffffff;
+    --dos-box-close: #ffff55;
+}
+
+.msg-dos-blue    { --dos-box-bg: #0000aa; }
+.msg-dos-green   { --dos-box-bg: #00aa00; }
+.msg-dos-cyan    { --dos-box-bg: #00aaaa; }
+.msg-dos-red     { --dos-box-bg: #aa0000; }
+.msg-dos-magenta { --dos-box-bg: #aa00aa; }
+.msg-dos-brown   { --dos-box-bg: #a85400; }
+
+/* Light boxes: dark text and lines */
+.msg-dos-white, .msg-dos-yellow {
+    --dos-box-fg: #000000;
+    --dos-box-line: #000000;
+    --dos-box-close: #00aa00;
+}
+
+.msg-dos-white  { --dos-box-bg: #ffffff; }
+.msg-dos-yellow { --dos-box-bg: #ffff55; }
+
+.message-body-dos {
+    margin: 0;
+    padding: 28px 24px 14px;
+    justify-content: center;
+    text-align: center;
+}
+
+.msg-content-dos {
+    white-space: pre-line;
+}
+
+.msg-dos .actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 24px 24px;
+}

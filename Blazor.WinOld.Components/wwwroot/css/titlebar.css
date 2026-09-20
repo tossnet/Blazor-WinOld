@@ -9,6 +9,113 @@
     min-height: 16px;
 }
 
+
+/*-------------------------------------------*\
+    DOS title bar
+    Overlaid on the top border of the host (which must be position: relative):
+    the title is centered on the border line, the close box sits on the right.
+\*-------------------------------------------*/
+.title-bar-dos {
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 16px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 15px;
+    -webkit-font-smoothing: none;
+    user-select: none;
+}
+
+.title-bar-text-dos {
+    background: var(--dos-box-bg, var(--dos-background));
+    color: var(--dos-box-line, #ffffff);
+    padding: 0 8px;
+    white-space: nowrap;
+}
+
+.title-bar-controls-dos {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+}
+
+    .title-bar-controls-dos button {
+        position: relative;
+        width: 24px;
+        height: 15px;
+        padding: 0;
+        border: none;
+        cursor: pointer;
+        font-family: 'IBMVGADos', monospace;
+        font-size: 14px;
+        line-height: 15px;
+        color: var(--dos-box-line, #ffffff);
+        /* green square, like the close box of the classic DOS IDEs */
+        background: linear-gradient(var(--dos-box-close, #55ff55), var(--dos-box-close, #55ff55)) center / 8px 8px no-repeat, var(--dos-box-bg, var(--dos-background));
+    }
+
+        .title-bar-controls-dos button:focus {
+            outline: none;
+        }
+
+        .title-bar-controls-dos button::before,
+        .title-bar-controls-dos button::after {
+            position: absolute;
+            top: 0;
+        }
+
+        .title-bar-controls-dos button::before {
+            content: "[";
+            left: 0;
+        }
+
+        .title-bar-controls-dos button::after {
+            content: "]";
+            right: 0;
+        }
+
+        .title-bar-controls-dos button:hover {
+            background: linear-gradient(var(--dos-box-line, #ffffff), var(--dos-box-line, #ffffff)) center / 8px 8px no-repeat, var(--dos-box-bg, var(--dos-background));
+        }
+
+        .title-bar-controls-dos button:active {
+            background: linear-gradient(var(--dos-box-fg, #ffff55), var(--dos-box-fg, #ffff55)) center / 8px 8px no-repeat, var(--dos-box-bg, var(--dos-background));
+        }
+
+/* Maximize: a cyan double arrow between the brackets instead of the close square.
+   The glyph span exists in every theme's markup but is only shown here. */
+.title-bar-dos-glyph {
+    display: none;
+}
+
+.title-bar-controls-dos button[aria-label=Maximize],
+.title-bar-controls-dos button[aria-label=Maximize]:hover,
+.title-bar-controls-dos button[aria-label=Maximize]:active {
+    background: var(--dos-box-bg, var(--dos-background));
+}
+
+.title-bar-controls-dos .title-bar-dos-glyph {
+    display: inline;
+    color: var(--dos-box-max, #55ffff);
+}
+
+.title-bar-controls-dos button[aria-label=Maximize]:hover .title-bar-dos-glyph {
+    color: var(--dos-box-line, #ffffff);
+}
+
+.title-bar-controls-dos button[aria-label=Maximize]:active .title-bar-dos-glyph {
+    color: var(--dos-box-fg, #ffff55);
+}
+
+/*-------------------------------------------*\
+    Win98
+\*-------------------------------------------*/
 .win-title-bar-98 {
     font-size: 11px;
     background: linear-gradient(90deg, navy, #1084d0);
@@ -68,6 +175,9 @@
         box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
     }
 
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
 .win-title-bar-xp {
     font-family: Trebuchet MS;
     font-size: 13px;
@@ -139,6 +249,9 @@
     border-radius: 3px;
 }
 
+/*-------------------------------------------*\
+    Win 7
+\*-------------------------------------------*/
 .win-title-bar-7 {
     border: 0;
     box-shadow: inset 0 1px 0 #fffd, inset 1px 0 0 #fffd, inset -1px 0 0 #fffd;
@@ -294,6 +407,10 @@
                 background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAKCAYAAABi8KSDAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACUSURBVHgBlZFNCoQwDIVbmRvOMHOAAd0K/uDGlYKiCG4VPICi9yu0oCSQoFUXFtKEl6+voZXvr7sKay1TL690FOexY+Hz87i2decOuDKQsNGVe8AGYTRJIh0Y+orBvxszCPllOymlxN06jNE26Qnwg4zdHQLrMhFaawwAqAadDPE1ijwUxhiMKCmxCZk06OMYTz5lAx3xWDeXkLNAAAAAAElFTkSuQmCC") no-repeat 50%,var(--control-background),var(--control-background-close-active);
             }
 
+/*-------------------------------------------*\
+    Win10
+\*-------------------------------------------*/
+
 .win-title-bar-10 {
     font-size: 12px;
     background: var(--dlg-win10-background-color);
@@ -384,6 +501,7 @@
     .win-title-bar-10.active .win-title-controls-10 button[aria-label=Maximize]:hover {
         background-color: var(--dlg-win10-title-bar-controls-background-color-hover-neutral);
     }
+
 /*-------------------------------------------*\
     WinOldDialogHost / WinOldInputBoxHost / WinOldMessageBoxHost title bar
 \*-------------------------------------------*/
@@ -503,6 +621,7 @@
     border-radius: 3px;
 }
 
+/*------------------------------------------- */
 .title-bar-win-98 {
     font-size: 11px;
     background: linear-gradient(90deg, navy, #1084d0);
@@ -573,6 +692,8 @@
     .title-bar-controls-win-98 button:not(:disabled):active {
         box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
     }
+
+/*------------------------------------------- */
 
 .title-bar-win-7 {
     border: 0;
@@ -1002,6 +1123,7 @@
                 opacity: .4;
             }
 
+/*------------------------------------------- */
 .title-bar-win-10 {
     font-size: 12px;
     background: var(--dlg-win10-background-color);
@@ -1092,3 +1214,4 @@
     .title-bar-win-10.active .title-bar-controls-win-10 button[aria-label=Maximize]:hover {
         background-color: var(--dlg-win10-title-bar-controls-background-color-hover-neutral);
     }
+

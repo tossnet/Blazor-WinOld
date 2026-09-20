@@ -4,7 +4,36 @@
 
 <h1>CheckBox</h1>
 
-<WinOldCheckBox Checked="checkbox1"
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+	<div style="flex:0 0 calc(25% - 20px);">
+        <h7>DOS</h7>
+        <div style="display:flex; flex-direction:column; width:fit-content; margin-bottom:10px; padding:4px; background:var(--dos-background);">
+	<WinOldCheckBox Appearance="Appearance.DOS"
+					Label="Check box"
+					HotKey="C"
+					Checked="true" />
+
+	<WinOldCheckBox Appearance="Appearance.DOS"
+					Label="check box"
+					HotKey="M" />
+
+	<WinOldCheckBox Appearance="Appearance.DOS"
+					Label="Make System Disk"
+					HotKey="M"
+					Disabled />
+
+	<WinOldCheckBox Appearance="Appearance.DOS"
+					Label="Save Image Info"
+					HotKey="I"
+					Checked="true"
+					Disabled />
+		</div>
+    </div>
+
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows 98</h7>
+        <div style="display:flex; flex-direction:column; width:fit-content; margin-bottom:10px; padding:4px; ">
+			<WinOldCheckBox Checked="checkbox1"
 				Appearance="Appearance.Win98"
 				Label="check box"
 				CheckedChanged="@CheckedChanged" />
@@ -20,11 +49,13 @@
 				Label="check box"
 				Checked="true"
 				Disabled />
-<br />
+		</div
+    </div>
 
-
-
-<WinOldCheckBox Checked="true"
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows XP</h7>
+        <div style="display:flex; flex-direction:column; width:fit-content; margin-bottom:10px; padding:4px; ">
+			<WinOldCheckBox Checked="true"
 				Appearance="Appearance.WinXP"
 				Label="check box" />
 
@@ -39,9 +70,13 @@
 				Label="check box"
 				Checked="true"
 				Disabled />
-<br />
+		</div>
+    </div>
 
-<WinOldCheckBox Checked="checkbox1"
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows 7</h7>
+        <div style="display:flex; flex-direction:column; width:fit-content; margin-bottom:10px; padding:4px; ">
+			<WinOldCheckBox Checked="checkbox1"
 				Appearance="Appearance.Win7"
 				Label="check box" />
 
@@ -56,8 +91,13 @@
 				Label="check box"
 				Checked="true"
 				Disabled />
-<br />
-<WinOldCheckBox Checked="checkbox1"
+		</div>
+    </div>
+
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows 10</h7>
+        <div style="display:flex; flex-direction:column; width:fit-content; margin-bottom:10px; padding:4px; ">
+			<WinOldCheckBox Checked="checkbox1"
 				Appearance="Appearance.Win10"
 				Label="check box" />
 
@@ -72,6 +112,11 @@
 				Label="check box"
 				Checked="true"
 				Disabled />
+		</div>
+    </div>
+</div>
+
+
 
 
 <CodeBlock Language="CodeLanguage.Razor"
@@ -80,6 +125,10 @@
 		   	 	 <WinOldCheckBox Appearance=""Appearance.Win98""
 		        	 	 Label=""check box""
 		   	    	 	 @bind-Value=""checkbox1"" />
+			   	 	 <WinOldCheckBox Appearance=""Appearance.DOS""
+			   	 	 Label=""Copy""
+			   	 	 HotKey=""C""
+			   	 	 @bind-Value=""checkbox1"" />
 		   	 	 <WinOldCheckBox Checked=""checkbox1""
 		   	 	 Appearance=""Appearance.Win98""
 		   	 	 Label=""check box""

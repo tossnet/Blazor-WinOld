@@ -12,6 +12,17 @@ public record DialogOptions
     public string OkButtonText { get; init; } = "OK";
     public string CancelButtonText { get; init; } = string.Empty;
 
+    /// <summary>
+    /// DOS appearance only: background color of the dialog box. When null, it is the standard gray.
+    /// </summary>
+    public DosColor? DosColor { get; init; }
+
+    /// <summary>
+    /// DOS appearance only: color of the buttons. When null, it adapts to the background
+    /// (green on a gray box, gray on a colored one).
+    /// </summary>
+    public DosColor? DosButtonColor { get; init; }
+
     /// <summary>When true, a maximize button is rendered in the dialog's title bar.</summary>
     public bool MaxButton { get; init; } = false;
 

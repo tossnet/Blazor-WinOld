@@ -19,6 +19,38 @@
 
 <div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap; align-items: flex-start;">
 
+<div style="flex:0 0 calc(25% - 20px);">
+        <h7>DOS</h7>
+        <WinOldMenu Appearance="Appearance.DOS">
+            <WinOldMenuItem Label="File" HotKey="F">
+                <WinOldMenuItem Label="New"       HotKey="N" Shortcut="Ctrl+N" OnClick="@(() => DoAction("New"))" />
+                <WinOldMenuItem Label="Open..."   HotKey="O" Shortcut="Ctrl+O" OnClick="@(() => DoAction("Open"))" />
+                <WinOldMenuItem Label="Save"      HotKey="S" Disabled="true" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Export"    HotKey="E" Disabled />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Exit"      HotKey="x" Shortcut="Alt+F4" OnClick="@(() => DoAction("Exit"))" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="View" HotKey="V">
+                <WinOldMenuItem Label="Zoom +"    HotKey="+" OnClick="@(() => DoAction("Zoom +"))" />
+                <WinOldMenuItem Label="Zoom -"    HotKey="-" OnClick="@(() => DoAction("Zoom -"))" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Disposition" HotKey="D">
+                    <WinOldMenuItem Label="Classic"  HotKey="C" OnClick="@(() => DoAction("Classic"))" />
+                    <WinOldMenuItem Label="Compact"  HotKey="o" OnClick="@(() => DoAction("Compact"))" />
+                    <WinOldMenuItem Label="Étendue"  HotKey="E" OnClick="@(() => DoAction("Étendue"))" />
+                </WinOldMenuItem>
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Full screen" HotKey="F" OnClick="@(() => DoAction("Full screen"))" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="DOS" Disabled="true" />
+            <WinOldMenuItem Label="Help" HotKey="H">
+                <WinOldMenuItem Label="Documentation" HotKey="D" OnClick="@(() => DoAction("Documentation"))" />
+                <WinOldMenuItem Label="About..."      HotKey="A" OnClick="@(() => DoAction("About"))" />
+            </WinOldMenuItem>
+        </WinOldMenu>
+    </div>
+    
     <div style="flex:0 0 calc(25% - 20px);">
         <h7>Windows 98</h7>
         <WinOldMenu Appearance="Appearance.Win98">
@@ -151,6 +183,8 @@
         </WinOldMenu>
     </div>
 
+    
+
 </div>
 
 <h2>Icons</h2>
@@ -260,7 +294,7 @@
         <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Appearance</code></div>
         <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Appearance</div>
         <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Win10</div>
-        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Visual style: Win98, WinXP, Win7, Win10</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Visual style: Win98, WinXP, Win7, Win10, DOS</div>
     </div
         <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
         <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>IsContextMenu</code></div>
@@ -308,6 +342,12 @@
         <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string</div>
         <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">""</div>
         <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Text displayed for the menu item</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>HotKey</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">DOS style only: letter of the label highlighted in red (access key)</div>
     </div>
     <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
         <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Shortcut</code></div>

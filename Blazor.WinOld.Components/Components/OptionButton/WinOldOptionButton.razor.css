@@ -300,6 +300,62 @@
 }
 
 /*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+.opt-dos + label {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 14px;
+    color: #1a1a1a;
+    cursor: pointer;
+    user-select: none;
+    -webkit-font-smoothing: none;
+}
+
+    .opt-dos + label:before {
+        content: "(\00a0)";
+        position: static;
+        margin-right: 1ch;
+    }
+
+    .opt-dos:checked + label:before {
+        content: "(\2022)";
+    }
+
+.opt-dos:checked + label:after {
+    content: none;
+}
+
+.opt-dos-hotkey {
+    color: #ffff55;
+}
+
+.opt-dos:not(:disabled) + label:hover,
+.opt-dos:focus-visible + label {
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
+.opt-dos:not(:disabled):active + label,
+.opt-dos:not(:disabled):active + label:hover {
+    background-color: #6a6a6a;
+    color: #e0e0e0;
+}
+
+.opt-dos:disabled + label,
+.opt-dos:disabled + label:hover {
+    background-color: transparent;
+    color: #686868;
+    cursor: not-allowed;
+}
+
+    .opt-dos:disabled + label .opt-dos-hotkey {
+        color: inherit;
+    }
+
+/*-------------------------------------------*\
     Touch mode
 \*-------------------------------------------*/
 
@@ -410,3 +466,12 @@
     .opt-win-10.win-touch:disabled:checked + label:after {
         transform: translate(5.5px, -50%) scale(1);
     }
+
+/* DOS */
+.opt-dos.win-touch + label {
+    font-size: 14px;
+    line-height: 14px;
+    min-height: 28px;
+    margin-bottom: 0;
+    -webkit-font-smoothing: none;
+}

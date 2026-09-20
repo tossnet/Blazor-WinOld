@@ -10,6 +10,17 @@
 
 <div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
     <div class="style-col">
+        <h7>DOS</h7>
+        <WinOldSlider Appearance="Appearance.DOS"
+                      TValue="int"
+                      Min="0"
+                      Max="50"
+                      @bind-Value="myIntValue"
+                      LowLabel="Min"
+                      HighLabel="Max" />
+    </div>
+
+    <div class="style-col">
         <h7>Windows 98</h7>
         <WinOldSlider Appearance="Appearance.Win98"
                       TValue="int"
@@ -52,12 +63,25 @@
                       LowLabel="Min"
                       HighLabel="Max" />
     </div>
+
+
 </div>
 
 <h2 style="margin-top:20px">Examples with Ticks</h2>
 
 <div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
     <div class="style-col">
+        <h7>DOS</h7>
+        <WinOldSlider Appearance="Appearance.DOS"
+                      TValue="double"
+                      Min="0.0"
+                      Max="5.0"
+                      Step="0.5"
+                      ShowTicks="true"
+                      @bind-Value="myDoubleValue" />
+    </div>
+
+    <div class="style-col">
         <h7>Windows 98</h7>
         <WinOldSlider Appearance="Appearance.Win98"
                       TValue="double"
@@ -100,6 +124,7 @@
                       ShowTicks="true"
                       @bind-Value="myDoubleValue" />
     </div>
+
 </div>
 
 <h2>Code Example</h2>
@@ -141,7 +166,7 @@
         <tr style="border: 1px solid #ccc;">
             <td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
             <td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
-            <td style="padding: 8px; border: 1px solid #ccc;">Visual style (Win98, WinXP, Win7, Win10)</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Visual style (Win98, WinXP, Win7, Win10, DOS)</td>
         </tr>
         <tr style="border: 1px solid #ccc;">
             <td style="padding: 8px; border: 1px solid #ccc;"><code>TValue</code></td>

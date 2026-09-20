@@ -77,6 +77,7 @@ public partial class WinOldTextBox : WinOldComponentBase, IAsyncDisposable
     {
         var cls = Appearance switch
         {
+            Appearance.DOS => "txt-win-dos",
             Appearance.Win98 => "txt-win-98",
             Appearance.WinXP => "txt-win-xp",
             Appearance.Win7 => "txt-win-7",
@@ -95,6 +96,7 @@ public partial class WinOldTextBox : WinOldComponentBase, IAsyncDisposable
 
         return Appearance switch
         {
+            Appearance.DOS => "lbtxt-win-dos",
             Appearance.Win98 => "lbtxt-win-98",
             Appearance.WinXP => "lbtxt-win-xp",
             Appearance.Win7 => "lbtxt-win-7",

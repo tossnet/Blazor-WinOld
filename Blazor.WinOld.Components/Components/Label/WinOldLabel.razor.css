@@ -4,6 +4,21 @@
 }
 
 /*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+.lbl-dos {
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 14px;
+    color: #1a1a1a;
+    -webkit-font-smoothing: none;
+}
+
+    .lbl-dos[disabled] {
+        color: #686868;
+    }
+
+/*-------------------------------------------*\
     Win XP
 \*-------------------------------------------*/
 .lbl-win-xp {
@@ -51,8 +66,13 @@
 }
 
 /* Pixel font — revert font-size, disable antialiasing */
+.lbl-dos.win-touch,
 .lbl-win-98.win-touch,
 .lbl-win-xp.win-touch {
     font-size: 11px;
     -webkit-font-smoothing: none;
+}
+
+.lbl-dos.win-touch {
+    font-size: 14px;
 }

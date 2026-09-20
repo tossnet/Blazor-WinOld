@@ -332,8 +332,71 @@
     }
 
 /*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+.tabs-list.tabs-list-dos {
+    margin: 0;
+    padding: 0 0 4px;
+    gap: 3ch;
+    max-height: none;
+    background: var(--dos-background);
+}
+
+.tabs-win-dos {
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 18px;
+    color: #1a1a1a;
+    cursor: pointer;
+    -webkit-font-smoothing: none;
+}
+
+    .tabs-win-dos:before {
+        content: "[\00a0";
+    }
+
+    .tabs-win-dos:after {
+        content: "\00a0]";
+    }
+
+    .tabs-win-dos:not(:disabled):hover,
+    .tabs-win-dos:focus-visible {
+        background-color: #3a3a3a;
+        color: #ffffff;
+    }
+
+    .tabs-win-dos:not(:disabled):active {
+        background-color: #6a6a6a;
+        color: #e0e0e0;
+    }
+
+    .tabs-win-dos:disabled,
+    .tabs-win-dos:disabled:hover {
+        background-color: transparent;
+        color: #686868;
+        cursor: not-allowed;
+    }
+
+/* Active tab: inverse video */
+.tabs-win-dos.active-tab-win-dos,
+.tabs-win-dos.active-tab-win-dos:not(:disabled):hover {
+    background-color: #000000;
+    color: #ffff55;
+}
+
+/*-------------------------------------------*\
     Touch mode
 \*-------------------------------------------*/
+.tabs-list.tabs-list-dos.win-touch {
+    max-height: none;
+}
+
+.tabs-win-dos.win-touch {
+    display: flex;
+    align-items: center;
+    min-height: 28px;
+}
+
 .tabs-list.win-touch {
     max-height: 36px;
 }

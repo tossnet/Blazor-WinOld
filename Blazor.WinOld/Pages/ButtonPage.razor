@@ -81,6 +81,22 @@
                            Disabled>Click me</WinOldButton>
                                 ") />
 
+<h2>DOS colors</h2>
+
+<div style="display:flex; flex-wrap:wrap; gap:10px; width:fit-content;">
+    @foreach (var color in Enum.GetValues<DosColor>())
+    {
+        <WinOldButton Appearance="Appearance.DOS" DosColor="color">@color</WinOldButton>
+    }
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+<WinOldButton Appearance=""Appearance.DOS""
+              DosColor=""DosColor.Green"">OK</WinOldButton>
+                                ") />
+
 <h2>Event</h2>
 <p>OnClick</p>
 

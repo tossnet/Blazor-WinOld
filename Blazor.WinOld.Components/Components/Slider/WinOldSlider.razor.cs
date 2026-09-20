@@ -114,6 +114,7 @@ public partial class WinOldSlider<TValue> : WinOldComponentBase
     {
         return Appearance switch
         {
+            Appearance.DOS => "sld-win-dos",
             Appearance.Win98 => "sld-win-98",
             Appearance.WinXP => "sld-win-xp",
             Appearance.Win7 => "sld-win-7",
@@ -127,6 +128,7 @@ public partial class WinOldSlider<TValue> : WinOldComponentBase
     {
         return Appearance switch
         {
+            Appearance.DOS => "lbtxt-win-dos",
             Appearance.Win98 => "lbtxt-win-98",
             Appearance.WinXP => "lbtxt-win-xp",
             Appearance.Win7 => "lbtxt-win-7",

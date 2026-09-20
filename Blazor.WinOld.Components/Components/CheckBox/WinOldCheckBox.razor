@@ -1,13 +1,14 @@
-﻿@namespace Blazor.WinOld.Components
+@namespace Blazor.WinOld.Components
 
 @inherits WinOldComponentBase
 
-<input type="checkbox" 
+<input type="checkbox"
        id="@ElementId"
        class="chk-win @GetComponentClass() @Class"
        checked="@Checked"
        disabled="@(ParentDisabled | Disabled)"
        @oninput="CheckboxChanged"
        style="@Style"
+       accesskey="@HotKey"
        @attributes="Attributes">
-<label for="@ElementId">@Label</label>
+<label for="@ElementId">@if (Appearance == Appearance.DOS) { var parts = GetLabelParts(); <span>@parts.Before<span class="chk-dos-hotkey">@parts.Key</span>@parts.After</span> } else { @Label }</label>

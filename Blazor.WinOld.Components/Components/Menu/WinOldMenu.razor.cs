@@ -48,9 +48,10 @@ public partial class WinOldMenu : WinOldComponentBase
 
             var suffix = ActualRoot.Appearance switch
             {
-                Appearance.Win7  => "7",
-                Appearance.WinXP => "xp",
+                Appearance.DOS => "dos",
                 Appearance.Win98 => "98",
+                Appearance.WinXP => "xp",
+                Appearance.Win7  => "7",
                 Appearance.Win10 => "10",
                 _ => "10"
             };
@@ -61,9 +62,10 @@ public partial class WinOldMenu : WinOldComponentBase
 
     private string ContextMenuAppearanceClass => Appearance switch
     {
-        Appearance.Win7  => "submenu-win-7",
-        Appearance.WinXP => "submenu-win-xp",
+        Appearance.DOS => "submenu-win-dos",
         Appearance.Win98 => "submenu-win-98",
+        Appearance.WinXP => "submenu-win-xp",
+        Appearance.Win7  => "submenu-win-7",
         Appearance.Win10 => "submenu-win-10",
         _ => "submenu-win-10"
     };
@@ -164,9 +166,10 @@ public partial class WinOldMenu : WinOldComponentBase
     {
         return ActualRoot.Appearance switch
         {
-            Appearance.Win7  => "menu-win-7",
-            Appearance.WinXP => "menu-win-xp",
+            Appearance.DOS => "menu-win-dos",
             Appearance.Win98 => "menu-win-98",
+            Appearance.WinXP => "menu-win-xp",
+            Appearance.Win7  => "menu-win-7",
             Appearance.Win10 => "menu-win-10",
             _ => "menu-win-10"
         };

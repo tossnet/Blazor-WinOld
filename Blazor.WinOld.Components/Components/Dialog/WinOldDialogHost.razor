@@ -26,11 +26,13 @@
 
             <div class="actions">
                 <WinOldButton OnClick="HandleOk"
+                              DosColor="GetDosButtonColor()"
                               Appearance="Options.Appearance"
                               Default="true">@Options.OkButtonText</WinOldButton>
                 @if (!string.IsNullOrEmpty(Options.CancelButtonText))
                 {
                     <WinOldButton OnClick="HandleCancel"
+                                  DosColor="GetDosButtonColor()"
                                   Appearance="Options.Appearance"
                                   Style="margin-left: 8px;">@Options.CancelButtonText</WinOldButton>
                 }

@@ -68,6 +68,90 @@
 }
 
 /*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+.menu-separator-win-dos {
+    height: 0;
+    /* 1px side margin: the line meets the black inner frame instead of covering it */
+    margin: 4px 1px;
+    background: none;
+    border-top: 1px solid #000000;
+}
+
+.menu-arrow-win-dos::after {
+    content: '►';
+    margin-left: auto;
+    padding-left: 8px;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.menu-win-root-item > .menu-label-win-dos {
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 3px 12px;
+    color: #1a1a1a;
+    -webkit-font-smoothing: none;
+}
+
+.menu-sub-win-item > .menu-label-win-dos {
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 4px 16px;
+    color: #1a1a1a;
+    -webkit-font-smoothing: none;
+}
+
+/* Access key letter: red on gray (and on the bar) */
+.menu-dos-hotkey {
+    color: #aa0000;
+}
+
+/* Menu bar: inverse video when hovered / open */
+.menu-win-root-item:not(.disabled) > .menu-label-win-dos:hover,
+.menu-win-root-item.open > .menu-label-win-dos {
+    background: #000000;
+    color: #ffffff;
+}
+
+/* Drop-down items: red bar, as in the DOS menus */
+.menu-sub-win-item > .menu-label-win-dos:hover,
+.menu-sub-win-item.open > .menu-label-win-dos {
+    background: #aa0000;
+    color: #ffffff;
+}
+
+.menu-win-root-item > .menu-label-win-dos:hover .menu-dos-hotkey,
+.menu-win-root-item.open > .menu-label-win-dos .menu-dos-hotkey,
+.menu-sub-win-item > .menu-label-win-dos:hover .menu-dos-hotkey,
+.menu-sub-win-item.open > .menu-label-win-dos .menu-dos-hotkey {
+    color: inherit;
+}
+
+.menu-label-win-dos .menu-shortcut-win {
+    opacity: 1;
+    font-size: 14px;
+    padding-left: 32px;
+}
+
+/* No icon gutter in DOS */
+.menu-sub-win-item > .menu-label-win-dos .menu-icon-win {
+    display: none;
+}
+
+.menu-win-root-item.disabled > .menu-label-win-dos,
+.menu-sub-win-item.disabled > .menu-label-win-dos {
+    color: #686868;
+}
+
+    .menu-win-root-item.disabled > .menu-label-win-dos .menu-dos-hotkey,
+    .menu-sub-win-item.disabled > .menu-label-win-dos .menu-dos-hotkey {
+        color: inherit;
+    }
+
+/*-------------------------------------------*\
     Win 98
 \*-------------------------------------------*/
 .menu-separator-win-98 {

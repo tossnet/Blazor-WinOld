@@ -77,26 +77,37 @@ public partial class WinOldDialogHost : WinOldComponentBase
         StateHasChanged();
     }
 
+    /// <summary>DOS only: box background, gray unless set explicitly.</summary>
+    private DosColor GetDosBoxColor() => Options.DosColor ?? DosColor.Default;
+
+    /// <summary>DOS only: buttons contrast with the box (green on gray, gray on a colored box) unless set explicitly.</summary>
+    private DosColor GetDosButtonColor()
+        => Options.DosButtonColor
+            ?? (GetDosBoxColor() == DosColor.Default ? DosColor.Green : DosColor.Default);
+
     private string GetDialogClass() => Options.Appearance switch
     {
-        Appearance.Win7 => "dlg-win-7",
-        Appearance.WinXP => "dlg-win-xp",
+        Appearance.DOS => $"dlg-dos dlg-dos-{GetDosBoxColor().ToString().ToLowerInvariant()}",
         Appearance.Win98 => "dlg-win-98",
+        Appearance.WinXP => "dlg-win-xp",
+        Appearance.Win7 => "dlg-win-7",
         Appearance.Win10 => "dlg-win-10",
         _ => "dlg-win-10"
     };
 
     private string GetTitleBarClass() => Options.Appearance switch
     {
-        Appearance.Win7 => "title-bar-win-7",
-        Appearance.WinXP => "title-bar-win-xp",
+        Appearance.DOS => "title-bar-dos",
         Appearance.Win98 => "title-bar-win-98",
+        Appearance.WinXP => "title-bar-win-xp",
+        Appearance.Win7 => "title-bar-win-7",
         Appearance.Win10 => "title-bar-win-10",
         _ => "title-bar-win-10"
     };
 
     private string GetTitleBarTextClass() => Options.Appearance switch
     {
+        Appearance.DOS => "title-bar-text-dos",
         Appearance.Win7 => "title-bar-text-win-7",
         Appearance.WinXP => "title-bar-text-win-xp",
         Appearance.Win98 => "title-bar-text-win-98",
@@ -106,18 +117,20 @@ public partial class WinOldDialogHost : WinOldComponentBase
 
     private string GetTitleBarControlsClass() => Options.Appearance switch
     {
+        Appearance.DOS => "title-bar-controls-dos",
+        Appearance.Win98 => "title-bar-controls-win-98",
         Appearance.Win7 => "title-bar-controls-win-7",
         Appearance.WinXP => "title-bar-controls-win-xp",
-        Appearance.Win98 => "title-bar-controls-win-98",
         Appearance.Win10 => "title-bar-controls-win-10",
         _ => "title-bar-controls-win-10"
     };
 
     private string GetDialogBodyClass() => Options.Appearance switch
     {
+        Appearance.DOS => "dlg-body-dos",
+        Appearance.Win98 => "dlg-body-win-98",
         Appearance.Win7 => "dlg-body-win-7",
         Appearance.WinXP => "dlg-body-win-xp",
-        Appearance.Win98 => "dlg-body-win-98",
         Appearance.Win10 => "dlg-body-win-10",
         _ => "dlg-body-win-10"
     };

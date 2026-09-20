@@ -18,7 +18,7 @@ public static class SystemColors
         {
             return Appearance switch
             {
-                Appearance.DOS => Color.FromArgb(0, 170, 170),
+                Appearance.DOS => Color.FromArgb(1, 0, 168),      // #0100A8
                 Appearance.Win98 => Color.FromArgb(14, 113 , 116),
                 Appearance.WinXP => Color.FromArgb(90, 125, 220),
                 Appearance.Win7 => Color.FromArgb(106, 183, 231),
@@ -37,7 +37,7 @@ public static class SystemColors
         {
             return Appearance switch
             {
-                Appearance.DOS => Color.FromArgb(187, 187, 187),
+                Appearance.DOS => Color.FromArgb(176, 176, 176),  // #B0B0B0 (no distinct title bar in DOS: same as Form)
                 Appearance.Win98 => Color.FromArgb(0, 0, 128),
                 Appearance.WinXP => Color.FromArgb(0, 80, 238),   
                 Appearance.Win7 => Color.FromArgb(65, 118 , 178),
@@ -54,7 +54,7 @@ public static class SystemColors
         {
             return Appearance switch
             {
-                Appearance.DOS => Color.FromArgb(170, 170, 170),
+                Appearance.DOS => Color.FromArgb(176, 176, 176),  // #B0B0B0
                 Appearance.Win98 => Color.FromArgb(192, 192, 192),
                 Appearance.WinXP => Color.FromArgb(236, 233, 216),
                 Appearance.Win7 => Color.FromArgb(240, 240, 240),

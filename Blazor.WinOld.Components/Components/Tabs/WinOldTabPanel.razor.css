@@ -3,18 +3,22 @@
     display: block;
 }
 
+
 /*-------------------------------------------*\
-    Win XP
+    DOS
 \*-------------------------------------------*/
-.panel-win-xp {
-    padding: 14px;
+.panel-win-dos {
+    background: var(--dos-background);
+    /*border: 1px solid #ffffff;*/
     clear: both;
-    background: linear-gradient(180deg, #fcfcfe, #f4f3ee);
-    border: 1px solid #919b9c;
+    margin-bottom: 9px;
+    padding: 7px;
     position: relative;
     z-index: 2;
-    margin-bottom: 9px;
-    box-shadow: inset 1px 1px #fcfcfe, inset -1px -1px #fcfcfe, 1px 2px 2px 0 rgba(208, 206, 191, .75);
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    color: #1a1a1a;
+    -webkit-font-smoothing: none;
 }
 
 /*-------------------------------------------*\
@@ -29,6 +33,20 @@
     position: relative;
     z-index: 2;
     margin-bottom: 9px;
+}
+
+/*-------------------------------------------*\
+    Win XP
+\*-------------------------------------------*/
+.panel-win-xp {
+    padding: 14px;
+    clear: both;
+    background: linear-gradient(180deg, #fcfcfe, #f4f3ee);
+    border: 1px solid #919b9c;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 9px;
+    box-shadow: inset 1px 1px #fcfcfe, inset -1px -1px #fcfcfe, 1px 2px 2px 0 rgba(208, 206, 191, .75);
 }
 
 /*-------------------------------------------*\

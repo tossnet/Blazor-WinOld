@@ -16,7 +16,24 @@
 			   Code=@(@"<WinOldMessageBoxHost />") />
 </div>
 
+<WinOldFrame Appearance="appearance"
+			 Label="Icon"
+			 Style="margin-bottom: 20px;">
+	<WinOldOptionButtonGroup T="Icon"
+							 @bind-Value="icon"
+							 Appearance="appearance">
+		<WinOldOptionButton Label="None" Value="Icon.None" />
+		<WinOldOptionButton Label="Information" Value="Icon.Information" />
+		<WinOldOptionButton Label="Question" Value="Icon.Question" />
+		<WinOldOptionButton Label="Alert" Value="Icon.Alert" />
+		<WinOldOptionButton Label="Critical" Value="Icon.Critical" />
+	</WinOldOptionButtonGroup>
+</WinOldFrame>
+
 <div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
+	<WinOldButton OnClick="() => ClickMe(Appearance.DOS)"
+				  Appearance="Appearance.DOS">Show MessageBox DOS</WinOldButton>
+
 	<WinOldButton OnClick="() => ClickMe(Appearance.Win98)"
 				  Appearance="Appearance.Win98">Show MessageBox 98</WinOldButton>
 
@@ -29,6 +46,7 @@
 	<WinOldButton OnClick="() => ClickMe(Appearance.Win10)"
 				  Appearance="Appearance.Win10">Show MessageBox 10</WinOldButton>
 </div>
+
 
 
 
@@ -65,6 +83,7 @@
 
 @code {
 	Appearance appearance { get; set; } = Appearance.Win7;
+	Icon icon { get; set; } = Icon.Information;
 
 	async Task ClickMe(Appearance appearance)
 	{
@@ -73,7 +92,7 @@
 			Appearance = appearance,
 			Title = "Warning",
 			Message = "Blazor is \nawesome!",
-			Icon = Icon.Information,
+			Icon = icon,
 			OkButtonText = "OK",
 			CancelButtonText = ""
 		};

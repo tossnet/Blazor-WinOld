@@ -18,7 +18,7 @@
                             TitleId="@_titleId"
                             OnClose="HandleCancel" />
             <div class="message-body @GetMessageBodyClass()">
-				@if (Options.Icon != Icon.None)
+				@if (Options.Icon != Icon.None && Options.Appearance != Appearance.DOS)
 				{
                     <div class="@GetIConClass()"></div>
 				}
@@ -26,10 +26,12 @@
             </div>
             <div class="actions">
                 <WinOldButton OnClick="HandleOk"
+                              DosColor="GetDosButtonColor()"
                               Appearance="Options.Appearance">@Options.OkButtonText</WinOldButton>
                 @if (!string.IsNullOrEmpty(Options.CancelButtonText))
                 {
                     <WinOldButton OnClick="HandleCancel"
+                                  DosColor="GetDosButtonColor()"
                                   Appearance="Options.Appearance"
                                   Style="margin-left: 8px;">@Options.CancelButtonText</WinOldButton>
                 }

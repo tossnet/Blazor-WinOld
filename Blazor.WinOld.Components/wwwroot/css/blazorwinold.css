@@ -230,6 +230,64 @@ label.label-txt-win {
         font-size: 13px;
     }
 
+
+/*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+.txt-win-dos {
+    box-sizing: border-box;
+    height: 24px;
+    padding: 0 6px;
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 22px;
+    color: #1a1a1a;
+    background-color: var(--dos-background);
+    border-style: solid;
+    border-width: 1px 2px;
+    border-color: #404040 #ffffff #ffffff #404040;
+    border-radius: 0;
+    caret-color: #ffffff;
+    caret-shape: block;
+    -webkit-font-smoothing: none;
+}
+
+    /* Focus: inverted field, as in the DOS input line */
+    .txt-win-dos:focus {
+        color: #ffffff;
+        background-color: #000000;
+        border-color: #000000;
+    }
+
+    .txt-win-dos::selection {
+        color: #000000;
+        background-color: #ffffff;
+    }
+
+    .txt-win-dos:disabled {
+        color: #686868;
+        cursor: not-allowed;
+    }
+
+    .txt-win-dos.win-touch {
+        height: 32px;
+        font-size: 14px;
+        line-height: 30px;
+    }
+
+.lbtxt-win-dos {
+    font-family: 'IBMVGADos', monospace !important;
+    font-size: 14px;
+    color: #1a1a1a;
+    margin-right: 1ch;
+    -webkit-font-smoothing: none;
+}
+
+    .lbtxt-win-dos[disabled] {
+        color: #686868;
+    }
+
+
 /*-------------------------------------------*\
     Win XP
 \*-------------------------------------------*/

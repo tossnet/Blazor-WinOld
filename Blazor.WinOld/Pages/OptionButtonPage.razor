@@ -1,11 +1,22 @@
-﻿@page "/optionbutton-page"
-
+@page "/optionbutton-page"
 
 <PageTitle>OptionButton</PageTitle>
 
 <h1>OptionButton</h1>
 
-<div style="display:flex; flex-direction: row; gap: 80px; flex-wrap: wrap;">
+
+<div style="display:flex; flex-direction: row; gap: 30px; flex-wrap: wrap;">
+<div style="display:flex; flex-direction:column; width:fit-content; margin-bottom:10px; padding:4px; background:var(--dos-background);">
+	<WinOldOptionButtonGroup T="int"
+							 @bind-Value="SelectedRadio"
+							 Appearance="Appearance.DOS">
+		<WinOldOptionButton Label="Adrien  (disabled)" HotKey="A" Value="1" Disabled="true"	 />
+		<WinOldOptionButton Label="Christophe" HotKey="C" Value="2" />
+		<WinOldOptionButton Label="Denis" HotKey="D" Value="3" />
+	</WinOldOptionButtonGroup>
+</div>
+
+
 	<WinOldOptionButtonGroup T="int"					
 		                     @bind-Value="SelectedRadio"
 							 Appearance="Appearance.Win98">

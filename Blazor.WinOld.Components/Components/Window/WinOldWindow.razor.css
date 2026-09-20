@@ -23,6 +23,44 @@
 }
 
 
+
+/*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+/* Same look as the DOS dialog / message box: the (unscoped) title bar inherits the --dos-box-* variables. */
+.win-window-dos {
+    --dos-box-bg: var(--dos-background);
+    --dos-box-fg: #1a1a1a;
+    --dos-box-line: #ffffff;
+    --dos-box-close: #55ff55;
+    position: relative;
+    padding: 6px; /* band of background color outside the double line, like WinOldFrame DOS */
+    background: var(--dos-box-bg);
+    box-shadow: 16px 16px 0 #000000cc;
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--dos-box-fg);
+    -webkit-font-smoothing: none;
+}
+
+    .win-window-dos::before {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border: 3px double var(--dos-box-line);
+        pointer-events: none;
+    }
+
+    .win-window-dos.win-window-maximized {
+        box-shadow: none;
+    }
+
+.win-body-dos {
+    margin: 0;
+    padding: 7px 7px 7px;
+}
+
 /*-------------------------------------------*\
     Win 98
 \*-------------------------------------------*/

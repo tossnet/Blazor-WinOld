@@ -21,6 +21,7 @@
 .frame-win[disabled] > legend {
     color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
 }
+
 /*-------------------------------------------*\
     DOS
 \*-------------------------------------------*/
@@ -33,6 +34,7 @@
                 0 -3px 0 6px var(--dos-background), /* top background overflow */
                 0 6px 0 6px var(--dos-background); /* bottom background overflow */
     margin: 8px;
+    padding: 8px;
 }
 
     .frame-dos legend {
@@ -47,6 +49,7 @@
         color: #ffffff;
         white-space: nowrap;
     }
+
 
 /*-------------------------------------------*\
     Win 98

@@ -62,7 +62,12 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes 
 
-<details open="open"><summary>Version 2.10.0</summary>
+<details open="open"><summary>Version 2.11.0</summary>
+
+>- New **DOS** components : `WinOldCheckBox`,  `WinOldOptionButton`, `WinOldLabel`, `WinOldTextBox`, `WinOldTabs`, `WinOldMenu`,`WinOldMessageBox`
+</details>
+
+<details><summary>Version 2.10.0</summary>
 
 >- Added a Maximize button (with double-click-to-fullscreen) to WinOldWindow and WinOldDialogHost,  + extracted a shared WinOldTitleBar component to remove duplicated title-bar code across Window/Dialog/InputBox/MessageBox.
 >- Consolidated duplicated title-bar CSS into a single shared stylesheet, cutting ~60 KB from the package.
@@ -208,7 +213,7 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 </details>
 
 
-<details open="open"><summary>🚧 Upcoming (not yet released)</summary>
+<details><summary>🚧 Upcoming (not yet released)</summary>
 
 >- `WinOldButton`: preview of a new **DOS** appearance style — retro terminal-inspired button with IBM VGA font and classic shadow effect
 </details>
@@ -324,3 +329,5 @@ I used these repo for most of the css and icons:
 
 OS emulator :
 - https://oses.ioblako.com/new.html
+- https://geekprank.com/xp-simulator.php
+- https://www.windows93.net

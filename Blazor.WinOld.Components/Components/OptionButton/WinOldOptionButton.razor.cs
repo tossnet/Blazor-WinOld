@@ -12,6 +12,13 @@ public partial class WinOldOptionButton<T> : WinOldComponentBase
     [Parameter]
     public string Label { get; set; } = string.Empty;
 
+    /// <summary>
+    /// DOS appearance only: letter of the label to highlight (access key).
+    /// All appareances : use as accesskey attributes
+    /// </summary>
+    [Parameter]
+    public string? HotKey { get; set; }
+
     /// </summary>
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
@@ -32,14 +39,36 @@ public partial class WinOldOptionButton<T> : WinOldComponentBase
         Group?.SelectOption(Value);
     }
 
+    /// <summary>
+    /// Splits the label around the first occurrence of the hot key.
+    /// </summary>
+    private (string Before, string Key, string After) GetLabelParts()
+    {
+        if (string.IsNullOrEmpty(HotKey))
+        {
+            return (Label, string.Empty, string.Empty);
+        }
+
+        var index = Label.IndexOf(HotKey[0]);
+        if (index < 0)
+        {
+            index = Label.IndexOf(HotKey[0].ToString(), StringComparison.OrdinalIgnoreCase);
+        }
+
+        return index < 0
+            ? (Label, string.Empty, string.Empty)
+            : (Label[..index], Label.Substring(index, 1), Label[(index + 1)..]);
+    }
+
     /// </summary>
     private string GetComponentClass()
     {
         var cls = Group.Appearance switch
         {
-            Appearance.Win7 => "opt-win-7",
-            Appearance.WinXP => "opt-win-xp",
+            Appearance.DOS => "opt-dos",
             Appearance.Win98 => "opt-win-98",
+            Appearance.WinXP => "opt-win-xp",
+            Appearance.Win7 => "opt-win-7",
             Appearance.Win10 => "opt-win-10",
             _ => "opt-win-10"
         };

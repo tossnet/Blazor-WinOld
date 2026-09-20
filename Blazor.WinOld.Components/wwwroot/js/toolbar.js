@@ -48,7 +48,7 @@ export function initToolbarCollapse(toolbarEl) {
     const resizeObserver = new ResizeObserver(() => schedule());
     resizeObserver.observe(toolbarEl);
 
-    // attributes is deliberately NOT observed: it's what keeps this module from
+    // Attributes is deliberately NOT observed: it's what keeps this module from
     // ever reacting to (and looping on) its own classList.add/remove above.
     const mutationObserver = new MutationObserver(() => schedule());
     mutationObserver.observe(toolbarEl, { childList: true, subtree: true, characterData: true });

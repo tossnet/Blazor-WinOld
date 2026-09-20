@@ -84,6 +84,39 @@
     }
 
 /*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+.menu-win-dos {
+    background: var(--dos-background);
+    color: #1a1a1a;
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 14px;
+    -webkit-font-smoothing: none;
+}
+
+/* Drop-down: thin black frame + hard shadow (2 columns wide, 1 row high), like the DOS message box */
+.submenu-win-dos, .subsub-win-dos {
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 14px;
+    -webkit-font-smoothing: none;
+    min-width: 200px;
+    padding: 0;
+    background: var(--dos-background);
+    color: #1a1a1a;
+    /* Frame: band of background color outside, thin black line inside (drawn as an inset shadow), then the hard shadow */
+    border: 2px solid var(--dos-background);
+    border-radius: 0;
+    box-shadow: inset 0 0 0 1px #000000, 16px 14px 0 #000000cc;
+}
+
+/* Frame of a cascading sub-menu overlaps its parent item, so no offset needed */
+.subsub-win-dos {
+    top: -2px;
+}
+
+/*-------------------------------------------*\
     Win 98
 \*-------------------------------------------*/
 .menu-win-98 {

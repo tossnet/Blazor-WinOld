@@ -47,8 +47,14 @@
     padding: 6px 10px;
     border: none;
     cursor: pointer;
-    background-color: var(--dos-background);
-    color: #1a1a1a;
+    --dos-btn-bg: var(--dos-background);
+    --dos-btn-fg: #1a1a1a;
+    --dos-btn-hover-bg: #3a3a3a;
+    --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #6a6a6a;
+    --dos-btn-active-fg: #e0e0e0;
+    background-color: var(--dos-btn-bg);
+    color: var(--dos-btn-fg);
     box-shadow: 4px 4px 0px #000000;
 }
 
@@ -58,15 +64,15 @@
 
     .btn-dos:active,
     .btn-dos:hover:active {
-        background-color: #6a6a6a;
-        color: #e0e0e0;
+        background-color: var(--dos-btn-active-bg);
+        color: var(--dos-btn-active-fg);
         box-shadow: none;
         transform: translate(4px, 4px);
     }
 
 .btn-dos:not(:disabled).active {
-    background-color: #6a6a6a;
-    color: #e0e0e0;
+    background-color: var(--dos-btn-active-bg);
+    color: var(--dos-btn-active-fg);
     box-shadow: none;
     transform: translate(4px, 4px);
 }
@@ -75,8 +81,8 @@
     }
 
     .btn-dos:hover:not(:active) {
-        background-color: #3a3a3a;
-        color: #ffffff;
+        background-color: var(--dos-btn-hover-bg);
+        color: var(--dos-btn-hover-fg);
         box-shadow: 4px 4px 0px #000000;
     }
 
@@ -96,6 +102,55 @@
 
 .btn-dos-default {
     box-shadow: 4px 4px 0px #000000, 0 0 0 2px #000000;
+}
+
+/* DOS color variants: only redefine the variables */
+.btn-dos-white {
+    --dos-btn-bg: #ffffff;        --dos-btn-fg: #000000;
+    --dos-btn-hover-bg: #c0c0c0;  --dos-btn-hover-fg: #000000;
+    --dos-btn-active-bg: #808080; --dos-btn-active-fg: #ffffff;
+}
+
+.btn-dos-yellow {
+    --dos-btn-bg: #ffff55;        --dos-btn-fg: #000000;
+    --dos-btn-hover-bg: #aaaa00;  --dos-btn-hover-fg: #000000;
+    --dos-btn-active-bg: #808000; --dos-btn-active-fg: #ffffff;
+}
+
+.btn-dos-green {
+    --dos-btn-bg: #00aa00;        --dos-btn-fg: #ffffff;
+    --dos-btn-hover-bg: #005500;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #003300; --dos-btn-active-fg: #cccccc;
+}
+
+.btn-dos-red {
+    --dos-btn-bg: #aa0000;        --dos-btn-fg: #ffffff;
+    --dos-btn-hover-bg: #550000;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #330000; --dos-btn-active-fg: #cccccc;
+}
+
+.btn-dos-blue {
+    --dos-btn-bg: #0000aa;        --dos-btn-fg: #ffffff;
+    --dos-btn-hover-bg: #000055;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #000033; --dos-btn-active-fg: #cccccc;
+}
+
+.btn-dos-cyan {
+    --dos-btn-bg: #00aaaa;        --dos-btn-fg: #000000;
+    --dos-btn-hover-bg: #005555;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #003333; --dos-btn-active-fg: #cccccc;
+}
+
+.btn-dos-magenta {
+    --dos-btn-bg: #aa00aa;        --dos-btn-fg: #ffffff;
+    --dos-btn-hover-bg: #550055;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #330033; --dos-btn-active-fg: #cccccc;
+}
+
+.btn-dos-brown {
+    --dos-btn-bg: #a85400;        --dos-btn-fg: #ffffff;
+    --dos-btn-hover-bg: #542a00;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #331a00; --dos-btn-active-fg: #cccccc;
 }
 
 /*-------------------------------------------*\
