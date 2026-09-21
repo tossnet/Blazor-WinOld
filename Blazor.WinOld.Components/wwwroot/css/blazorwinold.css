@@ -277,7 +277,7 @@ label.label-txt-win {
 
 .lbtxt-win-dos {
     font-family: 'IBMVGADos', monospace !important;
-    font-size: 14px;
+    font-size: 14px !important;
     color: #1a1a1a;
     margin-right: 1ch;
     -webkit-font-smoothing: none;

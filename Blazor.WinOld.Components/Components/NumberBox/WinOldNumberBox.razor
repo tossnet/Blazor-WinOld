@@ -20,8 +20,9 @@
                max="@Max"
                step="@Step"
                @attributes="Attributes"
-               @bind="CurrentValue"
-               @bind:event="oninput" />
+               value="@DisplayText"
+               @oninput="OnInput"
+               @onchange="OnChange" />
     }
     else
     {
@@ -36,8 +37,9 @@
                    max="@Max"
                    step="@Step"
                    @attributes="Attributes"
-                   @bind="CurrentValue"
-                   @bind:event="oninput" />
+                   value="@DisplayText"
+                   @oninput="OnInput"
+                   @onchange="OnChange" />
 
             <div class="numbox-spin @GetSpinClass()">
                 <button type="button"

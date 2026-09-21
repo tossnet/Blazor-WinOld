@@ -40,6 +40,7 @@
                          Min="0"
                          Max="999.99"
                          Step="0.01"
+                         Format="F2"
                          InputStyle="text-align: right;"
                          Style="padding-bottom:4px" />
 
@@ -50,6 +51,7 @@
                          Min="0"
                          Max="999.99"
                          Step="0.01"
+                         Format="F2"
                          InputStyle="text-align: right;"
                          Disabled="true" />
     </div>
@@ -104,18 +106,19 @@
 <CodeBlock Language="CodeLanguage.Razor"
            EnableLineNumbers="true"
            Code=@(@"
-                <WinOldNumberBox Appearance=""Appearance.Win10""
-				                 TValue=""int""
-				                 @bind-Value=""myIntValue""
-				                 Label=""Age:""
-				                 Min=""0""
-				                 Max=""100""
-				                 Step=""1""
-				                 InputStyle=""text-align: right;""
-				                 Disabled=""false"" />
+<WinOldNumberBox Appearance=""Appearance.Win10""
+				TValue=""int""
+				@bind-Value=""myIntValue""
+				Label=""Age:""
+				Min=""0""
+				Max=""100""
+				Step=""1""
+                Format=""""
+				InputStyle=""text-align: right;""
+				Disabled=""false"" />
 
                 @code {
-	                private int myIntValue = 25;
+	private int myIntValue = 25;
                 }") />
 
 <h2>Current Values</h2>
@@ -171,6 +174,11 @@
             <td style="padding: 8px; border: 1px solid #ccc;"><code>Step</code></td>
             <td style="padding: 8px; border: 1px solid #ccc;">string</td>
             <td style="padding: 8px; border: 1px solid #ccc;">Increment/decrement step when using arrows</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Format</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Display format applied when the field is committed (e.g. "F2" or "0.00" to always show 2 decimals). Display only, the bound value is not rounded. Invariant culture, so N/C/P formats are not supported.</td>
         </tr>
         <tr style="border: 1px solid #ccc;">
             <td style="padding: 8px; border: 1px solid #ccc;"><code>InputStyle</code></td>

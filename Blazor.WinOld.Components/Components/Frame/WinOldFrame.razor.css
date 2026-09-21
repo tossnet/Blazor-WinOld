@@ -33,7 +33,7 @@
                 0 0 0 3px #ffffff, /* outer border */
                 0 -3px 0 6px var(--dos-background), /* top background overflow */
                 0 6px 0 6px var(--dos-background); /* bottom background overflow */
-    margin: 8px;
+    margin: 6px;
     padding: 8px;
 }
 

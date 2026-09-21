@@ -32,7 +32,22 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
     [Parameter]
     public string? Step { get; set; }
 
+    /// <summary>
+    /// Standard .NET numeric format string applied to the displayed value (e.g. "F2" or "0.00" to always show 2 decimals).
+    /// /!\ Display only: the bound value is not rounded. The text is formatted with the invariant culture because
+    /// <c>type="number"</c> only accepts a "." decimal separator and no group separators, so N/C/P formats are not supported.
+    /// </summary>
+    [Parameter]
+    public string? Format { get; set; }
+
     private Guid ElementId { get; set; } = Guid.NewGuid();
+
+    // Text rendered in the input. Left untouched while typing so Blazor doesn't rewrite the field under the cursor;
+    // reformatted when the field is committed (change/blur/Enter), on spin buttons and on external Value changes.
+    private string? DisplayText { get; set; }
+    private TValue? _syncedValue;
+    private string? _syncedFormat;
+    private bool _displayInitialized;
 
     protected TValue? CurrentValue
     {
@@ -45,6 +60,65 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
                 _ = ValueChanged.InvokeAsync(value);
             }
         }
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (!_displayInitialized
+            || Format != _syncedFormat
+            || !EqualityComparer<TValue?>.Default.Equals(Value, _syncedValue))
+        {
+            SyncDisplay();
+            _syncedFormat = Format;
+            _displayInitialized = true;
+        }
+    }
+
+    private void SyncDisplay()
+    {
+        DisplayText = FormatValue(Value);
+        _syncedValue = Value;
+    }
+
+    private string FormatValue(TValue? value)
+    {
+        if (value is null) return string.Empty;
+        if (!string.IsNullOrEmpty(Format) && value is IFormattable formattable)
+            return formattable.ToString(Format, CultureInfo.InvariantCulture);
+        return Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
+    }
+
+    private void ApplyInput(string? text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            CurrentValue = default;
+        else if (BindConverter.TryConvertTo<TValue?>(text, CultureInfo.InvariantCulture, out var parsed))
+            CurrentValue = parsed;
+        else
+            return;
+
+        // Value now matches what the user typed: don't reformat it (and rewrite the field) until the field is committed.
+        _syncedValue = Value;
+    }
+
+    private void OnInput(ChangeEventArgs e) => ApplyInput(e.Value?.ToString());
+
+    private async Task OnChange(ChangeEventArgs e)
+    {
+        ApplyInput(e.Value?.ToString());
+
+        var formatted = FormatValue(Value);
+        if (formatted == DisplayText && e.Value?.ToString() != formatted)
+        {
+            // The DOM may hold a different typed text (ex: "12") while the last rendered text is already "12.00":
+            // Blazor only diffs against the previous render, so blank the field for one render to force the rewrite.
+            DisplayText = null;
+            StateHasChanged();
+            await Task.Yield();
+        }
+
+        DisplayText = formatted;
+        _syncedValue = Value;
     }
 
     public async Task FocusAsync()
@@ -71,6 +145,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
 
         var underlyingType = Nullable.GetUnderlyingType(typeof(TValue)) ?? typeof(TValue);
         CurrentValue = (TValue?)Convert.ChangeType(next, underlyingType, CultureInfo.InvariantCulture);
+        SyncDisplay();
     }
 
     private double GetStep() => ParseDouble(Step) ?? 1d;
@@ -89,9 +164,9 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
     {
         var cls = Appearance switch
         {
-            Appearance.Win7 => "txt-win-7",
-            Appearance.WinXP => "txt-win-xp",
             Appearance.Win98 => "txt-win-98",
+            Appearance.WinXP => "txt-win-xp",
+            Appearance.Win7 => "txt-win-7",
             Appearance.Win10 => "txt-win-10",
             _ => "txt-win-10"
         };
@@ -106,9 +181,9 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
 
         var cls = Appearance switch
         {
-            Appearance.Win7 => "lbtxt-win-7",
-            Appearance.WinXP => "lbtxt-win-xp",
             Appearance.Win98 => "lbtxt-win-98",
+            Appearance.WinXP => "lbtxt-win-xp",
+            Appearance.Win7 => "lbtxt-win-7",
             Appearance.Win10 => "lbtxt-win-10",
             _ => "lbtxt-win-10"
         };
@@ -120,9 +195,9 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
     {
         var cls = Appearance switch
         {
-            Appearance.Win7 => "numbox-wrap-7",
-            Appearance.WinXP => "numbox-wrap-xp",
             Appearance.Win98 => "numbox-wrap-98",
+            Appearance.WinXP => "numbox-wrap-xp",
+            Appearance.Win7 => "numbox-wrap-7",
             Appearance.Win10 => "numbox-wrap-10",
             _ => "numbox-wrap-10"
         };
@@ -134,9 +209,9 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
     {
         var cls = Appearance switch
         {
-            Appearance.Win7 => "numbox-spin-7",
-            Appearance.WinXP => "numbox-spin-xp",
             Appearance.Win98 => "numbox-spin-98",
+            Appearance.WinXP => "numbox-spin-xp",
+            Appearance.Win7 => "numbox-spin-7",
             Appearance.Win10 => "numbox-spin-10",
             _ => "numbox-spin-10"
         };
@@ -148,9 +223,9 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
     {
         var cls = Appearance switch
         {
-            Appearance.Win7 => "numbox-spin-btn-7",
-            Appearance.WinXP => "numbox-spin-btn-xp",
             Appearance.Win98 => "numbox-spin-btn-98",
+            Appearance.WinXP => "numbox-spin-btn-xp",
+            Appearance.Win7 => "numbox-spin-btn-7",
             Appearance.Win10 => "numbox-spin-btn-10",
             _ => "numbox-spin-btn-10"
         };

@@ -25,10 +25,16 @@
     lives on the wrapper, not on the input or the buttons.
 \*-------------------------------------------*/
 
+/* Razor drops the whitespace around the @if block, so recreate the small gap
+   WinOldTextBox gets from the inline space between its label and input */
+.label-txt-win {
+    margin-right: 4px;
+}
+
 .numbox-wrap {
     display: inline-flex;
     align-items: stretch;
-    vertical-align: top;
+    vertical-align: baseline;
     gap: 0;
 }
 
