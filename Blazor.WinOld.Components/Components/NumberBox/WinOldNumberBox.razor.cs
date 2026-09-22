@@ -11,6 +11,13 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
     [Category(CategoryTypes.Button.Appearance)]
     public Appearance Appearance { get; set; }
 
+    /// <summary>
+    /// Color of the spin buttons when Appearance is DOS. Ignored for other appearances.
+    /// </summary>
+    [Parameter]
+    [Category(CategoryTypes.Button.Appearance)]
+    public DosColor DosColor { get; set; } = DosColor.Default;
+
     [Parameter]
     public string Label { get; set; } = string.Empty;
 
@@ -164,6 +171,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
     {
         var cls = Appearance switch
         {
+            Appearance.DOS => "txt-win-dos",
             Appearance.Win98 => "txt-win-98",
             Appearance.WinXP => "txt-win-xp",
             Appearance.Win7 => "txt-win-7",
@@ -181,6 +189,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
 
         var cls = Appearance switch
         {
+            Appearance.DOS => "lbtxt-win-dos",
             Appearance.Win98 => "lbtxt-win-98",
             Appearance.WinXP => "lbtxt-win-xp",
             Appearance.Win7 => "lbtxt-win-7",
@@ -195,6 +204,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
     {
         var cls = Appearance switch
         {
+            Appearance.DOS => "numbox-wrap-dos",
             Appearance.Win98 => "numbox-wrap-98",
             Appearance.WinXP => "numbox-wrap-xp",
             Appearance.Win7 => "numbox-wrap-7",
@@ -209,6 +219,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
     {
         var cls = Appearance switch
         {
+            Appearance.DOS => "numbox-spin-dos",
             Appearance.Win98 => "numbox-spin-98",
             Appearance.WinXP => "numbox-spin-xp",
             Appearance.Win7 => "numbox-spin-7",
@@ -223,12 +234,15 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
     {
         var cls = Appearance switch
         {
+            Appearance.DOS => "numbox-spin-btn-dos",
             Appearance.Win98 => "numbox-spin-btn-98",
             Appearance.WinXP => "numbox-spin-btn-xp",
             Appearance.Win7 => "numbox-spin-btn-7",
             Appearance.Win10 => "numbox-spin-btn-10",
             _ => "numbox-spin-btn-10"
         };
+        if (Appearance == Appearance.DOS && DosColor != DosColor.Default)
+            cls += $" numbox-spin-btn-dos-{DosColor.ToString().ToLowerInvariant()}";
         if (IsTouch) cls += " win-touch";
         return cls;
     }

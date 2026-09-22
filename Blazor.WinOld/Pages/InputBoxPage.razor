@@ -24,6 +24,11 @@
 <p>Click the buttons below to display InputBox dialogs with different Windows styles:</p>
 
 <div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+	<WinOldButton OnClick="() => ShowTextInput(Appearance.DOS)"
+				  Appearance="Appearance.DOS">
+		DOS
+	</WinOldButton>
+
 	<WinOldButton OnClick="() => ShowTextInput(Appearance.Win98)"
 				  Appearance="Appearance.Win98">
 		Windows 98
@@ -132,30 +137,6 @@ private async Task ShowIntInput()
 	_intValue = await DialogService.ShowInputBox<int?>(options);
 }") />
 
-<h3>Decimal Input</h3>
-
-<CodeBlock Language="CodeLanguage.CSharp"
-		   EnableLineNumbers="true"
-		   Code=@(@"
-private decimal? _decimalValue = 99.99m;
-
-private async Task ShowDecimalInput()
-{
-	var options = new InputBoxOptions
-	{
-		Appearance = Appearance.Win10,
-		Title = ""Enter Price"",
-		Message = ""Please enter the price:"",
-		Value = _decimalValue?.ToString(),
-		Min = ""0"",
-		Max = ""10000"",
-		Step = ""0.01"",
-		OkButtonText = ""OK"",
-		CancelButtonText = ""Cancel""
-	};
-	_decimalValue = await DialogService.ShowInputBox<decimal?>(options);
-}") />
-
 <h3>Double Input</h3>
 
 <CodeBlock Language="CodeLanguage.CSharp"
@@ -194,7 +175,7 @@ private async Task ShowDoubleInput()
 		<tr style="border: 1px solid #ccc;">
 			<td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
 			<td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
-			<td style="padding: 8px; border: 1px solid #ccc;">Visual style (Win98, WinXP, Win7, Win10)</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Visual style (DOS, Win98, WinXP, Win7, Win10)</td>
 		</tr>
 		<tr style="border: 1px solid #ccc;">
 			<td style="padding: 8px; border: 1px solid #ccc;"><code>Title</code></td>
@@ -240,6 +221,16 @@ private async Task ShowDoubleInput()
 			<td style="padding: 8px; border: 1px solid #ccc;"><code>Step</code></td>
 			<td style="padding: 8px; border: 1px solid #ccc;">string?</td>
 			<td style="padding: 8px; border: 1px solid #ccc;">Step increment (for numeric inputs)</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>DosColor</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">DosColor?</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">DOS appearance only: background color of the box. Defaults to gray when not set</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>DosButtonColor</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">DosColor?</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">DOS appearance only: color of the OK/Cancel buttons. Adapts to the background when not set</td>
 		</tr>
 	</tbody>
 </table>

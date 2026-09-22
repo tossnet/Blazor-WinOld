@@ -8,6 +8,61 @@
 }
 
 /*-------------------------------------------*\
+    DOS
+\*-------------------------------------------*/
+.select-dos:not([multiple]) {
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    color: #1a1a1a;
+    background-color: var(--dos-background);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 24' preserveAspectRatio='none'%3E%3Crect x='0' y='0' width='2' height='24' fill='%23f0f0f0'/%3E%3Crect x='2' y='0' width='20' height='24' fill='%23b0b0b0'/%3E%3Cpolygon points='9,9 15,9 12,15' fill='%231a1a1a'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 22px 100%;
+    box-sizing: border-box;
+    height: 24px;
+    line-height: 22px;
+    padding: 0 26px 0 6px;
+    border-style: solid;
+    border-width: 1px 0 1px 2px;
+    border-color: #404040 transparent #ffffff #404040;
+    border-radius: 0;
+    cursor: default;
+    -webkit-font-smoothing: none;
+}
+
+    .select-dos:not([multiple]):focus {
+        outline: none;
+        color: #ffffff;
+        background-color: #000000;
+    }
+
+        .select-dos:not([multiple]):focus option {
+            color: #000000;
+            background-color: #ffffff;
+        }
+
+    .select-dos:not([multiple]):not(:disabled):hover {
+        filter: brightness(0.93);
+    }
+
+    .select-dos:not([multiple]):not(:disabled):active {
+        filter: brightness(0.8);
+    }
+
+    .select-dos:not([multiple]):disabled {
+        cursor: not-allowed;
+        color: #686868;
+        filter: grayscale(1) opacity(0.85);
+    }
+
+.select-dos option {
+    font-family: 'IBMVGADos', monospace;
+    color: #000;
+    background-color: #fff;
+}
+
+/*-------------------------------------------*\
     Win XP
 \*-------------------------------------------*/
 .select-win-xp {
@@ -201,6 +256,14 @@
 .select-win-xp.win-touch {
     font-size: 11px;
     -webkit-font-smoothing: none;
+}
+
+.select-dos.win-touch {
+    font-size: 14px;
+    height: 32px;
+    line-height: 30px;
+    padding: 0 34px 0 8px;
+    background-size: 30px 100%;
 }
 
 .select-win-xp.win-touch {

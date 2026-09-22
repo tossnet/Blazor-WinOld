@@ -17,8 +17,19 @@ public record InputBoxOptions
     public string? Max { get; init; }
     public string? Step { get; init; }
 
-    // 
+    //
     public InputBoxType InputType { get; init; } = InputBoxType.Text;
+
+    /// <summary>
+    /// DOS appearance only: background color of the input box. When null, it defaults to standard gray.
+    /// </summary>
+    public DosColor? DosColor { get; init; }
+
+    /// <summary>
+    /// DOS appearance only: Color of the OK/Cancel buttons. When null, it adapts to the background
+    /// (green on a gray box, gray on a colored one).
+    /// </summary>
+    public DosColor? DosButtonColor { get; init; }
 }
 
 public enum InputBoxType

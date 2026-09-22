@@ -40,6 +40,7 @@
 
 .title-bar-controls-dos {
     position: absolute;
+    left: 0;
     right: 0;
     top: 0;
     display: flex;
@@ -98,6 +99,19 @@
 .title-bar-controls-dos button[aria-label=Maximize]:hover,
 .title-bar-controls-dos button[aria-label=Maximize]:active {
     background: var(--dos-box-bg, var(--dos-background));
+}
+
+/* Close sits on the left of the DOS title bar, Maximize stays on the right. */
+.title-bar-controls-dos button[aria-label=Close] {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.title-bar-controls-dos button[aria-label=Maximize] {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .title-bar-controls-dos .title-bar-dos-glyph {

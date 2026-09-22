@@ -62,7 +62,11 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes 
 
-<details open="open"><summary>Version 2.12.0</summary>
+<details open="open"><summary>Version 2.13.0</summary>
+
+>- DOS appearance added : InputBox, SelectBox, NumberBox
+</details>
+<details><summary>Version 2.12.0</summary>
 
 >- Added a Format parameter to WinOldNumberBox (ex: Format="F2")
 </details>

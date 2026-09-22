@@ -25,11 +25,13 @@
 					<div class="actions">
 						<WinOldButton OnClick="HandleOk"
 									  Appearance="Options.Appearance"
+									  DosColor="GetDosButtonColor()"
 						              Default="true">@Options.OkButtonText</WinOldButton>
 						@if (!string.IsNullOrEmpty(Options.CancelButtonText))
 						{
 						<WinOldButton OnClick="HandleCancel"
-									  Appearance="Options.Appearance">@Options.CancelButtonText</WinOldButton>
+									  Appearance="Options.Appearance"
+									  DosColor="GetDosButtonColor()">@Options.CancelButtonText</WinOldButton>
 						}
 					</div>
 				</div>
@@ -49,28 +51,31 @@
                             <WinOldNumberBox @ref="NumberBoxIntRef"
                                              TValue="int"
                                              Appearance="Options.Appearance"
+                                             DosColor="GetDosButtonColor()"
                                              InputStyle="width: 100%"
                                              @bind-Value="IntValue"
                                              Min="@Options.Min"
                                              Max="@Options.Max"
                                              Step="@(Options.Step ?? "1")" />
                             break;
-                        
+
                         case InputBoxType.Decimal:
                             <WinOldNumberBox @ref="NumberBoxDecimalRef"
                                              TValue="decimal"
                                              Appearance="Options.Appearance"
+                                             DosColor="GetDosButtonColor()"
                                              InputStyle="width: 100%"
                                              @bind-Value="DecimalValue"
                                              Min="@Options.Min"
                                              Max="@Options.Max"
                                              Step="@(Options.Step ?? "0.01")" />
                             break;
-                        
+
                         case InputBoxType.Double:
                             <WinOldNumberBox @ref="NumberBoxDoubleRef"
                                              TValue="double"
                                              Appearance="Options.Appearance"
+                                             DosColor="GetDosButtonColor()"
                                              InputStyle="width: 100%"
                                              @bind-Value="DoubleValue"
                                              Min="@Options.Min"

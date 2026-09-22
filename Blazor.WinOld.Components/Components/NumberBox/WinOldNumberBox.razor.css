@@ -1,27 +1,16 @@
 /* Shared CSS in blazorwinold.css for WinOldTextBox and WinOldNumberBox */
 /* Only specific adjustments here, if necessary */
 
-.num-win::-webkit-inner-spin-button,
-.num-win::-webkit-outer-spin-button {
-    height: 17px;
-    margin-top: 3px;
-}
-
-.num-win.win-touch::-webkit-inner-spin-button,
-.num-win.win-touch::-webkit-outer-spin-button {
-    height: 24px;
-    margin-top: 2px;
-}
-
 /*-------------------------------------------*\
-    Custom spin buttons (Win98 / WinXP / Win7 / Win10)
-    DOS keeps the native spinner above, untouched.
+    Custom spin buttons (DOS / Win98 / WinXP / Win7 / Win10)
 
+    DOS: the NumberBox never existed in real DOS. The up/down
+    buttons are an imagined 
     Win98 / WinXP: the up/down buttons are their own distinct
     control sitting outside the text field (like a real OS spin
     button glued to the input).
     Win7 / Win10: the arrows are part of the same single box as
-    the input (like WinOldSelect's dropdown arrow) — the border
+    the input (like WinOldSelect's dropdown arrow). The border
     lives on the wrapper, not on the input or the buttons.
 \*-------------------------------------------*/
 
@@ -84,6 +73,127 @@
     .numbox-spin-btn:disabled {
         cursor: default;
     }
+
+
+/*-------------------------------------------*\
+    DOS (imagined — no real DOS NumberBox existed,I didn't find... 
+\*-------------------------------------------*/
+.numbox-wrap-dos .numbox-input {
+    border-right: none;
+    margin-right: 2px;
+}
+
+.numbox-spin-dos {
+    flex-direction: row;
+    width: 32px;
+}
+
+.numbox-spin-dos.win-touch {
+    width: 44px;
+}
+
+.numbox-spin-btn-dos {
+    font-family: 'IBMVGADos', monospace;
+    border: none;
+    --dos-btn-bg: var(--dos-background);
+    --dos-btn-fg: #1a1a1a;
+    --dos-btn-hover-bg: #3a3a3a;
+    --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #6a6a6a;
+    background-color: var(--dos-btn-bg);
+    color: var(--dos-btn-fg);
+    margin-right: 2px;
+}
+
+.numbox-spin-btn-dos.numbox-spin-up::before {
+    content: "";
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 4px solid currentColor;
+}
+
+.numbox-spin-btn-dos.numbox-spin-down::before {
+    content: "";
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid currentColor;
+}
+
+.numbox-spin-btn-dos.win-touch.numbox-spin-up::before {
+    border-left-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 5px;
+}
+
+.numbox-spin-btn-dos.win-touch.numbox-spin-down::before {
+    border-left-width: 4px;
+    border-right-width: 4px;
+    border-top-width: 5px;
+}
+
+    .numbox-spin-btn-dos:not(:disabled):hover {
+        background-color: var(--dos-btn-hover-bg);
+        color: var(--dos-btn-hover-fg);
+    }
+
+    .numbox-spin-btn-dos:not(:disabled):active {
+        background-color: var(--dos-btn-active-bg);
+    }
+
+    .numbox-spin-btn-dos:disabled {
+        background-color: var(--dos-background);
+        color: #686868;
+        cursor: not-allowed;
+    }
+
+/* DOS color variants: only redefine the variables, same palette as WinOldButton */
+.numbox-spin-btn-dos-white {
+    --dos-btn-bg: #ffffff;        --dos-btn-fg: #000000;
+    --dos-btn-hover-bg: #c0c0c0;  --dos-btn-hover-fg: #000000;
+    --dos-btn-active-bg: #808080;
+}
+
+.numbox-spin-btn-dos-yellow {
+    --dos-btn-bg: #ffff55;        --dos-btn-fg: #000000;
+    --dos-btn-hover-bg: #aaaa00;  --dos-btn-hover-fg: #000000;
+    --dos-btn-active-bg: #808000;
+}
+
+.numbox-spin-btn-dos-green {
+    --dos-btn-bg: #00aa00;        --dos-btn-fg: #ffffff;
+    --dos-btn-hover-bg: #005500;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #003300;
+}
+
+.numbox-spin-btn-dos-red {
+    --dos-btn-bg: #aa0000;        --dos-btn-fg: #ffffff;
+    --dos-btn-hover-bg: #550000;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #330000;
+}
+
+.numbox-spin-btn-dos-blue {
+    --dos-btn-bg: #0000aa;        --dos-btn-fg: #ffffff;
+    --dos-btn-hover-bg: #000055;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #000033;
+}
+
+.numbox-spin-btn-dos-cyan {
+    --dos-btn-bg: #00aaaa;        --dos-btn-fg: #000000;
+    --dos-btn-hover-bg: #005555;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #003333;
+}
+
+.numbox-spin-btn-dos-magenta {
+    --dos-btn-bg: #aa00aa;        --dos-btn-fg: #ffffff;
+    --dos-btn-hover-bg: #550055;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #330033;
+}
+
+.numbox-spin-btn-dos-brown {
+    --dos-btn-bg: #a85400;        --dos-btn-fg: #ffffff;
+    --dos-btn-hover-bg: #542a00;  --dos-btn-hover-fg: #ffffff;
+    --dos-btn-active-bg: #331a00;
+}
 
 /*-------------------------------------------*\
     Win 98 (same bevel as WinOldButton's Win98 appearance)

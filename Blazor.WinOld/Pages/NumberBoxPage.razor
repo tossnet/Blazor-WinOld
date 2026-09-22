@@ -11,6 +11,27 @@
 
 <div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
     <div style="flex:0 0 calc(25% - 20px);">
+        <h7>DOS</h7>
+        <WinOldNumberBox Appearance="Appearance.DOS"
+                         TValue="int"
+                         @bind-Value="myIntValue"
+                         Label="Age:"
+                         Min="0"
+                         Max="100"
+                         Step="1"
+                         Style="padding-bottom:4px" />
+
+        <WinOldNumberBox Appearance="Appearance.DOS"
+                         TValue="int"
+                         @bind-Value="myIntValue"
+                         Label="Age:"
+                         Min="0"
+                         Max="100"
+                         Step="1"
+                         Disabled="true" />
+    </div>
+
+    <div style="flex:0 0 calc(25% - 20px);">
         <h7>Windows 98</h7>
         <WinOldNumberBox Appearance="Appearance.Win98"
                          TValue="int"
@@ -101,6 +122,7 @@
     </div>
 </div>
 
+
 <h2>Code Example</h2>
 
 <CodeBlock Language="CodeLanguage.Razor"
@@ -143,7 +165,12 @@
         <tr style="border: 1px solid #ccc;">
             <td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
             <td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
-            <td style="padding: 8px; border: 1px solid #ccc;">Visual style (Win98, WinXP, Win7, Win10)</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Visual style (DOW, Win98, WinXP, Win7, Win10)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>DosColor</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">DosColor</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Color of the spin buttons when Appearance is DOS. Ignored for other appearances.</td>
         </tr>
         <tr style="border: 1px solid #ccc;">
             <td style="padding: 8px; border: 1px solid #ccc;"><code>TValue</code></td>
@@ -199,6 +226,37 @@
 </table>
 
 
+
+<h2>DOS colors</h2>
+
+<p>The NumberBox never existed in real DOS software. This is an imagined DOS-styled variant. The spin buttons' color is customizable via <code>DosColor</code>, using the same palette as <code>WinOldButton</code>.</p>
+
+<div style="display:flex; flex-wrap:wrap; gap:16px; width:fit-content;">
+    @foreach (var color in Enum.GetValues<DosColor>())
+    {
+        <WinOldNumberBox Appearance="Appearance.DOS"
+                         TValue="int"
+                         @bind-Value="myIntValue"
+                         Label="@color.ToString()"
+                         DosColor="color"
+                         Min="0"
+                         Max="100"
+                         Step="1" />
+    }
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+<WinOldNumberBox Appearance=""Appearance.DOS""
+                 TValue=""int""
+                 @bind-Value=""myIntValue""
+                 Label=""Age:""
+                 DosColor=""DosColor.Green""
+                 Min=""0""
+                 Max=""100""
+                 Step=""1"" />
+                                ") />
 
 @code {
     private int myIntValue = 25;
