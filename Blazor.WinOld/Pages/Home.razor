@@ -59,6 +59,7 @@
     </WinOldWindow>
 </div>
 
+<div id="components-section" style="background-color: @GetFormColor();">
 
 <WinOldCheckBox Appearance="appearance"
                 Label="Disable components"
@@ -156,6 +157,7 @@
 
 </WinOldTabs>
 
+</div>
 
 @code {
     private bool _disabledComponents;
@@ -217,6 +219,13 @@
     {
         SystemColors.Appearance = appearance;
         var color = SystemColors.Desktop;
+        return $"rgb({color.R}, {color.G}, {color.B})";
+    }
+
+    private string GetFormColor()
+    {
+        SystemColors.Appearance = appearance;
+        var color = SystemColors.Form;
         return $"rgb({color.R}, {color.G}, {color.B})";
     }
 

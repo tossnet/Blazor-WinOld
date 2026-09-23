@@ -60,6 +60,7 @@ public partial class WinOldTabs : WinOldComponentBase
         var cls = Appearance switch
         {
             Appearance.DOS => "tabs-win-dos",
+            Appearance.Win31 => "tabs-win-31",
             Appearance.Win98 => "tabs-win-98",
             Appearance.Win7 => "tabs-win-7",
             Appearance.WinXP => "tabs-win-xp",
@@ -73,7 +74,12 @@ public partial class WinOldTabs : WinOldComponentBase
     /// </summary>
     private string GetTabsListClass()
     {
-        var cls = Appearance == Appearance.DOS ? "tabs-list-dos" : string.Empty;
+        var cls = Appearance switch
+        {
+            Appearance.DOS => "tabs-list-dos",
+            Appearance.Win31 => "tabs-list-win31",
+            _ => string.Empty
+        };
         if (IsTouch) cls += " win-touch";
         return cls.Trim();
     }
@@ -86,6 +92,7 @@ public partial class WinOldTabs : WinOldComponentBase
         string activeClass = Appearance switch
         {
             Appearance.DOS => "active-tab-win-dos",
+            Appearance.Win31 => "active-tab-win-31",
             Appearance.Win7 => "active-tab-win-7",
             Appearance.WinXP => "active-tab-win-xp",
             Appearance.Win98 => "active-tab-win-98",

@@ -32,6 +32,27 @@
     </div>
 
     <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows 3.1</h7>
+        <WinOldNumberBox Appearance="Appearance.Win31"
+                         TValue="int"
+                         @bind-Value="myIntValue"
+                         Label="Age:"
+                         Min="0"
+                         Max="100"
+                         Step="1"
+                         Style="padding-bottom:4px" />
+
+        <WinOldNumberBox Appearance="Appearance.Win31"
+                         TValue="int"
+                         @bind-Value="myIntValue"
+                         Label="Age:"
+                         Min="0"
+                         Max="100"
+                         Step="1"
+                         Disabled="true" />
+    </div>
+
+    <div style="flex:0 0 calc(25% - 20px);">
         <h7>Windows 98</h7>
         <WinOldNumberBox Appearance="Appearance.Win98"
                          TValue="int"

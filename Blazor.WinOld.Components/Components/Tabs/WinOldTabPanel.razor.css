@@ -22,6 +22,23 @@
 }
 
 /*--------*\
+    Win31
+\*--------*/
+.panel-win-31 {
+    background: white;
+    border: 1px solid #000000;
+    clear: both;
+    margin-bottom: 9px;
+    margin-top: -1px;
+    padding: 14px;
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-family);
+    font-size: 12px;
+    color: #000000;
+}
+
+/*--------*\
     Win 98
 \*--------*/
 .panel-win-98 {

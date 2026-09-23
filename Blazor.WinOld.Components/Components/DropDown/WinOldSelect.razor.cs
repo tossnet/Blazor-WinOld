@@ -55,6 +55,7 @@ public partial class WinOldSelect<T> : WinOldComponentBase
         var cls = Appearance switch
         {
             Appearance.DOS => "select-dos",
+            Appearance.Win31 => "select-win-31",
             Appearance.Win7 => "select-win-7",
             Appearance.WinXP => "select-win-xp",
             Appearance.Win98 => "select-win-98",

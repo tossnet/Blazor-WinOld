@@ -194,6 +194,85 @@
 }
 
 /*--------*\
+    Win31
+\*--------*/
+.numbox-wrap-31 {
+    border: 1px solid #000000;
+    border-radius: 0;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+    .numbox-wrap-31 .numbox-input {
+        border: none;
+        background: transparent;
+        box-shadow: none;
+    }
+
+.numbox-spin-31 {
+    width: 16px;
+    border-left: 1px solid #000000;
+}
+
+.numbox-spin-31.win-touch {
+    width: 22px;
+}
+
+.numbox-spin-btn-31 {
+    background-color: #C0C0C0;
+}
+
+    .numbox-spin-btn-31.numbox-spin-down {
+        border-top: 1px solid #000000;
+    }
+
+.numbox-spin-btn-31.numbox-spin-up::before {
+    content: "";
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 5px solid #000000;
+}
+
+.numbox-spin-btn-31.numbox-spin-down::before {
+    content: "";
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #000000;
+}
+
+.numbox-spin-btn-31.win-touch.numbox-spin-up::before {
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 6px;
+}
+
+.numbox-spin-btn-31.win-touch.numbox-spin-down::before {
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 6px;
+}
+
+    .numbox-spin-btn-31:not(:disabled):active {
+        background-color: #808080;
+    }
+
+        .numbox-spin-btn-31:not(:disabled):active.numbox-spin-up::before {
+            border-bottom-color: #ffffff;
+        }
+
+        .numbox-spin-btn-31:not(:disabled):active.numbox-spin-down::before {
+            border-top-color: #ffffff;
+        }
+
+    .numbox-spin-btn-31:disabled.numbox-spin-up::before {
+        border-bottom-color: #939393;
+    }
+
+    .numbox-spin-btn-31:disabled.numbox-spin-down::before {
+        border-top-color: #939393;
+    }
+
+/*--------*\
     Win 98 (same bevel as WinOldButton's Win98 appearance)
 \*--------*/
 .numbox-spin-98 {

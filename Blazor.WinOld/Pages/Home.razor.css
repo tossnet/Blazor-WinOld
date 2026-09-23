@@ -7,7 +7,7 @@
     gap: 2rem;
     align-items: center;
     padding: 2.5rem 1.5rem;
-    margin: -1.1rem -1.5rem 1.5rem -1.5rem;
+    margin: -1.1rem -1.5rem 0 -1.5rem;
     transition: background-color 0.45s ease;
     overflow: hidden;
 }
@@ -211,6 +211,23 @@
         color: white;
         border-color: rgba(0, 0, 0, 0.78);
     }
+
+/* ── Components Section ───────────────────────────────── */
+#components-section {
+    box-sizing: border-box;
+    width: auto;
+    min-height: calc(100vh - 3.5rem);
+    margin: 0 -1.5rem 0 -1.5rem;
+    padding: 1.5rem;
+    transition: background-color 0.45s ease;
+}
+
+@media (min-width: 641px) {
+    #components-section {
+        margin-left: -2rem;
+        margin-right: -1.5rem;
+    }
+}
 
 @media (max-width: 480px) {
     .hero-title {

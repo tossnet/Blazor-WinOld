@@ -27,6 +27,110 @@
 }
 
 /*--------*\
+    DOS
+\*--------*/
+.tabs-list.tabs-list-dos {
+    margin: 0;
+    padding: 0 0 4px;
+    gap: 3ch;
+    max-height: none;
+    background: var(--dos-background);
+}
+
+.tabs-win-dos {
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 18px;
+    color: #1a1a1a;
+    cursor: pointer;
+    -webkit-font-smoothing: none;
+}
+
+    .tabs-win-dos:before {
+        content: "[\00a0";
+    }
+
+    .tabs-win-dos:after {
+        content: "\00a0]";
+    }
+
+    .tabs-win-dos:not(:disabled):hover,
+    .tabs-win-dos:focus-visible {
+        background-color: #3a3a3a;
+        color: #ffffff;
+    }
+
+    .tabs-win-dos:not(:disabled):active {
+        background-color: #6a6a6a;
+        color: #e0e0e0;
+    }
+
+    .tabs-win-dos:disabled,
+    .tabs-win-dos:disabled:hover {
+        background-color: transparent;
+        color: #686868;
+        cursor: not-allowed;
+    }
+
+/* Active tab: inverse video */
+.tabs-win-dos.active-tab-win-dos,
+.tabs-win-dos.active-tab-win-dos:not(:disabled):hover {
+    background-color: #000000;
+    color: #ffff55;
+}
+
+/*--------*\
+    Win31
+\*--------*/
+.tabs-list.tabs-list-win31 {
+    margin: 0;
+    padding: 4px 4px 0;
+    gap: 1px;
+    max-height: none;
+    align-items: flex-end;
+    padding-left: unset;
+}
+
+.tabs-win-31 {
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: bolder;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 3px 10px;
+    margin-top: 4px;
+    background-color: #CBCBCB;
+    border: 1px solid #000000;
+    border-radius: 0;
+    color: #000000;
+    cursor: pointer;
+    position: relative;
+}
+
+    .tabs-win-31::first-letter {
+        text-decoration: underline;
+    }
+
+    .tabs-win-31:disabled {
+        color: #939393;
+        cursor: default;
+    }
+
+    .tabs-win-31:disabled::first-letter {
+        text-decoration: none;
+    }
+
+.active-tab-win-31 {
+    background-color: #ffffff;
+    margin-top: 0;
+    margin-bottom: -1px;
+    padding-bottom: 5px;
+    border-bottom-color: #ffffff;
+    position: relative;
+    z-index: 8;
+}
+
+/*--------*\
     Win XP
 \*--------*/
 .tabs-win-xp {
@@ -332,59 +436,6 @@
     }
 
 /*--------*\
-    DOS
-\*--------*/
-.tabs-list.tabs-list-dos {
-    margin: 0;
-    padding: 0 0 4px;
-    gap: 3ch;
-    max-height: none;
-    background: var(--dos-background);
-}
-
-.tabs-win-dos {
-    font-family: 'IBMVGADos', monospace;
-    font-size: 14px;
-    line-height: 18px;
-    color: #1a1a1a;
-    cursor: pointer;
-    -webkit-font-smoothing: none;
-}
-
-    .tabs-win-dos:before {
-        content: "[\00a0";
-    }
-
-    .tabs-win-dos:after {
-        content: "\00a0]";
-    }
-
-    .tabs-win-dos:not(:disabled):hover,
-    .tabs-win-dos:focus-visible {
-        background-color: #3a3a3a;
-        color: #ffffff;
-    }
-
-    .tabs-win-dos:not(:disabled):active {
-        background-color: #6a6a6a;
-        color: #e0e0e0;
-    }
-
-    .tabs-win-dos:disabled,
-    .tabs-win-dos:disabled:hover {
-        background-color: transparent;
-        color: #686868;
-        cursor: not-allowed;
-    }
-
-/* Active tab: inverse video */
-.tabs-win-dos.active-tab-win-dos,
-.tabs-win-dos.active-tab-win-dos:not(:disabled):hover {
-    background-color: #000000;
-    color: #ffff55;
-}
-
-/*--------*\
     Touch mode
 \*--------*/
 .tabs-list.tabs-list-dos.win-touch {
@@ -405,6 +456,7 @@
     line-height: 30px;
 }
 
+.tabs-win-31.win-touch,
 .tabs-win-98.win-touch,
 .tabs-win-7.win-touch {
     min-height: 32px;

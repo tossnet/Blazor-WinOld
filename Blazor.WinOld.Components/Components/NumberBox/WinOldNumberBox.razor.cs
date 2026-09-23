@@ -172,6 +172,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
         var cls = Appearance switch
         {
             Appearance.DOS => "txt-win-dos",
+            Appearance.Win31 => "txt-win-31",
             Appearance.Win98 => "txt-win-98",
             Appearance.WinXP => "txt-win-xp",
             Appearance.Win7 => "txt-win-7",
@@ -190,6 +191,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
         var cls = Appearance switch
         {
             Appearance.DOS => "lbtxt-win-dos",
+            Appearance.Win31 => "lbtxt-win-31",
             Appearance.Win98 => "lbtxt-win-98",
             Appearance.WinXP => "lbtxt-win-xp",
             Appearance.Win7 => "lbtxt-win-7",
@@ -205,6 +207,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
         var cls = Appearance switch
         {
             Appearance.DOS => "numbox-wrap-dos",
+            Appearance.Win31 => "numbox-wrap-31",
             Appearance.Win98 => "numbox-wrap-98",
             Appearance.WinXP => "numbox-wrap-xp",
             Appearance.Win7 => "numbox-wrap-7",
@@ -220,6 +223,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
         var cls = Appearance switch
         {
             Appearance.DOS => "numbox-spin-dos",
+            Appearance.Win31 => "numbox-spin-31",
             Appearance.Win98 => "numbox-spin-98",
             Appearance.WinXP => "numbox-spin-xp",
             Appearance.Win7 => "numbox-spin-7",
@@ -235,6 +239,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
         var cls = Appearance switch
         {
             Appearance.DOS => "numbox-spin-btn-dos",
+            Appearance.Win31 => "numbox-spin-btn-31",
             Appearance.Win98 => "numbox-spin-btn-98",
             Appearance.WinXP => "numbox-spin-btn-xp",
             Appearance.Win7 => "numbox-spin-btn-7",

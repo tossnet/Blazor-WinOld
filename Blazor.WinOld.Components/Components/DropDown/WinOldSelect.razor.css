@@ -63,6 +63,59 @@
 }
 
 /*--------*\
+    Win31
+\*--------*/
+.select-win-31:not([multiple]) {
+    box-sizing: border-box;
+    height: 20px;
+    padding: 1px 18px 1px 4px;
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: bolder;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 0;
+    cursor: default;
+    background-repeat: no-repeat, no-repeat;
+    background-position: top 0 right 0, top 0 right 15px;
+    background-size: 15px 18px, 1px 18px;
+    image-rendering: pixelated;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABmZVhJZklJKgAIAAAAAQBphwQAAQAAABoAAAAAAAAAAwAAkAcABAAAADAyMzABoAMAAQAAAAEAAAAFoAQAAQAAAEQAAAAAAAAAAgABAAIABAAAAFI5OAACAAcABAAAADAxMDAAAAAAIvvHMbnUA7gAAABWSURBVDhPzY9BCsAwCATXn/s0f2bxkFK2kWhOBgaiMmsCvzyq6oiLmbUIcagM4IVnA+WvxBzlLKC0eRfAs6MciMivV5YzUpn/unt+KlcYIq+iC7jR4QEA8g3JomiOGgAAAABJRU5ErkJggg=="), linear-gradient(#000000, #000000);
+}
+
+    .select-win-31:not([multiple]):focus {
+        outline: none;
+        color: #ffffff;
+        background-color: #0000aa;
+    }
+
+        .select-win-31:not([multiple]):focus option {
+            color: #000000;
+            background-color: #ffffff;
+        }
+
+    .select-win-31:not([multiple]):disabled {
+        cursor: not-allowed;
+        color: #BFBFBF;
+        border-color: #BFBFBF;
+    }
+
+.select-win-31 option {
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: bolder;
+    color: #000;
+    background-color: #fff;
+}
+
+.select-win-31.win-touch {
+    height: 28px;
+    padding: 5px 26px 5px 4px;
+    background-size: 21px 25px;
+}
+
+/*--------*\
     Win XP
 \*--------*/
 .select-win-xp {
