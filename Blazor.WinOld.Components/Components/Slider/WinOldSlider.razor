@@ -1,13 +1,19 @@
-﻿@namespace Blazor.WinOld.Components
+@namespace Blazor.WinOld.Components
 @typeparam TValue
 
 @inherits WinOldComponentBase
 
-<div style="display: flex; align-items: center; gap: 0.5rem">
+<div class="@(Appearance == Appearance.Win31 ? "sld-31-root" : null)" style="@(Appearance == Appearance.Win31 ? null : "display: flex; align-items: center; gap: 0.5rem")">
     <label class="label-txt-win @GetComponentLabelClass()"
            disabled="@(ParentDisabled | Disabled)">
            @LowLabel
     </label>
+    <div class="@(Appearance == Appearance.Win31 ? "sld-31-wrap" : "sld-wrap")">
+    @if (Appearance == Appearance.Win31)
+    {
+        <button type="button" class="sld-31-btn sld-31-left" tabindex="-1" aria-label="Decrease"
+                disabled="@(ParentDisabled | Disabled)" @onclick="() => Nudge(-1)"></button>
+    }
     <input type="range"
            id="@_inputId"
            aria-label="@(string.IsNullOrEmpty(LowLabel) ? null : LowLabel)"
@@ -21,6 +27,12 @@
            @attributes="Attributes"
            value="@FormatInvariant(CurrentValue)"
            @oninput="OnInput">
+    @if (Appearance == Appearance.Win31)
+    {
+        <button type="button" class="sld-31-btn sld-31-right" tabindex="-1" aria-label="Increase"
+                disabled="@(ParentDisabled | Disabled)" @onclick="() => Nudge(1)"></button>
+    }
+    </div>
     <label class="label-txt-win @GetComponentLabelClass()"
            disabled="@(ParentDisabled | Disabled)">
         @HighLabel

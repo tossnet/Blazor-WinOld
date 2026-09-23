@@ -19,6 +19,7 @@ public partial class WinOldLabel : WinOldComponentBase
         var cls = Appearance switch
         {
             Appearance.DOS => "lbl-dos",
+            Appearance.Win31 => "lbl-win-31",
             Appearance.Win98 => "lbl-win-98",
             Appearance.WinXP => "lbl-win-xp",
             Appearance.Win7 => "lbl-win-7",

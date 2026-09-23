@@ -75,6 +75,20 @@ public partial class WinOldSlider<TValue> : WinOldComponentBase
             : (TValue?)Convert.ChangeType(raw, typeof(TValue), CultureInfo.InvariantCulture);
     }
 
+    private void Nudge(int direction)
+    {
+        double min = Min is null ? 0 : Convert.ToDouble(Min, CultureInfo.InvariantCulture);
+        double max = Max is null ? 100 : Convert.ToDouble(Max, CultureInfo.InvariantCulture);
+        double step = Step is null ? 1 : Convert.ToDouble(Step, CultureInfo.InvariantCulture);
+        if (step <= 0) step = 1;
+        double current = Value is null ? min : Convert.ToDouble(Value, CultureInfo.InvariantCulture);
+
+        // Snap to the Step grid (anchored on Min) so floating-point drift or an off-grid value never leaves the grid
+        double next = min + Math.Round((current + direction * step - min) / step, MidpointRounding.AwayFromZero) * step;
+        next = Math.Round(Math.Clamp(next, min, max), 10);
+        CurrentValue = (TValue?)Convert.ChangeType(next, typeof(TValue), CultureInfo.InvariantCulture);
+    }
+
     private string? FormatInvariant(TValue? value)
     {
         if (value is null) return null;
@@ -115,6 +129,7 @@ public partial class WinOldSlider<TValue> : WinOldComponentBase
         return Appearance switch
         {
             Appearance.DOS => "sld-win-dos",
+            Appearance.Win31 => "sld-win-31",
             Appearance.Win98 => "sld-win-98",
             Appearance.WinXP => "sld-win-xp",
             Appearance.Win7 => "sld-win-7",
@@ -129,6 +144,7 @@ public partial class WinOldSlider<TValue> : WinOldComponentBase
         return Appearance switch
         {
             Appearance.DOS => "lbtxt-win-dos",
+            Appearance.Win31 => "lbtxt-win-31",
             Appearance.Win98 => "lbtxt-win-98",
             Appearance.WinXP => "lbtxt-win-xp",
             Appearance.Win7 => "lbtxt-win-7",

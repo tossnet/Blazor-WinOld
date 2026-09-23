@@ -130,6 +130,136 @@
 
 
 /*--------*\
+    Win 3.1
+\*--------*/
+.sld-wrap {
+    display: contents;
+}
+
+.sld-31-root {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+}
+
+    .sld-31-root > label:first-of-type {
+        grid-row: 1;
+        grid-column: 1;
+        justify-self: start;
+    }
+
+    .sld-31-root > label:last-of-type {
+        grid-row: 1;
+        grid-column: 2;
+        justify-self: end;
+    }
+
+    .sld-31-root > .sld-31-wrap {
+        grid-row: 2;
+        grid-column: 1 / -1;
+    }
+
+.sld-31-wrap {
+    display: flex;
+    align-items: stretch;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    height: 19px;
+    border: 1px solid #000000;
+    background: #C0C0C0;
+}
+
+.sld-31-btn {
+    flex: 0 0 18px;
+    width: 18px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    background-color: #C0C0C0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 9px 9px;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 7' shape-rendering='crispEdges'><path d='M0 3.5L3.5 0V7ZM3 2.5H8V4.5H3Z' fill='%23000000'/></svg>");
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #FFFFFF;
+}
+
+.sld-31-left {
+    border-right: 1px solid #000000;
+}
+
+.sld-31-right {
+    border-left: 1px solid #000000;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 7' shape-rendering='crispEdges'><path d='M8 3.5L4.5 0V7ZM5 2.5H0V4.5H5Z' fill='%23000000'/></svg>");
+}
+
+    .sld-31-btn:not(:disabled):active {
+        box-shadow: inset 1px 1px #808080;
+    }
+
+    .sld-31-btn:disabled {
+        cursor: default;
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 7' shape-rendering='crispEdges'><path d='M0 3.5L3.5 0V7ZM3 2.5H8V4.5H3Z' fill='%23808080'/></svg>");
+    }
+
+    .sld-31-right:disabled {
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 7' shape-rendering='crispEdges'><path d='M8 3.5L4.5 0V7ZM5 2.5H0V4.5H5Z' fill='%23808080'/></svg>");
+    }
+
+.sld-win-31 {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    background: #C0C0C0;
+}
+
+    .sld-win-31::-webkit-slider-runnable-track {
+        height: 17px;
+        background: #C0C0C0;
+    }
+
+    .sld-win-31::-moz-range-track {
+        height: 17px;
+        background: #C0C0C0;
+    }
+
+    .sld-win-31::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        box-sizing: border-box;
+        width: 18px;
+        height: 17px;
+        border: solid #000000;
+        border-width: 0 1px;
+        border-radius: 0;
+        cursor: pointer;
+        background: #C0C0C0;
+        box-shadow: inset -1px -1px #808080, inset 1px 1px #FFFFFF;
+    }
+
+    .sld-win-31::-moz-range-thumb {
+        box-sizing: border-box;
+        width: 18px;
+        height: 17px;
+        border: solid #000000;
+        border-width: 0 1px;
+        border-radius: 0;
+        cursor: pointer;
+        background: #C0C0C0;
+        box-shadow: inset -1px -1px #808080, inset 1px 1px #FFFFFF;
+    }
+
+    .sld-win-31:disabled::-webkit-slider-thumb,
+    .sld-win-31:disabled::-moz-range-thumb {
+        cursor: default;
+    }
+
+/*--------*\
     Win 98
 \*--------*/
 .sld-win-98 {
