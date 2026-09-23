@@ -11,8 +11,7 @@ A Blazor UI component library that brings back the nostalgic look and feel of cl
 
 DEMO and DOCS : https://tossnet.github.io/Blazor-WinOld/
 
-![thumbnail](https://github.com/user-attachments/assets/7d91aebf-b98e-4f4f-b2e8-7f8286fcd4d4)
-
+<img width="1280" height="640" alt="repository-open-graph-template" src="https://github.com/user-attachments/assets/7f29e88a-c368-4413-9fc9-52f94c53a5cd" />
 
 ## Overview
 
