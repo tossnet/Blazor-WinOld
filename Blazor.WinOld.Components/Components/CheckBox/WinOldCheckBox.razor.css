@@ -20,9 +20,9 @@
     }
 
 
-/*-------------------------------------------*\
+/*--------*\
     DOS
-\*-------------------------------------------*/
+\*--------*/
 .chk-dos {
     appearance: none;
     -webkit-appearance: none;
@@ -40,6 +40,7 @@
         color: #1a1a1a;
         cursor: pointer;
         -webkit-font-smoothing: none;
+    margin-bottom: 2px;
     }
 
     .chk-dos:focus + label {
@@ -83,9 +84,72 @@
     }
 
 
-/*-------------------------------------------*\
+/*--------*\
+    Win31
+\*--------*/
+.chk-win-31 {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    border: none;
+}
+.chk-win-31:focus + label {
+    outline: none;
+}
+
+    .chk-win-31 + label {
+        display: inline-flex;
+        align-items: center;
+        font-family: var(--font-family);
+        font-size: 12px;
+        font-weight: bolder;
+        color: #000000;
+        cursor: default;
+        margin-bottom: 2px;
+    }
+
+    .chk-win-31 + label:before {
+        content: "";
+        display: inline-block;
+        box-sizing: border-box;
+        width: 13px;
+        height: 13px;
+        min-width: 13px;
+        margin-right: 6px;
+        background: #ffffff;
+        border: 1px solid #000000;
+    }
+
+    .chk-win-31:active + label:before {
+    border-width: 2px;
+    }
+
+    .chk-win-31:checked + label:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 16px;
+        height: 16px;
+        background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='11'><path d='M1 1L8 8M8 1L1 8' stroke='%23000000' stroke-width='.5'/></svg>") no-repeat center / contain;
+    }
+
+    .chk-win-31:disabled + label,
+    .chk-win-31:disabled + label:before {
+        border-color: #BFBFBF;
+         color :#BFBFBF;
+    }
+
+        .chk-win-31:disabled:checked + label:after {
+            background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='11'><path d='M1 1L8 8M8 1L1 8' stroke='%23808080' stroke-width='.5'/></svg>") no-repeat center / contain;
+        }
+
+
+/*--------*\
     Win 98
-\*-------------------------------------------*/
+\*--------*/
 .chk-win-98 + label {
     display: inline-flex;
     align-items: center;
@@ -125,7 +189,7 @@
     }
 
     .chk-win-98[disabled]:checked + label:after {
-        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='7' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='gray'/%3E%3C/svg%3E");
+        background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='7' height='7' fill='none'><path fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='gray'/></svg>");
     }
 
     .chk-win-98 + label:before {
@@ -134,16 +198,16 @@
     }
 
     .chk-win-98:checked + label:after {
-        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='7' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='%23000'/%3E%3C/svg%3E");
+        background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='7' height='7' fill='none'><path fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='%23000'/></svg>");
         left: 3px;
         top: 50%;
         transform: translateY(-50%) scale(1.2);
     }
 
 
-/*-------------------------------------------*\
+/*--------*\
     Win XP
-\*-------------------------------------------*/
+\*--------*/
 .chk-win-xp {
     background: none;
     border: none;
@@ -175,7 +239,7 @@
         width: 11px;
         height: 11px;
         position: absolute;
-        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='7' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='%23000'/%3E%3C/svg%3E");
+        background: url("data:image/svg+xml,<svg width='7' height='7' fill='none'><path fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='%23000'/></svg>");
         top: 1px;
         margin-left: -1px;
     }
@@ -185,7 +249,7 @@
     }
 
     .chk-win-xp[disabled]:checked + label:after {
-        background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='7' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='gray'/%3E%3C/svg%3E");
+        background: url("data:image/svg+xml,<svg width='7' height='7' fill='none'><path fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='gray'/></svg>");
     }
 
     .chk-win-xp + label:before {
@@ -195,7 +259,7 @@
     }
 
     .chk-win-xp:checked + label:after {
-        background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 11 11' shape-rendering='crispEdges'%3E%3Cpath stroke='%2322a122' d='M8 2h1M7 3h2M2 4h1m3 0h3M2 5h2m1 0h3M2 6h5M3 7h3M4 8h1'/%3E%3C/svg%3E");
+        background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 11 11' shape-rendering='crispEdges'><path stroke='%2322a122' d='M8 2h1M7 3h2M2 4h1m3 0h3M2 5h2m1 0h3M2 6h5M3 7h3M4 8h1'/></svg>");
         left: 2px;
     }
 
@@ -213,14 +277,14 @@
     }
 
     .chk-win-xp[disabled]:checked + label:after {
-        background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 11 11' shape-rendering='crispEdges'%3E%3Cpath stroke='%23cac8bb' d='M8 2h1M7 3h2M2 4h1m3 0h3M2 5h2m1 0h3M2 6h5M3 7h3M4 8h1'/%3E%3C/svg%3E");
+        background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 11 11' shape-rendering='crispEdges'><path stroke='%23cac8bb' d='M8 2h1M7 3h2M2 4h1m3 0h3M2 5h2m1 0h3M2 6h5M3 7h3M4 8h1'/></svg>");
     }
 
 
 
-/*-------------------------------------------*\
+/*--------*\
     Win 7
-\*-------------------------------------------*/
+\*--------*/
 .chk-win-7 {
     appearance: none;
     -webkit-appearance: none;
@@ -286,9 +350,9 @@
     .chk-win-7:disabled + label {
         opacity: .6;
     }
-/*-------------------------------------------*\
+/*--------*\
     Win 10
-\*-------------------------------------------*/
+\*--------*/
 .chk-win-10 {
     appearance: none;
     -webkit-appearance: none;
@@ -382,9 +446,9 @@
     }
 
 
-/*-------------------------------------------*\
+/*--------*\
     Touch mode
-\*-------------------------------------------*/
+\*--------*/
 
 .chk-win.win-touch + label {
     font-size: 13px;
@@ -402,6 +466,20 @@
     font-size: 14px;
     min-height: 28px;
     -webkit-font-smoothing: none;
+}
+
+/* Win 3.1 */
+.chk-win-31.win-touch + label:before {
+    width: 19px;
+    height: 19px;
+    min-width: 19px;
+}
+
+.chk-win-31.win-touch:checked + label:after {
+    left: 3px;
+    top: 3px;
+    width: 13px;
+    height: 13px;
 }
 
 /* Win XP */

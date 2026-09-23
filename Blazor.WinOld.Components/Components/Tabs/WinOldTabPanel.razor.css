@@ -4,9 +4,9 @@
 }
 
 
-/*-------------------------------------------*\
+/*--------*\
     DOS
-\*-------------------------------------------*/
+\*--------*/
 .panel-win-dos {
     background: var(--dos-background);
     /*border: 1px solid #ffffff;*/
@@ -21,9 +21,9 @@
     -webkit-font-smoothing: none;
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win 98
-\*-------------------------------------------*/
+\*--------*/
 .panel-win-98 {
     box-shadow: inset 1px 1px #fff, inset 2px 2px #dfdfdf, inset -1px -1px #0a0a0a, inset -2px -2px grey;
     padding: 14px;
@@ -35,9 +35,9 @@
     margin-bottom: 9px;
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win XP
-\*-------------------------------------------*/
+\*--------*/
 .panel-win-xp {
     padding: 14px;
     clear: both;
@@ -49,9 +49,9 @@
     box-shadow: inset 1px 1px #fcfcfe, inset -1px -1px #fcfcfe, 1px 2px 2px 0 rgba(208, 206, 191, .75);
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win 7
-\*-------------------------------------------*/
+\*--------*/
 .panel-win-7 {
     background: var(--tab-bg);
     border: var(--tab-border);
@@ -61,9 +61,9 @@
     position: relative;
     z-index: 2;
 }
-/*-------------------------------------------*\
+/*--------*\
     Win 10
-\*-------------------------------------------*/
+\*--------*/
 .panel-win-10 {
     background: var(--tab-bg);
     border: 1px solid var(--tab-win10-border-color);

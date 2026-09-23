@@ -128,6 +128,83 @@
 }
 
 /*-------------------------------------------*\
+    Win31
+\*-------------------------------------------*/
+.title-bar-win-31 {
+    display: flex;
+    align-items: stretch;
+    height: 20px;
+    background: #0000aa;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 0 0 1px 0;
+    -webkit-font-smoothing: none;
+    user-select: none;
+}
+
+.title-bar-text-win-31 {
+    order: 2;
+    flex: 1 1 auto;
+    align-self: center;
+    text-align: center;
+    font-size: 13px;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bolder;
+}
+
+.title-bar-controls-win-31 {
+    display: contents;
+}
+
+    .title-bar-controls-win-31 button {
+        width: 19px;
+        align-self: stretch;
+        padding: 0;
+        box-sizing: border-box;
+        border: none;
+        background-color: #c0c0c0;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+
+        .title-bar-controls-win-31 button:focus {
+            outline: none;
+        }
+
+        /*.title-bar-controls-win-31 button[aria-label=Close] {
+            order: 1;
+            border-right: 1px solid #000000;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='8' height='7' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='3' width='8' height='1' fill='%23000'/%3E%3C/svg%3E");
+        }*/
+
+        .title-bar-controls-win-31 button[aria-label=Maximize] {
+            order: 3;
+            border-left: 1px solid #000000;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='9' height='9' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='4.5,1 8,7 1,7' fill='%23000'/%3E%3C/svg%3E");
+        }
+
+        .title-bar-controls-win-31 button[aria-label="Close"]::before {
+            content: '';
+            width: 13px;
+            height: 3px;
+            box-shadow: 1px 1px 0 #84888C;
+            border: 1px solid black;
+            box-sizing: border-box;
+            background-color: white;
+            display: inline-block;
+            margin-bottom: 2px;
+        }
+
+/* Maximized state: swap the Maximize button for a two-headed Restore glyph. */
+.dlg-win-maximized .title-bar-controls-win-31 button[aria-label=Maximize],
+.win-window-maximized .title-bar-controls-win-31 button[aria-label=Maximize] {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='9' height='9' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='4.5,0 8,3.5 1,3.5' fill='%23000'/%3E%3Cpolygon points='4.5,9 8,5.5 1,5.5' fill='%23000'/%3E%3C/svg%3E");
+}
+
+/*-------------------------------------------*\
     Win98
 \*-------------------------------------------*/
 .win-title-bar-98 {

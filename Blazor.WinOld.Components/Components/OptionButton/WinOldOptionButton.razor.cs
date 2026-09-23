@@ -66,6 +66,7 @@ public partial class WinOldOptionButton<T> : WinOldComponentBase
         var cls = Group.Appearance switch
         {
             Appearance.DOS => "opt-dos",
+            Appearance.Win31 => "opt-win-31",
             Appearance.Win98 => "opt-win-98",
             Appearance.WinXP => "opt-win-xp",
             Appearance.Win7 => "opt-win-7",

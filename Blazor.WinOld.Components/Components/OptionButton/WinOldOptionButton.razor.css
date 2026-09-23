@@ -14,6 +14,7 @@
         font-size: 11px;
         line-height: 13px;
         position: relative;
+        user-select: none;
     }
 
         .opt-win + label:before {
@@ -29,9 +30,137 @@
         position: absolute;
     }
 
-/*-------------------------------------------*\
+    
+/*--------*\
+    DOS
+\*--------*/
+.opt-dos + label {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 14px;
+    color: #1a1a1a;
+    cursor: pointer;
+    user-select: none;
+    -webkit-font-smoothing: none;
+}
+
+    .opt-dos + label:before {
+        content: "(\00a0)";
+        position: static;
+        margin-right: 1ch;
+    }
+
+    .opt-dos:checked + label:before {
+        content: "(\2022)";
+    }
+
+.opt-dos:checked + label:after {
+    content: none;
+}
+
+.opt-dos-hotkey {
+    color: #ffff55;
+}
+
+.opt-dos:not(:disabled) + label:hover,
+.opt-dos:focus-visible + label {
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
+.opt-dos:not(:disabled):active + label,
+.opt-dos:not(:disabled):active + label:hover {
+    background-color: #6a6a6a;
+    color: #e0e0e0;
+}
+
+.opt-dos:disabled + label,
+.opt-dos:disabled + label:hover {
+    background-color: transparent;
+    color: #686868;
+    cursor: not-allowed;
+}
+
+    .opt-dos:disabled + label .opt-dos-hotkey {
+        color: inherit;
+    }
+
+/*--------*\
+    Win31
+\*--------*/
+.opt-win-31 {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    border: none;
+}
+
+.opt-win-31:focus + label {
+    outline: none;
+}
+
+    .opt-win-31 + label {
+        display: inline-flex;
+        align-items: center;
+        font-family: var(--font-family);
+        font-size: 12px;
+        font-weight: bolder;
+        color: #000000;
+        cursor: default;
+        margin-left: 20px;
+    }
+
+    .opt-win-31:focus + label {
+        outline: 1px dotted #000;
+    }
+
+    .opt-win-31 + label:before {
+        content: "";
+        display: inline-block;
+        box-sizing: border-box;
+        width: 13px;
+        height: 13px;
+        min-width: 13px;
+        margin-right: 6px;
+        background: #ffffff;
+        border: 1px solid #000000;
+        border-radius: 50%;
+        left: -19px;
+    }
+
+    .opt-win-31:active + label:before {
+        border-width: 2px;
+    }
+
+    .opt-win-31:checked + label:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: -16px;
+        top: 3px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #000000;
+
+    }
+
+    .opt-win-31:disabled + label,
+    .opt-win-31:disabled + label:before {
+        border-color: #BFBFBF;
+        color: #BFBFBF;
+    }
+
+        .opt-win-31:disabled:checked + label:after {
+            background: #BFBFBF;
+        }
+
+/*--------*\
     Win XP
-\*-------------------------------------------*/
+\*--------*/
 .opt-win-xp {
     -webkit-font-smoothing: antialiased;
 }
@@ -92,9 +221,9 @@
         top: 0.29em;
     }
 
-/*-------------------------------------------*\
+/*--------*\
     Win 98
-\*-------------------------------------------*/
+\*--------*/
 .opt-win-98 {
     -webkit-font-smoothing: none;
 }
@@ -144,9 +273,9 @@
         opacity: .6;
     }
 
-/*-------------------------------------------*\
+/*--------*\
     Win 7
-\*-------------------------------------------*/
+\*--------*/
 .opt-win-7 + label {
     align-items: center;
     display: inline-flex;
@@ -190,9 +319,10 @@
 .opt-win-7:disabled + label {
     opacity: .6;
 }
-/*-------------------------------------------*\
+
+/*--------*\
     Win 10
-\*-------------------------------------------*/
+\*--------*/
 .opt-win-10 + label {
     align-items: center;
     display: inline-flex;
@@ -299,65 +429,10 @@
     transform: translate(3.5px, -50%) scale(1);
 }
 
-/*-------------------------------------------*\
-    DOS
-\*-------------------------------------------*/
-.opt-dos + label {
-    display: inline-flex;
-    align-items: center;
-    font-family: 'IBMVGADos', monospace;
-    font-size: 14px;
-    line-height: 14px;
-    color: #1a1a1a;
-    cursor: pointer;
-    user-select: none;
-    -webkit-font-smoothing: none;
-}
 
-    .opt-dos + label:before {
-        content: "(\00a0)";
-        position: static;
-        margin-right: 1ch;
-    }
-
-    .opt-dos:checked + label:before {
-        content: "(\2022)";
-    }
-
-.opt-dos:checked + label:after {
-    content: none;
-}
-
-.opt-dos-hotkey {
-    color: #ffff55;
-}
-
-.opt-dos:not(:disabled) + label:hover,
-.opt-dos:focus-visible + label {
-    background-color: #3a3a3a;
-    color: #ffffff;
-}
-
-.opt-dos:not(:disabled):active + label,
-.opt-dos:not(:disabled):active + label:hover {
-    background-color: #6a6a6a;
-    color: #e0e0e0;
-}
-
-.opt-dos:disabled + label,
-.opt-dos:disabled + label:hover {
-    background-color: transparent;
-    color: #686868;
-    cursor: not-allowed;
-}
-
-    .opt-dos:disabled + label .opt-dos-hotkey {
-        color: inherit;
-    }
-
-/*-------------------------------------------*\
+/*--------*\
     Touch mode
-\*-------------------------------------------*/
+\*--------*/
 
 .opt-win.win-touch + label {
     font-size: 13px;
@@ -370,6 +445,20 @@
 .opt-win-xp.win-touch + label {
     font-size: 11px;
     -webkit-font-smoothing: none;
+}
+
+/* Win 3.1 */
+.opt-win-31.win-touch + label:before {
+    width: 19px;
+    height: 19px;
+    min-width: 19px;
+}
+
+.opt-win-31.win-touch:checked + label:after {
+    left: 6px;
+    top: 6px;
+    width: 7px;
+    height: 7px;
 }
 
 /* Win XP */

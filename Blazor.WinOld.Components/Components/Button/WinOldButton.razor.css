@@ -22,6 +22,7 @@
 }
 
 /* Pixel font — revert font-size, disable antialiasing */
+.btn-win-31.win-touch,
 .btn-win-98.win-touch,
 .btn-win-xp.win-touch {
     font-size: 11px;
@@ -37,9 +38,9 @@
     border: 0;
 }
 
-/*-------------------------------------------*\
+/*--------*\
     DOS
-\*-------------------------------------------*/
+\*--------*/
 .btn-dos {
     font-family: 'IBMVGADos', monospace;
     font-size: 14px;
@@ -154,9 +155,49 @@
     --dos-btn-active-bg: #331a00; --dos-btn-active-fg: #cccccc;
 }
 
-/*-------------------------------------------*\
+/*--------*\
+    Win31
+\*--------*/
+.btn-win-31 {
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: bolder;
+        box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 6px;
+    padding-right: 6px;
+    box-shadow: inset 2px 2px 0 white,
+        inset -2px -2px 0 #929292;
+    background-color: #CBCBCB;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    border: 1px solid black;
+}
+
+    .btn-win-31:focus {
+        /*outline: none;
+        outline: 1px solid black;*/
+    }
+
+    .btn-win-31:not(:disabled):active {
+        box-shadow: inset 1px 1px #929292;
+    }
+
+    .btn-win-31:disabled {
+        color: #939393;
+        cursor: default;
+    }
+
+.btn-win-31-default {
+    outline: 1px solid black;
+}
+
+/*--------*\
     Win XP
-\*-------------------------------------------*/
+\*--------*/
 .btn-win-xp {
     border: 1px solid #003c74;
     background: linear-gradient( 180deg, rgba(255, 255, 255, 1) 0%, rgba(236, 235, 229, 1) 86%, rgba(216, 208, 196, 1) 100% );
@@ -194,9 +235,9 @@
     box-shadow: inset -1px 1px #cee7ff, inset 1px 2px #98b8ea, inset -2px 2px #bcd4f6, inset 1px -1px #89ade4, inset 2px -2px #89ade4;
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win 98
-\*-------------------------------------------*/
+\*--------*/
 .btn-win-98 {
     border: none;
     background: var(--win98-background);
@@ -230,9 +271,9 @@
     height: 1px;
     background: #dfdfdf;
 }*/
-/*-------------------------------------------*\
+/*--------*\
     Win 7
-\*-------------------------------------------*/
+\*--------*/
 .btn-win-7,
 .btn-win-7[role="button"] {
     font: var(--font);
@@ -358,9 +399,9 @@
     }
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win 10
-\*-------------------------------------------*/
+\*--------*/
 .btn-win-10 {
     font-family: var(--font);
     font-size: 12px;

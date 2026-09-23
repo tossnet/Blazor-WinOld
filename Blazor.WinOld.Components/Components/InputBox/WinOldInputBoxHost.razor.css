@@ -52,253 +52,9 @@
     display: flex;
 }
 
-
-/*-------------------------------------------*\
-    Win XP
-\*-------------------------------------------*/
-.inp-win-xp {
-    font-size: 11px;
-    -webkit-font-smoothing: antialiased;
-    box-shadow: inset -1px -1px #00138c, inset 1px 1px #0831d9, inset -2px -2px #001ea0, inset 2px 2px #166aee, inset -3px -3px #003bda, inset 3px 3px #0855dd;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    padding: 0 0 3px;
-    background: var(--winxp-background);
-    text-align: left;
-    max-width: 410px;
-    width: auto;
-    animation: fadeIn 0.2s ease;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.inp-content-win-xp {
-    /*margin: 10px 0;*/
-    font-size: 1.1em;
-    color: #555;
-}
-
-.inp-win-xp .actions {
-    /* margin: 10px;
-    text-align: center;*/
-}
-
-    .inp-win-xp .actions button {
-        margin: 0 10px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        background-color: #007bff;
-        color: white;
-        font-size: 1em;
-    }
-
-        .inp-win-xp .actions button:hover {
-            background-color: #0056b3;
-        }
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/*-------------------------------------------*\
-    Win 98
-\*-------------------------------------------*/
-.inp-win-98 {
-    font-family: var(--font-family);
-    font-size: 11px;
-    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
-    background: silver;
-    padding: 3px;
-}
-
-
-
-
-
-
-
-
-
-
-.inp-content-win-98 {
-    /*margin: 10px 0;*/
-    font-size: 1.1em;
-    color: #000;
-}
-
-.inp-win-98 .actions {
-    /*margin: 10px;*/
-    text-align: center;
-}
-
-/*-------------------------------------------*\
-    Win 7
-\*-------------------------------------------*/
-.inp-win-7 {
-    border-radius: 6px;
-    border: 1px solid rgba(0, 0, 0, .7);
-    box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, .7), inset 0 0 0 1px #fffa;
-    font: var(--font);
-    font-size: 9pt;
-    position: relative;
-    z-index: 0;
-}
-
-    .inp-win-7:before {
-        background: linear-gradient(transparent 20%, #ffffffb3 40%, transparent 41%), var(--win7-background);
-        background-color: var(--win7-background-color);
-        box-shadow: inset 0 0 0 1px #fffd;
-        content: "";
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: -1;
-    }
-
-    .inp-win-7, .inp-win-7:before {
-        border-radius: 6px;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            .inp-win-7-win-7.active .title-bar .title-bar-controls-win-7 button.is-restore:before,
-            .inp-win-7-win-7.active .title-bar .title-bar-controls-win-7 button[aria-label=Restore]:before {
-                background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACVSURBVHgBlVDLCoMwENwU/7ClvRYK7b2lCIJHEQQ/QEHwqujfBXJIQMnihg34iHPJ7GNm2AhYcL2/JwhAxIuhq3aXb48PiFBna2YFERVHzoQLnAQmSCmxeL5+3rBtSsdpBwVKKTcY+1rY197G+8RRoLVejed94igwxrgB/zXeJ+4Jijz2Erjg+8/WE7ZAt6EgSUsIxQwaJEWv7G6SSgAAAABJRU5ErkJggg==") no-repeat 50%,var(--control-background-hovered);
-                box-shadow: 0 0 7px 3px #5dc4f0,var(--control-inset-shadow);
-                content: "";
-                opacity: 0;
-                transition: opacity .3s linear;
-            }
-
-
-
-
-
-
-
-
-
-.input-body-win-7 {
-    background: var(--surface);
-    border-top: 1px solid rgba(0, 0, 0, .7);
-    border-right: 1px solid rgba(0, 0, 0, .7);
-    border-bottom: unset;
-    border-left: 1px solid rgba(0, 0, 0, .7);
-    box-shadow: 0 0 0 1px #fff9;
-    margin: 0 6px 0 6px;
-    margin-bottom: 7px;
-}
-
-.inp-content-win-7 {
-    font-size: 12px;
-    color: #000;
-}
-
-.inp-win-7 .actions {
-
-}
-
-/*-------------------------------------------*\
-    Win 10
-\*-------------------------------------------*/
-.inp-win-10 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 12px;
-    background: var(--dlg-win10-background-color);
-    border: 1px solid var( --dlg-win10-title-bar-border-color-active);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
-}
-
-
-
-
-
-
-
-
-        /* Inactive close button : grey X */
-
-
-/* Active close button : white X */
-
-
-.input-body-win-10 {
-    /*margin: 8px 12px 12px 12px;*/
-}
-
-.inp-win-10 .actions {
-    margin: 0px 1px 10px;
-    text-align: right;
-}
-
-/*-------------------------------------------*\
+/*--------*\
     DOS
-\*-------------------------------------------*/
+\*--------*/
 /* Colors are variables so the (unscoped) title bar, a child component, inherits them.
    --dos-box-bg: background   --dos-box-fg: message text   --dos-box-line: double line + title
    --dos-box-close: close box square (hover = line color, pressed = text color) */
@@ -370,4 +126,190 @@
 
 .inp-dos .input-text {
     margin: 0 0 10px 0;
+}
+
+/*--------*\
+    Win31
+\*--------*/
+.inp-win-31 {
+    min-width: 365px;
+    border: 4px double #000000;
+    background: #c0c0c0;
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+.input-body-win-31 {
+    margin: 0;
+    background: white;
+}
+
+.inp-content-win-31 {
+    color: #000000;
+}
+
+.inp-win-31 .actions {
+    gap: 8px;
+}
+
+/*--------*\
+    Win 98
+\*--------*/
+.inp-win-98 {
+    font-family: var(--font-family);
+    font-size: 11px;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
+    background: silver;
+    padding: 3px;
+}
+
+.inp-content-win-98 {
+    /*margin: 10px 0;*/
+    font-size: 1.1em;
+    color: #000;
+}
+
+.inp-win-98 .actions {
+    /*margin: 10px;*/
+    text-align: center;
+}
+
+/*--------*\
+    Win XP
+\*--------*/
+.inp-win-xp {
+    font-size: 11px;
+    -webkit-font-smoothing: antialiased;
+    box-shadow: inset -1px -1px #00138c, inset 1px 1px #0831d9, inset -2px -2px #001ea0, inset 2px 2px #166aee, inset -3px -3px #003bda, inset 3px 3px #0855dd;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 0 0 3px;
+    background: var(--winxp-background);
+    text-align: left;
+    max-width: 410px;
+    width: auto;
+    animation: fadeIn 0.2s ease;
+}
+
+.inp-content-win-xp {
+    /*margin: 10px 0;*/
+    font-size: 1.1em;
+    color: #555;
+}
+
+.inp-win-xp .actions {
+    /* margin: 10px;
+    text-align: center;*/
+}
+
+    .inp-win-xp .actions button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        font-size: 1em;
+    }
+
+        .inp-win-xp .actions button:hover {
+            background-color: #0056b3;
+        }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/*--------*\
+    Win 7
+\*--------*/
+.inp-win-7 {
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, .7);
+    box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, .7), inset 0 0 0 1px #fffa;
+    font: var(--font);
+    font-size: 9pt;
+    position: relative;
+    z-index: 0;
+}
+
+    .inp-win-7:before {
+        background: linear-gradient(transparent 20%, #ffffffb3 40%, transparent 41%), var(--win7-background);
+        background-color: var(--win7-background-color);
+        box-shadow: inset 0 0 0 1px #fffd;
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .inp-win-7, .inp-win-7:before {
+        border-radius: 6px;
+    }
+
+            .inp-win-7-win-7.active .title-bar .title-bar-controls-win-7 button.is-restore:before,
+            .inp-win-7-win-7.active .title-bar .title-bar-controls-win-7 button[aria-label=Restore]:before {
+                background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACVSURBVHgBlVDLCoMwENwU/7ClvRYK7b2lCIJHEQQ/QEHwqujfBXJIQMnihg34iHPJ7GNm2AhYcL2/JwhAxIuhq3aXb48PiFBna2YFERVHzoQLnAQmSCmxeL5+3rBtSsdpBwVKKTcY+1rY197G+8RRoLVejed94igwxrgB/zXeJ+4Jijz2Erjg+8/WE7ZAt6EgSUsIxQwaJEWv7G6SSgAAAABJRU5ErkJggg==") no-repeat 50%,var(--control-background-hovered);
+                box-shadow: 0 0 7px 3px #5dc4f0,var(--control-inset-shadow);
+                content: "";
+                opacity: 0;
+                transition: opacity .3s linear;
+            }
+
+.input-body-win-7 {
+    background: var(--surface);
+    border-top: 1px solid rgba(0, 0, 0, .7);
+    border-right: 1px solid rgba(0, 0, 0, .7);
+    border-bottom: unset;
+    border-left: 1px solid rgba(0, 0, 0, .7);
+    box-shadow: 0 0 0 1px #fff9;
+    margin: 0 6px 0 6px;
+    margin-bottom: 7px;
+}
+
+.inp-content-win-7 {
+    font-size: 12px;
+    color: #000;
+}
+
+.inp-win-7 .actions {
+
+}
+
+/*--------*\
+    Win 10
+\*--------*/
+.inp-win-10 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    background: var(--dlg-win10-background-color);
+    border: 1px solid var( --dlg-win10-title-bar-border-color-active);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* Inactive close button : grey X */
+
+/* Active close button : white X */
+
+.input-body-win-10 {
+    /*margin: 8px 12px 12px 12px;*/
+}
+
+.inp-win-10 .actions {
+    margin: 0px 1px 10px;
+    text-align: right;
 }

@@ -96,6 +96,7 @@ public partial class WinOldCheckBox : WinOldComponentBase
         var cls = Appearance switch
         {
             Appearance.DOS => "chk-dos",
+            Appearance.Win31 => "chk-win-31",
             Appearance.Win7 => "chk-win-7",
             Appearance.WinXP => "chk-win-xp",
             Appearance.Win98 => "chk-win-98",

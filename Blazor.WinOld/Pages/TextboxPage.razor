@@ -4,22 +4,31 @@
 
 <h1>Textbox</h1>
 
-<div style="display:flex; flex-direction:column; gap:6px; width:fit-content; margin-bottom:10px; padding:8px; background:var(--dos-background);">
-	<WinOldTextBox Appearance="Appearance.DOS"
-				   Label="Name :"
-				   Value="Text2" />
-
-	<WinOldTextBox Appearance="Appearance.DOS"
-				   Label="Path :"
-				   Value="C:\DOS" />
-
-	<WinOldTextBox Appearance="Appearance.DOS"
-				   Label="Disabled :"
-				   Value="Text2"
-				   Disabled="true" />
-</div>
-
 <div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
+	<div
+		style="display:flex; flex-direction:column; gap:6px; width:fit-content; margin-bottom:10px; padding:8px; background:var(--dos-background);">
+		<WinOldTextBox Appearance="Appearance.DOS"
+					   Label="Name :"
+					   Value="Text2" />
+
+		<WinOldTextBox Appearance="Appearance.DOS"
+					   Label="Disabled :"
+					   Value="Text2"
+					   Disabled="true" />
+	</div>
+
+	<div
+		style="display:flex; flex-direction:column; gap:6px; width:fit-content; margin-bottom:10px; padding:8px; background:white;">
+		<WinOldTextBox Appearance="Appearance.Win31"
+					   Label="Name :"
+					   Value="Text2" />
+		
+		<WinOldTextBox Appearance="Appearance.Win31"
+					   Label="Disabled :"
+					   Value="Text2"
+					   Disabled="true" />
+	</div>
+
 	<div>
 		<WinOldTextBox Appearance="Appearance.Win98"
 					   Label="Textbox :"

@@ -8,11 +8,17 @@
 <p>A Frame is a simple UI container that groups related elements and provides a visual boundary to structure the layout.</p>
 
 
-<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
+<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap; margin-bottom: 18px;">
 	<WinOldFrame Appearance="Appearance.DOS"
 				 Label="Frame DOS"
 				 Border="Border.Default"
-				 Style="width: 120px;">
+				 Style="width: 88px;">
+	</WinOldFrame>
+
+	<WinOldFrame Appearance="Appearance.Win31"
+				 Label="Frame 31"
+				 Border="Border.Default"
+				 Style="width: 88px;">
 	</WinOldFrame>
 
 	<WinOldFrame Appearance="Appearance.Win98"
@@ -41,6 +47,20 @@
 </div>
 
 <div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
+	<WinOldFrame Appearance="Appearance.DOS"
+				 Label="Frame DOS"
+				 Border="Border.Default"
+				 Disabled="true"
+				 Style="width: 88px;">
+	</WinOldFrame>
+
+	<WinOldFrame Appearance="Appearance.Win31"
+				 Label="Frame 31"
+				 Border="Border.Default"
+				 Disabled="true"
+				 Style="width: 88px;">
+	</WinOldFrame>
+
 	<WinOldFrame Appearance="Appearance.Win98"
 				 Label="Frame 98"
 				 Border="Border.Default"

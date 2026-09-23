@@ -115,9 +115,9 @@ body {
 }
 
 
-/*-------------------------------------------*\
+/*--------*\
     INPUT CONTROLS SHARED STYLES
-\*-------------------------------------------*/
+\*--------*/
 .txt-win {
     all: unset;
     font-family: var(--font-family);
@@ -144,9 +144,9 @@ body {
         font-size: 13px;
     }
 
-/*-------------------------------------------*\
+/*--------*\
     DATE / TIME INPUT (fix WebKit/iOS)
-\*-------------------------------------------*/
+\*--------*/
 /* iOS Safari empile verticalement les pseudo-éléments internes
    (jour/mois/année + spinner). Trois causes cumulées, corrigées sans toucher
    à -webkit-appearance ni à la font-size :
@@ -198,9 +198,9 @@ label.label-txt-win {
     display: none !important;
 }
 
-/*-------------------------------------------*\
+/*--------*\
     TEXTAREA SHARED STYLES
-\*-------------------------------------------*/
+\*--------*/
 .txtarea-win {
     all: unset;
     display: inline-block;
@@ -231,9 +231,9 @@ label.label-txt-win {
     }
 
 
-/*-------------------------------------------*\
+/*--------*\
     DOS
-\*-------------------------------------------*/
+\*--------*/
 .txt-win-dos {
     box-sizing: border-box;
     height: 24px;
@@ -288,9 +288,55 @@ label.label-txt-win {
     }
 
 
-/*-------------------------------------------*\
+/*--------*\
+    Win31
+\*--------*/
+.txt-win-31, .txtarea-win-31 {
+    box-sizing: border-box;
+    height: 21px;
+    padding: 2px 4px;
+    font-family: var(--font-family);
+    font-size: 11px;
+        font-weight: bolder;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 0;
+}
+
+    .txt-win-31:focus, .txtarea-win-31:focus {
+        outline: none;
+    }
+
+    .txt-win-31::selection, .txtarea-win-31::selection {
+        color: #ffffff;
+        background-color: #0000aa;
+    }
+
+    .txt-win-31:disabled, .txtarea-win-31:disabled {
+        color: #BFBFBF;
+        border-color: #BFBFBF;
+    }
+
+    .txt-win-31.win-touch, .txtarea-win-31.win-touch {
+        height: 28px;
+        font-size: 13px;
+    }
+
+.lbtxt-win-31 {
+    font-family: var(--font-family);
+    font-size: 11px;
+    font-weight: bolder;
+    color: #000000;
+}
+
+    .lbtxt-win-31[disabled] {
+        color: #BFBFBF !important;
+    }
+
+/*--------*\
     Win XP
-\*-------------------------------------------*/
+\*--------*/
 .txt-win-xp, .txtarea-win-xp {
     border: solid #7f9db9 1px;
     box-sizing: border-box;
@@ -307,9 +353,9 @@ label.label-txt-win {
     font-size: 11px;
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win 98
-\*-------------------------------------------*/
+\*--------*/
 .txt-win-98, .txtarea-win-98 {
     border: 0px;
     border-radius: 0;
@@ -328,9 +374,9 @@ label.label-txt-win {
 }
 
 
-/*-------------------------------------------*\
+/*--------*\
     Win 7
-\*-------------------------------------------*/
+\*--------*/
 .txt-win-7, .txtarea-win-7 {
     border: 1px solid #ccc;
     border-radius: 2px;
@@ -351,9 +397,9 @@ label.label-txt-win {
     font: var(--font);
     font-size: 9pt;
 }
-/*-------------------------------------------*\
+/*--------*\
     Win 10
-\*-------------------------------------------*/
+\*--------*/
 .txt-win-10 {
     height: 20px;
 }

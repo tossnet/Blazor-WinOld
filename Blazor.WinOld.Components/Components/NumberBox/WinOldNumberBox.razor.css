@@ -1,18 +1,16 @@
 /* Shared CSS in blazorwinold.css for WinOldTextBox and WinOldNumberBox */
 /* Only specific adjustments here, if necessary */
 
-/*-------------------------------------------*\
+/*--------*\
     Custom spin buttons (DOS / Win98 / WinXP / Win7 / Win10)
 
-    DOS: the NumberBox never existed in real DOS. The up/down
-    buttons are an imagined 
+    DOS: the NumberBox is imagined 
     Win98 / WinXP: the up/down buttons are their own distinct
-    control sitting outside the text field (like a real OS spin
-    button glued to the input).
+    control sitting outside the text field 
     Win7 / Win10: the arrows are part of the same single box as
     the input (like WinOldSelect's dropdown arrow). The border
     lives on the wrapper, not on the input or the buttons.
-\*-------------------------------------------*/
+\*--------*/
 
 /* Razor drops the whitespace around the @if block, so recreate the small gap
    WinOldTextBox gets from the inline space between its label and input */
@@ -75,9 +73,9 @@
     }
 
 
-/*-------------------------------------------*\
-    DOS (imagined — no real DOS NumberBox existed,I didn't find... 
-\*-------------------------------------------*/
+/*--------*\
+    DOS (imagined, I didn't find... 
+\*--------*/
 .numbox-wrap-dos .numbox-input {
     border-right: none;
     margin-right: 2px;
@@ -195,9 +193,9 @@
     --dos-btn-active-bg: #331a00;
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win 98 (same bevel as WinOldButton's Win98 appearance)
-\*-------------------------------------------*/
+\*--------*/
 .numbox-spin-98 {
     width: 17px;
     height: 18px;
@@ -259,10 +257,10 @@
         color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
     }
 
-/*-------------------------------------------*\
+/*--------*\
     Win XP (same little arrow-button icon as WinOldSelect's
     Win XP dropdown, split into an up/down pair)
-\*-------------------------------------------*/
+\*--------*/
 .numbox-spin-xp {
     width: 20px;
     margin-left: -2px;
@@ -300,11 +298,11 @@
     background-size: 20px 22px;
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win 7 (arrows share one single-color square-cornered border
     with the input, like WinOldSelect's dropdown arrow; button
     fill reuses WinOldButton's Win7 gradient/hover colors)
-\*-------------------------------------------*/
+\*--------*/
 .numbox-spin-7 {
     width: 17px;
 }
@@ -391,11 +389,11 @@
         box-shadow: none;
     }
 
-/*-------------------------------------------*\
+/*--------*\
     Win 10 (arrow is part of the whole control, like WinOldSelect:
     a single bordered box around input + arrows, same chevron
     as WinOldSelect's Win10 dropdown arrow)
-\*-------------------------------------------*/
+\*--------*/
 .numbox-wrap-10 {
     background-color: #ffffff;
     border: 1px solid #ECECEC;

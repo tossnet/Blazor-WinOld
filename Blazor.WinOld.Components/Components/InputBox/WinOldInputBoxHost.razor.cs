@@ -174,6 +174,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => $"inp-dos inp-dos-{GetDosBoxColor().ToString().ToLowerInvariant()}",
+            Appearance.Win31 => "inp-win-31",
             Appearance.Win98 => "inp-win-98",
             Appearance.WinXP => "inp-win-xp",
             Appearance.Win7 => "inp-win-7",
@@ -189,6 +190,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => "title-bar-dos",
+            Appearance.Win31 => "title-bar-win-31",
             Appearance.Win98 => "title-bar-win-98",
             Appearance.WinXP => "title-bar-win-xp",
             Appearance.Win7 => "title-bar-win-7",
@@ -203,6 +205,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => "title-bar-text-dos",
+            Appearance.Win31 => "title-bar-text-win-31",
             Appearance.Win98 => "title-bar-text-win-98",
             Appearance.WinXP => "title-bar-text-win-xp",
             Appearance.Win7 => "title-bar-text-win-7",
@@ -217,6 +220,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => "title-bar-controls-dos",
+            Appearance.Win31 => "title-bar-controls-win-31",
             Appearance.Win7 => "title-bar-controls-win-7",
             Appearance.WinXP => "title-bar-controls-win-xp",
             Appearance.Win98 => "title-bar-controls-win-98",
@@ -230,6 +234,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => "input-body-dos",
+            Appearance.Win31 => "input-body-win-31",
             Appearance.Win7 => "input-body-win-7",
             Appearance.WinXP => "input-body-win-xp",
             Appearance.Win98 => "input-body-win-98",
@@ -243,6 +248,7 @@ public partial class WinOldInputBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => "inp-content-dos",
+            Appearance.Win31 => "inp-content-win-31",
             Appearance.Win7 => "inp-content-win-7",
             Appearance.WinXP => "inp-content-win-xp",
             Appearance.Win98 => "inp-content-win-98",

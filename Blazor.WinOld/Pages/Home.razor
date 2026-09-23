@@ -21,7 +21,7 @@
         <h1 class="hero-title">Blazor <span class="hero-title-accent">WinOld</span></h1>
         <p class="hero-subtitle">
             Nostalgic Windows UI components for Blazor.<br />
-            Authentic styles from DOS,Windows 98, XP, 7 and 10.
+            Authentic styles from DOS,Windows 3.1, 98, XP, 7 and 10.
         </p>
         <div class="hero-install">
             <code class="hero-install-code">dotnet add package BlazorWinOld</code>
@@ -61,7 +61,7 @@
 
 
 <WinOldCheckBox Appearance="appearance"
-                Label="Disable components :"
+                Label="Disable components"
                 CheckedChanged="@disabledComponents" />
 
 <WinOldFrame Appearance="appearance"
@@ -166,6 +166,7 @@
     private readonly (string Label, Appearance Value)[] _themes =
     [
         ("DOS",    Appearance.DOS),
+        ("Win 3.1", Appearance.Win31),
         ("Win 98", Appearance.Win98),
         ("Win XP", Appearance.WinXP),
         ("Win 7",  Appearance.Win7),
@@ -203,7 +204,7 @@
     private string ThemeBtnClass(Appearance value) =>
         appearance == value ? "hero-theme-btn active" : "hero-theme-btn";
 
-    private bool IsDesktopLight() => appearance is Appearance.Win7 or Appearance.Win10;
+    private bool IsDesktopLight() => appearance is Appearance.Win31 or Appearance.Win7 or Appearance.Win10;
 
     private string GetDesktopColor()
     {

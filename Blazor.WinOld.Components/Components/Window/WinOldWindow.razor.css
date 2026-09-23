@@ -1,19 +1,16 @@
-/* Base window container */
 .win-window {
     display: flex;
     flex-direction: column;
 }
 
-/* Base window body */
 .win-body {
     flex: 1 1 auto;
     overflow: auto;
 }
 
-
-/*-------------------------------------------*\
+/*--------*\
     Maximized state (placeholder - to be styled)
-\*-------------------------------------------*/
+\*--------*/
 .win-window.win-window-maximized {
     position: fixed;
     inset: 0;
@@ -23,10 +20,9 @@
 }
 
 
-
-/*-------------------------------------------*\
+/*--------*\
     DOS
-\*-------------------------------------------*/
+\*--------*/
 /* Same look as the DOS dialog / message box: the (unscoped) title bar inherits the --dos-box-* variables. */
 .win-window-dos {
     --dos-box-bg: var(--dos-background);
@@ -61,9 +57,29 @@
     padding: 7px 7px 7px;
 }
 
-/*-------------------------------------------*\
+/*--------*\
+    Win31
+\*--------*/
+.win-window-31 {
+    border: 4px double #000000;
+    background: #c0c0c0;
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+    .win-window-31.win-window-maximized {
+        box-shadow: none;
+    }
+
+.win-body-31 {
+    margin: 0;
+    padding: 8px;
+    background: #ffffff;
+}
+
+/*--------*\
     Win 98
-\*-------------------------------------------*/
+\*--------*/
 .win-window-98 {
     font-family: var(--font-family);
     font-size: 11px;
@@ -71,12 +87,6 @@
     background: silver;
     padding: 3px;
 }
-
-
-
-
-
-
 
     /* Win98 close button icon */
 
@@ -86,9 +96,9 @@
    /* margin: 2px 5px 5px 5px;*/
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win XP
-\*-------------------------------------------*/
+\*--------*/
 .win-window-xp {
     font-size: 11px;
     -webkit-font-smoothing: antialiased;
@@ -101,13 +111,6 @@
     width: auto;
     /*animation: win-window-fadeIn 0.2s ease;*/
 }
-
-
-
-
-/* Suppress focus/hover outlines on XP buttons */
-
-
 
 /* XP close button – default state */
 
@@ -134,10 +137,9 @@
 }
 
 
-
-/*-------------------------------------------*\
+/*--------*\
     Win 7
-\*-------------------------------------------*/
+\*--------*/
 .win-window-7 {
     border-radius: 6px;
     border: 1px solid rgba(0, 0, 0, .7);
@@ -167,28 +169,14 @@
         border-radius: 6px;
     }
 
-
-
-
-
-
-
-
-
-
         /* Close button PNG icon (default/inactive) */
 
         /* Win7 close button: wider than other buttons */
 
-
-
-
 /* Active title bar: update border colour */
 
 
-
         /* Active close button: coloured PNG */
-
 
             /* Show hover overlay on focus/hover */
 
@@ -206,9 +194,9 @@
 }
 
 
-/*-------------------------------------------*\
+/*--------*\
     Win 10
-\*-------------------------------------------*/
+\*--------*/
 .win-window-10 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;
@@ -219,13 +207,10 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
 }
 
-
     /* Active title bar shows accent colour */
 
 
 /* Active title bar: white text */
-
-
 
 
         /* Inactive close button: grey X */

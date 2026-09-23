@@ -5,6 +5,14 @@ namespace Blazor.WinOld.Components;
 public enum Appearance
 {
     /// <summary />
+    [Description("dos")]
+    DOS,
+
+    /// <summary />
+    [Description("win31")]
+    Win31,
+
+    /// <summary />
     [Description("win7")]
     Win7,
 
@@ -19,8 +27,4 @@ public enum Appearance
     /// <summary />
     [Description("win10")]
     Win10,
-
-    /// <summary />
-    [Description("dos")]
-    DOS,
 }

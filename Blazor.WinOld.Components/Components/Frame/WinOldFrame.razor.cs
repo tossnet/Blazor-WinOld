@@ -28,6 +28,7 @@ public partial class WinOldFrame : WinOldComponentBase
             : Appearance switch
             {
                 Appearance.DOS => "frame-dos",
+                Appearance.Win31 => "frame-win-31",
                 Appearance.Win98 => "frame-win-98",
                 Appearance.WinXP => "frame-win-xp",
                 Appearance.Win7 => "frame-win-7",

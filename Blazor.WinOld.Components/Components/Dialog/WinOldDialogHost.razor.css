@@ -24,9 +24,9 @@
     overflow: auto;
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Maximized state (placeholder - to be styled)
-\*-------------------------------------------*/
+\*--------*/
 .dlg-win.dlg-win-maximized {
     position: fixed;
     inset: 0;
@@ -36,9 +36,9 @@
 }
 
 
-/*-------------------------------------------*\
+/*--------*\
     DOS
-\*-------------------------------------------*/
+\*--------*/
 /* Same look as the DOS message box. Colors are variables so the (unscoped) title bar,
    a child component, inherits them.
    --dos-box-bg: background   --dos-box-fg: text   --dos-box-line: double line + title
@@ -130,10 +130,40 @@
     padding: 0 24px 24px;
 }
 
+/*--------*\
+    Win31
+\*--------*/
+.dlg-win-31 {
+    min-width: 280px;
+    /*border: 3px double #000000;*/
+    border-style: double;
+    background: #c0c0c0;
+    font-family: var(--font-family);
+    font-size: 11px;
+}
 
-/*-------------------------------------------*\
+    .dlg-win-31.dlg-win-maximized {
+        box-shadow: none;
+    }
+
+.dlg-body-win-31 {
+    margin: 0;
+    padding: 3px;
+    background:white;
+}
+
+.dlg-win-31 .actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 8px 8px;
+    background:white;
+}
+
+
+/*--------*\
     Win 98
-\*-------------------------------------------*/
+\*--------*/
 .dlg-win-98 {
     font-family: var(--font-family);
     font-size: 11px;
@@ -182,9 +212,9 @@
     text-align: right;
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win XP
-\*-------------------------------------------*/
+\*--------*/
 .dlg-win-xp {
     font-size: 11px;
     -webkit-font-smoothing: antialiased;
@@ -268,9 +298,9 @@
 }
 
 
-/*-------------------------------------------*\
+/*--------*\
     Win 7
-\*-------------------------------------------*/
+\*--------*/
 .dlg-win-7 {
     border-radius: 6px;
     border: 1px solid rgba(0, 0, 0, .7);
@@ -367,9 +397,9 @@
     height: 32px;
     margin: 5px 10px 5px 5px;
 }
-/*-------------------------------------------*\
+/*--------*\
     Win 10
-\*-------------------------------------------*/
+\*--------*/
 .dlg-win-10 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;

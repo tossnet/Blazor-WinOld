@@ -88,6 +88,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
     private string GetDialogClass() => Options.Appearance switch
     {
         Appearance.DOS => $"dlg-dos dlg-dos-{GetDosBoxColor().ToString().ToLowerInvariant()}",
+        Appearance.Win31 => "dlg-win-31",
         Appearance.Win98 => "dlg-win-98",
         Appearance.WinXP => "dlg-win-xp",
         Appearance.Win7 => "dlg-win-7",
@@ -98,6 +99,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
     private string GetTitleBarClass() => Options.Appearance switch
     {
         Appearance.DOS => "title-bar-dos",
+        Appearance.Win31 => "title-bar-win-31",
         Appearance.Win98 => "title-bar-win-98",
         Appearance.WinXP => "title-bar-win-xp",
         Appearance.Win7 => "title-bar-win-7",
@@ -108,6 +110,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
     private string GetTitleBarTextClass() => Options.Appearance switch
     {
         Appearance.DOS => "title-bar-text-dos",
+        Appearance.Win31 => "title-bar-text-win-31",
         Appearance.Win7 => "title-bar-text-win-7",
         Appearance.WinXP => "title-bar-text-win-xp",
         Appearance.Win98 => "title-bar-text-win-98",
@@ -118,6 +121,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
     private string GetTitleBarControlsClass() => Options.Appearance switch
     {
         Appearance.DOS => "title-bar-controls-dos",
+        Appearance.Win31 => "title-bar-controls-win-31",
         Appearance.Win98 => "title-bar-controls-win-98",
         Appearance.Win7 => "title-bar-controls-win-7",
         Appearance.WinXP => "title-bar-controls-win-xp",
@@ -128,6 +132,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
     private string GetDialogBodyClass() => Options.Appearance switch
     {
         Appearance.DOS => "dlg-body-dos",
+        Appearance.Win31 => "dlg-body-win-31",
         Appearance.Win98 => "dlg-body-win-98",
         Appearance.Win7 => "dlg-body-win-7",
         Appearance.WinXP => "dlg-body-win-xp",

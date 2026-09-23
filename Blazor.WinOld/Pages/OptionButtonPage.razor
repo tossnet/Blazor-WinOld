@@ -17,14 +17,22 @@
 </div>
 
 
-	<WinOldOptionButtonGroup T="int"					
+	<WinOldOptionButtonGroup T="int"
+							 @bind-Value="SelectedRadio"
+							 Appearance="Appearance.Win31">
+		<WinOldOptionButton Label="Adrien" Value="1" />
+		<WinOldOptionButton Label="Christophe" Value="2" />
+		<WinOldOptionButton Label="Denis (disabled)" Value="3" Disabled="true" />
+	</WinOldOptionButtonGroup>
+
+	<WinOldOptionButtonGroup T="int"
 		                     @bind-Value="SelectedRadio"
 							 Appearance="Appearance.Win98">
 		<WinOldOptionButton Label="Adrien (disabled)" Value="1" Disabled="true" />
 		<WinOldOptionButton Label="Christophe" Value="2" />
 		<WinOldOptionButton Label="Denis" Value="3" />
 	</WinOldOptionButtonGroup>
-	
+
 	<WinOldOptionButtonGroup T="int"
 							 @bind-Value="SelectedRadio"
 							 Appearance="Appearance.WinXP">

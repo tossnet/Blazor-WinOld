@@ -15,18 +15,38 @@
 
 	<WinOldCheckBox Appearance="Appearance.DOS"
 					Label="check box"
-					HotKey="M" />
+					HotKey="b" />
 
 	<WinOldCheckBox Appearance="Appearance.DOS"
-					Label="Make System Disk"
-					HotKey="M"
+					Label="check box"
 					Disabled />
 
 	<WinOldCheckBox Appearance="Appearance.DOS"
-					Label="Save Image Info"
-					HotKey="I"
+					Label="check box"
 					Checked="true"
 					Disabled />
+		</div>
+    </div>
+
+    <div style="flex:0 0 calc(25% - 20px);">
+        <h7>Windows 3.1</h7>
+        <div style="display:flex; flex-direction:column; width:fit-content; margin-bottom:10px; padding:4px; background:white;">
+			<WinOldCheckBox Checked="checkbox1"
+				Appearance="Appearance.Win31"
+				Label="check box"
+				CheckedChanged="@CheckedChanged" />
+
+<WinOldCheckBox Appearance="Appearance.Win31"
+				Label="check box" />
+
+<WinOldCheckBox Appearance="Appearance.Win31"
+				Label="check box"
+				Disabled />
+
+<WinOldCheckBox Appearance="Appearance.Win31"
+				Label="check box"
+				Checked="true"
+				Disabled />
 		</div>
     </div>
 

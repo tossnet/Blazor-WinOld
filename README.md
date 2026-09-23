@@ -3,7 +3,7 @@
 [![NuGet](https://img.shields.io/nuget/v/BlazorWinOld.svg)](https://www.nuget.org/packages/BlazorWinOld/)  ![BlazorWinOld Nuget Package](https://img.shields.io/nuget/dt/BlazorWinOld)
 [![GitHub](https://img.shields.io/github/license/tossnet/Blazor-WinOld?color=594ae2&logo=github&style=flat-square)](https://github.com/tossnet/Blazor-WinOld/blob/master/LICENSE.txt)
 
-A Blazor UI component library that brings back the nostalgic look and feel of classic Windows operating systems (DOS, Windows 98, XP, 7 and 10). Create retro-styled web applications with authentic Windows UI components.
+A Blazor UI component library that brings back the nostalgic look and feel of classic Windows operating systems (DOS, Windows 3.1, 98, XP, 7 and 10). Create retro-styled web applications with authentic Windows UI components.
 
 > 🪶 **Lightweight** the NuGet package is only ~290 KB.
 
@@ -62,12 +62,16 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 ## <a name="ReleaseNotes"></a>Release Notes 
 
-<details open="open"><summary>Version 2.13.0</summary>
+<details open="open"><summary>Version 2.14.0</summary>
 
+>- **Windows 3.1** appearance added : `WinOldWindow`, `WinOldDialogHost`, `WinOldMessageBoxHost`, `WinOldInputBoxHost`
+</details>
+
+<details><summary>Version 2.13.0</summary>
 >- DOS appearance added : InputBox, SelectBox, NumberBox
 </details>
-<details><summary>Version 2.12.0</summary>
 
+<details><summary>Version 2.12.0</summary>
 >- Added a Format parameter to WinOldNumberBox (ex: Format="F2")
 </details>
 
@@ -340,3 +344,5 @@ OS emulator :
 - https://oses.ioblako.com/new.html
 - https://geekprank.com/xp-simulator.php
 - https://www.windows93.net
+- https://brave-plant-0409a8603.2.azurestaticapps.net/ 
+- https://github.com/Futur3Sn0w/web31

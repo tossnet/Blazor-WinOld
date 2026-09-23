@@ -75,6 +75,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => $"msg-dos msg-dos-{GetDosBoxColor().ToString().ToLowerInvariant()}",
+            Appearance.Win31 => "msg-win-31",
             Appearance.Win98 => "msg-win-98",
             Appearance.WinXP => "msg-win-xp",
             Appearance.Win7 => "msg-win-7",
@@ -90,6 +91,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => "title-bar-dos",
+            Appearance.Win31 => "title-bar-win-31",
             Appearance.Win98 => "title-bar-win-98",
             Appearance.WinXP => "title-bar-win-xp",
             Appearance.Win7 => "title-bar-win-7",
@@ -104,6 +106,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => "title-bar-text-dos",
+            Appearance.Win31 => "title-bar-text-win-31",
             Appearance.Win98 => "title-bar-text-win-98",
             Appearance.WinXP => "title-bar-text-win-xp",
             Appearance.Win7 => "title-bar-text-win-7",
@@ -118,6 +121,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => "title-bar-controls-dos",
+            Appearance.Win31 => "title-bar-controls-win-31",
             Appearance.Win7 => "title-bar-controls-win-7",
             Appearance.WinXP => "title-bar-controls-win-xp",
             Appearance.Win98 => "title-bar-controls-win-98",
@@ -173,6 +177,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => "message-body-dos",
+            Appearance.Win31 => "message-body-win-31",
             Appearance.Win7 => "message-body-win-7",
             Appearance.WinXP => "message-body-win-xp",
             Appearance.Win98 => "message-body-win-98",
@@ -186,6 +191,7 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
         return Options.Appearance switch
         {
             Appearance.DOS => "msg-content-dos",
+            Appearance.Win31 => "msg-content-win-31",
             Appearance.Win7 => "msg-content-win-7",
             Appearance.WinXP => "msg-content-win-xp",
             Appearance.Win98 => "msg-content-win-98",
