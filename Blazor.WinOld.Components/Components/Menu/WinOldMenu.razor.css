@@ -117,6 +117,35 @@
 }
 
 /*--------*\
+    Win 3.1
+\*--------*/
+.menu-win-31 {
+    background: #ffffff;
+    color: #000000;
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: bolder;
+    border-bottom: solid 1px black;
+}
+
+.submenu-win-31, .subsub-win-31 {
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: bolder;
+    min-width: 150px;
+    padding: 0;
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.subsub-win-31 {
+    top: -1px;
+}
+
+/*--------*\
     Win 98
 \*--------*/
 .menu-win-98 {

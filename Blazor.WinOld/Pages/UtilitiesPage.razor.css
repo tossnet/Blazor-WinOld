@@ -1,0 +1,19 @@
+.wo-demo {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px dashed #999;
+    background-color: #f8f8f8;
+}
+
+.wo-demo-box {
+    padding: 8px 12px;
+    background-color: #d4d0c8;
+    border: 2px outset #fff;
+    font-family: monospace;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.wo-demo-tall {
+    height: 120px;
+}

@@ -17,9 +17,9 @@
 
 <h2>Examples by Style</h2>
 
-<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap; align-items: flex-start;">
+<div class="wo-flex wo-row wo-gap-20 wo-wrap wo-items-start">
 
-<div style="flex:0 0 calc(25% - 20px);">
+<div class="wo-flex-25">
         <h7>DOS</h7>
         <WinOldMenu Appearance="Appearance.DOS">
             <WinOldMenuItem Label="File" HotKey="F">
@@ -51,7 +51,39 @@
         </WinOldMenu>
     </div>
     
-    <div style="flex:0 0 calc(25% - 20px);">
+    <div class="wo-flex-25">
+        <h7>Win31</h7>
+        <WinOldMenu Appearance="Appearance.Win31">
+            <WinOldMenuItem Label="File" HotKey="F">
+                <WinOldMenuItem Label="New"       HotKey="N" Shortcut="Ctrl+N" OnClick="@(() => DoAction("New"))" />
+                <WinOldMenuItem Label="Open..."   HotKey="O" Shortcut="Ctrl+O" OnClick="@(() => DoAction("Open"))" />
+                <WinOldMenuItem Label="Save"      HotKey="S" Disabled="true" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Export"    HotKey="E" Disabled />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Exit"      HotKey="x" Shortcut="Alt+F4" OnClick="@(() => DoAction("Exit"))" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="View" HotKey="V">
+                <WinOldMenuItem Label="Zoom +"    HotKey="+" OnClick="@(() => DoAction("Zoom +"))" />
+                <WinOldMenuItem Label="Zoom -"    HotKey="-" OnClick="@(() => DoAction("Zoom -"))" />
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Disposition" HotKey="D">
+                    <WinOldMenuItem Label="Classic"  HotKey="C" OnClick="@(() => DoAction("Classic"))" />
+                    <WinOldMenuItem Label="Compact"  HotKey="o" OnClick="@(() => DoAction("Compact"))" />
+                    <WinOldMenuItem Label="Étendue"  HotKey="E" OnClick="@(() => DoAction("Étendue"))" />
+                </WinOldMenuItem>
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="Full screen" HotKey="F" OnClick="@(() => DoAction("Full screen"))" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="Win31" Disabled="true" />
+            <WinOldMenuItem Label="Help" HotKey="H">
+                <WinOldMenuItem Label="Documentation" HotKey="D" OnClick="@(() => DoAction("Documentation"))" />
+                <WinOldMenuItem Label="About..."      HotKey="A" OnClick="@(() => DoAction("About"))" />
+            </WinOldMenuItem>
+        </WinOldMenu>
+    </div>
+    
+    <div class="wo-flex-25">
         <h7>Windows 98</h7>
         <WinOldMenu Appearance="Appearance.Win98">
             <WinOldMenuItem Label="File">
@@ -83,7 +115,7 @@
         </WinOldMenu>
     </div>
 
-    <div style="flex:0 0 calc(25% - 20px);">
+    <div class="wo-flex-25">
         <h7>Windows XP</h7>
         <WinOldMenu Appearance="Appearance.WinXP">
             <WinOldMenuItem Label="File">
@@ -119,7 +151,7 @@
         </WinOldMenu>
     </div>
 
-    <div style="flex:0 0 calc(25% - 20px);">
+    <div class="wo-flex-25">
         <h7>Windows 7</h7>
         <WinOldMenu Appearance="Appearance.Win7">
             <WinOldMenuItem Label="File">
@@ -151,7 +183,7 @@
         </WinOldMenu>
     </div>
 
-    <div style="flex:0 0 calc(25% - 20px);">
+    <div class="wo-flex-25">
         <h7>Windows 10</h7>
         <WinOldMenu Appearance="Appearance.Win10">
             <WinOldMenuItem Label="File">

@@ -11,7 +11,7 @@ public partial class WinOldMenuItem : WinOldComponentBase
     [Parameter] public bool IsSeparator { get; set; }
 
     /// <summary>
-    /// DOS appearance only: letter of the label to highlight (access key).
+    /// DOS and Win31 appearances: letter of the label to highlight (access key), red in DOS, underlined in Win31.
     /// All appareances : use as accesskey attributes
     /// </summary>
     [Parameter] public string? HotKey { get; set; }
@@ -114,6 +114,7 @@ public partial class WinOldMenuItem : WinOldComponentBase
         return RootMenu?.ActualRoot.Appearance switch
         {
             Appearance.DOS => "menu-separator-win-dos",
+            Appearance.Win31 => "menu-separator-win-31",
             Appearance.Win98 => "menu-separator-win-98",
             Appearance.WinXP => "menu-separator-win-xp",
             Appearance.Win7  => "menu-separator-win-7",
@@ -128,6 +129,7 @@ public partial class WinOldMenuItem : WinOldComponentBase
         return RootMenu?.ActualRoot.Appearance switch
         {
             Appearance.DOS => "menu-label-win-dos",
+            Appearance.Win31 => "menu-label-win-31",
             Appearance.Win98 => "menu-label-win-98",
             Appearance.WinXP => "menu-label-win-xp",
             Appearance.Win7  => "menu-label-win-7",
@@ -142,6 +144,7 @@ public partial class WinOldMenuItem : WinOldComponentBase
         return RootMenu?.ActualRoot.Appearance switch
         {
             Appearance.DOS => "menu-arrow-win-dos",
+            Appearance.Win31 => "menu-arrow-win-31",
             Appearance.Win98 => "menu-arrow-win-98",
             Appearance.WinXP => "menu-arrow-win-xp",
             Appearance.Win7  => "menu-arrow-win-7",
@@ -150,7 +153,8 @@ public partial class WinOldMenuItem : WinOldComponentBase
         };
     }
 
-    private bool IsDos => RootMenu?.ActualRoot.Appearance == Appearance.DOS;
+    // DOS and Win31 both render the access key as a separate span (red in DOS, underlined in Win31)
+    private bool ShowHotKey => RootMenu?.ActualRoot.Appearance is Appearance.DOS or Appearance.Win31;
 
     /// <summary>
     /// Splits the label around the first occurrence of the hot key.

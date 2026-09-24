@@ -51,7 +51,7 @@ DOS
 \*--------*/
 .lbl-win-7 {
     font-family: var(--font);
-    font-size: 9pt;
+    font-size: 10pt;
     color: #000;
     -webkit-font-smoothing: antialiased;
 }

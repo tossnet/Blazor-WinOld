@@ -21,7 +21,7 @@ else if (_isRootLevel && !(RootMenu?.IsContextMenu ?? false))
               aria-haspopup="@(ChildContent is not null ? "menu" : null)"
               aria-expanded="@(ChildContent is not null ? _isOpen : null)"
               aria-disabled="@(ParentDisabled | Disabled)"
-              @onclick="OnLabelClick">@if (IsDos) { var parts = GetLabelParts(); <text>@parts.Before<span class="menu-dos-hotkey">@parts.Key</span>@parts.After</text> } else { @Label }</span>
+              @onclick="OnLabelClick">@if (ShowHotKey) { var parts = GetLabelParts(); <text>@parts.Before<span class="menu-hotkey-win">@parts.Key</span>@parts.After</text> } else { @Label }</span>
 
         @if (ChildContent is not null)
         {
@@ -54,9 +54,9 @@ else
                 <span class="menu-icon-win" aria-hidden="true"><i class="@IconCssClass"></i></span>
             }
 
-            @if (IsDos) { var parts = GetLabelParts(); <text>@parts.Before<span class="menu-dos-hotkey">@parts.Key</span>@parts.After</text> } else { @Label }
+            @if (ShowHotKey) { var parts = GetLabelParts(); <text>@parts.Before<span class="menu-hotkey-win">@parts.Key</span>@parts.After</text> } else { @Label }
             @if (!string.IsNullOrEmpty(Shortcut))
-            {
+            { 
                 <span class="menu-shortcut-win">@Shortcut</span>
             }
             @if (ChildContent is not null)

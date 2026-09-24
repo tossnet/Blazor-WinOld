@@ -105,7 +105,7 @@
 }
 
 /* Access key letter: red on gray (and on the bar) */
-.menu-dos-hotkey {
+.menu-label-win-dos .menu-hotkey-win {
     color: #aa0000;
 }
 
@@ -123,10 +123,10 @@
     color: #ffffff;
 }
 
-.menu-win-root-item > .menu-label-win-dos:hover .menu-dos-hotkey,
-.menu-win-root-item.open > .menu-label-win-dos .menu-dos-hotkey,
-.menu-sub-win-item > .menu-label-win-dos:hover .menu-dos-hotkey,
-.menu-sub-win-item.open > .menu-label-win-dos .menu-dos-hotkey {
+.menu-win-root-item > .menu-label-win-dos:hover .menu-hotkey-win,
+.menu-win-root-item.open > .menu-label-win-dos .menu-hotkey-win,
+.menu-sub-win-item > .menu-label-win-dos:hover .menu-hotkey-win,
+.menu-sub-win-item.open > .menu-label-win-dos .menu-hotkey-win {
     color: inherit;
 }
 
@@ -146,10 +146,72 @@
     color: #686868;
 }
 
-    .menu-win-root-item.disabled > .menu-label-win-dos .menu-dos-hotkey,
-    .menu-sub-win-item.disabled > .menu-label-win-dos .menu-dos-hotkey {
+    .menu-win-root-item.disabled > .menu-label-win-dos .menu-hotkey-win,
+    .menu-sub-win-item.disabled > .menu-label-win-dos .menu-hotkey-win {
         color: inherit;
     }
+
+/*--------*\
+    Win 3.1
+\*--------*/
+.menu-separator-win-31 {
+    height: 0;
+    margin: 2px 0;
+    background: none;
+    border-top: 1px solid #000000;
+}
+
+.menu-arrow-win-31::after {
+    content: '►';
+    margin-left: auto;
+    padding-left: 8px;
+    font-size: 9px;
+    line-height: 1;
+}
+
+.menu-win-root-item > .menu-label-win-31 {
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: bolder;
+    padding: 3px 8px;
+    color: #000000;
+}
+
+.menu-sub-win-item > .menu-label-win-31 {
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: bolder;
+    padding: 2px 16px 2px 16px;
+    color: #000000;
+}
+
+/* Access key letter: underlined */
+.menu-label-win-31 .menu-hotkey-win {
+    text-decoration: underline;
+}
+
+/* Highlight: navy bar, white text (menu bar and drop-down) */
+.menu-win-root-item:not(.disabled) > .menu-label-win-31:hover,
+.menu-win-root-item.open > .menu-label-win-31,
+.menu-sub-win-item > .menu-label-win-31:hover,
+.menu-sub-win-item.open > .menu-label-win-31 {
+    background: var(--dlg-win31-title-bar-background-color-active);
+    color: #ffffff;
+}
+
+.menu-label-win-31 .menu-shortcut-win {
+    opacity: 1;
+    font-size: 11px;
+}
+
+.menu-sub-win-item > .menu-label-win-31 .menu-icon-win {
+    display: none;
+}
+
+.menu-win-root-item.disabled > .menu-label-win-31,
+.menu-sub-win-item.disabled > .menu-label-win-31 {
+    color: #c0c0c0;
+}
 
 /*--------*\
     Win 98

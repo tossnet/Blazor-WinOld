@@ -1,0 +1,273 @@
+@page "/utilities-page"
+
+<PageTitle>CSS Utilities</PageTitle>
+
+<h1>CSS Utilities</h1>
+
+<p>
+    Blazor WinOld ships a small set of CSS utility classes to lay out your forms and windows
+    (flexbox, grid, gap, alignment, responsive variants) without writing custom CSS.
+</p>
+
+<div class="alert alert-info" role="alert">
+    <strong>No setup required :</strong> the utilities are imported automatically by
+    <code>blazorwinold.css</code>. All classes are prefixed with <code>wo-</code>
+    so they never conflict with Bootstrap, Tailwind or any other CSS framework used in your application.
+</div>
+
+<h2>Flexbox</h2>
+
+<p>
+    <code>wo-flex</code> turns an element into a flex container, <code>wo-row</code> / <code>wo-col</code>
+    set the direction.
+</p>
+
+<div class="wo-demo wo-flex wo-row wo-gap-8">
+    <div class="wo-demo-box">1</div>
+    <div class="wo-demo-box">2</div>
+    <div class="wo-demo-box">3</div>
+</div>
+
+<div class="wo-demo wo-flex wo-col wo-gap-8">
+    <div class="wo-demo-box">1</div>
+    <div class="wo-demo-box">2</div>
+    <div class="wo-demo-box">3</div>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<div class=""wo-flex wo-row wo-gap-8"">
+    <WinOldButton>OK</WinOldButton>
+    <WinOldButton>Cancel</WinOldButton>
+</div>
+
+<div class=""wo-flex wo-col wo-gap-8"">
+    <WinOldTextBox Label=""Name :"" />
+    <WinOldTextBox Label=""Email :"" />
+</div>") />
+
+<h3>Alignment</h3>
+
+<p>
+    <code>wo-justify-*</code> aligns items on the main axis, <code>wo-items-*</code> on the cross axis.
+</p>
+
+<div class="wo-demo wo-demo-tall wo-flex wo-justify-between wo-items-center">
+    <div class="wo-demo-box">wo-justify-between</div>
+    <div class="wo-demo-box">wo-items-center</div>
+</div>
+
+<div class="wo-demo wo-flex wo-justify-end wo-gap-8">
+    <WinOldButton Appearance="Appearance.Win98" Default>OK</WinOldButton>
+    <WinOldButton Appearance="Appearance.Win98">Cancel</WinOldButton>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<div class=""wo-flex wo-justify-end wo-gap-8"">
+    <WinOldButton Default>OK</WinOldButton>
+    <WinOldButton>Cancel</WinOldButton>
+</div>") />
+
+<h2>Flex basis</h2>
+
+<p>
+    <code>wo-flex-25</code>, <code>wo-flex-33</code>, <code>wo-flex-50</code> and <code>wo-flex-100</code>
+    give fixed widths to the children of a wrapping flex container (calibrated for <code>wo-gap-20</code>).
+    <code>wo-flex-1</code> makes a child take the remaining space.
+</p>
+
+<div class="wo-demo wo-flex wo-row wo-wrap wo-gap-20">
+    <div class="wo-demo-box wo-flex-100 md:wo-flex-50 lg:wo-flex-25">1</div>
+    <div class="wo-demo-box wo-flex-100 md:wo-flex-50 lg:wo-flex-25">2</div>
+    <div class="wo-demo-box wo-flex-100 md:wo-flex-50 lg:wo-flex-25">3</div>
+    <div class="wo-demo-box wo-flex-100 md:wo-flex-50 lg:wo-flex-25">4</div>
+</div>
+
+<div class="wo-demo wo-flex wo-gap-8">
+    <div class="wo-demo-box">fixed</div>
+    <div class="wo-demo-box wo-flex-1">wo-flex-1</div>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"@* 1 column on mobile, 2 on tablet, 4 on desktop *@
+<div class=""wo-flex wo-row wo-wrap wo-gap-20"">
+    <div class=""wo-flex-100 md:wo-flex-50 lg:wo-flex-25"">Block 1</div>
+    <div class=""wo-flex-100 md:wo-flex-50 lg:wo-flex-25"">Block 2</div>
+    <div class=""wo-flex-100 md:wo-flex-50 lg:wo-flex-25"">Block 3</div>
+    <div class=""wo-flex-100 md:wo-flex-50 lg:wo-flex-25"">Block 4</div>
+</div>
+
+<div class=""wo-flex wo-gap-8"">
+    <div>fixed</div>
+    <div class=""wo-flex-1"">takes the remaining space</div>
+</div>") />
+
+<h2>Grid</h2>
+
+<div class="wo-demo wo-grid wo-grid-cols-3 wo-gap-8">
+    <div class="wo-demo-box">A</div>
+    <div class="wo-demo-box">B</div>
+    <div class="wo-demo-box">C</div>
+    <div class="wo-demo-box">D</div>
+    <div class="wo-demo-box">E</div>
+    <div class="wo-demo-box">F</div>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<div class=""wo-grid wo-grid-cols-3 wo-gap-8"">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+</div>
+
+@* 1 column on mobile, 2 from sm, 4 from lg *@
+<div class=""wo-grid wo-grid-cols-1 sm:wo-grid-cols-2 lg:wo-grid-cols-4 wo-gap-16"">
+    ...
+</div>") />
+
+<h2>Gap</h2>
+
+<p>
+    Spacing between flex or grid children :
+    <code>wo-gap-0</code>, <code>wo-gap-4</code>, <code>wo-gap-8</code>, <code>wo-gap-12</code>,
+    <code>wo-gap-16</code>, <code>wo-gap-20</code>, <code>wo-gap-24</code>, <code>wo-gap-32</code>,
+    <code>wo-gap-48</code> (values in pixels).
+</p>
+
+<h2>Responsive</h2>
+
+<p>
+    Prefix a class with a breakpoint to apply it from that screen width upwards (mobile first, like Tailwind).
+    Resize the window to see the example below switch from 1 to 2 columns.
+</p>
+
+<div style="margin: 20px 0; border: 1px solid #ccc; max-width: 500px;">
+    <div style="display: flex; background-color: #f0f0f0; font-weight: bold; border-bottom: 2px solid #ccc;">
+        <div style="flex: 1; padding: 8px;">Prefix</div>
+        <div style="flex: 1; padding: 8px;">Min width</div>
+    </div>
+    @foreach (var (prefix, width) in _breakpoints)
+    {
+        <div style="display: flex; border-bottom: 1px solid #eee;">
+            <div style="flex: 1; padding: 8px;"><code>@prefix</code></div>
+            <div style="flex: 1; padding: 8px;">@width</div>
+        </div>
+    }
+</div>
+
+<WinOldFrame Appearance="Appearance.WinXP"
+             Label="Two columns from sm">
+    <div class="wo-flex wo-col sm:wo-row wo-gap-16 sm:wo-gap-32">
+        <div class="wo-flex wo-col wo-gap-8">
+            <WinOldTextBox Appearance="Appearance.WinXP"
+                           Label="First name :"
+                           @bind-Value="_firstName" />
+            <WinOldTextBox Appearance="Appearance.WinXP"
+                           Label="Last name :"
+                           @bind-Value="_lastName" />
+        </div>
+        <div class="wo-flex wo-col wo-gap-8">
+            <WinOldCheckBox Appearance="Appearance.WinXP"
+                            Label="Subscribe"
+                            @bind-Value="_subscribe" />
+            <WinOldButton Appearance="Appearance.WinXP"
+                          Default>Save</WinOldButton>
+        </div>
+    </div>
+</WinOldFrame>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<WinOldFrame Label=""Two columns from sm"">
+    @* stacked on mobile, side by side from 640px *@
+    <div class=""wo-flex wo-col sm:wo-row wo-gap-16 sm:wo-gap-32"">
+
+        @* column 1 : items stacked *@
+        <div class=""wo-flex wo-col wo-gap-8"">
+            <WinOldTextBox Label=""First name :"" />
+            <WinOldTextBox Label=""Last name :"" />
+        </div>
+
+        @* column 2 : items stacked *@
+        <div class=""wo-flex wo-col wo-gap-8"">
+            <WinOldCheckBox Label=""Subscribe"" />
+            <WinOldButton Default>Save</WinOldButton>
+        </div>
+
+    </div>
+</WinOldFrame>") />
+
+<div class="alert alert-info" role="alert">
+    <strong>Tip :</strong> available responsive classes are
+    <code>wo-flex</code>, <code>wo-grid</code>, <code>wo-block</code>, <code>wo-hidden</code>,
+    <code>wo-row</code>, <code>wo-col</code>, <code>wo-wrap</code>, <code>wo-nowrap</code>,
+    <code>wo-items-start/center</code>, <code>wo-justify-center/between</code>,
+    all <code>wo-gap-*</code>, <code>wo-flex-1/25/33/50/100</code> and <code>wo-grid-cols-1..4</code>.
+</div>
+
+<h2>Other helpers</h2>
+
+<div class="wo-demo wo-center wo-demo-tall">
+    <div class="wo-demo-box">wo-center</div>
+</div>
+
+<h2>Class reference</h2>
+
+<div style="margin: 20px 0; border: 1px solid #ccc;">
+    <div style="display: flex; flex-wrap: wrap; background-color: #f0f0f0; font-weight: bold; border-bottom: 2px solid #ccc;">
+        <div style="flex: 1 1 200px; padding: 8px; min-width: 160px;">Class</div>
+        <div style="flex: 2 1 250px; padding: 8px; min-width: 200px;">CSS</div>
+    </div>
+    @foreach (var (cssClass, css) in _reference)
+    {
+        <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+            <div style="flex: 1 1 200px; padding: 8px; min-width: 160px;"><code>@cssClass</code></div>
+            <div style="flex: 2 1 250px; padding: 8px; min-width: 200px;"><code>@css</code></div>
+        </div>
+    }
+</div>
+
+@code {
+    private string _firstName = "Christophe";
+    private string _lastName = "";
+    private bool _subscribe;
+
+    private readonly (string Prefix, string Width)[] _breakpoints =
+    [
+        ("sm:", "640px"),
+        ("md:", "768px"),
+        ("lg:", "1024px"),
+        ("xl:", "1280px"),
+    ];
+
+    private readonly (string Class, string Css)[] _reference =
+    [
+        ("wo-flex", "display: flex"),
+        ("wo-inline-flex", "display: inline-flex"),
+        ("wo-row", "flex-direction: row"),
+        ("wo-col", "flex-direction: column"),
+        ("wo-wrap / wo-nowrap", "flex-wrap: wrap / nowrap"),
+        ("wo-flex-1", "flex: 1 1 0; min-width: 0"),
+        ("wo-flex-auto", "flex: 1 1 auto"),
+        ("wo-flex-none", "flex: none"),
+        ("wo-flex-25 / 33 / 50", "flex: 0 0 calc(25% | 33.333% | 50% - 20px)"),
+        ("wo-flex-100", "flex: 0 0 100%"),
+        ("wo-items-start / center / end / stretch", "align-items: ..."),
+        ("wo-justify-start / center / end", "justify-content: ..."),
+        ("wo-justify-between / around / evenly", "justify-content: space-..."),
+        ("wo-self-start / center / end", "align-self: ..."),
+        ("wo-grid / wo-inline-grid", "display: grid / inline-grid"),
+        ("wo-grid-cols-1..4", "grid-template-columns: repeat(n, minmax(0, 1fr))"),
+        ("wo-grid-center", "display: grid; place-items: center"),
+        ("wo-gap-0..48", "gap: 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 48px"),
+        ("wo-text-left / center / right", "text-align: ..."),
+        ("wo-w-full / wo-h-full", "width / height: 100%"),
+        ("wo-min-w-0 / wo-min-h-0", "min-width / min-height: 0"),
+        ("wo-block / wo-inline-block / wo-hidden", "display: block / inline-block / none"),
+        ("wo-relative / absolute / fixed / sticky", "position: ..."),
+        ("wo-center", "display: flex; justify-content: center; align-items: center"),
+    ];
+}

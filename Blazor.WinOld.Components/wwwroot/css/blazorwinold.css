@@ -1,4 +1,5 @@
 @import url('titlebar.css');
+@import url('utilities.css');
 
 @font-face {
     font-family: "Pixelated MS Sans Serif";
@@ -27,6 +28,7 @@
     --font-family: "Pixelated MS Sans Serif", sans-serif;
     --font: "Segoe UI","SegoeUI","Noto Sans",sans-serif;
     --dos-background: #b0b0b0;
+    --dlg-win31-title-bar-background-color-active: #0000c0;
     --win98-background: silver;
     --winxp-background: #ece9d8;
     --surface: #f0f0f0;
@@ -395,8 +397,9 @@ label.label-txt-win {
 .lbtxt-win-7 {
     font-family: unset !important;
     font: var(--font);
-    font-size: 9pt;
+    font-size: 10pt !important;
 }
+
 /*--------*\
     Win 10
 \*--------*/
@@ -407,8 +410,8 @@ label.label-txt-win {
 .txt-win-10, .txtarea-win-10 {
     box-sizing: border-box;
     padding: 0 4px;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 11px;
+    font-family: var(--font);
+    font-size: 12px;
     color: #000000;
     background-color: #ffffff;
     border: 1px solid #ECECEC;
@@ -437,6 +440,6 @@ label.label-txt-win {
 .lbtxt-win-10 {
     font-family: unset !important;
     font: var(--font);
-    font-size: 9pt;
+    font-size: 10pt !important;
 }
 

@@ -326,7 +326,7 @@
 .opt-win-10 + label {
     align-items: center;
     display: inline-flex;
-    font-family: "Segoe UI", Tahoma, sans-serif;
+    font-family: var(--font);
     font-size: 12px;
     font-weight: 400;
     cursor: pointer;

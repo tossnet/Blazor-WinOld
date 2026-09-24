@@ -58,6 +58,19 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 <WinOldDialogHost /> <!-- Only if you use DialogBox -->
 ```
 
+### CSS utilities
+
+`blazorwinold.css` also includes a set of layout utility classes (flexbox, grid, gap, responsive `sm:` / `md:` / `lg:` / `xl:` variants), all prefixed with `wo-` to avoid conflicts with other CSS frameworks. Nothing to declare:
+
+```html
+<div class="wo-flex wo-col sm:wo-row wo-gap-16">
+    <div>Column 1</div>
+    <div class="wo-flex wo-col wo-gap-8">Column 2</div>
+</div>
+```
+
+See the **CSS Utilities** page of the demo for the full list.
+
 
 ## <a name="ReleaseNotes"></a>Release Notes 
 

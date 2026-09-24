@@ -5,17 +5,27 @@
 
 <PageTitle>Home</PageTitle>
 
-<div class="hero" style="background-color: @GetBackgroundColor();">
+<div class="hero"
+     style="background-color: @GetBackgroundColor();">
     <div class="hero-text">
         <div class="hero-badge-row">
-            <a href="https://www.nuget.org/packages/BlazorWinOld/" target="_blank" tabindex="-1">
-                <img src="https://img.shields.io/nuget/v/BlazorWinOld.svg" alt="NuGet" />
+            <a href="https://www.nuget.org/packages/BlazorWinOld/"
+               target="_blank"
+               tabindex="-1">
+                <img src="https://img.shields.io/nuget/v/BlazorWinOld.svg"
+                     alt="NuGet" />
             </a>
-            <a href="https://www.nuget.org/packages/BlazorWinOld/" target="_blank" tabindex="-1">
-                <img src="https://img.shields.io/nuget/dt/BlazorWinOld" alt="Downloads" />
+            <a href="https://www.nuget.org/packages/BlazorWinOld/"
+               target="_blank"
+               tabindex="-1">
+                <img src="https://img.shields.io/nuget/dt/BlazorWinOld"
+                     alt="Downloads" />
             </a>
-            <a href="https://github.com/tossnet/Blazor-WinOld/blob/master/LICENSE.txt" target="_blank" tabindex="-1">
-                <img src="https://img.shields.io/github/license/tossnet/Blazor-WinOld?color=594ae2&amp;logo=github&amp;style=flat-square" alt="License" />
+            <a href="https://github.com/tossnet/Blazor-WinOld/blob/master/LICENSE.txt"
+               target="_blank"
+               tabindex="-1">
+                <img src="https://img.shields.io/github/license/tossnet/Blazor-WinOld?color=594ae2&amp;logo=github&amp;style=flat-square"
+                     alt="License" />
             </a>
         </div>
         <h1 class="hero-title">Blazor <span class="hero-title-accent">WinOld</span></h1>
@@ -25,18 +35,21 @@
         </p>
         <div class="hero-install">
             <code class="hero-install-code">dotnet add package BlazorWinOld</code>
-            <button class="hero-copy-btn" @onclick="CopyInstallCommand" title="Copy to clipboard">
+            <button class="hero-copy-btn"
+                    @onclick="CopyInstallCommand"
+                    title="Copy to clipboard">
                 @(_copied ? "✓" : "⧉")
             </button>
         </div>
         <div class="hero-features">
             <span class="hero-feature-pill">🪶 ~290 KB</span>
             <span class="hero-feature-pill">⚡ Server &amp; WASM</span>
-            <span class="hero-feature-pill">🎨 4 Windows themes</span>
+            <span class="hero-feature-pill">🎨 6 themes</span>
         </div>
     </div>
     <WinOldWindow Appearance="appearance"
-                  Title="Live Preview" class="hero-preview">
+                  Title="Live Preview"
+                  class="hero-preview">
         <div style="padding:6px;">
             <div class="hero-theme-selector light">
                 @foreach (var theme in _themes)
@@ -48,10 +61,15 @@
                 }
             </div>
             <WinOldFrame Appearance="appearance">
-                <WinOldTextBox Appearance="appearance" Label="Username :" @bind-Value="_previewUsername" />
-                <WinOldCheckBox Appearance="appearance" Label="Remember me" @bind-Value="_previewChecked" />
+                <WinOldTextBox Appearance="appearance"
+                               Label="Username :"
+                               @bind-Value="_previewUsername" />
+                <WinOldCheckBox Appearance="appearance"
+                                Label="Remember me"
+                                @bind-Value="_previewChecked" />
                 <div style="display:flex; gap:6px; margin-top:6px;">
-                    <WinOldButton Appearance="appearance" Default>OK</WinOldButton>
+                    <WinOldButton Appearance="appearance"
+                                  Default>OK</WinOldButton>
                     <WinOldButton Appearance="appearance">Cancel</WinOldButton>
                 </div>
             </WinOldFrame>
@@ -59,105 +77,137 @@
     </WinOldWindow>
 </div>
 
-<div id="components-section" style="background-color: @GetFormColor();">
+<div id="components-section"
+     style="background-color: @GetFormColor();">
 
-<WinOldCheckBox Appearance="appearance"
-                Label="Disable components"
-                CheckedChanged="@disabledComponents" />
+    <WinOldCheckBox Appearance="appearance"
+                    Label="Disable components"
+                    CheckedChanged="@disabledComponents" />
 
-<WinOldFrame Appearance="appearance"
-             Label="Frame"
-             Disabled="_disabledComponents">
+    <WinOldFrame Appearance="appearance"
+                 Label="Frame"
+                 Disabled="_disabledComponents">
 
+        <div class="wo-flex wo-col sm:wo-row wo-gap-16 sm:wo-gap-32">
+            <div>
+                <WinOldTextBox Appearance="appearance"
+                               Label="Textbox :"
+                               @bind-Value="SelectRadioString" />
 
-    <WinOldTextBox Appearance="appearance"
-                   Label="Textbox :"
-                   @bind-Value="SelectRadioString" />
+                <WinOldLabel Appearance="appearance">
+                    Label : @SelectedRadio.ToString()
+                </WinOldLabel>
 
-    <WinOldLabel Appearance="appearance">
-        Label : @SelectedRadio.ToString()
-    </WinOldLabel>
+                <WinOldButton OnClick="OpenDialog"
+                              Appearance="appearance"
+                              Default="true">Open a dialogbox</WinOldButton>
 
-    <WinOldButton OnClick="OpenDialog"
-                  Appearance="appearance"
-                  Default="true" >Open a dialogbox</WinOldButton>
-
-    <WinOldOptionButtonGroup T="int"
-                             @bind-Value="SelectedRadio"
-                             Appearance="appearance">
-        <WinOldOptionButton Label="Adrien" Value="1" />
-        <WinOldOptionButton Label="Christophe" Value="2" />
-        <WinOldOptionButton Label="Denis" Value="3" />
-    </WinOldOptionButtonGroup>
-</WinOldFrame>
-
-
-<WinOldTabs Appearance="appearance"
-            Style="margin-top:5px;">
-    <WinOldTabPanel Label="Tab A">
-        <p>Contents of first tab</p>
-
-        <WinOldSlider Appearance="appearance"
-                      Min="0.0"
-                      Max="5.0"
-                      Step="0.5"
-                      LowLabel="Min"
-                      HighLabel="Max"
-                      ShowTicks="true"/>
-
-    </WinOldTabPanel>
-
-    <WinOldTabPanel Label="Tab B">
-        <p>Contents of second tab</p>
-    </WinOldTabPanel>
-    <WinOldTabPanel Label="MessageBox" IsDefault="true">
-        <div style="display:flex;gap: 10px;">
-            <WinOldFrame Appearance="appearance"
-                         Label="Icon"
-                         Disabled="_disabledComponents"
-                         Style="flex: 1;">
-
-                <WinOldOptionButtonGroup T="Icon"
-                                         @bind-Value="iconMessage"
+                <WinOldOptionButtonGroup T="int"
+                                         @bind-Value="SelectedRadio"
                                          Appearance="appearance">
-                    <WinOldOptionButton Label="None" Value="Icon.None" />
-                    <WinOldOptionButton Label="Alert" Value="Icon.Alert" />
-                    <WinOldOptionButton Label="Critical" Value="Icon.Critical" />
-                    <WinOldOptionButton Label="Information" Value="Icon.Information" />
-                    <WinOldOptionButton Label="Question" Value="Icon.Question" />
+                    <WinOldOptionButton Label="Adrien"
+                                        Value="1" />
+                    <WinOldOptionButton Label="Christophe"
+                                        Value="2" />
+                    <WinOldOptionButton Label="Denis"
+                                        Value="3" />
                 </WinOldOptionButtonGroup>
+            </div>
 
-            </WinOldFrame>
+            <div class="wo-flex wo-col wo-gap-8">
+                <WinOldSelect Appearance="appearance"
+                              T="string">
+                    <WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+                    <WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+                    <WinOldOption Value="@("Denis")">Denis</WinOldOption>
+                </WinOldSelect>
 
-            <WinOldFrame Appearance="appearance"
-                         Label="Buttons"
-                         Disabled="_disabledComponents"
-                         Style="flex: 1;">
+                <WinOldNumberBox Appearance="appearance"
+                                 TValue="int"
+                                 Label="Age:"
+                                 Min="0"
+                                 Max="100"
+                                 Step="1"
+                                 Format=""
+                                 InputStyle="text-align: right;"
+                                 Disabled="false" />
+            </div>
+        </div>
+    </WinOldFrame>
 
-                <WinOldTextBox Appearance="appearance"
-                               Label="Message title :"
-                               @bind-Value="MessageTitle"
-                               Style="padding-bottom:4px" />
+
+    <WinOldTabs Appearance="appearance"
+                Style="margin-top:5px;">
+        <WinOldTabPanel Label="Tab A">
+            <p>Contents of first tab</p>
+
+            <WinOldSlider Appearance="appearance"
+                          Min="0.0"
+                          Max="5.0"
+                          Step="0.5"
+                          LowLabel="Min"
+                          HighLabel="Max"
+                          ShowTicks="true" />
+
+        </WinOldTabPanel>
+
+        <WinOldTabPanel Label="Tab B">
+            <p>Contents of second tab</p>
+        </WinOldTabPanel>
+        <WinOldTabPanel Label="MessageBox"
+                        IsDefault="true">
+            <div style="display:flex;gap: 10px;">
+                <WinOldFrame Appearance="appearance"
+                             Label="Icon"
+                             Disabled="_disabledComponents"
+                             Style="flex: 1;">
+
+                    <WinOldOptionButtonGroup T="Icon"
+                                             @bind-Value="iconMessage"
+                                             Appearance="appearance">
+                        <WinOldOptionButton Label="None"
+                                            Value="Icon.None" />
+                        <WinOldOptionButton Label="Alert"
+                                            Value="Icon.Alert" />
+                        <WinOldOptionButton Label="Critical"
+                                            Value="Icon.Critical" />
+                        <WinOldOptionButton Label="Information"
+                                            Value="Icon.Information" />
+                        <WinOldOptionButton Label="Question"
+                                            Value="Icon.Question" />
+                    </WinOldOptionButtonGroup>
+
+                </WinOldFrame>
+
+                <WinOldFrame Appearance="appearance"
+                             Label="Buttons"
+                             Disabled="_disabledComponents"
+                             Style="flex: 1;">
+
+                    <WinOldTextBox Appearance="appearance"
+                                   Label="Message title :"
+                                   @bind-Value="MessageTitle"
+                                   Style="padding-bottom:4px" />
 		
-                <WinOldTextBox Appearance="appearance"
-                               Label="Name of OK Button :"
-                               @bind-Value="ButtonNameOK"
-                               Style="padding-bottom:4px" />
+                    <WinOldTextBox Appearance="appearance"
+                                   Label="Name of OK Button :"
+                                   @bind-Value="ButtonNameOK"
+                                   Style="padding-bottom:4px" />
 			
-                <WinOldTextBox Appearance="appearance"
-                               Label="Name of Cancel Button :"
-                               @bind-Value="ButtonNameCancel"
-                               Style="padding-bottom:4px" />
-            </WinOldFrame>
-        </div>
+                    <WinOldTextBox Appearance="appearance"
+                                   Label="Name of Cancel Button :"
+                                   @bind-Value="ButtonNameCancel"
+                                   Style="padding-bottom:4px" />
+                </WinOldFrame>
+            </div>
 
-        <div style="margin-top:6px;display: flex;justify-content: center;">
-            <WinOldButton OnClick="ClickMe"
-                          Appearance="appearance">Show MessageBox</WinOldButton>
-        </div>
-    </WinOldTabPanel>
+            <div style="margin-top:6px;display: flex;justify-content: center;">
+                <WinOldButton OnClick="ClickMe"
+                              Appearance="appearance">Show MessageBox</WinOldButton>
+            </div>
+        </WinOldTabPanel>
 
-</WinOldTabs>
+    </WinOldTabs>
 
 </div>
 
@@ -169,11 +219,11 @@
 
     private readonly (string Label, Appearance Value)[] _themes =
     [
-        ("DOS",    Appearance.DOS),
+        ("DOS", Appearance.DOS),
         ("Win 3.1", Appearance.Win31),
         ("Win 98", Appearance.Win98),
         ("Win XP", Appearance.WinXP),
-        ("Win 7",  Appearance.Win7),
+        ("Win 7", Appearance.Win7),
         ("Win 10", Appearance.Win10),
     ];
 
@@ -243,15 +293,15 @@
     {
         // bool? result = await DialogService.ShowDialog(new DialogOptions
         // {
-        //     Title = "Settings",
-        //     Width = "300px",
-        //     Height = "400px",
-        //     Appearance = appearance,
-        //     MaxButton = true,
-        //     OkButtonText = "OK",
-        //     CancelButtonText = "Cancel",
-        //     ChildContent = @<SimpleDialog Appearance="@appearance" />
-        //     });
+        // Title = "Settings",
+        // Width = "300px",
+        // Height = "400px",
+        // Appearance = appearance,
+        // MaxButton = true,
+        // OkButtonText = "OK",
+        // CancelButtonText = "Cancel",
+        // ChildContent = @<SimpleDialog Appearance="@appearance" />
+        // });
 
         bool? result = await DialogService.ShowDialog<SimpleDialog>(
             new DialogOptions { Title = "Event", Appearance = appearance, MaxButton = true },
