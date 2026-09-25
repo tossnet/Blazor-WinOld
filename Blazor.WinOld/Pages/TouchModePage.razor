@@ -20,6 +20,8 @@
 
     <h2>Button</h2>
     <div style="display:flex; flex-direction:row; gap:10px; flex-wrap:wrap; align-items:center;">
+        <WinOldButton Appearance="Appearance.DOS">DOS</WinOldButton>
+        <WinOldButton Appearance="Appearance.Win31">Win 3.1</WinOldButton>
         <WinOldButton Appearance="Appearance.Win98">Win 98</WinOldButton>
         <WinOldButton Appearance="Appearance.WinXP">Win XP</WinOldButton>
         <WinOldButton Appearance="Appearance.Win7">Win 7</WinOldButton>
@@ -28,6 +30,8 @@
 
     <h2>TextBox</h2>
     <div style="display:flex; flex-direction:row; gap:20px; flex-wrap:wrap; align-items:flex-end;">
+        <WinOldTextBox Appearance="Appearance.DOS" Label="DOS" />
+        <WinOldTextBox Appearance="Appearance.Win31" Label="Win 3.1" />
         <WinOldTextBox Appearance="Appearance.Win98" Label="Win 98" />
         <WinOldTextBox Appearance="Appearance.WinXP" Label="Win XP" />
         <WinOldTextBox Appearance="Appearance.Win7" Label="Win 7" />
@@ -36,6 +40,8 @@
 
     <h2>NumberBox</h2>
     <div style="display:flex; flex-direction:row; gap:20px; flex-wrap:wrap; align-items:flex-end;">
+        <WinOldNumberBox TValue="int" Appearance="Appearance.DOS" Label="DOS" />
+        <WinOldNumberBox TValue="int" Appearance="Appearance.Win31" Label="Win 3.1" />
         <WinOldNumberBox TValue="int" Appearance="Appearance.Win98" Label="Win 98" />
         <WinOldNumberBox TValue="int" Appearance="Appearance.WinXP" Label="Win XP" />
         <WinOldNumberBox TValue="int" Appearance="Appearance.Win7" Label="Win 7" />
@@ -44,6 +50,20 @@
 
     <h2>Select</h2>
     <div style="display:flex; flex-direction:row; gap:20px; flex-wrap:wrap; align-items:flex-end;">
+        <div>
+            <WinOldSelect Appearance="Appearance.DOS" T="string" @bind-Value="_selectedName" Label="DOS">
+                <WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+                <WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+                <WinOldOption Value="@("Denis")">Denis</WinOldOption>
+            </WinOldSelect>
+        </div>
+        <div>
+            <WinOldSelect Appearance="Appearance.Win31" T="string" @bind-Value="_selectedName" Label="Win 3.1">
+                <WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
+                <WinOldOption Value="@("Christophe")">Christophe</WinOldOption>
+                <WinOldOption Value="@("Denis")">Denis</WinOldOption>
+            </WinOldSelect>
+        </div>
         <div>
             <WinOldSelect Appearance="Appearance.Win98" T="string" @bind-Value="_selectedName" Label="Win 98">
                 <WinOldOption Value="@("Adrien")">Adrien</WinOldOption>
@@ -78,6 +98,12 @@
     <h2>CheckBox</h2>
     <div style="display:flex; flex-direction:row; gap:40px; flex-wrap:wrap; align-items:flex-start;">
         <div>
+            <WinOldCheckBox Appearance="Appearance.DOS" Label="DOS" Checked="true" />
+        </div>
+        <div>
+            <WinOldCheckBox Appearance="Appearance.Win31" Label="Win 3.1" Checked="true" />
+        </div>
+        <div>
             <WinOldCheckBox Appearance="Appearance.Win98" Label="Win 98" Checked="true" />
         </div>
         <div>
@@ -93,6 +119,16 @@
 
     <h2>OptionButton</h2>
     <div style="display:flex; flex-direction:row; gap:60px; flex-wrap:wrap; align-items:flex-start;">
+        <WinOldOptionButtonGroup T="int" @bind-Value="_selectedRadio" Appearance="Appearance.DOS">
+            <WinOldOptionButton Label="DOS" Value="1" />
+            <WinOldOptionButton Label="Option 2" Value="2" />
+        </WinOldOptionButtonGroup>
+
+        <WinOldOptionButtonGroup T="int" @bind-Value="_selectedRadio" Appearance="Appearance.Win31">
+            <WinOldOptionButton Label="Win 3.1" Value="1" />
+            <WinOldOptionButton Label="Option 2" Value="2" />
+        </WinOldOptionButtonGroup>
+
         <WinOldOptionButtonGroup T="int" @bind-Value="_selectedRadio" Appearance="Appearance.Win98">
             <WinOldOptionButton Label="Win 98" Value="1" />
             <WinOldOptionButton Label="Option 2" Value="2" />
@@ -114,8 +150,54 @@
         </WinOldOptionButtonGroup>
     </div>
 
+    <h2>Slider</h2>
+    <div style="display:flex; flex-direction:row; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+        <div>
+            <h7>DOS</h7>
+            <WinOldSlider Appearance="Appearance.DOS" TValue="int" Min="0" Max="50" LowLabel="Min" HighLabel="Max" @bind-Value="_sliderValue" />
+        </div>
+        <div>
+            <h7>Win 3.1</h7>
+            <WinOldSlider Appearance="Appearance.Win31" TValue="int" Min="0" Max="50" LowLabel="Min" HighLabel="Max" @bind-Value="_sliderValue" />
+        </div>
+        <div>
+            <h7>Win 98</h7>
+            <WinOldSlider Appearance="Appearance.Win98" TValue="int" Min="0" Max="50" LowLabel="Min" HighLabel="Max" @bind-Value="_sliderValue" />
+        </div>
+        <div>
+            <h7>Win XP</h7>
+            <WinOldSlider Appearance="Appearance.WinXP" TValue="int" Min="0" Max="50" LowLabel="Min" HighLabel="Max" @bind-Value="_sliderValue" />
+        </div>
+        <div>
+            <h7>Win 7</h7>
+            <WinOldSlider Appearance="Appearance.Win7" TValue="int" Min="0" Max="50" LowLabel="Min" HighLabel="Max" @bind-Value="_sliderValue" />
+        </div>
+        <div>
+            <h7>Win 10</h7>
+            <WinOldSlider Appearance="Appearance.Win10" TValue="int" Min="0" Max="50" LowLabel="Min" HighLabel="Max" @bind-Value="_sliderValue" />
+        </div>
+    </div>
+
     <h2>Tabs</h2>
     <div style="display:flex; flex-direction:row; gap:10px; flex-wrap:wrap; align-items:flex-start;">
+        <WinOldTabs Appearance="Appearance.DOS" Style="min-width: 180px;">
+            <WinOldTabPanel Label="Tab A">
+                <p>Contents of first tab</p>
+            </WinOldTabPanel>
+            <WinOldTabPanel Label="Tab B">
+                <p>Contents of second tab</p>
+            </WinOldTabPanel>
+        </WinOldTabs>
+
+        <WinOldTabs Appearance="Appearance.Win31" Style="min-width: 180px;">
+            <WinOldTabPanel Label="Tab A">
+                <p>Contents of first tab</p>
+            </WinOldTabPanel>
+            <WinOldTabPanel Label="Tab B">
+                <p>Contents of second tab</p>
+            </WinOldTabPanel>
+        </WinOldTabs>
+
         <WinOldTabs Appearance="Appearance.Win98" Style="min-width: 180px;">
             <WinOldTabPanel Label="Tab A">
                 <p>Contents of first tab</p>
@@ -186,6 +268,7 @@
     private bool _touchMode = true;
     private string? _selectedName = "Christophe";
     private int _selectedRadio = 1;
+    private int _sliderValue = 25;
 
     private void ToggleTouchMode() => _touchMode = !_touchMode;
 }

@@ -440,10 +440,13 @@
     margin-bottom: 4px;
 }
 
-/* Pixel font — revert font-size, disable antialiasing */
-.opt-win-98.win-touch + label,
-.opt-win-xp.win-touch + label {
-    font-size: 11px;
+
+/* DOS */
+.opt-dos.win-touch + label {
+    font-size: 14px;
+    line-height: 14px;
+    min-height: 28px;
+    margin-bottom: 0;
     -webkit-font-smoothing: none;
 }
 
@@ -455,7 +458,7 @@
 }
 
 .opt-win-31.win-touch:checked + label:after {
-    left: 6px;
+    left: -13px;
     top: 6px;
     width: 7px;
     height: 7px;
@@ -483,6 +486,14 @@
         left: -20px;
         top: 0.5em;
     }
+
+/* Pixel font — revert font-size, disable antialiasing */
+.opt-win-98.win-touch + label,
+.opt-win-xp.win-touch + label {
+    font-size: 11px;
+    -webkit-font-smoothing: none;
+}
+
 
 /* Win 98 */
 .opt-win-98.win-touch + label {
@@ -555,12 +566,3 @@
     .opt-win-10.win-touch:disabled:checked + label:after {
         transform: translate(5.5px, -50%) scale(1);
     }
-
-/* DOS */
-.opt-dos.win-touch + label {
-    font-size: 14px;
-    line-height: 14px;
-    min-height: 28px;
-    margin-bottom: 0;
-    -webkit-font-smoothing: none;
-}

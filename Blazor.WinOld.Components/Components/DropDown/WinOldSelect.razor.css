@@ -320,6 +320,11 @@
     background-size: 30px 100%;
 }
 
+.select-win-31.win-touch {
+   background-position: top 0 right 0, top 0 right 1px;
+}
+
+
 .select-win-xp.win-touch {
     height: 32px;
     padding-top: 7px;
