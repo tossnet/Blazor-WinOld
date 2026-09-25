@@ -12,11 +12,11 @@
 
 		<!-- Package metadata -->
 		<PackageId>BlazorWinOld</PackageId>
-		<Version>2.13.0</Version>
+		<Version>2.14.0</Version>
 		<Authors>Christophe Peugnet</Authors>
 		<Copyright>Copyright 2025-2026</Copyright>
-		<Description>Blazor components in DOS, Windows 98, Windows XP, Windows 7 and Windows 10 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
-		<PackageTags>blazor;components;dos;win98;winXP;win7;win10;windows-xp;windows-98;windows-7;windows-10</PackageTags>
+		<Description>Blazor components in DOS, Windows 3.11, Windows 98, Windows XP, Windows 7 and Windows 10 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
+		<PackageTags>blazor;components;dos;win31;win98;winXP;win7;win10;windows-xp;windows-3;windows-98;windows-7;windows-10</PackageTags>
 		<PackageProjectUrl>https://github.com/tossnet/Blazor-WinOld</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/tossnet/Blazor-WinOld.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -24,7 +24,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReleaseNotes>
-      v2.13.0 DOS appearance added : InputBox, SelectBox, NumberBox
+      v2.14.0 Windows 3.1 appearance added. Various other improvments
     </PackageReleaseNotes>
 
 		<!-- Build and symbols -->

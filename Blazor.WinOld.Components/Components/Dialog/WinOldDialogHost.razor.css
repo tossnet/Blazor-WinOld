@@ -120,14 +120,14 @@
 
 .dlg-body-dos {
     margin: 0;
-    padding: 28px 24px 14px;
+    padding: 10px 10px 4px;
 }
 
 .dlg-dos .actions {
     display: flex;
     justify-content: center;
     gap: 8px;
-    padding: 0 24px 24px;
+    padding: 10px 10px 12px;
 }
 
 /*--------*\

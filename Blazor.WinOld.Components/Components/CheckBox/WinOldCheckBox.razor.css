@@ -13,6 +13,7 @@
         -webkit-user-select: none;
         -moz-appearance: none;
         user-select: none;
+        margin: 2px 0;
     }
 
     .chk-win:focus + label {
@@ -40,7 +41,6 @@
         color: #1a1a1a;
         cursor: pointer;
         -webkit-font-smoothing: none;
-    margin-bottom: 2px;
     }
 
     .chk-dos:focus + label {
@@ -106,7 +106,6 @@
         font-weight: bolder;
         color: #000000;
         cursor: default;
-        margin-bottom: 2px;
     }
 
     .chk-win-31 + label:before {

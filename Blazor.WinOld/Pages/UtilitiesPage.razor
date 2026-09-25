@@ -18,17 +18,17 @@
 <h2>Flexbox</h2>
 
 <p>
-    <code>wo-flex</code> turns an element into a flex container, <code>wo-row</code> / <code>wo-col</code>
-    set the direction.
+    <code>wo-row</code> / <code>wo-col</code> turn an element into a flex container and set the direction
+    (no need to add <code>wo-flex</code>). Use <code>wo-flex</code> alone for a flex container without a specific direction.
 </p>
 
-<div class="wo-demo wo-flex wo-row wo-gap-8">
-    <div class="wo-demo-box">1</div>
-    <div class="wo-demo-box">2</div>
-    <div class="wo-demo-box">3</div>
+<div class="wo-demo wo-row wo-gap-8">
+    <div class="wo-demo-box">A</div>
+    <div class="wo-demo-box">B</div>
+    <div class="wo-demo-box">C</div>
 </div>
 
-<div class="wo-demo wo-flex wo-col wo-gap-8">
+<div class="wo-demo wo-col wo-gap-8">
     <div class="wo-demo-box">1</div>
     <div class="wo-demo-box">2</div>
     <div class="wo-demo-box">3</div>
@@ -36,25 +36,35 @@
 
 <CodeBlock Language="CodeLanguage.Razor"
            EnableLineNumbers="true"
-           Code=@(@"<div class=""wo-flex wo-row wo-gap-8"">
-    <WinOldButton>OK</WinOldButton>
-    <WinOldButton>Cancel</WinOldButton>
+           Code=@(@"<div class=""wo-row wo-gap-8"">
+    <WinOldButton>A</WinOldButton>
+    <WinOldButton>B</WinOldButton>
+    <WinOldButton>C</WinOldButton>
 </div>
 
-<div class=""wo-flex wo-col wo-gap-8"">
-    <WinOldTextBox Label=""Name :"" />
-    <WinOldTextBox Label=""Email :"" />
+<div class=""wo-col wo-gap-8"">
+    <WinOldTextBox Label=""1"" />
+    <WinOldTextBox Label=""2"" />
+    <WinOldTextBox Label=""3"" />
 </div>") />
 
 <h3>Alignment</h3>
 
 <p>
     <code>wo-justify-*</code> aligns items on the main axis, <code>wo-items-*</code> on the cross axis.
+    With the default row direction, <code>justify</code> is horizontal and <code>items</code> is vertical
+    (the other way round with <code>wo-col</code>).
+</p>
+
+<p>
+    Below, the container has <code>wo-justify-between</code> (boxes spread from left to right)
+    and <code>wo-items-center</code> (every box vertically centered in the tall container).
 </p>
 
 <div class="wo-demo wo-demo-tall wo-flex wo-justify-between wo-items-center">
-    <div class="wo-demo-box">wo-justify-between</div>
-    <div class="wo-demo-box">wo-items-center</div>
+    <div class="wo-demo-box">left</div>
+    <div class="wo-demo-box">middle</div>
+    <div class="wo-demo-box">right</div>
 </div>
 
 <div class="wo-demo wo-flex wo-justify-end wo-gap-8">
@@ -77,7 +87,7 @@
     <code>wo-flex-1</code> makes a child take the remaining space.
 </p>
 
-<div class="wo-demo wo-flex wo-row wo-wrap wo-gap-20">
+<div class="wo-demo wo-row wo-wrap wo-gap-20">
     <div class="wo-demo-box wo-flex-100 md:wo-flex-50 lg:wo-flex-25">1</div>
     <div class="wo-demo-box wo-flex-100 md:wo-flex-50 lg:wo-flex-25">2</div>
     <div class="wo-demo-box wo-flex-100 md:wo-flex-50 lg:wo-flex-25">3</div>
@@ -92,7 +102,7 @@
 <CodeBlock Language="CodeLanguage.Razor"
            EnableLineNumbers="true"
            Code=@(@"@* 1 column on mobile, 2 on tablet, 4 on desktop *@
-<div class=""wo-flex wo-row wo-wrap wo-gap-20"">
+<div class=""wo-row wo-wrap wo-gap-20"">
     <div class=""wo-flex-100 md:wo-flex-50 lg:wo-flex-25"">Block 1</div>
     <div class=""wo-flex-100 md:wo-flex-50 lg:wo-flex-25"">Block 2</div>
     <div class=""wo-flex-100 md:wo-flex-50 lg:wo-flex-25"">Block 3</div>
@@ -106,7 +116,7 @@
 
 <h2>Grid</h2>
 
-<div class="wo-demo wo-grid wo-grid-cols-3 wo-gap-8">
+<div class="wo-demo wo-grid-cols-3 wo-gap-8">
     <div class="wo-demo-box">A</div>
     <div class="wo-demo-box">B</div>
     <div class="wo-demo-box">C</div>
@@ -117,14 +127,14 @@
 
 <CodeBlock Language="CodeLanguage.Razor"
            EnableLineNumbers="true"
-           Code=@(@"<div class=""wo-grid wo-grid-cols-3 wo-gap-8"">
+           Code=@(@"<div class=""wo-grid-cols-3 wo-gap-8"">
     <div>A</div>
     <div>B</div>
     <div>C</div>
 </div>
 
 @* 1 column on mobile, 2 from sm, 4 from lg *@
-<div class=""wo-grid wo-grid-cols-1 sm:wo-grid-cols-2 lg:wo-grid-cols-4 wo-gap-16"">
+<div class=""wo-grid-cols-1 sm:wo-grid-cols-2 lg:wo-grid-cols-4 wo-gap-16"">
     ...
 </div>") />
 
@@ -160,8 +170,8 @@
 
 <WinOldFrame Appearance="Appearance.WinXP"
              Label="Two columns from sm">
-    <div class="wo-flex wo-col sm:wo-row wo-gap-16 sm:wo-gap-32">
-        <div class="wo-flex wo-col wo-gap-8">
+    <div class="wo-col sm:wo-row wo-gap-16 sm:wo-gap-32">
+        <div class="wo-col wo-gap-8">
             <WinOldTextBox Appearance="Appearance.WinXP"
                            Label="First name :"
                            @bind-Value="_firstName" />
@@ -169,7 +179,7 @@
                            Label="Last name :"
                            @bind-Value="_lastName" />
         </div>
-        <div class="wo-flex wo-col wo-gap-8">
+        <div class="wo-col wo-gap-8">
             <WinOldCheckBox Appearance="Appearance.WinXP"
                             Label="Subscribe"
                             @bind-Value="_subscribe" />
@@ -183,16 +193,16 @@
            EnableLineNumbers="true"
            Code=@(@"<WinOldFrame Label=""Two columns from sm"">
     @* stacked on mobile, side by side from 640px *@
-    <div class=""wo-flex wo-col sm:wo-row wo-gap-16 sm:wo-gap-32"">
+    <div class=""wo-col sm:wo-row wo-gap-16 sm:wo-gap-32"">
 
         @* column 1 : items stacked *@
-        <div class=""wo-flex wo-col wo-gap-8"">
+        <div class=""wo-col wo-gap-8"">
             <WinOldTextBox Label=""First name :"" />
             <WinOldTextBox Label=""Last name :"" />
         </div>
 
         @* column 2 : items stacked *@
-        <div class=""wo-flex wo-col wo-gap-8"">
+        <div class=""wo-col wo-gap-8"">
             <WinOldCheckBox Label=""Subscribe"" />
             <WinOldButton Default>Save</WinOldButton>
         </div>
@@ -247,8 +257,8 @@
     [
         ("wo-flex", "display: flex"),
         ("wo-inline-flex", "display: inline-flex"),
-        ("wo-row", "flex-direction: row"),
-        ("wo-col", "flex-direction: column"),
+        ("wo-row", "display: flex; flex-direction: row"),
+        ("wo-col", "display: flex; flex-direction: column"),
         ("wo-wrap / wo-nowrap", "flex-wrap: wrap / nowrap"),
         ("wo-flex-1", "flex: 1 1 0; min-width: 0"),
         ("wo-flex-auto", "flex: 1 1 auto"),
@@ -260,7 +270,7 @@
         ("wo-justify-between / around / evenly", "justify-content: space-..."),
         ("wo-self-start / center / end", "align-self: ..."),
         ("wo-grid / wo-inline-grid", "display: grid / inline-grid"),
-        ("wo-grid-cols-1..4", "grid-template-columns: repeat(n, minmax(0, 1fr))"),
+        ("wo-grid-cols-1..4", "display: grid; grid-template-columns: repeat(n, minmax(0, 1fr))"),
         ("wo-grid-center", "display: grid; place-items: center"),
         ("wo-gap-0..48", "gap: 0 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 48px"),
         ("wo-text-left / center / right", "text-align: ..."),

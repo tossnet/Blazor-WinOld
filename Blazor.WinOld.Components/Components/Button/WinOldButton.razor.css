@@ -162,7 +162,8 @@
     font-family: var(--font-family);
     font-size: 12px;
     font-weight: bolder;
-        box-sizing: border-box;
+    color: #000;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
