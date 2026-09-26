@@ -15,7 +15,7 @@ public partial class WinOldMenu : WinOldComponentBase
 
     /// </summary>
     [Parameter]
-    public Appearance Appearance { get; set; }
+    public Appearance Appearance { get; set; } = Appearance.Win10;
 
     /// <summary>Contrôlé par le MenuItem parent pour afficher/masquer </summary>
     [Parameter] 

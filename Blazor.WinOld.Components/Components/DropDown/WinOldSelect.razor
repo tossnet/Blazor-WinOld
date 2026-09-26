@@ -9,12 +9,14 @@
     {
         <label for="@_selectId" class="label-txt-win">@Label</label>
     }
-    <select id="@_selectId"
-            class="select-win @GetComponentClass() @Class"
-            style="@Style"
-            disabled="@(ParentDisabled | Disabled)"
-            @onchange="OnChange"
-            @attributes="Attributes">
-        @ChildContent
-    </select>
+    <span class="select-wrap @GetWrapClass()">
+        <select id="@_selectId"
+                class="select-win @GetComponentClass() @Class"
+                style="@Style"
+                disabled="@(ParentDisabled | Disabled)"
+                @onchange="OnChange"
+                @attributes="Attributes">
+            @ChildContent
+        </select>
+    </span>
 </CascadingValue>

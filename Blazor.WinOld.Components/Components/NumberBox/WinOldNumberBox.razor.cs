@@ -9,7 +9,7 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
 
     [Parameter]
     [Category(CategoryTypes.Button.Appearance)]
-    public Appearance Appearance { get; set; }
+    public Appearance Appearance { get; set; } = Appearance.Win10;
 
     /// <summary>
     /// Color of the spin buttons when Appearance is DOS. Ignored for other appearances.
@@ -26,6 +26,19 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
 
     [Parameter]
     public EventCallback<TValue?> ValueChanged { get; set; }
+
+    /// <summary>
+    /// Raised when the value is committed: on change/blur/Enter after typing, and on each spin button click.
+    /// Unlike <see cref="ValueChanged"/>, it is not raised on every keystroke.
+    /// </summary>
+    [Parameter]
+    public EventCallback<TValue?> Change { get; set; }
+
+    /// <summary>
+    /// Id of the input element (also used by the label). A unique id is generated when not set.
+    /// </summary>
+    [Parameter]
+    public string? Id { get; set; }
 
     [Parameter]
     public string? InputStyle { get; set; }
@@ -47,7 +60,8 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
     [Parameter]
     public string? Format { get; set; }
 
-    private Guid ElementId { get; set; } = Guid.NewGuid();
+    private readonly string _defaultId = Guid.NewGuid().ToString();
+    private string ElementId => string.IsNullOrEmpty(Id) ? _defaultId : Id;
 
     // Text rendered in the input. Left untouched while typing so Blazor doesn't rewrite the field under the cursor;
     // reformatted when the field is committed (change/blur/Enter), on spin buttons and on external Value changes.
@@ -126,6 +140,9 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
 
         DisplayText = formatted;
         _syncedValue = Value;
+
+        if (Change.HasDelegate)
+            await Change.InvokeAsync(Value);
     }
 
     public async Task FocusAsync()
@@ -133,11 +150,11 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
         await InputElement.FocusAsync();
     }
 
-    private void Increment() => StepBy(GetStep());
+    private Task Increment() => StepBy(GetStep());
 
-    private void Decrement() => StepBy(-GetStep());
+    private Task Decrement() => StepBy(-GetStep());
 
-    private void StepBy(double delta)
+    private async Task StepBy(double delta)
     {
         if (ParentDisabled == true || Disabled) return;
 
@@ -151,8 +168,13 @@ public partial class WinOldNumberBox<TValue> : WinOldComponentBase
         next = Math.Round(next, CountDecimals(Step), MidpointRounding.AwayFromZero);
 
         var underlyingType = Nullable.GetUnderlyingType(typeof(TValue)) ?? typeof(TValue);
+        var previous = Value;
         CurrentValue = (TValue?)Convert.ChangeType(next, underlyingType, CultureInfo.InvariantCulture);
         SyncDisplay();
+
+        // Clicking at Min/Max leaves the value unchanged: don't raise Change for nothing.
+        if (Change.HasDelegate && !EqualityComparer<TValue?>.Default.Equals(previous, Value))
+            await Change.InvokeAsync(Value);
     }
 
     private double GetStep() => ParseDouble(Step) ?? 1d;

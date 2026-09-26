@@ -15,7 +15,7 @@ public partial class WinOldListBox : WinOldComponentBase
     /// </summary>
     [Parameter]
     [Category(CategoryTypes.Button.Appearance)]
-    public Appearance Appearance { get; set; }
+    public Appearance Appearance { get; set; } = Appearance.Win10;
 
     /// </summary>
     [Parameter]
@@ -41,16 +41,20 @@ public partial class WinOldListBox : WinOldComponentBase
     }
 
     /// </summary>
-    internal void SetSelectedItem(WinOldListBoxItem item)
+    internal async Task SetSelectedItemAsync(WinOldListBoxItem item)
     {
         if (SelectedItem != item)
         {
             SelectedItem = item;
             SelectedValue = item.Value;
-            SelectedValueChanged.InvokeAsync(item.Value);
             foreach (var listBoxItem in ListBoxItems)
             {
                 listBoxItem.NotifySelectionChanged();
+            }
+
+            if (SelectedValueChanged.HasDelegate)
+            {
+                await SelectedValueChanged.InvokeAsync(item.Value);
             }
         }
     }

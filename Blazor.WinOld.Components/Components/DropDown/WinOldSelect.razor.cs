@@ -17,7 +17,7 @@ public partial class WinOldSelect<T> : WinOldComponentBase
     /// </summary>
     [Parameter]
     [Category(CategoryTypes.Button.Appearance)]
-    public Appearance Appearance { get; set; }
+    public Appearance Appearance { get; set; } = Appearance.Win10;
 
     /// </summary>
     [Parameter]
@@ -63,6 +63,22 @@ public partial class WinOldSelect<T> : WinOldComponentBase
             _ => "select-win-10"
         };
         if (IsTouch) cls += " win-touch";
+        return cls;
+    }
+
+    /// <summary>
+    /// Win98 / WinXP draw the arrow button on the wrapper (not as a background of the select),
+    /// so the button can opt out of dark mode while the select text follows it.
+    /// </summary>
+    private string? GetWrapClass()
+    {
+        var cls = Appearance switch
+        {
+            Appearance.Win98 => "select-wrap-98",
+            Appearance.WinXP => "select-wrap-xp",
+            _ => null
+        };
+        if (cls is not null && IsTouch) cls += " win-touch";
         return cls;
     }
 }

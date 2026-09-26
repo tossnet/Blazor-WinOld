@@ -236,6 +236,13 @@ label.label-txt-win {
 /*--------*\
     DOS
 \*--------*/
+[class*="-dos"],
+[class*="dos-"],
+.chk-dos + label,
+.opt-dos + label {
+    color-scheme: only light !important;
+}
+
 .txt-win-dos {
     box-sizing: border-box;
     height: 24px;
@@ -293,6 +300,14 @@ label.label-txt-win {
 /*--------*\
     Win31
 \*--------*/
+.btn-win-31,
+.sld-31-root,
+.sld-win-31,
+.numbox-spin-31,
+.select-win-31 {
+    color-scheme: only light !important;
+}
+
 .txt-win-31, .txtarea-win-31 {
     box-sizing: border-box;
     height: 21px;
@@ -339,6 +354,16 @@ label.label-txt-win {
 /*--------*\
     Win XP
 \*--------*/
+.btn-win-xp,
+.chk-win-xp + label::before,
+.chk-win-xp + label::after,
+.opt-win-xp + label::before,
+.opt-win-xp + label::after,
+.numbox-spin-xp,
+.select-wrap-xp {
+    color-scheme: only light !important;
+}
+
 .txt-win-xp, .txtarea-win-xp {
     border: solid #7f9db9 1px;
     box-sizing: border-box;
@@ -358,6 +383,17 @@ label.label-txt-win {
 /*--------*\
     Win 98
 \*--------*/
+[class*="-98"],
+.chk-win-98 + label,
+.opt-win-98 + label {
+    color-scheme: only light !important;
+}
+
+.txt-win-98,
+.select-win-98 {
+    color-scheme: normal !important;
+}
+
 .txt-win-98, .txtarea-win-98 {
     border: 0px;
     border-radius: 0;
@@ -379,6 +415,23 @@ label.label-txt-win {
 /*--------*\
     Win 7
 \*--------*/
+.btn-win-7,
+.sld-win-7,
+.win-title-bar-7,
+.title-bar-win-7,
+.win-window-7::before,
+.dlg-win-7::before,
+.msg-win-7::before,
+.inp-win-7::before,
+.chk-win-7 + label::before,
+.chk-win-7 + label::after,
+.opt-win-7 + label::before,
+.opt-win-7 + label::after,
+.numbox-spin-7,
+.select-win-7 {
+    color-scheme: only light !important;
+}
+
 .txt-win-7, .txtarea-win-7 {
     border: 1px solid #ccc;
     border-radius: 2px;

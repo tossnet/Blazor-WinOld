@@ -18,7 +18,7 @@ public partial class WinOldTextArea : WinOldComponentBase, IAsyncDisposable
     /// </summary>
     [Parameter]
     [Category(CategoryTypes.Button.Appearance)]
-    public Appearance Appearance { get; set; }
+    public Appearance Appearance { get; set; } = Appearance.Win10;
 
     /// </summary>
     [Parameter]

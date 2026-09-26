@@ -231,6 +231,12 @@
         color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
     }
 
+    @media (prefers-color-scheme: dark) {
+        .btn-win-xp:disabled {
+            color: rgba(216, 208, 196, 1);
+        }
+    }
+
 .btn-win-xp-default {
     border: 1px solid #000000;
     box-shadow: inset -1px 1px #cee7ff, inset 1px 2px #98b8ea, inset -2px 2px #bcd4f6, inset 1px -1px #89ade4, inset 2px -2px #89ade4;

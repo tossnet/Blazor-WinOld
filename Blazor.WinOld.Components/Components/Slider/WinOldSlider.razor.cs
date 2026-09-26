@@ -7,7 +7,7 @@ public partial class WinOldSlider<TValue> : WinOldComponentBase
 {
     /// </summary>
     [Parameter]
-    public Appearance Appearance { get; set; }
+    public Appearance Appearance { get; set; } = Appearance.Win10;
 
     /// </summary>
     [Parameter]

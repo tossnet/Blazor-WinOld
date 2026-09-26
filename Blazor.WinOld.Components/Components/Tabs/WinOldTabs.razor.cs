@@ -11,7 +11,7 @@ public partial class WinOldTabs : WinOldComponentBase
     /// </summary>
     [Parameter]
     [Category(CategoryTypes.Button.Appearance)]
-    public Appearance Appearance { get; set; }
+    public Appearance Appearance { get; set; } = Appearance.Win10;
 
     /// </summary>
     internal HashSet<WinOldTabPanel> TabPanels { get; } = new();

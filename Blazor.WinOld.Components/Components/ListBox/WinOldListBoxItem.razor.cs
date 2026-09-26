@@ -27,10 +27,8 @@ public partial  class WinOldListBoxItem : WinOldComponentBase
     }
 
     /// </summary>
-    public void SelectItem(WinOldListBoxItem item)
-    {
-        Parent?.SetSelectedItem(item);
-    }
+    public Task SelectItem(WinOldListBoxItem item)
+        => Parent?.SetSelectedItemAsync(item) ?? Task.CompletedTask;
 
     /// </summary>
     public void NotifySelectionChanged()

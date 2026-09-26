@@ -139,13 +139,13 @@
         content: "";
         display: block;
         position: absolute;
+        box-sizing: border-box;
         left: -16px;
         top: 3px;
         width: 7px;
         height: 7px;
         border-radius: 50%;
-        background: #000000;
-
+        border: 3.5px solid #000000;
     }
 
     .opt-win-31:disabled + label,
@@ -155,7 +155,7 @@
     }
 
         .opt-win-31:disabled:checked + label:after {
-            background: #BFBFBF;
+            border-color: #BFBFBF;
         }
 
 /*--------*\

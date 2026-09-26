@@ -73,17 +73,25 @@ See the **CSS Utilities** page of the demo for the full list.
 
 
 ## <a name="ReleaseNotes"></a>Release Notes 
+<details open="open"><summary>Version 2.15.0</summary>
 
-<details open="open"><summary>Version 2.14.0</summary>
+>- Appareance Win10 is now by default if you forget to set the `Appearance` parameter on any component
+>- improves support for darkmode
+>- WinOldNumberBox: added Change event and Id parameter
+</details>
+
+<details><summary>Version 2.14.0</summary>
 
 >- **Windows 3.1** appearance added : `WinOldWindow`, `WinOldDialogHost`, `WinOldMessageBoxHost`, `WinOldInputBoxHost`
 </details>
 
 <details><summary>Version 2.13.0</summary>
+
 >- DOS appearance added : InputBox, SelectBox, NumberBox
 </details>
 
 <details><summary>Version 2.12.0</summary>
+
 >- Added a Format parameter to WinOldNumberBox (ex: Format="F2")
 </details>
 
