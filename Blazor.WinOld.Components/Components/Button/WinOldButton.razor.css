@@ -29,6 +29,11 @@
     -webkit-font-smoothing: none;
 }
 
+/* DOS font keeps its own size in touch mode */
+.btn-dos.win-touch {
+    font-size: 14px;
+}
+
     .btn-win.focused, .btn-win:focus {
         outline: 1px dotted #000;
         outline-offset: -4px;

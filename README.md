@@ -5,7 +5,7 @@
 
 A Blazor UI component library that brings back the nostalgic look and feel of classic Windows operating systems (DOS, Windows 3.1, 98, XP, 7 and 10). Create retro-styled web applications with authentic Windows UI components.
 
-> 🪶 **Lightweight** the NuGet package is only ~290 KB.
+> 🪶 **Lightweight** the NuGet package is only ~300 KB.
 
 **Compatible with Blazor Server and Blazor WebAssembly**
 
@@ -73,7 +73,12 @@ See the **CSS Utilities** page of the demo for the full list.
 
 
 ## <a name="ReleaseNotes"></a>Release Notes 
-<details open="open"><summary>Version 2.15.0</summary>
+<details open="open"><summary>Version 2.16.0</summary>
+
+>- several improvements
+</details>
+
+<details><summary>Version 2.15.0</summary>
 
 >- Appareance Win10 is now by default if you forget to set the `Appearance` parameter on any component
 >- improves support for darkmode

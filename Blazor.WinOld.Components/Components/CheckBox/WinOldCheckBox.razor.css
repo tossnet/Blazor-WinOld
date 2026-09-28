@@ -124,15 +124,12 @@
     border-width: 2px;
     }
 
-    .chk-win-31:checked + label:after {
-        content: "";
-        display: block;
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        width: 16px;
-        height: 16px;
-        background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='11'><path d='M1 1L8 8M8 1L1 8' stroke='%23000000' stroke-width='.5'/></svg>") no-repeat center / contain;
+    .chk-win-31:checked + label:before {
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='11'><path d='M1 1L8 8M8 1L1 8' stroke='%23000000' stroke-width='.5'/></svg>");
+        background-repeat: no-repeat;
+        background-origin: border-box;
+        background-position: 0 0;
+        background-size: 16px 16px;
     }
 
     .chk-win-31:disabled + label,
@@ -141,8 +138,8 @@
          color :#BFBFBF;
     }
 
-        .chk-win-31:disabled:checked + label:after {
-            background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='11'><path d='M1 1L8 8M8 1L1 8' stroke='%23808080' stroke-width='.5'/></svg>") no-repeat center / contain;
+        .chk-win-31:disabled:checked + label:before {
+            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='11'><path d='M1 1L8 8M8 1L1 8' stroke='%23808080' stroke-width='.5'/></svg>");
         }
 
 
@@ -474,11 +471,9 @@
     min-width: 19px;
 }
 
-.chk-win-31.win-touch:checked + label:after {
-    left: -1px;
-    top: -1px;
-    width: 26px;
-    height: 26px;
+.chk-win-31.win-touch:checked + label:before {
+    background-position: -1px -1px;
+    background-size: 26px 26px;
 }
 
 /* Win XP */

@@ -145,7 +145,8 @@
         width: 7px;
         height: 7px;
         border-radius: 50%;
-        border: 3.5px solid #000000;
+        /*border: 3.7px solid #000000;*/
+        background: black;
     }
 
     .opt-win-31:disabled + label,
@@ -452,16 +453,18 @@
 
 /* Win 3.1 */
 .opt-win-31.win-touch + label:before {
-    width: 19px;
-    height: 19px;
-    min-width: 19px;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    left: -24px;
 }
 
 .opt-win-31.win-touch:checked + label:after {
-    left: -13px;
-    top: 6px;
+    left: -20px;
+    top: 4px;
     width: 7px;
     height: 7px;
+    border: 5.7px solid #000000;
 }
 
 /* Win XP */
