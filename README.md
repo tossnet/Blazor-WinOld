@@ -73,7 +73,12 @@ See the **CSS Utilities** page of the demo for the full list.
 
 
 ## <a name="ReleaseNotes"></a>Release Notes 
-<details open="open"><summary>Version 2.16.0</summary>
+<details open="open"><summary>Version 2.17.0</summary>
+
+>- New component : `WinOldProgressBar`
+</details>
+
+<details><summary>Version 2.16.0</summary>
 
 >- several improvements
 </details>

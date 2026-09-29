@@ -1,0 +1,10 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+<progress id=""
+          max="@MaxAttribute"
+          value="@ValueAttribute"
+          class="prgbar-win @GetComponentClass() @Class"
+          style="@Style"
+          @attributes="Attributes">@ChildContent</progress>

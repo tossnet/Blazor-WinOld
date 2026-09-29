@@ -1,0 +1,230 @@
+@page "/progressbar-page"
+
+<PageTitle>ProgressBar</PageTitle>
+
+<h1>ProgressBar</h1>
+
+<h2>Examples by Style</h2>
+
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+  <div class="style-col">
+    <h7>DOS</h7>
+    <WinOldProgressBar Appearance="Appearance.DOS"
+                       Max="100"
+                       Value="70" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 3.1</h7>
+    <WinOldProgressBar Appearance="Appearance.Win31"
+                       Max="100"
+                       Value="70" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 98</h7>
+    <WinOldProgressBar Appearance="Appearance.Win98"
+                       Max="100"
+                       Value="70" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows XP</h7>
+    <WinOldProgressBar Appearance="Appearance.WinXP"
+                       Max="100"
+                       Value="70" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 7</h7>
+    <WinOldProgressBar Appearance="Appearance.Win7"
+                       Max="100"
+                       Value="70" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 10</h7>
+    <WinOldProgressBar Appearance="Appearance.Win10"
+                       Max="100"
+                       Value="70" />
+  </div>
+
+</div>
+
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+  <div class="style-col">
+    <h7>DOS</h7>
+    <WinOldProgressBar Appearance="Appearance.DOS"
+                       Max="100"
+                       BarStyle="ProgressBarStyle.Blocks"
+                       Value="70" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 3.1</h7>
+    <WinOldProgressBar Appearance="Appearance.Win31"
+                       Max="100"
+                       BarStyle="ProgressBarStyle.Blocks"
+                       Value="70" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 98</h7>
+    <WinOldProgressBar Appearance="Appearance.Win98"
+                       Max="100"
+                       BarStyle="ProgressBarStyle.Blocks"
+                       Value="70" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows XP</h7>
+    <WinOldProgressBar Appearance="Appearance.WinXP"
+                       Max="100"
+                       BarStyle="ProgressBarStyle.Blocks"
+                       Value="70" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 7</h7>
+    <WinOldProgressBar Appearance="Appearance.Win7"
+                       Max="100"
+                       BarStyle="ProgressBarStyle.Blocks"
+                       Value="70" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 10</h7>
+    <WinOldProgressBar Appearance="Appearance.Win10"
+                       Max="100"
+                       BarStyle="ProgressBarStyle.Blocks"
+                       Value="70" />
+  </div>
+
+</div>
+
+<h2>Indeterminate</h2>
+
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+  <div class="style-col">
+    <h7>DOS</h7>
+    <WinOldProgressBar Appearance="Appearance.DOS"
+                       Indeterminate="true" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 3.1</h7>
+    <WinOldProgressBar Appearance="Appearance.Win31"
+                       Indeterminate="true" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 98</h7>
+    <WinOldProgressBar Appearance="Appearance.Win98"
+                       Indeterminate="true" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 98 (blocks)</h7>
+    <WinOldProgressBar Appearance="Appearance.Win98"
+                       BarStyle="ProgressBarStyle.Blocks"
+                       Indeterminate="true" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows XP</h7>
+    <WinOldProgressBar Appearance="Appearance.WinXP"
+                       Indeterminate="true" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 7</h7>
+    <WinOldProgressBar Appearance="Appearance.Win7"
+                       Indeterminate="true" />
+  </div>
+
+  <div class="style-col">
+    <h7>Windows 10</h7>
+    <WinOldProgressBar Appearance="Appearance.Win10"
+                       Indeterminate="true" />
+  </div>
+</div>
+
+<h2>Code Example</h2>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+                <WinOldProgressBar Appearance=""Appearance.Win98""
+                                   BarStyle=""ProgressBarStyle.Blocks""
+                                   Max=""100""
+                                   Value=""@progress"" />
+
+                <WinOldProgressBar Appearance=""Appearance.Win10""
+                                   Indeterminate=""true"" />
+
+                @code {
+                    private double progress = 70;
+                }") />
+
+<h2>Properties</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+  <thead>
+    <tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Default</th>
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Win10</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Visual style (DOS, Win31, Win98, WinXP, Win7, Win10)</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>BarStyle</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">ProgressBarStyle</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Continuous</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Continuous</code> draws a solid bar, <code>Blocks</code> draws separated segments</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Value</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">double</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>0</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Current progress, between 0 and <code>Max</code></td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Max</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">double</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>100</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Maximum value</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Indeterminate</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">bool</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>false</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">When true, the progress is unknown: <code>Value</code> is ignored and an animation is shown</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>ChildContent</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">RenderFragment?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Fallback content rendered inside the <code>&lt;progress&gt;</code> element</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Class</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Additional CSS class names</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Style</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Inline CSS styles (e.g. <code>width</code>, <code>height</code>)</td>
+    </tr>
+  </tbody>
+</table>
