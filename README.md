@@ -73,7 +73,13 @@ See the **CSS Utilities** page of the demo for the full list.
 
 
 ## <a name="ReleaseNotes"></a>Release Notes 
-<details open="open"><summary>Version 2.17.0</summary>
+<details open="open"><summary>Version 2.18.0</summary>
+
+>- New component : `WinOldIcon` (system icons Information, Question, Alert, Critical, usable anywhere)
+>- New component : `WinOldInfoBar` (inline closable message bar with icon, title, message and actions)
+</details>
+
+<details><summary>Version 2.17.0</summary>
 
 >- New component : `WinOldProgressBar`
 </details>

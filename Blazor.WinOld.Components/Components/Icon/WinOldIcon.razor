@@ -1,0 +1,14 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@if (GetIconClass() is { Length: > 0 } iconClass)
+{
+    <span class="icon-win @iconClass @Class"
+          style="width: @(Size)px; height: @(Size)px; @Style"
+          role="@(Title is null ? null : "img")"
+          aria-label="@Title"
+          aria-hidden="@(Title is null ? "true" : null)"
+          title="@Title"
+          @attributes="Attributes"></span>
+}

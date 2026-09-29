@@ -18,9 +18,9 @@
                             TitleId="@_titleId"
                             OnClose="HandleCancel" />
             <div class="message-body @GetMessageBodyClass()">
-				@if (Options.Icon != Icon.None && Options.Appearance != Appearance.DOS && Options.Appearance != Appearance.Win31)
+				@if (Options.Icon != Icon.None && Options.Appearance != Appearance.DOS)
 				{
-                    <div class="@GetIConClass()"></div>
+                    <WinOldIcon Icon="Options.Icon" Appearance="Options.Appearance" />
 				}
                 <div class="@GetMessageContentClass()">@Options.Message</div>
             </div>

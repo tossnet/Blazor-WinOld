@@ -88,6 +88,11 @@
                  Label="Frame"
                  Disabled="_disabledComponents">
 
+        <WinOldInfoBar Appearance="appearance"
+                       Icon="Icon.Information"
+                       Title="Welcome"
+                       Message="These components are rendered live in the selected style." />
+
         <div class="wo-col sm:wo-grid-cols-3 wo-gap-16 sm:wo-gap-32">
             <div>
                 <WinOldTextBox Appearance="appearance"
@@ -134,6 +139,13 @@
 
                 <WinOldProgressBar Appearance="appearance"
                                    Indeterminate="true" />
+
+                <div class="wo-row wo-gap-8">
+                    <WinOldIcon Icon="Icon.Information" Appearance="appearance" Size="16" />
+                    <WinOldIcon Icon="Icon.Question" Appearance="appearance" Size="16" />
+                    <WinOldIcon Icon="Icon.Alert" Appearance="appearance" Size="16" />
+                    <WinOldIcon Icon="Icon.Critical" Appearance="appearance" Size="16" />
+                </div>
             </div>
         </div>
     </WinOldFrame>

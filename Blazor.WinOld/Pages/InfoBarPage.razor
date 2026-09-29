@@ -1,0 +1,197 @@
+@page "/infobar-page"
+
+<PageTitle>InfoBar</PageTitle>
+
+<h1>InfoBar</h1>
+
+<p>
+    A bar that shows a message inline in the page: it takes space in the layout, can be closed,
+    and can carry an icon, a title, a message and action buttons.
+    Inspired by the IE6 <i>Information Bar</i> (XP), the IE9 <i>Notification Bar</i> (Win7) and the WinUI <i>InfoBar</i> (Win10).
+</p>
+
+<h2>Examples by Style</h2>
+
+@foreach (var (appearance, label) in _appearances)
+{
+    <h7>@label</h7>
+    <div style="display:flex; flex-direction: column; margin-bottom: 16px;">
+        @foreach (var icon in _icons)
+        {
+            <WinOldInfoBar Appearance="appearance"
+                           Icon="icon"
+                           Title="@icon.ToString()"
+                           Message="@GetMessage(icon)" />
+        }
+    </div>
+}
+
+<h2>With actions</h2>
+
+@foreach (var (appearance, label) in _appearances)
+{
+    <WinOldInfoBar Appearance="appearance"
+                   Icon="Icon.Alert"
+                   Message="To help protect your security, this page has blocked some content. Click here for options...">
+        <Actions>
+            <WinOldButton Appearance="appearance">Allow</WinOldButton>
+            <WinOldButton Appearance="appearance">Options</WinOldButton>
+        </Actions>
+    </WinOldInfoBar>
+}
+
+<h2>With content</h2>
+
+<div style="max-width: 500px;">
+    @foreach (var (appearance, label) in _appearances)
+    {
+        <WinOldInfoBar Appearance="appearance"
+                       Icon="Icon.Information"
+                       Title="Downloading"
+                       Message="setup.exe from www.example.com"
+                       Closable="false">
+            <WinOldProgressBar Appearance="appearance" Indeterminate="true" />
+        </WinOldInfoBar>
+    }
+</div>
+
+<h2>Close and show again</h2>
+
+<WinOldInfoBar Appearance="Appearance.WinXP"
+               Icon="Icon.Question"
+               Title="Blocked content"
+               Message="Close this bar, then bring it back with the button below."
+               @bind-Visible="_showBar"
+               OnClose="@(() => _closeCount++)" />
+
+<WinOldButton Appearance="Appearance.WinXP"
+              Disabled="_showBar"
+              OnClick="@(() => _showBar = true)">Show again</WinOldButton>
+<span style="margin-left: 8px;">Closed @_closeCount time(s)</span>
+
+<h2>Code Example</h2>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+                <WinOldInfoBar Appearance=""Appearance.WinXP""
+                               Icon=""Icon.Alert""
+                               Title=""Blocked content""
+                               Message=""To help protect your security, this page has blocked some content.""
+                               @bind-Visible=""_showBar"">
+                    <Actions>
+                        <WinOldButton Appearance=""Appearance.WinXP"" OnClick=""Allow"">Allow</WinOldButton>
+                    </Actions>
+                </WinOldInfoBar>") />
+
+<h2>Properties</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+  <thead>
+    <tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Default</th>
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Win10</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Visual style (DOS, Win31, Win98, WinXP, Win7, Win10)</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Icon</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Icon</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Information</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Icon and severity: Win10 background, DOS color, ARIA role (<code>alert</code> for Alert/Critical, <code>status</code> otherwise). <code>None</code> = no icon, neutral style</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Title</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Bold text before the message</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Message</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Main text</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>ChildContent</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">RenderFragment?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Free content under the message (e.g. a <code>WinOldProgressBar</code>)</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Actions</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">RenderFragment?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Action buttons displayed after the text</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Closable</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">bool</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>true</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Shows the close button</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Visible</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">bool</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>true</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Supports <code>@@bind-Visible</code>. The close button sets it to <code>false</code></td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>OnClose</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">EventCallback</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Raised when the close button is clicked</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>DosColor</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">DosColor?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">DOS only: overrides the color derived from <code>Icon</code></td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Class</code> / <code>Style</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Additional CSS class names / inline styles</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>TouchMode</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">bool</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>false</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Larger padding and close button</td>
+    </tr>
+  </tbody>
+</table>
+
+@code {
+    private bool _showBar = true;
+    private int _closeCount;
+
+    private readonly (Appearance, string)[] _appearances =
+    [
+        (Appearance.DOS, "DOS"),
+        (Appearance.Win31, "Windows 3.1"),
+        (Appearance.Win98, "Windows 98"),
+        (Appearance.WinXP, "Windows XP"),
+        (Appearance.Win7, "Windows 7"),
+        (Appearance.Win10, "Windows 10"),
+    ];
+
+    private readonly Icon[] _icons = [Icon.Information, Icon.Question, Icon.Alert, Icon.Critical];
+
+    private static string GetMessage(Icon icon) => icon switch
+    {
+        Icon.Question => "Do you want to save the changes you made to this document?",
+        Icon.Alert => "Your disk is almost full. Free up some space to keep working.",
+        Icon.Critical => "The connection to the server was lost.",
+        _ => "A new version of the application is available."
+    };
+}

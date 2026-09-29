@@ -130,28 +130,6 @@ public partial class WinOldMessageBoxHost : WinOldComponentBase
         };
     }
 
-    /// </summary>
-    private string GetIConClass()
-    {
-        string appareance  = Options.Appearance switch
-        {
-            Appearance.Win7 => "7",
-            Appearance.WinXP => "xp",
-            Appearance.Win98 => "98",
-            Appearance.Win10 => "10",
-            _ => "10"
-        };
-
-        return Options.Icon switch
-        {
-            Icon.Alert => $"icon-alert-win-{appareance}",
-            Icon.Critical => $"icon-critical-win-{appareance}",
-            Icon.Information => $"icon-info-win-{appareance}",
-            Icon.Question => $"icon-question-win-{appareance}",
-            _ => string.Empty
-        };
-    }
-
     /// <summary>DOS only: box background, explicit or derived from the icon (there is no icon bitmap in DOS).</summary>
     private DosColor GetDosBoxColor()
     {

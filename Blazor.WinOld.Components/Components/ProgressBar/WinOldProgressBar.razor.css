@@ -12,7 +12,7 @@ DOS
     display: block;
     box-sizing: border-box;
     width: 100%;
-    height: 20px;
+    height: 26px;
     padding: 3px 4px;
     border: 3px double var(--dos-box-line, #ffffff);
     border-radius: 0;
@@ -200,7 +200,7 @@ DOS
         background-size: 40% 100%, auto, auto, auto;
         background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
         background-position: -67% 0, 0 0, 0 0, 0 0;
-        animation: prgbar-win-7-marquee 3s linear infinite;
+        animation: prgbar-win-7-marquee 1.5s linear infinite;
     }
 
         .prgbar-win-7:indeterminate::-webkit-progress-bar {

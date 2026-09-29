@@ -1,0 +1,128 @@
+@page "/icon-page"
+
+<PageTitle>Icon</PageTitle>
+
+<h1>Icon</h1>
+
+<p>
+    The system icons used by the MessageBox, available as a standalone component.
+    DOS renders nothing (there is no icon bitmap in text mode).
+</p>
+
+<h2>Examples by Style</h2>
+
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+    @foreach (var (appearance, label) in _appearances)
+    {
+        <div class="style-col">
+            <h7>@label</h7>
+            <div style="display:flex; gap: 8px; min-height: 32px;">
+                @foreach (var icon in _icons)
+                {
+                    <WinOldIcon Icon="icon" Appearance="appearance" Title="@icon.ToString()" />
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<h2>Sizes</h2>
+
+<div style="display:flex; flex-direction: row; gap: 20px; align-items: flex-end; flex-wrap: wrap;">
+    @foreach (var size in new[] { 16, 24, 32, 48 })
+    {
+        <div class="style-col">
+            <h7>@(size)px</h7>
+            <div style="display:flex; gap: 8px; align-items: flex-end;">
+                <WinOldIcon Icon="Icon.Information" Appearance="Appearance.WinXP" Size="size" />
+                <WinOldIcon Icon="Icon.Alert" Appearance="Appearance.Win7" Size="size" />
+                <WinOldIcon Icon="Icon.Critical" Appearance="Appearance.Win10" Size="size" />
+            </div>
+        </div>
+    }
+</div>
+
+<h2>Inline with text</h2>
+
+<p>
+    <WinOldIcon Icon="Icon.Alert" Appearance="Appearance.Win98" Size="16" />
+    The file will be overwritten.
+</p>
+
+<h2>Code Example</h2>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+                <WinOldIcon Icon=""Icon.Information""
+                            Appearance=""Appearance.WinXP"" />
+
+                <WinOldIcon Icon=""Icon.Alert""
+                            Appearance=""Appearance.Win7""
+                            Size=""16""
+                            Title=""Warning"" />") />
+
+<h2>Properties</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+  <thead>
+    <tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Default</th>
+      <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Icon</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Icon</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>None</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Information, Question, Alert or Critical. <code>None</code> renders nothing</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Win10</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Visual style (DOS, Win31, Win98, WinXP, Win7, Win10). DOS renders nothing</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Size</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">int</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>32</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Width and height, in pixels</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Title</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Tooltip and accessible name. When null, the icon is decorative (<code>aria-hidden</code>)</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Class</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Additional CSS class names</td>
+    </tr>
+    <tr style="border: 1px solid #ccc;">
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>Style</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+      <td style="padding: 8px; border: 1px solid #ccc;"><code>null</code></td>
+      <td style="padding: 8px; border: 1px solid #ccc;">Inline CSS styles (e.g. <code>margin</code>)</td>
+    </tr>
+  </tbody>
+</table>
+
+@code {
+    private readonly (Appearance, string)[] _appearances =
+    [
+        (Appearance.DOS, "DOS"),
+        (Appearance.Win31, "Windows 3.1"),
+        (Appearance.Win98, "Windows 98"),
+        (Appearance.WinXP, "Windows XP"),
+        (Appearance.Win7, "Windows 7"),
+        (Appearance.Win10, "Windows 10"),
+    ];
+
+    private readonly Icon[] _icons = [Icon.Information, Icon.Question, Icon.Alert, Icon.Critical];
+}

@@ -1,0 +1,53 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@if (Visible)
+{
+    <div class="infobar-win @GetComponentClass() @Class"
+         role="@GetRole()"
+         style="@Style"
+         @attributes="Attributes">
+        <WinOldIcon Icon="Icon" Appearance="Appearance" Size="GetIconSize()" Class="infobar-icon" />
+        <div class="infobar-text">
+            @if (!string.IsNullOrEmpty(Title))
+            {
+                <span class="infobar-title">@Title</span>
+            }
+            @if (!string.IsNullOrEmpty(Message))
+            {
+                <span class="infobar-message">@Message</span>
+            }
+            @if (ChildContent is not null)
+            {
+                <div class="infobar-content">@ChildContent</div>
+            }
+        </div>
+        @if (Actions is not null)
+        {
+            <div class="infobar-actions">@Actions</div>
+        }
+        @if (Closable)
+        {
+            @switch (Appearance)
+            {
+                case Appearance.DOS:
+                    <button class="infobar-close infobar-close-dos" aria-label="Close" @onclick="CloseAsync">[×]</button>
+                    break;
+                case Appearance.Win31:
+                    <div class="title-bar-controls-win-31 infobar-close-31">
+                        <button aria-label="Close" @onclick="CloseAsync"></button>
+                    </div>
+                    break;
+                case Appearance.Win98:
+                    <div class="title-bar-controls-win-98 infobar-close-98">
+                        <button aria-label="Close" @onclick="CloseAsync"></button>
+                    </div>
+                    break;
+                default:
+                    <button class="infobar-close" aria-label="Close" @onclick="CloseAsync">✕</button>
+                    break;
+            }
+        }
+    </div>
+}

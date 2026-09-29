@@ -1,0 +1,266 @@
+.infobar-win {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 4px 0;
+}
+
+.infobar-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.infobar-title {
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+.infobar-content {
+    margin-top: 6px;
+}
+
+.infobar-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.infobar-close {
+    flex-shrink: 0;
+    align-self: center;
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+    .infobar-close:focus-visible {
+        outline: 1px dotted currentColor;
+        outline-offset: 1px;
+    }
+
+/*--------*\
+    DOS
+\*--------*/
+.infobar-win-dos {
+    --dos-box-bg: var(--dos-background);
+    --dos-box-fg: #1a1a1a;
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    padding: 4px 8px;
+    background: var(--dos-box-bg);
+    color: var(--dos-box-fg);
+}
+
+.infobar-dos-blue, .infobar-dos-green, .infobar-dos-cyan, .infobar-dos-red, .infobar-dos-magenta, .infobar-dos-brown {
+    --dos-box-fg: #ffffff;
+}
+
+.infobar-dos-blue    { --dos-box-bg: #0000aa; }
+.infobar-dos-green   { --dos-box-bg: #00aa00; }
+.infobar-dos-cyan    { --dos-box-bg: #00aaaa; }
+.infobar-dos-red     { --dos-box-bg: #aa0000; }
+.infobar-dos-magenta { --dos-box-bg: #aa00aa; }
+.infobar-dos-brown   { --dos-box-bg: #a85400; }
+
+.infobar-dos-white, .infobar-dos-yellow {
+    --dos-box-fg: #000000;
+}
+
+.infobar-dos-white  { --dos-box-bg: #ffffff; }
+.infobar-dos-yellow { --dos-box-bg: #ffff55; }
+
+.infobar-win-dos .infobar-title {
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.infobar-close-dos {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+    .infobar-close-dos:hover {
+        background: var(--dos-box-fg);
+        color: var(--dos-box-bg);
+    }
+
+/*--------*\
+    Win31
+\*--------*/
+.infobar-win-31 {
+    color-scheme: only light;
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 4px 6px;
+}
+
+.infobar-close-31 button {
+    align-self: center;
+    flex-shrink: 0;
+    width: 19px;
+    height: 19px;
+    border: 1px solid #000;
+}
+
+/*--------*\
+    Win 98
+\*--------*/
+.infobar-win-98 {
+    font-family: var(--font-family);
+    font-size: 11px;
+    color: #000;
+    background: #ffffe1;
+    padding: 5px 6px;
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+}
+
+.infobar-close-98 {
+    flex-shrink: 0;
+    align-self: center;
+}
+
+    .infobar-close-98 button {
+        width: 16px;
+        height: 14px;
+    }
+
+/*--------*\
+    Win XP
+\*--------*/
+.infobar-win-xp {
+    color-scheme: only light;
+    font-family: var(--font-family);
+    font-size: 11px;
+    color: #000;
+    background: #ffffe1;
+    border-bottom: 1px solid #aca899;
+    padding: 4px 6px;
+}
+
+    .infobar-win-xp:hover {
+        background: #316ac5;
+        color: #fff;
+    }
+
+.infobar-win-xp .infobar-close {
+    font-size: 11px;
+    width: 16px;
+    height: 16px;
+}
+
+/*--------*\
+    Win 7
+\*--------*/
+.infobar-win-7 {
+    color-scheme: only light;
+    font-family: var(--font);
+    font-size: 9pt;
+    color: #000;
+    background: linear-gradient(180deg, #fffbe8 0%, #fdefb2 100%);
+    border: 1px solid #e5c365;
+    border-radius: 3px;
+    padding: 6px 8px;
+}
+
+.infobar-win-7 .infobar-close {
+    font-size: 11px;
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    color: #555;
+}
+
+    .infobar-win-7 .infobar-close:hover {
+        background: rgba(229, 195, 101, 0.6);
+        color: #000;
+    }
+
+/*--------*\
+    Win 10 (WinUI InfoBar)
+\*--------*/
+.infobar-win-10 {
+    --infobar-bg: #f6f6f6;
+    --infobar-fg: #1a1a1a;
+    --infobar-border: #0000000f;
+    --infobar-close-hover: #0000000a;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--infobar-fg);
+    background: var(--infobar-bg);
+    border: 1px solid var(--infobar-border);
+    border-radius: 4px;
+    padding: 12px 8px 12px 16px;
+    gap: 12px;
+}
+
+    .infobar-win-10.infobar-alert {
+        --infobar-bg: #fff4ce;
+    }
+
+    .infobar-win-10.infobar-critical {
+        --infobar-bg: #fde7e9;
+    }
+
+    .infobar-win-10 .infobar-title {
+        font-weight: 600;
+    }
+
+    .infobar-win-10 .infobar-close {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+        border-radius: 4px;
+    }
+
+        .infobar-win-10 .infobar-close:hover {
+            background: var(--infobar-close-hover);
+        }
+
+@media (prefers-color-scheme: dark) {
+    .infobar-win-10 {
+        --infobar-bg: #2b2b2b;
+        --infobar-fg: #ffffff;
+        --infobar-border: #1919194d;
+        --infobar-close-hover: #ffffff0f;
+    }
+
+        .infobar-win-10.infobar-alert {
+            --infobar-bg: #433519;
+        }
+
+        .infobar-win-10.infobar-critical {
+            --infobar-bg: #442726;
+        }
+}
+
+/*--------*\
+    Touch
+\*--------*/
+.infobar-win.win-touch {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+    .infobar-win.win-touch .infobar-close {
+        min-width: 40px;
+        min-height: 40px;
+    }
+
+    .infobar-win.win-touch .infobar-close-98 button,
+    .infobar-win.win-touch .infobar-close-31 button {
+        width: 28px;
+        height: 24px;
+        background-position: center;
+    }
