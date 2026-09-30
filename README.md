@@ -418,7 +418,6 @@ I used these repo for most of the css and icons:
 
 OS emulator :
 - https://oses.ioblako.com/new.html
-- https://geekprank.com/xp-simulator.php
 - https://www.windows93.net
 - https://brave-plant-0409a8603.2.azurestaticapps.net/ 
 - https://github.com/Futur3Sn0w/web31
