@@ -1,0 +1,50 @@
+@namespace Blazor.WinOld.Components
+@using Microsoft.AspNetCore.Components.Sections
+
+@inherits WinOldComponentBase
+
+<CascadingValue Name="WindowAppearance" Value="@((Appearance?)Appearance)">
+    <CascadingValue Name="Disabled" Value="@Disabled">
+        <div class="appshell @GetAppearanceClass() @(SidePane is null ? "appshell-no-side" : null) @Class"
+             style="height: @Height; @Style"
+             @attributes="Attributes">
+
+            @if (Menu is not null)
+            {
+                <div class="appshell-menu">@Menu</div>
+            }
+
+            @if (Toolbar is not null || ShowToolbar)
+            {
+                <div class="appshell-toolbar">
+                    @Toolbar
+                    <SectionOutlet SectionName="@ToolbarSection" />
+                </div>
+            }
+
+            @if (SidePane is not null)
+            {
+                <div class="appshell-side @Appearance.ToScrollbarClass()">@SidePane</div>
+            }
+
+            <main class="appshell-content @Appearance.ToScrollbarClass()">
+                @ChildContent
+            </main>
+
+            @if (StatusBar is not null || ShowStatusBar)
+            {
+                <div class="appshell-status">
+                    @StatusBar
+                    <SectionOutlet SectionName="@StatusBarSection" />
+                </div>
+            }
+        </div>
+
+        @if (IncludeHosts)
+        {
+            <WinOldMessageBoxHost />
+            <WinOldInputBoxHost />
+            <WinOldDialogHost />
+        }
+    </CascadingValue>
+</CascadingValue>

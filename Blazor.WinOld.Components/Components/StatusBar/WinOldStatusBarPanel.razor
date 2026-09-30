@@ -1,0 +1,24 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+<div class="@GetPanelClass()" style="@GetPanelStyle()" @attributes="Attributes">
+    @if (IconTemplate is not null)
+    {
+        <span class="statusbar-panel-icon" aria-hidden="true">@IconTemplate</span>
+    }
+    else if (!string.IsNullOrEmpty(IconCssClass))
+    {
+        <span class="statusbar-panel-icon" aria-hidden="true"><i class="@IconCssClass"></i></span>
+    }
+    <span class="statusbar-panel-text">
+        @if (ChildContent is not null)
+        {
+            @ChildContent
+        }
+        else
+        {
+            @Text
+        }
+    </span>
+</div>

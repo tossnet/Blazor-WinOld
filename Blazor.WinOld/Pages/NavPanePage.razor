@@ -1,0 +1,343 @@
+@page "/navpane-page"
+
+<PageTitle>NavPane</PageTitle>
+
+<h1>NavPane</h1>
+
+<p>
+    The <code>WinOldNavPane</code> component draws a side navigation pane, made of <code>WinOldNavPaneGroup</code>,
+    <code>WinOldNavPaneItem</code> and <code>WinOldNavPaneSeparator</code> children. The pane fills the height of
+    its container; its body scrolls between an optional header and footer.
+</p>
+
+<ul>
+    <li><strong>Win98</strong> reproduces the Office 97 Outlook bar: an accordion where only one group is open, scrolled with small arrow buttons instead of a scrollbar.</li>
+    <li><strong>WinXP</strong> reproduces the task pane: groups collapse independently with their round chevron.</li>
+    <li><strong>Win7</strong> reproduces the Explorer navigation pane.</li>
+    <li><strong>Win10</strong> is based on Groove Music with a touch of Windows 11, and collapses to an icon rail with its hamburger button.</li>
+    <li><strong>DOS</strong> and <strong>Win31</strong> had no such control: their look is inspired by Turbo Vision and the Program Manager.</li>
+    <li>An item with <strong>Href</strong> is active whenever the current URL matches it; otherwise it is active when its <strong>Value</strong> equals the pane's <strong>SelectedValue</strong>.</li>
+</ul>
+
+<h2>Examples by Style</h2>
+
+<div style="display:flex; flex-wrap:wrap; gap: 24px; align-items:flex-start;">
+
+    <div>
+        <h7>DOS</h7>
+        <div style="height: 340px; padding-top: 8px;">
+            <WinOldNavPane Appearance="Appearance.DOS" Title="Project" @bind-SelectedValue="_dosSelected">
+                <WinOldNavPaneGroup Title="File">
+                    <WinOldNavPaneItem Text="New" />
+                    <WinOldNavPaneItem Text="Open..." Badge="F3" />
+                    <WinOldNavPaneItem Text="Save" Badge="F2" />
+                </WinOldNavPaneGroup>
+                <WinOldNavPaneGroup Title="Run">
+                    <WinOldNavPaneItem Text="Run" Badge="Ctrl+F9" />
+                    <WinOldNavPaneItem Text="Compile" Badge="Alt+F9" />
+                    <WinOldNavPaneItem Text="Make" Badge="F9" Disabled="true" />
+                </WinOldNavPaneGroup>
+                <WinOldNavPaneSeparator Text="Options" />
+                <WinOldNavPaneItem Text="Environment" />
+                <WinOldNavPaneItem Text="Directories" />
+            </WinOldNavPane>
+        </div>
+        <small>Selected: @_dosSelected</small>
+    </div>
+
+    <div>
+        <h7>Win31</h7>
+        <div style="height: 340px;">
+            <WinOldNavPane Appearance="Appearance.Win31" Title="Program Manager" @bind-SelectedValue="_win31Selected">
+                <WinOldNavPaneGroup Title="Main" IconCssClass="bi bi-window">
+                    <WinOldNavPaneItem Text="File Manager" IconCssClass="bi bi-folder2" />
+                    <WinOldNavPaneItem Text="Control Panel" IconCssClass="bi bi-sliders" />
+                    <WinOldNavPaneItem Text="Print Manager" IconCssClass="bi bi-printer" />
+                    <WinOldNavPaneItem Text="MS-DOS Prompt" IconCssClass="bi bi-terminal" />
+                </WinOldNavPaneGroup>
+                <WinOldNavPaneGroup Title="Accessories" IconCssClass="bi bi-window" Expanded="false">
+                    <WinOldNavPaneItem Text="Write" IconCssClass="bi bi-pen" />
+                    <WinOldNavPaneItem Text="Paintbrush" IconCssClass="bi bi-brush" />
+                    <WinOldNavPaneItem Text="Notepad" IconCssClass="bi bi-journal-text" />
+                    <WinOldNavPaneItem Text="Calculator" IconCssClass="bi bi-calculator" />
+                </WinOldNavPaneGroup>
+                <WinOldNavPaneGroup Title="Games" IconCssClass="bi bi-window" Expanded="false">
+                    <WinOldNavPaneItem Text="Solitaire" IconCssClass="bi bi-suit-spade" />
+                    <WinOldNavPaneItem Text="Minesweeper" IconCssClass="bi bi-flag" />
+                </WinOldNavPaneGroup>
+            </WinOldNavPane>
+        </div>
+        <small>Selected: @_win31Selected</small>
+    </div>
+
+    <div>
+        <h7>Win98</h7>
+        <div style="height: 340px;">
+            <WinOldNavPane Appearance="Appearance.Win98" @bind-SelectedValue="_win98Selected">
+                <WinOldNavPaneGroup Title="Outlook">
+                    <WinOldNavPaneItem Text="Inbox" Badge="1"><IconTemplate><span>📥</span></IconTemplate></WinOldNavPaneItem>
+                    <WinOldNavPaneItem Text="Calendar"><IconTemplate><span>📅</span></IconTemplate></WinOldNavPaneItem>
+                    <WinOldNavPaneItem Text="Contacts"><IconTemplate><span>📇</span></IconTemplate></WinOldNavPaneItem>
+                    <WinOldNavPaneItem Text="Tasks"><IconTemplate><span>📋</span></IconTemplate></WinOldNavPaneItem>
+                    <WinOldNavPaneItem Text="Journal"><IconTemplate><span>📓</span></IconTemplate></WinOldNavPaneItem>
+                    <WinOldNavPaneItem Text="Notes"><IconTemplate><span>📝</span></IconTemplate></WinOldNavPaneItem>
+                </WinOldNavPaneGroup>
+                <WinOldNavPaneGroup Title="Mail">
+                    <WinOldNavPaneItem Text="Sent Items"><IconTemplate><span>📤</span></IconTemplate></WinOldNavPaneItem>
+                    <WinOldNavPaneItem Text="Outbox"><IconTemplate><span>📨</span></IconTemplate></WinOldNavPaneItem>
+                    <WinOldNavPaneItem Text="Deleted Items"><IconTemplate><span>🗑️</span></IconTemplate></WinOldNavPaneItem>
+                </WinOldNavPaneGroup>
+                <WinOldNavPaneGroup Title="Other">
+                    <WinOldNavPaneItem Text="My Computer"><IconTemplate><span>🖥️</span></IconTemplate></WinOldNavPaneItem>
+                    <WinOldNavPaneItem Text="Favorites"><IconTemplate><span>⭐</span></IconTemplate></WinOldNavPaneItem>
+                </WinOldNavPaneGroup>
+            </WinOldNavPane>
+        </div>
+        <small>Selected: @_win98Selected</small>
+    </div>
+
+    <div>
+        <h7>WinXP</h7>
+        <div style="height: 340px;">
+            <WinOldNavPane Appearance="Appearance.WinXP" @bind-SelectedValue="_winXpSelected">
+                <WinOldNavPaneGroup Title="Gestion des fichiers">
+                    <WinOldNavPaneItem Text="Créer un nouveau dossier" IconTemplate="@Icon("bi bi-folder-plus", "#d9a300")" />
+                    <WinOldNavPaneItem Text="Publier ce dossier sur le Web" IconTemplate="@Icon("bi bi-globe-europe-africa", "#2e8b3a")" />
+                    <WinOldNavPaneItem Text="Partager ce dossier" IconTemplate="@Icon("bi bi-folder-symlink-fill", "#e0b040")" />
+                </WinOldNavPaneGroup>
+                <WinOldNavPaneGroup Title="Autres emplacements">
+                    <WinOldNavPaneItem Text="Dev" IconTemplate="@Icon("bi bi-folder-fill", "#e0b040")" />
+                    <WinOldNavPaneItem Text="Mes documents" IconTemplate="@Icon("bi bi-file-earmark-text-fill", "#6d8fd0")" />
+                    <WinOldNavPaneItem Text="Documents partagés" IconTemplate="@Icon("bi bi-folder-fill", "#e0b040")" />
+                    <WinOldNavPaneItem Text="Poste de travail" IconTemplate="@Icon("bi bi-pc-display", "#4a6fa5")" />
+                    <WinOldNavPaneItem Text="Favoris réseau" IconTemplate="@Icon("bi bi-globe2", "#2a7bd5")" />
+                </WinOldNavPaneGroup>
+                <WinOldNavPaneGroup Title="Détails" Expanded="false">
+                    <WinOldNavPaneItem Text="Dossier de fichiers" IconTemplate="@Icon("bi bi-info-circle", "#215dc6")" />
+                </WinOldNavPaneGroup>
+            </WinOldNavPane>
+        </div>
+        <small>Selected: @_winXpSelected</small>
+    </div>
+
+    <div>
+        <h7>Win7</h7>
+        <div style="height: 340px; border: 1px solid #ccc;">
+            <WinOldNavPane Appearance="Appearance.Win7" @bind-SelectedValue="_win7Selected">
+                <WinOldNavPaneGroup Title="Favoris" IconTemplate="@Icon("bi bi-star-fill", "#f2b01e")">
+                    <WinOldNavPaneItem Text="Bureau" IconTemplate="@Icon("bi bi-display", "#1f6fc5")" />
+                    <WinOldNavPaneItem Text="Emplacements récents" IconTemplate="@Icon("bi bi-clock-history", "#607d8b")" />
+                    <WinOldNavPaneItem Text="Téléchargements" IconTemplate="@Icon("bi bi-folder-fill", "#e8b54a")" />
+                </WinOldNavPaneGroup>
+                <WinOldNavPaneGroup Title="Bibliothèques" IconTemplate="@Icon("bi bi-folder-fill", "#e8b54a")">
+                    <WinOldNavPaneItem Text="Documents" IconTemplate="@Icon("bi bi-file-earmark-text", "#4a6fa5")" />
+                    <WinOldNavPaneItem Text="Images" IconTemplate="@Icon("bi bi-image", "#2e8bc0")" />
+                    <WinOldNavPaneItem Text="Musique" IconTemplate="@Icon("bi bi-music-note-beamed", "#1f6fc5")" />
+                    <WinOldNavPaneItem Text="Vidéos" IconTemplate="@Icon("bi bi-film", "#37474f")" />
+                </WinOldNavPaneGroup>
+                <WinOldNavPaneItem Text="Groupe résidentiel" IconTemplate="@Icon("bi bi-people-fill", "#1f6fc5")" />
+                <WinOldNavPaneItem Text="Ordinateur" IconTemplate="@Icon("bi bi-pc-display", "#455a64")" />
+            </WinOldNavPane>
+        </div>
+        <small>Selected: @_win7Selected</small>
+    </div>
+
+    <div>
+        <h7>Win10</h7>
+        <div style="height: 560px; display: flex; width: fit-content; border: 1px solid #ccc;">
+            <WinOldNavPane Appearance="Appearance.Win10" @bind-Collapsed="_win10Collapsed" @bind-SelectedValue="_win10Selected">
+                <HeaderContent>
+                    <WinOldTextBox Appearance="Appearance.Win10" placeholder="Search" InputStyle="width:100%; box-sizing:border-box;" />
+                </HeaderContent>
+                <ChildContent>
+                    <WinOldNavPaneItem Text="Your Music" IconCssClass="bi bi-headphones" />
+                    <WinOldNavPaneItem Text="Albums" IconCssClass="bi bi-disc" />
+                    <WinOldNavPaneItem Text="Artists" IconCssClass="bi bi-person" />
+                    <WinOldNavPaneItem Text="Songs" IconCssClass="bi bi-music-note" />
+                    <WinOldNavPaneItem Text="Now playing" IconCssClass="bi bi-bar-chart" Badge="3" />
+                    <WinOldNavPaneGroup Title="Playlists" IconCssClass="bi bi-list-ul">
+                        <WinOldNavPaneItem Text="Liked From Radio" IconCssClass="bi bi-heart" />
+                        <WinOldNavPaneItem Text="New Music Videos" IconCssClass="bi bi-collection-play" />
+                    </WinOldNavPaneGroup>
+                </ChildContent>
+                <FooterContent>
+                    <WinOldNavPaneItem Text="Christophe" IconCssClass="bi bi-person-circle" Value="account" />
+                    <WinOldNavPaneItem Text="Settings" IconCssClass="bi bi-gear" Value="settings" />
+                </FooterContent>
+            </WinOldNavPane>
+        </div>
+        <small>Selected: @_win10Selected — Collapsed: @_win10Collapsed</small>
+    </div>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<WinOldNavPane Appearance=""Appearance.Win10"" @bind-Collapsed=""_collapsed"" @bind-SelectedValue=""_selected"">
+    <HeaderContent>
+        <WinOldTextBox Appearance=""Appearance.Win10"" placeholder=""Search"" />
+    </HeaderContent>
+    <ChildContent>
+        <WinOldNavPaneItem Text=""Albums"" IconCssClass=""bi bi-disc"" />
+        <WinOldNavPaneItem Text=""Now playing"" IconCssClass=""bi bi-bar-chart"" Badge=""3"" />
+        <WinOldNavPaneGroup Title=""Playlists"" IconCssClass=""bi bi-list-ul"">
+            <WinOldNavPaneItem Text=""Liked From Radio"" IconCssClass=""bi bi-heart"" />
+        </WinOldNavPaneGroup>
+    </ChildContent>
+    <FooterContent>
+        <WinOldNavPaneItem Text=""Settings"" IconCssClass=""bi bi-gear"" Value=""settings"" />
+    </FooterContent>
+</WinOldNavPane>
+
+<WinOldNavPane Appearance=""Appearance.Win98"">  @* accordion: one group open at a time *@
+    <WinOldNavPaneGroup Title=""Outlook"">
+        <WinOldNavPaneItem Text=""Inbox"" Badge=""1""><IconTemplate><span>📥</span></IconTemplate></WinOldNavPaneItem>
+    </WinOldNavPaneGroup>
+    <WinOldNavPaneGroup Title=""Mail"">...</WinOldNavPaneGroup>
+</WinOldNavPane>") />
+
+<h2>Navigation with Href</h2>
+
+<p>
+    Items with an <strong>Href</strong> render as links and follow the current URL, like <code>NavLink</code>
+    (<strong>Match</strong> = <code>Prefix</code> or <code>All</code>). Here, <em>NavPane</em> is active because it is the current page.
+</p>
+
+<div style="height: 260px; display:flex; gap: 24px; flex-wrap: wrap;">
+    <WinOldNavPane Appearance="Appearance.Win10" Title="Blazor.WinOld">
+        <WinOldNavPaneItem Text="Home" Href="" Match="NavLinkMatch.All" IconCssClass="bi bi-house" />
+        <WinOldNavPaneItem Text="NavPane" Href="navpane-page" IconCssClass="bi bi-layout-sidebar" />
+        <WinOldNavPaneItem Text="StatusBar" Href="statusbar-page" IconCssClass="bi bi-window-dock" />
+        <WinOldNavPaneItem Text="Tabs" Href="tabs-page" IconCssClass="bi bi-bookmarks" />
+    </WinOldNavPane>
+    <WinOldNavPane Appearance="Appearance.Win7">
+        <WinOldNavPaneGroup Title="Demo" IconTemplate="@Icon("bi bi-folder-fill", "#e8b54a")">
+            <WinOldNavPaneItem Text="Home" Href="" Match="NavLinkMatch.All" IconCssClass="bi bi-house" />
+            <WinOldNavPaneItem Text="NavPane" Href="navpane-page" IconCssClass="bi bi-layout-sidebar" />
+            <WinOldNavPaneItem Text="StatusBar" Href="statusbar-page" IconCssClass="bi bi-window-dock" />
+        </WinOldNavPaneGroup>
+    </WinOldNavPane>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<WinOldNavPane Appearance=""Appearance.Win10"" Title=""Blazor.WinOld"">
+    <WinOldNavPaneItem Text=""Home"" Href="""" Match=""NavLinkMatch.All"" IconCssClass=""bi bi-house"" />
+    <WinOldNavPaneItem Text=""NavPane"" Href=""navpane-page"" IconCssClass=""bi bi-layout-sidebar"" />
+</WinOldNavPane>") />
+
+<h2>In a window</h2>
+
+<p>When <strong>Appearance</strong> is not set, the pane inherits the one of the hosting <code>WinOldWindow</code>.</p>
+
+<div style="display:flex; gap: 16px; flex-wrap: wrap; margin-bottom: 8px;">
+    @foreach (var (appearance, label) in _appearances)
+    {
+        <WinOldWindow Appearance="appearance" Title="@label" Style="width: 360px; height: 240px;">
+            <div style="display:flex; height:100%;">
+                <WinOldNavPane Width="150px" SelectedValue="Inbox">
+                    <WinOldNavPaneGroup Title="Mail">
+                        <WinOldNavPaneItem Text="Inbox" IconCssClass="bi bi-inbox" Badge="2" />
+                        <WinOldNavPaneItem Text="Sent" IconCssClass="bi bi-send" />
+                    </WinOldNavPaneGroup>
+                    <WinOldNavPaneGroup Title="Other">
+                        <WinOldNavPaneItem Text="Contacts" IconCssClass="bi bi-person-lines-fill" />
+                    </WinOldNavPaneGroup>
+                </WinOldNavPane>
+                <div style="padding:6px;">Window content</div>
+            </div>
+        </WinOldWindow>
+    }
+</div>
+
+@foreach (var (title, rows) in _properties)
+{
+    <h2>@title Properties</h2>
+
+    <div style="margin: 20px 0; border: 1px solid #ccc;">
+        <div style="display: flex; flex-wrap: wrap; background-color: #f0f0f0; font-weight: bold; border-bottom: 2px solid #ccc;">
+            <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;">Property</div>
+            <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Type</div>
+            <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Default</div>
+            <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Description</div>
+        </div>
+        @foreach (var (name, type, def, description) in rows)
+        {
+            <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+                <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>@name</code></div>
+                <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">@type</div>
+                <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">@def</div>
+                <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">@description</div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private string? _dosSelected = "Compile";
+    private string? _win31Selected = "File Manager";
+    private string? _win98Selected = "Inbox";
+    private string? _winXpSelected;
+    private string? _win7Selected = "Images";
+    private string? _win10Selected = "Albums";
+    private bool _win10Collapsed;
+
+    private static RenderFragment Icon(string cssClass, string color) =>
+        @<i class="@cssClass" style="color:@color"></i>;
+
+    private readonly (Appearance, string)[] _appearances =
+    [
+        (Appearance.DOS, "DOS"),
+        (Appearance.Win31, "Windows 3.1"),
+        (Appearance.Win98, "Windows 98"),
+        (Appearance.WinXP, "Windows XP"),
+        (Appearance.Win7, "Windows 7"),
+        (Appearance.Win10, "Windows 10"),
+    ];
+
+    private readonly (string, (string, string, string, string)[])[] _properties =
+    [
+        ("WinOldNavPane",
+        [
+            ("Appearance", "Appearance?", "null", "Visual style: DOS, Win31, Win98, WinXP, Win7, Win10. When unset, inherits the hosting WinOldWindow's Appearance, then Win10. Inherited by the children."),
+            ("ChildContent", "RenderFragment?", "—", "Groups, items and separators."),
+            ("HeaderContent", "RenderFragment?", "—", "Fixed area under the title (e.g. a search box). Hidden while collapsed."),
+            ("FooterContent", "RenderFragment?", "—", "Fixed area at the bottom (e.g. account, settings). May contain items."),
+            ("Title", "string?", "null", "Title shown in the header, also used as accessible label."),
+            ("ExpandMode", "NavPaneExpandMode", "Auto", "Auto: accordion for Win98, independent groups otherwise. Single: one group open at a time. Multiple: independent groups."),
+            ("Collapsed", "bool", "false", "Compact mode: icons only, text as tooltip. Bindable."),
+            ("ShowToggle", "bool?", "null", "Shows the hamburger button toggling Collapsed. Defaults to true for Win10 only."),
+            ("ShowScrollButtons", "bool?", "null", "Accordion only: replaces the scrollbar of the open group with arrow buttons, shown only when items are hidden on their side (Office 97 Outlook bar). Defaults to true for Win98 only."),
+            ("Width", "string?", "null", "Width of the expanded pane, as any CSS length. When unset, each appearance uses its own default."),
+            ("SelectedValue", "string?", "null", "Value of the selected item. Bindable."),
+            ("OnItemClick", "EventCallback<WinOldNavPaneItem>", "—", "Raised when any item of the pane is clicked."),
+            ("Disabled", "bool", "false", "Disables the whole pane and cascades to its content."),
+            ("TouchMode", "bool", "false", "Enlarges items and headers for touch screens."),
+        ]),
+        ("WinOldNavPaneGroup",
+        [
+            ("Title", "string?", "null", "Title of the group header."),
+            ("IconCssClass", "string?", "null", "CSS class(es) of a header icon (e.g. \"bi bi-star\")."),
+            ("IconTemplate", "RenderFragment?", "—", "Custom header icon. Takes priority over IconCssClass."),
+            ("Expanded", "bool", "true", "Whether the items are shown. Bindable. In accordion mode, the first expanded group wins."),
+            ("Collapsible", "bool", "true", "When false, the header can't be clicked and the group stays expanded (ignored in accordion mode)."),
+            ("Disabled", "bool", "false", "Disables the header and the items of the group."),
+        ]),
+        ("WinOldNavPaneItem",
+        [
+            ("Text", "string?", "null", "Text of the item. Ignored when ChildContent is set."),
+            ("ChildContent", "RenderFragment?", "—", "Free content. Takes priority over Text."),
+            ("IconCssClass", "string?", "null", "CSS class(es) of an icon (e.g. \"bi bi-inbox\")."),
+            ("IconTemplate", "RenderFragment?", "—", "Custom icon. Takes priority over IconCssClass."),
+            ("Href", "string?", "null", "Navigation target. The item is then a link, active whenever the current URL matches."),
+            ("Match", "NavLinkMatch", "Prefix", "How the current URL is compared to Href."),
+            ("Value", "string?", "Href ?? Text", "Value written to the pane's SelectedValue on click."),
+            ("Badge", "string?", "null", "Short counter or tag shown next to the text."),
+            ("OnClick", "EventCallback<MouseEventArgs>", "—", "Raised on click."),
+            ("Disabled", "bool", "false", "Disables the item."),
+        ]),
+        ("WinOldNavPaneSeparator",
+        [
+            ("Text", "string?", "null", "Optional section label. A plain line is drawn when unset or when the pane is collapsed."),
+        ]),
+    ];
+}

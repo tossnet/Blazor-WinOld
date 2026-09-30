@@ -1,0 +1,58 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+@implements IDisposable
+
+@if (Href is not null)
+{
+    <a href="@(IsDisabled ? null : Href)"
+       class="@GetItemClass()"
+       style="@Style"
+       title="@Tooltip"
+       aria-current="@(IsActive ? "page" : null)"
+       aria-disabled="@(IsDisabled ? "true" : null)"
+       @onclick="HandleClickAsync"
+       @attributes="Attributes">
+        @ItemMarkup
+    </a>
+}
+else
+{
+    <button type="button"
+            class="@GetItemClass()"
+            style="@Style"
+            title="@Tooltip"
+            aria-current="@(IsActive ? "true" : null)"
+            disabled="@IsDisabled"
+            @onclick="HandleClickAsync"
+            @attributes="Attributes">
+        @ItemMarkup
+    </button>
+}
+
+@code {
+    private RenderFragment ItemMarkup => @<text>
+        @if (IconTemplate is not null)
+        {
+            <span class="navpane-item-icon" aria-hidden="true">@IconTemplate</span>
+        }
+        else if (!string.IsNullOrEmpty(IconCssClass))
+        {
+            <span class="navpane-item-icon" aria-hidden="true"><i class="@IconCssClass"></i></span>
+        }
+        <span class="navpane-item-text">
+            @if (ChildContent is not null)
+            {
+                @ChildContent
+            }
+            else
+            {
+                @Text
+            }
+        </span>
+        @if (!string.IsNullOrEmpty(Badge))
+        {
+            <span class="navpane-item-badge">@Badge</span>
+        }
+    </text>;
+}

@@ -1,0 +1,56 @@
+﻿@page "/immersive/dialogs"
+@inject IDialogService DialogService
+
+<PageTitle>Blazor.WinOld - Dialogs</PageTitle>
+
+<div class="screen">
+    <WinOldFrame Appearance="A" Label="Dialogs">
+        <WinOldLabel Appearance="A">The dialogs open in the style of the application.</WinOldLabel>
+        <div class="screen-row">
+            <WinOldButton Appearance="A" OnClick="ShowMessageBoxAsync">MessageBox</WinOldButton>
+            <WinOldButton Appearance="A" OnClick="ShowInputBoxAsync">InputBox</WinOldButton>
+            <WinOldButton Appearance="A" OnClick="ShowDialogAsync">DialogBox</WinOldButton>
+        </div>
+    </WinOldFrame>
+
+    <WinOldFrame Appearance="A" Label="Result">
+        <WinOldLabel Appearance="A">@_result</WinOldLabel>
+    </WinOldFrame>
+</div>
+
+@code {
+    private string _result = "-";
+
+    private async Task ShowMessageBoxAsync()
+    {
+        var result = await DialogService.ShowMessageBox(new MessageBoxOptions
+        {
+            Appearance = A,
+            Title = "Question",
+            Message = "Do you like this style?",
+            Icon = Icon.Question,
+            OkButtonText = "Yes",
+            CancelButtonText = "No"
+        });
+        _result = $"MessageBox: {result}";
+    }
+
+    private async Task ShowInputBoxAsync()
+    {
+        var name = await DialogService.ShowInputBox(new InputBoxOptions
+        {
+            Appearance = A,
+            Title = "Input",
+            Message = "What is your name?"
+        });
+        _result = $"InputBox: {name ?? "(cancelled)"}";
+    }
+
+    private async Task ShowDialogAsync()
+    {
+        var result = await DialogService.ShowDialog<SimpleDialog>(
+            new DialogOptions { Title = "Event", Appearance = A, MaxButton = true },
+            new Dictionary<string, object> { { "Appearance", A } });
+        _result = $"DialogBox: {result?.ToString() ?? "(closed)"}";
+    }
+}

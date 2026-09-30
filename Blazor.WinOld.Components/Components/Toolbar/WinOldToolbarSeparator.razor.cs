@@ -7,6 +7,10 @@ public partial class WinOldToolbarSeparator : WinOldComponentBase
     [CascadingParameter]
     public WinOldToolbar? RootToolbar { get; set; }
 
+    /// </summary>
+    [CascadingParameter(Name = "WindowAppearance")]
+    public Appearance? WindowAppearance { get; set; }
+
     /// <summary>
     /// Visual style. When unset, falls back to the ancestor <see cref="WinOldToolbar"/>'s
     /// <c>Appearance</c>, then to <see cref="Blazor.WinOld.Components.Appearance.Win10"/>.
@@ -15,7 +19,7 @@ public partial class WinOldToolbarSeparator : WinOldComponentBase
     [Category(CategoryTypes.Button.Appearance)]
     public Appearance? Appearance { get; set; }
 
-    private Appearance EffectiveAppearance => Appearance ?? RootToolbar?.Appearance ?? global::Blazor.WinOld.Components.Appearance.Win10;
+    private Appearance EffectiveAppearance => Appearance ?? RootToolbar?.EffectiveAppearance ?? WindowAppearance ?? global::Blazor.WinOld.Components.Appearance.Win10;
 
     /// </summary>
     private string GetComponentClass()

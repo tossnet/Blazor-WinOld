@@ -54,3 +54,53 @@
     background-color: #3399ff;
     color: #fff;
 }
+/*--------*\
+    DOS
+\*--------*/
+.list-item-win-dos {
+    margin-top: 0;
+    padding: 0 1ch;
+}
+
+    .list-item-win-dos:focus {
+        outline: none;
+    }
+
+.list-item-win-dos:active,
+.active-list-item-win-dos {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/*--------*\
+    Win 3.1
+\*--------*/
+.list-item-win-31 {
+    margin-top: 1px;
+    padding: 0 2px;
+}
+
+.list-item-win-31:active,
+.active-list-item-win-31 {
+    background-color: #000080;
+    color: #ffffff;
+}
+
+/*--------*\
+    Win 10
+\*--------*/
+.list-item-win-10 {
+    margin-top: 0;
+    padding: 1px 4px;
+}
+
+    .list-item-win-10:hover {
+        background-color: #E5F3FF;
+    }
+
+.list-item-win-10:active,
+.active-list-item-win-10,
+.active-list-item-win-10:hover {
+    background-color: #0078D7;
+    color: #ffffff;
+}

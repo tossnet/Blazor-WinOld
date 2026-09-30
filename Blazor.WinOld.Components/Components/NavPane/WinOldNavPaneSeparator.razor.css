@@ -1,0 +1,124 @@
+.navpane-separator {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin: 6px 0;
+    border: 0;
+    opacity: 1;
+}
+
+hr.navpane-separator {
+    height: 0;
+}
+
+.navpane-separator-label {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+    .navpane-separator-label > span {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+/*--------*\
+    DOS
+\*--------*/
+hr.navpane-separator-dos {
+    margin: 7px 0;
+    border-top: 2px solid #1a1a1a;
+}
+
+.navpane-separator-dos.navpane-separator-label {
+    margin: 4px 0 0;
+    padding: 0 1ch;
+    text-transform: uppercase;
+}
+
+    .navpane-separator-dos.navpane-separator-label::before {
+        content: '\2500  ';
+        white-space: pre;
+    }
+
+/*--------*\
+   Win 31
+\*--------*/
+hr.navpane-separator-31 {
+    margin: 3px 0;
+    border-top: 1px solid #000;
+}
+
+.navpane-separator-31.navpane-separator-label {
+    margin: 4px 0 0;
+    padding: 1px 6px;
+    color: var(--dlg-win31-title-bar-background-color-active);
+}
+
+/*--------*\
+   Win 98
+\*--------*/
+hr.navpane-separator-98 {
+    margin: 4px 6px;
+    border-top: 1px solid #404040;
+    border-bottom: 1px solid #a0a0a0;
+}
+
+.navpane-separator-98.navpane-separator-label {
+    justify-content: center;
+    margin: 4px 0;
+    color: #fff;
+}
+
+/*--------*\
+    Win XP
+\*--------*/
+hr.navpane-separator-xp {
+    margin: 2px 0;
+    border-top: 1px solid rgba(255, 255, 255, .6);
+}
+
+.navpane-separator-xp.navpane-separator-label {
+    margin: 2px 0 -4px;
+    color: #fff;
+    font-weight: bold;
+}
+
+/*--------*\
+    Win 7
+\*--------*/
+/* Explorer separates its sections with blank space only. */
+hr.navpane-separator-7 {
+    margin: 7px 0;
+}
+
+.navpane-separator-7.navpane-separator-label {
+    margin: 10px 0 2px;
+    padding: 2px 6px;
+    color: #1e395b;
+}
+
+/*--------*\
+    Win 10
+\*--------*/
+hr.navpane-separator-10 {
+    margin: 4px 8px;
+    border-top: 1px solid #d9d9d9;
+}
+
+.navpane-separator-10.navpane-separator-label {
+    min-height: 40px;
+    margin: 4px 0 0;
+    padding: 0 12px;
+    border-top: 1px solid #d9d9d9;
+    font-weight: 600;
+}
+
+/*--------*\
+    Touch Mode
+\*--------*/
+.navpane-separator-10.navpane-separator-label.win-touch {
+    min-height: 44px;
+}

@@ -240,7 +240,7 @@
     padding: 2px 6px;
     position: relative;
     text-align: center;
-    font: var(--font);
+    font-family: var(--font);
     font-size: 9pt;
     min-height: 23px;
     box-shadow: var(--btn-win7-shadow);
@@ -363,7 +363,7 @@
     padding: 2px 6px;
     position: relative;
     text-align: center;
-    font: var(--font);
+    font-family: var(--font);
     font-size: 9pt;
     min-height: 21px;
     box-sizing: border-box;

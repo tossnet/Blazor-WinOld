@@ -1,0 +1,101 @@
+.statusbar-panel {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-sizing: border-box;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Panels without Width share the remaining space equally. */
+.statusbar-panel-auto {
+    flex: 1 1 0;
+}
+
+/* Panels with Width keep it (set inline as flex-basis), but may still shrink
+   when the bar is narrower than the sum of the widths. */
+.statusbar-panel-fixed {
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+/* When every panel has a Width, the last one stretches so the bar is always filled. */
+:where(.statusbar-win):not(:has(> .statusbar-panel-auto)) > .statusbar-panel-fixed:last-child {
+    flex-grow: 1;
+}
+
+.statusbar-panel-center {
+    justify-content: center;
+}
+
+.statusbar-panel-right {
+    justify-content: flex-end;
+}
+
+.statusbar-panel-icon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.statusbar-panel-text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*--------*\
+    DOS
+\*--------*/
+.statusbar-panel-dos {
+    padding: 0 1ch;
+}
+
+/*--------*\
+   Win 31
+\*--------*/
+.statusbar-panel-31 {
+    padding: 1px 4px;
+    border: 1px solid;
+    border-color: #808080 #fff #fff #808080;
+}
+
+/*--------*\
+   Win 98
+\*--------*/
+.statusbar-panel-98 {
+    padding: 2px 3px;
+    box-shadow: inset -1px -1px #dfdfdf, inset 1px 1px #808080;
+}
+
+/*--------*\
+    Win XP
+\*--------*/
+.statusbar-panel-xp {
+    padding: 0 6px;
+}
+
+    .statusbar-panel-xp + .statusbar-panel-xp {
+        border-left: 1px solid #ACA899;
+        box-shadow: inset 1px 0 #fff;
+    }
+
+/*--------*\
+    Win 7
+\*--------*/
+.statusbar-panel-7 {
+    padding: 0 8px;
+}
+
+    .statusbar-panel-7 + .statusbar-panel-7 {
+        border-left: 1px solid #d5dfe5;
+        box-shadow: inset 1px 0 #fff;
+    }
+
+/*--------*\
+    Win 10
+\*--------*/
+.statusbar-panel-10 {
+    padding: 2px 8px;
+}

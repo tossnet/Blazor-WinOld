@@ -38,7 +38,7 @@ public partial class WinOldDialogHost : WinOldComponentBase
         Options = options;
         Tcs = new TaskCompletionSource<bool?>();
         IsVisible = true;
-        _isMaximized = false;
+        _isMaximized = options.WindowState == WindowState.Maximized;
         _zIndex = _service?.NextZIndex() ?? _zIndex;
         StateHasChanged();
 

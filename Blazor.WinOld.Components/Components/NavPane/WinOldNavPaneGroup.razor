@@ -1,0 +1,61 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+@implements IDisposable
+
+<div class="@GetGroupClass()" style="@Style" @attributes="Attributes">
+    @if (!string.IsNullOrEmpty(Title) || HasIcon)
+    {
+        if (IsClickable)
+        {
+            <button type="button"
+                    class="navpane-group-header"
+                    aria-expanded="@(IsExpanded ? "true" : "false")"
+                    disabled="@IsDisabled"
+                    @onclick="ToggleAsync">
+                @HeaderMarkup
+            </button>
+        }
+        else
+        {
+            <div class="navpane-group-header">
+                @HeaderMarkup
+            </div>
+        }
+    }
+    @if (IsExpanded && Pane?.HasScrollButtons == true)
+    {
+        @* Rendered hidden: navpane.js reveals each arrow only when items are hidden on its side. *@
+        <div class="navpane-group-scroller">
+            <div class="navpane-group-items" role="group" aria-label="@Title">
+                @ChildContent
+            </div>
+            <button type="button" class="navpane-scroll-btn navpane-scroll-up" tabindex="-1" aria-label="Scroll up" hidden></button>
+            <button type="button" class="navpane-scroll-btn navpane-scroll-down" tabindex="-1" aria-label="Scroll down" hidden></button>
+        </div>
+    }
+    else if (IsExpanded)
+    {
+        <div class="navpane-group-items @Pane?.EffectiveAppearance.ToScrollbarClass()" role="group" aria-label="@Title">
+            @ChildContent
+        </div>
+    }
+</div>
+
+@code {
+    private RenderFragment HeaderMarkup => @<text>
+        @if (IconTemplate is not null)
+        {
+            <span class="navpane-group-icon" aria-hidden="true">@IconTemplate</span>
+        }
+        else if (!string.IsNullOrEmpty(IconCssClass))
+        {
+            <span class="navpane-group-icon" aria-hidden="true"><i class="@IconCssClass"></i></span>
+        }
+        <span class="navpane-group-title">@Title</span>
+        @if (IsClickable)
+        {
+            <span class="navpane-group-chevron" aria-hidden="true"></span>
+        }
+    </text>;
+}

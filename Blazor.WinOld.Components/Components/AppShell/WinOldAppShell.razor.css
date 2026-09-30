@@ -1,0 +1,86 @@
+.appshell {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    grid-template-areas:
+        "menu    menu"
+        "toolbar toolbar"
+        "side    content"
+        "status  status";
+    box-sizing: border-box;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.appshell-no-side {
+    grid-template-areas:
+        "menu    menu"
+        "toolbar toolbar"
+        "content content"
+        "status  status";
+}
+
+.appshell-menu {
+    grid-area: menu;
+    min-width: 0;
+}
+
+.appshell-toolbar {
+    grid-area: toolbar;
+    min-width: 0;
+}
+
+/* Only the side pane and the content scroll */
+.appshell-side {
+    grid-area: side;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: auto;
+}
+
+/* The DOS NavPane sets its title in the top border, above its box */
+.appshell-dos > .appshell-side {
+    padding-top: 8px;
+}
+
+.appshell-content {
+    grid-area: content;
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+}
+
+.appshell-status {
+    grid-area: status;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/*--------*\
+    Background of the window face, per appearance
+\*--------*/
+.appshell-dos {
+    background-color: var(--dos-background);
+}
+
+.appshell-31 {
+    background-color: #ffffff;
+}
+
+.appshell-98 {
+    background-color: var(--win98-background);
+}
+
+.appshell-xp {
+    background-color: var(--winxp-background);
+}
+
+.appshell-7 {
+    background-color: var(--surface);
+}
+
+.appshell-10 {
+    background-color: #ffffff;
+}

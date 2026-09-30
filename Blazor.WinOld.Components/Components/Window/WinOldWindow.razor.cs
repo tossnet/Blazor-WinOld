@@ -35,6 +35,25 @@ public partial class WinOldWindow : WinOldComponentBase
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
+    /// <summary>
+    /// Status bar rendered under the window body, flush against the bottom edge of the window
+    /// (typically a <see cref="WinOldStatusBar"/>, which inherits the window's Appearance).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? StatusBar { get; set; }
+
+    // Returns the CSS class for the status bar slot based on the selected theme.
+    private string GetStatusBarSlotClass() => Appearance switch
+    {
+        Appearance.DOS   => "win-statusbar-dos",
+        Appearance.Win31 => "win-statusbar-31",
+        Appearance.Win98 => "win-statusbar-98",
+        Appearance.WinXP => "win-statusbar-xp",
+        Appearance.Win7  => "win-statusbar-7",
+        Appearance.Win10 => "win-statusbar-10",
+        _                => "win-statusbar-10"
+    };
+
     // Returns the CSS class for the window container based on the selected theme.
     private string GetWindowClass() => Appearance switch
     {

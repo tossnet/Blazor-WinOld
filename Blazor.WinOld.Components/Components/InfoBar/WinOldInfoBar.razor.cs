@@ -30,6 +30,7 @@ public partial class WinOldInfoBar : WinOldComponentBase
 
     /// <summary>
     /// Free content displayed under the message (e.g. a progress bar).
+    /// Without <see cref="Title"/> nor <see cref="Message"/>, it is displayed as the message itself.
     /// </summary>
     [Parameter]
     public RenderFragment? ChildContent { get; set; }

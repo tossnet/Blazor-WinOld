@@ -1,0 +1,58 @@
+﻿@page "/immersive/lists"
+
+<PageTitle>Blazor.WinOld - Lists</PageTitle>
+
+<div class="screen">
+    <div class="screen-row">
+        <WinOldFrame Appearance="A" Label="Animals">
+            <WinOldListBox Appearance="A"
+                           Label="Animals"
+                           @bind-SelectedValue="_animal"
+                           Style="width: 180px; height: 120px; overflow-y: auto;">
+                @foreach (var animal in _animals)
+                {
+                    <WinOldListBoxItem Text="@animal" Value="@animal" />
+                }
+            </WinOldListBox>
+        </WinOldFrame>
+
+        <WinOldFrame Appearance="A" Label="Selection" Style="flex: 1;">
+            <WinOldLabel Appearance="A">Selected : @(_animal ?? "(none)")</WinOldLabel>
+            <WinOldSlider Appearance="A"
+                          TValue="int"
+                          Min="0"
+                          Max="100"
+                          LowLabel="0"
+                          HighLabel="100"
+                          @bind-Value="_progress"
+                          style="margin-bottom: 20px;" />
+            <WinOldProgressBar Appearance="A" Value="_progress" />
+        </WinOldFrame>
+    </div>
+
+    <WinOldTabs Appearance="A">
+        <WinOldTabPanel Label="General" IsDefault="true">
+            <WinOldLabel Appearance="A">Contents of the first tab.</WinOldLabel>
+            <WinOldProgressBar Appearance="A" Indeterminate="true" />
+        </WinOldTabPanel>
+        <WinOldTabPanel Label="Details">
+            <WinOldLabel Appearance="A">Contents of the second tab.</WinOldLabel>
+        </WinOldTabPanel>
+        <WinOldTabPanel Label="History">
+            @for (var i = 1; i <= 20; i++)
+            {
+                <WinOldLabel Appearance="A">Event @i</WinOldLabel>
+            }
+        </WinOldTabPanel>
+    </WinOldTabs>
+</div>
+
+@code {
+    private string? _animal = "The Cat";
+    private int _progress = 40;
+
+    private readonly string[] _animals =
+    {
+        "The Dog", "The Cat", "The Bird", "The Pig", "The Rabbit", "The Beautiful Lion", "The Whale", "The Horse", "The Fox"
+    };
+}

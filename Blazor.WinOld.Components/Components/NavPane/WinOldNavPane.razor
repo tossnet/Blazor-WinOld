@@ -1,0 +1,50 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+@implements IAsyncDisposable
+
+<nav @ref="_rootRef"
+     class="navpane-win @GetComponentClass() @Class"
+     style="@GetStyle()"
+     aria-label="@Title"
+     @attributes="Attributes">
+    <CascadingValue Name="Disabled" Value="@(ParentDisabled == true || Disabled)">
+        <CascadingValue Name="TouchMode" Value="@IsTouch">
+            <CascadingValue Value="this" IsFixed="false">
+                @if (IsToggleVisible || !string.IsNullOrEmpty(Title))
+                {
+                    <div class="navpane-header">
+                        @if (IsToggleVisible)
+                        {
+                            <button type="button"
+                                    class="navpane-toggle"
+                                    title="@(Collapsed ? "Expand" : "Collapse")"
+                                    aria-expanded="@(Collapsed ? "false" : "true")"
+                                    disabled="@(ParentDisabled == true || Disabled)"
+                                    @onclick="ToggleCollapsed">
+                                <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                    <path d="M1 3.5h14M1 8h14M1 12.5h14" stroke="currentColor" stroke-width="1.2" fill="none" />
+                                </svg>
+                            </button>
+                        }
+                        @if (!string.IsNullOrEmpty(Title))
+                        {
+                            <span class="navpane-title">@Title</span>
+                        }
+                    </div>
+                }
+                @if (HeaderContent is not null && !Collapsed)
+                {
+                    <div class="navpane-header-content">@HeaderContent</div>
+                }
+                <div class="navpane-body @EffectiveAppearance.ToScrollbarClass()">
+                    @ChildContent
+                </div>
+                @if (FooterContent is not null)
+                {
+                    <div class="navpane-footer">@FooterContent</div>
+                }
+            </CascadingValue>
+        </CascadingValue>
+    </CascadingValue>
+</nav>

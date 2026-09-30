@@ -1,0 +1,82 @@
+﻿@page "/immersive/form"
+@inject IDialogService DialogService
+
+<PageTitle>Blazor.WinOld - Customer form</PageTitle>
+
+<div class="screen">
+    <WinOldFrame Appearance="A" Label="Customer">
+        <div class="wo-col wo-gap-8 wo-items-start">
+            <WinOldTextBox Appearance="A" Label="Name :" @bind-Value="_name" />
+            <WinOldTextBox Appearance="A" Label="City :" @bind-Value="_city" />
+            <WinOldNumberBox Appearance="A"
+                             TValue="int"
+                             Label="Age :"
+                             Min="0"
+                             Max="120"
+                             Step="1"
+                             Format=""
+                             InputStyle="text-align: right;"
+                             @bind-Value="_age" />
+            <WinOldSelect Appearance="A" T="string" @bind-Value="_country">
+                <WinOldOption Value="@("France")">France</WinOldOption>
+                <WinOldOption Value="@("Belgium")">Belgium</WinOldOption>
+                <WinOldOption Value="@("Switzerland")">Switzerland</WinOldOption>
+                <WinOldOption Value="@("Canada")">Canada</WinOldOption>
+            </WinOldSelect>
+        </div>
+    </WinOldFrame>
+
+    <div class="screen-row">
+        <WinOldFrame Appearance="A" Label="Contact by" Style="flex: 1;">
+            <WinOldOptionButtonGroup T="int" @bind-Value="_contact" Appearance="A">
+                <WinOldOptionButton Label="E-mail" Value="1" />
+                <WinOldOptionButton Label="Phone" Value="2" />
+                <WinOldOptionButton Label="Letter" Value="3" />
+            </WinOldOptionButtonGroup>
+        </WinOldFrame>
+
+        <WinOldFrame Appearance="A" Label="Options" Style="flex: 1;">
+            <WinOldCheckBox Appearance="A" Label="Newsletter" @bind-Value="_newsletter" />
+            <WinOldCheckBox Appearance="A" Label="VIP customer" @bind-Value="_vip" />
+        </WinOldFrame>
+    </div>
+
+    <WinOldFrame Appearance="A" Label="Notes">
+        <WinOldTextArea Appearance="A" Label="Comment :" @bind-Value="_notes" />
+    </WinOldFrame>
+
+    <div class="screen-row screen-buttons">
+        <WinOldButton Appearance="A" Default="true" OnClick="SaveAsync">OK</WinOldButton>
+        <WinOldButton Appearance="A" OnClick="Reset">Cancel</WinOldButton>
+    </div>
+</div>
+
+@code {
+    private string _name = "Christophe";
+    private string _city = "Lille";
+    private int _age = 42;
+    private string _country = "France";
+    private int _contact = 1;
+    private bool _newsletter = true;
+    private bool _vip;
+    private string _notes = "";
+
+    private async Task SaveAsync()
+    {
+        await DialogService.ShowMessageBox(new MessageBoxOptions
+        {
+            Appearance = A,
+            Title = "Customer",
+            Message = $"{_name} ({_city}, {_country}) has been saved.",
+            Icon = Icon.Information
+        });
+    }
+
+    private void Reset()
+    {
+        _name = "";
+        _city = "";
+        _age = 0;
+        _notes = "";
+    }
+}

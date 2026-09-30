@@ -1,0 +1,26 @@
+﻿@page "/immersive"
+
+<PageTitle>Blazor.WinOld - Immersive demo</PageTitle>
+
+<div class="screen">
+    <WinOldInfoBar Appearance="A"
+                   Icon="Icon.Information"
+                   Title="Welcome"
+                   Message="Choose a style in the toolbar: the whole application switches to it." />
+
+    <WinOldFrame Appearance="A" Label="Blazor.WinOld">
+        <WinOldLabel Appearance="A">
+            This full-screen demo is built with <b>WinOldAppShell</b>: menu, toolbar, side pane, content and status bar.
+            Only the side pane and this area scroll, with the scrollbars of the selected style.
+        </WinOldLabel>
+        <WinOldLabel Appearance="A">
+            Open the screens of the side pane to see the components in the same style. Use <b>File &gt; Back to the demo site</b> to leave.
+        </WinOldLabel>
+        <div class="screen-row">
+            <WinOldIcon Icon="Icon.Information" Appearance="A" Size="32" />
+            <WinOldIcon Icon="Icon.Question" Appearance="A" Size="32" />
+            <WinOldIcon Icon="Icon.Alert" Appearance="A" Size="32" />
+            <WinOldIcon Icon="Icon.Critical" Appearance="A" Size="32" />
+        </div>
+    </WinOldFrame>
+</div>

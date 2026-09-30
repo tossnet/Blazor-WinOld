@@ -41,10 +41,12 @@ public partial  class WinOldListBoxItem : WinOldComponentBase
     {
         return Parent.Appearance switch
         {
+            Appearance.DOS => "list-item-win-dos",
+            Appearance.Win31 => "list-item-win-31",
             Appearance.Win7 => "list-item-win-7",
             Appearance.WinXP => "list-item-win-xp",
             Appearance.Win98 => "list-item-win-98",
-            _ => "list-item-win-98"
+            _ => "list-item-win-10"
         };
     }
 
@@ -55,10 +57,12 @@ public partial  class WinOldListBoxItem : WinOldComponentBase
 
         string activeClass = Parent.Appearance switch
         {
+            Appearance.DOS => "active-list-item-win-dos",
+            Appearance.Win31 => "active-list-item-win-31",
             Appearance.Win7 => "active-list-item-win-7",
             Appearance.WinXP => "active-list-item-win-xp",
             Appearance.Win98 => "active-list-item-win-98",
-            _ => "active-list-item-win-98"
+            _ => "active-list-item-win-10"
         };
 
         return isActive ? activeClass : string.Empty;

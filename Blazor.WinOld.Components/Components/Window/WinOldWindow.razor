@@ -12,8 +12,20 @@
                     ShowMaximizeButton="MaxButton"
                     OnToggleMaximize="ToggleMaximize" />
     <div class="win-body @GetBodyClass()">
-        <CascadingValue Name="Disabled" Value="@Disabled">
-            @ChildContent
+        <CascadingValue Name="WindowAppearance" Value="@((Appearance?)Appearance)">
+            <CascadingValue Name="Disabled" Value="@Disabled">
+                @ChildContent
+            </CascadingValue>
         </CascadingValue>
     </div>
+    @if (StatusBar is not null)
+    {
+        <div class="win-statusbar @GetStatusBarSlotClass()">
+            <CascadingValue Name="WindowAppearance" Value="@((Appearance?)Appearance)">
+                <CascadingValue Name="Disabled" Value="@Disabled">
+                    @StatusBar
+                </CascadingValue>
+            </CascadingValue>
+        </div>
+    }
 </div>

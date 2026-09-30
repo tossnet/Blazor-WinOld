@@ -8,6 +8,10 @@ public partial class WinOldToolbarButton : WinOldComponentBase
     [CascadingParameter]
     public WinOldToolbar? RootToolbar { get; set; }
 
+    /// </summary>
+    [CascadingParameter(Name = "WindowAppearance")]
+    public Appearance? WindowAppearance { get; set; }
+
     /// <summary>
     /// Visible button text. Hidden (icon + tooltip only) once the ancestor <see cref="WinOldToolbar"/>
     /// collapses. Also used to auto-generate the native <c>title</c>/<c>aria-label</c> — pass an explicit
@@ -64,7 +68,7 @@ public partial class WinOldToolbarButton : WinOldComponentBase
     [Parameter]
     public bool? IconOnly { get; set; }
 
-    private Appearance EffectiveAppearance => Appearance ?? RootToolbar?.Appearance ?? global::Blazor.WinOld.Components.Appearance.Win10;
+    private Appearance EffectiveAppearance => Appearance ?? RootToolbar?.EffectiveAppearance ?? WindowAppearance ?? global::Blazor.WinOld.Components.Appearance.Win10;
 
     private bool EffectiveFlat => Flat ?? RootToolbar?.Flat ?? false;
 

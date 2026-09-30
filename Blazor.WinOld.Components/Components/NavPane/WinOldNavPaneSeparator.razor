@@ -1,0 +1,14 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@if (!string.IsNullOrEmpty(Text) && Pane?.Collapsed != true)
+{
+    <div class="@GetSeparatorClass() navpane-separator-label" style="@Style" role="separator" @attributes="Attributes">
+        <span>@Text</span>
+    </div>
+}
+else
+{
+    <hr class="@GetSeparatorClass()" style="@Style" @attributes="Attributes" />
+}

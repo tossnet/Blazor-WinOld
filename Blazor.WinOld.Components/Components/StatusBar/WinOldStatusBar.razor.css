@@ -1,0 +1,119 @@
+/* Selectors are wrapped in :where() so their specificity stays at the level of a single
+   class, letting a consumer-supplied Class fully override any of these container rules. */
+
+/* margin-top:auto pushes the bar to the bottom of a flex-column container,
+   position:sticky keeps it glued to the bottom of a scrolling one. */
+:where(.statusbar-win) {
+    display: flex;
+    align-items: stretch;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 22px;
+    flex-shrink: 0;
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #000;
+}
+
+:where(.statusbar-win.statusbar-disabled) {
+    color: #808080;
+}
+
+/*--------*\
+    DOS
+\*--------*/
+:where(.statusbar-dos) {
+    min-height: 0;
+    padding: 1px 1ch;
+    background: var(--dos-background);
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 16px;
+    color: #1a1a1a;
+    -webkit-font-smoothing: none;
+}
+
+    :where(.statusbar-dos.statusbar-disabled) {
+        color: #686868;
+    }
+
+/*--------*\
+   Win 31
+\*--------*/
+:where(.statusbar-win-31) {
+    gap: 6px;
+    padding: 3px 4px;
+    background: #c0c0c0;
+    border-top: 1px solid #000;
+    font-family: var(--font-family);
+    font-size: 11px;
+    font-weight: bolder;
+}
+
+/*--------*\
+   Win 98
+\*--------*/
+:where(.statusbar-win-98) {
+    gap: 2px;
+    padding: 2px 0 0;
+    background: silver;
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+/*--------*\
+    Win XP
+\*--------*/
+:where(.statusbar-win-xp) {
+    background: var(--winxp-background);
+    border-top: 1px solid #ACA899;
+    box-shadow: inset 0 1px #fff;
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+/*--------*\
+    Win 7
+\*--------*/
+:where(.statusbar-win-7) {
+    background: linear-gradient(#fdfeff, #f1f5fb);
+    border-top: 1px solid #cdd7db;
+    font-family: var(--font);
+    font-size: 9pt;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/*--------*\
+    Win 10
+\*--------*/
+:where(.statusbar-win-10) {
+    background: #F0F0F0;
+    border-top: 1px solid #DCDCDC;
+    font-family: var(--font);
+    font-size: 9pt;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*--------*\
+    Touch Mode
+\*--------*/
+
+:where(.statusbar-win.win-touch) {
+    min-height: 32px;
+}
+
+/* Pixel font — keep font-size, disable antialiasing */
+:where(.statusbar-dos.win-touch),
+:where(.statusbar-win-98.win-touch),
+:where(.statusbar-win-xp.win-touch) {
+    -webkit-font-smoothing: none;
+}
+
+:where(.statusbar-win-7.win-touch),
+:where(.statusbar-win-10.win-touch) {
+    font-size: 13px;
+}

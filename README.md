@@ -71,9 +71,49 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 
 See the **CSS Utilities** page of the demo for the full list.
 
+### Application layout
+
+`WinOldAppShell` lays out a classic application in your own `MainLayout`: menu, toolbar, side pane, content and status bar. Only the side pane and the content scroll. Its `Appearance` is inherited by the `WinOldMenu`, `WinOldToolbar`, `WinOldNavPane` and `WinOldStatusBar` placed inside, and it already renders the MessageBox / InputBox / Dialog hosts (`IncludeHosts="false"` if you declare them yourself):
+
+```razor
+@inherits LayoutComponentBase
+
+<WinOldAppShell Appearance="Appearance.Win98">
+    <Menu><WinOldMenu>...</WinOldMenu></Menu>
+    <Toolbar><WinOldToolbar>...</WinOldToolbar></Toolbar>
+    <SidePane><WinOldNavPane>...</WinOldNavPane></SidePane>
+    <StatusBar><WinOldStatusBar>...</WinOldStatusBar></StatusBar>
+    <ChildContent>@Body</ChildContent>
+</WinOldAppShell>
+```
+
+A page can add its own toolbar or status bar with `<SectionContent SectionName="@WinOldAppShell.ToolbarSection">` (or `StatusBarSection`). See the **AppShell** page of the demo.
+
+### Scrollbars
+
+Each appearance has its own scrollbar style: `scroll-win-dos`, `scroll-win-31`, `scroll-win-98`, `scroll-win-xp`, `scroll-win-7`, `scroll-win-10`. Add the class to any scrollable element, or get it with `Appearance.ToScrollbarClass()`:
+
+```html
+<div class="@Appearance.Win98.ToScrollbarClass()" style="height: 100px; overflow: auto;">...</div>
+```
+
+For the whole page, put the class on `<html>` in `index.html`, or change it at runtime with `await JS.SetScrollbarAppearanceAsync(Appearance.Win7);` (`IJSRuntime`). Firefox only gets the colors. See the **Scrollbar** page of the demo.
+
 
 ## <a name="ReleaseNotes"></a>Release Notes 
-<details open="open"><summary>Version 2.18.0</summary>
+<details open="open"><summary>Version 2.19.0</summary>
+
+>- New component : `WinOldAppShell` (application layout with `Menu`, `Toolbar`, `SidePane`, `StatusBar` areas, sections for the pages, dialog hosts included)
+>- Demo: new full-screen **Immersive demo** (`/immersive`), built with `WinOldAppShell`, where the toolbar switches the whole application between the 6 styles
+>- `WinOldMenu` and `WinOldToolbar`: `Appearance` is now nullable and falls back to the Appearance of the hosting `WinOldWindow` / `WinOldAppShell` (default still Win10)
+>- New scrollbar styles for every appearance (`scroll-win-*` classes, `Appearance.ToScrollbarClass()`, `IJSRuntime.SetScrollbarAppearanceAsync()` for the whole page), with a new **Scrollbar** demo page
+>- `WinOldListBox`: new DOS, Win 3.1 and Win10 styles; the initial `SelectedValue` is now highlighted and follows external changes
+>- New component : `WinOldStatusBar` with `WinOldStatusBarPanel` (bar always at the bottom of its container, panels with optional width, icon and alignment, always filling the full width)
+>- `WinOldWindow`: new `StatusBar` slot, rendered flush against the bottom edge of the window
+>- New component : `WinOldNavPane` with `WinOldNavPaneGroup`, `WinOldNavPaneItem` and `WinOldNavPaneSeparator` (side navigation pane: Office 97 Outlook bar accordion with arrow scroll buttons for Win98, task pane for WinXP, Explorer pane for Win7, Groove / Windows 11 pane collapsible to an icon rail for Win10; items with `Href` follow the current URL)
+</details>
+
+<details><summary>Version 2.18.0</summary>
 
 >- New component : `WinOldIcon` (system icons Information, Question, Alert, Critical, usable anywhere)
 >- New component : `WinOldInfoBar` (inline closable message bar with icon, title, message and actions)

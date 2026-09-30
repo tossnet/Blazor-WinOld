@@ -50,6 +50,13 @@
     <WinOldWindow Appearance="appearance"
                   Title="Live Preview"
                   class="hero-preview">
+        <StatusBar>
+            <WinOldStatusBar>
+                <WinOldStatusBarPanel Text="Ready" />
+                <WinOldStatusBarPanel Width="90px" Text="@appearance.ToString()" />
+            </WinOldStatusBar>
+        </StatusBar>
+        <ChildContent>
         <div style="padding:6px;">
             <div class="hero-theme-selector light">
                 @foreach (var theme in _themes)
@@ -74,6 +81,7 @@
                 </div>
             </WinOldFrame>
         </div>
+        </ChildContent>
     </WinOldWindow>
 </div>
 

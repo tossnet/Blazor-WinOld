@@ -5,7 +5,7 @@
 @if (Parent is not null )
 {
 	<li role="option"
-		aria-selected="@(Parent.SelectedItem == this)"
+		aria-selected="@(Parent.SelectedItem == this ? "true" : "false")"
 		class="list-item @GetComponentClass() @GetActiveItemClass(this) @Class"
 		style="@Style"
 		@attributes="Attributes"

@@ -1,0 +1,16 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+<div role="status"
+     class="statusbar-win @GetComponentClass() @Class"
+     style="@Style"
+     @attributes="Attributes">
+    <CascadingValue Name="Disabled" Value="@(ParentDisabled == true || Disabled)">
+        <CascadingValue Name="TouchMode" Value="@IsTouch">
+            <CascadingValue Value="this" IsFixed="false">
+                @ChildContent
+            </CascadingValue>
+        </CascadingValue>
+    </CascadingValue>
+</div>

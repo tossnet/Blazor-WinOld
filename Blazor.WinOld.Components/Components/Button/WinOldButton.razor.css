@@ -288,7 +288,7 @@
 \*--------*/
 .btn-win-7,
 .btn-win-7[role="button"] {
-    font: var(--font);
+    font-family: var(--font);
     font-size: 9pt;
     box-sizing: border-box;
     border: var(--btn-win7-border);

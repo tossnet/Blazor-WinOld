@@ -13,10 +13,22 @@ public partial class WinOldToolbar : WinOldComponentBase
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
+    /// <summary>
+    /// Visual style. When unset, falls back to the Appearance of the hosting <see cref="WinOldWindow"/>
+    /// or <see cref="WinOldAppShell"/>, then to <see cref="Blazor.WinOld.Components.Appearance.Win10"/>.
     /// </summary>
     [Parameter]
     [Category(CategoryTypes.Button.Appearance)]
-    public Appearance Appearance { get; set; } = Appearance.Win10;
+    public Appearance? Appearance { get; set; }
+
+    /// </summary>
+    [CascadingParameter(Name = "WindowAppearance")]
+    public Appearance? WindowAppearance { get; set; }
+
+    /// <summary>
+    /// Appearance actually rendered, inherited by child buttons that don't set their own.
+    /// </summary>
+    public Appearance EffectiveAppearance => Appearance ?? WindowAppearance ?? global::Blazor.WinOld.Components.Appearance.Win10;
 
     /// <summary>
     /// <see cref="ToolbarOverflowMode.Wrap"/> (default) wraps to multiple lines and always shows labels.
@@ -45,13 +57,13 @@ public partial class WinOldToolbar : WinOldComponentBase
     /// </summary>
     private string GetComponentClass()
     {
-        var baseClass = Appearance switch
+        var baseClass = EffectiveAppearance switch
         {
-            Appearance.DOS => "toolbar-dos",
-            Appearance.Win98 => "toolbar-win-98",
-            Appearance.WinXP => "toolbar-win-xp",
-            Appearance.Win7 => "toolbar-win-7",
-            Appearance.Win10 => "toolbar-win-10",
+            global::Blazor.WinOld.Components.Appearance.DOS => "toolbar-dos",
+            global::Blazor.WinOld.Components.Appearance.Win98 => "toolbar-win-98",
+            global::Blazor.WinOld.Components.Appearance.WinXP => "toolbar-win-xp",
+            global::Blazor.WinOld.Components.Appearance.Win7 => "toolbar-win-7",
+            global::Blazor.WinOld.Components.Appearance.Win10 => "toolbar-win-10",
             _ => "toolbar-win-10"
         };
 

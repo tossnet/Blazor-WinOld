@@ -1,0 +1,407 @@
+/* Root selectors are wrapped in :where() so their specificity stays at the level of a single
+   class, letting a consumer-supplied Class fully override any of these container rules. */
+
+/* The pane fills the height of its container; the body scrolls between the fixed header and footer. */
+:where(.navpane-win) {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 240px;
+    height: 100%;
+    min-height: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    color: #000;
+    transition: width .2s ease;
+}
+
+.navpane-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    min-width: 0;
+}
+
+.navpane-title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.navpane-collapsed .navpane-title {
+    display: none;
+}
+
+.navpane-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+    .navpane-toggle:disabled {
+        cursor: default;
+    }
+
+.navpane-header-content {
+    flex-shrink: 0;
+}
+
+.navpane-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Accordion: the expanded group takes the remaining height, so the headers of the groups before it
+   stack at the top and the headers of the groups after it stack at the bottom (Office 97 Outlook bar). */
+.navpane-accordion > .navpane-body {
+    overflow-y: hidden;
+}
+
+.navpane-footer {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+:where(.navpane-win.navpane-disabled) {
+    color: #808080;
+}
+
+/*--------*\
+    DOS
+\*--------*/
+/* Invented: a Turbo Vision / Norton Commander like double-lined box, title set in the top border. */
+:where(.navpane-dos) {
+    width: 26ch;
+    padding: 4px 0;
+    border: 3px double #1a1a1a;
+    background: var(--dos-background);
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 16px;
+    color: #1a1a1a;
+    overflow: visible;
+    -webkit-font-smoothing: none;
+}
+
+:where(.navpane-dos.navpane-disabled) {
+    color: #686868;
+}
+
+.navpane-dos > .navpane-header {
+    justify-content: center;
+    height: 0;
+    margin-top: -4px;
+    margin-bottom: 4px;
+    overflow: visible;
+}
+
+.navpane-dos .navpane-title {
+    flex: 0 1 auto;
+    padding: 0 1ch;
+    background: var(--dos-background);
+    transform: translateY(-2px);
+}
+
+.navpane-dos .navpane-toggle {
+    padding: 0 .5ch;
+    background: var(--dos-background);
+    transform: translateY(-2px);
+}
+
+    .navpane-dos .navpane-toggle::before {
+        content: '[';
+    }
+
+    .navpane-dos .navpane-toggle::after {
+        content: ']';
+    }
+
+    .navpane-dos .navpane-toggle:focus-visible {
+        outline: none;
+        background: #1a1a1a;
+        color: var(--dos-background);
+    }
+
+.navpane-dos > .navpane-footer {
+    margin-top: 4px;
+    border-top: 2px solid #1a1a1a;
+    padding-top: 4px;
+}
+
+/*--------*\
+   Win 31
+\*--------*/
+/* Invented: a Program Manager like frame, navy title bar, list-box selection. */
+:where(.navpane-win-31) {
+    width: 220px;
+    border: 1px solid #000;
+    background: #fff;
+    font-family: var(--font-family);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.navpane-win-31 > .navpane-header {
+    justify-content: center;
+    min-height: 18px;
+    padding: 0 2px;
+    background: var(--dlg-win31-title-bar-background-color-active);
+    border-bottom: 1px solid #000;
+    color: #fff;
+}
+
+.navpane-win-31 .navpane-title {
+    flex: 0 1 auto;
+}
+
+.navpane-win-31 .navpane-toggle {
+    width: 18px;
+    height: 14px;
+    background: #c0c0c0;
+    border: 1px solid #000;
+    box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
+    color: #000;
+}
+
+    .navpane-win-31 .navpane-toggle:active {
+        box-shadow: inset 1px 1px #808080;
+    }
+
+.navpane-win-31 > .navpane-footer {
+    border-top: 1px solid #000;
+}
+
+/*--------*\
+   Win 98
+\*--------*/
+/* Office 97 Outlook bar. */
+:where(.navpane-win-98) {
+    width: 110px;
+    padding: 2px;
+    background: silver;
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+    font-family: var(--font-family);
+    font-size: 11px;
+}
+
+.navpane-win-98 > .navpane-header {
+    min-height: 20px;
+    padding: 1px 4px;
+}
+
+.navpane-win-98 .navpane-toggle {
+    width: 22px;
+    height: 18px;
+    background: silver;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+}
+
+    .navpane-win-98 .navpane-toggle:active {
+        box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+    }
+
+.navpane-win-98 > .navpane-body {
+    background: #808080;
+}
+
+/*--------*\
+    Win XP
+\*--------*/
+/* Windows XP task pane (Explorer): Tahoma 8pt with ClearType, blue gradient background. */
+:where(.navpane-win-xp) {
+    width: 230px;
+    background: linear-gradient(#7ba2e7, #6375d6);
+    font-family: Tahoma, Verdana, var(--font-family);
+    font-size: 11px;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+.navpane-win-xp > .navpane-header {
+    min-height: 26px;
+    padding: 4px 12px 0;
+    font-weight: bold;
+}
+
+.navpane-win-xp .navpane-toggle {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+    .navpane-win-xp .navpane-toggle:hover {
+        background: rgba(255, 255, 255, .2);
+    }
+
+.navpane-win-xp > .navpane-body {
+    gap: 15px;
+    padding: 12px;
+}
+
+.navpane-win-xp.navpane-collapsed > .navpane-body {
+    padding: 12px 4px;
+}
+
+.navpane-win-xp > .navpane-footer {
+    padding: 8px 12px;
+}
+
+/*--------*\
+    Win 7
+\*--------*/
+/* Windows 7 Explorer navigation pane. */
+:where(.navpane-win-7) {
+    width: 220px;
+    background: #fff;
+    border-right: 1px solid #d6e5f5;
+    font-family: var(--font);
+    font-size: 9pt;
+    -webkit-font-smoothing: antialiased;
+}
+
+.navpane-win-7 > .navpane-header {
+    min-height: 28px;
+    padding: 0 6px;
+}
+
+.navpane-win-7 .navpane-toggle {
+    width: 24px;
+    height: 22px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+
+    .navpane-win-7 .navpane-toggle:hover {
+        background: linear-gradient(#fafbfd, #ebf3fd);
+        border-color: #b8d6fb;
+    }
+
+.navpane-win-7 > .navpane-body {
+    padding: 6px 2px;
+}
+
+.navpane-win-7 > .navpane-footer {
+    padding: 4px 2px;
+    border-top: 1px solid #d6e5f5;
+}
+
+/*--------*\
+    Win 10
+\*--------*/
+/* Groove Music base with a touch of Windows 11 (rounded selection, accent pill). */
+:where(.navpane-win-10) {
+    width: 280px;
+    background: #f2f2f2;
+    font-family: var(--font);
+    font-size: 14px;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+}
+
+.navpane-win-10 > .navpane-header {
+    min-height: 48px;
+    padding: 0 4px;
+    gap: 8px;
+}
+
+.navpane-win-10 .navpane-toggle {
+    width: 40px;
+    height: 36px;
+    border-radius: 4px;
+}
+
+    .navpane-win-10 .navpane-toggle:hover {
+        background: rgba(0, 0, 0, .05);
+    }
+
+    .navpane-win-10 .navpane-toggle:active {
+        background: rgba(0, 0, 0, .03);
+        color: rgba(0, 0, 0, .6);
+    }
+
+    .navpane-win-10 .navpane-toggle:focus-visible {
+        outline: 2px solid #000;
+        outline-offset: -2px;
+    }
+
+.navpane-win-10 .navpane-title {
+    font-weight: 600;
+}
+
+.navpane-win-10 > .navpane-header-content {
+    padding: 4px 12px 8px;
+}
+
+.navpane-win-10 > .navpane-body {
+    padding: 0 4px;
+}
+
+.navpane-win-10 > .navpane-footer {
+    margin: 0 4px;
+    padding: 4px 0;
+    border-top: 1px solid #d9d9d9;
+}
+
+/*--------*\
+    Compact
+\*--------*/
+/* Declared after the appearances: every :where() rule weighs the same, so the last one wins. */
+:where(.navpane-win.navpane-collapsed) {
+    width: 48px;
+}
+
+:where(.navpane-dos.navpane-collapsed) {
+    width: 6ch;
+}
+
+:where(.navpane-win-98.navpane-collapsed) {
+    width: 52px;
+}
+
+/*--------*\
+    Touch Mode
+\*--------*/
+:where(.navpane-win.win-touch.navpane-collapsed) {
+    width: 56px;
+}
+
+:where(.navpane-dos.win-touch.navpane-collapsed) {
+    width: 6ch;
+}
+
+/* Pixel fonts — keep font-size, disable antialiasing */
+:where(.navpane-dos.win-touch),
+:where(.navpane-win-31.win-touch),
+:where(.navpane-win-98.win-touch) {
+    -webkit-font-smoothing: none;
+}
+
+:where(.navpane-win-xp.win-touch),
+:where(.navpane-win-7.win-touch) {
+    font-size: 13px;
+}
+
+:where(.navpane-win-10.win-touch) {
+    font-size: 15px;
+}
+
+.win-touch .navpane-toggle {
+    min-width: 40px;
+    min-height: 40px;
+}

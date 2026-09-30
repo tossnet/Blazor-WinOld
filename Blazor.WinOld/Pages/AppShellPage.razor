@@ -1,0 +1,215 @@
+﻿@page "/appshell-page"
+@using Microsoft.AspNetCore.Components.Sections
+
+<PageTitle>AppShell</PageTitle>
+
+<h1>AppShell</h1>
+
+<p>The <code>WinOldAppShell</code> component lays out a classic application: menu bar, toolbar, side pane, content and status bar. Only the side pane and the content scroll, the bars stay in place. Place it in your own <code>MainLayout</code>.</p>
+
+<p>Its <code>Appearance</code> is inherited by the <code>WinOldMenu</code>, <code>WinOldToolbar</code>, <code>WinOldNavPane</code> and <code>WinOldStatusBar</code> placed inside: none of them sets its own in the example below. The scrollbars follow the same appearance.</p>
+
+<p><a href="immersive">Open the full-screen demo</a>: the shell replaces the layout of this site, with the choice of the style in its toolbar.</p>
+
+<h2>Example</h2>
+
+<div style="display:flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;">
+    @foreach (var style in _styles)
+    {
+        <WinOldButton Appearance="Appearance.Win98" OnClick="@(() => _appearance = style.Appearance)">@style.Name</WinOldButton>
+    }
+</div>
+
+<WinOldCheckBox Appearance="Appearance.Win98" Label="Show the toolbar of the page (SectionContent)" @bind-Value="_showPageToolbar" />
+
+<div class="shell-frame">
+    <WinOldAppShell Appearance="_appearance" Height="420px" IncludeHosts="false" ShowStatusBar="true">
+        <Menu>
+            <WinOldMenu>
+                <WinOldMenuItem Label="File" HotKey="F">
+                    <WinOldMenuItem Label="New" HotKey="N" Shortcut="Ctrl+N" OnClick="@(() => Select("New"))" />
+                    <WinOldMenuItem Label="Open..." HotKey="O" Shortcut="Ctrl+O" OnClick="@(() => Select("Open"))" />
+                    <WinOldMenuItem IsSeparator />
+                    <WinOldMenuItem Label="Exit" HotKey="x" OnClick="@(() => Select("Exit"))" />
+                </WinOldMenuItem>
+                <WinOldMenuItem Label="Edit" HotKey="E">
+                    <WinOldMenuItem Label="Cut" HotKey="t" Shortcut="Ctrl+X" OnClick="@(() => Select("Cut"))" />
+                    <WinOldMenuItem Label="Copy" HotKey="C" Shortcut="Ctrl+C" OnClick="@(() => Select("Copy"))" />
+                    <WinOldMenuItem Label="Paste" HotKey="P" Shortcut="Ctrl+V" OnClick="@(() => Select("Paste"))" />
+                </WinOldMenuItem>
+                <WinOldMenuItem Label="Help" HotKey="H">
+                    <WinOldMenuItem Label="About..." HotKey="A" OnClick="@(() => Select("About"))" />
+                </WinOldMenuItem>
+            </WinOldMenu>
+        </Menu>
+
+        <Toolbar>
+            <WinOldToolbar Mode="ToolbarOverflowMode.Collapse">
+                <WinOldToolbarButton Label="New" IconCssClass="bi bi-file-earmark" OnClick="@(() => Select("New"))" />
+                <WinOldToolbarButton Label="Open" IconCssClass="bi bi-folder2-open" OnClick="@(() => Select("Open"))" />
+                <WinOldToolbarSeparator />
+                <WinOldToolbarButton Label="Cut" IconCssClass="bi bi-scissors" OnClick="@(() => Select("Cut"))" />
+                <WinOldToolbarButton Label="Copy" IconCssClass="bi bi-copy" OnClick="@(() => Select("Copy"))" />
+                <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard" OnClick="@(() => Select("Paste"))" />
+            </WinOldToolbar>
+        </Toolbar>
+
+        <SidePane>
+            <WinOldNavPane Title="Folders" @bind-SelectedValue="_selected">
+                <WinOldNavPaneGroup Title="Mail" IconCssClass="bi bi-envelope">
+                    <WinOldNavPaneItem Text="Inbox" Value="Inbox" IconCssClass="bi bi-inbox" Badge="3" />
+                    <WinOldNavPaneItem Text="Sent Items" Value="Sent Items" IconCssClass="bi bi-send" />
+                    <WinOldNavPaneItem Text="Deleted Items" Value="Deleted Items" IconCssClass="bi bi-trash" />
+                </WinOldNavPaneGroup>
+                <WinOldNavPaneGroup Title="Other" IconCssClass="bi bi-folder2">
+                    <WinOldNavPaneItem Text="Calendar" Value="Calendar" IconCssClass="bi bi-calendar3" />
+                    <WinOldNavPaneItem Text="Contacts" Value="Contacts" IconCssClass="bi bi-person-lines-fill" />
+                </WinOldNavPaneGroup>
+            </WinOldNavPane>
+        </SidePane>
+
+        <ChildContent>
+            <div style="padding: 8px 12px;">
+                <h4 style="margin-top: 0;">@(_selected ?? "Inbox")</h4>
+                @for (var i = 1; i <= 30; i++)
+                {
+                    <p style="margin: 0 0 6px;">Line @i of the content: only this area scrolls, the bars stay in place.</p>
+                }
+            </div>
+
+            @* Filled from the content (as a page would do), rendered by the shell *@
+            @if (_showPageToolbar)
+            {
+                <SectionContent SectionName="@WinOldAppShell.ToolbarSection">
+                    <WinOldToolbar>
+                        <WinOldToolbarButton Label="Reply" IconCssClass="bi bi-reply" OnClick="@(() => Select("Reply"))" />
+                        <WinOldToolbarButton Label="Forward" IconCssClass="bi bi-forward" OnClick="@(() => Select("Forward"))" />
+                    </WinOldToolbar>
+                </SectionContent>
+            }
+
+            <SectionContent SectionName="@WinOldAppShell.StatusBarSection">
+                <WinOldStatusBar>
+                    <WinOldStatusBarPanel Text="@($"Folder: {_selected ?? "Inbox"}")" />
+                    <WinOldStatusBarPanel Width="30%" Text="@($"Last action: {_lastAction ?? "-"}")" />
+                </WinOldStatusBar>
+            </SectionContent>
+        </ChildContent>
+    </WinOldAppShell>
+</div>
+
+<h2 style="margin-top:20px">In your MainLayout</h2>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+@inherits LayoutComponentBase
+
+<WinOldAppShell Appearance=""Appearance.Win98"">
+    <Menu>
+        <WinOldMenu>...</WinOldMenu>
+    </Menu>
+    <Toolbar>
+        <WinOldToolbar>...</WinOldToolbar>
+    </Toolbar>
+    <SidePane>
+        <WinOldNavPane>...</WinOldNavPane>
+    </SidePane>
+    <StatusBar>
+        <WinOldStatusBar>...</WinOldStatusBar>
+    </StatusBar>
+    <ChildContent>
+        @Body
+    </ChildContent>
+</WinOldAppShell>") />
+
+<p>The shell already renders <code>WinOldMessageBoxHost</code>, <code>WinOldInputBoxHost</code> and <code>WinOldDialogHost</code>: remove them from your layout, or set <code>IncludeHosts=&quot;false&quot;</code>.</p>
+
+<h2>Toolbar and status bar of a page</h2>
+
+<p>The toolbar and status bar areas end with a <code>SectionOutlet</code>: a page can add its own toolbar or status bar with <code>SectionContent</code>, which disappears when the user leaves the page. The <code>SectionContent</code> must be declared inside the shell (pages are, when the shell is in the layout) to inherit its appearance. Set <code>ShowToolbar</code> / <code>ShowStatusBar</code> when the layout itself provides no toolbar or status bar.</p>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+@using Microsoft.AspNetCore.Components.Sections
+
+<SectionContent SectionName=""@WinOldAppShell.ToolbarSection"">
+    <WinOldToolbar>
+        <WinOldToolbarButton Label=""Reply"" IconCssClass=""bi bi-reply"" />
+    </WinOldToolbar>
+</SectionContent>
+
+<SectionContent SectionName=""@WinOldAppShell.StatusBarSection"">
+    <WinOldStatusBar>
+        <WinOldStatusBarPanel Text=""3 unread messages"" />
+    </WinOldStatusBar>
+</SectionContent>") />
+
+<h2>Properties</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+    <thead>
+        <tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Visual style, inherited by the components inside that don't set their own. Default: Win10</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Menu</code>, <code>Toolbar</code>, <code>SidePane</code>, <code>StatusBar</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">RenderFragment?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">The areas of the shell. An area without content is not rendered</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>ChildContent</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">RenderFragment?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Main content (<code>@@Body</code> in a layout)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Height</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Height of the shell. Default: <code>100dvh</code> (the whole viewport)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>ShowToolbar</code>, <code>ShowStatusBar</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">bool</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Render the area without slot content, so that pages can fill it through the sections</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>IncludeHosts</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">bool</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Renders the MessageBox, InputBox and Dialog hosts. Default: true</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>ToolbarSection</code>, <code>StatusBarSection</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">const string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Section names to use with <code>SectionContent</code></td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    private Appearance _appearance = Appearance.Win98;
+    private string? _selected = "Inbox";
+    private string? _lastAction;
+    private bool _showPageToolbar = true;
+
+    private readonly (Appearance Appearance, string Name)[] _styles =
+    {
+        (Appearance.DOS, "DOS"),
+        (Appearance.Win31, "Win 3.1"),
+        (Appearance.Win98, "Win 98"),
+        (Appearance.WinXP, "Win XP"),
+        (Appearance.Win7, "Win 7"),
+        (Appearance.Win10, "Win 10")
+    };
+
+    private void Select(string action) => _lastAction = action;
+}

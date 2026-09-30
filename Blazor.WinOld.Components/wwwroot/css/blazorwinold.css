@@ -1,5 +1,6 @@
 @import url('titlebar.css');
 @import url('utilities.css');
+@import url('scrollbar.css');
 
 @font-face {
     font-family: "Pixelated MS Sans Serif";
@@ -436,7 +437,7 @@ label.label-txt-win {
     border: 1px solid #ccc;
     border-radius: 2px;
     border-top: 1px solid var(--btn-win7-border-color);
-    font: var(--font);
+    font-family: var(--font);
     font-size: 11px;
     padding: 3px 4px 5px;
 }
@@ -448,8 +449,7 @@ label.label-txt-win {
     }
 
 .lbtxt-win-7 {
-    font-family: unset !important;
-    font: var(--font);
+    font-family: var(--font) !important;
     font-size: 10pt !important;
 }
 
@@ -491,8 +491,7 @@ label.label-txt-win {
     }
 
 .lbtxt-win-10 {
-    font-family: unset !important;
-    font: var(--font);
+    font-family: var(--font) !important;
     font-size: 10pt !important;
 }
 

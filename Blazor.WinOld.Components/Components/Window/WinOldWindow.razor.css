@@ -9,6 +9,39 @@
 }
 
 /*--------*\
+    StatusBar slot: always under the body, flush against the bottom edge
+\*--------*/
+.win-statusbar {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+/* inside the double line drawn by .win-window-dos::before */
+.win-statusbar-dos {
+    margin: 0 3px 3px;
+}
+
+.win-statusbar-98 {
+    margin-top: 2px;
+}
+
+/* inside the blue 3px border */
+.win-statusbar-xp {
+    margin: 0 3px;
+}
+
+/* inside the frosted-glass frame */
+.win-statusbar-7 {
+    margin: 0 6px 6px;
+}
+
+.win-window-7:has(> .win-statusbar) > .win-body-7,
+.win-window-10:has(> .win-statusbar) > .win-body-10 {
+    margin-bottom: 0;
+}
+
+/*--------*\
     Maximized state (placeholder - to be styled)
 \*--------*/
 .win-window.win-window-maximized {
@@ -144,7 +177,7 @@
     border-radius: 6px;
     border: 1px solid rgba(0, 0, 0, .7);
     box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, .7), inset 0 0 0 1px #fffa;
-    font: var(--font);
+    font-family: var(--font);
     font-size: 9pt;
     position: relative;
     z-index: 0;

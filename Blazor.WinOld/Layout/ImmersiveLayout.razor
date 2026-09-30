@@ -1,0 +1,110 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+@inject IDialogService DialogService
+
+<CascadingValue Name="TouchMode" Value="@_touchMode">
+<WinOldAppShell Appearance="_appearance">
+    <Menu>
+        <WinOldMenu>
+            <WinOldMenuItem Label="File" HotKey="F">
+                <WinOldMenuItem Label="Back to the demo site" HotKey="B" OnClick="@BackToSite" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="View" HotKey="V">
+                @foreach (var style in Styles)
+                {
+                    <WinOldMenuItem Label="@style.Name" OnClick="@(() => _appearance = style.Appearance)" />
+                }
+                <WinOldMenuItem IsSeparator />
+                <WinOldMenuItem Label="@(_touchMode ? "Touch mode: ON" : "Touch mode: OFF")" HotKey="T" OnClick="@ToggleTouchMode" />
+            </WinOldMenuItem>
+            <WinOldMenuItem Label="Help" HotKey="H">
+                <WinOldMenuItem Label="About..." HotKey="A" OnClick="@ShowAboutAsync" />
+            </WinOldMenuItem>
+        </WinOldMenu>
+    </Menu>
+
+    <Toolbar>
+        <WinOldToolbar Mode="ToolbarOverflowMode.Collapse">
+            @foreach (var style in Styles)
+            {
+                <WinOldToolbarButton Label="@style.Name"
+                                     IconCssClass="@style.Icon"
+                                     Default="@(_appearance == style.Appearance)"
+                                     OnClick="@(() => _appearance = style.Appearance)" />
+            }
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Touch"
+                                 IconCssClass="bi bi-hand-index"
+                                 Default="@_touchMode"
+                                 OnClick="@ToggleTouchMode" />
+        </WinOldToolbar>
+    </Toolbar>
+
+    <SidePane>
+        <WinOldNavPane Title="Blazor.WinOld">
+            <ChildContent>
+                <WinOldNavPaneGroup Title="Demo" IconTemplate="@NavIcon("bi bi-window", "bi bi-window-sidebar", "#1f6fc5")">
+                    <WinOldNavPaneItem Text="Welcome" Href="immersive" Match="NavLinkMatch.All" IconTemplate="@NavIcon("bi bi-house", "bi bi-house-door-fill", "#4a6fa5")" />
+                    <WinOldNavPaneItem Text="Customer form" Href="immersive/form" IconTemplate="@NavIcon("bi bi-person-vcard", "bi bi-person-vcard-fill", "#d9a300")" />
+                    <WinOldNavPaneItem Text="Lists" Href="immersive/lists" IconTemplate="@NavIcon("bi bi-list-ul", "bi bi-card-list", "#2e8b3a")" />
+                    <WinOldNavPaneItem Text="Dialogs" Href="immersive/dialogs" IconTemplate="@NavIcon("bi bi-chat-square-text", "bi bi-chat-square-text-fill", "#2a7bd5")" />
+                </WinOldNavPaneGroup>
+            </ChildContent>
+            <FooterContent>
+                <WinOldNavPaneItem Text="Back to the demo site" OnClick="@BackToSite" IconTemplate="@NavIcon("bi bi-box-arrow-left", "bi bi-box-arrow-left", "#c0392b")" />
+            </FooterContent>
+        </WinOldNavPane>
+    </SidePane>
+
+    <StatusBar>
+        <WinOldStatusBar>
+            <WinOldStatusBarPanel Text="@($"Style: {Styles.First(s => s.Appearance == _appearance).Name}")" />
+            <WinOldStatusBarPanel Width="140px" Text="@(_touchMode ? "Touch mode: ON" : "Touch mode: OFF")" />
+            <WinOldStatusBarPanel Width="160px" Text="Blazor.WinOld" />
+        </WinOldStatusBar>
+    </StatusBar>
+
+    <ChildContent>
+        <div class="immersive-content">
+            @Body
+        </div>
+    </ChildContent>
+</WinOldAppShell>
+</CascadingValue>
+
+@code {
+    private Appearance _appearance = Appearance.Win98;
+    private bool _touchMode;
+
+    private static readonly (Appearance Appearance, string Name, string Icon)[] Styles =
+    {
+        (Appearance.DOS, "DOS", "bi bi-terminal"),
+        (Appearance.Win31, "Win 3.1", "bi bi-window"),
+        (Appearance.Win98, "Win 98", "bi bi-windows"),
+        (Appearance.WinXP, "Win XP", "bi bi-windows"),
+        (Appearance.Win7, "Win 7", "bi bi-windows"),
+        (Appearance.Win10, "Win 10", "bi bi-microsoft")
+    };
+
+    // Win 98, XP and 7 had colored icons; DOS, 3.1 and 10 keep monochrome outline icons.
+    private bool ColoredIcons => _appearance is Appearance.Win98 or Appearance.WinXP or Appearance.Win7;
+
+    private RenderFragment NavIcon(string outline, string filled, string color) => ColoredIcons
+        ? @<i class="@filled" style="color:@color"></i>
+        : @<i class="@outline"></i>;
+
+    private void ToggleTouchMode() => _touchMode = !_touchMode;
+
+    private void BackToSite() => Navigation.NavigateTo("");
+
+    private async Task ShowAboutAsync()
+    {
+        await DialogService.ShowMessageBox(new MessageBoxOptions
+        {
+            Appearance = _appearance,
+            Title = "About",
+            Message = "Blazor.WinOld: nostalgic Windows UI components for Blazor.",
+            Icon = Icon.Information
+        });
+    }
+}

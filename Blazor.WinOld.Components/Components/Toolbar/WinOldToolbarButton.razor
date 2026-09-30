@@ -42,6 +42,17 @@
         align-items: center;
         justify-content: center;
     }
+
+    /* Sizes labeled buttons to their content instead of WinOldButton's 75px/90px minimums
+       (like real toolbar buttons). With a minimum width, centering an odd amount of spare
+       space puts the icon and label on a half pixel, and Chromium then paints the pixel
+       fonts (MS Sans Serif, IBM VGA) blurred, with doubled strokes. Same specificity as
+       WinOldButton.razor.css's scoped .btn-win / .btn-win.win-touch rules, so it wins by
+       document order. The IconOnly and Collapse !important minimums still apply. */
+    .toolbar-btn-win.btn-win,
+    .toolbar-btn-win.btn-win.win-touch {
+        min-width: 0;
+    }
 </style>
 
 @if (EffectiveIconOnly)

@@ -26,6 +26,9 @@ public record DialogOptions
     /// <summary>When true, a maximize button is rendered in the dialog's title bar.</summary>
     public bool MaxButton { get; init; } = false;
 
+    /// <summary>Initial state of the dialog when it opens. Default: Normal.</summary>
+    public WindowState WindowState { get; init; } = WindowState.Normal;
+
     /// <summary>
     /// Content to render inside the dialog body.
     /// </summary>

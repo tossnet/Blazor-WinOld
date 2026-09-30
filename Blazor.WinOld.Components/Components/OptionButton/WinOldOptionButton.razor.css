@@ -280,7 +280,7 @@
 .opt-win-7 + label {
     align-items: center;
     display: inline-flex;
-    font: var(--font);
+    font-family: var(--font);
     font-size: 9pt;
     margin-left: 20px;
     position: relative;

@@ -67,6 +67,19 @@
 				  Appearance="Appearance.Win10">Open Resizable Dialog</WinOldButton>
 </div>
 
+<h2>Window State</h2>
+
+<p>
+	Set <code>WindowState = WindowState.Maximized</code> on <code>DialogOptions</code> to open the dialog
+	directly in full screen. Combined with <code>MaxButton = true</code>, the user can restore it to its
+	<code>Width</code> / <code>Height</code>; without it, the dialog stays full screen.
+</p>
+
+<div style="display:flex; align-items:center; gap:10px; flex-wrap: wrap; margin-bottom: 20px;">
+	<WinOldButton OnClick="OpenMaximizedDialog"
+				  Appearance="Appearance.Win10">Open Maximized Dialog</WinOldButton>
+</div>
+
 <h2>Usage</h2>
 
 <p>Show a dialog with inline content using <code>ChildContent</code>:</p>
@@ -93,6 +106,7 @@ private async Task OpenDialog()
         Height = ""300px"",
         Appearance = Appearance.WinXP,
         MaxButton = true,
+        WindowState = WindowState.Normal,
         OkButtonText = ""OK"",
         CancelButtonText = ""Cancel"",
         ChildContent = @<SimpleDialog Appearance=""Appearance.WinXP"" />
@@ -155,6 +169,11 @@ if (result == true) { /* OK clicked */ }") />
 			<td style="padding: 8px; border: 1px solid #ccc;"><code>MaxButton</code></td>
 			<td style="padding: 8px; border: 1px solid #ccc;">bool</td>
 			<td style="padding: 8px; border: 1px solid #ccc;">Shows a Maximize button in the title bar and enables double-click-to-maximize (default: false)</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>WindowState</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">WindowState</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Initial state when the dialog opens: <code>Normal</code> or <code>Maximized</code> (default: Normal)</td>
 		</tr>
 		<tr style="border: 1px solid #ccc;">
 			<td style="padding: 8px; border: 1px solid #ccc;"><code>OkButtonText</code></td>
@@ -235,6 +254,27 @@ if (result == true) { /* OK clicked */ }") />
 			ChildContent = @<p style="padding:10px">
 				Click the square button in the title bar, or double-click the title bar itself, to toggle full screen.
 				Click it again to restore the original size and position.
+			</p>
+		});
+
+		_lastResult = result;
+	}
+
+	private async Task OpenMaximizedDialog()
+	{
+		bool? result = await DialogService.ShowDialog(new DialogOptions
+		{
+			Title = "Maximized dialog",
+			Width = "400px",
+			Height = "250px",
+			Appearance = Appearance.Win10,
+			MaxButton = true,
+			WindowState = WindowState.Maximized,
+			OkButtonText = "OK",
+			CancelButtonText = "Cancel",
+			ChildContent = @<p style="padding:10px">
+				This dialog opened in full screen. Click the Restore button in the title bar
+				to bring it back to 400 × 250.
 			</p>
 		});
 

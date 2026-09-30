@@ -4,82 +4,161 @@
 
 <h1>ListBox</h1>
 
-<p>Scrollbar style not recognized on Firefox.</p>
+<p>The <code>WinOldListBox</code> component displays a list of <code>WinOldListBoxItem</code> from which the user selects one item, with the vintage Windows style of your choice. Its scrollbars follow the same appearance.</p>
 
-<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
-	<WinOldListBox Appearance="Appearance.Win98"
-				   @bind-SelectedValue="_selectedValue"
-				   Style="max-width: 200px;max-height:100px;overflow-y: scroll;" >
-		@foreach (var item in _items)
-		{
-			<WinOldListBoxItem Text="@item.Text" Value="@item.Value" />
-		}
-	</WinOldListBox>
+<h2>Examples by Style</h2>
 
-	<WinOldListBox Appearance="Appearance.WinXP"
-				   @bind-SelectedValue="_selectedValue"
-				   Style="max-width: 200px;max-height:100px;overflow-y: scroll;">
-		@foreach (var item in _items)
-		{
-			<WinOldListBoxItem Text="@item.Text" Value="@item.Value" />
-		}
-	</WinOldListBox>
+<p>All the lists below share the same bound value: select an item in one of them and the others follow.</p>
 
-	<WinOldListBox Appearance="Appearance.Win7"
-				   @bind-SelectedValue="_selectedValue"
-				   Style="max-width: 200px;max-height:100px;overflow-y: scroll;" >
-		@foreach (var item in _items)
-		{
-			<WinOldListBoxItem Text="@item.Text" Value="@item.Value" />
-		}
-	</WinOldListBox>
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+    @foreach (var style in _styles)
+    {
+        <div class="style-col">
+            <h7>@style.Name</h7>
+            <WinOldListBox Appearance="style.Appearance"
+                           Label="@($"Animals ({style.Name})")"
+                           @bind-SelectedValue="_selectedValue"
+                           Style="width: 160px; height: 100px; overflow-y: auto;">
+                @foreach (var item in _items)
+                {
+                    <WinOldListBoxItem Text="@item.Text" Value="@item.Value" />
+                }
+            </WinOldListBox>
+        </div>
+    }
 </div>
 
+<h2 style="margin-top:20px">Current Value</h2>
+<div style="padding: 10px; background-color: #f5f5f5; border: 1px solid #ccc; margin: 10px 0;">
+    <p><strong>SelectedValue:</strong> @(_selectedValue ?? "(none)")</p>
+    <WinOldButton Appearance="Appearance.Win98" OnClick="@(() => _selectedValue = "whale")">Select the whale</WinOldButton>
+    <WinOldButton Appearance="Appearance.Win98" OnClick="@(() => _selectedValue = null)">Clear</WinOldButton>
+</div>
+
+<h2>Code Example</h2>
+
 <CodeBlock Language="CodeLanguage.Razor"
-		   EnableLineNumbers="true"
-		   Code=@(@"
+           EnableLineNumbers="true"
+           Code=@(@"
 <WinOldListBox Appearance=""Appearance.WinXP""
-				   @bind-SelectedValue=""_selectedValue""
-				   Style=""max-width: 200px; max-height:100px; overflow-y: scroll;"" >
-		@foreach (var item in _items)
-		{
-			<WinOldListBoxItem Text=""@item.Text"" Value=""@item.Value"" />
-		}
-	</WinOldListBox>
-		   	 	 	 	 ") />
-
-<CodeBlock Language="CodeLanguage.CSharp"
-		   EnableLineNumbers="true"
-		   Code=@(@"
-private string? _selectedValue = ""dog"";
-
-private List<ListBoxItemData> _items = new()
-{
-	new(""The Dog"", ""dog""),
-	new(""The Cat"", ""cat""),
-	new(""The Bird"", ""bird""),
-	new(""The Pig"", ""pig""),
-	new(""The Rabbit"", ""rabbit""),
-	new(""The Beautiful Lion"", ""lion""),
-	new(""The Whale"", ""whale"")
-};
-
-private record ListBoxItemData(string Text, string Value);
-		   	 ") />
+               Label=""Animals""
+               @bind-SelectedValue=""_selectedValue""
+               Style=""width: 160px; height: 100px; overflow-y: auto;"">
+    @foreach (var item in _items)
+    {
+        <WinOldListBoxItem Text=""@item.Text"" Value=""@item.Value"" />
+    }
+</WinOldListBox>
 
 @code {
-	private string? _selectedValue = "dog";
+    private string? _selectedValue = ""dog"";
 
-	private List<ListBoxItemData> _items = new()
-	{
-		new("The Dog", "dog"),
-		new("The Cat", "cat"),
-		new("The Bird", "bird"),
-		new("The Pig", "pig"),
-		new("The Rabbit", "rabbit"),
-		new("The Beautiful Lion", "lion"),
-		new("The Whale", "whale")
-	};
+    private List<ListBoxItemData> _items = new()
+    {
+        new(""The Dog"", ""dog""),
+        new(""The Cat"", ""cat""),
+        new(""The Bird"", ""bird""),
+        new(""The Pig"", ""pig""),
+        new(""The Rabbit"", ""rabbit""),
+        new(""The Beautiful Lion"", ""lion""),
+        new(""The Whale"", ""whale"")
+    };
 
-	private record ListBoxItemData(string Text, string Value);
+    private record ListBoxItemData(string Text, string Value);
+}") />
+
+<h2>Scrollbars</h2>
+
+<p>The scrollbars follow the appearance of the list. The same styles can be used on any scrollable element, or on the whole page: see the <a href="scrollbar-page">Scrollbar</a> page.</p>
+
+<h2>Properties</h2>
+
+<h3>WinOldListBox</h3>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+    <thead>
+        <tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Visual style (DOS, Win31, Win98, WinXP, Win7, Win10). Default: Win10</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>SelectedValue</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Value of the selected item (use @@bind-SelectedValue for two-way binding)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Label</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Accessible name of the list (<code>aria-label</code>)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>ChildContent</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">RenderFragment?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">The <code>WinOldListBoxItem</code> elements</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Style</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Inline styles. Set a <code>height</code> and <code>overflow-y: auto</code> to get the scrollbar</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>WinOldListBoxItem</h3>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+    <thead>
+        <tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Text</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Displayed text</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Value</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Value sent to <code>SelectedValue</code> when the item is selected</td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    private string? _selectedValue = "dog";
+
+    private readonly (Appearance Appearance, string Name)[] _styles =
+    {
+        (Appearance.DOS, "DOS"),
+        (Appearance.Win31, "Win 3.1"),
+        (Appearance.Win98, "Win 98"),
+        (Appearance.WinXP, "Win XP"),
+        (Appearance.Win7, "Win 7"),
+        (Appearance.Win10, "Win 10")
+    };
+
+    private List<ListBoxItemData> _items = new()
+    {
+        new("The Dog", "dog"),
+        new("The Cat", "cat"),
+        new("The Bird", "bird"),
+        new("The Pig", "pig"),
+        new("The Rabbit", "rabbit"),
+        new("The Beautiful Lion", "lion"),
+        new("The Whale", "whale")
+    };
+
+    private record ListBoxItemData(string Text, string Value);
 }

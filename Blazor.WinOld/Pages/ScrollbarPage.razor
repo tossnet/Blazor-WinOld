@@ -1,0 +1,110 @@
+﻿@page "/scrollbar-page"
+@inject IJSRuntime JS
+
+<PageTitle>Scrollbar</PageTitle>
+
+<h1>Scrollbar</h1>
+
+<p>Every appearance has its own scrollbar style. The components that scroll (such as <code>WinOldListBox</code>) apply it by themselves, but the styles are plain CSS classes: you can use them on any scrollable element, or on the whole page.</p>
+
+<h2>Examples by Style</h2>
+
+<div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+    @foreach (var style in _styles)
+    {
+        <div>
+            <h7>@style.Name</h7>
+            <div class="scroll-demo @style.Appearance.ToScrollbarClass()">
+                <div style="width: 300px;">@_loremIpsum</div>
+            </div>
+        </div>
+    }
+    <div>
+        <h7>DOS (blue)</h7>
+        <div class="scroll-demo scroll-win-dos scroll-dos-blue">
+            <div style="width: 300px;">@_loremIpsum</div>
+        </div>
+    </div>
+</div>
+
+<h2 style="margin-top:20px">On any element</h2>
+
+<p>Add one of the classes <code>scroll-win-dos</code>, <code>scroll-win-31</code>, <code>scroll-win-98</code>, <code>scroll-win-xp</code>, <code>scroll-win-7</code> or <code>scroll-win-10</code> to a scrollable element. From an <code>Appearance</code> value, <code>ToScrollbarClass()</code> returns the matching class, and the class follows the value when it changes.</p>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+<div class=""scroll-win-98"" style=""height: 100px; overflow: auto;"">
+    ...
+</div>
+
+<div class=""@_appearance.ToScrollbarClass()"" style=""height: 100px; overflow: auto;"">
+    ...
+</div>") />
+
+<p>For DOS, the default colors are grey with a white thumb. Add <code>scroll-dos-blue</code> for the blue variant, or override the <code>--scroll-dos-*</code> CSS variables to use your own colors.</p>
+
+<h2>On the whole page</h2>
+
+<p>The scrollbar of the page belongs to the <code>&lt;html&gt;</code> element, which is outside the Blazor components: a fixed style can simply be written in <code>index.html</code> (or <code>App.razor</code>).</p>
+
+<CodeBlock Language="CodeLanguage.Html"
+           EnableLineNumbers="true"
+           Code=@(@"<html lang=""en"" class=""scroll-win-98"">") />
+
+<p>To change it at runtime, use <code>SetScrollbarAppearanceAsync</code> on <code>IJSRuntime</code>. Without a selector it targets <code>&lt;html&gt;</code>; with a selector it targets the matching elements, for example a sidebar that scrolls on its own. <code>null</code> restores the native scrollbar.</p>
+
+<p>Try it on this site (the page and the menu on the left):</p>
+
+<div style="display:flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;">
+    @foreach (var style in _styles)
+    {
+        <WinOldButton Appearance="Appearance.Win98" OnClick="@(() => ApplyToSiteAsync(style.Appearance))">@style.Name</WinOldButton>
+    }
+    <WinOldButton Appearance="Appearance.Win98" OnClick="@(() => ApplyToSiteAsync(null))">Native</WinOldButton>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+@inject IJSRuntime JS
+
+<WinOldButton OnClick=""@(() => ApplyAsync(Appearance.Win7))"">Win 7</WinOldButton>
+
+@code {
+    private async Task ApplyAsync(Appearance? appearance)
+    {
+        await JS.SetScrollbarAppearanceAsync(appearance);                   // the page
+        await JS.SetScrollbarAppearanceAsync(appearance, "".nav-scrollable""); // the menu
+    }
+}") />
+
+<p>If the page does not scroll on <code>&lt;html&gt;</code> but inside a container of your layout (<code>height: 100vh; overflow: auto</code>), no JavaScript is needed: put <code>@@_appearance.ToScrollbarClass()</code> on that container.</p>
+
+<h2>Good to know</h2>
+
+<ul>
+    <li><strong>Firefox</strong> does not support custom scrollbar shapes: it only gets the colors of each style.</li>
+    <li><strong>Chromium</strong> does not always redraw a scrollbar that is already displayed when its style changes. <code>SetScrollbarAppearanceAsync</code> forces the redraw; if you swap the classes yourself, the new style may only appear after the next layout.</li>
+    <li><strong>DOS</strong>: the thumb is a single character cell that runs along the whole track. Its position comes from a scroll-driven CSS animation, so the <code>scroll-win-dos</code> class sets <code>animation</code> on the element: do not combine it with another CSS animation on the same element.</li>
+</ul>
+
+@code {
+    private readonly (Appearance Appearance, string Name)[] _styles =
+    {
+        (Appearance.DOS, "DOS"),
+        (Appearance.Win31, "Win 3.1"),
+        (Appearance.Win98, "Win 98"),
+        (Appearance.WinXP, "Win XP"),
+        (Appearance.Win7, "Win 7"),
+        (Appearance.Win10, "Win 10")
+    };
+
+    private const string _loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+
+    private async Task ApplyToSiteAsync(Appearance? appearance)
+    {
+        await JS.SetScrollbarAppearanceAsync(appearance);
+        await JS.SetScrollbarAppearanceAsync(appearance, ".nav-scrollable");
+    }
+}

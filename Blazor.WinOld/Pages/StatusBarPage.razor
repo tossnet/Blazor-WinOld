@@ -1,0 +1,303 @@
+@page "/statusbar-page"
+
+<PageTitle>StatusBar</PageTitle>
+
+<h1>StatusBar</h1>
+
+<p>
+    The <code>WinOldStatusBar</code> and <code>WinOldStatusBarPanel</code> components draw the classic bar at the
+    bottom of a window. The bar always sticks to the bottom of its container (<code>margin-top:auto</code> in a
+    flex column, <code>position:sticky</code> in a scrolling one) and always spans its full width.
+</p>
+
+<ul>
+    <li>Panels without <strong>Width</strong> share the remaining space equally.</li>
+    <li>Panels with a <strong>Width</strong> (<code>"120px"</code>, <code>"25%"</code>, <code>"12ch"</code>…) keep it.</li>
+    <li>When every panel has a <strong>Width</strong>, the last one stretches so the bar is always filled.</li>
+</ul>
+
+<h2>Examples by Style</h2>
+
+<div style="display:flex; flex-direction: column; gap: 16px;">
+
+    <div>
+        <h7>DOS</h7>
+        <WinOldStatusBar Appearance="Appearance.DOS">
+            <WinOldStatusBarPanel Width="10ch" Text="F1 Help" />
+            <WinOldStatusBarPanel Width="10ch" Text="F2 Save" />
+            <WinOldStatusBarPanel Width="10ch" Text="F3 Open" />
+            <WinOldStatusBarPanel Width="17ch" Text="Alt+F9 Compile" />
+            <WinOldStatusBarPanel Width="10ch" Text="F9 Make" />
+            <WinOldStatusBarPanel Text="Alt+F10 Local menu" />
+        </WinOldStatusBar>
+    </div>
+
+    <div>
+        <h7>Windows 3.1</h7>
+        <WinOldStatusBar Appearance="Appearance.Win31">
+            <WinOldStatusBarPanel Width="40%" Text="C: 9,896KB free,  33,150KB total" />
+            <WinOldStatusBarPanel Text="Total 118 file(s) (4,619,985 bytes)" />
+        </WinOldStatusBar>
+    </div>
+
+    <div>
+        <h7>Windows 98</h7>
+        <WinOldStatusBar Appearance="Appearance.Win98">
+            <WinOldStatusBarPanel Text="Press F1 for help" />
+            <WinOldStatusBarPanel Width="80px" Text="Slide 1" />
+            <WinOldStatusBarPanel Width="130px" Text="CPU Usage: 14%" />
+        </WinOldStatusBar>
+    </div>
+
+    <div>
+        <h7>Windows XP</h7>
+        <WinOldStatusBar Appearance="Appearance.WinXP">
+            <WinOldStatusBarPanel Text="Done" />
+            <WinOldStatusBarPanel Width="30px" />
+            <WinOldStatusBarPanel Width="30px" />
+            <WinOldStatusBarPanel Width="160px" IconCssClass="bi bi-globe" Text="Internet" />
+            <WinOldStatusBarPanel Width="70px" IconCssClass="bi bi-zoom-in" Text="100%" />
+        </WinOldStatusBar>
+    </div>
+
+    <div>
+        <h7>Windows 7</h7>
+        <WinOldStatusBar Appearance="Appearance.Win7">
+            <WinOldStatusBarPanel Width="140px" Text="8 objects" />
+            <WinOldStatusBarPanel Align="StatusBarPanelAlign.Center" Text="http://www.example.com/" />
+            <WinOldStatusBarPanel Width="140px" IconCssClass="bi bi-pc-display" Text="My Computer" />
+        </WinOldStatusBar>
+    </div>
+
+    <div>
+        <h7>Windows 10</h7>
+        <WinOldStatusBar Appearance="Appearance.Win10">
+            <WinOldStatusBarPanel Text="Selection top left: 50, 283. Selection size: 800 × 600" />
+            <WinOldStatusBarPanel Width="110px" IconCssClass="bi bi-arrows-angle-expand" Text="800 × 600" />
+            <WinOldStatusBarPanel Width="110px" IconCssClass="bi bi-cursor" Text="516, -278" />
+            <WinOldStatusBarPanel Width="80px" Align="StatusBarPanelAlign.Right" Text="89 %" />
+        </WinOldStatusBar>
+    </div>
+
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<WinOldStatusBar Appearance=""Appearance.Win98"">
+    <WinOldStatusBarPanel Text=""Press F1 for help"" />                 @* no Width: takes the remaining space *@
+    <WinOldStatusBarPanel Width=""80px""  Text=""Slide 1"" />
+    <WinOldStatusBarPanel Width=""130px"" Text=""CPU Usage: 14%"" />
+</WinOldStatusBar>
+
+<WinOldStatusBar Appearance=""Appearance.WinXP"">
+    <WinOldStatusBarPanel Text=""Done"" />
+    <WinOldStatusBarPanel Width=""160px"" IconCssClass=""bi bi-globe"" Text=""Internet"" />
+</WinOldStatusBar>") />
+
+<h2>Always full width</h2>
+
+<p>Whatever the number of panels and their widths, the bar fills the whole width of its container.</p>
+
+<div class="alert alert-info" role="alert">
+    <strong>Tip :</strong> drag the bottom-right corner of the dashed box to resize it.
+</div>
+
+<div style="resize:horizontal; overflow:auto; border:1px dashed #999; padding:8px; min-width:200px; max-width:100%; width:700px; display:flex; flex-direction:column; gap:12px;">
+    <div>
+        <h7>No Width at all: equal shares</h7>
+        <WinOldStatusBar Appearance="Appearance.Win98">
+            <WinOldStatusBarPanel Text="One" />
+            <WinOldStatusBarPanel Text="Two" />
+            <WinOldStatusBarPanel Text="Three" />
+        </WinOldStatusBar>
+    </div>
+    <div>
+        <h7>Mixed: the panel without Width takes the rest</h7>
+        <WinOldStatusBar Appearance="Appearance.Win98">
+            <WinOldStatusBarPanel Width="100px" Text="100px" />
+            <WinOldStatusBarPanel Text="auto" />
+            <WinOldStatusBarPanel Width="25%" Text="25%" />
+        </WinOldStatusBar>
+    </div>
+    <div>
+        <h7>Only Widths: the last one stretches</h7>
+        <WinOldStatusBar Appearance="Appearance.Win98">
+            <WinOldStatusBarPanel Width="100px" Text="100px" />
+            <WinOldStatusBarPanel Width="100px" Text="100px" />
+            <WinOldStatusBarPanel Width="100px" Text="100px (stretched)" />
+        </WinOldStatusBar>
+    </div>
+</div>
+
+<h2>In a window</h2>
+
+<p>
+    <code>WinOldWindow</code> has a <code>StatusBar</code> slot: the bar is drawn under the body, flush against the
+    bottom edge of the window, and inherits its <code>Appearance</code>.
+</p>
+
+<div style="display:flex; gap: 16px; flex-wrap: wrap; margin-bottom: 8px;">
+    @foreach (var (appearance, label) in _appearances)
+    {
+        <WinOldWindow Appearance="appearance" Title="@label" Style="width: 320px; height: 200px;">
+            <ChildContent>
+                <div style="padding:6px;">Window content</div>
+            </ChildContent>
+            <StatusBar>
+                <WinOldStatusBar>
+                    <WinOldStatusBarPanel Text="Ready" />
+                    <WinOldStatusBarPanel Width="90px" Align="StatusBarPanelAlign.Right" Text="Ln 1, Col 1" />
+                </WinOldStatusBar>
+            </StatusBar>
+        </WinOldWindow>
+    }
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"<WinOldWindow Appearance=""Appearance.WinXP"" Title=""Notepad"">
+    <ChildContent>
+        ...
+    </ChildContent>
+    <StatusBar>
+        <WinOldStatusBar>
+            <WinOldStatusBarPanel Text=""Ready"" />
+            <WinOldStatusBarPanel Width=""90px"" Align=""StatusBarPanelAlign.Right"" Text=""Ln 1, Col 1"" />
+        </WinOldStatusBar>
+    </StatusBar>
+</WinOldWindow>") />
+
+<h2>WinOldStatusBar Properties</h2>
+
+<div style="margin: 20px 0; border: 1px solid #ccc;">
+    <div style="display: flex; flex-wrap: wrap; background-color: #f0f0f0; font-weight: bold; border-bottom: 2px solid #ccc;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;">Property</div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Type</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Default</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Description</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Appearance</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Appearance?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Visual style: DOS, Win31, Win98, WinXP, Win7, Win10. When unset, inherits the hosting <code>WinOldWindow</code>'s Appearance, then Win10. Inherited by child panels.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>ChildContent</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">RenderFragment?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">—</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Panels (typically <code>WinOldStatusBarPanel</code> components)</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Disabled</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">false</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Grays out the text of the bar and cascades to its content</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>TouchMode</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">bool</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">false</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Taller bar for touch interaction</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Class</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Additional CSS class applied to the bar container — fully overrides the built-in background/border/padding</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Style</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Inline CSS style applied to the bar container</div>
+    </div>
+</div>
+
+<h2>WinOldStatusBarPanel Properties</h2>
+
+<div style="margin: 20px 0; border: 1px solid #ccc;">
+    <div style="display: flex; flex-wrap: wrap; background-color: #f0f0f0; font-weight: bold; border-bottom: 2px solid #ccc;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;">Property</div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Type</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Default</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Description</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Text</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Text of the panel, truncated with an ellipsis when too long. Ignored when <code>ChildContent</code> is set.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>ChildContent</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">RenderFragment?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Free content of the panel. Takes priority over <code>Text</code>.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Width</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Any CSS length (<code>"120px"</code>, <code>"25%"</code>, <code>"12ch"</code>…). When unset, the panel shares the remaining space. When every panel has one, the last panel stretches.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Align</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">StatusBarPanelAlign</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Left</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Horizontal alignment of the content: Left, Center, Right</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>IconCssClass</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">CSS class(es) for an icon from any icon library. Ignored when <code>IconTemplate</code> is set.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>IconTemplate</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">RenderFragment?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Custom icon content (SVG, <code>&lt;img&gt;</code>, Blazor component…). Takes priority over <code>IconCssClass</code>.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Appearance</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Appearance?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Overrides the ancestor <code>WinOldStatusBar</code>'s Appearance for this one panel</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Class</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Additional CSS class applied to the panel</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Style</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">string?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Inline CSS style applied to the panel</div>
+    </div>
+</div>
+
+<h2>WinOldWindow</h2>
+
+<div style="margin: 20px 0; border: 1px solid #ccc;">
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>StatusBar</code></div>
+        <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">RenderFragment?</div>
+        <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">null</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Status bar rendered under the body, flush against the bottom edge of the window</div>
+    </div>
+</div>
+
+@code {
+    private readonly (Appearance, string)[] _appearances =
+    [
+        (Appearance.DOS, "DOS"),
+        (Appearance.Win31, "Windows 3.1"),
+        (Appearance.Win98, "Windows 98"),
+        (Appearance.WinXP, "Windows XP"),
+        (Appearance.Win7, "Windows 7"),
+        (Appearance.Win10, "Windows 10"),
+    ];
+}

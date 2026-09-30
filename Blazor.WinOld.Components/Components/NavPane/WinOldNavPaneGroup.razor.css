@@ -1,0 +1,517 @@
+.navpane-group {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    min-height: 0;
+}
+
+.navpane-group-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    flex-shrink: 0;
+}
+
+button.navpane-group-header {
+    cursor: pointer;
+}
+
+    button.navpane-group-header:disabled {
+        cursor: default;
+    }
+
+.navpane-group-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.navpane-group-title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.navpane-group-chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.navpane-group-items {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* Accordion: the expanded group takes the remaining height of the pane and scrolls its items. */
+.navpane-group-accordion.navpane-group-expanded {
+    flex: 1 1 0;
+}
+
+    .navpane-group-accordion.navpane-group-expanded > .navpane-group-items {
+        flex: 1 1 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+/* Scroll buttons (Office 97 Outlook bar): the scrollbar is hidden and replaced by arrow buttons
+   laid over the items, revealed by navpane.js only when items are hidden on their side. */
+.navpane-group-scroller {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.navpane-group-accordion.navpane-group-expanded > .navpane-group-scroller {
+    flex: 1 1 0;
+}
+
+.navpane-group-scroller > .navpane-group-items {
+    flex: 1 1 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+    .navpane-group-scroller > .navpane-group-items::-webkit-scrollbar {
+        display: none;
+    }
+
+.navpane-scroll-btn {
+    position: absolute;
+    right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: silver;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+    cursor: pointer;
+}
+
+    .navpane-scroll-btn[hidden] {
+        display: none;
+    }
+
+    .navpane-scroll-btn:active {
+        box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+    }
+
+        .navpane-scroll-btn:active::before {
+            transform: translate(1px, 1px);
+        }
+
+    .navpane-scroll-btn::before {
+        content: '';
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+    }
+
+.navpane-scroll-up {
+    top: 4px;
+}
+
+    .navpane-scroll-up::before {
+        border-bottom: 4px solid #000;
+    }
+
+.navpane-scroll-down {
+    bottom: 4px;
+}
+
+    .navpane-scroll-down::before {
+        border-top: 4px solid #000;
+    }
+
+.navpane-group-disabled .navpane-scroll-btn {
+    pointer-events: none;
+}
+
+    .navpane-group-disabled .navpane-scroll-btn::before {
+        border-top-color: #808080;
+        border-bottom-color: #808080;
+    }
+
+/* Compact pane: headers are hidden and every group is shown, separated by a line. */
+.navpane-group-compact > .navpane-group-header {
+    display: none;
+}
+
+.navpane-group-compact:not(:first-child) {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(0, 0, 0, .15);
+}
+
+/*--------*\
+    DOS
+\*--------*/
+.navpane-group-dos > .navpane-group-header {
+    gap: 1ch;
+    padding: 0 1ch;
+    margin-top: 4px;
+}
+
+.navpane-group-dos:first-child > .navpane-group-header {
+    margin-top: 0;
+}
+
+    .navpane-group-dos > .navpane-group-header:focus-visible {
+        outline: none;
+        background: #1a1a1a;
+        color: var(--dos-background);
+    }
+
+.navpane-group-dos .navpane-group-icon {
+    display: none;
+}
+
+.navpane-group-dos .navpane-group-title {
+    text-transform: uppercase;
+}
+
+    .navpane-group-dos .navpane-group-title::before {
+        content: '\2500  ';
+        white-space: pre;
+    }
+
+.navpane-group-dos .navpane-group-chevron::before {
+    content: '[-]';
+}
+
+.navpane-group-dos.navpane-group-collapsed .navpane-group-chevron::before {
+    content: '[+]';
+}
+
+.navpane-group-dos.navpane-group-compact:not(:first-child) {
+    border-top: 2px solid #1a1a1a;
+}
+
+/*--------*\
+   Win 31
+\*--------*/
+.navpane-group-31 > .navpane-group-header {
+    min-height: 18px;
+    padding: 1px 4px;
+    background: #c0c0c0;
+    border-bottom: 1px solid #000;
+    box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
+}
+
+.navpane-group-31:not(:first-child) > .navpane-group-header {
+    border-top: 1px solid #000;
+}
+
+    .navpane-group-31 > .navpane-group-header:focus-visible {
+        outline: 1px dotted #000;
+        outline-offset: -3px;
+    }
+
+.navpane-group-31 .navpane-group-chevron {
+    box-sizing: border-box;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #000;
+    background: #fff;
+    font-size: 9px;
+    line-height: 1;
+}
+
+    .navpane-group-31 .navpane-group-chevron::before {
+        content: '-';
+    }
+
+.navpane-group-31.navpane-group-collapsed .navpane-group-chevron::before {
+    content: '+';
+}
+
+.navpane-group-31 .navpane-group-items {
+    padding: 2px 0;
+}
+
+.navpane-group-31.navpane-group-compact:not(:first-child) {
+    border-top-color: #000;
+}
+
+/*--------*\
+   Win 98
+\*--------*/
+/* Office 97 Outlook bar: the group headers are raised buttons stacked above and below the open group. */
+.navpane-group-98 > .navpane-group-header {
+    justify-content: center;
+    min-height: 20px;
+    padding: 3px 4px 2px;
+    background: silver;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+    color: #000;
+    text-align: center;
+}
+
+    .navpane-group-98 > button.navpane-group-header:not(:disabled):active {
+        box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+    }
+
+    .navpane-group-98 > .navpane-group-header:focus-visible {
+        outline: 1px dotted #000;
+        outline-offset: -4px;
+    }
+
+.navpane-group-98 .navpane-group-title {
+    flex: 0 1 auto;
+}
+
+.navpane-group-98 .navpane-group-chevron {
+    display: none;
+}
+
+.navpane-group-98 .navpane-group-items {
+    align-items: center;
+    gap: 8px;
+    padding: 8px 2px;
+    background: #808080;
+}
+
+.navpane-group-98.navpane-group-compact:not(:first-child) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 1px solid #404040;
+    box-shadow: inset 0 1px #a0a0a0;
+}
+
+/*--------*\
+    Win XP
+\*--------*/
+/* Windows XP task pane: white-to-blue header with a round double chevron, pale blue body. */
+.navpane-group-xp {
+    border-radius: 3px 3px 0 0;
+}
+
+    .navpane-group-xp > .navpane-group-header {
+        gap: 4px;
+        min-height: 23px;
+        padding: 0 3px 0 10px;
+        border-radius: 3px 3px 0 0;
+        background: linear-gradient(to right, #fff 25%, #c6d3f7);
+        color: #215dc6;
+        font-weight: bold;
+    }
+
+        .navpane-group-xp > button.navpane-group-header:not(:disabled):hover {
+            color: #428eff;
+        }
+
+        .navpane-group-xp > .navpane-group-header:focus-visible {
+            outline: 1px dotted #215dc6;
+            outline-offset: -2px;
+        }
+
+.navpane-group-xp .navpane-group-icon {
+    font-size: 16px;
+}
+
+/* Round white button holding a double chevron, pointing up when expanded, down when collapsed. */
+.navpane-group-xp .navpane-group-chevron {
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #b9c5e6;
+    border-radius: 50%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M5 7.5l3-3 3 3M5 11.5l3-3 3 3' fill='none' stroke='%23455d8f' stroke-width='1.4'/%3E%3C/svg%3E") center / 16px 16px no-repeat, linear-gradient(135deg, #fff 40%, #dde4f5);
+    box-shadow: 1px 1px 1px rgba(99, 117, 214, .45);
+}
+
+.navpane-group-xp.navpane-group-collapsed .navpane-group-chevron {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M5 4.5l3 3 3-3M5 8.5l3 3 3-3' fill='none' stroke='%23455d8f' stroke-width='1.4'/%3E%3C/svg%3E") center / 16px 16px no-repeat, linear-gradient(135deg, #fff 40%, #dde4f5);
+}
+
+.navpane-group-xp > button.navpane-group-header:not(:disabled):hover .navpane-group-chevron {
+    border-color: #8fa6e0;
+}
+
+.navpane-group-xp .navpane-group-items {
+    gap: 4px;
+    padding: 9px 12px 10px;
+    background: #d6dff7;
+    border: 1px solid #fff;
+    border-top: 0;
+}
+
+.navpane-group-xp.navpane-group-compact:not(:first-child) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.navpane-group-xp.navpane-group-compact > .navpane-group-items {
+    align-items: center;
+    padding: 6px 0;
+    border-radius: 3px;
+    border-top: 1px solid #fff;
+}
+
+/*--------*\
+    Win 7
+\*--------*/
+/* Windows 7 Explorer: the header behaves like an item, with a triangle fading in on hover. */
+.navpane-group-7 {
+    margin-bottom: 14px;
+}
+
+    .navpane-group-7 > .navpane-group-header {
+        gap: 5px;
+        min-height: 22px;
+        padding: 2px 4px 2px 0;
+        border: 1px solid transparent;
+        border-radius: 3px;
+    }
+
+        .navpane-group-7 > button.navpane-group-header:not(:disabled):hover {
+            background: linear-gradient(#fafbfd, #ebf3fd);
+            border-color: #b8d6fb;
+        }
+
+        .navpane-group-7 > .navpane-group-header:focus-visible {
+            outline: 1px dotted #000;
+            outline-offset: -2px;
+        }
+
+.navpane-group-7 .navpane-group-icon {
+    width: 16px;
+    font-size: 15px;
+}
+
+.navpane-group-7 .navpane-group-chevron {
+    order: -1;
+    width: 14px;
+    font-size: 8px;
+    color: #262626;
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+    .navpane-group-7 .navpane-group-chevron::before {
+        content: '\25E2';
+    }
+
+.navpane-group-7.navpane-group-collapsed .navpane-group-chevron {
+    color: #a6a6a6;
+}
+
+    .navpane-group-7.navpane-group-collapsed .navpane-group-chevron::before {
+        content: '\25B7';
+    }
+
+.navpane-body:hover .navpane-group-7 .navpane-group-chevron,
+.navpane-group-7 > .navpane-group-header:focus-visible .navpane-group-chevron {
+    opacity: 1;
+}
+
+.navpane-group-7.navpane-group-compact {
+    margin-bottom: 0;
+}
+
+    .navpane-group-7.navpane-group-compact:not(:first-child) {
+        border-top-color: #d6e5f5;
+    }
+
+/*--------*\
+    Win 10
+\*--------*/
+/* Groove Music: groups separated by a thin line, Windows 11 rounded hover. */
+.navpane-group-10:not(:first-child) {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid #d9d9d9;
+}
+
+.navpane-group-10 > .navpane-group-header {
+    gap: 16px;
+    min-height: 40px;
+    padding: 0 12px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+    .navpane-group-10 > button.navpane-group-header:not(:disabled):hover {
+        background: rgba(0, 0, 0, .04);
+    }
+
+    .navpane-group-10 > button.navpane-group-header:not(:disabled):active {
+        background: rgba(0, 0, 0, .02);
+        color: rgba(0, 0, 0, .6);
+    }
+
+    .navpane-group-10 > .navpane-group-header:focus-visible {
+        outline: 2px solid #000;
+        outline-offset: -2px;
+    }
+
+.navpane-group-10 .navpane-group-icon {
+    width: 16px;
+    font-size: 16px;
+}
+
+/* Thin chevron, like Windows 11: up when expanded, down when collapsed. */
+.navpane-group-10 .navpane-group-chevron {
+    width: 16px;
+    height: 16px;
+}
+
+    .navpane-group-10 .navpane-group-chevron::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        transform: translateY(2px) rotate(-135deg);
+        transition: transform .15s;
+    }
+
+.navpane-group-10.navpane-group-collapsed .navpane-group-chevron::before {
+    transform: translateY(-2px) rotate(45deg);
+}
+
+.navpane-group-10.navpane-group-compact:not(:first-child) {
+    border-top-color: #d9d9d9;
+}
+
+/*--------*\
+    Disabled
+\*--------*/
+.navpane-group-disabled > .navpane-group-header {
+    color: #808080;
+}
+
+.navpane-group-dos.navpane-group-disabled > .navpane-group-header {
+    color: #686868;
+}
+
+.navpane-group-10.navpane-group-disabled > .navpane-group-header {
+    color: rgba(0, 0, 0, .36);
+}
+
+/*--------*\
+    Touch Mode
+\*--------*/
+.win-touch > .navpane-group-header {
+    min-height: 40px;
+}

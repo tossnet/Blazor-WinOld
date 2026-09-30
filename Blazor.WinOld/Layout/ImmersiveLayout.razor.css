@@ -1,0 +1,19 @@
+﻿/* Shared layout of the screens of the immersive demo */
+.immersive-content ::deep .screen {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 760px;
+    padding: 12px;
+}
+
+.immersive-content ::deep .screen-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.immersive-content ::deep .screen-buttons {
+    justify-content: flex-end;
+}

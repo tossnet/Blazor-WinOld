@@ -111,7 +111,7 @@ public partial class WinOldMenuItem : WinOldComponentBase
     /// </summary>
     private string GetSeparatorClass()
     {
-        return RootMenu?.ActualRoot.Appearance switch
+        return RootMenu?.ActualRoot.EffectiveAppearance switch
         {
             Appearance.DOS => "menu-separator-win-dos",
             Appearance.Win31 => "menu-separator-win-31",
@@ -126,7 +126,7 @@ public partial class WinOldMenuItem : WinOldComponentBase
     /// </summary>
     private string GetLabelClass()
     {
-        return RootMenu?.ActualRoot.Appearance switch
+        return RootMenu?.ActualRoot.EffectiveAppearance switch
         {
             Appearance.DOS => "menu-label-win-dos",
             Appearance.Win31 => "menu-label-win-31",
@@ -141,7 +141,7 @@ public partial class WinOldMenuItem : WinOldComponentBase
     /// </summary>
     private string GetArrowClass()
     {
-        return RootMenu?.ActualRoot.Appearance switch
+        return RootMenu?.ActualRoot.EffectiveAppearance switch
         {
             Appearance.DOS => "menu-arrow-win-dos",
             Appearance.Win31 => "menu-arrow-win-31",
@@ -154,7 +154,7 @@ public partial class WinOldMenuItem : WinOldComponentBase
     }
 
     // DOS and Win31 both render the access key as a separate span (red in DOS, underlined in Win31)
-    private bool ShowHotKey => RootMenu?.ActualRoot.Appearance is Appearance.DOS or Appearance.Win31;
+    private bool ShowHotKey => RootMenu?.ActualRoot.EffectiveAppearance is Appearance.DOS or Appearance.Win31;
 
     /// <summary>
     /// Splits the label around the first occurrence of the hot key.

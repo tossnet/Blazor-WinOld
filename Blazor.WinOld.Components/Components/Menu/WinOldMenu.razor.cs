@@ -13,9 +13,21 @@ public partial class WinOldMenu : WinOldComponentBase
     [Parameter] 
     public RenderFragment? ChildContent { get; set; }
 
+    /// <summary>
+    /// Visual style. When unset, falls back to the Appearance of the hosting <see cref="WinOldWindow"/>
+    /// or <see cref="WinOldAppShell"/>, then to <see cref="Blazor.WinOld.Components.Appearance.Win10"/>.
     /// </summary>
     [Parameter]
-    public Appearance Appearance { get; set; } = Appearance.Win10;
+    public Appearance? Appearance { get; set; }
+
+    /// </summary>
+    [CascadingParameter(Name = "WindowAppearance")]
+    public Appearance? WindowAppearance { get; set; }
+
+    /// <summary>
+    /// Appearance actually rendered.
+    /// </summary>
+    public Appearance EffectiveAppearance => Appearance ?? WindowAppearance ?? global::Blazor.WinOld.Components.Appearance.Win10;
 
     /// <summary>Contrôlé par le MenuItem parent pour afficher/masquer </summary>
     [Parameter] 
@@ -46,14 +58,14 @@ public partial class WinOldMenu : WinOldComponentBase
         {
             var baseClass = (RootMenu?.IsRoot == false || ActualRoot.IsContextMenu) ? "subsub-win" : "submenu-win";
 
-            var suffix = ActualRoot.Appearance switch
+            var suffix = ActualRoot.EffectiveAppearance switch
             {
-                Appearance.DOS => "dos",
-                Appearance.Win31 => "31",
-                Appearance.Win98 => "98",
-                Appearance.WinXP => "xp",
-                Appearance.Win7  => "7",
-                Appearance.Win10 => "10",
+                global::Blazor.WinOld.Components.Appearance.DOS => "dos",
+                global::Blazor.WinOld.Components.Appearance.Win31 => "31",
+                global::Blazor.WinOld.Components.Appearance.Win98 => "98",
+                global::Blazor.WinOld.Components.Appearance.WinXP => "xp",
+                global::Blazor.WinOld.Components.Appearance.Win7  => "7",
+                global::Blazor.WinOld.Components.Appearance.Win10 => "10",
                 _ => "10"
             };
 
@@ -61,14 +73,14 @@ public partial class WinOldMenu : WinOldComponentBase
         }
     }
 
-    private string ContextMenuAppearanceClass => Appearance switch
+    private string ContextMenuAppearanceClass => EffectiveAppearance switch
     {
-        Appearance.DOS => "submenu-win-dos",
-        Appearance.Win31 => "submenu-win-31",
-        Appearance.Win98 => "submenu-win-98",
-        Appearance.WinXP => "submenu-win-xp",
-        Appearance.Win7  => "submenu-win-7",
-        Appearance.Win10 => "submenu-win-10",
+        global::Blazor.WinOld.Components.Appearance.DOS => "submenu-win-dos",
+        global::Blazor.WinOld.Components.Appearance.Win31 => "submenu-win-31",
+        global::Blazor.WinOld.Components.Appearance.Win98 => "submenu-win-98",
+        global::Blazor.WinOld.Components.Appearance.WinXP => "submenu-win-xp",
+        global::Blazor.WinOld.Components.Appearance.Win7  => "submenu-win-7",
+        global::Blazor.WinOld.Components.Appearance.Win10 => "submenu-win-10",
         _ => "submenu-win-10"
     };
 
@@ -166,14 +178,14 @@ public partial class WinOldMenu : WinOldComponentBase
     /// </summary>
     private string GetComponentClass()
     {
-        return ActualRoot.Appearance switch
+        return ActualRoot.EffectiveAppearance switch
         {
-            Appearance.DOS => "menu-win-dos",
-            Appearance.Win31 => "menu-win-31",
-            Appearance.Win98 => "menu-win-98",
-            Appearance.WinXP => "menu-win-xp",
-            Appearance.Win7  => "menu-win-7",
-            Appearance.Win10 => "menu-win-10",
+            global::Blazor.WinOld.Components.Appearance.DOS => "menu-win-dos",
+            global::Blazor.WinOld.Components.Appearance.Win31 => "menu-win-31",
+            global::Blazor.WinOld.Components.Appearance.Win98 => "menu-win-98",
+            global::Blazor.WinOld.Components.Appearance.WinXP => "menu-win-xp",
+            global::Blazor.WinOld.Components.Appearance.Win7  => "menu-win-7",
+            global::Blazor.WinOld.Components.Appearance.Win10 => "menu-win-10",
             _ => "menu-win-10"
         };
     }

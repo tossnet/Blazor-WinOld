@@ -1,0 +1,418 @@
+.navpane-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.navpane-item-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.navpane-item-text {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.navpane-item-badge {
+    flex-shrink: 0;
+}
+
+/* Compact pane: only the icon remains, centered; the text becomes the tooltip. */
+.navpane-item-compact {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+    .navpane-item-compact .navpane-item-text,
+    .navpane-item-compact .navpane-item-badge {
+        display: none;
+    }
+
+.navpane-item-disabled {
+    cursor: default;
+    pointer-events: none;
+}
+
+/*--------*\
+    DOS
+\*--------*/
+.navpane-item-dos {
+    gap: 0;
+    padding: 0 1ch;
+    line-height: 16px;
+}
+
+    .navpane-item-dos::before {
+        content: '  ';
+        white-space: pre;
+        flex-shrink: 0;
+    }
+
+    .navpane-item-dos:not(.navpane-item-compact) .navpane-item-icon {
+        display: none;
+    }
+
+    .navpane-item-dos.navpane-item-active {
+        background: #1a1a1a;
+        color: #fff;
+    }
+
+        .navpane-item-dos.navpane-item-active::before {
+            content: '\25BA ';
+        }
+
+    .navpane-item-dos:focus-visible {
+        outline: none;
+        background: #555;
+        color: #fff;
+    }
+
+    .navpane-item-dos.navpane-item-compact::before {
+        content: none;
+    }
+
+    .navpane-item-dos .navpane-item-badge::before {
+        content: ' (';
+        white-space: pre;
+    }
+
+    .navpane-item-dos .navpane-item-badge::after {
+        content: ')';
+    }
+
+    .navpane-item-dos.navpane-item-disabled {
+        color: #686868;
+    }
+
+/*--------*\
+   Win 31
+\*--------*/
+.navpane-item-31 {
+    min-height: 18px;
+    padding: 1px 6px 1px 18px;
+}
+
+.navpane-body > .navpane-item-31 {
+    padding-left: 6px;
+}
+
+.navpane-item-31 .navpane-item-icon {
+    width: 16px;
+    font-size: 14px;
+}
+
+.navpane-item-31.navpane-item-active {
+    background: #000080;
+    color: #fff;
+}
+
+.navpane-item-31:focus-visible {
+    outline: 1px dotted #000;
+    outline-offset: -1px;
+}
+
+.navpane-item-31.navpane-item-active:focus-visible {
+    outline-color: #fff;
+}
+
+.navpane-item-31 .navpane-item-badge::before,
+.navpane-item-98 .navpane-item-badge::before,
+.navpane-item-xp .navpane-item-badge::before {
+    content: '(';
+}
+
+.navpane-item-31 .navpane-item-badge::after,
+.navpane-item-98 .navpane-item-badge::after,
+.navpane-item-xp .navpane-item-badge::after {
+    content: ')';
+}
+
+.navpane-item-31.navpane-item-disabled {
+    color: #808080;
+}
+
+.navpane-item-31.navpane-item-compact,
+.navpane-body > .navpane-item-31.navpane-item-compact {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/*--------*\
+   Win 98
+\*--------*/
+/* Office 97 Outlook bar: large icon with its caption underneath, raised on hover, sunken when active. */
+/* Wrapping flex row: the icon's side margins make it fill its own line, so the text and the badge
+   share the next line and are centered together, with or without a badge. */
+.navpane-item-98 {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3px 0;
+    width: 100%;
+    padding: 2px;
+    color: #fff;
+    text-align: center;
+}
+
+    .navpane-item-98 .navpane-item-icon {
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        margin: 0 calc(50% - 20px);
+        font-size: 30px;
+    }
+
+        .navpane-item-98 .navpane-item-icon ::deep :where(img, svg) {
+            width: 32px;
+            height: 32px;
+        }
+
+    .navpane-item-98 .navpane-item-text {
+        flex: 0 1 auto;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .navpane-item-98 .navpane-item-badge {
+        margin-left: 3px;
+    }
+
+    .navpane-item-98:hover .navpane-item-icon {
+        box-shadow: inset 1px 1px #dfdfdf, inset -1px -1px #0a0a0a;
+    }
+
+    .navpane-item-98:active .navpane-item-icon,
+    .navpane-item-98.navpane-item-active .navpane-item-icon {
+        box-shadow: inset 1px 1px #0a0a0a, inset -1px -1px #dfdfdf;
+        background: rgba(0, 0, 0, .12);
+    }
+
+    .navpane-item-98:focus-visible {
+        outline: none;
+    }
+
+        .navpane-item-98:focus-visible .navpane-item-text {
+            outline: 1px dotted #fff;
+        }
+
+    .navpane-item-98.navpane-item-disabled {
+        color: #c0c0c0;
+    }
+
+/*--------*\
+    Win XP
+\*--------*/
+/* Windows XP task pane: blue links, underlined on hover. */
+.navpane-item-xp {
+    gap: 5px;
+    min-height: 17px;
+    padding: 0;
+    color: #215dc6;
+}
+
+    .navpane-item-xp .navpane-item-icon {
+        width: 16px;
+        height: 16px;
+        font-size: 15px;
+    }
+
+    .navpane-item-xp:hover {
+        color: #428eff;
+    }
+
+        .navpane-item-xp:hover .navpane-item-text {
+            text-decoration: underline;
+        }
+
+    .navpane-item-xp.navpane-item-active {
+        font-weight: bold;
+    }
+
+    .navpane-item-xp:focus-visible {
+        outline: 1px dotted currentColor;
+        outline-offset: 1px;
+    }
+
+    .navpane-item-xp .navpane-item-badge {
+        margin-left: -2px;
+    }
+
+    .navpane-item-xp.navpane-item-disabled {
+        color: #8b9ac7;
+    }
+
+/* Items placed directly on the blue background of the pane. */
+.navpane-body > .navpane-item-xp {
+    color: #fff;
+}
+
+.navpane-item-xp.navpane-item-compact {
+    padding: 3px 0;
+}
+
+/*--------*\
+    Win 7
+\*--------*/
+/* Windows 7 Explorer: pale blue gradients with a rounded border. */
+.navpane-item-7 {
+    gap: 5px;
+    min-height: 22px;
+    padding: 2px 4px 2px 34px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    color: #000;
+}
+
+.navpane-body > .navpane-item-7 {
+    padding-left: 19px;
+}
+
+.navpane-item-7 .navpane-item-icon {
+    width: 16px;
+    font-size: 15px;
+}
+
+.navpane-item-7:hover {
+    background: linear-gradient(#fafbfd, #ebf3fd);
+    border-color: #b8d6fb;
+}
+
+.navpane-item-7.navpane-item-active {
+    background: linear-gradient(#dcebfc, #c1dcfc);
+    border-color: #7da2ce;
+}
+
+    .navpane-item-7.navpane-item-active:hover {
+        background: linear-gradient(#d0e5fb, #b2d3fb);
+    }
+
+.navpane-item-7:focus-visible {
+    outline: 1px dotted #000;
+    outline-offset: -3px;
+}
+
+.navpane-item-7 .navpane-item-badge {
+    padding: 0 5px;
+    border-radius: 7px;
+    background: #e5eef9;
+    color: #1e395b;
+    font-size: 8pt;
+}
+
+.navpane-item-7.navpane-item-disabled {
+    color: #838383;
+}
+
+.navpane-item-7.navpane-item-compact,
+.navpane-body > .navpane-item-7.navpane-item-compact {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/*--------*\
+    Win 10
+\*--------*/
+/* Groove Music layout with Windows 11 selection: rounded background and a vertical accent pill. */
+.navpane-item-10 {
+    gap: 16px;
+    min-height: 40px;
+    margin: 1px 0;
+    padding: 0 12px;
+    border-radius: 4px;
+    color: #1a1a1a;
+}
+
+    .navpane-item-10 .navpane-item-icon {
+        width: 16px;
+        font-size: 16px;
+    }
+
+    .navpane-item-10:hover {
+        background: rgba(0, 0, 0, .04);
+    }
+
+    .navpane-item-10.navpane-item-active {
+        background: rgba(0, 0, 0, .06);
+    }
+
+        .navpane-item-10.navpane-item-active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 3px;
+            height: 16px;
+            margin-top: -8px;
+            border-radius: 2px;
+            background: #0067c0;
+        }
+
+    .navpane-item-10:active {
+        background: rgba(0, 0, 0, .02);
+        color: rgba(0, 0, 0, .6);
+    }
+
+    .navpane-item-10:focus-visible {
+        outline: 2px solid #000;
+        outline-offset: -2px;
+    }
+
+    .navpane-item-10 .navpane-item-badge {
+        min-width: 16px;
+        height: 16px;
+        padding: 0 5px;
+        box-sizing: border-box;
+        border-radius: 8px;
+        background: #0067c0;
+        color: #fff;
+        font-size: 11px;
+        line-height: 16px;
+        text-align: center;
+    }
+
+    /* Compact: the badge becomes a dot on the icon. */
+    .navpane-item-10.navpane-item-compact .navpane-item-badge {
+        display: block;
+        position: absolute;
+        top: 9px;
+        left: calc(50% + 4px);
+        min-width: 0;
+        width: 7px;
+        height: 7px;
+        padding: 0;
+        font-size: 0;
+    }
+
+    .navpane-item-10.navpane-item-disabled {
+        color: rgba(0, 0, 0, .36);
+    }
+
+/*--------*\
+    Touch Mode
+\*--------*/
+.navpane-item.win-touch {
+    min-height: 40px;
+}
+
+.navpane-item-98.win-touch {
+    padding: 6px 2px;
+}

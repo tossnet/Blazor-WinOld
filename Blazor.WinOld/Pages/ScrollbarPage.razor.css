@@ -1,0 +1,8 @@
+.scroll-demo {
+    width: 160px;
+    height: 100px;
+    overflow: auto;
+    padding: 4px;
+    background: #fff;
+    border: 1px solid #808080;
+}

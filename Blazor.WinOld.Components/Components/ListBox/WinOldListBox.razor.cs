@@ -38,6 +38,25 @@ public partial class WinOldListBox : WinOldComponentBase
         {
             ListBoxItems.Add(item);
         }
+
+        if (SelectedItem is null && item.Value is not null && item.Value == SelectedValue)
+        {
+            SelectedItem = item;
+        }
+    }
+
+    /// </summary>
+    protected override void OnParametersSet()
+    {
+        // Keep the highlighted item in sync when SelectedValue is changed from outside
+        if (SelectedItem?.Value != SelectedValue)
+        {
+            SelectedItem = ListBoxItems.FirstOrDefault(i => i.Value == SelectedValue);
+            foreach (var listBoxItem in ListBoxItems)
+            {
+                listBoxItem.NotifySelectionChanged();
+            }
+        }
     }
 
     /// </summary>
@@ -64,10 +83,12 @@ public partial class WinOldListBox : WinOldComponentBase
     {
         return Appearance switch
         {
+            Appearance.DOS => "list-win-dos",
+            Appearance.Win31 => "list-win-31",
             Appearance.Win7 => "list-win-7",
             Appearance.WinXP => "list-win-xp",
             Appearance.Win98 => "list-win-98",
-            _ => "list-win-98"
+            _ => "list-win-10"
         };
     }
 }

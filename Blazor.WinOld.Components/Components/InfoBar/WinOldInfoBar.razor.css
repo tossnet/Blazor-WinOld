@@ -22,6 +22,11 @@
     margin-top: 6px;
 }
 
+    /* Content used as the message itself (no Title nor Message): aligned like Message */
+    .infobar-content:first-child {
+        margin-top: 0;
+    }
+
 .infobar-actions {
     display: flex;
     flex-wrap: wrap;
