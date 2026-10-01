@@ -1,0 +1,248 @@
+.hd-win {
+    all: unset;
+    display: block;
+    margin: 0 0 8px 0;
+}
+
+/*--------*\
+DOS
+\*--------*/
+.hd-dos {
+    font-family: 'IBMVGADos', monospace;
+    font-size: 14px;
+    line-height: 16px;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    -webkit-font-smoothing: none;
+}
+
+    .hd-dos.hd-1 {
+        font-size: 28px;
+        line-height: 32px;
+        border-bottom: 4px double currentColor;
+        padding-bottom: 2px;
+    }
+
+    .hd-dos.hd-2 {
+        border-bottom: 3px double currentColor;
+        padding-bottom: 2px;
+    }
+
+    .hd-dos.hd-3 {
+        border-bottom: 1px solid currentColor;
+        padding-bottom: 2px;
+    }
+
+    .hd-dos.hd-5,
+    .hd-dos.hd-6 {
+        text-transform: none;
+    }
+
+    .hd-dos[disabled] {
+        color: #686868;
+    }
+
+/*--------*\
+   Win 31
+\*--------*/
+.hd-win-31 {
+    font-family: var(--font-family);
+    font-size: 11px;
+    font-weight: bold;
+    color: #000;
+}
+
+    .hd-win-31.hd-1 {
+        font-size: 22px;
+        line-height: 26px;
+    }
+
+    .hd-win-31.hd-2 {
+        border-bottom: 1px solid #000;
+        padding-bottom: 2px;
+    }
+
+    .hd-win-31[disabled] {
+        color: #808080;
+    }
+
+/*--------*\
+   Win 98
+\*--------*/
+.hd-win-98 {
+    font-family: var(--font-family);
+    font-size: 11px;
+    font-weight: bold;
+    color: #000;
+}
+
+    .hd-win-98.hd-1 {
+        font-size: 22px;
+        line-height: 26px;
+    }
+
+    /* etched separator under the title, like the property sheets */
+    .hd-win-98.hd-1,
+    .hd-win-98.hd-2 {
+        border-bottom: 1px solid #808080;
+        box-shadow: 0 1px #fff;
+        padding-bottom: 3px;
+    }
+
+    .hd-win-98.hd-4,
+    .hd-win-98.hd-5,
+    .hd-win-98.hd-6 {
+        font-weight: normal;
+    }
+
+    .hd-win-98[disabled] {
+        color: #808080;
+        text-shadow: 1px 1px #fff;
+    }
+
+@media (prefers-color-scheme: dark) {
+    .hd-win-98 {
+        color: #fff;
+    }
+
+        .hd-win-98.hd-1,
+        .hd-win-98.hd-2 {
+            box-shadow: 0 1px #404040;
+        }
+
+        .hd-win-98[disabled] {
+            color: #a0a0a0;
+            text-shadow: none;
+        }
+}
+
+/*--------*\
+    Win XP
+\*--------*/
+.hd-win-xp {
+    font-family: Tahoma, var(--font-family);
+    font-size: 11px;
+    font-weight: bold;
+    color: #0046d5;
+}
+
+    .hd-win-xp.hd-1 {
+        font-family: "Franklin Gothic Medium", "Trebuchet MS", Tahoma, sans-serif;
+        font-size: 24px;
+        font-weight: normal;
+        line-height: 28px;
+        color: #003399;
+    }
+
+    .hd-win-xp.hd-2 {
+        font-family: "Trebuchet MS", Tahoma, sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+        color: #215dc6;
+        border-bottom: 1px solid #c2d1f0;
+        padding-bottom: 3px;
+    }
+
+    .hd-win-xp.hd-3 {
+        font-size: 13px;
+    }
+
+    .hd-win-xp.hd-5,
+    .hd-win-xp.hd-6 {
+        color: #000;
+    }
+
+    .hd-win-xp[disabled] {
+        color: #aca899;
+        border-color: #e0dfe3;
+    }
+
+/*--------*\
+    Win 7
+\*--------*/
+.hd-win-7 {
+    font-family: var(--font);
+    font-size: 10pt;
+    font-weight: 600;
+    color: #1e3287;
+    -webkit-font-smoothing: antialiased;
+}
+
+    .hd-win-7.hd-1 {
+        font-size: 16pt;
+        font-weight: normal;
+        color: #1e3287;
+    }
+
+    /* "main instruction" of the Win7 dialogs and control panel */
+    .hd-win-7.hd-2 {
+        font-size: 12pt;
+        font-weight: normal;
+        color: #003399;
+    }
+
+    .hd-win-7.hd-3 {
+        font-size: 11pt;
+        font-weight: normal;
+        color: #1e3287;
+        border-bottom: 1px solid #c5d1e3;
+        padding-bottom: 2px;
+    }
+
+    .hd-win-7.hd-5,
+    .hd-win-7.hd-6 {
+        color: #000;
+    }
+
+    .hd-win-7[disabled] {
+        color: #8d8d8d;
+    }
+
+/*--------*\
+    Win 10
+\*--------*/
+.hd-win-10 {
+    font-family: var(--font);
+    font-size: 10pt;
+    font-weight: 600;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+}
+
+    .hd-win-10.hd-1 {
+        font-size: 28pt;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+
+    .hd-win-10.hd-2 {
+        font-size: 15pt;
+        font-weight: 400;
+        line-height: 1.3;
+    }
+
+    .hd-win-10.hd-3 {
+        font-size: 12pt;
+        font-weight: 600;
+    }
+
+    .hd-win-10.hd-6 {
+        font-weight: 400;
+        color: #5d5d5d;
+    }
+
+    .hd-win-10[disabled] {
+        color: #a0a0a0;
+    }
+
+/*--------*\
+    Touch Mode
+\*--------*/
+.hd-win-7.win-touch.hd-4,
+.hd-win-7.win-touch.hd-5,
+.hd-win-7.win-touch.hd-6,
+.hd-win-10.win-touch.hd-4,
+.hd-win-10.win-touch.hd-5,
+.hd-win-10.win-touch.hd-6 {
+    font-size: 13px;
+}

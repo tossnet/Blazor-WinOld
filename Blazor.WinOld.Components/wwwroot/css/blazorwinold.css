@@ -413,6 +413,12 @@ label.label-txt-win {
     font-size: 11px;
 }
 
+@media (prefers-color-scheme: dark) {
+    .lbtxt-win-98 {
+        color: #fff;
+    }
+}
+
 
 /*--------*\
     Win 7

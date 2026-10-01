@@ -123,6 +123,12 @@
             box-shadow: none;
         }
 
+        .btn-win-31.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused):not(.active) {
+            border-color: transparent;
+            background: transparent;
+            box-shadow: none;
+        }
+
         .btn-win-xp.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused):not(.active) {
             border-color: transparent;
             background: transparent;
@@ -143,6 +149,18 @@
         .btn-win-10.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused):not(.active) {
             background-color: transparent;
             border-color: transparent;
+        }
+
+        /* XP and 7 hardcode dark text for their light button face. Once flat mode has
+           removed that face at rest, the text sits directly on the page background, which
+           is dark when the browser is in dark mode, so switch it to white. Same at-rest
+           selectors as above, so the dark text comes back with the face on hover, press
+           or focus. :disabled is excluded so each theme's grayed-out color still applies. */
+        @@media (prefers-color-scheme: dark) {
+            .btn-win-xp.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(.focused):not(.active):not(:disabled),
+            .btn-win-7.toolbar-btn-flat-win:not(:hover):not(:active):not(:focus):not(:focus-visible):not(.focused):not(.active):not(:disabled) {
+                color: #fff;
+            }
         }
     </style>
 }

@@ -31,7 +31,7 @@ public partial class WinOldTabPanel : WinOldComponentBase
     /// </summary>
     private string GetComponentClass()
     {
-        return ParentTabs.Appearance switch
+        return ParentTabs.EffectiveAppearance switch
         {
             Appearance.DOS => "panel-win-dos",
             Appearance.Win31 => "panel-win-31",

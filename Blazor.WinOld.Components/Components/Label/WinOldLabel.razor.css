@@ -28,6 +28,10 @@ DOS
     color: #000;
 }
 
+    .lbl-win-31[disabled] {
+        color: #808080;
+    }
+
 /*--------*\
    Win 98
 \*--------*/
@@ -35,6 +39,22 @@ DOS
     font-family: var(--font-family);
     font-size: 11px;
     color: #000;
+}
+
+    .lbl-win-98[disabled] {
+        color: #808080;
+        text-shadow: 1px 1px #fff;
+    }
+
+@media (prefers-color-scheme: dark) {
+    .lbl-win-98 {
+        color: #fff;
+    }
+
+        .lbl-win-98[disabled] {
+            color: #a0a0a0;
+            text-shadow: none;
+        }
 }
 
 /*--------*\
@@ -46,6 +66,10 @@ DOS
     color: #000;
 }
 
+    .lbl-win-xp[disabled] {
+        color: #aca899;
+    }
+
 /*--------*\
     Win 7
 \*--------*/
@@ -55,6 +79,10 @@ DOS
     color: #000;
     -webkit-font-smoothing: antialiased;
 }
+
+    .lbl-win-7[disabled] {
+        color: #8d8d8d;
+    }
 
 
 /*--------*\
@@ -66,6 +94,10 @@ DOS
     color: #000;
     -webkit-font-smoothing: antialiased;
 }
+
+    .lbl-win-10[disabled] {
+        color: #a0a0a0;
+    }
 
 /*--------*\
     Touch Mode

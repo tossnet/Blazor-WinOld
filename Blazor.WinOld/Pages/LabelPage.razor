@@ -1,65 +1,89 @@
-﻿@page "/label-page"
+@page "/label-page"
 
 <PageTitle>Label</PageTitle>
 
 <h1>Label</h1>
 
-<div style="display:flex; flex-direction:column; width:fit-content; margin-bottom:10px; padding:8px; background:var(--dos-background);">
-	<WinOldLabel Appearance="Appearance.DOS">
-		Hello DOS!
-	</WinOldLabel>
+<div class="wo-row wo-wrap wo-gap-20">
+	<div class="wo-flex-25">
+		<h7>DOS</h7>
+		<div class="wo-col wo-gap-4"
+			 style="width:fit-content; margin-bottom:10px; padding:8px; background:var(--dos-background);">
+			<WinOldLabel Appearance="Appearance.DOS">
+				Hello DOS!
+			</WinOldLabel>
 
-	<WinOldLabel Appearance="Appearance.DOS" Disabled>
-		Disabled DOS label
-	</WinOldLabel>
-</div>
+			<WinOldLabel Appearance="Appearance.DOS" Disabled>
+				Disabled label
+			</WinOldLabel>
+		</div>
+	</div>
 
-<div style="display:flex; flex-direction: row; gap: 10px;">
-	<WinOldLabel Appearance="Appearance.Win98">
-		Hello Win98!
-	</WinOldLabel>
+	<div class="wo-flex-25">
+		<h7>Win31</h7>
+		<div class="wo-col wo-gap-4"
+			 style="width:fit-content; margin-bottom:10px; padding:8px; background:white;">
+			<WinOldLabel Appearance="Appearance.Win31">
+				Hello Win 3.1!
+			</WinOldLabel>
 
-	<WinOldLabel Appearance="Appearance.WinXP">
-		Hello WinXP!
-	</WinOldLabel>
+			<WinOldLabel Appearance="Appearance.Win31" Disabled>
+				Disabled label
+			</WinOldLabel>
+		</div>
+	</div>
 
-	<WinOldLabel Appearance="Appearance.Win7">
-		Hello Win7!
-	</WinOldLabel>
+	<div class="wo-flex-25">
+		<h7>Win98</h7>
+		<div class="wo-col wo-gap-4" style="width:fit-content; margin-bottom:10px; padding:8px;">
+			<WinOldLabel Appearance="Appearance.Win98">
+				Hello Win98!
+			</WinOldLabel>
 
-	<WinOldLabel Appearance="Appearance.Win10">
-		Hello Win10!
-	</WinOldLabel>
-</div>
+			<WinOldLabel Appearance="Appearance.Win98" Disabled>
+				Disabled label
+			</WinOldLabel>
+		</div>
+	</div>
 
-<h2>Touch Mode</h2>
+	<div class="wo-flex-25">
+		<h7>WinXP</h7>
+		<div class="wo-col wo-gap-4" style="width:fit-content; margin-bottom:10px; padding:8px;">
+			<WinOldLabel Appearance="Appearance.WinXP">
+				Hello WinXP!
+			</WinOldLabel>
 
-<div style="display:flex; flex-direction:column; width:fit-content; margin-bottom:10px; padding:8px; background:var(--dos-background);">
-	<WinOldLabel Appearance="Appearance.DOS" TouchMode="true">
-		Hello DOS!
-	</WinOldLabel>
+			<WinOldLabel Appearance="Appearance.WinXP" Disabled>
+				Disabled label
+			</WinOldLabel>
+		</div>
+	</div>
 
-	<WinOldLabel Appearance="Appearance.DOS" TouchMode="true" Disabled>
-		Disabled DOS label
-	</WinOldLabel>
-</div>
+	<div class="wo-flex-25">
+		<h7>Win7</h7>
+		<div class="wo-col wo-gap-4" style="width:fit-content; margin-bottom:10px; padding:8px;">
+			<WinOldLabel Appearance="Appearance.Win7">
+				Hello Win7!
+			</WinOldLabel>
 
-<div style="display:flex; flex-direction: row; gap: 10px;">
-	<WinOldLabel Appearance="Appearance.Win98" TouchMode="true">
-		Hello Win98!
-	</WinOldLabel>
+			<WinOldLabel Appearance="Appearance.Win7" Disabled>
+				Disabled label
+			</WinOldLabel>
+		</div>
+	</div>
 
-	<WinOldLabel Appearance="Appearance.WinXP" TouchMode="true">
-		Hello WinXP!
-	</WinOldLabel>
+	<div class="wo-flex-25">
+		<h7>Win10</h7>
+		<div class="wo-col wo-gap-4" style="width:fit-content; margin-bottom:10px; padding:8px;">
+			<WinOldLabel Appearance="Appearance.Win10">
+				Hello Win10!
+			</WinOldLabel>
 
-	<WinOldLabel Appearance="Appearance.Win7" TouchMode="true">
-		Hello Win7!
-	</WinOldLabel>
-
-	<WinOldLabel Appearance="Appearance.Win10" TouchMode="true">
-		Hello Win10!
-	</WinOldLabel>
+			<WinOldLabel Appearance="Appearance.Win10" Disabled>
+				Disabled label
+			</WinOldLabel>
+		</div>
+	</div>
 </div>
 
 <CodeBlock Language="CodeLanguage.Razor"
@@ -69,11 +93,109 @@
 	Hello Win98!
 </WinOldLabel>
 
-<WinOldLabel Appearance=""Appearance.DOS"">
-	Hello DOS!
+<WinOldLabel Appearance=""Appearance.Win98"" Disabled>
+	Disabled label
+</WinOldLabel>") />
+
+<h2>Rich content &amp; custom style</h2>
+
+<p>
+	The content of the label is a <code>RenderFragment</code>: it can hold markup.
+	<code>Class</code> and <code>Style</code> are applied to the label element.
+</p>
+
+<div class="wo-row wo-wrap wo-gap-20" style="margin-bottom:10px;">
+	<WinOldLabel Appearance="Appearance.Win98">
+		File name: <b>README.TXT</b>
+	</WinOldLabel>
+
+	<WinOldLabel Appearance="Appearance.WinXP" Style="font-weight:bold;">
+		Bold WinXP label
+	</WinOldLabel>
+
+	<WinOldLabel Appearance="Appearance.Win10" Style="color:#0078d7;">
+		Accent Win10 label
+	</WinOldLabel>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldLabel Appearance=""Appearance.Win98"">
+	File name: <b>README.TXT</b>
 </WinOldLabel>
 
-<WinOldLabel Appearance=""Appearance.DOS"" Disabled>
-	Disabled DOS label
-</WinOldLabel>
-		   	 	 	 	 	 ") />
+<WinOldLabel Appearance=""Appearance.Win10"" Style=""color:#0078d7;"">
+	Accent Win10 label
+</WinOldLabel>") />
+
+<h2>Touch Mode</h2>
+
+<div class="wo-row wo-wrap wo-gap-20">
+	<div class="wo-flex-25">
+		<h7>DOS</h7>
+		<div class="wo-col wo-gap-4"
+			 style="width:fit-content; margin-bottom:10px; padding:8px; background:var(--dos-background);">
+			<WinOldLabel Appearance="Appearance.DOS" TouchMode="true">
+				Hello DOS!
+			</WinOldLabel>
+
+			<WinOldLabel Appearance="Appearance.DOS" TouchMode="true" Disabled>
+				Disabled label
+			</WinOldLabel>
+		</div>
+	</div>
+
+	<div class="wo-flex-25">
+		<h7>Win31</h7>
+		<div class="wo-col wo-gap-4"
+			 style="width:fit-content; margin-bottom:10px; padding:8px; background:white;">
+			<WinOldLabel Appearance="Appearance.Win31" TouchMode="true">
+				Hello Win 3.1!
+			</WinOldLabel>
+		</div>
+	</div>
+
+	<div class="wo-flex-25">
+		<h7>Win98</h7>
+		<div class="wo-col wo-gap-4" style="width:fit-content; margin-bottom:10px; padding:8px;">
+			<WinOldLabel Appearance="Appearance.Win98" TouchMode="true">
+				Hello Win98!
+			</WinOldLabel>
+		</div>
+	</div>
+
+	<div class="wo-flex-25">
+		<h7>WinXP</h7>
+		<div class="wo-col wo-gap-4" style="width:fit-content; margin-bottom:10px; padding:8px;">
+			<WinOldLabel Appearance="Appearance.WinXP" TouchMode="true">
+				Hello WinXP!
+			</WinOldLabel>
+		</div>
+	</div>
+
+	<div class="wo-flex-25">
+		<h7>Win7</h7>
+		<div class="wo-col wo-gap-4" style="width:fit-content; margin-bottom:10px; padding:8px;">
+			<WinOldLabel Appearance="Appearance.Win7" TouchMode="true">
+				Hello Win7!
+			</WinOldLabel>
+		</div>
+	</div>
+
+	<div class="wo-flex-25">
+		<h7>Win10</h7>
+		<div class="wo-col wo-gap-4" style="width:fit-content; margin-bottom:10px; padding:8px;">
+			<WinOldLabel Appearance="Appearance.Win10" TouchMode="true">
+				Hello Win10!
+			</WinOldLabel>
+		</div>
+	</div>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldLabel Appearance=""Appearance.Win10"" TouchMode=""true"">
+	Hello Win10!
+</WinOldLabel>") />

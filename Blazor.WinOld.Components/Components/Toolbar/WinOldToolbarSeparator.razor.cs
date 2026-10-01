@@ -27,6 +27,7 @@ public partial class WinOldToolbarSeparator : WinOldComponentBase
         return EffectiveAppearance switch
         {
             global::Blazor.WinOld.Components.Appearance.DOS => "toolbar-separator-dos",
+            global::Blazor.WinOld.Components.Appearance.Win31 => "toolbar-separator-win-31",
             global::Blazor.WinOld.Components.Appearance.Win98 => "toolbar-separator-win-98",
             global::Blazor.WinOld.Components.Appearance.WinXP => "toolbar-separator-win-xp",
             global::Blazor.WinOld.Components.Appearance.Win7 => "toolbar-separator-win-7",

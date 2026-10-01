@@ -60,8 +60,8 @@ public partial class WinOldToolbar : WinOldComponentBase
         var baseClass = EffectiveAppearance switch
         {
             global::Blazor.WinOld.Components.Appearance.DOS => "toolbar-dos",
-            global::Blazor.WinOld.Components.Appearance.Win98 => "toolbar-win-31",
-            global::Blazor.WinOld.Components.Appearance.Win31 => "toolbar-win-98",
+            global::Blazor.WinOld.Components.Appearance.Win31 => "toolbar-win-31",
+            global::Blazor.WinOld.Components.Appearance.Win98 => "toolbar-win-98",
             global::Blazor.WinOld.Components.Appearance.WinXP => "toolbar-win-xp",
             global::Blazor.WinOld.Components.Appearance.Win7 => "toolbar-win-7",
             global::Blazor.WinOld.Components.Appearance.Win10 => "toolbar-win-10",

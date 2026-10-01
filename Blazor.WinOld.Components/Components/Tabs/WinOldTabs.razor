@@ -21,6 +21,8 @@
 		}
 	</menu>
 	<CascadingValue Value="this">
-		@ChildContent
+		<CascadingValue Name="WindowAppearance" Value="@((Appearance?)EffectiveAppearance)">
+			@ChildContent
+		</CascadingValue>
 	</CascadingValue>
 </section>

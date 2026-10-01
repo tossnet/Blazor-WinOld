@@ -11,7 +11,7 @@
 else if (_isRootLevel && !(RootMenu?.IsContextMenu ?? false))
 {
     <div role="none"
-         class="menu-win-root-item @(_isOpen ? "open" : "") @((ParentDisabled == true || Disabled) ? "disabled" : "")"
+         class="menu-win-root-item @(_isOpen ? "open" : "") @((ParentDisabled == true || Disabled) ? "disabled" : "") @(IsTouchMode ? "win-touch" : "")"
          accesskey="@HotKey"
          @onclick:stopPropagation
          @onmouseenter="OnMouseEnter">
@@ -32,7 +32,7 @@ else if (_isRootLevel && !(RootMenu?.IsContextMenu ?? false))
 else
 {
     <li role="none"
-        class="menu-sub-win-item @(_isOpen ? "open" : "") @(Disabled ? "disabled" : "")"
+        class="menu-sub-win-item @(_isOpen ? "open" : "") @(Disabled ? "disabled" : "") @(IsTouchMode ? "win-touch" : "")"
         @onmouseenter="OnMouseEnter"
         @ontouchend="OnTouchEnd">
 

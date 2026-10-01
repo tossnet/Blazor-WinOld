@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.21.0] - 2026-10-01
+
+### Added
+- New component `WinOldHeading`: semantic heading (`h1` to `h6` with `Level`, default `h2`) styled like the titles of each appearance (DOS, Win 3.1, Win98, WinXP, Win7, Win10), with disabled state and a new **Heading** demo page.
+
+### Changed
+- `WinOldTabs`: `Appearance` is now nullable and falls back to the Appearance of the hosting `WinOldWindow` / `WinOldAppShell` (default still Win10). Its effective Appearance is cascaded to the tab content, so a `WinOldToolbar`, `WinOldMenu`, `WinOldStatusBar` or `WinOldNavPane` placed in a tab panel now inherits the style of the tabs.
+- `WinOldMenu`: `TouchMode` (parameter or cascaded) now enlarges the menu bar items and the drop-down / context menu items (32px minimum height), submenus included.
+- `WinOldLabel`: disabled style for Win 3.1, Win98, WinXP, Win7 and Win10 (previously DOS only). The **Label** demo page now shows every appearance, the disabled state, rich content and Touch Mode.
+
+### Fixed
+- `WinOldCheckBox`, `WinOldTextBox`, `WinOldLabel`: in Win98 style, the label text is now white when the browser is in dark mode.
+
 ## [2.20.0] - 2026-10-01
 
 ### Added

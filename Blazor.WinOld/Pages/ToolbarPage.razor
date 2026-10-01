@@ -10,7 +10,7 @@
 </p>
 
 <ul>
-    <li><strong>Wrap</strong> (default): the classic Win32 rebar behavior: the bar spans multiple lines when it runs out of room, labels always stay visible.</li>
+    <li><strong>Wrap</strong> (default): the classic rebar behavior: the bar spans multiple lines when it runs out of room, labels always stay visible.</li>
     <li><strong>Collapse</strong> : the Excel Online / Office ribbon behavior: the bar stays on a single line and buttons drop their text label (icon + tooltip only) one at a time, starting from the rightmost, as the bar's own measured width shrinks — fully automatic.</li>
 </ul>
 
@@ -26,7 +26,33 @@
 <div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap; align-items: flex-start;">
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows 98</h7>
+        <h7>DOS</h7>
+        <WinOldToolbar Appearance="Appearance.DOS" Mode="ToolbarOverflowMode.Collapse">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Win31</h7>
+        <WinOldToolbar Appearance="Appearance.Win31" Mode="ToolbarOverflowMode.Collapse">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Win98</h7>
         <WinOldToolbar Appearance="Appearance.Win98" Mode="ToolbarOverflowMode.Collapse">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
@@ -42,7 +68,7 @@
     </div>
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows XP</h7>
+        <h7>WinXP</h7>
         <WinOldToolbar Appearance="Appearance.WinXP" Mode="ToolbarOverflowMode.Collapse">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
@@ -57,7 +83,7 @@
     </div>
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows 7</h7>
+        <h7>Win7</h7>
         <WinOldToolbar Appearance="Appearance.Win7" Mode="ToolbarOverflowMode.Collapse">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
@@ -72,7 +98,7 @@
     </div>
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows 10</h7>
+        <h7>Win10</h7>
         <WinOldToolbar Appearance="Appearance.Win10" Mode="ToolbarOverflowMode.Collapse">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
@@ -95,7 +121,37 @@
 <div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap; align-items: flex-start;">
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows 98</h7>
+        <h7>DOS</h7>
+        <WinOldToolbar Appearance="Appearance.DOS" Flat="true">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Win31</h7>
+        <WinOldToolbar Appearance="Appearance.Win31" Flat="true">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarButton Label="Save"  IconCssClass="bi bi-floppy"        OnClick="@(() => DoAction("Save"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     OnClick="@(() => DoAction("Paste"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Print" IconCssClass="bi bi-printer"      Disabled />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Win98</h7>
         <WinOldToolbar Appearance="Appearance.Win98" Flat="true">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
@@ -110,7 +166,7 @@
     </div>
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows XP</h7>
+        <h7>WinXP</h7>
         <WinOldToolbar Appearance="Appearance.WinXP" Flat="true">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
@@ -125,7 +181,7 @@
     </div>
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows 7</h7>
+        <h7>Win7</h7>
         <WinOldToolbar Appearance="Appearance.Win7" Flat="true">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
@@ -140,7 +196,7 @@
     </div>
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows 10</h7>
+        <h7>Win10</h7>
         <WinOldToolbar Appearance="Appearance.Win10" Flat="true">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
@@ -179,7 +235,31 @@
 <div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap; align-items: flex-start;">
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows 98, Flat + IconOnly</h7>
+        <h7>DOS, mixed (only Cut/Copy/Paste are icon-only)</h7>
+        <WinOldToolbar Appearance="Appearance.DOS">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      IconOnly="true" OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          IconOnly="true" OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     IconOnly="true" OnClick="@(() => DoAction("Paste"))" />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Win31, mixed (only Cut/Copy/Paste are icon-only)</h7>
+        <WinOldToolbar Appearance="Appearance.Win31">
+            <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
+            <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
+            <WinOldToolbarSeparator />
+            <WinOldToolbarButton Label="Cut"   IconCssClass="bi bi-scissors"      IconOnly="true" OnClick="@(() => DoAction("Cut"))" />
+            <WinOldToolbarButton Label="Copy"  IconCssClass="bi bi-copy"          IconOnly="true" OnClick="@(() => DoAction("Copy"))" />
+            <WinOldToolbarButton Label="Paste" IconCssClass="bi bi-clipboard"     IconOnly="true" OnClick="@(() => DoAction("Paste"))" />
+        </WinOldToolbar>
+    </div>
+
+    <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
+        <h7>Win98, Flat + IconOnly</h7>
         <WinOldToolbar Appearance="Appearance.Win98" Flat="true" IconOnly="true">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
@@ -192,7 +272,7 @@
     </div>
 
      <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows XP, mixed (only Cut/Copy/Paste are icon-only)</h7>
+        <h7>WinXP, mixed (only Cut/Copy/Paste are icon-only)</h7>
         <WinOldToolbar Appearance="Appearance.WinXP">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
@@ -204,7 +284,7 @@
     </div>
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows 7, mixed (only Cut/Copy/Paste are icon-only)</h7>
+        <h7>Win7, mixed (only Cut/Copy/Paste are icon-only)</h7>
         <WinOldToolbar Appearance="Appearance.Win7">
             <WinOldToolbarButton Label="New" IconCssClass="bi bi-file-earmark" OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open" IconCssClass="bi bi-folder2-open" OnClick="@(() => DoAction("Open"))" />
@@ -216,7 +296,7 @@
     </div>
 
     <div style="flex:1 1 calc(50% - 20px); min-width:280px;">
-        <h7>Windows 10, mixed (only Cut/Copy/Paste are icon-only)</h7>
+        <h7>Win10, mixed (only Cut/Copy/Paste are icon-only)</h7>
         <WinOldToolbar Appearance="Appearance.Win10">
             <WinOldToolbarButton Label="New"   IconCssClass="bi bi-file-earmark"  OnClick="@(() => DoAction("New"))" />
             <WinOldToolbarButton Label="Open"  IconCssClass="bi bi-folder2-open"  OnClick="@(() => DoAction("Open"))" />
@@ -410,7 +490,7 @@
         <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Appearance</code></div>
         <div style="flex: 1 1 120px; padding: 8px; min-width: 100px;">Appearance</div>
         <div style="flex: 0 1 90px;  padding: 8px; min-width: 70px;">Win10</div>
-        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Visual style: Win98, WinXP, Win7, Win10, DOS. Inherited by child buttons that don't set their own.</div>
+        <div style="flex: 3 1 200px; padding: 8px; min-width: 180px;">Visual style: DOS, Win31, Win98, WinXP, Win7, Win10. Inherited by child buttons that don't set their own.</div>
     </div>
     <div style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #eee;">
         <div style="flex: 1 1 130px; padding: 8px; min-width: 110px;"><code>Flat</code></div>

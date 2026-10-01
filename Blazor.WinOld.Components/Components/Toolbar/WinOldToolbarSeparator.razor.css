@@ -10,6 +10,10 @@
     background: #ffffff;
 }
 
+.toolbar-separator-win-31 {
+    background: #000000;
+}
+
 .toolbar-separator-win-98 {
     width: 2px;
     background: transparent;

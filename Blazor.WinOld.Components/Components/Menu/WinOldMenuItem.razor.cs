@@ -47,6 +47,9 @@ public partial class WinOldMenuItem : WinOldComponentBase
         : RootMenu?.OpenSubId == _id;
 
     // ── Touch support ─────────────────────────────────────────────────────
+    // TouchMode set on the root WinOldMenu (or cascaded to it) applies to every item, submenus included
+    private bool IsTouchMode => IsTouch || RootMenu?.ActualRoot.IsTouch == true;
+
     private long _lastTouchEndTick;
     private bool IsRecentTouch => Environment.TickCount64 - _lastTouchEndTick < 600;
 

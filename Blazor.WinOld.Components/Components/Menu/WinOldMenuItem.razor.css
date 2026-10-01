@@ -390,3 +390,22 @@
         border-radius: 5px;
         color: #000;
     }
+
+/*--------*\
+   TouchMode
+\*--------*/
+.menu-win-root-item.win-touch > .menu-label-win {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* Win98 hover shifts the label 1px down: keep the same total height */
+.menu-win-root-item.win-touch > .menu-label-win-98:not([disabled]):hover {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.menu-sub-win-item.win-touch > .menu-label-win {
+    box-sizing: border-box;
+    min-height: 32px;
+}

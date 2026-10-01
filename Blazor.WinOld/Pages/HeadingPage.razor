@@ -1,0 +1,97 @@
+@page "/heading-page"
+
+<PageTitle>Heading</PageTitle>
+
+<h1>Heading</h1>
+
+<p>
+	<code>WinOldHeading</code> renders a real <code>&lt;h1&gt;</code> … <code>&lt;h6&gt;</code> element
+	(set with <code>Level</code>, default <code>2</code>), styled like the titles of each Windows version.
+</p>
+
+<div class="wo-row wo-wrap wo-gap-20">
+	<div class="wo-flex-25">
+		<h7>DOS</h7>
+		<div style="margin-bottom:10px; padding:8px; background:var(--dos-background);">
+			<WinOldHeading Appearance="Appearance.DOS" Level="1">Title h1</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.DOS" Level="2">Title h2</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.DOS" Level="3">Title h3</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.DOS" Level="4">Title h4</WinOldHeading>
+			<WinOldLabel Appearance="Appearance.DOS">Some text below.</WinOldLabel>
+		</div>
+	</div>
+
+	<div class="wo-flex-25">
+		<h7>Win31</h7>
+		<div style="margin-bottom:10px; padding:8px; background:white;">
+			<WinOldHeading Appearance="Appearance.Win31" Level="1">Title h1</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win31" Level="2">Title h2</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win31" Level="3">Title h3</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win31" Level="4">Title h4</WinOldHeading>
+			<WinOldLabel Appearance="Appearance.Win31">Some text below.</WinOldLabel>
+		</div>
+	</div>
+
+	<div class="wo-flex-25">
+		<h7>Win98</h7>
+		<div style="margin-bottom:10px; padding:8px;">
+			<WinOldHeading Appearance="Appearance.Win98" Level="1">Title h1</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win98" Level="2">Title h2</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win98" Level="3">Title h3</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win98" Level="4">Title h4</WinOldHeading>
+			<WinOldLabel Appearance="Appearance.Win98">Some text below.</WinOldLabel>
+		</div>
+	</div>
+
+	<div class="wo-flex-25">
+		<h7>WinXP</h7>
+		<div style="margin-bottom:10px; padding:8px;">
+			<WinOldHeading Appearance="Appearance.WinXP" Level="1">Title h1</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.WinXP" Level="2">Title h2</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.WinXP" Level="3">Title h3</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.WinXP" Level="4">Title h4</WinOldHeading>
+			<WinOldLabel Appearance="Appearance.WinXP">Some text below.</WinOldLabel>
+		</div>
+	</div>
+
+	<div class="wo-flex-25">
+		<h7>Win7</h7>
+		<div style="margin-bottom:10px; padding:8px;">
+			<WinOldHeading Appearance="Appearance.Win7" Level="1">Title h1</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win7" Level="2">Title h2</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win7" Level="3">Title h3</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win7" Level="4">Title h4</WinOldHeading>
+			<WinOldLabel Appearance="Appearance.Win7">Some text below.</WinOldLabel>
+		</div>
+	</div>
+
+	<div class="wo-flex-25">
+		<h7>Win10</h7>
+		<div style="margin-bottom:10px; padding:8px;">
+			<WinOldHeading Appearance="Appearance.Win10" Level="1">Title h1</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win10" Level="2">Title h2</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win10" Level="3">Title h3</WinOldHeading>
+			<WinOldHeading Appearance="Appearance.Win10" Level="4">Title h4</WinOldHeading>
+			<WinOldLabel Appearance="Appearance.Win10">Some text below.</WinOldLabel>
+		</div>
+	</div>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldHeading Appearance=""Appearance.WinXP"" Level=""1"">Control Panel</WinOldHeading>
+<WinOldHeading Appearance=""Appearance.WinXP"">Pick a category</WinOldHeading>") />
+
+<h2>Disabled &amp; custom style</h2>
+
+<div class="wo-row wo-wrap wo-gap-20" style="margin-bottom:10px;">
+	<WinOldHeading Appearance="Appearance.Win98" Disabled>Disabled Win98</WinOldHeading>
+	<WinOldHeading Appearance="Appearance.Win10" Style="color:#0078d7;">Accent Win10</WinOldHeading>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="true"
+		   Code=@(@"
+<WinOldHeading Appearance=""Appearance.Win98"" Disabled>Disabled Win98</WinOldHeading>
+<WinOldHeading Appearance=""Appearance.Win10"" Style=""color:#0078d7;"">Accent Win10</WinOldHeading>") />
