@@ -1,0 +1,88 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,700');
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+}
+
+.window {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.container {
+    width: 150px;
+    height: 20px;
+    border: 2px solid #b2b2b2;
+    border-radius: 7px;
+    margin: 0 auto;
+    padding: 2px 1px;
+    overflow: hidden;
+    font-size: 0;
+}
+
+.box {
+    width: 9px;
+    height: 100%;
+    background: linear-gradient(to bottom, #2838c7 0%,#5979ef 17%,#869ef3 32%,#869ef3 45%,#5979ef 59%,#2838c7 100%);
+    display: inline-block;
+    margin-right: 2px;
+    animation: loader 0.8s infinite;
+    animation-timing-function: linear;
+}
+
+.logo {
+    width: 220px;
+    margin: 20px auto;
+}
+
+    .logo p {
+        margin: 0;
+        padding: 0;
+    }
+
+.top {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 16px;
+}
+
+
+.mid {
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+    .mid span {
+        font-size: 22px;
+        display: inline-block;
+        vertical-align: top;
+        color: #FF6821;
+        margin-top: -8px;
+    }
+
+.logo .bottom {
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 30px;
+    margin-left: 5px;
+}
+
+@keyframes loader {
+    0% {
+        transform: translate(-30px);
+    }
+
+    100% {
+        transform: translate(150px);
+    }
+}
