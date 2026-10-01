@@ -137,7 +137,7 @@
     min-width: 280px;
     /*border: 3px double #000000;*/
     border-style: double;
-    background: #c0c0c0;
+    background: var(--win31-background);
     font-family: var(--font-family);
     font-size: 11px;
 }

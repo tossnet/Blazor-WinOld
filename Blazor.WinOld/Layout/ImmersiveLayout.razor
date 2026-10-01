@@ -28,6 +28,7 @@
             @foreach (var style in Styles)
             {
                 <WinOldToolbarButton Label="@style.Name"
+                                     Flat="true"
                                      IconCssClass="@style.Icon"
                                      Default="@(_appearance == style.Appearance)"
                                      OnClick="@(() => _appearance = style.Appearance)" />

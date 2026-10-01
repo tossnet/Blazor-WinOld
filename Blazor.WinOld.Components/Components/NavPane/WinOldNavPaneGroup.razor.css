@@ -212,7 +212,7 @@ button.navpane-group-header {
 .navpane-group-31 > .navpane-group-header {
     min-height: 18px;
     padding: 1px 4px;
-    background: #c0c0c0;
+    background: var(--win31-background);
     border-bottom: 1px solid #000;
     box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
 }

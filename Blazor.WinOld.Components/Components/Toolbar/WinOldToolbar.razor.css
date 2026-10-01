@@ -29,6 +29,13 @@
 }
 
 /*--------*\
+    Win 31
+\*--------*/
+:where(.toolbar-win-31) {
+    background: var(--win31-background);
+    border-bottom: 1px solid #ffffff;
+}
+/*--------*\
     Win 98
 \*--------*/
 :where(.toolbar-win-98) {

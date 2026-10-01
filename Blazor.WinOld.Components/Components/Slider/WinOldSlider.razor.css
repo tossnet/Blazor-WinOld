@@ -166,7 +166,7 @@
     box-sizing: border-box;
     height: 19px;
     border: 1px solid #000000;
-    background: #C0C0C0;
+    background: var(--win31-background);
 }
 
 .sld-31-btn {
@@ -178,7 +178,7 @@
     border-radius: 0;
     outline: none;
     cursor: pointer;
-    background-color: #C0C0C0;
+    background-color: var(--win31-background);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 9px 9px;
@@ -216,17 +216,17 @@
     margin: 0;
     padding: 0;
     outline: none;
-    background: #C0C0C0;
+    background: var(--win31-background);
 }
 
     .sld-win-31::-webkit-slider-runnable-track {
         height: 17px;
-        background: #C0C0C0;
+        background: var(--win31-background);
     }
 
     .sld-win-31::-moz-range-track {
         height: 17px;
-        background: #C0C0C0;
+        background: var(--win31-background);
     }
 
     .sld-win-31::-webkit-slider-thumb {
@@ -238,7 +238,7 @@
         border-width: 0 1px;
         border-radius: 0;
         cursor: pointer;
-        background: #C0C0C0;
+        background: var(--win31-background);
         box-shadow: inset -1px -1px #808080, inset 1px 1px #FFFFFF;
     }
 
@@ -250,7 +250,7 @@
         border-width: 0 1px;
         border-radius: 0;
         cursor: pointer;
-        background: #C0C0C0;
+        background: var(--win31-background);
         box-shadow: inset -1px -1px #808080, inset 1px 1px #FFFFFF;
     }
 

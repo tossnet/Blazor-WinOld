@@ -164,7 +164,7 @@
         padding: 0;
         box-sizing: border-box;
         border: none;
-        background-color: #c0c0c0;
+        background-color: var(--win31-background);
         background-repeat: no-repeat;
         background-position: center;
         cursor: pointer;

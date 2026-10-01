@@ -46,7 +46,7 @@
 :where(.statusbar-win-31) {
     gap: 6px;
     padding: 3px 4px;
-    background: #c0c0c0;
+    background: var(--win31-background);
     border-top: 1px solid #000;
     font-family: var(--font-family);
     font-size: 11px;

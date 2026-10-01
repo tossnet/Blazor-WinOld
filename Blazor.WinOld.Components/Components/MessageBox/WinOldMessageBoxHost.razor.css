@@ -97,7 +97,7 @@
 .msg-win-31 {
     min-width: 280px;
     border: 4px double #000000;
-    background: #c0c0c0;
+    background: var(--win31-background);
     font-family: var(--font-family);
     font-size: 11px;
 }

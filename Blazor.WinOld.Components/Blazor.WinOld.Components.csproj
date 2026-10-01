@@ -23,9 +23,8 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
-		<PackageReleaseNotes>
-      v2.19.0 New component : `WinOldNavPane`, `WinOldStatusBar`, `WinOldAppShell`. improvement : `WinOldListBox`.  New scrollbar styles for every appearance
-    </PackageReleaseNotes>
+		<PackageReleaseNotes>v2.19.0: new components WinOldAppShell, WinOldNavPane, WinOldStatusBar. WinOldListBox improvements. New scrollbar styles for every appearance.
+Full changelog: https://github.com/tossnet/Blazor-WinOld/blob/master/CHANGELOG.md</PackageReleaseNotes>
 
 		<!-- Build and symbols -->
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>

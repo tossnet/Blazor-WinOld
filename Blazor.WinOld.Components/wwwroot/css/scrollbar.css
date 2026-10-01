@@ -133,11 +133,11 @@
 }
 
 .scroll-win-31::-webkit-scrollbar-corner {
-    background: #C0C0C0;
+    background: var(--win31-background);
 }
 
 .scroll-win-31::-webkit-scrollbar-track {
-    background: #C0C0C0;
+    background: var(--win31-background);
 }
 
     .scroll-win-31::-webkit-scrollbar-track:vertical {
@@ -149,7 +149,7 @@
     }
 
 .scroll-win-31::-webkit-scrollbar-thumb {
-    background: #C0C0C0;
+    background: var(--win31-background);
     border: solid #000000;
     box-shadow: inset -1px -1px #808080, inset 1px 1px #FFFFFF;
 }
@@ -177,7 +177,7 @@
 }
 
 .scroll-win-31::-webkit-scrollbar-button {
-    background-color: #C0C0C0;
+    background-color: var(--win31-background);
     background-repeat: no-repeat;
     background-position: center;
     border: solid #000000;
@@ -610,7 +610,7 @@
     }
 
     .scroll-win-31 {
-        scrollbar-color: #808080 #C0C0C0;
+        scrollbar-color: #808080 var(--win31-background);
     }
 
     .scroll-win-98 {
