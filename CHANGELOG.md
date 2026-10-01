@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.20.0] - 2026-10-01
+
+### Added
+- Scrollbar button styles for Windows XP and Windows 7.
+
+### Changed
+- CSS refactored to use `var(--win31-background)` for consistent theming.
+
 ## [2.19.0] - 2026-09-30
 
 ### Added
