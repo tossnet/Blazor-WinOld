@@ -53,6 +53,11 @@
         cursor: default;
     }
 
+/* Arrow toggle (all appearances but Win10): points left when expanded, right when collapsed. */
+.navpane-collapsed .navpane-toggle-arrow {
+    transform: scaleX(-1);
+}
+
 .navpane-header-content {
     flex-shrink: 0;
 }
@@ -104,6 +109,7 @@
 }
 
 .navpane-dos > .navpane-header {
+    position: relative;
     justify-content: center;
     height: 0;
     margin-top: -4px;
@@ -118,7 +124,10 @@
     transform: translateY(-2px);
 }
 
+/* Set in the top-left border, so the title stays centered. */
 .navpane-dos .navpane-toggle {
+    position: absolute;
+    left: 1ch;
     padding: 0 .5ch;
     background: var(--dos-background);
     transform: translateY(-2px);
@@ -130,6 +139,14 @@
 
     .navpane-dos .navpane-toggle::after {
         content: ']';
+    }
+
+    .navpane-dos .navpane-toggle-dos-arrow {
+        color: #55ffff;
+    }
+
+    .navpane-dos .navpane-toggle:focus-visible .navpane-toggle-dos-arrow {
+        color: #55ffff;
     }
 
     .navpane-dos .navpane-toggle:focus-visible {
@@ -158,6 +175,7 @@
 }
 
 .navpane-win-31 > .navpane-header {
+    position: relative;
     justify-content: center;
     min-height: 18px;
     padding: 0 2px;
@@ -170,17 +188,22 @@
     flex: 0 1 auto;
 }
 
+/* White arrow on the title bar, kept left so the title stays centered. */
 .navpane-win-31 .navpane-toggle {
-    width: 18px;
-    height: 14px;
-    background: #c0c0c0;
-    border: 1px solid #000;
-    box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
-    color: #000;
+    position: absolute;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    color: #fff;
 }
 
-    .navpane-win-31 .navpane-toggle:active {
-        box-shadow: inset 1px 1px #808080;
+    .navpane-win-31 .navpane-toggle:active .navpane-toggle-arrow {
+        translate: 1px 1px;
+    }
+
+    .navpane-win-31 .navpane-toggle:focus-visible {
+        outline: 1px dotted #fff;
+        outline-offset: -1px;
     }
 
 .navpane-win-31 > .navpane-footer {
@@ -200,9 +223,10 @@
     font-size: 11px;
 }
 
+/* No side padding: the toggle lines up with the group buttons below. */
 .navpane-win-98 > .navpane-header {
     min-height: 20px;
-    padding: 1px 4px;
+    padding: 0 0 2px;
 }
 
 .navpane-win-98 .navpane-toggle {
@@ -285,6 +309,7 @@
     height: 22px;
     border: 1px solid transparent;
     border-radius: 3px;
+    color: #555;
 }
 
     .navpane-win-7 .navpane-toggle:hover {
@@ -374,6 +399,26 @@
     width: 52px;
 }
 
+/* The title is hidden: the toggle is centered in the rail. */
+.navpane-collapsed > .navpane-header {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+    .navpane-collapsed > .navpane-header > .navpane-toggle {
+        position: static;
+    }
+
+    .navpane-dos.navpane-collapsed > .navpane-header > .navpane-toggle {
+        padding: 0;
+    }
+
+/* The rail is too narrow for a scrollbar: it still scrolls with the wheel or the keyboard. */
+.navpane-collapsed > .navpane-body {
+    scrollbar-width: none;
+}
+
 /*--------*\
     Touch Mode
 \*--------*/
@@ -401,7 +446,8 @@
     font-size: 15px;
 }
 
-.win-touch .navpane-toggle {
+/* DOS excluded: its toggle sits in the top border line. */
+.win-touch:not(.navpane-dos) .navpane-toggle {
     min-width: 40px;
     min-height: 40px;
 }

@@ -69,7 +69,8 @@ public partial class WinOldNavPane : WinOldComponentBase
     public EventCallback<bool> CollapsedChanged { get; set; }
 
     /// <summary>
-    /// Shows the hamburger button toggling <see cref="Collapsed"/>. Defaults to true for Win10 only.
+    /// Shows the button toggling <see cref="Collapsed"/>: a hamburger for Win10, an arrow left of the title
+    /// for the other appearances. Defaults to true.
     /// </summary>
     [Parameter]
     public bool? ShowToggle { get; set; }
@@ -108,8 +109,11 @@ public partial class WinOldNavPane : WinOldComponentBase
     /// </summary>
     public Appearance EffectiveAppearance => Appearance ?? WindowAppearance ?? global::Blazor.WinOld.Components.Appearance.Win10;
 
+    /// <summary>
+    /// Whether only one group is open at a time. Never while <see cref="Collapsed"/>: the rail shows
+    /// every item, so it scrolls as a whole.
     /// </summary>
-    public bool IsAccordion => ExpandMode switch
+    public bool IsAccordion => !Collapsed && ExpandMode switch
     {
         NavPaneExpandMode.Single => true,
         NavPaneExpandMode.Multiple => false,
@@ -120,7 +124,7 @@ public partial class WinOldNavPane : WinOldComponentBase
     internal bool HasScrollButtons => IsAccordion
         && (ShowScrollButtons ?? EffectiveAppearance == global::Blazor.WinOld.Components.Appearance.Win98);
 
-    private bool IsToggleVisible => ShowToggle ?? EffectiveAppearance == global::Blazor.WinOld.Components.Appearance.Win10;
+    private bool IsToggleVisible => ShowToggle ?? true;
 
     /// </summary>
     internal void RegisterGroup(WinOldNavPaneGroup group)

@@ -21,7 +21,7 @@
 .inp-win-container {
     display: flex;
     flex-direction: column;
-    height: 125px;
+    min-height: 125px; /* min, not fixed: grows with TouchMode (taller buttons/inputs) */
 }
 
 .inputbox-row {

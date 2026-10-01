@@ -14,7 +14,7 @@
     <li><strong>Win98</strong> reproduces the Office 97 Outlook bar: an accordion where only one group is open, scrolled with small arrow buttons instead of a scrollbar.</li>
     <li><strong>WinXP</strong> reproduces the task pane: groups collapse independently with their round chevron.</li>
     <li><strong>Win7</strong> reproduces the Explorer navigation pane.</li>
-    <li><strong>Win10</strong> is based on Groove Music with a touch of Windows 11, and collapses to an icon rail with its hamburger button.</li>
+    <li><strong>Win10</strong> is based on Groove Music with a touch of Windows 11, and collapses to an icon rail with its hamburger button. The other styles collapse the same way with the arrow left of their title.</li>
     <li><strong>DOS</strong> and <strong>Win31</strong> had no such control: their look is inspired by Turbo Vision and the Program Manager.</li>
     <li>An item with <strong>Href</strong> is active whenever the current URL matches it; otherwise it is active when its <strong>Value</strong> equals the pane's <strong>SelectedValue</strong>.</li>
 </ul>
@@ -26,7 +26,7 @@
     <div>
         <h7>DOS</h7>
         <div style="height: 340px; padding-top: 8px;">
-            <WinOldNavPane Appearance="Appearance.DOS" Title="Project" @bind-SelectedValue="_dosSelected">
+            <WinOldNavPane Appearance="Appearance.DOS" Title="Project" @bind-Collapsed="_dosCollapsed" @bind-SelectedValue="_dosSelected">
                 <WinOldNavPaneGroup Title="File">
                     <WinOldNavPaneItem Text="New" />
                     <WinOldNavPaneItem Text="Open..." Badge="F3" />
@@ -42,13 +42,13 @@
                 <WinOldNavPaneItem Text="Directories" />
             </WinOldNavPane>
         </div>
-        <small>Selected: @_dosSelected</small>
+        <small>Selected: @_dosSelected — Collapsed: @_dosCollapsed</small>
     </div>
 
     <div>
         <h7>Win31</h7>
         <div style="height: 340px;">
-            <WinOldNavPane Appearance="Appearance.Win31" Title="Program Manager" @bind-SelectedValue="_win31Selected">
+            <WinOldNavPane Appearance="Appearance.Win31" Title="Program Manager" @bind-Collapsed="_win31Collapsed" @bind-SelectedValue="_win31Selected">
                 <WinOldNavPaneGroup Title="Main" IconCssClass="bi bi-window">
                     <WinOldNavPaneItem Text="File Manager" IconCssClass="bi bi-folder2" />
                     <WinOldNavPaneItem Text="Control Panel" IconCssClass="bi bi-sliders" />
@@ -67,13 +67,13 @@
                 </WinOldNavPaneGroup>
             </WinOldNavPane>
         </div>
-        <small>Selected: @_win31Selected</small>
+        <small>Selected: @_win31Selected — Collapsed: @_win31Collapsed</small>
     </div>
 
     <div>
         <h7>Win98</h7>
         <div style="height: 340px;">
-            <WinOldNavPane Appearance="Appearance.Win98" @bind-SelectedValue="_win98Selected">
+            <WinOldNavPane Appearance="Appearance.Win98" @bind-Collapsed="_win98Collapsed" @bind-SelectedValue="_win98Selected">
                 <WinOldNavPaneGroup Title="Outlook">
                     <WinOldNavPaneItem Text="Inbox" Badge="1"><IconTemplate><span>📥</span></IconTemplate></WinOldNavPaneItem>
                     <WinOldNavPaneItem Text="Calendar"><IconTemplate><span>📅</span></IconTemplate></WinOldNavPaneItem>
@@ -93,13 +93,13 @@
                 </WinOldNavPaneGroup>
             </WinOldNavPane>
         </div>
-        <small>Selected: @_win98Selected</small>
+        <small>Selected: @_win98Selected — Collapsed: @_win98Collapsed</small>
     </div>
 
     <div>
         <h7>WinXP</h7>
         <div style="height: 340px;">
-            <WinOldNavPane Appearance="Appearance.WinXP" @bind-SelectedValue="_winXpSelected">
+            <WinOldNavPane Appearance="Appearance.WinXP" @bind-Collapsed="_winXpCollapsed" @bind-SelectedValue="_winXpSelected">
                 <WinOldNavPaneGroup Title="Gestion des fichiers">
                     <WinOldNavPaneItem Text="Créer un nouveau dossier" IconTemplate="@Icon("bi bi-folder-plus", "#d9a300")" />
                     <WinOldNavPaneItem Text="Publier ce dossier sur le Web" IconTemplate="@Icon("bi bi-globe-europe-africa", "#2e8b3a")" />
@@ -117,13 +117,13 @@
                 </WinOldNavPaneGroup>
             </WinOldNavPane>
         </div>
-        <small>Selected: @_winXpSelected</small>
+        <small>Selected: @_winXpSelected — Collapsed: @_winXpCollapsed</small>
     </div>
 
     <div>
         <h7>Win7</h7>
         <div style="height: 340px; border: 1px solid #ccc;">
-            <WinOldNavPane Appearance="Appearance.Win7" @bind-SelectedValue="_win7Selected">
+            <WinOldNavPane Appearance="Appearance.Win7" @bind-Collapsed="_win7Collapsed" @bind-SelectedValue="_win7Selected">
                 <WinOldNavPaneGroup Title="Favoris" IconTemplate="@Icon("bi bi-star-fill", "#f2b01e")">
                     <WinOldNavPaneItem Text="Bureau" IconTemplate="@Icon("bi bi-display", "#1f6fc5")" />
                     <WinOldNavPaneItem Text="Emplacements récents" IconTemplate="@Icon("bi bi-clock-history", "#607d8b")" />
@@ -139,7 +139,7 @@
                 <WinOldNavPaneItem Text="Ordinateur" IconTemplate="@Icon("bi bi-pc-display", "#455a64")" />
             </WinOldNavPane>
         </div>
-        <small>Selected: @_win7Selected</small>
+        <small>Selected: @_win7Selected — Collapsed: @_win7Collapsed</small>
     </div>
 
     <div>
@@ -279,6 +279,11 @@
     private string? _winXpSelected;
     private string? _win7Selected = "Images";
     private string? _win10Selected = "Albums";
+    private bool _dosCollapsed;
+    private bool _win31Collapsed;
+    private bool _win98Collapsed;
+    private bool _winXpCollapsed;
+    private bool _win7Collapsed;
     private bool _win10Collapsed;
 
     private static RenderFragment Icon(string cssClass, string color) =>
@@ -305,7 +310,7 @@
             ("Title", "string?", "null", "Title shown in the header, also used as accessible label."),
             ("ExpandMode", "NavPaneExpandMode", "Auto", "Auto: accordion for Win98, independent groups otherwise. Single: one group open at a time. Multiple: independent groups."),
             ("Collapsed", "bool", "false", "Compact mode: icons only, text as tooltip. Bindable."),
-            ("ShowToggle", "bool?", "null", "Shows the hamburger button toggling Collapsed. Defaults to true for Win10 only."),
+            ("ShowToggle", "bool?", "null", "Shows the button toggling Collapsed: a hamburger for Win10, an arrow left of the title otherwise. Defaults to true."),
             ("ShowScrollButtons", "bool?", "null", "Accordion only: replaces the scrollbar of the open group with arrow buttons, shown only when items are hidden on their side (Office 97 Outlook bar). Defaults to true for Win98 only."),
             ("Width", "string?", "null", "Width of the expanded pane, as any CSS length. When unset, each appearance uses its own default."),
             ("SelectedValue", "string?", "null", "Value of the selected item. Bindable."),

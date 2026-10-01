@@ -91,6 +91,15 @@
         content: none;
     }
 
+    /* Compact without icon (usual in DOS): the first letter stands for the item. */
+    .navpane-item-dos.navpane-item-compact:not(:has(.navpane-item-icon)) .navpane-item-text {
+        display: block;
+        flex: 0 0 auto;
+        width: 1ch;
+        overflow: hidden;
+        text-overflow: clip;
+    }
+
     .navpane-item-dos .navpane-item-badge::before {
         content: ' (';
         white-space: pre;

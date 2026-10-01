@@ -22,9 +22,30 @@
                                     aria-expanded="@(Collapsed ? "false" : "true")"
                                     disabled="@(ParentDisabled == true || Disabled)"
                                     @onclick="ToggleCollapsed">
-                                <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-                                    <path d="M1 3.5h14M1 8h14M1 12.5h14" stroke="currentColor" stroke-width="1.2" fill="none" />
-                                </svg>
+                                @switch (EffectiveAppearance)
+                                {
+                                    case global::Blazor.WinOld.Components.Appearance.DOS:
+                                        @* CP437 0x1A / 0x1B *@
+                                        <span class="navpane-toggle-dos-arrow" aria-hidden="true">@(Collapsed ? "→" : "←")</span>
+                                        break;
+                                    case global::Blazor.WinOld.Components.Appearance.Win31:
+                                    case global::Blazor.WinOld.Components.Appearance.Win98:
+                                        <svg class="navpane-toggle-arrow" width="8" height="8" viewBox="0 0 8 8" aria-hidden="true">
+                                            <path d="M6 0v8L2 4z" fill="currentColor" />
+                                        </svg>
+                                        break;
+                                    case global::Blazor.WinOld.Components.Appearance.WinXP:
+                                    case global::Blazor.WinOld.Components.Appearance.Win7:
+                                        <svg class="navpane-toggle-arrow" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+                                            <path d="M6.5 1.5L3 5l3.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" />
+                                        </svg>
+                                        break;
+                                    default:
+                                        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                            <path d="M1 3.5h14M1 8h14M1 12.5h14" stroke="currentColor" stroke-width="1.2" fill="none" />
+                                        </svg>
+                                        break;
+                                }
                             </button>
                         }
                         @if (!string.IsNullOrEmpty(Title))
