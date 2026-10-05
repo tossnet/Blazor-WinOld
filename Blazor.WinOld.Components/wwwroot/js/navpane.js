@@ -70,3 +70,16 @@ export function initNavPaneScroll(paneEl) {
         }
     };
 }
+
+// Narrow screens (e.g. a phone in portrait): reports whether the viewport is below maxWidthPx now,
+// then calls back only when the breakpoint is crossed, so a manual toggle is never overridden.
+export function initNavPaneAutoCollapse(dotNetRef, maxWidthPx) {
+    const mql = window.matchMedia(`(max-width: ${maxWidthPx - 0.02}px)`);
+    const onChange = e => dotNetRef.invokeMethodAsync('OnBreakpointChanged', e.matches);
+    mql.addEventListener('change', onChange);
+
+    return {
+        matches: () => mql.matches,
+        dispose: () => mql.removeEventListener('change', onChange)
+    };
+}

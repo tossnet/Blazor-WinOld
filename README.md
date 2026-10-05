@@ -102,15 +102,6 @@ For the whole page, put the class on `<html>` in `index.html`, or change it at r
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-### Version 2.19.0
-
-- New components: `WinOldAppShell` (application layout), `WinOldNavPane` (side navigation pane), `WinOldStatusBar`
-- `WinOldWindow`: new `StatusBar` slot
-- New scrollbar styles for every appearance (`scroll-win-*`, `Appearance.ToScrollbarClass()`, `SetScrollbarAppearanceAsync()`)
-- `WinOldListBox`: new DOS, Win 3.1 and Win10 styles
-- `WinOldMenu` / `WinOldToolbar`: `Appearance` now inherited from the hosting `WinOldWindow` / `WinOldAppShell`
-- Demo: new full-screen **Immersive demo** (`/immersive`)
-
 📜 **[Full changelog](https://github.com/tossnet/Blazor-WinOld/blob/master/CHANGELOG.md)**
 
 ## Fonts

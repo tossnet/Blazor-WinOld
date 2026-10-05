@@ -35,6 +35,49 @@ export function resetPosition(el) {
     el.style.zIndex = '';
 }
 
+// Sur mobile, si la page déborde horizontalement, le navigateur élargit le "layout viewport" :
+// position:fixed/inset:0 et 100vw le suivent, et une fenêtre centrée sort de l'écran à droite.
+// On expose donc la zone réellement visible (visualViewport) en variables CSS sur <html>,
+// utilisées par les backdrops. Compteur partagé : plusieurs fenêtres peuvent être ouvertes.
+const VV_VARS = ['--winold-vv-left', '--winold-vv-top', '--winold-vv-width', '--winold-vv-height'];
+let vvUsers = 0;
+
+function updateVisualViewport() {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const s = document.documentElement.style;
+    s.setProperty('--winold-vv-left', vv.offsetLeft + 'px');
+    s.setProperty('--winold-vv-top', vv.offsetTop + 'px');
+    s.setProperty('--winold-vv-width', vv.width + 'px');
+    s.setProperty('--winold-vv-height', vv.height + 'px');
+}
+
+export function trackVisualViewport() {
+    if (!window.visualViewport) return;
+    if (vvUsers++ === 0) {
+        updateVisualViewport();
+        window.visualViewport.addEventListener('resize', updateVisualViewport);
+        window.visualViewport.addEventListener('scroll', updateVisualViewport);
+    }
+}
+
+export function untrackVisualViewport() {
+    if (!window.visualViewport || vvUsers === 0) return;
+    if (--vvUsers === 0) {
+        window.visualViewport.removeEventListener('resize', updateVisualViewport);
+        window.visualViewport.removeEventListener('scroll', updateVisualViewport);
+        VV_VARS.forEach(v => document.documentElement.style.removeProperty(v));
+    }
+}
+
+// Zone visible dans les coordonnées de position:fixed (layout viewport).
+function visibleArea() {
+    const vv = window.visualViewport;
+    return vv
+        ? { left: vv.offsetLeft, top: vv.offsetTop, width: vv.width, height: vv.height }
+        : { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight };
+}
+
 export function initDraggable(windowEl, titleBarEl) {
     // Bloque le scroll natif sur la barre de titre (pour tactile)
     titleBarEl.style.touchAction = 'none';
@@ -68,10 +111,10 @@ export function initDraggable(windowEl, titleBarEl) {
 
     function onMove(e) {
         if (!isDragging) return;
-        const vw = window.innerWidth, vh = window.innerHeight;
+        const a = visibleArea();
         const w = windowEl.offsetWidth, h = windowEl.offsetHeight;
-        windowEl.style.left = Math.max(0, Math.min(e.clientX - offsetX, vw - w)) + 'px';
-        windowEl.style.top = Math.max(0, Math.min(e.clientY - offsetY, vh - h)) + 'px';
+        windowEl.style.left = Math.max(a.left, Math.min(e.clientX - offsetX, a.left + a.width - w)) + 'px';
+        windowEl.style.top = Math.max(a.top, Math.min(e.clientY - offsetY, a.top + a.height - h)) + 'px';
     }
 
     function onUp() {

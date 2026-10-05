@@ -1,14 +1,15 @@
 .inp-win-backdrop {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    /* Visible screen (set by draggable.js): on mobile, a page that overflows horizontally
+       widens the layout viewport, which inset:0 / 100% follow (dvw/dvh do not). */
+    left: var(--winold-vv-left, 0);
+    top: var(--winold-vv-top, 0);
+    width: var(--winold-vv-width, 100dvw);
+    height: var(--winold-vv-height, 100dvh);
+    z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: center;
-    inset: 0;
-    z-index: 99999;
 }
 
 

@@ -11,6 +11,8 @@ public partial class WinOldNavPane : WinOldComponentBase
     private IJSObjectReference? _module;
     private IJSObjectReference? _scrollHandle;
     private bool _scrollActive;
+    private IJSObjectReference? _breakpointHandle;
+    private DotNetObjectReference<WinOldNavPane>? _dotNetRef;
 
     [Inject] private IJSRuntime JS { get; set; } = default!;
 
@@ -67,6 +69,13 @@ public partial class WinOldNavPane : WinOldComponentBase
     /// </summary>
     [Parameter]
     public EventCallback<bool> CollapsedChanged { get; set; }
+
+    /// <summary>
+    /// Viewport width, in px, below which the pane is <see cref="Collapsed"/> (e.g. 600 for a phone in portrait).
+    /// Applied on load, then each time the viewport crosses it, so a manual toggle is kept until then. Unset by default.
+    /// </summary>
+    [Parameter]
+    public int? AutoCollapseBelow { get; set; }
 
     /// <summary>
     /// Shows the button toggling <see cref="Collapsed"/>: a hamburger for Win10, an arrow left of the title
@@ -186,6 +195,15 @@ public partial class WinOldNavPane : WinOldComponentBase
     /// </summary>
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        if (firstRender && AutoCollapseBelow is int breakpoint)
+        {
+            _dotNetRef = DotNetObjectReference.Create(this);
+            _module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorWinOld/js/navpane.js");
+            _breakpointHandle = await _module.InvokeAsync<IJSObjectReference>("initNavPaneAutoCollapse", _dotNetRef, breakpoint);
+            if (await _breakpointHandle.InvokeAsync<bool>("matches"))
+                await SetCollapsedAsync(true);
+        }
+
         if (HasScrollButtons && !_scrollActive)
         {
             // Set before the await: guards against a second OnAfterRenderAsync firing
@@ -216,6 +234,11 @@ public partial class WinOldNavPane : WinOldComponentBase
         try
         {
             await DisposeScrollHandleAsync();
+            if (_breakpointHandle is not null)
+            {
+                await _breakpointHandle.InvokeVoidAsync("dispose");
+                await _breakpointHandle.DisposeAsync();
+            }
             if (_module is not null)
                 await _module.DisposeAsync();
         }
@@ -223,13 +246,24 @@ public partial class WinOldNavPane : WinOldComponentBase
         {
             // Circuit already gone (Blazor Server): nothing left to clean up on the browser side.
         }
+        _dotNetRef?.Dispose();
     }
 
+    /// <summary>
+    /// Called by navpane.js when the viewport crosses <see cref="AutoCollapseBelow"/>.
     /// </summary>
-    private async Task ToggleCollapsed()
+    [JSInvokable]
+    public Task OnBreakpointChanged(bool narrow) => InvokeAsync(() => SetCollapsedAsync(narrow));
+
+    /// </summary>
+    private Task ToggleCollapsed() => SetCollapsedAsync(!Collapsed);
+
+    private async Task SetCollapsedAsync(bool value)
     {
-        Collapsed = !Collapsed;
+        if (Collapsed == value) return;
+        Collapsed = value;
         await CollapsedChanged.InvokeAsync(Collapsed);
+        StateHasChanged();
     }
 
     /// </summary>

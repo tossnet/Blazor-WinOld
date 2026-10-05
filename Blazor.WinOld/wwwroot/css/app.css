@@ -148,3 +148,13 @@ code {
   background: url("data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg' width='20' height='12' fill='white' viewBox='0 0 20 12'><rect x='1' y='2' width='18' height='8' rx='2' ry='2' stroke='white' fill='none'/><rect x='2' y='3' width='9' height='6' fill='white'/></svg>") 
               no-repeat center / contain;
 }
+
+/* Demo doc tables: scroll inside the page instead of widening it (on mobile, a page that
+   overflows horizontally widens the layout viewport and shifts fixed elements). */
+@media (max-width: 640.98px) {
+    .content > table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+}

@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [2.22.0] - 2026-10-05
+
+### Added
+- `WinOldNavPane`: new `AutoCollapseBelow` parameter (viewport width in px). Below it, the pane starts collapsed (e.g. on a phone in portrait), and it collapses or expands again when the viewport crosses it (rotation, resize). A manual toggle is kept until then. Used by the immersive demo (`AutoCollapseBelow="600"`).
+
+### Fixed
+- `WinOldDialog`, `WinOldMessageBox`, `WinOldInputBox`: on smartphones, the window is now centered on the visible screen. When the page overflowed horizontally, mobile browsers widened the layout viewport and the window opened shifted to the right (and partly off-screen). The maximized dialog and the drag area are also limited to the visible screen.
+- `WinOldToolbarButton`: with `Flat="true"` in WinXP and Win7 styles, the label is no longer white on a light page when the device is in dark mode (seen on Android). At rest it now takes the text color of its container.
+- Demo site: on mobile, the documentation tables scroll horizontally instead of widening the page.
 
 ## [2.21.0] - 2026-10-01
 

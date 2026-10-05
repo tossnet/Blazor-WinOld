@@ -1,11 +1,12 @@
 .dlg-win-backdrop {
     position: fixed;
-    inset: 0;
+    /* Visible screen (set by draggable.js): on mobile, a page that overflows horizontally
+       widens the layout viewport, which inset:0 / 100% follow (dvw/dvh do not). */
+    left: var(--winold-vv-left, 0);
+    top: var(--winold-vv-top, 0);
+    width: var(--winold-vv-width, 100dvw);
+    height: var(--winold-vv-height, 100dvh);
     z-index: 99999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,7 +16,7 @@
 .dlg-win {
     display: flex;
     flex-direction: column;
-    max-width: 100vw;
+    max-width: var(--winold-vv-width, 100dvw);
     box-sizing: border-box;
 }
 
@@ -29,9 +30,10 @@
 \*--------*/
 .dlg-win.dlg-win-maximized {
     position: fixed;
-    inset: 0;
-    width: auto;
-    height: auto;
+    left: var(--winold-vv-left, 0);
+    top: var(--winold-vv-top, 0);
+    width: var(--winold-vv-width, 100dvw);
+    height: var(--winold-vv-height, 100dvh);
     max-width: none;
 }
 

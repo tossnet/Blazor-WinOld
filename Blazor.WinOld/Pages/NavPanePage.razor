@@ -310,6 +310,7 @@
             ("Title", "string?", "null", "Title shown in the header, also used as accessible label."),
             ("ExpandMode", "NavPaneExpandMode", "Auto", "Auto: accordion for Win98, independent groups otherwise. Single: one group open at a time. Multiple: independent groups."),
             ("Collapsed", "bool", "false", "Compact mode: icons only, text as tooltip. Bindable."),
+            ("AutoCollapseBelow", "int?", "null", "Viewport width in px below which the pane is collapsed (e.g. 600 for a phone in portrait). Applied on load, then each time the viewport crosses it; a manual toggle is kept until then."),
             ("ShowToggle", "bool?", "null", "Shows the button toggling Collapsed: a hamburger for Win10, an arrow left of the title otherwise. Defaults to true."),
             ("ShowScrollButtons", "bool?", "null", "Accordion only: replaces the scrollbar of the open group with arrow buttons, shown only when items are hidden on their side (Office 97 Outlook bar). Defaults to true for Win98 only."),
             ("Width", "string?", "null", "Width of the expanded pane, as any CSS length. When unset, each appearance uses its own default."),
