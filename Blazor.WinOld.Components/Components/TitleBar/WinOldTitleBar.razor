@@ -1,6 +1,6 @@
 @namespace Blazor.WinOld.Components
 
-<div @ref="Element" class="@BarClass active" @ondblclick="HandleDoubleClickAsync">
+<div @ref="Element" class="@BarClass active @(TouchMode ? "win-touch" : null)" style="@Style" @ondblclick="HandleDoubleClickAsync">
     <div id="@TitleId" class="@TextClass">@Title</div>
     @if (ShowMaximizeButton || ShowCloseButton)
     {

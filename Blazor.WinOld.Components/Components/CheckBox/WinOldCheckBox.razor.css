@@ -149,6 +149,7 @@
 .chk-win-98 + label {
     display: inline-flex;
     align-items: center;
+    color: #000;
 }
 
 .chk-win-98 {
@@ -199,16 +200,6 @@
         top: 50%;
         transform: translateY(-50%) scale(1.2);
     }
-
-@media (prefers-color-scheme: dark) {
-    .chk-win-98 + label {
-        color: #fff;
-    }
-
-    .chk-win-98:focus + label {
-        outline-color: #fff;
-    }
-}
 
 
 /*--------*\

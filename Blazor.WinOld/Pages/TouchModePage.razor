@@ -1,4 +1,5 @@
 @page "/touchmode-page"
+@inject IDialogService DialogService
 
 <PageTitle>TouchMode</PageTitle>
 
@@ -235,6 +236,25 @@
         </WinOldTabs>
     </div>
 
+    <h2>MessageBox / Dialog</h2>
+    <p>
+        Message boxes and dialogs are rendered by their host in the layout, outside this <code>CascadingValue</code>:
+        TouchMode is passed with the <code>TouchMode</code> option. It enlarges the title bar and its buttons
+        (Win98, WinXP, Win7, Win10).
+    </p>
+    <div style="display:flex; flex-direction:row; gap:10px; flex-wrap:wrap; align-items:center;">
+        @foreach (var a in _appearances)
+        {
+            <WinOldButton Appearance="a" OnClick="() => ShowMessageBoxAsync(a)">MessageBox @a</WinOldButton>
+        }
+    </div>
+    <div style="display:flex; flex-direction:row; gap:10px; flex-wrap:wrap; align-items:center; margin-top:10px;">
+        @foreach (var a in _appearances)
+        {
+            <WinOldButton Appearance="a" OnClick="() => ShowDialogAsync(a)">Dialog @a</WinOldButton>
+        }
+    </div>
+
 </CascadingValue>
 
 <hr style="margin: 16px 0;" />
@@ -264,11 +284,47 @@
 </CascadingValue>
            ") />
 
+<h3>MessageBox, InputBox and Dialog</h3>
+<CodeBlock Language="CodeLanguage.CSharp"
+           EnableLineNumbers="true"
+           Code=@(@"
+await DialogService.ShowMessageBox(new MessageBoxOptions
+{
+    Appearance = Appearance.Win10,
+    Title = ""TouchMode"",
+    Message = ""Larger title bar buttons."",
+    TouchMode = true
+});
+           ") />
+
 @code {
     private bool _touchMode = true;
     private string? _selectedName = "Christophe";
     private int _selectedRadio = 1;
     private int _sliderValue = 25;
 
+    private readonly Appearance[] _appearances =
+        [Appearance.DOS, Appearance.Win31, Appearance.Win98, Appearance.WinXP, Appearance.Win7, Appearance.Win10];
+
     private void ToggleTouchMode() => _touchMode = !_touchMode;
+
+    private Task ShowMessageBoxAsync(Appearance appearance)
+        => DialogService.ShowMessageBox(new MessageBoxOptions
+        {
+            Appearance = appearance,
+            Title = "TouchMode",
+            Message = $"TouchMode : {(_touchMode ? "ON" : "OFF")}",
+            Icon = Icon.Information,
+            TouchMode = _touchMode
+        });
+
+    private Task ShowDialogAsync(Appearance appearance)
+        => DialogService.ShowDialog(new DialogOptions
+        {
+            Appearance = appearance,
+            Title = "TouchMode",
+            MaxButton = true,
+            TouchMode = _touchMode,
+            ChildContent = @<p style="margin:10px;">TouchMode : @(_touchMode ? "ON" : "OFF")</p>
+        });
 }

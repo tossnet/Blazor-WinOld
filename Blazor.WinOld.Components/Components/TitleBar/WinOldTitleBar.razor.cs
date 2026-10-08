@@ -16,6 +16,10 @@ public partial class WinOldTitleBar : ComponentBase
     [Parameter, EditorRequired]
     public string ControlsClass { get; set; } = string.Empty;
 
+    /// <summary>Optional inline style on the title bar container (e.g. CSS variable overrides).</summary>
+    [Parameter]
+    public string? Style { get; set; }
+
     /// <summary>Text displayed in the title bar.</summary>
     [Parameter]
     public string Title { get; set; } = string.Empty;
@@ -39,6 +43,10 @@ public partial class WinOldTitleBar : ComponentBase
     /// <summary>Callback invoked when the Maximize button is clicked, or the title bar is double-clicked.</summary>
     [Parameter]
     public EventCallback OnToggleMaximize { get; set; }
+
+    /// <summary>When true, the title bar and its buttons are enlarged for touch screens (adds the win-touch class).</summary>
+    [Parameter]
+    public bool TouchMode { get; set; }
 
     /// <summary>The title bar's root element, for hosts that need it (e.g. to wire up DraggableWindow).</summary>
     public ElementReference Element { get; private set; }

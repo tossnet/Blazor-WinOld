@@ -411,12 +411,7 @@ label.label-txt-win {
 .lbtxt-win-98 {
     font-family: var(--font-family);
     font-size: 11px;
-}
-
-@media (prefers-color-scheme: dark) {
-    .lbtxt-win-98 {
-        color: #fff;
-    }
+    color: #000;
 }
 
 

@@ -46,17 +46,6 @@ DOS
         text-shadow: 1px 1px #fff;
     }
 
-@media (prefers-color-scheme: dark) {
-    .lbl-win-98 {
-        color: #fff;
-    }
-
-        .lbl-win-98[disabled] {
-            color: #a0a0a0;
-            text-shadow: none;
-        }
-}
-
 /*--------*\
     Win XP
 \*--------*/

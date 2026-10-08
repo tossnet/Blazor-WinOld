@@ -142,12 +142,16 @@ public partial class WinOldDialogHost : WinOldComponentBase
 
     private string GetDialogSizeStyle()
     {
+        var parts = new List<string>();
+
+        var colorStyle = TitleBarColorStyle.ForWindow(Options.Appearance, Options.TitleBarColor);
+        if (colorStyle is not null)
+            parts.Add(colorStyle);
+
         // An inline width/height would override the maximized CSS class (inline style always
         // wins over a class), so skip it while maximized and let that class fill the screen.
         if (_isMaximized)
-            return string.Empty;
-
-        var parts = new List<string>();
+            return string.Join("; ", parts);
 
         if (!string.IsNullOrEmpty(Options.Width))
             parts.Add($"width: {Options.Width}");

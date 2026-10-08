@@ -30,6 +30,15 @@ public record InputBoxOptions
     /// (green on a gray box, gray on a colored one).
     /// </summary>
     public DosColor? DosButtonColor { get; init; }
+
+    /// <summary>
+    /// Win31 / Win10 only: color of the title bar (any CSS color, e.g. "#2D7D46").
+    /// In Win10 the window border follows it. When null, the theme color is used.
+    /// </summary>
+    public string? TitleBarColor { get; init; }
+
+    /// <summary>Enlarges the title bar and its buttons for touch screens.</summary>
+    public bool TouchMode { get; init; }
 }
 
 public enum InputBoxType

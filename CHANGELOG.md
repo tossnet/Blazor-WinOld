@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Added
+- `WinOldMessageBox`, `WinOldInputBox`, `WinOldDialog`: new `TouchMode` option (`MessageBoxOptions`, `InputBoxOptions`, `DialogOptions`; a cascaded `TouchMode` around the hosts works too). It enlarges the title bar and its buttons: Win10, Win7 , WinXP , Win98. DOS and Win 3.1 are unchanged. Test buttons added to the **TouchMode** demo page.
+- `WinOldDialog`, `WinOldMessageBox`, `WinOldInputBox`: new `TitleBarColor` option (`DialogOptions`, `MessageBoxOptions`, `InputBoxOptions`) to change the title bar color of one window (any CSS color). Supported by Win 3.1 and Win10; in Win10 the window border follows it. Examples added to the **DialogBox** demo page.
+
+### Fixed
+- `WinOldCheckBox`, `WinOldOptionButton`, `WinOldLabel`, `WinOldHeading` and the labels of `WinOldTextBox`, `WinOldNumberBox`, `WinOldSlider`: in Win98 style, the text stays black when the device is in dark mode (seen on Android). The dark-mode rules that turned it white on the gray Win98 background were removed.
+
 ## [2.22.0] - 2026-10-05
 
 ### Added

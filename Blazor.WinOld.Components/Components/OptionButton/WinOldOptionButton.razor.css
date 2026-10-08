@@ -231,6 +231,7 @@
 
     .opt-win-98 + label {
         margin-left: 18px;
+        color: #000;
     }
 
         .opt-win-98 + label:before {

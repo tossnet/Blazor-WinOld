@@ -14,8 +14,10 @@
                             BarClass="@GetTitleBarClass()"
                             TextClass="@GetTitleBarTextClass()"
                             ControlsClass="@GetTitleBarControlsClass()"
+                            Style="@TitleBarColorStyle.ForTitleBar(Options.Appearance, Options.TitleBarColor)"
                             Title="@Options.Title"
                             TitleId="@_titleId"
+                            TouchMode="@(IsTouch || Options.TouchMode)"
                             OnClose="HandleCancel"
                             ShowMaximizeButton="Options.MaxButton"
                             OnToggleMaximize="ToggleMaximize" />

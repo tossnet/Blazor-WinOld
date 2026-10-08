@@ -23,6 +23,12 @@ public record DialogOptions
     /// </summary>
     public DosColor? DosButtonColor { get; init; }
 
+    /// <summary>
+    /// Win31 / Win10 only: color of the title bar (any CSS color, e.g. "#2D7D46").
+    /// In Win10 the window border follows it. When null, the theme color is used.
+    /// </summary>
+    public string? TitleBarColor { get; init; }
+
     /// <summary>When true, a maximize button is rendered in the dialog's title bar.</summary>
     public bool MaxButton { get; init; } = false;
 
@@ -45,4 +51,7 @@ public record DialogOptions
     /// If null, the dialog sizes itself to its content.
     /// </summary>
     public string? Height { get; init; }
+
+    /// <summary>Enlarges the title bar and its buttons for touch screens.</summary>
+    public bool TouchMode { get; init; }
 }

@@ -80,6 +80,34 @@
 				  Appearance="Appearance.Win10">Open Maximized Dialog</WinOldButton>
 </div>
 
+<h2>Title Bar Color</h2>
+
+<p>
+	Set <code>TitleBarColor</code> (any CSS color) on <code>DialogOptions</code> to change the color of the
+	title bar of one dialog. Supported by the <strong>Win31</strong> and <strong>Win10</strong> appearances;
+	in Win10 the window border follows the same color. The same option exists on
+	<code>MessageBoxOptions</code> and <code>InputBoxOptions</code>.
+</p>
+
+<div style="display:flex; align-items:center; gap:10px; flex-wrap: wrap; margin-bottom: 20px;">
+	<WinOldButton OnClick="@(() => OpenColoredDialog(Appearance.Win31, "#800000"))"
+				  Appearance="Appearance.Win31">Win31 – #800000</WinOldButton>
+
+	<WinOldButton OnClick="@(() => OpenColoredDialog(Appearance.Win10, "#2D7D46"))"
+				  Appearance="Appearance.Win10">Win10 – #2D7D46</WinOldButton>
+</div>
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   EnableLineNumbers="false"
+		   Code=@(@"
+await DialogService.ShowDialog(new DialogOptions
+{
+    Title = ""Settings"",
+    Appearance = Appearance.Win10,
+    TitleBarColor = ""#2D7D46"",
+    ChildContent = @<SimpleDialog Appearance=""Appearance.Win10"" />
+});") />
+
 <h2>Usage</h2>
 
 <p>Show a dialog with inline content using <code>ChildContent</code>:</p>
@@ -176,6 +204,11 @@ if (result == true) { /* OK clicked */ }") />
 			<td style="padding: 8px; border: 1px solid #ccc;">Initial state when the dialog opens: <code>Normal</code> or <code>Maximized</code> (default: Normal)</td>
 		</tr>
 		<tr style="border: 1px solid #ccc;">
+			<td style="padding: 8px; border: 1px solid #ccc;"><code>TitleBarColor</code></td>
+			<td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+			<td style="padding: 8px; border: 1px solid #ccc;">Win31 / Win10 only: color of the title bar (any CSS color). In Win10 the border follows it. Null = theme color</td>
+		</tr>
+		<tr style="border: 1px solid #ccc;">
 			<td style="padding: 8px; border: 1px solid #ccc;"><code>OkButtonText</code></td>
 			<td style="padding: 8px; border: 1px solid #ccc;">string</td>
 			<td style="padding: 8px; border: 1px solid #ccc;">Text for the OK/confirmation button (default: "OK")</td>
@@ -231,6 +264,24 @@ if (result == true) { /* OK clicked */ }") />
 			Width = "600px",
 			Height = "400px",
 			Appearance = appearance,
+			MaxButton = true,
+			OkButtonText = "OK",
+			CancelButtonText = "Cancel",
+			ChildContent = @<SimpleDialog Appearance="@appearance" />
+		});
+
+		_lastResult = result;
+	}
+
+	private async Task OpenColoredDialog(Appearance appearance, string color)
+	{
+		bool? result = await DialogService.ShowDialog(new DialogOptions
+		{
+			Title = $"Title bar {color}",
+			Width = "500px",
+			Height = "350px",
+			Appearance = appearance,
+			TitleBarColor = color,
 			MaxButton = true,
 			OkButtonText = "OK",
 			CancelButtonText = "Cancel",

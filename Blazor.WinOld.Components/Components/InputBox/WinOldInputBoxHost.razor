@@ -9,13 +9,16 @@
 			 role="dialog"
 			 aria-modal="true"
 			 aria-labelledby="@_titleId"
-			 class="inp-win @GetInputBoxClass()">
+			 class="inp-win @GetInputBoxClass()"
+			 style="@TitleBarColorStyle.ForWindow(Options.Appearance, Options.TitleBarColor)">
 			<WinOldTitleBar @ref="_titleBar"
 			                BarClass="@GetTitleBarClass()"
 			                TextClass="@GetTitleBarTextClass()"
 			                ControlsClass="@GetTitleBarControlsClass()"
+			                Style="@TitleBarColorStyle.ForTitleBar(Options.Appearance, Options.TitleBarColor)"
 			                Title="@Options.Title"
 			                TitleId="@_titleId"
+			                TouchMode="@(IsTouch || Options.TouchMode)"
 			                OnClose="HandleCancel" />
 			<div class="inp-win-container @GetInputBoxBodyClass()">
 
