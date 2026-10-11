@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-10-11
+
+### Changed
+- **Breaking**: the package now targets .NET 9.0 and .NET 10.0. .NET 8.0 (out of support) is no longer targeted. The `net10.0` build is now really included in the package (until now the SDK pinned in `global.json` only produced `net8.0` and `net9.0`). The repository builds with the .NET 10 SDK.
+- Smaller CSS: the WinXP title bar buttons and WinXP scroll bar arrows, drawn as pixel-by-pixel SVGs, are now PNG images.
+
+### Added
+- New `WinOldTable` and `WinOldTableRow` components: a table in DOS, Win 3.1, Win 98, WinXP, Win7 and Win10  styles. You write the `thead` / `tbody`; rows written with `WinOldTableRow` are selectable (`@bind-SelectedValue`). Options: `Gridlines` (show/hide the cell grid, shown by default except in DOS), `RowNumbers`. The header stays visible when scrolling and the scrollbars follow the appearance.
+- New global CSS file `table.css` (imported by `blazorwinold.css`): the `table-win table-win-{style}` classes also style a plain `<table>`, with `table-win-container`, `table-win-gridlines`, `table-win-nogridlines`, `table-win-rownumbers` and `table-win-row-active`.
+- `WinOldTextArea`: new DOS style (same field as the DOS `WinOldTextBox`, sized by `Rows`, with its DOS label), and its scrollbars now follow the appearance.
+
+## [2.23.0] - 2026-10-08
+
 ### Added
 - `WinOldMessageBox`, `WinOldInputBox`, `WinOldDialog`: new `TouchMode` option (`MessageBoxOptions`, `InputBoxOptions`, `DialogOptions`; a cascaded `TouchMode` around the hosts works too). It enlarges the title bar and its buttons: Win10, Win7 , WinXP , Win98. DOS and Win 3.1 are unchanged. Test buttons added to the **TouchMode** demo page.
 - `WinOldDialog`, `WinOldMessageBox`, `WinOldInputBox`: new `TitleBarColor` option (`DialogOptions`, `MessageBoxOptions`, `InputBoxOptions`) to change the title bar color of one window (any CSS color). Supported by Win 3.1 and Win10; in Win10 the window border follows it. Examples added to the **DialogBox** demo page.

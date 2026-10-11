@@ -1,6 +1,7 @@
 @import url('titlebar.css');
 @import url('utilities.css');
 @import url('scrollbar.css');
+@import url('table.css');
 
 @font-face {
     font-family: "Pixelated MS Sans Serif";
@@ -245,7 +246,7 @@ label.label-txt-win {
     color-scheme: only light !important;
 }
 
-.txt-win-dos {
+.txt-win-dos, .txtarea-win-dos {
     box-sizing: border-box;
     height: 24px;
     padding: 0 6px;
@@ -264,18 +265,18 @@ label.label-txt-win {
 }
 
     /* Focus: inverted field, as in the DOS input line */
-    .txt-win-dos:focus {
+    .txt-win-dos:focus, .txtarea-win-dos:focus {
         color: #ffffff;
         background-color: #000000;
         border-color: #000000;
     }
 
-    .txt-win-dos::selection {
+    .txt-win-dos::selection, .txtarea-win-dos::selection {
         color: #000000;
         background-color: #ffffff;
     }
 
-    .txt-win-dos:disabled {
+    .txt-win-dos:disabled, .txtarea-win-dos:disabled {
         color: #686868;
         cursor: not-allowed;
     }
@@ -285,6 +286,26 @@ label.label-txt-win {
         font-size: 14px;
         line-height: 30px;
     }
+
+/* TextArea: same field as the TextBox, but sized by Rows and scrolled with the DOS scrollbar */
+.txtarea-win-dos {
+    height: auto;
+    padding: 0 0 0 6px;
+    /* .txtarea-win (all: unset) resets the animation that places the DOS scrollbar thumb */
+    animation: scroll-dos-y linear both, scroll-dos-x linear both;
+    animation-timeline: scroll(self block), scroll(self inline);
+}
+
+    .txtarea-win-dos.win-touch {
+        height: auto;
+        line-height: 22px;
+    }
+
+@supports not selector(::-webkit-scrollbar) {
+    .txtarea-win-dos {
+        scrollbar-color: var(--scroll-dos-thumb) var(--scroll-dos-track);
+    }
+}
 
 .lbtxt-win-dos {
     font-family: 'IBMVGADos', monospace !important;

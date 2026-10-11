@@ -1,27 +1,102 @@
 ﻿[
   {
     "date": "2022-01-06",
-    "temperatureC": 1,
-    "summary": "Freezing"
+    "temperatureC": 10,
+    "summary": "Cool"
   },
   {
     "date": "2022-01-07",
-    "temperatureC": 14,
-    "summary": "Bracing"
+    "temperatureC": 55,
+    "summary": "Scorching"
   },
   {
     "date": "2022-01-08",
-    "temperatureC": -13,
-    "summary": "Freezing"
+    "temperatureC": 49,
+    "summary": "Sweltering"
   },
   {
     "date": "2022-01-09",
-    "temperatureC": -16,
-    "summary": "Balmy"
+    "temperatureC": -4,
+    "summary": "Chilly"
   },
   {
     "date": "2022-01-10",
-    "temperatureC": -2,
+    "temperatureC": 27,
+    "summary": "Warm"
+  },
+  {
+    "date": "2022-01-11",
+    "temperatureC": 40,
+    "summary": "Hot"
+  },
+  {
+    "date": "2022-01-12",
+    "temperatureC": 54,
+    "summary": "Scorching"
+  },
+  {
+    "date": "2022-01-13",
+    "temperatureC": -12,
+    "summary": "Bracing"
+  },
+  {
+    "date": "2022-01-14",
+    "temperatureC": -19,
+    "summary": "Freezing"
+  },
+  {
+    "date": "2022-01-15",
+    "temperatureC": 40,
+    "summary": "Hot"
+  },
+  {
+    "date": "2022-01-16",
+    "temperatureC": 13,
+    "summary": "Mild"
+  },
+  {
+    "date": "2022-01-17",
+    "temperatureC": 50,
+    "summary": "Sweltering"
+  },
+  {
+    "date": "2022-01-18",
+    "temperatureC": 9,
+    "summary": "Cool"
+  },
+  {
+    "date": "2022-01-19",
+    "temperatureC": 4,
+    "summary": "Cool"
+  },
+  {
+    "date": "2022-01-20",
+    "temperatureC": 40,
+    "summary": "Hot"
+  },
+  {
+    "date": "2022-01-21",
+    "temperatureC": 49,
+    "summary": "Sweltering"
+  },
+  {
+    "date": "2022-01-22",
+    "temperatureC": 50,
+    "summary": "Sweltering"
+  },
+  {
+    "date": "2022-01-23",
+    "temperatureC": 40,
+    "summary": "Hot"
+  },
+  {
+    "date": "2022-01-24",
+    "temperatureC": 30,
+    "summary": "Balmy"
+  },
+  {
+    "date": "2022-01-25",
+    "temperatureC": -1,
     "summary": "Chilly"
   }
 ]

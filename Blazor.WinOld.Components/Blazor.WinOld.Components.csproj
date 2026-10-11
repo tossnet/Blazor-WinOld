@@ -1,10 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<!--<TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>-->
-		<!-- Détection du SDK disponible -->
-		<TargetFrameworks Condition="'$(NETCoreSdkVersion)' &lt; '10.0'">net8.0;net9.0</TargetFrameworks>
-		<TargetFrameworks Condition="'$(NETCoreSdkVersion)' &gt;= '10.0'">net8.0;net9.0;net10.0</TargetFrameworks>
+		<TargetFrameworks>net9.0;net10.0</TargetFrameworks>
 
 		<RootNamespace>BlazorWinOld</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -12,10 +9,10 @@
 
 		<!-- Package metadata -->
 		<PackageId>BlazorWinOld</PackageId>
-		<Version>2.23.0</Version>
+		<Version>3.0.0</Version>
 		<Authors>Christophe Peugnet</Authors>
 		<Copyright>Copyright 2025-2026</Copyright>
-		<Description>Blazor components in DOS, Windows 3.11, Windows 98, Windows XP, Windows 7 and Windows 10 desktop styles. For use with .NET 8.0 or higher Blazor applications</Description>
+		<Description>Blazor components in DOS, Windows 3.11, Windows 98, Windows XP, Windows 7 and Windows 10 desktop styles. For use with .NET 9.0 or higher Blazor applications</Description>
 		<PackageTags>blazor;components;dos;win31;win98;winXP;win7;win10;windows-xp;windows-3;windows-98;windows-7;windows-10</PackageTags>
 		<PackageProjectUrl>https://github.com/tossnet/Blazor-WinOld</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/tossnet/Blazor-WinOld.git</RepositoryUrl>
@@ -23,7 +20,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
-		<PackageReleaseNotes>v2.23.0 Full changelog: https://github.com/tossnet/Blazor-WinOld/blob/master/CHANGELOG.md</PackageReleaseNotes>
+		<PackageReleaseNotes>v3.0.0 Full changelog: https://github.com/tossnet/Blazor-WinOld/blob/master/CHANGELOG.md</PackageReleaseNotes>
 
 		<!-- Build and symbols -->
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -41,10 +38,6 @@
 
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.31" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">

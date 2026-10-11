@@ -1,47 +1,269 @@
-﻿@page "/weather"
+@page "/table-page"
 @inject HttpClient Http
 
-<PageTitle>Weather</PageTitle>
+<PageTitle>Table</PageTitle>
 
-<h1>Weather</h1>
+<h1>Table</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p>The <code>WinOldTable</code> component displays tabular data with the vintage Windows style of your choice: a details list (DOS Norton Commander, Win 98, Win XP, Win 7 explorers) or a spreadsheet (Win 3.1 and Win 10 Excel). You write the <code>thead</code> and <code>tbody</code> yourself; use <code>WinOldTableRow</code> for rows that can be selected. Its scrollbars follow the same appearance and the header stays visible when scrolling.</p>
 
-@if (forecasts == null)
+@if (_forecasts == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th aria-label="Temperature in Celsius">Temp. (C)</th>
-                <th aria-label="Temperature in Farenheit">Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
+    <h2>Examples by Style</h2>
+
+    <p>All the tables below share the same bound value: select a row in one of them and the others follow. The check boxes apply to all of them: <code>RowNumbers="true"</code> adds an Excel-like first column with the row numbers (nothing to write in the rows), <code>Gridlines="false"</code> hides the cell grid (by default every style has one, except DOS which has its own column separators).</p>
+
+    <div class="wo-row" style="gap: 20px; margin-bottom: 10px;">
+        <WinOldCheckBox Appearance="Appearance.Win98" Label="Row numbers" @bind-Checked="_rowNumbers" />
+        <WinOldCheckBox Appearance="Appearance.Win98" Label="No gridlines" @bind-Checked="_noGridlines" />
+    </div>
+
+    <div style="display:flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+        @foreach (var style in _styles)
+        {
+            <div class="style-col">
+                <h7>@style.Name</h7>
+                <WinOldTable Appearance="style.Appearance"
+                             RowNumbers="_rowNumbers"
+                             Gridlines="@(_noGridlines ? false : null)"
+                             Label="@($"Weather forecasts ({style.Name})")"
+                             @bind-SelectedValue="_selectedValue"
+                             Style="width: 340px; height: 180px;">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th aria-label="Temperature in Celsius">Temp. (C)</th>
+                            <th aria-label="Temperature in Farenheit">Temp. (F)</th>
+                            <th>Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var forecast in _forecasts)
+                        {
+                            <WinOldTableRow Value="@forecast.Key">
+                                <td>@forecast.Date.ToShortDateString()</td>
+                                <td>@forecast.TemperatureC</td>
+                                <td>@forecast.TemperatureF</td>
+                                <td>@forecast.Summary</td>
+                            </WinOldTableRow>
+                        }
+                    </tbody>
+                </WinOldTable>
+            </div>
+        }
+    </div>
+
+    <h2 style="margin-top:20px">Current Value</h2>
+    <div style="padding: 10px; background-color: #f5f5f5; border: 1px solid #ccc; margin: 10px 0;">
+        <p><strong>SelectedValue:</strong> @(_selectedValue ?? "(none)")</p>
+        <WinOldButton Appearance="Appearance.Win98" OnClick="@(() => _selectedValue = _forecasts.Last().Key)">Select the last day</WinOldButton>
+        <WinOldButton Appearance="Appearance.Win98" OnClick="@(() => _selectedValue = null)">Clear</WinOldButton>
+    </div>
+
+    <h2 style="margin-top:20px">CSS Only</h2>
+
+    <p>The styles are global CSS classes: they also work on a plain <code>&lt;table&gt;</code>, without the component (no selection then). Wrap it in a <code>table-win-container</code> to get the frame and the scrollbars.</p>
+
+    <div class="table-win-container table-win-container-98 scroll-win-98" style="width: 340px; height: 140px;">
+        <table class="table-win table-win-98">
+            <thead>
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
+                    <th>Date</th>
+                    <th>Temp. (C)</th>
+                    <th>Summary</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var forecast in _forecasts)
+                {
+                    <tr>
+                        <td>@forecast.Date.ToShortDateString()</td>
+                        <td>@forecast.TemperatureC</td>
+                        <td>@forecast.Summary</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
 
+<h2 style="margin-top:20px">Code Example</h2>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"
+<WinOldTable Appearance=""Appearance.WinXP""
+             Label=""Weather forecasts""
+             @bind-SelectedValue=""_selectedValue""
+             Style=""width: 340px; height: 180px;"">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Temp. (C)</th>
+            <th>Summary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var forecast in _forecasts)
+        {
+            <WinOldTableRow Value=""@forecast.Key"">
+                <td>@forecast.Date.ToShortDateString()</td>
+                <td>@forecast.TemperatureC</td>
+                <td>@forecast.Summary</td>
+            </WinOldTableRow>
+        }
+    </tbody>
+</WinOldTable>
+
+@* Spreadsheet look *@
+<WinOldTable Appearance=""Appearance.Win10"" RowNumbers=""true"">...</WinOldTable>
+
+@* CSS only *@
+<div class=""table-win-container table-win-container-98 scroll-win-98"">
+    <table class=""table-win table-win-98"">...</table>
+</div>") />
+
+<h2>CSS Classes</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+    <thead>
+        <tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Class</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">On</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>table-win table-win-{style}</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">table</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Style of the table. <code>{style}</code>: <code>dos</code>, <code>31</code>, <code>98</code>, <code>xp</code>, <code>7</code>, <code>10</code></td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>table-win-container table-win-container-{style}</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">div around the table</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Frame and scrolling. Add <code>scroll-win-{style}</code> for the scrollbars</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>table-win-gridlines</code> / <code>table-win-nogridlines</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">table</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Shows / hides the cell grid</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>table-win-rownumbers</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">table</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Adds the row numbers column</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>table-win-row-active</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">tr</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Highlights the row as selected</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Properties</h2>
+
+<h3>WinOldTable</h3>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+    <thead>
+        <tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Appearance</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Appearance</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Visual style (DOS, Win31, Win98, WinXP, Win7, Win10). Default: Win10</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>SelectedValue</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Value of the selected row (use @@bind-SelectedValue for two-way binding)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Gridlines</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">bool?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Shows (true) or hides (false) the cell grid. Default (null): grid for every style except DOS</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>RowNumbers</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">bool</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Adds an Excel-like first column with the row numbers. Default: false</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Label</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Accessible name of the table (<code>aria-label</code>)</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>ChildContent</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">RenderFragment?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">The <code>thead</code> and <code>tbody</code> of the table</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Style</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Inline styles of the frame. Set a <code>height</code> to get the scrollbar</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>WinOldTableRow</h3>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+    <thead>
+        <tr style="background-color: #f0f0f0; border: 1px solid #ccc;">
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Property</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Type</th>
+            <th style="padding: 8px; border: 1px solid #ccc; text-align: left;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>Value</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">string?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">Value sent to <code>SelectedValue</code> when the row is clicked. Without a value, the row is not selectable</td>
+        </tr>
+        <tr style="border: 1px solid #ccc;">
+            <td style="padding: 8px; border: 1px solid #ccc;"><code>ChildContent</code></td>
+            <td style="padding: 8px; border: 1px solid #ccc;">RenderFragment?</td>
+            <td style="padding: 8px; border: 1px solid #ccc;">The cells (<code>td</code>) of the row</td>
+        </tr>
+    </tbody>
+</table>
+
 @code {
-    private WeatherForecast[]? forecasts;
+    private WeatherForecast[]? _forecasts;
+
+    private string? _selectedValue;
+
+    private bool _rowNumbers;
+
+    private bool _noGridlines;
+
+    private readonly (Appearance Appearance, string Name)[] _styles =
+    {
+        (Appearance.DOS, "DOS"),
+        (Appearance.Win31, "Win 3.1"),
+        (Appearance.Win98, "Win 98"),
+        (Appearance.WinXP, "Win XP"),
+        (Appearance.Win7, "Win 7"),
+        (Appearance.Win10, "Win 10")
+    };
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        _forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        _selectedValue = _forecasts?.FirstOrDefault()?.Key;
     }
 
     public class WeatherForecast
@@ -53,5 +275,7 @@ else
         public string? Summary { get; set; }
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+
+        public string Key => Date.ToString("yyyy-MM-dd");
     }
 }

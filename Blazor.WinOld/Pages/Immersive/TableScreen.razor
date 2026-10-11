@@ -1,0 +1,94 @@
+@page "/immersive/table"
+
+<PageTitle>Blazor.WinOld - Table</PageTitle>
+
+<div class="screen">
+    <WinOldFrame Appearance="A" Label="C:\">
+        <WinOldTable Appearance="A"
+                     Label="Files of C:\"
+                     RowNumbers="_rowNumbers"
+                     Gridlines="@(_noGridlines ? false : null)"
+                     @bind-SelectedValue="_selectedFile"
+                     Style="height: 240px;">
+            <thead>
+                <tr>
+                    <th aria-label="Checked" style="width: 1px;"></th>
+                    <th>Name</th>
+                    <th style="text-align: right;">Size</th>
+                    <th>Type</th>
+                    <th>Modified</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var file in _files)
+                {
+                    <WinOldTableRow Value="@file.Name">
+                        @* stopPropagation: checking a box doesn't select the row *@
+                        <td @onclick:stopPropagation="true">
+                            <WinOldCheckBox Appearance="A"
+                                            aria-label="@($"Check {file.Name}")"
+                                            Checked="@_checkedFiles.Contains(file.Name)"
+                                            CheckedChanged="@(value => ToggleChecked(file.Name, value))" />
+                        </td>
+                        <td>@file.Name</td>
+                        <td style="text-align: right;">@file.Size</td>
+                        <td>@file.Type</td>
+                        <td>@file.Modified</td>
+                    </WinOldTableRow>
+                }
+            </tbody>
+        </WinOldTable>
+    </WinOldFrame>
+
+    <div class="screen-row">
+        <WinOldFrame Appearance="A" Label="Options">
+            <WinOldCheckBox Appearance="A" Label="Row numbers" @bind-Value="_rowNumbers" />
+            <WinOldCheckBox Appearance="A" Label="No gridlines" @bind-Value="_noGridlines" />
+        </WinOldFrame>
+
+        <WinOldFrame Appearance="A" Label="Selection" Style="flex: 1;">
+            <WinOldLabel Appearance="A">Selected : @(_selectedFile ?? "(none)")</WinOldLabel>
+            <WinOldLabel Appearance="A">Type : @(_files.FirstOrDefault(f => f.Name == _selectedFile)?.Type ?? "-")</WinOldLabel>
+            <WinOldLabel Appearance="A">Checked : @(_checkedFiles.Count == 0 ? "(none)" : string.Join(", ", _files.Where(f => _checkedFiles.Contains(f.Name)).Select(f => f.Name)))</WinOldLabel>
+        </WinOldFrame>
+    </div>
+</div>
+
+@code {
+    private string? _selectedFile = "Autoexec.bat";
+    private bool _rowNumbers;
+    private bool _noGridlines;
+    private readonly HashSet<string> _checkedFiles = new() { "Config.sys" };
+
+    private void ToggleChecked(string name, bool value)
+    {
+        if (value)
+        {
+            _checkedFiles.Add(name);
+        }
+        else
+        {
+            _checkedFiles.Remove(name);
+        }
+    }
+
+    private readonly FileEntry[] _files =
+    {
+        new("Ati", "", "File Folder", "03/14/1998 10:36 PM"),
+        new("Bat", "", "File Folder", "03/14/1998 10:36 PM"),
+        new("Bjc4300", "", "File Folder", "05/02/1998 09:12 AM"),
+        new("Program Files", "", "File Folder", "03/14/1998 10:36 PM"),
+        new("Tools", "", "File Folder", "07/21/1998 06:45 PM"),
+        new("Windows", "", "File Folder", "03/14/1998 10:36 PM"),
+        new("Autoexec.bat", "1 KB", "MS-DOS Batch File", "11/17/1998 07:06 PM"),
+        new("Command.com", "92 KB", "MS-DOS Application", "05/11/1998 08:01 PM"),
+        new("Config.sys", "1 KB", "System file", "11/17/1998 07:06 PM"),
+        new("Io.sys", "218 KB", "System file", "05/11/1998 08:01 PM"),
+        new("Logo.sys", "127 KB", "System file", "05/11/1998 08:01 PM"),
+        new("Msdos.sys", "2 KB", "System file", "03/14/1998 10:36 PM"),
+        new("Scandisk.log", "1 KB", "Text Document", "10/02/1998 02:17 PM"),
+        new("Win386.swp", "163 840 KB", "SWP File", "11/17/1998 07:06 PM")
+    };
+
+    private record FileEntry(string Name, string Size, string Type, string Modified);
+}

@@ -1,0 +1,13 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+<CascadingValue Value="this" IsFixed="true">
+    <div class="table-win-container table-win-container-@GetStyleSuffix() @Appearance.ToScrollbarClass() @Class"
+         style="@Style"
+         @attributes="Attributes">
+        <table class="@GetTableClass()" aria-label="@Label">
+            @ChildContent
+        </table>
+    </div>
+</CascadingValue>

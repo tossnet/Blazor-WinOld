@@ -7,6 +7,18 @@
 
 <div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
 	<div>
+		<WinOldTextArea Appearance="Appearance.DOS"
+						Label="TextArea :"
+						Value="@_dosValue"
+						Rows="4"
+						Style="padding-bottom:4px" />
+
+		<WinOldTextArea Appearance="Appearance.DOS"
+						Label="TextArea :"
+						Disabled="true" />
+	</div>
+
+	<div>
 		<WinOldTextArea Appearance="Appearance.Win98"
 						Label="TextArea :"
 						Style="padding-bottom:4px" />
@@ -101,6 +113,7 @@
 	private WinOldTextArea? _dynamicTextArea;
 	private string _dynamicValue = "This framework is awesome!\nIt supports multiple lines.";
 	private string _testStatus = "Ready";
+	private string _dosValue = "C:\\>DIR\nAUTOEXEC.BAT\nCONFIG.SYS\nCOMMAND.COM\nDOS        <DIR>\nWINDOWS    <DIR>\n5 file(s)";
 
 	private Task OnDynamicValueChanged(string value)
 	{

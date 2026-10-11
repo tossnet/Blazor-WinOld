@@ -83,6 +83,7 @@ public partial class WinOldTextArea : WinOldComponentBase, IAsyncDisposable
     {
         var cls = Appearance switch
         {
+            Appearance.DOS => "txtarea-win-dos",
             Appearance.Win98 => "txtarea-win-98",
             Appearance.WinXP => "txtarea-win-xp",
             Appearance.Win7 => "txtarea-win-7",
@@ -101,6 +102,7 @@ public partial class WinOldTextArea : WinOldComponentBase, IAsyncDisposable
 
         return Appearance switch
         {
+            Appearance.DOS => "lbtxt-win-dos",
             Appearance.Win98 => "lbtxt-win-98",
             Appearance.WinXP => "lbtxt-win-xp",
             Appearance.Win7 => "lbtxt-win-7",

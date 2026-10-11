@@ -1,0 +1,13 @@
+@namespace Blazor.WinOld.Components
+
+@inherits WinOldComponentBase
+
+@implements IDisposable
+
+<tr aria-selected="@(Value is null ? null : IsSelected ? "true" : "false")"
+    class="@(IsSelected ? "table-win-row-active" : null) @Class"
+    style="@Style"
+    @attributes="Attributes"
+    @onclick="SelectAsync">
+    @ChildContent
+</tr>

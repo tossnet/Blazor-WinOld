@@ -11,7 +11,7 @@
     <textarea @ref="InputElement"
               id="@ElementId"
               rows="@Rows"
-              class="txtarea-win @GetComponentClass() @Class"
+              class="txtarea-win @GetComponentClass() @Appearance.ToScrollbarClass() @Class"
               disabled="@(ParentDisabled | Disabled)"
               style="@InputStyle"
               @attributes="Attributes"
