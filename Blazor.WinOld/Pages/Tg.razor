@@ -1,0 +1,171 @@
+@page "/tg"
+@inject NavigationManager Navigation
+
+<PageTitle>Turbo GERARD</PageTitle>
+
+@* Full-screen Turbo Vision style demo, drawn over the site layout. Not listed in the menu. *@
+<div class="tg-screen tg-@_appearance.ToString().ToLowerInvariant()" tabindex="0" @ref="_screen"
+     @onkeydown="OnKeyDown" @onkeydown:preventDefault="true">
+    <WinOldAppShell Appearance="_appearance" IncludeHosts="false" Height="100%">
+        <Menu>
+            <WinOldMenu>
+                <WinOldMenuItem Label="Fichier" HotKey="F">
+                    <WinOldMenuItem Label="Nouveau" HotKey="N" Shortcut="F4" OnClick="New" />
+                    <WinOldMenuItem IsSeparator />
+                    <WinOldMenuItem Label="Quitter" HotKey="Q" Shortcut="Alt-Q" OnClick="Quit" />
+                </WinOldMenuItem>
+                <WinOldMenuItem Label="Affichage" HotKey="A">
+                    @foreach (var style in Styles)
+                    {
+                        <WinOldMenuItem Label="@style.Name" OnClick="@(() => SetAppearance(style.Appearance))" />
+                    }
+                </WinOldMenuItem>
+                <WinOldMenuItem Label="Fenêtre" HotKey="F">
+                    <WinOldMenuItem Label="Suivant" HotKey="S" Shortcut="F6" OnClick="Next" />
+                    <WinOldMenuItem Label="Zoom" HotKey="Z" Shortcut="F5" OnClick="Zoom" />
+                </WinOldMenuItem>
+            </WinOldMenu>
+        </Menu>
+
+        <StatusBar>
+            <WinOldStatusBar>
+                <WinOldStatusBarPanel>
+                    <span class="tg-hint"><span class="tg-key">Alt-Q</span> Quitter</span>
+                    <span class="tg-hint"><span class="tg-key">F4</span> Nouveau</span>
+                    <span class="tg-hint"><span class="tg-key">Alt-F3</span> Fermer</span>
+                </WinOldStatusBarPanel>
+            </WinOldStatusBar>
+        </StatusBar>
+
+        <ChildContent>
+            <div class="tg-desktop">
+                @* Rendered in creation order (the DOM never moves, so a drag isn't interrupted): stacking is only z-index. *@
+                @foreach (var w in _windows)
+                {
+                    <WinOldWindow @key="w"
+                                  Appearance="_appearance"
+                                  DosColor="DosColor.Blue"
+                                  Title="@($"TURBO GERARD {w.Number}")"
+                                  Active="@(w == Active)"
+                                  ShowCloseButton="true"
+                                  MaxButton="true"
+                                  Draggable="true"
+                                  OnMoved="e => Move(w, e)"
+                                  @bind-WindowState="w.State"
+                                  OnClose="() => Close(w)"
+                                  @onpointerdown="() => Activate(w)"
+                                  Style="@GetWindowStyle(w)">
+                        <p class="tg-message">Turbo GERARD, tu quittes quand t'en as marre...</p>
+                    </WinOldWindow>
+                }
+            </div>
+        </ChildContent>
+    </WinOldAppShell>
+</div>
+
+@code {
+    private sealed class TgWindow
+    {
+        public int Number { get; init; }
+        public double Left { get; set; }
+        public double Top { get; set; }
+        public WindowState State { get; set; }
+        public int ZOrder { get; set; }
+    }
+
+    private readonly List<TgWindow> _windows = new();
+    private int _count;
+    private int _zOrder;
+    private ElementReference _screen;
+    private bool _refocus = true;
+    private Appearance _appearance = Appearance.DOS;
+
+    private static readonly (Appearance Appearance, string Name)[] Styles =
+    {
+        (Appearance.DOS, "DOS"),
+        (Appearance.Win31, "Win31"),
+        (Appearance.Win98, "Win98"),
+        (Appearance.WinXP, "WinXP"),
+        (Appearance.Win7, "Win7"),
+        (Appearance.Win10, "Win10")
+    };
+
+    // The active window is the one on top of the others.
+    private TgWindow? Active => _windows.MaxBy(w => w.ZOrder);
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // Keeps the keyboard shortcuts working after a menu click or a closed window.
+        if (_refocus)
+        {
+            _refocus = false;
+            await _screen.FocusAsync(preventScroll: true);
+        }
+    }
+
+    private void New()
+    {
+        var k = _count++ % 10;
+        _windows.Add(new TgWindow { Number = _count, Left = 40 + k * 24, Top = 24 + k * 24, ZOrder = ++_zOrder });
+        _refocus = true;
+    }
+
+    private void Activate(TgWindow w)
+    {
+        if (w != Active)
+            w.ZOrder = ++_zOrder;
+    }
+
+    // Brings the bottom window to the top.
+    private void Next()
+    {
+        if (_windows.MinBy(w => w.ZOrder) is { } bottom)
+            Activate(bottom);
+        _refocus = true;
+    }
+
+    private void Zoom()
+    {
+        if (Active is { } w)
+            w.State = w.State == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        _refocus = true;
+    }
+
+    // Keeps the dragged position, otherwise the next render of the style would put the window back.
+    private void Move(TgWindow w, WindowMovedEventArgs e)
+    {
+        w.Left = e.Left;
+        w.Top = e.Top;
+    }
+
+    private void Close(TgWindow w)
+    {
+        _windows.Remove(w);
+        _refocus = true;
+    }
+
+    private void SetAppearance(Appearance appearance)
+    {
+        _appearance = appearance;
+        _refocus = true;
+    }
+
+    private void Quit() => Navigation.NavigateTo("");
+
+    private void OnKeyDown(KeyboardEventArgs e)
+    {
+        switch (e.Key)
+        {
+            case "F4": New(); break;
+            case "F5": Zoom(); break;
+            case "F6": Next(); break;
+            case "F3" when e.AltKey: if (Active is { } w) Close(w); break;
+            case "q" or "Q" when e.AltKey: Quit(); break;
+        }
+    }
+
+    // A maximized window drops its position so the CSS can make it fill the desktop.
+    private static string GetWindowStyle(TgWindow w) => w.State == WindowState.Maximized
+        ? FormattableString.Invariant($"z-index: {w.ZOrder}; --dos-box-close: #55ff55;")
+        : FormattableString.Invariant($"left: {w.Left}px; top: {w.Top}px; z-index: {w.ZOrder}; --dos-box-close: #55ff55;");
+}

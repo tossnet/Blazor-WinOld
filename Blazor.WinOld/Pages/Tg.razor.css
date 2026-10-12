@@ -1,0 +1,72 @@
+/* Drawn over the site layout, on the whole screen */
+.tg-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    outline: none;
+}
+
+.tg-desktop {
+    position: relative;
+    isolation: isolate; /* keeps the windows under the menu */
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Desktop background, per style (Affichage menu) */
+/* DOS: blue and gray hatching, like the Turbo Vision background */
+.tg-dos .tg-desktop {
+    background: repeating-linear-gradient(-45deg, #0000aa 0 2px, #c0c0c0 2px 3px);
+}
+
+.tg-win31 .tg-desktop {
+    background: #c0c0c0;
+}
+
+.tg-win98 .tg-desktop {
+    background: #008080;
+}
+
+.tg-winxp .tg-desktop {
+    background: #004e98;
+}
+
+.tg-win7 .tg-desktop {
+    background: linear-gradient(135deg, #0b3d91, #1e88e5);
+}
+
+.tg-win10 .tg-desktop {
+    background: #0078d7;
+}
+
+    .tg-desktop ::deep .win-window {
+        position: absolute;
+        width: 450px;
+        max-width: calc(100% - 32px);
+    }
+
+    /* Zoom: fills the desktop, between the menu and the status bar */
+    .tg-desktop ::deep .win-window.win-window-maximized {
+        position: absolute;
+        inset: 0;
+        width: auto;
+        max-width: none;
+    }
+
+.tg-message {
+    margin: 12px 0;
+    text-align: center;
+}
+
+.tg-hint {
+    margin-right: 2ch;
+}
+
+.tg-key {
+    font-weight: bold;
+}
+
+.tg-dos .tg-key {
+    font-weight: normal;
+    color: #aa0000;
+}
