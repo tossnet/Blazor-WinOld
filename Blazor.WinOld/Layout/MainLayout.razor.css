@@ -69,7 +69,17 @@ main {
     .top-row .github-link {
         grid-column: 3;
         justify-self: end;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
     }
+
+        .top-row .github-link .github-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #d6d5d5;
+        }
 
 @media (max-width: 640.98px) {
     .top-row {
