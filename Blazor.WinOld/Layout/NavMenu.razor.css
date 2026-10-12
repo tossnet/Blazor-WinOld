@@ -60,6 +60,35 @@
         line-height: 3rem;
     }
 
+/* Sub-item (e.g. "Context menu" under "Menu") */
+.nav-subitem {
+    padding-left: 2.1rem;
+}
+
+    .nav-subitem ::deep a {
+        height: 1.8rem;
+        line-height: 1.8rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        min-width: 0;
+        border-left: 1px solid rgba(255,255,255,0.25);
+        border-radius: 0 4px 4px 0;
+        padding-left: 0.6rem;
+    }
+
+    .nav-subitem .bi-custom {
+        font-size: 1rem;
+        margin-top: 0;
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+    }
+
+    .nav-subitem .nav-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+    }
+
 .nav-item ::deep a.active {
     background-color: rgba(255,255,255,0.37);
     color: white;

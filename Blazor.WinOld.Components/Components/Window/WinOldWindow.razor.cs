@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Blazor.WinOld.Components;
 
@@ -24,9 +25,97 @@ public partial class WinOldWindow : WinOldComponentBase
     [Parameter]
     public bool MaxButton { get; set; } = false;
 
-    private bool _isMaximized;
+    /// <summary>
+    /// When false, the window is drawn inactive. DOS: no Close/Maximize buttons, single gray line and gray title.
+    /// Win7 and Win10: inactive title bar colors.
+    /// </summary>
+    [Parameter]
+    public bool Active { get; set; } = true;
 
-    private void ToggleMaximize() => _isMaximized = !_isMaximized;
+    /// <summary>DOS only: background color of the window (gray when not set).</summary>
+    [Parameter]
+    public DosColor? DosColor { get; set; }
+
+    /// <summary>Normal or maximized. Supports two-way binding (<c>@bind-WindowState</c>).</summary>
+    [Parameter]
+    public WindowState WindowState { get; set; } = WindowState.Normal;
+
+    /// <summary>Callback invoked when the user toggles the maximized state.</summary>
+    [Parameter]
+    public EventCallback<WindowState> WindowStateChanged { get; set; }
+
+    /// <summary>
+    /// When true, the window can be moved by dragging its title bar, inside its positioned container
+    /// (the window becomes <c>position: absolute</c> if it is not already). A maximized window can't be dragged.
+    /// </summary>
+    [Parameter]
+    public bool Draggable { get; set; }
+
+    /// <summary>
+    /// Callback invoked when a drag ends, with the new position. Store it and render it back in <see cref="WinOldComponentBase.Style"/>
+    /// (<c>left</c> / <c>top</c>), otherwise the next change of Style puts the window back where it was.
+    /// </summary>
+    [Parameter]
+    public EventCallback<WindowMovedEventArgs> OnMoved { get; set; }
+
+    private ElementReference _windowRef;
+    private WinOldTitleBar _titleBar = default!;
+    private DraggableWindow _draggable = default!;
+    private DotNetObjectReference<WinOldWindow>? _dotNetRef;
+    private bool _dragInitialized;
+
+    private bool _isMaximized;
+    private WindowState? _lastWindowState;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (Draggable && !_dragInitialized)
+        {
+            _dragInitialized = true;
+            _dotNetRef ??= DotNetObjectReference.Create(this);
+            await _draggable.InitAsync(_windowRef, _titleBar.Element, withinParent: true, _dotNetRef);
+        }
+        else if (!Draggable && _dragInitialized)
+        {
+            _dragInitialized = false;
+            await _draggable.ResetAsync();
+        }
+    }
+
+    /// <summary>Called by draggable.js when the user releases the title bar.</summary>
+    [JSInvokable]
+    public Task OnDragEnd(double left, double top) => OnMoved.InvokeAsync(new WindowMovedEventArgs(left, top));
+
+    public ValueTask DisposeAsync()
+    {
+        // The DraggableWindow child disposes its own JS instance.
+        _dotNetRef?.Dispose();
+        return ValueTask.CompletedTask;
+    }
+
+    protected override void OnParametersSet()
+    {
+        // Only follow the parameter when it changes, so a parent that doesn't bind it keeps the user's toggle.
+        if (_lastWindowState != WindowState)
+        {
+            _lastWindowState = WindowState;
+            _isMaximized = WindowState == WindowState.Maximized;
+        }
+    }
+
+    private async Task ToggleMaximize()
+    {
+        _isMaximized = !_isMaximized;
+        await WindowStateChanged.InvokeAsync(_isMaximized ? WindowState.Maximized : WindowState.Normal);
+    }
+
+    // Returns the modifier CSS class applied to the window container when inactive.
+    private string GetInactiveClass() => Active ? string.Empty : "win-window-inactive";
+
+    // DOS only: returns the color modifier class of the window container.
+    private string GetDosColorClass() => Appearance == Appearance.DOS && DosColor is { } color && color != Components.DosColor.Default
+        ? $"win-window-dos-{color.ToString().ToLowerInvariant()}"
+        : string.Empty;
 
     // Returns the modifier CSS class applied to the window container when maximized.
     private string GetMaximizedClass() => _isMaximized ? "win-window-maximized" : string.Empty;
@@ -86,6 +175,7 @@ public partial class WinOldWindow : WinOldComponentBase
         Appearance.Win98 => "win-title-text-98",
         Appearance.WinXP => "win-title-text-xp",
         Appearance.Win7  => "win-title-text-7",
+        Appearance.Win10 => "win-title-text-10",
         _                => "win-title-text-98"
     };
 

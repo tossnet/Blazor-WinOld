@@ -1,9 +1,12 @@
 @namespace Blazor.WinOld.Components
 
 @inherits WinOldComponentBase
+@implements IAsyncDisposable
 
-<div class="win-window @GetWindowClass() @GetMaximizedClass() @Class" style="@Style" @attributes="Attributes">
-    <WinOldTitleBar BarClass="@($"win-title-bar {GetTitleBarClass()}")"
+<div @ref="_windowRef" class="win-window @GetWindowClass() @GetDosColorClass() @GetMaximizedClass() @GetInactiveClass() @Class" style="@Style" @attributes="Attributes">
+    <WinOldTitleBar @ref="_titleBar"
+                    BarClass="@($"win-title-bar {GetTitleBarClass()}")"
+                    Active="Active"
                     TextClass="@GetTitleTextClass()"
                     ControlsClass="@GetTitleControlsClass()"
                     Title="@Title"
@@ -29,3 +32,5 @@
         </div>
     }
 </div>
+
+<DraggableWindow @ref="_draggable" />

@@ -1,20 +1,18 @@
-/* Shared title-bar styles for WinOldWindow, WinOldDialogHost, WinOldInputBoxHost and WinOldMessageBoxHost.
-   Centralized here (rather than duplicated per component) because Blazor CSS isolation scopes
-   each component's .razor.css to its own markup, and these classes are shared across components. */
+/* 
+Shared title-bar styles for WinOldWindow, WinOldDialogHost, WinOldInputBoxHost and WinOldMessageBoxHost.
+ */
 
-/*-------------------------------------------*\
+/*--------*\
     WinOldWindow title bar
-\*-------------------------------------------*/
+\*--------*/
 .win-title-bar {
     min-height: 16px;
 }
 
 
-/*-------------------------------------------*\
+/*--------*\
     DOS title bar
-    Overlaid on the top border of the host (which must be position: relative):
-    the title is centered on the border line, the close box sits on the right.
-\*-------------------------------------------*/
+\*--------*/
 .title-bar-dos {
     position: absolute;
     top: 0;
@@ -89,8 +87,15 @@
             background: linear-gradient(var(--dos-box-fg, #ffff55), var(--dos-box-fg, #ffff55)) center / 8px 8px no-repeat, var(--dos-box-bg, var(--dos-background));
         }
 
-/* Maximize: a cyan double arrow between the brackets instead of the close square.
-   The glyph span exists in every theme's markup but is only shown here. */
+/* Inactive window */
+.title-bar-dos:not(.active) .title-bar-text-dos {
+    color: var(--dos-box-inactive, #aaaaaa);
+}
+
+.title-bar-dos:not(.active) .title-bar-controls-dos {
+    display: none;
+}
+
 .title-bar-dos-glyph {
     display: none;
 }
@@ -127,9 +132,9 @@
     color: var(--dos-box-fg, #ffff55);
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win31
-\*-------------------------------------------*/
+\*--------*/
 .title-bar-win-31 {
     display: flex;
     align-items: stretch;
@@ -153,6 +158,15 @@
     overflow: hidden;
     font-weight: bolder;
 }
+
+/* Inactive window (no "active" class): white title bar, black title */
+.title-bar-win-31:not(.active) {
+    background: #ffffff;
+}
+
+    .title-bar-win-31:not(.active) .title-bar-text-win-31 {
+        color: #000000;
+    }
 
 .title-bar-controls-win-31 {
     display: contents;
@@ -180,6 +194,11 @@
             background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='8' height='7' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='3' width='8' height='1' fill='%23000'/%3E%3C/svg%3E");
         }*/
 
+        /* Black line between the control-menu box and the title (visible on the white inactive bar) */
+        .title-bar-controls-win-31 button[aria-label=Close] {
+            border-right: 1px solid #000000;
+        }
+
         .title-bar-controls-win-31 button[aria-label=Maximize] {
             order: 3;
             border-left: 1px solid #000000;
@@ -204,9 +223,9 @@
     background-image: url("data:image/svg+xml;charset=utf-8,<svg width='9' height='9' xmlns='http://www.w3.org/2000/svg'><polygon points='4.5,0 8,3.5 1,3.5' fill='%23000'/><polygon points='4.5,9 8,5.5 1,5.5' fill='%23000'/></svg>");
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win98
-\*-------------------------------------------*/
+\*--------*/
 .win-title-bar-98 {
     font-size: 11px;
     background: linear-gradient(90deg, navy, #1084d0);
@@ -226,6 +245,23 @@
 }
 
 .title-bar-controls-win-98 {
+    display: flex;
+}
+
+/* Inactive window (no "active" class): gray gradient and light gray title, buttons unchanged */
+.win-title-bar-98:not(.active),
+.title-bar-win-98:not(.active) {
+    background: linear-gradient(90deg, #808080, #b5b5b5);
+}
+
+    .win-title-bar-98:not(.active) .win-title-text-98,
+    .title-bar-win-98:not(.active) .title-bar-text-win-98 {
+        color: #c0c0c0;
+    }
+
+/* WinOldWindow: Maximize and Close side by side (like the dialog title bar) */
+.win-title-controls-98,
+.win-title-controls-xp {
     display: flex;
 }
 
@@ -266,9 +302,9 @@
         box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
     }
 
-/*-------------------------------------------*\
+/*--------*\
     Win XP
-\*-------------------------------------------*/
+\*--------*/
 .win-title-bar-xp {
     font-family: Trebuchet MS;
     font-size: 13px;
@@ -292,6 +328,26 @@
     letter-spacing: 0;
     margin-right: 24px;
 }
+
+/* Inactive window (no "active" class): pastel blue title bar, light title, faded buttons */
+.win-title-bar-xp:not(.active),
+.title-bar-win-xp:not(.active) {
+    background: linear-gradient(180deg, #a6b9ee, #8ca5e8 8%, #7d97e0 40%, #8eaaee 88%, #8eaaee 93%, #94b0f0 95%, #7590dc 96%, #7590dc);
+    border-top-color: #8aa2e6;
+    border-left-color: #8aa2e6;
+    border-right-color: #7590dc;
+    text-shadow: none;
+}
+
+    .win-title-bar-xp:not(.active) .win-title-text-xp,
+    .title-bar-win-xp:not(.active) .title-bar-text-win-xp {
+        color: #d8e4f8;
+    }
+
+    .win-title-bar-xp:not(.active) .win-title-controls-xp button,
+    .title-bar-win-xp:not(.active) .title-bar-controls-win-xp button {
+        opacity: 0.6;
+    }
 
 .win-title-bar-controls-xp {
     display: flex;
@@ -343,9 +399,9 @@
     border-radius: 3px;
 }
 
-/*-------------------------------------------*\
+/*--------*\
     Win 7
-\*-------------------------------------------*/
+\*--------*/
 .win-title-bar-7 {
     border: 0;
     box-shadow: inset 0 1px 0 #fffd, inset 1px 0 0 #fffd, inset -1px 0 0 #fffd;
@@ -501,9 +557,70 @@
                 background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAKCAYAAABi8KSDAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACUSURBVHgBlZFNCoQwDIVbmRvOMHOAAd0K/uDGlYKiCG4VPICi9yu0oCSQoFUXFtKEl6+voZXvr7sKay1TL690FOexY+Hz87i2decOuDKQsNGVe8AGYTRJIh0Y+orBvxszCPllOymlxN06jNE26Qnwg4zdHQLrMhFaawwAqAadDPE1ijwUxhiMKCmxCZk06OMYTz5lAx3xWDeXkLNAAAAAAElFTkSuQmCC") no-repeat 50%,var(--control-background),var(--control-background-close-active);
             }
 
-/*-------------------------------------------*\
+
+/* Maximize glyph of the WinOldWindow title bar (same as the dialog title bar, active and inactive) */
+        .win-title-controls-7 button.is-maximize:before,
+
+        .win-title-controls-7 button[aria-label=Maximize]:before {
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABsSURBVHgBlZHBCYAwDEVT6YaKbqArOILgBLqBosP1VkhAaQ6S1lKad+ihPy8kxLT9+IACG57r2KqKu2GCBpTYtEMOOQELzrnv4z53I4vDjjJnwXsPJWTOAiJGHVNB5pGwLjPk+AlEBLUY7eFebCosBHOR7vYAAAAASUVORK5CYII=") no-repeat 50%;
+        }
+
+        .win-title-bar-7.active .win-title-controls-7 button.is-maximize,
+
+        .win-title-bar-7.active .win-title-controls-7 button[aria-label=Maximize],
+
+        .win-title-bar-7 .win-title-controls-7 button.is-maximize,
+
+        .win-title-bar-7 .win-title-controls-7 button[aria-label=Maximize] {
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABsSURBVHgBlZHBCYAwDEVT6YaKbqArOILgBLqBosP1VkhAaQ6S1lKad+ihPy8kxLT9+IACG57r2KqKu2GCBpTYtEMOOQELzrnv4z53I4vDjjJnwXsPJWTOAiJGHVNB5pGwLjPk+AlEBLUY7eFebCosBHOR7vYAAAAASUVORK5CYII=") no-repeat 50%,var(--control-background)
+        }
+
+            .win-title-bar-7.active .win-title-controls-7 button.is-maximize:before,
+
+            .win-title-bar-7.active .win-title-controls-7 button[aria-label=Maximize]:before,
+
+            .win-title-bar-7 .win-title-controls-7 button.is-maximize:before,
+
+            .win-title-bar-7 .win-title-controls-7 button[aria-label=Maximize]:before {
+                background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABsSURBVHgBlZHBCYAwDEVT6YaKbqArOILgBLqBosP1VkhAaQ6S1lKad+ihPy8kxLT9+IACG57r2KqKu2GCBpTYtEMOOQELzrnv4z53I4vDjjJnwXsPJWTOAiJGHVNB5pGwLjPk+AlEBLUY7eFebCosBHOR7vYAAAAASUVORK5CYII=") no-repeat 50%,var(--control-background-hovered);
+                box-shadow: 0 0 7px 3px #5dc4f0,var(--control-inset-shadow);
+                content: "";
+                opacity: 0;
+                transition: opacity .3s linear;
+            }
+
+            .win-title-bar-7.active .win-title-controls-7 button.is-maximize:focus-visible:before,
+
+            .win-title-bar-7.active .win-title-controls-7 button.is-maximize:hover:before,
+
+            .win-title-bar-7.active .win-title-controls-7 button[aria-label=Maximize]:focus-visible:before,
+
+            .win-title-bar-7.active .win-title-controls-7 button[aria-label=Maximize]:hover:before,
+
+            .win-title-bar-7 .win-title-controls-7 button.is-maximize:focus-visible:before,
+
+            .win-title-bar-7 .win-title-controls-7 button.is-maximize:hover:before,
+
+            .win-title-bar-7 .win-title-controls-7 button[aria-label=Maximize]:focus-visible:before,
+
+            .win-title-bar-7 .win-title-controls-7 button[aria-label=Maximize]:hover:before {
+                opacity: 1;
+                transition: opacity .1s linear;
+            }
+
+            .win-title-bar-7.active .win-title-controls-7 button.is-maximize:active:before,
+
+            .win-title-bar-7.active .win-title-controls-7 button[aria-label=Maximize]:active:before,
+
+            .win-title-bar-7 .win-title-controls-7 button.is-maximize:active:before,
+
+            .win-title-bar-7 .win-title-controls-7 button[aria-label=Maximize]:active:before {
+                background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABsSURBVHgBlZHBCYAwDEVT6YaKbqArOILgBLqBosP1VkhAaQ6S1lKad+ihPy8kxLT9+IACG57r2KqKu2GCBpTYtEMOOQELzrnv4z53I4vDjjJnwXsPJWTOAiJGHVNB5pGwLjPk+AlEBLUY7eFebCosBHOR7vYAAAAASUVORK5CYII=") no-repeat 50%,var(--control-background-active)
+            }
+
+/*--------*\
     Win10
-\*-------------------------------------------*/
+\*--------*/
 
 .win-title-bar-10 {
     font-size: 12px;
@@ -759,7 +876,7 @@
         background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAC0klEQVR42q2VO28VRxTHf/8zu2uMC0CCGDA4V0IglKRLmUiWIiEq6KDgIUQHMUJ8h3yBIIGxlIo8uDgp6YgpeYiPAAVgG0MULF72ReLenaGY2QfmUiUjze7s7pzf/M85c2YB6M6vhNVeGf5LW+2VoXvzRQDIuvMr4dsvFrkw9T2950s4gSEyg1xixERmwoARE4WBk8gESvN8gC0Tkxy+eJXuzRdBq70yXJj6hnxlmU2ZUVg02GD2EdgEmeICTuAEAkwihIAk8vFd/HD9HtnYqLH2bInOWMbW3DFqIkug3CIor0AmTHEBEVt1Bwgry4yNGln1YkRi1IkNii4WgswqZREagUICtWhtMIABmCA3UUgUJrbu2c/Xp8+TSzjAEeNHgHRh8vg0Gzv7GNYMoDClJIhCsHvqICbYe+ocjuiuCcxAEp0T0wjY9t2BqFT6FJqpiV1u4tGvl7CUhD2nztVxtAqY3F/szmAJ2AYbkGCQ18mAR79dRkTjzslpJPFlAgIsJaCZkgcNuHa/UMy6S90knvx+uVYRwXG8PHcF54RzEWimIUolnDV7UK0ML/wxU48rYFRnmFXgRm1LacxwtW1oQRqX40K7j/2IM8NVwBSCSshHSrP0od7c64DLc1eQRcPxw8cxF70zZwm8Lqa5xRq2lsLOiela8dPrMQTP52ZBIh/bxI6jZ1FKqobF1LXLTkRgqpTFazPJtajyn79m42LA9iNnmvizLqZOwmLNAPDv7b9BsHBtZkgRNuDX92/VwHbd1rUvNfa9xw9YePIwTQ6EQNM9BINnf85iqXJDfWlBTc3BoM8cEm2wD6AQ8KqeAz40XFt759m8c3IIJBBCwHvwPo5Ln/rAU3pPWabnMuB9oBifYO2dx27cfcuhn6+Sj+/Ch2FnTnS/LANl6RkMPP2Bp9/3vO+X9Pslg4En2zbBVz/9wo07b6JZ99ar/+cfNf8yAHwA4hdsCrV8oUIAAAAASUVORK5CYII=")
     }
 
-/*------------------------------------------- */
+/*--------*/
 .title-bar-win-98 {
     font-size: 11px;
     background: linear-gradient(90deg, navy, #1084d0);
@@ -861,7 +978,7 @@
         background-size: 12px 11px;
     }
 
-/*------------------------------------------- */
+/*--------*/
 
 .title-bar-win-7 {
     border: 0;
@@ -1296,7 +1413,7 @@
     min-width: 36px;
 }
 
-/*------------------------------------------- */
+/*--------*/
 .title-bar-win-10 {
     font-size: 12px;
     background: var(--dlg-win10-background-color);

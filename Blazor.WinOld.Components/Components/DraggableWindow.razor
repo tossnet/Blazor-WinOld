@@ -13,7 +13,9 @@
     private IJSObjectReference? _module;
     private IJSObjectReference? _instance;
 
-    public async Task InitAsync(ElementReference windowRef, ElementReference titleBarRef)
+    // withinParent: moves inside the positioned container (absolute) instead of the whole screen (fixed).
+    // dotNetRef: object whose [JSInvokable] OnDragEnd(double left, double top) is called when the drag ends.
+    public async Task InitAsync(ElementReference windowRef, ElementReference titleBarRef, bool withinParent = false, object? dotNetRef = null)
     {
         _windowRef = windowRef;
         _titleBarRef = titleBarRef;
@@ -22,7 +24,7 @@
         {
             // Keeps backdrops on the visible screen on mobile, even when the page overflows horizontally.
             await _module.InvokeVoidAsync("trackVisualViewport");
-            _instance = await _module.InvokeAsync<IJSObjectReference>("initDraggable", _windowRef, _titleBarRef);
+            _instance = await _module.InvokeAsync<IJSObjectReference>("initDraggable", _windowRef, _titleBarRef, new { withinParent, dotNetRef });
         }
     }
 

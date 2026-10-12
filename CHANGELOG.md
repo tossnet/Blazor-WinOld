@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.0] - 2026-10-12
+
+### Added
+- `WinOldDialog`, `WinOldMessageBox`, `WinOldInputBox`, `WinOldWindow`: in DOS style, while the title bar is held down (to move the window), the double-line frame becomes a single line in the color of the close box, like Turbo Vision. It returns to a double line when released.
+- `WinOldWindow`: new `Active` parameter (default `true`). An inactive window, in DOS style, has no Close or Maximize button, a single gray line instead of the double line, and a gray title; in Win31, a white title bar with a black title; in Win98, a gray gradient title bar with a light gray title; in WinXP, a pastel blue title bar and frame, a light title and faded buttons; in Win7 and Win10 its title bar takes the inactive colors. `WinOldTitleBar` gets the same `Active` parameter. Demo added to the **DialogBox** page.
+- `WinOldWindow`: new `DosColor` parameter (DOS only) for the window background, same palette as the DOS dialog.
+- `WinOldWindow`: new `WindowState` / `WindowStateChanged` parameters (`@bind-WindowState`) to maximize or restore the window from code.
+- `WinOldWindow`: new `Draggable` parameter to move the window by its title bar, inside its positioned container (it does not leave it, and keeps its `z-index`). A maximized window can't be dragged. New `OnMoved` callback (`WindowMovedEventArgs` with `Left` / `Top`): store the position and render it back in `Style`, otherwise a later change of `Style` puts the window back where it was.
+- `WinOldMenu`, `WinOldMenuItem`: new CSS variable `--winold-menu-color` for the text color of the menu bar, the drop-down menus and the context menus, in every style (e.g. `:root { --winold-menu-color: #333; }`, or set it on the menu's `Class`). Without it, each style keeps its own color. Hover and disabled colors are unchanged.
+
+### Fixed
+- `WinOldMenu`, `WinOldMenuItem`: a generic rule of the host app such as `li { color: ... }` no longer changes the text color of the drop-down and context menu items; they take the color of their menu again. Any rule of the app that uses a class (e.g. `.my-menu li`) still applies.
+
 ## [3.0.0] - 2026-10-11
 
 ### Added

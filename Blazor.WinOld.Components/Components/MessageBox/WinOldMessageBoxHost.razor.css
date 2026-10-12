@@ -51,6 +51,12 @@
         pointer-events: none;
     }
 
+    /* While dragging by the title bar: single line in the close box color */
+    .msg-dos.winold-dragging::before {
+        inset: 7px;
+        border: 1px solid var(--dos-box-close);
+    }
+
 /* Colored boxes: light text on a dark background, yellow close box */
 .msg-dos-blue, .msg-dos-green, .msg-dos-cyan, .msg-dos-red, .msg-dos-magenta, .msg-dos-brown {
     --dos-box-fg: #ffffff;

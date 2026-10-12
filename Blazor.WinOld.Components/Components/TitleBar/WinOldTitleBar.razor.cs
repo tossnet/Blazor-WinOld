@@ -48,9 +48,16 @@ public partial class WinOldTitleBar : ComponentBase
     [Parameter]
     public bool TouchMode { get; set; }
 
+    /// <summary>
+    /// When false, the title bar is drawn inactive (no "active" class): in DOS, gray title and no buttons;
+    /// in Win7 and Win10, their inactive colors.
+    /// </summary>
+    [Parameter]
+    public bool Active { get; set; } = true;
+
     /// <summary>The title bar's root element, for hosts that need it (e.g. to wire up DraggableWindow).</summary>
     public ElementReference Element { get; private set; }
 
     private Task HandleDoubleClickAsync()
-        => ShowMaximizeButton ? OnToggleMaximize.InvokeAsync() : Task.CompletedTask;
+        => ShowMaximizeButton && Active ? OnToggleMaximize.InvokeAsync() : Task.CompletedTask;
 }

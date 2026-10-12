@@ -46,7 +46,7 @@
 \*--------*/
 .win-window.win-window-maximized {
     position: fixed;
-    inset: 0;
+    inset: 0 !important; /* wins over the inline left/top left behind by a drag */
     width: auto;
     height: auto;
     z-index: 500;
@@ -62,6 +62,7 @@
     --dos-box-fg: #1a1a1a;
     --dos-box-line: #ffffff;
     --dos-box-close: #55ff55;
+    --dos-box-inactive: #555555;
     position: relative;
     padding: 6px; /* band of background color outside the double line, like WinOldFrame DOS */
     background: var(--dos-box-bg);
@@ -81,9 +82,68 @@
         pointer-events: none;
     }
 
+    /* While dragging by the title bar: single line in the close box color */
+    .win-window-dos.winold-dragging::before {
+        inset: 7px;
+        border: 1px solid var(--dos-box-close);
+    }
+
     .win-window-dos.win-window-maximized {
         box-shadow: none;
     }
+
+    /* Inactive window: single gray line (the title bar hides its buttons and grays its title) */
+    .win-window-dos.win-window-inactive::before {
+        inset: 7px;
+        border: 1px solid var(--dos-box-inactive);
+    }
+
+/* DosColor: same palette as the DOS dialog. Colored boxes: light text, yellow close box */
+.win-window-dos-blue, .win-window-dos-green, .win-window-dos-cyan, .win-window-dos-red, .win-window-dos-magenta, .win-window-dos-brown {
+    --dos-box-fg: #ffffff;
+    --dos-box-close: #ffff55;
+    --dos-box-inactive: #aaaaaa;
+}
+
+.win-window-dos-blue {
+    --dos-box-bg: #0000aa;
+}
+
+.win-window-dos-green {
+    --dos-box-bg: #00aa00;
+}
+
+.win-window-dos-cyan {
+    --dos-box-bg: #00aaaa;
+}
+
+.win-window-dos-red {
+    --dos-box-bg: #aa0000;
+}
+
+.win-window-dos-magenta {
+    --dos-box-bg: #aa00aa;
+}
+
+.win-window-dos-brown {
+    --dos-box-bg: #a85400;
+}
+
+/* Light boxes: dark text and lines */
+.win-window-dos-white, .win-window-dos-yellow {
+    --dos-box-fg: #000000;
+    --dos-box-line: #000000;
+    --dos-box-close: #00aa00;
+    --dos-box-max: #00aaaa;
+}
+
+.win-window-dos-white {
+    --dos-box-bg: #ffffff;
+}
+
+.win-window-dos-yellow {
+    --dos-box-bg: #ffff55;
+}
 
 .win-body-dos {
     margin: 0;
@@ -152,6 +212,11 @@
 /* XP close button – active (pressed) state */
 
 /* XP button base style */
+
+/* Inactive window: pastel blue frame, like its title bar */
+.win-window-xp.win-window-inactive {
+    box-shadow: inset -1px -1px #6f89d8, inset 1px 1px #8aa2e6, inset -2px -2px #7d97e0, inset 2px 2px #a6b9ee, inset -3px -3px #8eaaee, inset 3px 3px #9cb4ef;
+}
 
 .win-body-xp {
     margin: 1px 4px 5px 4px;

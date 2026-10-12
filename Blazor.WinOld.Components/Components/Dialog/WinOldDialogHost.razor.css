@@ -70,6 +70,12 @@
         pointer-events: none;
     }
 
+    /* While dragging by the title bar: single line in the close box color */
+    .dlg-dos.winold-dragging::before {
+        inset: 7px;
+        border: 1px solid var(--dos-box-close);
+    }
+
     .dlg-dos.dlg-win-maximized {
         box-shadow: none;
     }

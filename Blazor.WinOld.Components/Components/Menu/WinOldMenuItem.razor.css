@@ -7,11 +7,18 @@
         padding: 3px 8px;
         cursor: default;
         white-space: nowrap;
-        color: #000;
+        color: var(--winold-menu-color, #000);
     }
 
 .menu-sub-win-item {
     position: relative;
+}
+
+/* Inherit the color of the parent <ul> (submenu-win-*) so a host-app rule such as
+   "li { color: ... }" does not override the theme color. :where() keeps the specificity
+   low, so any class-based rule written by the developer still wins. */
+:where(.menu-sub-win-item) {
+    color: inherit;
 }
 
     .menu-sub-win-item > .menu-label-win {
@@ -91,7 +98,7 @@
     font-size: 14px;
     line-height: 14px;
     padding: 3px 12px;
-    color: #1a1a1a;
+    color: var(--winold-menu-color, #1a1a1a);
     -webkit-font-smoothing: none;
 }
 
@@ -100,7 +107,7 @@
     font-size: 14px;
     line-height: 14px;
     padding: 4px 16px;
-    color: #1a1a1a;
+    color: var(--winold-menu-color, #1a1a1a);
     -webkit-font-smoothing: none;
 }
 
@@ -174,7 +181,7 @@
     font-size: 12px;
     font-weight: bolder;
     padding: 3px 8px;
-    color: #000000;
+    color: var(--winold-menu-color, #000000);
 }
 
 .menu-sub-win-item > .menu-label-win-31 {
@@ -182,7 +189,7 @@
     font-size: 12px;
     font-weight: bolder;
     padding: 2px 16px 2px 16px;
-    color: #000000;
+    color: var(--winold-menu-color, #000000);
 }
 
 /* Access key letter: underlined */

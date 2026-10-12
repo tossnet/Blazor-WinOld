@@ -108,6 +108,57 @@ await DialogService.ShowDialog(new DialogOptions
     ChildContent = @<SimpleDialog Appearance=""Appearance.Win10"" />
 });") />
 
+<h2>Active / Inactive State</h2>
+
+<p>
+	A <code>WinOldWindow</code> is active by default (<code>Active = true</code>). Set <code>Active="false"</code>
+	to draw it inactive, e.g. when several windows are open and another one has the focus.
+	In <strong>DOS</strong>, the inactive window has no Close or Maximize button, its double line becomes a
+	single gray line and its title turns gray. In <strong>Win31</strong>, the title bar turns white with a
+	black title. In <strong>Win98</strong>, the title bar becomes a gray gradient with a light gray title.
+	In <strong>WinXP</strong>, the title bar and the frame turn pastel blue. In <strong>Win7</strong> and
+	<strong>Win10</strong>, the title bar takes its inactive colors.
+</p>
+
+<div style="display:flex; flex-direction: row; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
+	@foreach (var a in new[] { Appearance.DOS, Appearance.Win31, Appearance.Win98, Appearance.WinXP, Appearance.Win7, Appearance.Win10 })
+	{
+		var appearance = a;
+		<WinOldButton OnClick="() => _activeDemoAppearance = appearance"
+					  Appearance="appearance"
+					  Default="@(_activeDemoAppearance == appearance)">@appearance</WinOldButton>
+	}
+</div>
+
+<p><em>Click a window to activate it.</em></p>
+
+<div style="display:flex; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; @(_activeDemoAppearance == Appearance.DOS ? "padding: 0 16px 16px 0;" : null)">
+	@for (var n = 1; n <= 2; n++)
+	{
+		var number = n;
+		<WinOldWindow Appearance="_activeDemoAppearance"
+					  DosColor="DosColor.Blue"
+					  Title="@($"Window {number}")"
+					  Active="@(_activeWindow == number)"
+					  ShowCloseButton="true"
+					  MaxButton="true"
+					  @onmousedown="() => _activeWindow = number"
+					  Style="width: 260px; height: 140px;">
+			<p style="padding: 8px; margin: 0;">@(_activeWindow == number ? "Active" : "Inactive")</p>
+		</WinOldWindow>
+	}
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+		   EnableLineNumbers="false"
+		   Code=@(@"
+<WinOldWindow Appearance=""Appearance.DOS"" DosColor=""DosColor.Blue""
+              Title=""Window 1"" Active=""@(_active == 1)""
+              ShowCloseButton=""true"" MaxButton=""true""
+              @onmousedown=""() => _active = 1"">
+    ...
+</WinOldWindow>") />
+
 <h2>Usage</h2>
 
 <p>Show a dialog with inline content using <code>ChildContent</code>:</p>
@@ -255,6 +306,8 @@ if (result == true) { /* OK clicked */ }") />
 @code {
 	private bool? _lastResult;
 	private bool _maxButtonDemo = true;
+	private Appearance _activeDemoAppearance = Appearance.DOS;
+	private int _activeWindow = 1;
 
 	private async Task OpenDialog(Appearance appearance)
 	{

@@ -78,7 +78,13 @@ function visibleArea() {
         : { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight };
 }
 
-export function initDraggable(windowEl, titleBarEl) {
+// options.withinParent : la fenêtre se déplace dans son conteneur (position: absolute, coordonnées
+// relatives au offsetParent, limitée à sa zone, z-index inchangé) au lieu de passer en position: fixed.
+// options.dotNetRef : objet .NET dont la méthode OnDragEnd(left, top) est appelée en fin de déplacement.
+export function initDraggable(windowEl, titleBarEl, options) {
+    const withinParent = options?.withinParent === true;
+    const dotNetRef = options?.dotNetRef ?? null;
+
     // Bloque le scroll natif sur la barre de titre (pour tactile)
     titleBarEl.style.touchAction = 'none';
 
@@ -90,18 +96,28 @@ export function initDraggable(windowEl, titleBarEl) {
     function onDown(e) {
         if (e.target.closest('button, a, input, select')) return;
 
-        // Ne fige la position (sortie du flux flex de centrage) qu'au moment
-        // où l'utilisateur commence réellement à dragger, pour ne jamais figer
-        // une position calculée avant que le contenu (ex: liste scrollable) ait
-        // atteint sa hauteur finale.
         const r = windowEl.getBoundingClientRect();
-        windowEl.style.position = 'fixed';
-        windowEl.style.zIndex = '999999';
-        windowEl.style.left = r.left + 'px';
-        windowEl.style.top = r.top + 'px';
-        windowEl.style.margin = '0';
+        if (withinParent) {
+            // Une fenêtre agrandie remplit déjà son conteneur : rien à déplacer
+            if (windowEl.classList.contains('win-window-maximized')) return;
+            if (getComputedStyle(windowEl).position === 'static') windowEl.style.position = 'absolute';
+            windowEl.style.left = windowEl.offsetLeft + 'px';
+            windowEl.style.top = windowEl.offsetTop + 'px';
+        } else {
+            // Ne fige la position (sortie du flux flex de centrage) qu'au moment
+            // où l'utilisateur commence réellement à dragger, pour ne jamais figer
+            // une position calculée avant que le contenu (ex: liste scrollable) ait
+            // atteint sa hauteur finale.
+            windowEl.style.position = 'fixed';
+            windowEl.style.zIndex = '999999';
+            windowEl.style.left = r.left + 'px';
+            windowEl.style.top = r.top + 'px';
+            windowEl.style.margin = '0';
+        }
 
         isDragging = true;
+        // Permet au thème DOS de passer le cadre double en trait simple pendant le déplacement
+        windowEl.classList.add('winold-dragging');
         titleBarEl.setPointerCapture(e.pointerId);
         if (hasFinePointer) titleBarEl.style.cursor = 'grabbing';
         offsetX = e.clientX - r.left;
@@ -111,21 +127,37 @@ export function initDraggable(windowEl, titleBarEl) {
 
     function onMove(e) {
         if (!isDragging) return;
-        const a = visibleArea();
         const w = windowEl.offsetWidth, h = windowEl.offsetHeight;
+        if (withinParent) {
+            const parent = windowEl.offsetParent ?? document.body;
+            const p = parent.getBoundingClientRect();
+            const maxLeft = Math.max(0, parent.clientWidth - w);
+            const maxTop = Math.max(0, parent.clientHeight - h);
+            const left = e.clientX - offsetX - p.left - parent.clientLeft + parent.scrollLeft;
+            const top = e.clientY - offsetY - p.top - parent.clientTop + parent.scrollTop;
+            windowEl.style.left = Math.max(0, Math.min(left, maxLeft)) + 'px';
+            windowEl.style.top = Math.max(0, Math.min(top, maxTop)) + 'px';
+            return;
+        }
+        const a = visibleArea();
         windowEl.style.left = Math.max(a.left, Math.min(e.clientX - offsetX, a.left + a.width - w)) + 'px';
         windowEl.style.top = Math.max(a.top, Math.min(e.clientY - offsetY, a.top + a.height - h)) + 'px';
     }
 
     function onUp() {
+        // pointerup puis lostpointercapture : ne traiter la fin du déplacement qu'une fois
+        if (!isDragging) return;
         isDragging = false;
+        windowEl.classList.remove('winold-dragging');
         if (hasFinePointer) titleBarEl.style.cursor = 'grab';
+        dotNetRef?.invokeMethodAsync('OnDragEnd', parseFloat(windowEl.style.left) || 0, parseFloat(windowEl.style.top) || 0);
     }
 
     titleBarEl.addEventListener('pointerdown', onDown);
     titleBarEl.addEventListener('pointermove', onMove);
     titleBarEl.addEventListener('pointerup', onUp);
     titleBarEl.addEventListener('pointercancel', onUp);
+    titleBarEl.addEventListener('lostpointercapture', onUp);
 
     return {
         dispose: () => {
@@ -133,6 +165,8 @@ export function initDraggable(windowEl, titleBarEl) {
             titleBarEl.removeEventListener('pointermove', onMove);
             titleBarEl.removeEventListener('pointerup', onUp);
             titleBarEl.removeEventListener('pointercancel', onUp);
+            titleBarEl.removeEventListener('lostpointercapture', onUp);
+            windowEl.classList.remove('winold-dragging');
         }
     };
 }
