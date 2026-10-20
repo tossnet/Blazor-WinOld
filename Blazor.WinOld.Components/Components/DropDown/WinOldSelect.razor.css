@@ -37,10 +37,12 @@
         background-color: #000000;
     }
 
+        /* Disabled (never applied in Blazor: the <option> elements are rendered by WinOldOption)
         .select-dos:not([multiple]):focus option {
             color: #000000;
             background-color: #ffffff;
         }
+        */
 
     .select-dos:not([multiple]):not(:disabled):hover {
         filter: brightness(0.93);
@@ -56,11 +58,13 @@
         filter: grayscale(1) opacity(0.85);
     }
 
+/* Disabled (never applied in Blazor: the <option> elements are rendered by WinOldOption)
 .select-dos option {
     font-family: 'IBMVGADos', monospace;
     color: #000;
     background-color: #fff;
 }
+*/
 
 /*--------*\
     Win31
@@ -90,10 +94,12 @@
         background-color: var(--dlg-win31-title-bar-background-color-active);
     }
 
+        /* Disabled (never applied in Blazor: the <option> elements are rendered by WinOldOption)
         .select-win-31:not([multiple]):focus option {
             color: #000000;
             background-color: #ffffff;
         }
+        */
 
     .select-win-31:not([multiple]):disabled {
         cursor: not-allowed;
@@ -101,6 +107,7 @@
         border-color: #BFBFBF;
     }
 
+/* Disabled (never applied in Blazor: the <option> elements are rendered by WinOldOption)
 .select-win-31 option {
     font-family: var(--font-family);
     font-size: 12px;
@@ -108,6 +115,7 @@
     color: #000;
     background-color: #fff;
 }
+*/
 
 .select-win-31.win-touch {
     height: 28px;
@@ -137,10 +145,12 @@
         box-shadow: inset 2px 2px #fff,inset -2px -2px #fff;
     }
 
+        /* Disabled (never applied in Blazor: the <option> elements are rendered by WinOldOption)
         .select-win-xp:focus option {
             color: #000;
             background-color: #fff;
         }
+        */
 
     .select-win-xp:disabled {
         border: 1px solid #adb5bd;
@@ -213,15 +223,19 @@
         background-color: navy;
     }
 
+        /* Disabled (never applied in Blazor: the <option> elements are rendered by WinOldOption)
         .select-win-98:focus option {
             color: #000;
             background-color: #fff;
         }
+        */
 
 
+        /* Disabled (never applied in Blazor: the <option> elements are rendered by WinOldOption)
         .select-win-98 option:hover, .select-win-98 option:checked {
             background-color: #fff;
         }
+        */
 
 
     .select-win-98:disabled {

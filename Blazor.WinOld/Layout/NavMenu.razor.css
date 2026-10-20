@@ -60,6 +60,17 @@
         line-height: 3rem;
     }
 
+    .nav-item ::deep .nav-new-badge {
+        margin-left: 0.5rem;
+        padding: 0 6px;
+        border-radius: 10px;
+        background: #ffcc00;
+        color: #000;
+        font-size: 0.65rem;
+        font-weight: 700;
+        line-height: 1.2rem;
+    }
+
 /* Sub-item (e.g. "Context menu" under "Menu") */
 .nav-subitem {
     padding-left: 2.1rem;

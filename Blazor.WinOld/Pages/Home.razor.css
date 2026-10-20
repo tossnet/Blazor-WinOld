@@ -121,6 +121,34 @@
     flex-wrap: wrap;
 }
 
+.hero-news {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1rem;
+    padding: 6px 12px 6px 6px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+    .hero-news:hover {
+        background: rgba(0, 0, 0, 0.45);
+        color: white;
+    }
+
+.hero-news-badge {
+    background: #ffcc00;
+    color: #000;
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
 .hero-feature-pill {
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.25);

@@ -1,0 +1,241 @@
+<Project>
+
+	<!--
+		Static (non-Blazor) distribution of WinOld.
+
+		After every build, the component styles (compiled scoped CSS bundle) and the global
+		stylesheets (wwwroot/css) are merged into a single plain CSS file usable from any
+		static site (HTML, PHP, ...), together with the fonts and icons it references:
+
+		    static/dist/winold.css
+		    static/dist/fonts/*
+		    static/dist/icon/*
+
+		and the vanilla JS that makes the components interactive, built from static/src/winold.js
+		with the generic modules of the library included where it says /* @include xxx.js */
+		(wwwroot/js/draggable.js, navpane.js: same code as the Blazor version):
+
+		    static/dist/winold.js
+
+		Never edit static/dist by hand: edit the *.razor.css / wwwroot/css / static/src sources and build.
+		The CI fails if the committed static/dist is not in sync with the sources.
+	-->
+
+	<PropertyGroup>
+		<WinOldStaticDistDir Condition="'$(WinOldStaticDistDir)' == ''">$(MSBuildThisFileDirectory)..\static\dist\</WinOldStaticDistDir>
+	</PropertyGroup>
+
+	<UsingTask TaskName="WinOldBuildStaticCss"
+			   TaskFactory="RoslynCodeTaskFactory"
+			   AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+		<ParameterGroup>
+			<ScopedBundle ParameterType="System.String" Required="true" />
+			<GlobalCss ParameterType="System.String" Required="true" />
+			<WebRoot ParameterType="System.String" Required="true" />
+			<OutputDir ParameterType="System.String" Required="true" />
+			<Version ParameterType="System.String" Required="true" />
+			<JsSource ParameterType="System.String" Required="true" />
+			<JsModulesDir ParameterType="System.String" Required="true" />
+			<ComponentsDir ParameterType="System.String" Required="true" />
+		</ParameterGroup>
+		<Task>
+			<Using Namespace="System" />
+			<Using Namespace="System.IO" />
+			<Using Namespace="System.Linq" />
+			<Using Namespace="System.Text" />
+			<Using Namespace="System.Text.RegularExpressions" />
+			<Code Type="Fragment" Language="cs"><![CDATA[
+				var webRoot = Path.GetFullPath(WebRoot);
+				var outDir = Path.GetFullPath(OutputDir);
+
+				if (!File.Exists(ScopedBundle))
+				{
+					Log.LogError("WinOld static CSS: scoped CSS bundle not found at '" + ScopedBundle + "'. The Razor SDK layout may have changed.");
+					return false;
+				}
+
+				// Rewrites relative url(...) so that they are relative to the web root (= static/dist root).
+				Func<string, string, string> rebaseUrls = (css, sourceDir) =>
+					Regex.Replace(css, @"url\(\s*(['""]?)([^'""\)]+)\1\s*\)", m =>
+					{
+						var q = m.Groups[1].Value;
+						var url = m.Groups[2].Value.Trim();
+						if (url.StartsWith("data:") || url.StartsWith("/") || url.StartsWith("#") || url.Contains("://"))
+							return m.Value;
+						var full = Path.GetFullPath(Path.Combine(sourceDir, url));
+						if (!full.StartsWith(webRoot, StringComparison.OrdinalIgnoreCase))
+							return m.Value;
+						var rel = full.Substring(webRoot.Length).TrimStart('\\', '/').Replace('\\', '/');
+						return "url(" + q + rel + q + ")";
+					});
+
+				// Global stylesheet with its @import inlined recursively.
+				Func<string, string> readGlobal = null;
+				readGlobal = path =>
+				{
+					var dir = Path.GetDirectoryName(Path.GetFullPath(path));
+					var css = File.ReadAllText(path);
+					css = Regex.Replace(css, @"@import\s+url\(\s*['""]?([^'""\)]+)['""]?\s*\)\s*;", m =>
+						"/* --- " + Path.GetFileName(m.Groups[1].Value) + " --- */\n" + readGlobal(Path.Combine(dir, m.Groups[1].Value)));
+					return rebaseUrls(css, dir);
+				};
+
+				// Scoped bundle: urls are already relative to the web root (_content/BlazorWinOld/).
+				// The Blazor scope attribute [b-xxxxxxxxxx] is replaced by a no-op selector of the same
+				// specificity (one class) so the cascade stays identical to the Blazor version.
+				var scoped = File.ReadAllText(ScopedBundle);
+				scoped = Regex.Replace(scoped, @"\[b-[a-z0-9]{10}\]", ":not(.wo-unscoped)");
+				// Blazor also suffixes the @keyframes names with the scope (fadeIn-b-xxxxxxxxxx). The scope is a hash
+				// computed by the SDK: replaced by -wo1, -wo2... in order of appearance, so the file is identical
+				// whatever the machine or the OS that builds it (the CI compares it with the committed one).
+				var keyframeScopes = new System.Collections.Generic.Dictionary<string, string>();
+				scoped = Regex.Replace(scoped, @"(?<=\w)-b-[a-z0-9]{10}\b", m =>
+				{
+					if (!keyframeScopes.TryGetValue(m.Value, out var name))
+						keyframeScopes[m.Value] = name = "-wo" + (keyframeScopes.Count + 1);
+					return name;
+				});
+				scoped = Regex.Replace(scoped, @"/\* _content/[^/]+/(.+?)\.rz\.scp\.css \*/", "/* --- $1 --- */");
+
+				// <style> blocks written directly in the .razor markup (global, not isolated: e.g. the Toolbar).
+				// In Blazor they are rendered in the page, after the stylesheets: they come last here too.
+				var inline = new StringBuilder();
+				foreach (var razor in Directory.GetFiles(ComponentsDir, "*.razor", SearchOption.AllDirectories).OrderBy(f => f, StringComparer.Ordinal))
+				{
+					foreach (Match m in Regex.Matches(File.ReadAllText(razor), @"<style>([\s\S]*?)</style>"))
+					{
+						if (m.Groups[1].Value.Contains("@"))
+						{
+							Log.LogWarning("WinOld static CSS: <style> block with Razor code skipped in " + razor);
+							continue;
+						}
+						inline.Append(m.Groups[1].Value).Append("\n");
+					}
+				}
+
+				var sb = new StringBuilder();
+				sb.Append("/*!\n");
+				sb.Append(" * Blazor.WinOld v" + Version + " - static CSS (for non-Blazor sites)\n");
+				sb.Append(" * https://github.com/tossnet/Blazor-WinOld - MIT License\n");
+				sb.Append(" * Touch mode: add the class wo-touch on a container (e.g. <body class=\"wo-touch\">).\n");
+				sb.Append(" * GENERATED FILE - DO NOT EDIT: regenerated on each build of Blazor.WinOld.Components.\n");
+				sb.Append(" */\n");
+				sb.Append(scoped);
+				sb.Append("\n");
+				sb.Append(readGlobal(GlobalCss));
+				sb.Append("\n");
+				sb.Append(inline);
+				var output = sb.ToString().Replace("\r\n", "\n");
+
+				// No comments (except the /*! license header): strings are kept as they are.
+				output = Regex.Replace(output, @"(""(?:\\.|[^""\\])*""|'(?:\\.|[^'\\])*')|/\*(?!!)[\s\S]*?\*/",
+					m => m.Groups[1].Success ? m.Value : "");
+
+				// Touch mode. In Blazor, TouchMode (or <CascadingValue Name="TouchMode">) adds the win-touch class
+				// to the elements below. In the static version, a wo-touch container does the same for everything
+				// inside it: each .win-touch also matches these elements inside .wo-touch, with the same specificity
+				// as .win-touch (one class, thanks to :where + :not) so the cascade is unchanged.
+				const string touchTargets =
+					".btn-win, .chk-win, .opt-win, .select-win, .select-wrap-98, .select-wrap-xp, .hd-win, .lbl-win, .infobar-win, " +
+					".txt-win, .txtarea-win, .label-txt-win:not(.label-txt-hide):has(+ .numbox-wrap), .numbox-wrap, .numbox-spin, .numbox-spin-btn, " +
+					".tabs-list, .tabs-win, .statusbar-win, .menu-win-root-item, .menu-sub-win-item, " +
+					".navpane-win, .navpane-group, .navpane-item, .navpane-separator, " +
+					":is(.msg-win-backdrop, .inp-win-backdrop, .dlg-win-backdrop) > * > :first-child";
+				output = Regex.Replace(output, @"\.win-touch(?![\w-])",
+					":is(.win-touch, :where(.wo-touch :is(" + touchTargets + ")):not(.wo-unscoped))");
+
+				// Lighter file: no indentation, no empty lines
+				output = string.Join("\n", output.Split('\n').Select(l => l.Trim()).Where(l => l.Length > 0)) + "\n";
+
+				Action<string, byte[]> writeIfChanged = (path, bytes) =>
+				{
+					Directory.CreateDirectory(Path.GetDirectoryName(path));
+					for (var attempt = 0; ; attempt++)
+					{
+						try
+						{
+							if (File.Exists(path) && File.ReadAllBytes(path).SequenceEqual(bytes))
+								return;
+							File.WriteAllBytes(path, bytes);
+							return;
+						}
+						catch (IOException) when (attempt < 5)
+						{
+							// Several target frameworks may build in parallel.
+							System.Threading.Thread.Sleep(200);
+						}
+					}
+				};
+
+				writeIfChanged(Path.Combine(outDir, "winold.css"), new UTF8Encoding(false).GetBytes(output));
+
+				// winold.js: static/src/winold.js where each /* @include xxx.js */ is replaced by the module
+				// wwwroot/js/xxx.js of the library (ES module exports removed: its functions become local
+				// to the IIFE of winold.js).
+				var js = File.ReadAllText(JsSource).Replace("\r\n", "\n").TrimStart((char)0xFEFF);
+				var missing = false;
+				js = Regex.Replace(js, @"/\* @include ([\w.-]+\.js) \*/", m =>
+				{
+					var module = Path.Combine(JsModulesDir, m.Groups[1].Value);
+					if (!File.Exists(module))
+					{
+						Log.LogError("WinOld static JS: '" + module + "' (included by " + JsSource + ") not found.");
+						missing = true;
+						return m.Value;
+					}
+					var code = Regex.Replace(File.ReadAllText(module).Replace("\r\n", "\n").TrimStart((char)0xFEFF), @"^export\s+", "", RegexOptions.Multiline);
+					return Regex.Replace(code.Trim().Replace("\n", "\n    "), @"^ +$", "", RegexOptions.Multiline);
+				});
+				if (missing) return false;
+				js = js.Replace("{{VERSION}}", Version);
+
+				// No comments (except the /*! header): only whole comment lines are removed, which is
+				// safe whatever the code contains (strings, regular expressions, urls...).
+				var jsLines = new System.Collections.Generic.List<string>();
+				var inComment = false;
+				foreach (var line in js.Split('\n'))
+				{
+					var t = line.Trim();
+					if (inComment)
+					{
+						if (t.Contains("*/")) inComment = false;
+						continue;
+					}
+					if (t.StartsWith("/*") && !t.StartsWith("/*!"))
+					{
+						inComment = !t.Contains("*/");
+						continue;
+					}
+					if (t.StartsWith("//") || t.Length == 0) continue;
+					jsLines.Add(line.TrimEnd());
+				}
+				js = string.Join("\n", jsLines) + "\n";
+				writeIfChanged(Path.Combine(outDir, "winold.js"), new UTF8Encoding(false).GetBytes(js));
+
+				foreach (var folder in new[] { "fonts", "icon" })
+				{
+					var src = Path.Combine(webRoot, folder);
+					if (!Directory.Exists(src)) continue;
+					foreach (var file in Directory.GetFiles(src))
+						writeIfChanged(Path.Combine(outDir, folder, Path.GetFileName(file)), File.ReadAllBytes(file));
+				}
+
+				Log.LogMessage(MessageImportance.Normal, "WinOld static CSS/JS -> " + outDir);
+			]]></Code>
+		</Task>
+	</UsingTask>
+
+	<Target Name="WinOldGenerateStaticDist"
+			AfterTargets="Build"
+			Condition="'$(TargetFramework)' != '' and '$(DisableScopedCssBundling)' != 'true'">
+		<WinOldBuildStaticCss ScopedBundle="$(_ScopedCssProjectOutputPath)"
+							  GlobalCss="$(MSBuildThisFileDirectory)wwwroot\css\blazorwinold.css"
+							  WebRoot="$(MSBuildThisFileDirectory)wwwroot"
+							  OutputDir="$(WinOldStaticDistDir)"
+							  Version="$(Version)"
+							  JsSource="$(MSBuildThisFileDirectory)..\static\src\winold.js"
+							  JsModulesDir="$(MSBuildThisFileDirectory)wwwroot\js"
+							  ComponentsDir="$(MSBuildThisFileDirectory)Components" />
+	</Target>
+
+</Project>

@@ -366,3 +366,6 @@ FodyWeavers.xsd
 *.pdn
 # Playwright MCP
 .playwright-mcp/
+
+# Copy of static/dist made by the demo build (see Blazor.WinOld.csproj)
+Blazor.WinOld/wwwroot/static/dist/

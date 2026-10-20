@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Components;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Blazor.WinOld.Components;
 
-public partial class WinOldNumberBox<TValue> : WinOldComponentBase
+public partial class WinOldNumberBox<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TValue> : WinOldComponentBase
 {
     private ElementReference InputElement { get; set; }
 

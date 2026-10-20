@@ -29,6 +29,9 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<DebugType>portable</DebugType>
+
+		<!-- Trimming -->
+		<IsTrimmable>true</IsTrimmable>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -56,5 +59,8 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>
+
+	<!-- Generates static/dist/winold.css (CSS for non-Blazor / static sites) on each build -->
+	<Import Project="StaticDist.targets" />
 
 </Project>

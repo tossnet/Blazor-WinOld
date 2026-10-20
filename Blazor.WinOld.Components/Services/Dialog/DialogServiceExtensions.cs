@@ -1,5 +1,6 @@
 ﻿using Blazor.WinOld;
 using Microsoft.AspNetCore.Components;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Blazor.WinOld.Components;
 
@@ -8,7 +9,7 @@ public static class DialogServiceExtensions
     /// <summary>
     /// Shows a dialog with a component of type <typeparamref name="TComponent"/> as its content.
     /// </summary>
-    public static Task<bool?> ShowDialog<TComponent>(
+    public static Task<bool?> ShowDialog<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TComponent>(
         this IDialogService service,
         DialogOptions options,
         Dictionary<string, object>? parameters = null)

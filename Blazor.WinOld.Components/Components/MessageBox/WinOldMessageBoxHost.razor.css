@@ -183,6 +183,8 @@
     text-align: center;
 }
 
+    /* Disabled: the buttons are rendered by WinOldButton (another component), so with CSS isolation
+       these rules never applied in Blazor, but they did in the static winold.css (white text on the XP buttons).
     .msg-win-xp .actions button {
         margin: 0 10px;
         padding: 10px 20px;
@@ -197,6 +199,7 @@
         .msg-win-xp .actions button:hover {
             background-color: #0056b3;
         }
+    */
 
 @keyframes fadeIn {
     from {

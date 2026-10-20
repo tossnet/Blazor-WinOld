@@ -12,7 +12,9 @@
     lives on the wrapper, not on the input or the buttons.
 \*--------*/
 
-.label-txt-win {
+/* :has(+ .numbox-wrap) = the label of this component only. CSS isolation already limits it to it in Blazor,
+   but not in the static winold.css, where it would apply to the labels of the other components. */
+.label-txt-win:has(+ .numbox-wrap) {
     margin-right: 4px;
 }
 
@@ -209,7 +211,7 @@
         font-weight: bolder;
     }
 
-.label-txt-win.lbtxt-win-31 {
+.label-txt-win.lbtxt-win-31:has(+ .numbox-wrap) {
     font-family: var(--font-family);
     font-size: 12px;
     font-weight: bolder;

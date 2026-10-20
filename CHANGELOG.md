@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Static version for sites without Blazor (plain HTML, PHP, WordPress...), in the `static/dist` folder of the repository or from the jsDelivr CDN. Guide: [static/README.md](static/README.md).
+  - `winold.css`: all the styles of the components in one file, with `fonts/` and `icon/`. It is generated on each build of the library from the components' CSS, so it always matches the Blazor version (the CI fails if the committed `static/dist` is not up to date).
+  - `winold.js` (optional, vanilla JavaScript): tabs, list boxes, info bars, windows (close, maximize, drag), Win 3.1 sliders, menus and context menus (`data-contextmenu`), number boxes and navigation panes, plus `WinOld.messageBox()`, `WinOld.inputBox()` and `WinOld.dialog()`, which return a `Promise` and build the same boxes as the `DialogService`. The drag and menu positioning code is the one of the library (`draggable.js`, `navpane.js`).
+  - Touch mode: the `wo-touch` class on a container (e.g. `<body>`) enlarges every component inside it, like `<CascadingValue Name="TouchMode">`.
+- Demo site: new **Static sites** page (installation guide, usage, live demo of every component in every style), announced on the home page.
+
+### Fixed
+- `WinOldNumberBox`: the margin (and the Win 3.1 font) of its label are limited to its own label. No change in Blazor, where CSS isolation already did it; needed by the static version.
+- `WinOldMessageBox`, `WinOldInputBox`, `WinOldDialog`, `WinOldSelect`: CSS rules that could never apply (they targeted the buttons or the `<option>` elements rendered by other components) are disabled. No change in Blazor; in the static version they turned the WinXP dialog buttons into white text on blue, and the Win 3.1 / DOS options into bold.
+
 ## [3.1.0] - 2026-10-12
 
 ### Added

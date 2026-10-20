@@ -1,0 +1,181 @@
+@page "/static-css"
+
+<PageTitle>Static sites</PageTitle>
+
+<h1>Static sites (HTML, PHP...)</h1>
+
+<p>
+	The WinOld styles can also be used <b>without Blazor</b>, in any static site (plain HTML, PHP, WordPress, Hugo...).
+	Everything is in a single stylesheet, <b>winold.css</b>, with its <b>fonts/</b> and <b>icon/</b> folders,
+	plus an optional script, <b>winold.js</b>, that makes tabs, list boxes, windows... interactive.
+</p>
+
+<p>
+	These files are <b>generated automatically</b> on each build of the library from the components' sources,
+	so they always match the Blazor components. They are available in the
+	<a href="https://github.com/tossnet/Blazor-WinOld/tree/master/static/dist" target="_blank">static/dist</a> folder of the repository.
+</p>
+
+<h2>Installation guide</h2>
+
+<h4>1. Get the files</h4>
+
+<p><b>Option A - CDN</b>, nothing to download:</p>
+
+<CodeBlock Language="CodeLanguage.Html"
+		   Code=@(@"
+<link href=""https://cdn.jsdelivr.net/gh/tossnet/Blazor-WinOld@master/static/dist/winold.css"" rel=""stylesheet"" />
+<script src=""https://cdn.jsdelivr.net/gh/tossnet/Blazor-WinOld@master/static/dist/winold.js"" defer></script>
+") />
+
+<p><code>@@master</code> always serves the latest version. To freeze a version, replace <code>master</code> with a commit hash or a tag.</p>
+
+<p>
+	<b>Option B - copy the files</b>: download the repository
+	(<a href="https://github.com/tossnet/Blazor-WinOld/archive/refs/heads/master.zip" target="_blank">ZIP</a>)
+	and copy the <b>static/dist</b> folder into your site. Keep <b>fonts/</b> and <b>icon/</b> next to <b>winold.css</b>:
+	the stylesheet references them with relative paths.
+</p>
+
+<CodeBlock Language="CodeLanguage.Bash"
+		   Code=@(@"
+my-site/
+├── index.html (or index.php)
+└── assets/
+    └── winold/
+        ├── winold.css
+        ├── winold.js
+        ├── fonts/
+        └── icon/
+") />
+
+<h4>2. Add the stylesheet (and the script)</h4>
+
+<p>In the <b>&lt;head&gt;</b> of your pages:</p>
+
+<CodeBlock Language="CodeLanguage.Html"
+		   Code=@(@"
+<link href=""assets/winold/winold.css"" rel=""stylesheet"" />
+<script src=""assets/winold/winold.js"" defer></script>
+") />
+
+<p><b>winold.js</b> is optional: without it the components are displayed correctly but do not react to clicks.</p>
+
+<h4>3. Write the components</h4>
+
+<p>Each component is plain HTML with a <b>base</b> class and a <b>theme</b> class:</p>
+
+<CodeBlock Language="CodeLanguage.Html"
+		   Code=@(@"
+<button class=""btn-win btn-win-xp btn-win-xp-default"">OK</button>
+<button class=""btn-win btn-win-xp"">Cancel</button>
+
+<input type=""checkbox"" id=""remember"" class=""chk-win chk-win-xp"">
+<label for=""remember"">Remember me</label>
+
+<progress max=""100"" value=""70"" class=""prgbar-win prgbar-win-xp""></progress>
+") />
+
+<p>
+	Theme suffixes: <code>dos</code>, <code>31</code>, <code>98</code>, <code>xp</code>, <code>7</code>, <code>10</code>
+	(e.g. <code>btn-win-98</code>; DOS uses <code>btn-dos</code>). The complete table of classes is in the
+	<a href="https://github.com/tossnet/Blazor-WinOld/tree/master/static#readme" target="_blank">static sites guide</a>.
+</p>
+
+<h4>Touch mode</h4>
+
+<p>
+	The equivalent of <code>TouchMode</code>: add the <code>wo-touch</code> class to a container (for example <code>&lt;body&gt;</code>)
+	and every component inside it is enlarged for touch screens, without JavaScript. For a single component, add the
+	<code>win-touch</code> class to it.
+</p>
+
+<CodeBlock Language="CodeLanguage.Html"
+		   Code=@(@"
+<body class=""wo-touch"">
+    <button class=""btn-win btn-win-xp"">OK</button>
+</body>
+") />
+
+<h4>With PHP</h4>
+
+<p>Nothing special: <b>winold.css</b> is a static file, PHP only generates the HTML. A small helper avoids repeating the classes:</p>
+
+<CodeBlock Language="CodeLanguage.Bash"
+		   Code=@(@"
+<?php
+function winold_button(string $text, string $theme = 'xp', bool $default = false): string
+{
+    $class = $theme === 'dos' ? 'btn-dos' : ""btn-win-$theme"";
+    $classes = ""btn-win $class"" . ($default ? "" $class-default"" : '');
+    return '<button class=""' . $classes . '"">' . htmlspecialchars($text) . '</button>';
+}
+?>
+
+<?= winold_button('OK', 'xp', true) ?>
+<?= winold_button('Cancel', 'xp') ?>
+") />
+
+<h4>Interactivity (winold.js)</h4>
+
+<p>
+	No configuration: <b>winold.js</b> works directly on the HTML of the components (even HTML added later) and sends events you can listen to.
+	The drag, menu positioning and Outlook-bar scrolling code is the same as the Blazor version (<i>draggable.js</i> and <i>navpane.js</i> of the library are included at build time).
+</p>
+
+<table style="border-collapse: collapse; margin-bottom: 1rem;">
+	<tr><th style="padding: 6px; border: 1px solid #ccc;">Component</th><th style="padding: 6px; border: 1px solid #ccc;">Behavior</th><th style="padding: 6px; border: 1px solid #ccc;">Event</th></tr>
+	<tr><td style="padding: 6px; border: 1px solid #ccc;">Tabs</td><td style="padding: 6px; border: 1px solid #ccc;">click on a tab shows its panel</td><td style="padding: 6px; border: 1px solid #ccc;"><code>winold:tabchange</code></td></tr>
+	<tr><td style="padding: 6px; border: 1px solid #ccc;">ListBox</td><td style="padding: 6px; border: 1px solid #ccc;">click selects an item (value = <code>data-value</code> or text)</td><td style="padding: 6px; border: 1px solid #ccc;"><code>winold:select</code></td></tr>
+	<tr><td style="padding: 6px; border: 1px solid #ccc;">InfoBar</td><td style="padding: 6px; border: 1px solid #ccc;">Close button hides the bar</td><td style="padding: 6px; border: 1px solid #ccc;"><code>winold:close</code> (cancelable)</td></tr>
+	<tr><td style="padding: 6px; border: 1px solid #ccc;">Window</td><td style="padding: 6px; border: 1px solid #ccc;">Close, Maximize, double-click on the title bar; drag with <code>data-draggable</code></td><td style="padding: 6px; border: 1px solid #ccc;"><code>winold:close</code>, <code>winold:windowstate</code>, <code>winold:moved</code></td></tr>
+	<tr><td style="padding: 6px; border: 1px solid #ccc;">Slider (Win 3.1)</td><td style="padding: 6px; border: 1px solid #ccc;">arrow buttons change the value</td><td style="padding: 6px; border: 1px solid #ccc;">native <code>input</code> / <code>change</code></td></tr>
+	<tr><td style="padding: 6px; border: 1px solid #ccc;">Menu</td><td style="padding: 6px; border: 1px solid #ccc;">click opens, hover switches menus / opens submenus, click outside or Esc closes</td><td style="padding: 6px; border: 1px solid #ccc;"><code>winold:menuclick</code></td></tr>
+	<tr><td style="padding: 6px; border: 1px solid #ccc;">ContextMenu</td><td style="padding: 6px; border: 1px solid #ccc;"><code>data-contextmenu="id"</code> on any element: right-click or long press opens the menu</td><td style="padding: 6px; border: 1px solid #ccc;"><code>winold:menuclick</code></td></tr>
+	<tr><td style="padding: 6px; border: 1px solid #ccc;">NumberBox</td><td style="padding: 6px; border: 1px solid #ccc;">spin buttons add / remove <code>step</code> within <code>min</code> / <code>max</code></td><td style="padding: 6px; border: 1px solid #ccc;">native <code>input</code> / <code>change</code></td></tr>
+	<tr><td style="padding: 6px; border: 1px solid #ccc;">MessageBox, InputBox, Dialog</td><td style="padding: 6px; border: 1px solid #ccc;"><code>WinOld.messageBox()</code>, <code>WinOld.inputBox()</code>, <code>WinOld.dialog()</code>: same boxes as the <code>DialogService</code></td><td style="padding: 6px; border: 1px solid #ccc;">return a <code>Promise</code></td></tr>
+	<tr><td style="padding: 6px; border: 1px solid #ccc;">NavPane</td><td style="padding: 6px; border: 1px solid #ccc;">collapse the pane, expand groups (accordion in Win 98), select items; <code>data-autocollapse-below</code></td><td style="padding: 6px; border: 1px solid #ccc;"><code>winold:collapse</code>, <code>winold:groupchange</code>, <code>winold:select</code></td></tr>
+</table>
+
+<CodeBlock Language="CodeLanguage.Html"
+		   Code=@(@"
+<script>
+    document.addEventListener('winold:select', function (e) {
+        console.log('Selected:', e.detail.value);
+    });
+
+    async function save() {
+        const ok = await WinOld.messageBox({
+            appearance: 'xp', title: 'Save', icon: 'question',
+            message: 'Save the changes?', okButtonText: 'Yes', cancelButtonText: 'No'
+        });
+        const name = await WinOld.inputBox({ appearance: 'xp', title: 'Name', message: 'Your name:' });
+    }
+</script>
+") />
+
+<h2>Demo</h2>
+
+<p>
+	The demo below is a plain HTML page that only loads <b>winold.css</b> and <b>winold.js</b>. Try the components marked <i>winold.js</i>,
+	and click <b>HTML</b> under each component to get its markup.
+	<a href="static/index.html" target="_blank">Open it in a new tab</a>.
+</p>
+
+<iframe src="static/index.html" title="WinOld static CSS demo"
+		style="width: 100%; height: 1100px; border: 1px solid #ccc; border-radius: 4px; background: #fff;"></iframe>
+
+<h2>Updating</h2>
+
+<p>
+	Download the new <b>static/dist</b> folder again, or keep <code>@@master</code> in the CDN links.
+	Do not edit <b>winold.css</b> / <b>winold.js</b>: to customize the styles, add your own stylesheet <b>after</b> winold.css.
+</p>
+
+<h2>Limitations</h2>
+
+<p>
+	<b>winold.js</b> reproduces the behavior of the components, not the Blazor features around them (data binding, forms validation...):
+	read and write the values with the DOM and the events. The full options of each box are in the
+	<a href="https://github.com/tossnet/Blazor-WinOld/tree/master/static#readme" target="_blank">static sites guide</a>.
+</p>

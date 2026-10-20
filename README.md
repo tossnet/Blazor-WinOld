@@ -58,6 +58,19 @@ and in the bottom of your MainLayout.razor add these lines (optional, only if yo
 <WinOldDialogHost /> <!-- Only if you use DialogBox -->
 ```
 
+### Static sites (without Blazor)
+
+The styles are also available for any static site (HTML, PHP...): copy the [static/dist](static/dist) folder (`winold.css` + `fonts/` + `icon/`, and the optional `winold.js` for tabs, list boxes, windows...) and write the same HTML as the components, or use the CDN:
+
+```html
+<link href="https://cdn.jsdelivr.net/gh/tossnet/Blazor-WinOld@master/static/dist/winold.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/gh/tossnet/Blazor-WinOld@master/static/dist/winold.js" defer></script>
+```
+
+Full guide: [static/README.md](static/README.md).
+
+`static/dist` is generated on each build of `Blazor.WinOld.Components` (`winold.css` from the components' CSS, `winold.js` from `static/src/winold.js`): never edit it by hand, edit the sources, build, and commit `static/dist` (the CI checks it is up to date).
+
 ### CSS utilities
 
 `blazorwinold.css` also includes a set of layout utility classes (flexbox, grid, gap, responsive `sm:` / `md:` / `lg:` / `xl:` variants), all prefixed with `wo-` to avoid conflicts with other CSS frameworks. Nothing to declare:
