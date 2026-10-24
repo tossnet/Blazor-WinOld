@@ -1,5 +1,5 @@
 /*!
-* Blazor.WinOld v3.1.1 - static CSS (for non-Blazor sites)
+* Blazor.WinOld v3.1.2 - static CSS (for non-Blazor sites)
 * https://github.com/tossnet/Blazor-WinOld - MIT License
 * Touch mode: add the class wo-touch on a container (e.g. <body class="wo-touch">).
 * GENERATED FILE - DO NOT EDIT: regenerated on each build of Blazor.WinOld.Components.
@@ -4157,10 +4157,10 @@ width: 16px;
 font-size: 16px;
 }
 .navpane-item-10:hover:not(.wo-unscoped) {
-background: rgba(0, 0, 0, .04);
+background: var(--winold-navpane-hover-background, rgba(0, 0, 0, .04));
 }
 .navpane-item-10.navpane-item-active:not(.wo-unscoped) {
-background: rgba(0, 0, 0, .06);
+background: var(--winold-navpane-active-background, rgba(0, 0, 0, .06));
 }
 .navpane-item-10.navpane-item-active:not(.wo-unscoped)::before {
 content: '';
@@ -4171,7 +4171,7 @@ width: 3px;
 height: 16px;
 margin-top: -8px;
 border-radius: 2px;
-background: #0067c0;
+background: var(--winold-navpane-accent-color, #0067c0);
 }
 .navpane-item-10:active:not(.wo-unscoped) {
 background: rgba(0, 0, 0, .02);
@@ -4187,7 +4187,7 @@ height: 16px;
 padding: 0 5px;
 box-sizing: border-box;
 border-radius: 8px;
-background: #0067c0;
+background: var(--winold-navpane-accent-color, #0067c0);
 color: #fff;
 font-size: 11px;
 line-height: 16px;

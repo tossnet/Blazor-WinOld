@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `WinOldNavPaneItem`: new CSS variables for the Win10 style: `--winold-navpane-accent-color` (vertical bar of the selected item and badge), `--winold-navpane-active-background` (background of the selected item) and `--winold-navpane-hover-background` (background on hover), e.g. `:root { --winold-navpane-accent-color: #c42b1c; }`, or set them on the pane's `Class`. Without them, the colors are unchanged. Also available in the static version.
+
 ## [3.1.1] - 2026-10-24
 
 ### Added

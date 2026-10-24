@@ -356,11 +356,11 @@
     }
 
     .navpane-item-10:hover {
-        background: rgba(0, 0, 0, .04);
+        background: var(--winold-navpane-hover-background, rgba(0, 0, 0, .04));
     }
 
     .navpane-item-10.navpane-item-active {
-        background: rgba(0, 0, 0, .06);
+        background: var(--winold-navpane-active-background, rgba(0, 0, 0, .06));
     }
 
         .navpane-item-10.navpane-item-active::before {
@@ -372,7 +372,7 @@
             height: 16px;
             margin-top: -8px;
             border-radius: 2px;
-            background: #0067c0;
+            background: var(--winold-navpane-accent-color, #0067c0);
         }
 
     .navpane-item-10:active {
@@ -391,7 +391,7 @@
         padding: 0 5px;
         box-sizing: border-box;
         border-radius: 8px;
-        background: #0067c0;
+        background: var(--winold-navpane-accent-color, #0067c0);
         color: #fff;
         font-size: 11px;
         line-height: 16px;

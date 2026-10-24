@@ -225,6 +225,47 @@
     <WinOldNavPaneItem Text=""NavPane"" Href=""navpane-page"" IconCssClass=""bi bi-layout-sidebar"" />
 </WinOldNavPane>") />
 
+<h2>Win10 colors</h2>
+
+<p>
+    In Win10 style, the colors of the items can be changed with CSS variables, for every pane (<code>:root</code>)
+    or for one pane (its <strong>Class</strong> or <strong>Style</strong>). Without them, the default colors are kept.
+</p>
+<ul>
+    <li><code>--winold-navpane-accent-color</code>: vertical bar of the selected item and badge (default <code>#0067c0</code>).</li>
+    <li><code>--winold-navpane-active-background</code>: background of the selected item (default <code>rgba(0, 0, 0, .06)</code>).</li>
+    <li><code>--winold-navpane-hover-background</code>: background on hover (default <code>rgba(0, 0, 0, .04)</code>).</li>
+</ul>
+
+<div style="height: 220px; display:flex; gap: 24px; flex-wrap: wrap;">
+    <WinOldNavPane Appearance="Appearance.Win10" SelectedValue="Inbox" ShowToggle="false"
+                   Style="--winold-navpane-accent-color: #c42b1c; --winold-navpane-active-background: #c42b1c1a; --winold-navpane-hover-background: #c42b1c0d;">
+        <WinOldNavPaneItem Text="Inbox" IconCssClass="bi bi-inbox" Badge="2" />
+        <WinOldNavPaneItem Text="Sent" IconCssClass="bi bi-send" />
+        <WinOldNavPaneItem Text="Archive" IconCssClass="bi bi-archive" />
+    </WinOldNavPane>
+    <WinOldNavPane Appearance="Appearance.Win10" SelectedValue="Inbox" ShowToggle="false"
+                   Style="--winold-navpane-accent-color: #107c10; --winold-navpane-active-background: #107c101a;">
+        <WinOldNavPaneItem Text="Inbox" IconCssClass="bi bi-inbox" Badge="2" />
+        <WinOldNavPaneItem Text="Sent" IconCssClass="bi bi-send" />
+        <WinOldNavPaneItem Text="Archive" IconCssClass="bi bi-archive" />
+    </WinOldNavPane>
+</div>
+
+<CodeBlock Language="CodeLanguage.Razor"
+           EnableLineNumbers="true"
+           Code=@(@"@* every pane, in app.css *@
+:root {
+    --winold-navpane-accent-color: #c42b1c;
+}
+
+@* one pane *@
+<WinOldNavPane Appearance=""Appearance.Win10""
+               Style=""--winold-navpane-accent-color: #107c10; --winold-navpane-active-background: #107c101a;"">
+    <WinOldNavPaneItem Text=""Inbox"" IconCssClass=""bi bi-inbox"" Badge=""2"" />
+    <WinOldNavPaneItem Text=""Sent"" IconCssClass=""bi bi-send"" />
+</WinOldNavPane>") />
+
 <h2>In a window</h2>
 
 <p>When <strong>Appearance</strong> is not set, the pane inherits the one of the hosting <code>WinOldWindow</code>.</p>
