@@ -24,7 +24,14 @@
         {
             // Keeps backdrops on the visible screen on mobile, even when the page overflows horizontally.
             await _module.InvokeVoidAsync("trackVisualViewport");
-            _instance = await _module.InvokeAsync<IJSObjectReference>("initDraggable", _windowRef, _titleBarRef, new { withinParent, dotNetRef });
+            // No anonymous type here: once trimmed (publish), its constructor parameter names are
+            // removed and System.Text.Json throws ConstructorContainsNullParameterNames.
+            var options = new Dictionary<string, object?>
+            {
+                ["withinParent"] = withinParent,
+                ["dotNetRef"] = dotNetRef
+            };
+            _instance = await _module.InvokeAsync<IJSObjectReference>("initDraggable", _windowRef, _titleBarRef, options);
         }
     }
 

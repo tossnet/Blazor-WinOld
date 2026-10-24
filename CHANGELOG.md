@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `WinOldNavPaneItem`: new CSS variables for the Win10 style: `--winold-navpane-accent-color` (vertical bar of the selected item and badge), `--winold-navpane-active-background` (background of the selected item) and `--winold-navpane-hover-background` (background on hover), e.g. `:root { --winold-navpane-accent-color: #c42b1c; }`, or set them on the pane's `Class`. Without them, the colors are unchanged. Also available in the static version.
+- Test project `Blazor.WinOld.Tests` (xUnit + bUnit), with a test that fails if the library contains an anonymous type (they break JS interop once the app is trimmed).
+
+### Fixed
+- `WinOldMessageBox`, `WinOldInputBox`, `WinOldDialog`, `WinOldWindow`: `NotSupportedException` (`ConstructorContainsNullParameterNames`) when opening a box in a published (trimmed) application. The drag options were sent to `draggable.js` as an anonymous type, whose constructor parameter names are removed by trimming; they are now sent as a dictionary.
 
 ## [3.1.1] - 2026-10-24
 

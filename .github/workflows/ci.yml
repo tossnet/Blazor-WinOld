@@ -20,8 +20,14 @@ jobs:
       
       - uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '10.x'
+          dotnet-version: |
+            9.x
+            10.x
    
+      # Tests target net9.0 (runtime 9.x above). A failing test stops the deployment.
+      - name: Dotnet Test
+        run: dotnet test Blazor.WinOld.Tests -c Release
+
       - name: Dotnet Publish
         run: dotnet publish -c Release -f net9.0 -o publish
 
