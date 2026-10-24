@@ -13,6 +13,7 @@ public partial class WinOldNavPane : WinOldComponentBase
     private bool _scrollActive;
     private IJSObjectReference? _breakpointHandle;
     private DotNetObjectReference<WinOldNavPane>? _dotNetRef;
+    private bool _disposed;
 
     [Inject] private IJSRuntime JS { get; set; } = default!;
 
@@ -195,27 +196,78 @@ public partial class WinOldNavPane : WinOldComponentBase
     /// </summary>
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        // The pane can be disposed while an interop call is pending (e.g. the layout hosting it is
+        // replaced by a redirect right after the first render): every await is followed by a check.
         if (firstRender && AutoCollapseBelow is int breakpoint)
         {
             _dotNetRef = DotNetObjectReference.Create(this);
-            _module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorWinOld/js/navpane.js");
-            _breakpointHandle = await _module.InvokeAsync<IJSObjectReference>("initNavPaneAutoCollapse", _dotNetRef, breakpoint);
-            if (await _breakpointHandle.InvokeAsync<bool>("matches"))
+            if (!await EnsureModuleAsync()) return;
+            var handle = await _module!.InvokeAsync<IJSObjectReference>("initNavPaneAutoCollapse", _dotNetRef, breakpoint);
+            if (_disposed)
+            {
+                await ReleaseHandleAsync(handle);
+                return;
+            }
+            _breakpointHandle = handle;
+            if (await _breakpointHandle.InvokeAsync<bool>("matches") && !_disposed)
                 await SetCollapsedAsync(true);
         }
+
+        if (_disposed) return;
 
         if (HasScrollButtons && !_scrollActive)
         {
             // Set before the await: guards against a second OnAfterRenderAsync firing
             // (and starting a second observer) before the import/init below completes.
             _scrollActive = true;
-            _module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorWinOld/js/navpane.js");
-            _scrollHandle = await _module.InvokeAsync<IJSObjectReference>("initNavPaneScroll", _rootRef);
+            if (!await EnsureModuleAsync()) return;
+            var handle = await _module!.InvokeAsync<IJSObjectReference>("initNavPaneScroll", _rootRef);
+            if (_disposed)
+            {
+                await ReleaseHandleAsync(handle);
+                return;
+            }
+            _scrollHandle = handle;
         }
         else if (!HasScrollButtons && _scrollActive)
         {
             _scrollActive = false;
             await DisposeScrollHandleAsync();
+        }
+    }
+
+    /// <summary>
+    /// Imports navpane.js once. Returns false when the pane was disposed meanwhile.
+    /// </summary>
+    private async Task<bool> EnsureModuleAsync()
+    {
+        _module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorWinOld/js/navpane.js");
+        if (!_disposed) return true;
+
+        // DisposeAsync ran before the import completed, so it could not release the module.
+        await _module.DisposeAsync();
+        _module = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Releases a handle obtained after the pane was disposed.
+    /// </summary>
+    private async Task ReleaseHandleAsync(IJSObjectReference handle)
+    {
+        try
+        {
+            await handle.InvokeVoidAsync("dispose");
+            await handle.DisposeAsync();
+            if (_module is not null)
+            {
+                await _module.DisposeAsync();
+                _module = null;
+            }
+        }
+        catch (JSDisconnectedException)
+        {
+            // Circuit already gone (Blazor Server): nothing left to clean up on the browser side.
         }
     }
 
@@ -231,6 +283,7 @@ public partial class WinOldNavPane : WinOldComponentBase
 
     public async ValueTask DisposeAsync()
     {
+        _disposed = true;
         try
         {
             await DisposeScrollHandleAsync();

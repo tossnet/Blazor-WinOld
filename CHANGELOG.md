@@ -7,12 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.1] - 2026-10-24
+
 ### Added
 - Static version for sites without Blazor (plain HTML, PHP, WordPress...), in the `static/dist` folder of the repository or from the jsDelivr CDN. Guide: [static/README.md](static/README.md).
   - `winold.css`: all the styles of the components in one file, with `fonts/` and `icon/`. It is generated on each build of the library from the components' CSS, so it always matches the Blazor version (the CI fails if the committed `static/dist` is not up to date).
   - `winold.js` (optional, vanilla JavaScript): tabs, list boxes, info bars, windows (close, maximize, drag), Win 3.1 sliders, menus and context menus (`data-contextmenu`), number boxes and navigation panes, plus `WinOld.messageBox()`, `WinOld.inputBox()` and `WinOld.dialog()`, which return a `Promise` and build the same boxes as the `DialogService`. The drag and menu positioning code is the one of the library (`draggable.js`, `navpane.js`).
   - Touch mode: the `wo-touch` class on a container (e.g. `<body>`) enlarges every component inside it, like `<CascadingValue Name="TouchMode">`.
 - Demo site: new **Static sites** page (installation guide, usage, live demo of every component in every style), announced on the home page.
+
+### Changed
+- `WinOldNavPaneGroup`: in Win10 style, the items of a group are indented by 24 px under their header when the pane is expanded (no indent in compact mode).
+
+### Fixed
+- `WinOldNavPane`: `ObjectDisposedException` (`DotNetObjectReference<WinOldNavPane>`) when the pane was disposed while `navpane.js` was still loading, ex: a layout replaced by a redirect right after its first render with `AutoCollapseBelow` set. Interop handles obtained after disposal are now released.
 
 ### Fixed
 - `WinOldNumberBox`: the margin (and the Win 3.1 font) of its label are limited to its own label. No change in Blazor, where CSS isolation already did it; needed by the static version.

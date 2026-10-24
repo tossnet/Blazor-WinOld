@@ -490,6 +490,11 @@ button.navpane-group-header {
     transform: translateY(-2px) rotate(45deg);
 }
 
+/* Open pane: the items are indented under their header. */
+.navpane-group-10:not(.navpane-group-compact) .navpane-group-items {
+    padding-left: 24px;
+}
+
 .navpane-group-10.navpane-group-compact:not(:first-child) {
     border-top-color: #d9d9d9;
 }

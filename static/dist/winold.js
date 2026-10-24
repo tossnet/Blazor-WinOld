@@ -1,5 +1,5 @@
 /*!
- * Blazor.WinOld v3.1.0 - static JS (for non-Blazor sites)
+ * Blazor.WinOld v3.1.1 - static JS (for non-Blazor sites)
  * https://github.com/tossnet/Blazor-WinOld - MIT License
  *
  * Makes the WinOld HTML components interactive without Blazor:

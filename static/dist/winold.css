@@ -1,5 +1,5 @@
 /*!
-* Blazor.WinOld v3.1.0 - static CSS (for non-Blazor sites)
+* Blazor.WinOld v3.1.1 - static CSS (for non-Blazor sites)
 * https://github.com/tossnet/Blazor-WinOld - MIT License
 * Touch mode: add the class wo-touch on a container (e.g. <body class="wo-touch">).
 * GENERATED FILE - DO NOT EDIT: regenerated on each build of Blazor.WinOld.Components.
@@ -3867,6 +3867,9 @@ transition: transform .15s;
 }
 .navpane-group-10.navpane-group-collapsed .navpane-group-chevron:not(.wo-unscoped)::before {
 transform: translateY(-2px) rotate(45deg);
+}
+.navpane-group-10:not(.navpane-group-compact) .navpane-group-items:not(.wo-unscoped) {
+padding-left: 24px;
 }
 .navpane-group-10.navpane-group-compact:not(:first-child):not(.wo-unscoped) {
 border-top-color: #d9d9d9;
