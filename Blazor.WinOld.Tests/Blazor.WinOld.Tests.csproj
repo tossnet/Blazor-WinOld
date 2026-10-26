@@ -18,6 +18,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<!-- Turbo GERARD demo helpers, linked directly (the demo is a WASM app we don't reference). -->
+		<Compile Include="..\Blazor.WinOld\Pages\Tg\Tg*.cs" Link="Tg\%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\Blazor.WinOld.Components\Blazor.WinOld.Components.csproj" SetTargetFramework="TargetFramework=net9.0" />
 	</ItemGroup>
 
