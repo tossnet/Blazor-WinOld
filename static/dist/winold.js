@@ -51,6 +51,7 @@
         el.style.position = '';
         el.style.left = '';
         el.style.top = '';
+        el.style.transform = '';
         el.style.margin = '';
         el.style.zIndex = '';
     }
@@ -100,8 +101,11 @@
             if (withinParent) {
                 if (windowEl.classList.contains('win-window-maximized')) return;
                 if (getComputedStyle(windowEl).position === 'static') windowEl.style.position = 'absolute';
-                windowEl.style.left = windowEl.offsetLeft + 'px';
-                windowEl.style.top = windowEl.offsetTop + 'px';
+                const parent = windowEl.offsetParent ?? document.body;
+                const p = parent.getBoundingClientRect();
+                windowEl.style.transform = 'none';
+                windowEl.style.left = (r.left - p.left - parent.clientLeft + parent.scrollLeft) + 'px';
+                windowEl.style.top = (r.top - p.top - parent.clientTop + parent.scrollTop) + 'px';
             } else {
                 windowEl.style.position = 'fixed';
                 windowEl.style.zIndex = '999999';

@@ -31,6 +31,7 @@ export function resetPosition(el) {
     el.style.position = '';
     el.style.left = '';
     el.style.top = '';
+    el.style.transform = '';
     el.style.margin = '';
     el.style.zIndex = '';
 }
@@ -101,8 +102,13 @@ export function initDraggable(windowEl, titleBarEl, options) {
             // Une fenêtre agrandie remplit déjà son conteneur : rien à déplacer
             if (windowEl.classList.contains('win-window-maximized')) return;
             if (getComputedStyle(windowEl).position === 'static') windowEl.style.position = 'absolute';
-            windowEl.style.left = windowEl.offsetLeft + 'px';
-            windowEl.style.top = windowEl.offsetTop + 'px';
+            // Part de la position affichée (getBoundingClientRect) et non de offsetLeft/offsetTop,
+            // qui ignorent un transform de centrage (translate(-50%, -50%)) : sinon la fenêtre saute.
+            const parent = windowEl.offsetParent ?? document.body;
+            const p = parent.getBoundingClientRect();
+            windowEl.style.transform = 'none';
+            windowEl.style.left = (r.left - p.left - parent.clientLeft + parent.scrollLeft) + 'px';
+            windowEl.style.top = (r.top - p.top - parent.clientTop + parent.scrollTop) + 'px';
         } else {
             // Ne fige la position (sortie du flux flex de centrage) qu'au moment
             // où l'utilisateur commence réellement à dragger, pour ne jamais figer
